@@ -1,26 +1,116 @@
-// The module 'vscode' contains the VS Code extensibility API
-// Import the module and reference it with the alias vscode in your code below
-import * as vscode from 'vscode';
+import { homedir } from 'os'
+import path from 'path'
+import * as vscode from 'vscode'
+import { createStatusbarButton } from "./statusBarButton"
+import { getSettings, readHtml, writeFile } from './util'
 
-// This method is called when your extension is activated
-// Your extension is activated the very first time the command is executed
-export function activate(context: vscode.ExtensionContext) {
+const getConfig = () => {
+	const editorSettings = getSettings('editor', ['fontLigatures', 'tabSize'])
+	const editor = vscode.window.activeTextEditor
+	if (editor) { editorSettings.tabSize = editor.options.tabSize }
 
-	// Use the console to output diagnostic information (console.log) and errors (console.error)
-	// This line of code will only be executed once when your extension is activated
-	console.log('Congratulations, your extension "easy-codesnap" is now active!');
+	// const extensionSettings = getSettings('codesnap', [
+	// 	'backgroundColor',
+	// 	'boxShadow',
+	// 	'containerPadding',
+	// 	'roundedCorners',
+	// 	'showWindowControls',
+	// 	'showWindowTitle',
+	// 	'showLineNumbers',
+	// 	'realLineNumbers',
+	// 	'transparentBackground',
+	// 	'target',
+	// 	'shutterAction'
+	// ])
 
-	// The command has been defined in the package.json file
-	// Now provide the implementation of the command with registerCommand
-	// The commandId parameter must match the command field in package.json
-	let disposable = vscode.commands.registerCommand('easy-codesnap.helloWorld', () => {
-		// The code you place here will be executed every time your command is executed
-		// Display a message box to the user
-		vscode.window.showInformationMessage('Hello World from easy-codesnap!');
-	});
+	const extensionSettings = vscode.workspace.getConfiguration("easy-codesnap")
 
-	context.subscriptions.push(disposable);
+	console.log(extensionSettings)
+	console.log(vscode.workspace.getConfiguration("easy-codesnap"))
+
+	const selection = editor && editor.selection
+	const startLine = extensionSettings.realLineNumbers ? (selection ? selection.start.line : 0) : 0
+
+	let windowTitle = ''
+	if (editor && extensionSettings.showWindowTitle) {
+		const activeFileName = editor.document.uri.path.split('/').pop()
+		windowTitle = `${vscode.workspace.name} - ${activeFileName}`
+	}
+
+	return {
+		...editorSettings,
+		...extensionSettings,
+		startLine,
+		windowTitle
+	}
 }
 
-// This method is called when your extension is deactivated
-export function deactivate() {}
+const createPanel = async (context: vscode.ExtensionContext) => {
+	const panel = vscode.window.createWebviewPanel(
+		'easy-codesnap',
+		'Easy CodeSnap 📸',
+		{ viewColumn: vscode.ViewColumn.Beside, preserveFocus: true },
+		{
+			enableScripts: true,
+			localResourceRoots: [vscode.Uri.file(context.extensionPath)]
+		}
+	)
+	panel.webview.html = await readHtml(
+		path.resolve(context.extensionPath, 'webview/index.html'),
+		panel
+	)
+
+	return panel
+}
+
+let lastUsedImageUri = vscode.Uri.file(path.resolve(homedir(), 'Desktop/code.png'))
+const saveImage = async (data: string) => {
+	const uri = await vscode.window.showSaveDialog({
+		filters: { Images: ['png'] },
+		defaultUri: lastUsedImageUri
+	})
+
+	lastUsedImageUri = uri as vscode.Uri
+
+	uri && writeFile(uri.fsPath, Buffer.from(data, 'base64'))
+}
+
+const hasOneSelection = (selections: readonly vscode.Selection[]) =>
+	selections && selections.length === 1 && !selections[0].isEmpty
+
+const runCommand = async (context: vscode.ExtensionContext) => {
+	const panel = await createPanel(context)
+
+	const update = async () => {
+		await vscode.commands.executeCommand('editor.action.clipboardCopyWithSyntaxHighlightingAction')
+		panel.webview.postMessage({ type: 'update', ...getConfig() })
+	}
+
+	const flash = () => panel.webview.postMessage({ type: 'flash' })
+
+	panel.webview.onDidReceiveMessage(async ({ type, data }) => {
+		if (type === 'save') {
+			flash()
+			await saveImage(data)
+		} else {
+			vscode.window.showErrorMessage(`Easy CodeSnap 📸: Unknown shutterAction "${type}"`)
+		}
+	})
+
+	const selectionHandler = vscode.window.onDidChangeTextEditorSelection(
+		(e) => hasOneSelection(e.selections) && update()
+	)
+	panel.onDidDispose(() => selectionHandler.dispose())
+
+	const editor = vscode.window.activeTextEditor
+	if (editor && hasOneSelection(editor.selections)) { update() }
+}
+
+export function activate(context: vscode.ExtensionContext) {
+	context.subscriptions.push(
+		vscode.commands.registerCommand('easy-codesnap.start', () => runCommand(context)),
+		createStatusbarButton()
+	)
+}
+
+export function deactivate() { }

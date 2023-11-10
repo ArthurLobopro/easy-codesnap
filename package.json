@@ -1,23 +1,112 @@
 {
   "name": "easy-codesnap",
-  "displayName": "easy-codesnap",
-  "description": "",
+  "displayName": "Easy CodeSnap",
+  "description": "Take beautiful screenshots of your code 📷",
   "version": "0.0.1",
   "engines": {
-    "vscode": "^1.84.0"
+    "vscode": "^1.52.0"
   },
   "categories": [
     "Other"
   ],
-  "activationEvents": [],
+  "activationEvents": [
+    "*"
+  ],
   "main": "./out/extension.js",
   "contributes": {
     "commands": [
       {
-        "command": "easy-codesnap.helloWorld",
-        "title": "Hello World"
+        "command": "easy-codesnap.start",
+        "title": "Easy CodeSnap"
       }
-    ]
+    ],
+    "menus": {
+      "editor/context": [
+        {
+          "command": "easy-codesnap.start"
+        }
+      ]
+    },
+    "configuration": {
+      "type": "object",
+      "title": "Easy CodeSnap",
+      "properties": {
+        "easy-codesnap.backgroundColor": {
+          "scope": "resource",
+          "type": "string",
+          "default": "#abb8c3",
+          "description": "The background color of the snippet's container"
+        },
+        "easy-codesnap.boxShadow": {
+          "scope": "resource",
+          "type": "string",
+          "default": "rgba(0, 0, 0, 0.55) 0px 20px 68px",
+          "description": "The CSS box-shadow for the snippet"
+        },
+        "easy-codesnap.containerPadding": {
+          "scope": "resource",
+          "type": "string",
+          "default": "3em",
+          "description": "The padding for the snippet's container"
+        },
+        "easy-codesnap.roundedCorners": {
+          "scope": "resource",
+          "type": "boolean",
+          "default": true,
+          "description": "Use rounded corners for the window"
+        },
+        "easy-codesnap.showWindowControls": {
+          "scope": "resource",
+          "type": "boolean",
+          "default": true,
+          "description": "Display OS X style window controls"
+        },
+        "easy-codesnap.showWindowTitle": {
+          "scope": "resource",
+          "type": "boolean",
+          "default": false,
+          "description": "Display window title with open folder / file name"
+        },
+        "easy-codesnap.showLineNumbers": {
+          "scope": "resource",
+          "type": "boolean",
+          "default": true,
+          "description": "Display line numbers"
+        },
+        "easy-codesnap.realLineNumbers": {
+          "scope": "resource",
+          "type": "boolean",
+          "default": false,
+          "description": "Start from the selection's line number instead of 1"
+        },
+        "easy-codesnap.transparentBackground": {
+          "scope": "resource",
+          "type": "boolean",
+          "default": false,
+          "description": "Use a transparent background when taking the screenshot"
+        },
+        "easy-codesnap.target": {
+          "scope": "resource",
+          "type": "string",
+          "enum": [
+            "container",
+            "window"
+          ],
+          "default": "container",
+          "description": "Take the shot with or without the container"
+        },
+        "easy-codesnap.shutterAction": {
+          "scope": "resource",
+          "type": "string",
+          "enum": [
+            "save",
+            "copy"
+          ],
+          "default": "copy",
+          "description": "The behavior of the shutter button"
+        }
+      }
+    }
   },
   "scripts": {
     "vscode:prepublish": "yarn run compile",
@@ -28,15 +117,18 @@
     "test": "node ./out/test/runTest.js"
   },
   "devDependencies": {
-    "@types/vscode": "^1.84.0",
     "@types/mocha": "^10.0.3",
     "@types/node": "18.x",
+    "@types/vscode": "^1.84.0",
     "@typescript-eslint/eslint-plugin": "^6.9.0",
     "@typescript-eslint/parser": "^6.9.0",
+    "@vscode/test-electron": "^2.3.6",
     "eslint": "^8.52.0",
     "glob": "^10.3.10",
     "mocha": "^10.2.0",
-    "typescript": "^5.2.2",
-    "@vscode/test-electron": "^2.3.6"
+    "typescript": "^5.2.2"
+  },
+  "dependencies": {
+    "dom-to-image-even-more": "^1.0.4"
   }
 }
