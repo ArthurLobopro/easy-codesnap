@@ -1,71 +1,41 @@
-# easy-codesnap README
+# Easy CodeSnap
 
-This is the README for your extension "easy-codesnap". After writing up a brief description, we recommend including the following sections.
+This project is fully based on [CodeSnap](https://github.com/kufii/CodeSnap) extension.
 
 ## Features
 
-Describe specific features of your extension including screenshots of your extension in action. Image paths are relative to this README file.
+- Quickly save screenshots of your code
+- Copy screenshots to your clipboard
+- Appearence configurable
+- Import your settings from CodeSnap
 
-For example if there is an image subfolder under your extension project workspace:
+## Commands
 
-\!\[feature X\]\(images/feature-x.png\)
-
-> Tip: Many popular extensions utilize animations. This is an excellent way to show off your extension! We recommend short, focused animations that are easy to follow.
-
-## Requirements
-
-If you have any requirements or dependencies, add a section describing those and how to install and configure them.
+- You can take your code snapshot from the command pallete using the **`Easy CodeSnap`** command
+- You can import your CodeSnap configuration using the **`Import CodeSnap Settings`** command
 
 ## Extension Settings
 
-Include if your extension adds any VS Code settings through the `contributes.configuration` extension point.
+The Easy CodeSnap configuration is like the CodeSnap configuration:
 
-For example:
+**`codesnap.backgroundColor`:** The background color of the snippet's container. Can be any valid CSS color.
 
-This extension contributes the following settings:
+**`codesnap.boxShadow`:** The CSS box-shadow for the snippet. Can be any valid CSS box shadow.
 
-* `myExtension.enable`: Enable/disable this extension.
-* `myExtension.thing`: Set to `blah` to do something.
+**`codesnap.containerPadding`:** The padding for the snippet's container. Can be any valid CSS padding.
 
-## Known Issues
+**`codesnap.roundedCorners`:** Boolean value to use rounded corners or square corners for the window.
 
-Calling out known issues can help limit users opening duplicate issues against your extension.
+**`codesnap.showWindowControls`:** Boolean value to show or hide OS X style window buttons.
 
-## Release Notes
+**`codesnap.showWindowTitle`:** Boolean value to show or hide window title `folder_name - file_name`.
 
-Users appreciate release notes as you update your extension.
+**`codesnap.showLineNumbers`:** Boolean value to show or hide line numbers.
 
-### 1.0.0
+**`codesnap.realLineNumbers`:** Boolean value to start from the real line number of the file instead of 1.
 
-Initial release of ...
+**`codesnap.transparentBackground`:** Boolean value to use a transparent background when taking the screenshot.
 
-### 1.0.1
+**`codesnap.target`:** Either `container` to take the screenshot with the container, or `window` to only take the window.
 
-Fixed issue #.
-
-### 1.1.0
-
-Added features X, Y, and Z.
-
----
-
-## Following extension guidelines
-
-Ensure that you've read through the extensions guidelines and follow the best practices for creating your extension.
-
-* [Extension Guidelines](https://code.visualstudio.com/api/references/extension-guidelines)
-
-## Working with Markdown
-
-You can author your README using Visual Studio Code. Here are some useful editor keyboard shortcuts:
-
-* Split the editor (`Cmd+\` on macOS or `Ctrl+\` on Windows and Linux).
-* Toggle preview (`Shift+Cmd+V` on macOS or `Shift+Ctrl+V` on Windows and Linux).
-* Press `Ctrl+Space` (Windows, Linux, macOS) to see a list of Markdown snippets.
-
-## For more information
-
-* [Visual Studio Code's Markdown Support](http://code.visualstudio.com/docs/languages/markdown)
-* [Markdown Syntax Reference](https://help.github.com/articles/markdown-basics/)
-
-**Enjoy!**
+**`codesnap.shutterAction`:** Either `save` to save the screenshot into a file, or `copy` to copy the screenshot into the clipboard.
