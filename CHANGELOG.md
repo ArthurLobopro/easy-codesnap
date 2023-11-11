@@ -1,3 +1,7 @@
+## 1.1.0
+
+* Added success messages on save/copy
+
 ## 1.0.2
 
 ### Features:
