@@ -18,6 +18,10 @@
       {
         "command": "easy-codesnap.start",
         "title": "Easy CodeSnap"
+      },
+      {
+        "command": "easy-codesnap.importSettings",
+        "title": "Importar configurações de CodeSnap"
       }
     ],
     "menus": {

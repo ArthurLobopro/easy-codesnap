@@ -1,6 +1,7 @@
 import { homedir } from 'os'
 import path from 'path'
 import * as vscode from 'vscode'
+import { importSettings } from "./importSettings"
 import { createStatusbarButton } from "./statusBarButton"
 import { getSettings, readHtml, writeFile } from './util'
 
@@ -109,6 +110,7 @@ const runCommand = async (context: vscode.ExtensionContext) => {
 export function activate(context: vscode.ExtensionContext) {
 	context.subscriptions.push(
 		vscode.commands.registerCommand('easy-codesnap.start', () => runCommand(context)),
+		vscode.commands.registerCommand("easy-codesnap.importSettings", importSettings),
 		createStatusbarButton()
 	)
 }
