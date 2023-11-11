@@ -44,6 +44,7 @@ export const takeSnap = async (config) => {
         const blob = new Blob([array], { type: 'image/png' })
         navigator.clipboard.write([new ClipboardItem({ 'image/png': blob })])
         cameraFlashAnimation()
+        vscode.postMessage({ type: "copied" })
     } else {
         vscode.postMessage({ type: config.shutterAction, data })
     }

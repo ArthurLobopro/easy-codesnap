@@ -73,7 +73,11 @@ const saveImage = async (data: string) => {
 
 	lastUsedImageUri = uri as vscode.Uri
 
-	uri && writeFile(uri.fsPath, Buffer.from(data, 'base64'))
+	if (uri) {
+		writeFile(uri.fsPath, Buffer.from(data, 'base64')).then(() => {
+			vscode.window.showInformationMessage(`Image saved on: ${uri.fsPath}`)
+		})
+	}
 }
 
 const hasOneSelection = (selections: readonly vscode.Selection[]) =>
@@ -90,11 +94,17 @@ const runCommand = async (context: vscode.ExtensionContext) => {
 	const flash = () => panel.webview.postMessage({ type: 'flash' })
 
 	panel.webview.onDidReceiveMessage(async ({ type, data }) => {
-		if (type === 'save') {
-			flash()
-			await saveImage(data)
-		} else {
-			vscode.window.showErrorMessage(`Easy CodeSnap 📸: Unknown shutterAction "${type}"`)
+		switch (type) {
+			case 'save':
+				flash()
+				await saveImage(data)
+				break
+			case 'copied':
+				vscode.window.showInformationMessage("Image copied to clipboard!")
+				break
+			default:
+				vscode.window.showErrorMessage(`Easy CodeSnap 📸: Unknown shutterAction "${type}"`)
+				break
 		}
 	})
 
