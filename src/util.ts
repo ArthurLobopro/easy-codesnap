@@ -1,18 +1,18 @@
-import { readFile } from 'fs/promises'
-import path from 'path'
-import * as vscode from 'vscode'
+import { readFile } from "fs/promises"
+import path from "path"
+import * as vscode from "vscode"
 export { writeFile } from "fs/promises"
 
 type untypedObject = { [key: string]: any }
 
 export const readHtml = async (htmlPath: string, panel: vscode.WebviewPanel) => {
-    return (await readFile(htmlPath, 'utf-8'))
+    return (await readFile(htmlPath, "utf-8"))
         .replace(/%CSP_SOURCE%/gu, panel.webview.cspSource)
         .replace(
             /(src|href)="([^"]*)"/gu,
             (_, type, src) =>
                 `${type}="${panel.webview.asWebviewUri(
-                    vscode.Uri.file(path.resolve(htmlPath, '..', src))
+                    vscode.Uri.file(path.resolve(htmlPath, "..", src))
                 )}"`
         )
 }

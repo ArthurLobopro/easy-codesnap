@@ -8,13 +8,13 @@ export const once = (elem, evt) =>
 export const redraw = (node) => node.clientHeight
 
 export const setVar = (key, value, node = document.body) =>
-    node.style.setProperty('--' + key, value)
+    node.style.setProperty("--" + key, value)
 
 export const calcTextWidth = (text) => {
-    const div = document.body.appendChild(document.createElement('div'))
-    div.classList.add('size-test')
+    const div = document.body.appendChild(document.createElement("div"))
+    div.classList.add("size-test")
     div.textContent = text
     const width = div.clientWidth
     div.remove()
-    return width + 1 + 'px'
+    return width + 1 + "px"
 }

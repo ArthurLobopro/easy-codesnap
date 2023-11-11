@@ -1,12 +1,12 @@
-import { homedir } from 'os'
-import path from 'path'
-import * as vscode from 'vscode'
+import { homedir } from "os"
+import path from "path"
+import * as vscode from "vscode"
 import { importSettings } from "./importSettings"
 import { createStatusbarButton } from "./statusBarButton"
-import { getSettings, readHtml, writeFile } from './util'
+import { getSettings, readHtml, writeFile } from "./util"
 
 const getConfig = () => {
-	const editorSettings = getSettings('editor', ['fontLigatures', 'tabSize'])
+	const editorSettings = getSettings("editor", ["fontLigatures", "tabSize"])
 	const editor = vscode.window.activeTextEditor
 	if (editor) { editorSettings.tabSize = editor.options.tabSize }
 
@@ -32,9 +32,9 @@ const getConfig = () => {
 	const selection = editor && editor.selection
 	const startLine = extensionSettings.realLineNumbers ? (selection ? selection.start.line : 0) : 0
 
-	let windowTitle = ''
+	let windowTitle = ""
 	if (editor && extensionSettings.showWindowTitle) {
-		const activeFileName = editor.document.uri.path.split('/').pop()
+		const activeFileName = editor.document.uri.path.split("/").pop()
 		windowTitle = `${vscode.workspace.name} - ${activeFileName}`
 	}
 
@@ -48,8 +48,8 @@ const getConfig = () => {
 
 const createPanel = async (context: vscode.ExtensionContext) => {
 	const panel = vscode.window.createWebviewPanel(
-		'easy-codesnap',
-		'Easy CodeSnap 📸',
+		"easy-codesnap",
+		"Easy CodeSnap 📸",
 		{ viewColumn: vscode.ViewColumn.Beside, preserveFocus: true },
 		{
 			enableScripts: true,
@@ -57,24 +57,24 @@ const createPanel = async (context: vscode.ExtensionContext) => {
 		}
 	)
 	panel.webview.html = await readHtml(
-		path.resolve(context.extensionPath, 'webview/index.html'),
+		path.resolve(context.extensionPath, "webview/index.html"),
 		panel
 	)
 
 	return panel
 }
 
-let lastUsedImageUri = vscode.Uri.file(path.resolve(homedir(), 'Desktop/code.png'))
+let lastUsedImageUri = vscode.Uri.file(path.resolve(homedir(), "Desktop/code.png"))
 const saveImage = async (data: string) => {
 	const uri = await vscode.window.showSaveDialog({
-		filters: { Images: ['png'] },
+		filters: { Images: ["png"] },
 		defaultUri: lastUsedImageUri
 	})
 
 	lastUsedImageUri = uri as vscode.Uri
 
 	if (uri) {
-		writeFile(uri.fsPath, Buffer.from(data, 'base64')).then(() => {
+		writeFile(uri.fsPath, Buffer.from(data, "base64")).then(() => {
 			vscode.window.showInformationMessage(`Image saved on: ${uri.fsPath}`)
 		})
 	}
@@ -87,19 +87,19 @@ const runCommand = async (context: vscode.ExtensionContext) => {
 	const panel = await createPanel(context)
 
 	const update = async () => {
-		await vscode.commands.executeCommand('editor.action.clipboardCopyWithSyntaxHighlightingAction')
-		panel.webview.postMessage({ type: 'update', ...getConfig() })
+		await vscode.commands.executeCommand("editor.action.clipboardCopyWithSyntaxHighlightingAction")
+		panel.webview.postMessage({ type: "update", ...getConfig() })
 	}
 
-	const flash = () => panel.webview.postMessage({ type: 'flash' })
+	const flash = () => panel.webview.postMessage({ type: "flash" })
 
 	panel.webview.onDidReceiveMessage(async ({ type, data }) => {
 		switch (type) {
-			case 'save':
+			case "save":
 				flash()
 				await saveImage(data)
 				break
-			case 'copied':
+			case "copied":
 				vscode.window.showInformationMessage("Image copied to clipboard!")
 				break
 			default:
@@ -119,7 +119,7 @@ const runCommand = async (context: vscode.ExtensionContext) => {
 
 export function activate(context: vscode.ExtensionContext) {
 	context.subscriptions.push(
-		vscode.commands.registerCommand('easy-codesnap.start', () => runCommand(context)),
+		vscode.commands.registerCommand("easy-codesnap.start", () => runCommand(context)),
 		vscode.commands.registerCommand("easy-codesnap.importSettings", importSettings),
 		createStatusbarButton()
 	)

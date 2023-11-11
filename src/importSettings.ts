@@ -1,17 +1,17 @@
 import * as vscode from "vscode"
 
 const commomConfigNames = [
-    'backgroundColor',
-    'boxShadow',
-    'containerPadding',
-    'roundedCorners',
-    'showWindowControls',
-    'showWindowTitle',
-    'showLineNumbers',
-    'realLineNumbers',
-    'transparentBackground',
-    'target',
-    'shutterAction'
+    "backgroundColor",
+    "boxShadow",
+    "containerPadding",
+    "roundedCorners",
+    "showWindowControls",
+    "showWindowTitle",
+    "showLineNumbers",
+    "realLineNumbers",
+    "transparentBackground",
+    "target",
+    "shutterAction"
 ]
 
 export function importSettings() {
