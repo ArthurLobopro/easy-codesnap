@@ -8,6 +8,7 @@
     "url": "https://github.com/ArthurLobopro/easy-codesnap"
   },
   "license": "MIT",
+  "icon": "icon.png",
   "engines": {
     "vscode": "^1.80.0"
   },
