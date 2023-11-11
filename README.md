@@ -9,9 +9,20 @@ This project is fully based on [CodeSnap](https://github.com/kufii/CodeSnap) ext
 - Appearence configurable
 - Import your settings from CodeSnap
 
+## How to Use
+
+- Select the code from your editor
+- Click in the camera icon in your statusbar
+
+![icon screenshot](https://raw.githubusercontent.com/ArthurLobopro/easy-codesnap/master/screenshots/screenshot-icon.png)
+
+- Make the final adjusts and take your code snapshot.
+
+- You can also use the **`Easy CodeSnap`** command in your command palette.
+
 ## Commands
 
-- You can take your code snapshot from the command pallete using the **`Easy CodeSnap`** command
+- You can take your code snapshot from the command palette using the **`Easy CodeSnap`** command
 - You can import your CodeSnap configuration using the **`Import CodeSnap Settings`** command
 
 ## Extension Settings
