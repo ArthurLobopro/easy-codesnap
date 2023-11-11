@@ -7,15 +7,11 @@ export const createStatusbarButton = () => {
     button.color = 'inherit'
     button.command = 'easy-codesnap.start'
 
-    let isVisible = false
-
     return vscode.window.onDidChangeTextEditorSelection(event => {
-        if (event.textEditor.selection.isEmpty && isVisible) {
+        if (event.textEditor.selection.isEmpty) {
             button.hide()
-            isVisible = false
-        } else if (!isVisible) {
+        } else {
             button.show()
-            isVisible = true
         }
     })
 }
