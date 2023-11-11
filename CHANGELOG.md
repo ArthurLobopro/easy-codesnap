@@ -1,9 +1,9 @@
-# Change Log
+## 1.0.2
 
-All notable changes to the "easy-codesnap" extension will be documented in this file.
+### Features:
 
-Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
+* Allow gradients on `easy-codesnap.backgroundColor`
 
-## [Unreleased]
+## 1.0.0
 
 - Initial release
