@@ -21,7 +21,7 @@
       },
       {
         "command": "easy-codesnap.importSettings",
-        "title": "Importar configurações de CodeSnap"
+        "title": "Import CodeSnap Settings"
       }
     ],
     "menus": {
