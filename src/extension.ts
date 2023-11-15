@@ -7,27 +7,25 @@ import { getSettings, readHtml, writeFile } from "./util"
 
 const getConfig = () => {
 	const editorSettings = getSettings("editor", ["fontLigatures", "tabSize"])
+
 	const editor = vscode.window.activeTextEditor
 	if (editor) { editorSettings.tabSize = editor.options.tabSize }
 
-	// const extensionSettings = getSettings('codesnap', [
-	// 	'backgroundColor',
-	// 	'boxShadow',
-	// 	'containerPadding',
-	// 	'roundedCorners',
-	// 	'showWindowControls',
-	// 	'showWindowTitle',
-	// 	'showLineNumbers',
-	// 	'realLineNumbers',
-	// 	'transparentBackground',
-	// 	'target',
-	// 	'shutterAction'
-	// ])
-
-	const extensionSettings = vscode.workspace.getConfiguration("easy-codesnap")
+	const extensionSettings = getSettings("easy-codesnap", [
+		"backgroundColor",
+		"boxShadow",
+		"containerPadding",
+		"roundedCorners",
+		"showWindowControls",
+		"showWindowTitle",
+		"showLineNumbers",
+		"realLineNumbers",
+		"transparentBackground",
+		"target",
+		"shutterAction"
+	])
 
 	console.log(extensionSettings)
-	console.log(vscode.workspace.getConfiguration("easy-codesnap"))
 
 	const selection = editor && editor.selection
 	const startLine = extensionSettings.realLineNumbers ? (selection ? selection.start.line : 0) : 0
