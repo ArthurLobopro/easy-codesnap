@@ -149,3 +149,78 @@ body {
     transition: opacity 200ms ease;
     opacity: 1;
 }
+
+#one-time-config-wrapper {
+    position: absolute;
+    right: 5px;
+    top: 5px;
+    border-radius: 4px;
+    display: flex;
+}
+
+#one-time-config {
+    /* background-color: var(--vscode-sideBar-background); */
+
+    border-radius: 4px;
+    position: relative;
+}
+
+#one-time-config>summary {
+    width: 24px;
+    height: 24px;
+    border-radius: 4px;
+    padding: 4px;
+
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
+#one-time-config>summary::marker {
+    content: "";
+}
+
+#one-time-config>summary>svg *[stroke]:not([stroke="none"]) {
+    stroke: var(--vscode-foreground);
+}
+
+#one-time-config>summary>svg *[fill]:not([fill="none"]) {
+    fill: var(--vscode-foreground);
+}
+
+#one-time-config>summary:hover {
+    background-color: var(--vscode-list-hoverBackground);
+}
+
+#one-time-config ul {
+    margin-top: 30px;
+    padding: 4px;
+    border-radius: 4px;
+
+    background-color: var(--vscode-sideBar-background);
+}
+
+#one-time-config li {
+    cursor: pointer;
+    border-radius: 4px;
+    padding: 4px;
+    font-size: 16px;
+    list-style-type: none;
+
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+#one-time-config li:hover {
+    background-color: var(--vscode-sideBar-dropBackground);
+}
+
+#one-time-config input[type="checkbox"] {
+    background-color: var(--vscode-settings-checkboxBackground);
+    color: var(--vscode-settings-checkboxForeground);
+
+    height: 100%;
+    aspect-ratio: 1/1;
+    outline: 0;
+}
