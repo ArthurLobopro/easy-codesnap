@@ -34,5 +34,5 @@ export const getSessionConfig = () => {
 }
 
 export const alreadyHasSessionConfig = () => {
-    return sessionStorage.length > 0
+    return !!sessionStorage.getItem("easy-codesnap-config")
 }

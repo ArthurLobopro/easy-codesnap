@@ -2,14 +2,14 @@ import { pasteCode } from "./code.js"
 import { contentManager } from "./contentManager.js"
 import { addListeners, updateUIConfig } from "./oneTimeConfig.js"
 import { cameraFlashAnimation, takeSnap } from "./snap.js"
-import { $, getSessionConfig, setSessionConfig, setVar, vscode } from "./util.js"
+import { $, alreadyHasSessionConfig, getSessionConfig, setSessionConfig, setVar, vscode } from "./util.js"
 
 const navbarNode = $("#navbar")
 const windowControlsNode = $("#window-controls")
 const windowTitleNode = $("#window-title")
 const btnSave = $("#save")
 
-export function updateConfig(config) {
+export function updateConfig() {
     const {
         fontLigatures,
         tabSize,
@@ -20,7 +20,7 @@ export function updateConfig(config) {
         showWindowControls,
         showWindowTitle,
         windowTitle
-    } = config
+    } = getSessionConfig()
 
     setVar("ligatures", fontLigatures ? "normal" : "none")
     if (typeof fontLigatures === "string") { setVar("font-features", fontLigatures) }
@@ -49,9 +49,30 @@ document.addEventListener("paste", (e) => {
 window.addEventListener("message", ({ data: { type, ...config } }) => {
     if (type === "update") {
         setSessionConfig(config)
+        updateConfig()
         updateUIConfig()
-        updateConfig(config)
         document.execCommand("paste")
+    }
+
+    if (type === "update-text") {
+        if (!alreadyHasSessionConfig()) {
+            setSessionConfig(config)
+        } else {
+            const { startLine, windowTitle } = config
+            setSessionConfig({ startLine, windowTitle })
+        }
+        updateConfig()
+        document.execCommand("paste")
+    }
+
+    if (type === "update-config") {
+        delete config.startLine
+        delete config.windowTitle
+
+        setSessionConfig(config)
+        updateConfig()
+        updateUIConfig()
+        pasteCode()
     }
 
     if (type === "flash") {

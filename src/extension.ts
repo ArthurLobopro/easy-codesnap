@@ -84,9 +84,12 @@ const hasOneSelection = (selections: readonly vscode.Selection[]) =>
 const runCommand = async (context: vscode.ExtensionContext) => {
 	const panel = await createPanel(context)
 
-	const update = async () => {
+	const update = async (updateType: "config" | "text" | "both") => {
 		await vscode.commands.executeCommand("editor.action.clipboardCopyWithSyntaxHighlightingAction")
-		panel.webview.postMessage({ type: "update", ...getConfig() })
+		panel.webview.postMessage({
+			type: updateType === "both" ? "update" : `update-${updateType}`,
+			...getConfig()
+		})
 	}
 
 	const flash = () => panel.webview.postMessage({ type: "flash" })
@@ -101,11 +104,11 @@ const runCommand = async (context: vscode.ExtensionContext) => {
 				vscode.window.showInformationMessage("Image copied to clipboard!")
 				break
 			case "update-config":
-				update()
+				update("config")
 				break
 			case "ready":
 				const editor = vscode.window.activeTextEditor
-				if (editor && hasOneSelection(editor.selections)) { update() }
+				if (editor && hasOneSelection(editor.selections)) { update("both") }
 				break
 			default:
 				vscode.window.showErrorMessage(`Easy CodeSnap 📸: Unknown shutterAction "${type}"`)
@@ -114,7 +117,7 @@ const runCommand = async (context: vscode.ExtensionContext) => {
 	})
 
 	const selectionHandler = vscode.window.onDidChangeTextEditorSelection(
-		(e) => hasOneSelection(e.selections) && update()
+		(e) => hasOneSelection(e.selections) && update("text")
 	)
 	panel.onDidDispose(() => selectionHandler.dispose())
 }

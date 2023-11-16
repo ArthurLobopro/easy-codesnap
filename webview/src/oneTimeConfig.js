@@ -50,7 +50,7 @@ export function addListeners() {
         setSessionConfig({
             showWindowTitle: showWindowTitleInput.checked
         })
-        updateConfig(getSessionConfig())
+        updateConfig()
     })
 
     showLineNumbersInput.addEventListener("change", () => {
@@ -71,21 +71,21 @@ export function addListeners() {
         setSessionConfig({
             showWindowControls: showWindowControlsInput.checked
         })
-        updateConfig(getSessionConfig())
+        updateConfig()
     })
 
     roundedCornersInput.addEventListener("change", () => {
         setSessionConfig({
             roundedCorners: roundedCornersInput.checked
         })
-        updateConfig(getSessionConfig())
+        updateConfig()
     })
 
     transparentBackgroundInput.addEventListener("change", () => {
         setSessionConfig({
             transparentBackground: transparentBackgroundInput.checked
         })
-        updateConfig(getSessionConfig())
+        updateConfig()
     })
 
     updateButton.addEventListener("click", () => {
