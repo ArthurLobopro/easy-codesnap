@@ -9,9 +9,7 @@ const windowControlsNode = $("#window-controls")
 const windowTitleNode = $("#window-title")
 const btnSave = $("#save")
 
-function updateConfig(config) {
-    setSessionConfig(config)
-
+export function updateConfig(config) {
     const {
         fontLigatures,
         tabSize,
@@ -48,9 +46,10 @@ document.addEventListener("paste", (e) => {
     pasteCode(getSessionConfig())
 })
 
-window.addEventListener("message", ({ data: { type, ...cfg } }) => {
+window.addEventListener("message", ({ data: { type, ...config } }) => {
     if (type === "update") {
-        updateConfig(cfg)
+        setSessionConfig(config)
+        updateConfig(config)
         updateUIConfig()
         document.execCommand("paste")
     }
