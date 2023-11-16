@@ -49,8 +49,8 @@ document.addEventListener("paste", (e) => {
 window.addEventListener("message", ({ data: { type, ...config } }) => {
     if (type === "update") {
         setSessionConfig(config)
-        updateConfig(config)
         updateUIConfig()
+        updateConfig(config)
         document.execCommand("paste")
     }
 

@@ -100,6 +100,9 @@ const runCommand = async (context: vscode.ExtensionContext) => {
 			case "copied":
 				vscode.window.showInformationMessage("Image copied to clipboard!")
 				break
+			case "update-config":
+				update()
+				break
 			default:
 				vscode.window.showErrorMessage(`Easy CodeSnap 📸: Unknown shutterAction "${type}"`)
 				break

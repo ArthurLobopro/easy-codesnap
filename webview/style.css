@@ -175,6 +175,7 @@ body {
     position: absolute;
     right: 0;
     top: 0;
+    cursor: pointer;
 }
 
 #one-time-config>summary::marker {
@@ -201,7 +202,7 @@ body {
     background-color: var(--vscode-sideBar-background);
 }
 
-#one-time-config li {
+#one-time-config li:not(.separator) {
     cursor: pointer;
     border-radius: 4px;
     padding: 4px;
@@ -213,8 +214,15 @@ body {
     cursor: pointer;
 }
 
-#one-time-config li:hover {
+#one-time-config li:not(.separator):hover {
     background-color: var(--vscode-sideBar-dropBackground);
+}
+
+#one-time-config li.separator {
+    display: block;
+    height: 1px;
+    background-color: var(--vscode-foreground);
+    margin: 8px 4px;
 }
 
 #one-time-config li>label {
@@ -222,6 +230,7 @@ body {
     justify-content: space-between;
     width: 100%;
     cursor: pointer;
+    gap: 4px;
 }
 
 #one-time-config input[type="checkbox"] {

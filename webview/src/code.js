@@ -1,5 +1,5 @@
 import { contentManager } from "./contentManager.js"
-import { $, $$, calcTextWidth, setVar } from "./util.js"
+import { $, $$, calcTextWidth, getSessionConfig, setVar } from "./util.js"
 
 const snippetNode = $("#snippet")
 
@@ -50,7 +50,7 @@ const stripInitialIndent = (node) => {
 }
 
 
-export const pasteCode = (config) => {
+export const pasteCode = (config = getSessionConfig()) => {
     snippetNode.innerHTML = contentManager.current
     const code = $("div", snippetNode)
     snippetNode.style.fontSize = code.style.fontSize

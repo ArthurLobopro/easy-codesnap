@@ -19,6 +19,8 @@ export const calcTextWidth = (text) => {
     return width + 1 + "px"
 }
 
+export const vscode = acquireVsCodeApi()
+
 export const setSessionConfig = (config) => {
     if (alreadyHasSessionConfig()) {
         config = { ...getSessionConfig(), ...config }

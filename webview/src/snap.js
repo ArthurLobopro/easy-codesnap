@@ -1,6 +1,5 @@
-import { $, $$, once, redraw, setVar } from "./util.js"
+import { $, $$, once, redraw, setVar, vscode } from "./util.js"
 
-const vscode = acquireVsCodeApi()
 const windowNode = $("#window")
 const snippetContainerNode = $("#snippet-container")
 

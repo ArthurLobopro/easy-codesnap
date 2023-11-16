@@ -1,6 +1,9 @@
 import { pasteCode } from "./code.js"
 import { updateConfig } from "./index.js"
-import { $, alreadyHasSessionConfig, getSessionConfig, setSessionConfig } from "./util.js"
+import { $, alreadyHasSessionConfig, getSessionConfig, setSessionConfig, vscode } from "./util.js"
+
+/** @type {HTMLInputElement} */
+const showWindowTitleInput = $("input[data-configName='showWindowTitle']")
 
 /** @type {HTMLInputElement} */
 const showLineNumbersInput = $("input[data-configName='showLineNumbers']")
@@ -14,8 +17,14 @@ const showWindowControlsInput = $("input[data-configName='showWindowControls']")
 /** @type {HTMLInputElement} */
 const roundedCornersInput = $("input[data-configName='roundedCorners']")
 
-export function updateUIConfig() {
-    if (!alreadyHasSessionConfig()) {
+/** @type {HTMLInputElement} */
+const transparentBackgroundInput = $("input[data-configName='transparentBackground']")
+
+/** @type {HTMLLIElement} */
+const updateButton = $("[data-action='update']")
+
+export function updateUIConfig(force = false) {
+    if (!alreadyHasSessionConfig() && !force) {
         return
     }
 
@@ -23,16 +32,27 @@ export function updateUIConfig() {
         showLineNumbers,
         realLineNumbers,
         showWindowControls,
-        roundedCorners
+        roundedCorners,
+        transparentBackground,
+        showWindowTitle
     } = getSessionConfig()
 
+    showWindowTitleInput.checked = showWindowTitle
     showLineNumbersInput.checked = showLineNumbers
     realLineNumbersInput.checked = realLineNumbers
     showWindowControlsInput.checked = showWindowControls
     roundedCornersInput.checked = roundedCorners
+    transparentBackgroundInput.checked = transparentBackground
 }
 
 export function addListeners() {
+    showWindowTitleInput.addEventListener("change", () => {
+        setSessionConfig({
+            showWindowTitle: showWindowTitleInput.checked
+        })
+        updateConfig(getSessionConfig())
+    })
+
     showLineNumbersInput.addEventListener("change", () => {
         setSessionConfig({
             showLineNumbers: showLineNumbersInput.checked
@@ -60,6 +80,17 @@ export function addListeners() {
         })
         updateConfig(getSessionConfig())
     })
+
+    transparentBackgroundInput.addEventListener("change", () => {
+        setSessionConfig({
+            transparentBackground: transparentBackgroundInput.checked
+        })
+        updateConfig(getSessionConfig())
+    })
+
+    updateButton.addEventListener("click", () => {
+        vscode.postMessage({ type: "update-config" })
+    })
 }
 
-const updateView = () => pasteCode(getSessionConfig())
+const updateView = () => pasteCode()
