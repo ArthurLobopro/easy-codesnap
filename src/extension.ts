@@ -31,7 +31,7 @@ const getConfig = () => {
 	const startLine = selection ? selection.start.line : 0
 
 	let windowTitle = ""
-	if (editor && extensionSettings.showWindowTitle) {
+	if (editor) {
 		const activeFileName = editor.document.uri.path.split("/").pop()
 		windowTitle = `${vscode.workspace.name} - ${activeFileName}`
 	}
