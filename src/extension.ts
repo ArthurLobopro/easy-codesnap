@@ -7,33 +7,31 @@ import { getSettings, readHtml, writeFile } from "./util"
 
 const getConfig = () => {
 	const editorSettings = getSettings("editor", ["fontLigatures", "tabSize"])
+
 	const editor = vscode.window.activeTextEditor
 	if (editor) { editorSettings.tabSize = editor.options.tabSize }
 
-	// const extensionSettings = getSettings('codesnap', [
-	// 	'backgroundColor',
-	// 	'boxShadow',
-	// 	'containerPadding',
-	// 	'roundedCorners',
-	// 	'showWindowControls',
-	// 	'showWindowTitle',
-	// 	'showLineNumbers',
-	// 	'realLineNumbers',
-	// 	'transparentBackground',
-	// 	'target',
-	// 	'shutterAction'
-	// ])
-
-	const extensionSettings = vscode.workspace.getConfiguration("easy-codesnap")
+	const extensionSettings = getSettings("easy-codesnap", [
+		"backgroundColor",
+		"boxShadow",
+		"containerPadding",
+		"roundedCorners",
+		"showWindowControls",
+		"showWindowTitle",
+		"showLineNumbers",
+		"realLineNumbers",
+		"transparentBackground",
+		"target",
+		"shutterAction"
+	])
 
 	console.log(extensionSettings)
-	console.log(vscode.workspace.getConfiguration("easy-codesnap"))
 
-	const selection = editor && editor.selection
-	const startLine = extensionSettings.realLineNumbers ? (selection ? selection.start.line : 0) : 0
+	const selection = editor?.selection
+	const startLine = selection ? selection.start.line : 0
 
 	let windowTitle = ""
-	if (editor && extensionSettings.showWindowTitle) {
+	if (editor) {
 		const activeFileName = editor.document.uri.path.split("/").pop()
 		windowTitle = `${vscode.workspace.name} - ${activeFileName}`
 	}
@@ -86,9 +84,12 @@ const hasOneSelection = (selections: readonly vscode.Selection[]) =>
 const runCommand = async (context: vscode.ExtensionContext) => {
 	const panel = await createPanel(context)
 
-	const update = async () => {
+	const update = async (updateType: "config" | "text" | "both") => {
 		await vscode.commands.executeCommand("editor.action.clipboardCopyWithSyntaxHighlightingAction")
-		panel.webview.postMessage({ type: "update", ...getConfig() })
+		panel.webview.postMessage({
+			type: updateType === "both" ? "update" : `update-${updateType}`,
+			...getConfig()
+		})
 	}
 
 	const flash = () => panel.webview.postMessage({ type: "flash" })
@@ -102,6 +103,13 @@ const runCommand = async (context: vscode.ExtensionContext) => {
 			case "copied":
 				vscode.window.showInformationMessage("Image copied to clipboard!")
 				break
+			case "update-config":
+				update("config")
+				break
+			case "ready":
+				const editor = vscode.window.activeTextEditor
+				if (editor && hasOneSelection(editor.selections)) { update("both") }
+				break
 			default:
 				vscode.window.showErrorMessage(`Easy CodeSnap 📸: Unknown shutterAction "${type}"`)
 				break
@@ -109,12 +117,9 @@ const runCommand = async (context: vscode.ExtensionContext) => {
 	})
 
 	const selectionHandler = vscode.window.onDidChangeTextEditorSelection(
-		(e) => hasOneSelection(e.selections) && update()
+		(e) => hasOneSelection(e.selections) && update("text")
 	)
 	panel.onDidDispose(() => selectionHandler.dispose())
-
-	const editor = vscode.window.activeTextEditor
-	if (editor && hasOneSelection(editor.selections)) { update() }
 }
 
 export function activate(context: vscode.ExtensionContext) {

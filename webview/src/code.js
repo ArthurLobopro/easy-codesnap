@@ -1,12 +1,15 @@
-import { $, $$, calcTextWidth, setVar } from "./util.js"
+import { contentManager } from "./contentManager.js"
+import { $, $$, calcTextWidth, getSessionConfig, setVar } from "./util.js"
 
 const snippetNode = $("#snippet")
 
 const setupLines = (node, config) => {
     $$(":scope > br", node).forEach((row) => (row.outerHTML = "<div>&nbsp;</div>"))
 
+    const startLine = config.realLineNumbers ? config.startLine : 0
+
     const rows = $$(":scope > div", node)
-    setVar("line-number-width", calcTextWidth(rows.length + config.startLine))
+    setVar("line-number-width", calcTextWidth(rows.length + startLine))
 
     rows.forEach((row, idx) => {
         const newRow = document.createElement("div")
@@ -16,7 +19,7 @@ const setupLines = (node, config) => {
         if (config.showLineNumbers) {
             const lineNum = document.createElement("div")
             lineNum.classList.add("line-number")
-            lineNum.textContent = idx + 1 + config.startLine
+            lineNum.textContent = idx + 1 + startLine
             newRow.appendChild(lineNum)
         }
 
@@ -46,19 +49,9 @@ const stripInitialIndent = (node) => {
     initialSpans.forEach((span) => (span.textContent = span.textContent.slice(minIndent)))
 }
 
-const getClipboardHtml = (clip) => {
-    const html = clip.getData("text/html")
-    if (html) { return html }
-    const text = clip
-        .getData("text/plain")
-        .split("\n")
-        .map((line) => `<div>${line}</div>`)
-        .join("")
-    return `<div>${text}</div>`
-}
 
-export const pasteCode = (config, clipboard) => {
-    snippetNode.innerHTML = getClipboardHtml(clipboard)
+export const pasteCode = (config = getSessionConfig()) => {
+    snippetNode.innerHTML = contentManager.current
     const code = $("div", snippetNode)
     snippetNode.style.fontSize = code.style.fontSize
     snippetNode.style.lineHeight = code.style.lineHeight

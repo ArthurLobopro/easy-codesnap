@@ -8,6 +8,7 @@ This project is fully based on [CodeSnap](https://github.com/kufii/CodeSnap) ext
 - Copy screenshots to your clipboard
 - Appearence configurable
 - Import your settings from CodeSnap
+- One time settings
 
 ## How to Use
 
@@ -16,9 +17,9 @@ This project is fully based on [CodeSnap](https://github.com/kufii/CodeSnap) ext
 
 ![icon screenshot](https://raw.githubusercontent.com/ArthurLobopro/easy-codesnap/master/screenshots/screenshot-icon.png)
 
-- Make the final adjusts and take your code snapshot.
-
 - You can also use the **`Easy CodeSnap`** command in your command palette.
+
+- Make the final adjusts and take your code snapshot.
 
 ## Commands
 
