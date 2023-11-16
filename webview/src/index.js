@@ -2,7 +2,7 @@ import { pasteCode } from "./code.js"
 import { contentManager } from "./contentManager.js"
 import { addListeners, updateUIConfig } from "./oneTimeConfig.js"
 import { cameraFlashAnimation, takeSnap } from "./snap.js"
-import { $, getSessionConfig, setSessionConfig, setVar } from "./util.js"
+import { $, getSessionConfig, setSessionConfig, setVar, vscode } from "./util.js"
 
 const navbarNode = $("#navbar")
 const windowControlsNode = $("#window-controls")
@@ -58,5 +58,9 @@ window.addEventListener("message", ({ data: { type, ...config } }) => {
         cameraFlashAnimation()
     }
 })
+
+window.addEventListener("DOMContentLoaded", () => {
+    vscode.postMessage({ type: "ready" })
+}, { once: true })
 
 addListeners()

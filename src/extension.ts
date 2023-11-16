@@ -103,6 +103,10 @@ const runCommand = async (context: vscode.ExtensionContext) => {
 			case "update-config":
 				update()
 				break
+			case "ready":
+				const editor = vscode.window.activeTextEditor
+				if (editor && hasOneSelection(editor.selections)) { update() }
+				break
 			default:
 				vscode.window.showErrorMessage(`Easy CodeSnap 📸: Unknown shutterAction "${type}"`)
 				break
@@ -113,9 +117,6 @@ const runCommand = async (context: vscode.ExtensionContext) => {
 		(e) => hasOneSelection(e.selections) && update()
 	)
 	panel.onDidDispose(() => selectionHandler.dispose())
-
-	const editor = vscode.window.activeTextEditor
-	if (editor && hasOneSelection(editor.selections)) { update() }
 }
 
 export function activate(context: vscode.ExtensionContext) {
