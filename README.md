@@ -21,6 +21,8 @@ This project is fully based on [CodeSnap](https://github.com/kufii/CodeSnap) ext
 
 - Make the final adjusts and take your code snapshot.
 
+![](https://raw.githubusercontent.com/ArthurLobopro/easy-codesnap/master/screenshots/one-time-config.gif)
+
 ## Commands
 
 - You can take your code snapshot from the command palette using the **`Easy CodeSnap`** command
