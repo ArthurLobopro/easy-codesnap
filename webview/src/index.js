@@ -1,52 +1,63 @@
 import { pasteCode } from "./code.js"
+import { contentManager } from "./contentManager.js"
+import { addListeners, updateUIConfig } from "./oneTimeConfig.js"
 import { cameraFlashAnimation, takeSnap } from "./snap.js"
-import { $, setVar } from "./util.js"
+import { $, getSessionConfig, setSessionConfig, setVar } from "./util.js"
 
 const navbarNode = $("#navbar")
 const windowControlsNode = $("#window-controls")
 const windowTitleNode = $("#window-title")
 const btnSave = $("#save")
 
-let config
+function updateConfig(config) {
+    setSessionConfig(config)
 
-btnSave.addEventListener("click", () => takeSnap(config))
+    const {
+        fontLigatures,
+        tabSize,
+        backgroundColor,
+        boxShadow,
+        containerPadding,
+        roundedCorners,
+        showWindowControls,
+        showWindowTitle,
+        windowTitle
+    } = config
 
-document.addEventListener("copy", () => takeSnap({ ...config, shutterAction: "copy" }))
+    setVar("ligatures", fontLigatures ? "normal" : "none")
+    if (typeof fontLigatures === "string") { setVar("font-features", fontLigatures) }
+    setVar("tab-size", tabSize)
+    setVar("container-background-color", backgroundColor)
+    setVar("box-shadow", boxShadow)
+    setVar("container-padding", containerPadding)
+    setVar("window-border-radius", roundedCorners ? "4px" : 0)
 
-document.addEventListener("paste", (e) => pasteCode(config, e.clipboardData))
+    navbarNode.hidden = !showWindowControls && !showWindowTitle
+    windowControlsNode.hidden = !showWindowControls
+    windowTitleNode.hidden = !showWindowTitle
+
+    windowTitleNode.textContent = windowTitle
+}
+
+btnSave.addEventListener("click", () => takeSnap(getSessionConfig()))
+
+document.addEventListener("copy", () => takeSnap({ ...getSessionConfig(), shutterAction: "copy" }))
+
+document.addEventListener("paste", (e) => {
+    contentManager.update(e.clipboardData)
+    pasteCode(getSessionConfig())
+})
 
 window.addEventListener("message", ({ data: { type, ...cfg } }) => {
     if (type === "update") {
-        config = cfg
-
-        const {
-            fontLigatures,
-            tabSize,
-            backgroundColor,
-            boxShadow,
-            containerPadding,
-            roundedCorners,
-            showWindowControls,
-            showWindowTitle,
-            windowTitle
-        } = config
-
-        setVar("ligatures", fontLigatures ? "normal" : "none")
-        if (typeof fontLigatures === "string") { setVar("font-features", fontLigatures) }
-        setVar("tab-size", tabSize)
-        setVar("container-background-color", backgroundColor)
-        setVar("box-shadow", boxShadow)
-        setVar("container-padding", containerPadding)
-        setVar("window-border-radius", roundedCorners ? "4px" : 0)
-
-        navbarNode.hidden = !showWindowControls && !showWindowTitle
-        windowControlsNode.hidden = !showWindowControls
-        windowTitleNode.hidden = !showWindowTitle
-
-        windowTitleNode.textContent = windowTitle
-
+        updateConfig(cfg)
+        updateUIConfig()
         document.execCommand("paste")
-    } else if (type === "flash") {
+    }
+
+    if (type === "flash") {
         cameraFlashAnimation()
     }
 })
+
+addListeners()

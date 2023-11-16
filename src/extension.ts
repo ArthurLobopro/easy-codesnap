@@ -27,8 +27,8 @@ const getConfig = () => {
 
 	console.log(extensionSettings)
 
-	const selection = editor && editor.selection
-	const startLine = extensionSettings.realLineNumbers ? (selection ? selection.start.line : 0) : 0
+	const selection = editor?.selection
+	const startLine = selection ? selection.start.line : 0
 
 	let windowTitle = ""
 	if (editor && extensionSettings.showWindowTitle) {

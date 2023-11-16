@@ -18,3 +18,19 @@ export const calcTextWidth = (text) => {
     div.remove()
     return width + 1 + "px"
 }
+
+export const setSessionConfig = (config) => {
+    if (alreadyHasSessionConfig()) {
+        config = { ...getSessionConfig(), ...config }
+    }
+
+    sessionStorage.setItem("easy-codesnap-config", JSON.stringify(config))
+}
+
+export const getSessionConfig = () => {
+    return JSON.parse(sessionStorage.getItem("easy-codesnap-config"))
+}
+
+export const alreadyHasSessionConfig = () => {
+    return sessionStorage.length > 0
+}
