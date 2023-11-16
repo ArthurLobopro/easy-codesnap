@@ -11,16 +11,25 @@ const realLineNumbersInput = $("input[data-configName='realLineNumbers']")
 /** @type {HTMLInputElement} */
 const showWindowControlsInput = $("input[data-configName='showWindowControls']")
 
+/** @type {HTMLInputElement} */
+const roundedCornersInput = $("input[data-configName='roundedCorners']")
+
 export function updateUIConfig() {
     if (!alreadyHasSessionConfig()) {
         return
     }
 
-    const { showLineNumbers, realLineNumbers, showWindowControls } = getSessionConfig()
+    const {
+        showLineNumbers,
+        realLineNumbers,
+        showWindowControls,
+        roundedCorners
+    } = getSessionConfig()
 
     showLineNumbersInput.checked = showLineNumbers
     realLineNumbersInput.checked = realLineNumbers
     showWindowControlsInput.checked = showWindowControls
+    roundedCornersInput.checked = roundedCorners
 }
 
 export function addListeners() {
@@ -41,6 +50,13 @@ export function addListeners() {
     showWindowControlsInput.addEventListener("change", () => {
         setSessionConfig({
             showWindowControls: showWindowControlsInput.checked
+        })
+        updateConfig(getSessionConfig())
+    })
+
+    roundedCornersInput.addEventListener("change", () => {
+        setSessionConfig({
+            roundedCorners: roundedCornersInput.checked
         })
         updateConfig(getSessionConfig())
     })
