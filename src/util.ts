@@ -19,17 +19,10 @@ export const readHtml = async (htmlPath: string, panel: vscode.WebviewPanel) => 
 
 export const getSettings = (group: string, keys: string[]) => {
     const settings = vscode.workspace.getConfiguration(group)
-
-    // console.log("Settings:")
-    // console.log(settings)
-
     const editor = vscode.window.activeTextEditor
     const language = editor?.document?.languageId
     const languageSettings =
         language && vscode.workspace.getConfiguration().get(`[${language}]`) as untypedObject
-
-    // console.log("Language Settings:")
-    // console.log(Object(languageSettings))
 
     return keys.reduce((config, key) => {
         if (languageSettings) {

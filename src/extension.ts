@@ -25,8 +25,6 @@ const getConfig = () => {
 		"shutterAction"
 	])
 
-	console.log(extensionSettings)
-
 	const selection = editor?.selection
 	const startLine = selection ? selection.start.line : 0
 
@@ -54,6 +52,7 @@ const createPanel = async (context: vscode.ExtensionContext) => {
 			localResourceRoots: [vscode.Uri.file(context.extensionPath)]
 		}
 	)
+
 	panel.webview.html = await readHtml(
 		path.resolve(context.extensionPath, "webview/index.html"),
 		panel
