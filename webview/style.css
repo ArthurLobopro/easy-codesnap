@@ -225,8 +225,19 @@ body {
     margin: 8px 4px;
 }
 
+#one-time-config li:has(>select) {
+    cursor: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    cursor: pointer;
+    gap: 4px;
+}
+
 #one-time-config li>label {
     display: flex;
+    align-items: center;
     justify-content: space-between;
     width: 100%;
     cursor: pointer;
@@ -241,4 +252,17 @@ body {
     aspect-ratio: 1/1;
     outline: 0;
     cursor: pointer;
+}
+
+#one-time-config select {
+    background-color: var(--vscode-sideBar-background);
+    color: var(--vscode-foreground);
+    border-radius: 4px;
+    padding: 2px 0;
+    cursor: pointer;
+}
+
+#one-time-config select>option {
+    background-color: var(--vscode-sideBar-background);
+    color: var(--vscode-foreground);
 }
