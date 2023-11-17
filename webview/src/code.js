@@ -3,7 +3,9 @@ import { $, $$, calcTextWidth, getSessionConfig, setVar } from "./util.js"
 
 const snippetNode = $("#snippet")
 
-const setupLines = (node, config) => {
+const setupLines = (node) => {
+    const config = getSessionConfig()
+
     $$(":scope > br", node).forEach((row) => (row.outerHTML = "<div>&nbsp;</div>"))
 
     const startLine = config.realLineNumbers ? config.startLine : 0
@@ -50,12 +52,12 @@ const stripInitialIndent = (node) => {
 }
 
 
-export const pasteCode = (config = getSessionConfig()) => {
+export const pasteCode = () => {
     snippetNode.innerHTML = contentManager.current
     const code = $("div", snippetNode)
     snippetNode.style.fontSize = code.style.fontSize
     snippetNode.style.lineHeight = code.style.lineHeight
     snippetNode.innerHTML = code.innerHTML
     stripInitialIndent(snippetNode)
-    setupLines(snippetNode, config)
+    setupLines(snippetNode, getSessionConfig())
 }

@@ -37,7 +37,7 @@ export function updateConfig() {
     windowTitleNode.textContent = windowTitle
 }
 
-btnSave.addEventListener("click", () => takeSnap(getSessionConfig()))
+btnSave.addEventListener("click", () => takeSnap())
 
 document.addEventListener("copy", () => takeSnap({ ...getSessionConfig(), shutterAction: "copy" }))
 
@@ -47,36 +47,41 @@ document.addEventListener("paste", (e) => {
 })
 
 window.addEventListener("message", ({ data: { type, ...config } }) => {
-    if (type === "update") {
-        setSessionConfig(config)
-        updateConfig()
-        updateUIConfig()
-        document.execCommand("paste")
-    }
-
-    if (type === "update-text") {
-        if (!alreadyHasSessionConfig()) {
+    switch (type) {
+        case "update":
             setSessionConfig(config)
-        } else {
-            const { startLine, windowTitle } = config
-            setSessionConfig({ startLine, windowTitle })
-        }
-        updateConfig()
-        document.execCommand("paste")
-    }
+            updateConfig()
+            updateUIConfig()
+            document.execCommand("paste")
+            break
 
-    if (type === "update-config") {
-        delete config.startLine
-        delete config.windowTitle
+        case "update-text":
+            if (!alreadyHasSessionConfig()) {
+                setSessionConfig(config)
+            } else {
+                const { startLine, windowTitle } = config
+                setSessionConfig({ startLine, windowTitle })
+            }
+            updateConfig()
+            document.execCommand("paste")
+            break
 
-        setSessionConfig(config)
-        updateConfig()
-        updateUIConfig()
-        pasteCode()
-    }
+        case "update-config":
+            delete config.startLine
+            delete config.windowTitle
 
-    if (type === "flash") {
-        cameraFlashAnimation()
+            setSessionConfig(config)
+            updateConfig()
+            updateUIConfig()
+            pasteCode()
+            break
+
+        case "flash":
+            cameraFlashAnimation()
+            break
+
+        default:
+            break
     }
 })
 

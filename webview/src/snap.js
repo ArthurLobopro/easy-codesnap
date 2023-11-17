@@ -1,4 +1,4 @@
-import { $, $$, once, redraw, setVar, vscode } from "./util.js"
+import { $, $$, getSessionConfig, once, redraw, setVar, vscode } from "./util.js"
 
 const windowNode = $("#window")
 const snippetContainerNode = $("#snippet-container")
@@ -16,7 +16,7 @@ export const cameraFlashAnimation = async () => {
     flashFx.style.opacity = "1"
 }
 
-export const takeSnap = async (config) => {
+export const takeSnap = async (config = getSessionConfig()) => {
     windowNode.style.resize = "none"
     if (config.transparentBackground || config.target === "window") {
         setVar("container-background-color", "transparent")
