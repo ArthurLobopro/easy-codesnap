@@ -1,0 +1,116 @@
+#one-time-config-wrapper {
+    position: absolute;
+    right: 5px;
+    top: 5px;
+    border-radius: 4px;
+    display: flex;
+}
+
+#one-time-config {
+    /* background-color: var(--vscode-sideBar-background); */
+
+    border-radius: 4px;
+    position: relative;
+}
+
+#one-time-config>summary {
+    width: 24px;
+    height: 24px;
+    border-radius: 4px;
+    padding: 4px;
+    outline: 0;
+
+    position: absolute;
+    right: 0;
+    top: 0;
+    cursor: pointer;
+}
+
+#one-time-config>summary::marker {
+    content: "";
+}
+
+#one-time-config>summary>svg *[stroke]:not([stroke="none"]) {
+    stroke: var(--vscode-foreground);
+}
+
+#one-time-config>summary>svg *[fill]:not([fill="none"]) {
+    fill: var(--vscode-foreground);
+}
+
+#one-time-config>summary:hover {
+    background-color: var(--vscode-list-hoverBackground);
+}
+
+#one-time-config ul {
+    margin-top: 30px;
+    padding: 4px;
+    border-radius: 4px;
+
+    background-color: var(--vscode-sideBar-background);
+}
+
+#one-time-config li:not(.separator) {
+    cursor: pointer;
+    border-radius: 4px;
+    padding: 4px;
+    font-size: 16px;
+    list-style-type: none;
+
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+#one-time-config li:not(.separator):hover {
+    background-color: var(--vscode-sideBar-dropBackground);
+}
+
+#one-time-config li.separator {
+    display: block;
+    height: 1px;
+    background-color: var(--vscode-foreground);
+    margin: 8px 4px;
+}
+
+#one-time-config li:has(>select) {
+    cursor: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    cursor: pointer;
+    gap: 4px;
+}
+
+#one-time-config li>label {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    cursor: pointer;
+    gap: 4px;
+}
+
+#one-time-config input[type="checkbox"] {
+    background-color: var(--vscode-settings-checkboxBackground);
+    color: var(--vscode-settings-checkboxForeground);
+
+    height: 100%;
+    aspect-ratio: 1/1;
+    outline: 0;
+    cursor: pointer;
+}
+
+#one-time-config select {
+    background-color: var(--vscode-sideBar-background);
+    color: var(--vscode-foreground);
+    border-radius: 4px;
+    padding: 2px 0;
+    cursor: pointer;
+}
+
+#one-time-config select>option {
+    background-color: var(--vscode-sideBar-background);
+    color: var(--vscode-foreground);
+}
