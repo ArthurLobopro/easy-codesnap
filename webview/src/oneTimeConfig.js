@@ -20,8 +20,16 @@ const roundedCornersInput = $("input[data-configName='roundedCorners']")
 /** @type {HTMLInputElement} */
 const transparentBackgroundInput = $("input[data-configName='transparentBackground']")
 
+/** @type {HTMLSelectElement} */
+const shutterActionSelect = $("select[data-configName='shutterAction']")
+
+/** @type {HTMLSelectElement} */
+const targetSelect = $("select[data-configName='target']")
+
 /** @type {HTMLLIElement} */
 const updateButton = $("[data-action='update']")
+
+shutterActionSelect.style.width = `${targetSelect.getBoundingClientRect().width}px`
 
 export function updateUIConfig(force = false) {
     if (!alreadyHasSessionConfig() && !force) {
@@ -34,7 +42,9 @@ export function updateUIConfig(force = false) {
         showWindowControls,
         roundedCorners,
         transparentBackground,
-        showWindowTitle
+        showWindowTitle,
+        shutterAction,
+        target
     } = getSessionConfig()
 
     showWindowTitleInput.checked = showWindowTitle
@@ -43,6 +53,9 @@ export function updateUIConfig(force = false) {
     showWindowControlsInput.checked = showWindowControls
     roundedCornersInput.checked = roundedCorners
     transparentBackgroundInput.checked = transparentBackground
+
+    shutterActionSelect.value = shutterAction
+    targetSelect.value = target
 }
 
 export function addListeners() {
@@ -86,6 +99,18 @@ export function addListeners() {
             transparentBackground: transparentBackgroundInput.checked
         })
         updateConfig()
+    })
+
+    shutterActionSelect.addEventListener("change", () => {
+        setSessionConfig({
+            shutterAction: shutterActionSelect.value
+        })
+    })
+
+    targetSelect.addEventListener("change", () => {
+        setSessionConfig({
+            target: targetSelect.value
+        })
     })
 
     updateButton.addEventListener("click", () => {
