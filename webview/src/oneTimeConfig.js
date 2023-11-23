@@ -3,31 +3,31 @@ import { updateConfig } from "./index.js"
 import { $, alreadyHasSessionConfig, getSessionConfig, setSessionConfig, vscode } from "./util.js"
 
 /** @type {HTMLInputElement} */
-const showWindowTitleInput = $("input[data-configName='showWindowTitle']")
+const showWindowTitleInput = $("input[data-configname='showWindowTitle']")
 
 /** @type {HTMLInputElement} */
-const showLineNumbersInput = $("input[data-configName='showLineNumbers']")
+const showLineNumbersInput = $("input[data-configname='showLineNumbers']")
 
 /** @type {HTMLInputElement} */
-const realLineNumbersInput = $("input[data-configName='realLineNumbers']")
+const realLineNumbersInput = $("input[data-configname='realLineNumbers']")
 
 /** @type {HTMLInputElement} */
-const showWindowControlsInput = $("input[data-configName='showWindowControls']")
+const showWindowControlsInput = $("input[data-configname='showWindowControls']")
 
 /** @type {HTMLInputElement} */
-const roundedCornersInput = $("input[data-configName='roundedCorners']")
+const roundedCornersInput = $("input[data-configname='roundedCorners']")
 
 /** @type {HTMLInputElement} */
-const transparentBackgroundInput = $("input[data-configName='transparentBackground']")
+const transparentBackgroundInput = $("input[data-configname='transparentBackground']")
 
 /** @type {HTMLInputElement} */
-const enableResizingInput = $("input[data-configName='enableResizing']")
+const enableResizingInput = $("input[data-configname='enableResizing']")
 
 /** @type {HTMLSelectElement} */
-const shutterActionSelect = $("select[data-configName='shutterAction']")
+const shutterActionSelect = $("select[data-configname='shutterAction']")
 
 /** @type {HTMLSelectElement} */
-const targetSelect = $("select[data-configName='target']")
+const targetSelect = $("select[data-configname='target']")
 
 /** @type {HTMLLIElement} */
 const updateButton = $("[data-action='update']")
