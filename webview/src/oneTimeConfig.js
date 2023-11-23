@@ -63,55 +63,39 @@ export function updateUIConfig(force = false) {
     targetSelect.value = target
 }
 
+/** @param {HTMLInputElement} input  */
+function handleViewBasedChange(input) {
+    return () => {
+        const { configname } = input.dataset
+
+        setSessionConfig({
+            [configname]: input.checked
+        })
+        updateView()
+    }
+}
+
+/** @param {HTMLInputElement} input  */
+function handleConfigBasedChange(input) {
+    return () => {
+        const { configname } = input.dataset
+
+        setSessionConfig({
+            [configname]: input.checked
+        })
+        updateConfig()
+    }
+}
+
 export function addListeners() {
-    showWindowTitleInput.addEventListener("change", () => {
-        setSessionConfig({
-            showWindowTitle: showWindowTitleInput.checked
-        })
-        updateConfig()
-    })
+    showLineNumbersInput.addEventListener("change", handleViewBasedChange(showLineNumbersInput))
+    realLineNumbersInput.addEventListener("change", handleViewBasedChange(realLineNumbersInput))
 
-    showLineNumbersInput.addEventListener("change", () => {
-        setSessionConfig({
-            showLineNumbers: showLineNumbersInput.checked
-        })
-        updateView()
-    })
-
-    realLineNumbersInput.addEventListener("change", () => {
-        setSessionConfig({
-            realLineNumbers: realLineNumbersInput.checked
-        })
-        updateView()
-    })
-
-    showWindowControlsInput.addEventListener("change", () => {
-        setSessionConfig({
-            showWindowControls: showWindowControlsInput.checked
-        })
-        updateConfig()
-    })
-
-    roundedCornersInput.addEventListener("change", () => {
-        setSessionConfig({
-            roundedCorners: roundedCornersInput.checked
-        })
-        updateConfig()
-    })
-
-    transparentBackgroundInput.addEventListener("change", () => {
-        setSessionConfig({
-            transparentBackground: transparentBackgroundInput.checked
-        })
-        updateConfig()
-    })
-
-    enableResizingInput.addEventListener("change", () => {
-        setSessionConfig({
-            enableResizing: enableResizingInput.checked
-        })
-        updateConfig()
-    })
+    showWindowTitleInput.addEventListener("change", handleConfigBasedChange(showWindowTitleInput))
+    showWindowControlsInput.addEventListener("change", handleConfigBasedChange(showWindowControlsInput))
+    roundedCornersInput.addEventListener("change", handleConfigBasedChange(roundedCornersInput))
+    transparentBackgroundInput.addEventListener("change", handleConfigBasedChange(transparentBackgroundInput))
+    enableResizingInput.addEventListener("change", handleConfigBasedChange(enableResizingInput))
 
     shutterActionSelect.addEventListener("change", () => {
         setSessionConfig({
