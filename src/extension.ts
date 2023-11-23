@@ -22,7 +22,8 @@ const getConfig = () => {
 		"realLineNumbers",
 		"transparentBackground",
 		"target",
-		"shutterAction"
+		"shutterAction",
+		"enableResizing"
 	])
 
 	const selection = editor?.selection

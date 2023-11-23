@@ -20,6 +20,9 @@ const roundedCornersInput = $("input[data-configName='roundedCorners']")
 /** @type {HTMLInputElement} */
 const transparentBackgroundInput = $("input[data-configName='transparentBackground']")
 
+/** @type {HTMLInputElement} */
+const enableResizingInput = $("input[data-configName='enableResizing']")
+
 /** @type {HTMLSelectElement} */
 const shutterActionSelect = $("select[data-configName='shutterAction']")
 
@@ -44,7 +47,8 @@ export function updateUIConfig(force = false) {
         transparentBackground,
         showWindowTitle,
         shutterAction,
-        target
+        target,
+        enableResizing
     } = getSessionConfig()
 
     showWindowTitleInput.checked = showWindowTitle
@@ -53,6 +57,7 @@ export function updateUIConfig(force = false) {
     showWindowControlsInput.checked = showWindowControls
     roundedCornersInput.checked = roundedCorners
     transparentBackgroundInput.checked = transparentBackground
+    enableResizingInput.checked = enableResizing
 
     shutterActionSelect.value = shutterAction
     targetSelect.value = target
@@ -97,6 +102,13 @@ export function addListeners() {
     transparentBackgroundInput.addEventListener("change", () => {
         setSessionConfig({
             transparentBackground: transparentBackgroundInput.checked
+        })
+        updateConfig()
+    })
+
+    enableResizingInput.addEventListener("change", () => {
+        setSessionConfig({
+            enableResizing: enableResizingInput.checked
         })
         updateConfig()
     })
