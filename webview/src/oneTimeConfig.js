@@ -1,4 +1,4 @@
-import { pasteCode } from "./code.js"
+import { pasteCode as updateView } from "./code.js"
 import { updateConfig } from "./index.js"
 import { $, alreadyHasSessionConfig, getSessionConfig, setSessionConfig, vscode } from "./util.js"
 
@@ -113,5 +113,3 @@ export function addListeners() {
         vscode.postMessage({ type: "update-config" })
     })
 }
-
-const updateView = () => pasteCode()
