@@ -23,7 +23,7 @@
   "contributes": {
     "commands": [
       {
-        "command": "easy-codesnap.start",
+        "command": "easy-codesnap.snap",
         "title": "Easy CodeSnap"
       },
       {
@@ -34,7 +34,7 @@
     "menus": {
       "editor/context": [
         {
-          "command": "easy-codesnap.start"
+          "command": "easy-codesnap.snap"
         }
       ]
     },
