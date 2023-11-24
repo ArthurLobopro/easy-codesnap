@@ -16,6 +16,9 @@ jobs:
         with:
           node-version: "18.x"
 
+      - name: Install Dependencies
+        run: yarn install --frozen-lockfile
+
       - name: Install vsce
         run: npm i -g @vscode/vsce
 
