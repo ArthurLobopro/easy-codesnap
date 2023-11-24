@@ -121,6 +121,13 @@
           "type": "boolean",
           "default": true,
           "description": "Enable resizing the snap container"
+        },
+        "easy-codesnap.roundingLevel": {
+          "scope": "resource",
+          "type": "number",
+          "default": 1,
+          "description": "Change container border radius level",
+          "enum": [1,2,3,4]
         }
       }
     }

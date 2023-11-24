@@ -23,7 +23,8 @@ const getConfig = () => {
 		"transparentBackground",
 		"target",
 		"shutterAction",
-		"enableResizing"
+		"enableResizing",
+		"roundingLevel"
 	])
 
 	const selection = editor?.selection
