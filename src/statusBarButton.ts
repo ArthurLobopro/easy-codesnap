@@ -5,7 +5,7 @@ export const createStatusbarButton = () => {
     button.text = "$(device-camera)"
     button.tooltip = "Snap code"
     button.color = "inherit"
-    button.command = "easy-codesnap.start"
+    button.command = "easy-codesnap.snap"
 
     if (!vscode.window.activeTextEditor?.selection.isEmpty) {
         button.show()

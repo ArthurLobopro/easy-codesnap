@@ -48,6 +48,6 @@ export const takeSnap = async (config = getSessionConfig()) => {
         vscode.postMessage({ type: config.shutterAction, data })
     }
 
-    windowNode.style.resize = "horizontal"
+    windowNode.style.resize = ""
     setVar("container-background-color", config.backgroundColor)
 }

@@ -22,7 +22,8 @@ const getConfig = () => {
 		"realLineNumbers",
 		"transparentBackground",
 		"target",
-		"shutterAction"
+		"shutterAction",
+		"enableResizing"
 	])
 
 	const selection = editor?.selection
@@ -123,7 +124,7 @@ const runCommand = async (context: vscode.ExtensionContext) => {
 
 export function activate(context: vscode.ExtensionContext) {
 	context.subscriptions.push(
-		vscode.commands.registerCommand("easy-codesnap.start", () => runCommand(context)),
+		vscode.commands.registerCommand("easy-codesnap.snap", () => runCommand(context)),
 		vscode.commands.registerCommand("easy-codesnap.importSettings", importSettings),
 		createStatusbarButton()
 	)

@@ -19,7 +19,8 @@ export function updateConfig() {
         roundedCorners,
         showWindowControls,
         showWindowTitle,
-        windowTitle
+        windowTitle,
+        enableResizing
     } = getSessionConfig()
 
     setVar("ligatures", fontLigatures ? "normal" : "none")
@@ -29,6 +30,7 @@ export function updateConfig() {
     setVar("box-shadow", boxShadow)
     setVar("container-padding", containerPadding)
     setVar("window-border-radius", roundedCorners ? "4px" : 0)
+    setVar("enable-resizing", enableResizing ? "horizontal" : "none")
 
     navbarNode.hidden = !showWindowControls && !showWindowTitle
     windowControlsNode.hidden = !showWindowControls
