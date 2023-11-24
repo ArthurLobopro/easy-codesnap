@@ -1,3 +1,8 @@
+## 1.3.0
+
+* Renamed `easy-codesnap.start` to `easy-codesnap.snap`
+* Added `easy-codesnap.enableResizing` option.
+
 ## 1.2.1
 
 * Added select options on one time config.
