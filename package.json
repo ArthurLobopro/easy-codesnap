@@ -2,7 +2,7 @@
   "name": "easy-codesnap",
   "displayName": "Easy CodeSnap",
   "description": "Take beautiful screenshots of your code 📷",
-  "version": "1.3.0",
+  "version": "1.3.1",
   "repository": {
     "type": "git",
     "url": "https://github.com/ArthurLobopro/easy-codesnap"
@@ -121,6 +121,13 @@
           "type": "boolean",
           "default": true,
           "description": "Enable resizing the snap container"
+        },
+        "easy-codesnap.roundingLevel": {
+          "scope": "resource",
+          "type": "number",
+          "default": 1,
+          "description": "Change container border radius level",
+          "enum": [1,2,3,4]
         }
       }
     }

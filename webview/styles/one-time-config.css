@@ -51,7 +51,6 @@
 }
 
 #one-time-config li:not(.separator) {
-    cursor: pointer;
     border-radius: 4px;
     padding: 4px;
     font-size: 16px;
@@ -59,6 +58,13 @@
 
     display: flex;
     align-items: center;
+}
+
+#one-time-config li:has(>label>input) {
+    cursor: pointer;
+}
+
+#one-time-config li[data-action] {
     cursor: pointer;
 }
 
@@ -79,7 +85,6 @@
     align-items: center;
     justify-content: space-between;
     width: 100%;
-    cursor: pointer;
     gap: 4px;
 }
 

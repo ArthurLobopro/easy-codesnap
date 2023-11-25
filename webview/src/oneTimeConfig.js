@@ -29,10 +29,16 @@ const shutterActionSelect = $("select[data-configname='shutterAction']")
 /** @type {HTMLSelectElement} */
 const targetSelect = $("select[data-configname='target']")
 
+/** @type {HTMLSelectElement} */
+const roundingLevelSelect = $("select[data-configname='roundingLevel']")
+
 /** @type {HTMLLIElement} */
 const updateButton = $("[data-action='update']")
 
-shutterActionSelect.style.width = `${targetSelect.getBoundingClientRect().width}px`
+const biggerSelectWidth = `${targetSelect.getBoundingClientRect().width}px`
+
+shutterActionSelect.style.width = biggerSelectWidth
+roundingLevelSelect.style.width = biggerSelectWidth
 
 export function updateUIConfig(force = false) {
     if (!alreadyHasSessionConfig() && !force) {
@@ -48,7 +54,8 @@ export function updateUIConfig(force = false) {
         showWindowTitle,
         shutterAction,
         target,
-        enableResizing
+        enableResizing,
+        roundingLevel
     } = getSessionConfig()
 
     showWindowTitleInput.checked = showWindowTitle
@@ -61,6 +68,7 @@ export function updateUIConfig(force = false) {
 
     shutterActionSelect.value = shutterAction
     targetSelect.value = target
+    roundingLevelSelect.value = roundingLevel
 }
 
 /** @param {HTMLInputElement} input  */
@@ -107,6 +115,13 @@ export function addListeners() {
         setSessionConfig({
             target: targetSelect.value
         })
+    })
+
+    roundingLevelSelect.addEventListener("change", () => {
+        setSessionConfig({
+            roundingLevel: Number(roundingLevelSelect.value)
+        })
+        updateConfig()
     })
 
     updateButton.addEventListener("click", () => {
