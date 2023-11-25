@@ -1,7 +1,8 @@
 name: Publish Extension
 
 on:
-  workflow_dispatch:
+  push:
+    branches: [ main ]
 
 jobs:
   publish:
@@ -20,7 +21,7 @@ jobs:
         run: yarn install --frozen-lockfile
 
       - name: Install vsce
-        run: npm i -g @vscode/vsce
+        run: npm i -g @vscode/vsce --skip-duplicate
 
       - name: Publish Extension
         run: vsce publish -p ${{secrets.PUBLISH_TOKEN}}
