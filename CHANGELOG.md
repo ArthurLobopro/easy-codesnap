@@ -1,3 +1,7 @@
+## 1.3.1
+
+* Added `easy-codesnap.roundingLevel` option.
+
 ## 1.3.0
 
 * Renamed `easy-codesnap.start` to `easy-codesnap.snap`
