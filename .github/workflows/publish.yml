@@ -21,7 +21,7 @@ jobs:
         run: yarn install --frozen-lockfile
 
       - name: Install vsce
-        run: npm i -g @vscode/vsce --skip-duplicate
+        run: npm i -g @vscode/vsce
 
       - name: Publish Extension
-        run: vsce publish -p ${{secrets.PUBLISH_TOKEN}}
+        run: vsce publish -p ${{secrets.PUBLISH_TOKEN}} --skip-duplicate
