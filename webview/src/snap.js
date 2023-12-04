@@ -1,3 +1,4 @@
+import domtoimage from "dom-to-image-even-more"
 import { $, $$, getSessionConfig, once, redraw, setVar, vscode } from "./util.js"
 
 const windowNode = $("#window")
