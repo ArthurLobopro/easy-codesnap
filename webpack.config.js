@@ -8,7 +8,7 @@ const webpack = require("webpack")
 /**@type {import('webpack').Configuration[]}*/
 const config = [
   {
-    target: "webworker",
+    target: "node",
     entry: "./src/extension.ts",
     output: {
       path: path.resolve(__dirname, "dist"),
