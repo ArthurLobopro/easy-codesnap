@@ -25,7 +25,10 @@ export function updateConfig() {
     } = getSessionConfig()
 
     setVar("ligatures", fontLigatures ? "normal" : "none")
-    if (typeof fontLigatures === "string") { setVar("font-features", fontLigatures) }
+    if (typeof fontLigatures === "string") {
+        setVar("font-features", fontLigatures)
+    }
+
     setVar("tab-size", tabSize)
     setVar("container-background-color", backgroundColor)
     setVar("box-shadow", boxShadow)
