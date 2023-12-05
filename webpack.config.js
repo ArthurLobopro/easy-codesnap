@@ -65,7 +65,10 @@ const config = [
           exclude: [/node_modules/],
           use: [
             {
-              loader: "ts-loader"
+              loader: "ts-loader",
+              options: {
+                configFile: path.resolve(__dirname, "./src/webview/tsconfig.json")
+              }
             }
           ]
         }
