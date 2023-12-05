@@ -1,7 +1,7 @@
-import { pasteCode as updateView } from "./code.js"
-import { ExtensionConfig, alreadyHasSessionConfig, getSessionConfig, setSessionConfig } from "./configManager.js"
-import { updateConfig } from "./index.js"
-import { vscode } from "./util.js"
+import { pasteCode as updateView } from "./code"
+import { ExtensionConfig, alreadyHasSessionConfig, getSessionConfig, setSessionConfig } from "./configManager"
+import { updateConfig } from "./index"
+import { vscode } from "./util"
 
 import {
     enableResizingInput,
@@ -15,7 +15,7 @@ import {
     targetSelect,
     transparentBackgroundInput,
     updateButton
-} from "./elements.js"
+} from "./elements"
 
 const biggerSelectWidth = `${targetSelect.getBoundingClientRect().width}px`
 

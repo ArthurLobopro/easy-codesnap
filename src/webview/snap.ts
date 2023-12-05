@@ -1,8 +1,8 @@
 //@ts-expect-error Lib isn't typed
 import domtoimage from "dom-to-image-even-more"
-import { getSessionConfig } from "./configManager.js"
-import { flashFx, snippetContainerNode, windowNode } from "./elements.js"
-import { $$, once, redraw, setVar, vscode } from "./util.js"
+import { getSessionConfig } from "./configManager"
+import { flashFx, snippetContainerNode, windowNode } from "./elements"
+import { $$, once, redraw, setVar, vscode } from "./util"
 
 const SNAP_SCALE = 2
 
