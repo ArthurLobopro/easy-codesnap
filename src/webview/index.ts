@@ -1,14 +1,10 @@
 import { pasteCode } from "./code"
 import { alreadyHasSessionConfig, getSessionConfig, setSessionConfig } from "./configManager"
 import { contentManager } from "./contentManager"
+import { btnSave, navbarNode, windowControlsNode, windowTitleNode } from "./elements"
 import { addListeners, updateUIConfig } from "./oneTimeConfig"
 import { cameraFlashAnimation, takeSnap } from "./snap"
-import { $, setVar, vscode } from "./util"
-
-const navbarNode = $("#navbar")
-const windowControlsNode = $("#window-controls")
-const windowTitleNode = $("#window-title")
-const btnSave = $("#save")
+import { setVar, vscode } from "./util"
 
 export function updateConfig() {
     const {

@@ -1,29 +1,21 @@
 import { pasteCode as updateView } from "./code.js"
 import { ExtensionConfig, alreadyHasSessionConfig, getSessionConfig, setSessionConfig } from "./configManager.js"
 import { updateConfig } from "./index.js"
-import { $, vscode } from "./util.js"
+import { vscode } from "./util.js"
 
-const showWindowTitleInput = $<HTMLInputElement>("input[data-configname='showWindowTitle']")
-
-const showLineNumbersInput = $<HTMLInputElement>("input[data-configname='showLineNumbers']")
-
-const realLineNumbersInput = $<HTMLInputElement>("input[data-configname='realLineNumbers']")
-
-const showWindowControlsInput = $<HTMLInputElement>("input[data-configname='showWindowControls']")
-
-const roundedCornersInput = $<HTMLInputElement>("input[data-configname='roundedCorners']")
-
-const transparentBackgroundInput = $<HTMLInputElement>("input[data-configname='transparentBackground']")
-
-const enableResizingInput = $<HTMLInputElement>("input[data-configname='enableResizing']")
-
-const shutterActionSelect = $<HTMLSelectElement>("select[data-configname='shutterAction']")
-
-const targetSelect = $<HTMLSelectElement>("select[data-configname='target']")
-
-const roundingLevelSelect = $<HTMLSelectElement>("select[data-configname='roundingLevel']")
-
-const updateButton = $<HTMLLIElement>("[data-action='update']")
+import {
+    enableResizingInput,
+    realLineNumbersInput,
+    roundedCornersInput,
+    roundingLevelSelect,
+    showLineNumbersInput,
+    showWindowControlsInput,
+    showWindowTitleInput,
+    shutterActionSelect,
+    targetSelect,
+    transparentBackgroundInput,
+    updateButton
+} from "./elements.js"
 
 const biggerSelectWidth = `${targetSelect.getBoundingClientRect().width}px`
 
