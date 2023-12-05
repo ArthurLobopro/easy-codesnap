@@ -1,6 +1,7 @@
 import { pasteCode as updateView } from "./code.js"
+import { alreadyHasSessionConfig, getSessionConfig, setSessionConfig } from "./configManager.js"
 import { updateConfig } from "./index.js"
-import { $, alreadyHasSessionConfig, getSessionConfig, setSessionConfig, vscode } from "./util.js"
+import { $, vscode } from "./util.js"
 
 /** @type {HTMLInputElement} */
 const showWindowTitleInput = $("input[data-configname='showWindowTitle']")

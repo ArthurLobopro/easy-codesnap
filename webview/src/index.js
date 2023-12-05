@@ -1,8 +1,9 @@
 import { pasteCode } from "./code.js"
+import { alreadyHasSessionConfig, getSessionConfig, setSessionConfig } from "./configManager.js"
 import { contentManager } from "./contentManager.js"
 import { addListeners, updateUIConfig } from "./oneTimeConfig.js"
 import { cameraFlashAnimation, takeSnap } from "./snap.js"
-import { $, alreadyHasSessionConfig, getSessionConfig, setSessionConfig, setVar, vscode } from "./util.js"
+import { $, setVar, vscode } from "./util.js"
 
 const navbarNode = $("#navbar")
 const windowControlsNode = $("#window-controls")

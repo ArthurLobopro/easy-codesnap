@@ -1,5 +1,6 @@
+import { getSessionConfig } from "./configManager.js"
 import { contentManager } from "./contentManager.js"
-import { $, $$, calcTextWidth, getSessionConfig, setVar } from "./util.js"
+import { $, $$, calcTextWidth, setVar } from "./util.js"
 
 const snippetNode = $("#snippet")
 
