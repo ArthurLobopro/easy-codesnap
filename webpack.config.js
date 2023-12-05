@@ -43,7 +43,7 @@ const config = [
   },
   {
     target: "webworker",
-    entry: "./webview/src/index.js",
+    entry: "./src/webview/index.ts",
     output: {
       path: path.resolve(__dirname, "dist/webview"),
       filename: "webview.js",
@@ -51,6 +51,26 @@ const config = [
       devtoolModuleFilenameTemplate: "../[resource-path]"
     },
     devtool: "source-map",
+    resolve: {
+      // support reading TypeScript and JavaScript files, 📖 -> https://github.com/TypeStrong/ts-loader
+      mainFields: ["browser", "module", "main"],
+      extensions: [".ts", ".js"],
+      alias: {},
+      fallback: {}
+    },
+    module: {
+      rules: [
+        {
+          test: /\.ts$/,
+          exclude: [/node_modules/],
+          use: [
+            {
+              loader: "ts-loader"
+            }
+          ]
+        }
+      ]
+    }
   }
 ]
 module.exports = config
