@@ -1,13 +1,10 @@
-import { pasteCode } from "./code.js"
-import { contentManager } from "./contentManager.js"
-import { addListeners, updateUIConfig } from "./oneTimeConfig.js"
-import { cameraFlashAnimation, takeSnap } from "./snap.js"
-import { $, alreadyHasSessionConfig, getSessionConfig, setSessionConfig, setVar, vscode } from "./util.js"
-
-const navbarNode = $("#navbar")
-const windowControlsNode = $("#window-controls")
-const windowTitleNode = $("#window-title")
-const btnSave = $("#save")
+import { pasteCode } from "./code"
+import { alreadyHasSessionConfig, getSessionConfig, setSessionConfig } from "./configManager"
+import { contentManager } from "./contentManager"
+import { btnSave, navbarNode, windowControlsNode, windowTitleNode } from "./elements"
+import { addListeners, updateUIConfig } from "./oneTimeConfig"
+import { cameraFlashAnimation, takeSnap } from "./snap"
+import { setVar, vscode } from "./util"
 
 export function updateConfig() {
     const {
@@ -29,11 +26,11 @@ export function updateConfig() {
         setVar("font-features", fontLigatures)
     }
 
-    setVar("tab-size", tabSize)
+    setVar("tab-size", tabSize + "")
     setVar("container-background-color", backgroundColor)
     setVar("box-shadow", boxShadow)
     setVar("container-padding", containerPadding)
-    setVar("window-border-radius", roundedCorners ? `${4 * roundingLevel}px` : 0)
+    setVar("window-border-radius", roundedCorners ? `${4 * roundingLevel}px` : 0 + "")
     setVar("enable-resizing", enableResizing ? "horizontal" : "none")
 
     navbarNode.hidden = !showWindowControls && !showWindowTitle
@@ -48,8 +45,8 @@ btnSave.addEventListener("click", () => takeSnap())
 document.addEventListener("copy", () => takeSnap({ ...getSessionConfig(), shutterAction: "copy" }))
 
 document.addEventListener("paste", (e) => {
-    contentManager.update(e.clipboardData)
-    pasteCode(getSessionConfig())
+    contentManager.update(e.clipboardData as DataTransfer)
+    pasteCode()
 })
 
 window.addEventListener("message", ({ data: { type, ...config } }) => {

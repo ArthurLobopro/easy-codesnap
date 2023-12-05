@@ -1,39 +1,21 @@
-import { pasteCode as updateView } from "./code.js"
-import { updateConfig } from "./index.js"
-import { $, alreadyHasSessionConfig, getSessionConfig, setSessionConfig, vscode } from "./util.js"
+import { pasteCode as updateView } from "./code"
+import { ExtensionConfig, alreadyHasSessionConfig, getSessionConfig, setSessionConfig } from "./configManager"
+import { updateConfig } from "./index"
+import { vscode } from "./util"
 
-/** @type {HTMLInputElement} */
-const showWindowTitleInput = $("input[data-configname='showWindowTitle']")
-
-/** @type {HTMLInputElement} */
-const showLineNumbersInput = $("input[data-configname='showLineNumbers']")
-
-/** @type {HTMLInputElement} */
-const realLineNumbersInput = $("input[data-configname='realLineNumbers']")
-
-/** @type {HTMLInputElement} */
-const showWindowControlsInput = $("input[data-configname='showWindowControls']")
-
-/** @type {HTMLInputElement} */
-const roundedCornersInput = $("input[data-configname='roundedCorners']")
-
-/** @type {HTMLInputElement} */
-const transparentBackgroundInput = $("input[data-configname='transparentBackground']")
-
-/** @type {HTMLInputElement} */
-const enableResizingInput = $("input[data-configname='enableResizing']")
-
-/** @type {HTMLSelectElement} */
-const shutterActionSelect = $("select[data-configname='shutterAction']")
-
-/** @type {HTMLSelectElement} */
-const targetSelect = $("select[data-configname='target']")
-
-/** @type {HTMLSelectElement} */
-const roundingLevelSelect = $("select[data-configname='roundingLevel']")
-
-/** @type {HTMLLIElement} */
-const updateButton = $("[data-action='update']")
+import {
+    enableResizingInput,
+    realLineNumbersInput,
+    roundedCornersInput,
+    roundingLevelSelect,
+    showLineNumbersInput,
+    showWindowControlsInput,
+    showWindowTitleInput,
+    shutterActionSelect,
+    targetSelect,
+    transparentBackgroundInput,
+    updateButton
+} from "./elements"
 
 const biggerSelectWidth = `${targetSelect.getBoundingClientRect().width}px`
 
@@ -68,28 +50,26 @@ export function updateUIConfig(force = false) {
 
     shutterActionSelect.value = shutterAction
     targetSelect.value = target
-    roundingLevelSelect.value = roundingLevel
+    roundingLevelSelect.value = roundingLevel + ""
 }
 
-/** @param {HTMLInputElement} input  */
-function handleViewBasedChange(input) {
+function handleViewBasedChange(input: HTMLInputElement) {
     return () => {
         const { configname } = input.dataset
 
         setSessionConfig({
-            [configname]: input.checked
+            [configname as string]: input.checked
         })
         updateView()
     }
 }
 
-/** @param {HTMLInputElement} input  */
-function handleConfigBasedChange(input) {
+function handleConfigBasedChange(input: HTMLInputElement) {
     return () => {
         const { configname } = input.dataset
 
         setSessionConfig({
-            [configname]: input.checked
+            [configname as string]: input.checked
         })
         updateConfig()
     }
@@ -107,19 +87,19 @@ export function addListeners() {
 
     shutterActionSelect.addEventListener("change", () => {
         setSessionConfig({
-            shutterAction: shutterActionSelect.value
+            shutterAction: shutterActionSelect.value as ExtensionConfig["shutterAction"]
         })
     })
 
     targetSelect.addEventListener("change", () => {
         setSessionConfig({
-            target: targetSelect.value
+            target: targetSelect.value as ExtensionConfig["target"]
         })
     })
 
     roundingLevelSelect.addEventListener("change", () => {
         setSessionConfig({
-            roundingLevel: Number(roundingLevelSelect.value)
+            roundingLevel: Number(roundingLevelSelect.value) as ExtensionConfig["roundingLevel"]
         })
         updateConfig()
     })

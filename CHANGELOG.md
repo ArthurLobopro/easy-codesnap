@@ -1,3 +1,11 @@
+## 1.4.1
+
+* Convert webview controllers to typescript
+
+## 1.4.0
+
+* Bundle extension with webpack
+
 ## 1.3.1
 
 * Added `easy-codesnap.roundingLevel` option.
