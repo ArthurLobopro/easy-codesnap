@@ -1,10 +1,10 @@
-import { getSessionConfig } from "./configManager.js"
-import { contentManager } from "./contentManager.js"
-import { $, $$, calcTextWidth, setVar } from "./util.js"
+import { getSessionConfig } from "./configManager"
+import { contentManager } from "./contentManager"
+import { $, $$, calcTextWidth, setVar } from "./util"
 
-const snippetNode = $("#snippet")
+const snippetNode = $("#snippet") as HTMLDivElement
 
-const setupLines = (node) => {
+const setupLines = (node: Element) => {
     const config = getSessionConfig()
 
     $$(":scope > br", node).forEach((row) => (row.outerHTML = "<div>&nbsp;</div>"))
@@ -12,7 +12,7 @@ const setupLines = (node) => {
     const startLine = config.realLineNumbers ? config.startLine : 0
 
     const rows = $$(":scope > div", node)
-    setVar("line-number-width", calcTextWidth(rows.length + startLine))
+    setVar("line-number-width", calcTextWidth(rows.length + startLine + ""))
 
     rows.forEach((row, idx) => {
         const newRow = document.createElement("div")
@@ -22,7 +22,7 @@ const setupLines = (node) => {
         if (config.showLineNumbers) {
             const lineNum = document.createElement("div")
             lineNum.classList.add("line-number")
-            lineNum.textContent = idx + 1 + startLine
+            lineNum.textContent = idx + 1 + startLine + ""
             newRow.appendChild(lineNum)
         }
 
@@ -42,23 +42,29 @@ const setupLines = (node) => {
 
 //@ts-check
 
-const stripInitialIndent = (node) => {
+const stripInitialIndent = (node: Element) => {
     const regIndent = /^\s+/u
-    const initialSpans = $$(":scope > div > span:first-child", node)
-    if (initialSpans.some((span) => !regIndent.test(span.textContent))) { return }
+    const initialSpans = $$(":scope > div > span:first-child", node) as HTMLSpanElement[]
+    if (initialSpans.some((span) => !regIndent.test(span.textContent as string))) { return }
+
     const minIndent = Math.min(
-        ...initialSpans.map((span) => span.textContent.match(regIndent)[0].length)
+        ...initialSpans.map((span) => {
+            return ((span.textContent as string).match(regIndent) as string[])[0].length
+        })
     )
-    initialSpans.forEach((span) => (span.textContent = span.textContent.slice(minIndent)))
+
+    initialSpans.forEach((span) => {
+        span.textContent = (span.textContent as string).slice(minIndent)
+    })
 }
 
 
 export const pasteCode = () => {
     snippetNode.innerHTML = contentManager.current
-    const code = $("div", snippetNode)
+    const code = $("div", snippetNode) as HTMLDivElement
     snippetNode.style.fontSize = code.style.fontSize
     snippetNode.style.lineHeight = code.style.lineHeight
     snippetNode.innerHTML = code.innerHTML
     stripInitialIndent(snippetNode)
-    setupLines(snippetNode, getSessionConfig())
+    setupLines(snippetNode)
 }

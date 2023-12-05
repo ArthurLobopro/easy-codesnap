@@ -1,3 +1,4 @@
+//@ts-expect-error Lib isn't typed
 import domtoimage from "dom-to-image-even-more"
 import { getSessionConfig } from "./configManager.js"
 import { $, $$, once, redraw, setVar, vscode } from "./util.js"
@@ -13,6 +14,7 @@ export const cameraFlashAnimation = async () => {
     flashFx.style.display = "block"
     redraw(flashFx)
     flashFx.style.opacity = "0"
+
     await once(flashFx, "transitionend")
     flashFx.style.display = "none"
     flashFx.style.opacity = "1"
@@ -29,11 +31,14 @@ export const takeSnap = async (config = getSessionConfig()) => {
     const url = await domtoimage.toPng(target, {
         bgColor: "transparent",
         scale: SNAP_SCALE,
-        postProcess: (node) => {
-            $$("#snippet-container, #snippet, .line, .line-code span", node).forEach(
-                (span) => (span.style.width = "unset")
-            )
-            $$(".line-code", node).forEach((span) => (span.style.width = "100%"))
+        postProcess: (node: HTMLElement) => {
+            $$("#snippet-container, #snippet, .line, .line-code span", node)
+                .forEach(
+                    (span: HTMLElement) => (span.style.width = "unset")
+                )
+
+            $$(".line-code", node)
+                .forEach((span) => (span.style.width = "100%"))
         }
     })
 

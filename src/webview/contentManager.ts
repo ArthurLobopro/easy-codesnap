@@ -1,4 +1,4 @@
-const getClipboardHtml = (clip) => {
+const getClipboardHtml = (clip: DataTransfer) => {
     const html = clip.getData("text/html")
     if (html) { return html }
     const text = clip
@@ -10,9 +10,9 @@ const getClipboardHtml = (clip) => {
 }
 
 class ContentManager {
-    #clipboard_data
+    #clipboard_data!: string
 
-    update(data) {
+    update(data: DataTransfer) {
         this.#clipboard_data = getClipboardHtml(data)
     }
 
