@@ -1,6 +1,7 @@
 import { homedir } from "os"
 import path from "path"
 import * as vscode from "vscode"
+import { extensionSettingsNames } from "./constants"
 import { importSettings } from "./importSettings"
 import { createStatusbarButton } from "./statusBarButton"
 import { getSettings, readHtml, writeFile } from "./util"
@@ -11,21 +12,7 @@ const getConfig = () => {
 	const editor = vscode.window.activeTextEditor
 	if (editor) { editorSettings.tabSize = editor.options.tabSize }
 
-	const extensionSettings = getSettings("easy-codesnap", [
-		"backgroundColor",
-		"boxShadow",
-		"containerPadding",
-		"roundedCorners",
-		"showWindowControls",
-		"showWindowTitle",
-		"showLineNumbers",
-		"realLineNumbers",
-		"transparentBackground",
-		"target",
-		"shutterAction",
-		"enableResizing",
-		"roundingLevel"
-	])
+	const extensionSettings = getSettings("easy-codesnap", extensionSettingsNames)
 
 	const selection = editor?.selection
 	const startLine = selection ? selection.start.line : 0
