@@ -14,7 +14,7 @@ import {
     shutterActionSelect,
     targetSelect,
     transparentBackgroundInput,
-    updateButton
+    updateConfigButton
 } from "./elements"
 
 const biggerSelectWidth = `${targetSelect.getBoundingClientRect().width}px`
@@ -104,7 +104,7 @@ export function addListeners() {
         updateConfig()
     })
 
-    updateButton.addEventListener("click", () => {
+    updateConfigButton.addEventListener("click", () => {
         vscode.postMessage({ type: "update-config" })
     })
 }
