@@ -6,6 +6,7 @@ import { vscode } from "./util"
 import {
     enableResizingInput,
     realLineNumbersInput,
+    resetConfigButton,
     roundedCornersInput,
     roundingLevelSelect,
     saveConfigButton,
@@ -14,8 +15,7 @@ import {
     showWindowTitleInput,
     shutterActionSelect,
     targetSelect,
-    transparentBackgroundInput,
-    updateConfigButton
+    transparentBackgroundInput
 } from "./elements"
 
 const biggerSelectWidth = `${targetSelect.getBoundingClientRect().width}px`
@@ -105,7 +105,7 @@ export function addListeners() {
         updateConfig()
     })
 
-    updateConfigButton.addEventListener("click", () => {
+    resetConfigButton.addEventListener("click", () => {
         vscode.postMessage({ type: "update-config" })
     })
 

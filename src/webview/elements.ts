@@ -22,5 +22,5 @@ export const shutterActionSelect = $<HTMLSelectElement>("select[data-configname=
 export const targetSelect = $<HTMLSelectElement>("select[data-configname='target']")
 export const roundingLevelSelect = $<HTMLSelectElement>("select[data-configname='roundingLevel']")
 
-export const updateConfigButton = $<HTMLLIElement>("[data-action='update-config']")
+export const resetConfigButton = $<HTMLLIElement>("[data-action='reset-config']")
 export const saveConfigButton = $<HTMLLIElement>("[data-action='save-config']")
