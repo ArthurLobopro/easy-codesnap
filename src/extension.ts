@@ -82,7 +82,7 @@ const runCommand = async (context: vscode.ExtensionContext) => {
 
 	const flash = () => panel.webview.postMessage({ type: "flash" })
 
-	panel.webview.onDidReceiveMessage(async ({ type, data }) => {
+	panel.webview.onDidReceiveMessage(async ({ type, data, config }) => {
 		switch (type) {
 			case "save":
 				flash()
@@ -93,6 +93,22 @@ const runCommand = async (context: vscode.ExtensionContext) => {
 				break
 			case "update-config":
 				update("config")
+				break
+			case "save-config":
+				const extensionSettings = vscode.workspace.getConfiguration("easy-codesnap")
+
+				extensionSettingsNames.forEach((name) => {
+					if (name in config && extensionSettings.get(name) !== config[name]) {
+						extensionSettings.update(
+							name,
+							config[name],
+							vscode.ConfigurationTarget.Global
+						)
+					}
+				})
+
+				vscode.window.showInformationMessage("Settings saved as default!")
+
 				break
 			case "ready":
 				const editor = vscode.window.activeTextEditor

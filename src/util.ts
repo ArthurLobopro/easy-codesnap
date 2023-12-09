@@ -34,4 +34,3 @@ export const getSettings = (group: string, keys: string[]) => {
         return config
     }, {} as untypedObject)
 }
-

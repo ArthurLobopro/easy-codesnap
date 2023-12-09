@@ -8,6 +8,7 @@ import {
     realLineNumbersInput,
     roundedCornersInput,
     roundingLevelSelect,
+    saveConfigButton,
     showLineNumbersInput,
     showWindowControlsInput,
     showWindowTitleInput,
@@ -106,5 +107,9 @@ export function addListeners() {
 
     updateConfigButton.addEventListener("click", () => {
         vscode.postMessage({ type: "update-config" })
+    })
+
+    saveConfigButton.addEventListener("click", () => {
+        vscode.postMessage({ type: "save-config", config: getSessionConfig() })
     })
 }
