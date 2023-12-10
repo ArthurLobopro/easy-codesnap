@@ -4,13 +4,23 @@
 	"version": "2.0.0",
 	"tasks": [
 		{
-			"type": "npm",
-			"script": "watch",
+			"label": "watch",
+			"type": "shell",
+			"command": "yarn watch",
 			"problemMatcher": "$tsc-watch",
 			"isBackground": true,
 			"presentation": {
 				"reveal": "never"
 			},
+			"runOptions": {
+				"runOn": "folderOpen"
+			},
+			
+		},
+		{
+			"label": "compile",
+			"type": "shell",
+			"command": "yarn compile",
 			"group": {
 				"kind": "build",
 				"isDefault": true

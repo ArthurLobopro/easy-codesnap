@@ -17,7 +17,10 @@ export const showWindowControlsInput = $<HTMLInputElement>("input[data-confignam
 export const roundedCornersInput = $<HTMLInputElement>("input[data-configname='roundedCorners']")
 export const transparentBackgroundInput = $<HTMLInputElement>("input[data-configname='transparentBackground']")
 export const enableResizingInput = $<HTMLInputElement>("input[data-configname='enableResizing']")
+
 export const shutterActionSelect = $<HTMLSelectElement>("select[data-configname='shutterAction']")
 export const targetSelect = $<HTMLSelectElement>("select[data-configname='target']")
 export const roundingLevelSelect = $<HTMLSelectElement>("select[data-configname='roundingLevel']")
-export const updateButton = $<HTMLLIElement>("[data-action='update']")
+
+export const resetConfigButton = $<HTMLLIElement>("[data-action='reset-config']")
+export const saveConfigButton = $<HTMLLIElement>("[data-action='save-config']")

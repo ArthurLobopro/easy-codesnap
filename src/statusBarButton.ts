@@ -7,7 +7,7 @@ export const createStatusbarButton = () => {
     button.color = "inherit"
     button.command = "easy-codesnap.snap"
 
-    if (!vscode.window.activeTextEditor?.selection.isEmpty) {
+    if (vscode.window.activeTextEditor?.selection.isEmpty === false) {
         button.show()
     }
 

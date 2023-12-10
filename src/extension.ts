@@ -1,6 +1,7 @@
 import { homedir } from "os"
 import path from "path"
 import * as vscode from "vscode"
+import { extensionSettingsNames } from "./constants"
 import { importSettings } from "./importSettings"
 import { createStatusbarButton } from "./statusBarButton"
 import { getSettings, readHtml, writeFile } from "./util"
@@ -11,21 +12,7 @@ const getConfig = () => {
 	const editor = vscode.window.activeTextEditor
 	if (editor) { editorSettings.tabSize = editor.options.tabSize }
 
-	const extensionSettings = getSettings("easy-codesnap", [
-		"backgroundColor",
-		"boxShadow",
-		"containerPadding",
-		"roundedCorners",
-		"showWindowControls",
-		"showWindowTitle",
-		"showLineNumbers",
-		"realLineNumbers",
-		"transparentBackground",
-		"target",
-		"shutterAction",
-		"enableResizing",
-		"roundingLevel"
-	])
+	const extensionSettings = getSettings("easy-codesnap", extensionSettingsNames)
 
 	const selection = editor?.selection
 	const startLine = selection ? selection.start.line : 0
@@ -95,7 +82,7 @@ const runCommand = async (context: vscode.ExtensionContext) => {
 
 	const flash = () => panel.webview.postMessage({ type: "flash" })
 
-	panel.webview.onDidReceiveMessage(async ({ type, data }) => {
+	panel.webview.onDidReceiveMessage(async ({ type, data, config }) => {
 		switch (type) {
 			case "save":
 				flash()
@@ -106,6 +93,22 @@ const runCommand = async (context: vscode.ExtensionContext) => {
 				break
 			case "update-config":
 				update("config")
+				break
+			case "save-config":
+				const extensionSettings = vscode.workspace.getConfiguration("easy-codesnap")
+
+				extensionSettingsNames.forEach((name) => {
+					if (name in config && extensionSettings.get(name) !== config[name]) {
+						extensionSettings.update(
+							name,
+							config[name],
+							vscode.ConfigurationTarget.Global
+						)
+					}
+				})
+
+				vscode.window.showInformationMessage("Settings saved as default!")
+
 				break
 			case "ready":
 				const editor = vscode.window.activeTextEditor
