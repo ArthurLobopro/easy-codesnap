@@ -4,6 +4,12 @@ import * as vscode from "vscode"
 import { extensionSettingsNames } from "../constants"
 import { getSettings, readHtml, writeFile } from "../util"
 
+type message = (
+    { type: "copied" | "update-config" | "ready" } |
+    { type: "save", data: string } |
+    { type: "save-config", config: {} }
+)
+
 export function SnapFactory(context: vscode.ExtensionContext) {
     return async () => {
         const panel = await createPanel(context)
@@ -18,41 +24,43 @@ export function SnapFactory(context: vscode.ExtensionContext) {
 
         const flash = () => panel.webview.postMessage({ type: "flash" })
 
-        panel.webview.onDidReceiveMessage(async ({ type, data, config }) => {
-            switch (type) {
-                case "save":
-                    flash()
-                    await saveImage(data)
-                    break
-                case "copied":
-                    vscode.window.showInformationMessage("Image copied to clipboard!")
-                    break
-                case "update-config":
-                    update("config")
-                    break
-                case "save-config":
-                    const extensionSettings = vscode.workspace.getConfiguration("easy-codesnap")
+        const actions = {
+            async save({ data }: { data: string }) {
+                flash()
+                await saveImage(data)
+            },
+            copied() {
+                vscode.window.showInformationMessage("Image copied to clipboard!")
+            },
+            ready() {
+                const editor = vscode.window.activeTextEditor
+                if (editor && hasOneSelection(editor.selections)) { update("both") }
+            },
+            "update-config"() {
+                update("config")
+            },
+            "save-config"({ config }: { config: { [key: string]: any } }) {
+                const extensionSettings = vscode.workspace.getConfiguration("easy-codesnap")
 
-                    extensionSettingsNames.forEach((name) => {
-                        if (name in config && extensionSettings.get(name) !== config[name]) {
-                            extensionSettings.update(
-                                name,
-                                config[name],
-                                vscode.ConfigurationTarget.Global
-                            )
-                        }
-                    })
+                extensionSettingsNames.forEach((name) => {
+                    if (name in config && extensionSettings.get(name) !== config[name]) {
+                        extensionSettings.update(
+                            name,
+                            config[name],
+                            vscode.ConfigurationTarget.Global
+                        )
+                    }
+                })
 
-                    vscode.window.showInformationMessage("Settings saved as default!")
+                vscode.window.showInformationMessage("Settings saved as default!")
+            }
+        }
 
-                    break
-                case "ready":
-                    const editor = vscode.window.activeTextEditor
-                    if (editor && hasOneSelection(editor.selections)) { update("both") }
-                    break
-                default:
-                    vscode.window.showErrorMessage(`Easy CodeSnap 📸: Unknown shutterAction "${type}"`)
-                    break
+        panel.webview.onDidReceiveMessage(async ({ type, ...args }: message) => {
+            if (type in actions) {
+                actions[type]({ ...args } as any)
+            } else {
+                vscode.window.showErrorMessage(`Easy CodeSnap 📸: Unknown shutterAction "${type}"`)
             }
         })
 
