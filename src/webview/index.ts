@@ -45,13 +45,18 @@ btnSave.addEventListener("click", () => takeSnap())
 document.addEventListener("copy", () => takeSnap({ ...getSessionConfig(), shutterAction: "copy" }))
 
 document.addEventListener("paste", (e) => {
-    contentManager.update(e.clipboardData as DataTransfer)
-    pasteCode()
+    if (!getSessionConfig().isLocked) {
+        contentManager.update(e.clipboardData as DataTransfer)
+        pasteCode()
+    }
 })
 
 window.addEventListener("message", ({ data: { type, ...config } }) => {
     switch (type) {
         case "update":
+            if (alreadyHasSessionConfig() && getSessionConfig().isLocked) {
+                return
+            }
             setSessionConfig(config)
             updateConfig()
             updateUIConfig()
@@ -59,9 +64,14 @@ window.addEventListener("message", ({ data: { type, ...config } }) => {
             break
 
         case "update-text":
+
             if (!alreadyHasSessionConfig()) {
                 setSessionConfig(config)
             } else {
+                if (getSessionConfig().isLocked) {
+                    return
+                }
+
                 const { startLine, windowTitle } = config
                 setSessionConfig({ startLine, windowTitle })
             }

@@ -120,3 +120,24 @@
     background-color: var(--vscode-sideBar-background);
     color: var(--vscode-foreground);
 }
+
+#lock-indicator{
+    position: absolute;
+    left: 5px;
+    top: 5px;
+
+    display: flex;
+    font-size: 24px;
+    padding: 4px;
+    
+    background-color: var(--vscode-background);
+    color: var(--vscode-foreground);
+    
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+#lock-indicator:hover{
+    background-color: var(--vscode-list-hoverBackground);
+}
