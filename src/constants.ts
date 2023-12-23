@@ -1,4 +1,4 @@
-export const extensionSettingsNames = [
+export const CodeSnapConfigNames = [
     "backgroundColor",
     "boxShadow",
     "containerPadding",
@@ -9,7 +9,11 @@ export const extensionSettingsNames = [
     "realLineNumbers",
     "transparentBackground",
     "target",
-    "shutterAction",
+    "shutterAction"
+]
+
+export const extensionSettingsNames = [
+    ...CodeSnapConfigNames,
     "enableResizing",
     "roundingLevel"
 ]
