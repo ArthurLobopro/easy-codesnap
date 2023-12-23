@@ -1,4 +1,8 @@
-## 1.4.2
+## 1.4.4
+
+* Add lock changes feature
+
+## 1.4.3
 
 * Add codicons
 
