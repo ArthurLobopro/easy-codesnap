@@ -15,6 +15,7 @@ import {
     showWindowTitleInput,
     shutterActionSelect,
     targetSelect,
+    toggleLockedButton,
     transparentBackgroundInput
 } from "./elements"
 
@@ -111,5 +112,21 @@ export function addListeners() {
 
     saveConfigButton.addEventListener("click", () => {
         vscode.postMessage({ type: "save-config", config: getSessionConfig() })
+    })
+
+    toggleLockedButton.addEventListener("click", () => {
+        const isLocked = !getSessionConfig().isLocked
+        toggleLockedButton.title = isLocked ? "Unlock changes" : "Lock changes"
+
+        toggleLockedButton.classList.remove("codicon-unlock")
+        toggleLockedButton.classList.remove("codicon-lock")
+
+        if (isLocked) {
+            toggleLockedButton.classList.add("codicon-lock")
+        } else {
+            toggleLockedButton.classList.add("codicon-unlock")
+        }
+
+        setSessionConfig({ isLocked: !getSessionConfig().isLocked })
     })
 }

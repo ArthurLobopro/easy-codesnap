@@ -24,3 +24,4 @@ export const roundingLevelSelect = $<HTMLSelectElement>("select[data-configname=
 
 export const resetConfigButton = $<HTMLLIElement>("[data-action='reset-config']")
 export const saveConfigButton = $<HTMLLIElement>("[data-action='save-config']")
+export const toggleLockedButton = $<HTMLButtonElement>("[data-action='toggle-lock'")

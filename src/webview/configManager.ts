@@ -17,6 +17,8 @@ export interface ExtensionConfig {
     windowTitle: string
     tabSize: number
     fontLigatures: boolean
+
+    isLocked: boolean
 }
 
 export const setSessionConfig = (config: Partial<ExtensionConfig>) => {
