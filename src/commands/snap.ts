@@ -103,7 +103,8 @@ const createPanel = async (context: vscode.ExtensionContext) => {
         { viewColumn: vscode.ViewColumn.Beside, preserveFocus: true },
         {
             enableScripts: true,
-            localResourceRoots: [vscode.Uri.file(context.extensionPath)]
+            localResourceRoots: [vscode.Uri.file(context.extensionPath)],
+            retainContextWhenHidden: true
         }
     )
 

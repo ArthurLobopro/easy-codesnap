@@ -21,18 +21,34 @@ export interface ExtensionConfig {
     isLocked: boolean
 }
 
+class ConfigProvider {
+    static __config: ExtensionConfig = {} as any
+
+    static get hasConfig() {
+        return !!Object.entries(this.__config).length
+    }
+
+    static get sessionConfig() {
+        return this.__config
+    }
+
+    static set sessionConfig(config: ExtensionConfig) {
+        this.__config = config
+    }
+}
+
 export const setSessionConfig = (config: Partial<ExtensionConfig>) => {
     if (alreadyHasSessionConfig()) {
         config = { ...getSessionConfig(), ...config }
     }
 
-    sessionStorage.setItem("easy-codesnap-config", JSON.stringify(config))
+    ConfigProvider.sessionConfig = config as ExtensionConfig
 }
 
 export const getSessionConfig = (): ExtensionConfig => {
-    return JSON.parse(sessionStorage.getItem("easy-codesnap-config") as string)
+    return ConfigProvider.sessionConfig
 }
 
 export const alreadyHasSessionConfig = () => {
-    return !!sessionStorage.getItem("easy-codesnap-config")
+    return ConfigProvider.hasConfig
 }
