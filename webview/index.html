@@ -5,8 +5,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <meta http-equiv="Content-Security-Policy"
-        content="default-src 'none'; img-src %CSP_SOURCE% data: https:; script-src %CSP_SOURCE%; style-src 'unsafe-inline' %CSP_SOURCE%;" />
+    %CSP_SOURCE%
     <title>CodeSnap 📸</title>
     <link rel="stylesheet" href="./style.css" />
     <script src="../dist/webview/webview.js" type="module"></script>
@@ -99,10 +98,12 @@
                 <li class="separator"></li>
 
                 <li data-action="reset-config" title="Reset settings to default">
+                    <span class="codicon codicon-sync"></span>
                     Reset Settings
                 </li>
 
                 <li data-action="save-config" title="Save current settings as default">
+                    <span class="codicon codicon-save-all"></span>
                     Save Settings
                 </li>
             </ul>

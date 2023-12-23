@@ -66,6 +66,7 @@
 
 #one-time-config li[data-action] {
     cursor: pointer;
+    gap: 4px;
 }
 
 #one-time-config li:not(.separator):hover {
