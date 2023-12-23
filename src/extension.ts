@@ -1,8 +1,8 @@
 import { homedir } from "os"
 import path from "path"
 import * as vscode from "vscode"
+import { importSettings } from "./commands/importSettings"
 import { extensionSettingsNames } from "./constants"
-import { importSettings } from "./importSettings"
 import { createStatusbarButton } from "./statusBarButton"
 import { getSettings, readHtml, writeFile } from "./util"
 

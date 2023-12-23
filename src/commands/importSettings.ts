@@ -1,5 +1,5 @@
 import * as vscode from "vscode"
-import { CodeSnapConfigNames } from "./constants"
+import { CodeSnapConfigNames } from "../constants"
 
 export function importSettings() {
     const codesnapSettings = vscode.workspace.getConfiguration("codesnap")
