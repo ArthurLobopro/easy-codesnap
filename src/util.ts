@@ -5,9 +5,18 @@ export { writeFile } from "fs/promises"
 
 type untypedObject = { [key: string]: any }
 
-export const readHtml = async (htmlPath: string, panel: vscode.WebviewPanel) => {
+export const readHtml = async (htmlPath: string, panel: vscode.WebviewPanel, context: vscode.ExtensionContext) => {
+
+    const { cspSource } = panel.webview
+
+    const codiconsUri = panel.webview.asWebviewUri(vscode.Uri.joinPath(context.extensionUri, "node_modules", "@vscode/codicons", "dist", "codicon.css"))
+
+    const CSP = `<meta http-equiv="Content-Security-Policy"
+    content="default-src 'none'; img-src ${cspSource} data: https:; script-src ${cspSource}; style-src 'unsafe-inline' ${cspSource}; font-src ${cspSource}" />
+    <link href="${codiconsUri}" rel="stylesheet" />`
+
+
     return (await readFile(htmlPath, "utf-8"))
-        .replace(/%CSP_SOURCE%/gu, panel.webview.cspSource)
         .replace(
             /(src|href)="([^"]*)"/gu,
             (_, type, src) =>
@@ -15,6 +24,7 @@ export const readHtml = async (htmlPath: string, panel: vscode.WebviewPanel) => 
                     vscode.Uri.file(path.resolve(htmlPath, "..", src))
                 )}"`
         )
+        .replace(/%CSP_SOURCE%/gu, CSP)
 }
 
 export const getSettings = (group: string, keys: string[]) => {

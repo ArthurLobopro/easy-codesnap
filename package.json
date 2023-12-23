@@ -2,7 +2,7 @@
   "name": "easy-codesnap",
   "displayName": "Easy CodeSnap",
   "description": "Take beautiful screenshots of your code 📷",
-  "version": "1.4.2",
+  "version": "1.4.3",
   "repository": {
     "type": "git",
     "url": "https://github.com/ArthurLobopro/easy-codesnap"
@@ -164,6 +164,7 @@
     "webpack-cli": "^5.1.4"
   },
   "dependencies": {
+    "@vscode/codicons": "^0.0.35",
     "dom-to-image-even-more": "^1.0.4"
   }
 }

@@ -1,3 +1,7 @@
+## 1.4.2
+
+* Add codicons
+
 ## 1.4.1
 
 * Convert webview controllers to typescript

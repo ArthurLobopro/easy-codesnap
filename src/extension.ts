@@ -44,7 +44,8 @@ const createPanel = async (context: vscode.ExtensionContext) => {
 
 	panel.webview.html = await readHtml(
 		path.resolve(context.extensionPath, "webview/index.html"),
-		panel
+		panel,
+		context
 	)
 
 	return panel

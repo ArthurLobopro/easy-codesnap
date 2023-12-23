@@ -12,3 +12,4 @@ vsc-extension-quickstart.md
 .github/**
 webpack.config.js
 node_modules
+!node_modules/@vscode/codicons/dist
