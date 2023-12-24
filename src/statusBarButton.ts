@@ -11,11 +11,21 @@ export const createStatusbarButton = () => {
         button.show()
     }
 
-    return vscode.window.onDidChangeTextEditorSelection(event => {
+    const changeEditorDispose = vscode.window.onDidChangeActiveTextEditor(() => {
+        if (vscode.window.activeTextEditor?.selection.isEmpty === true) {
+            button.show()
+        } else {
+            button.hide()
+        }
+    })
+
+    const changeSelectionDispose = vscode.window.onDidChangeTextEditorSelection(event => {
         if (event.textEditor.selection.isEmpty) {
             button.hide()
         } else {
             button.show()
         }
     })
+
+    return [changeEditorDispose, changeSelectionDispose]
 }
