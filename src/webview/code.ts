@@ -1,5 +1,6 @@
 import { getSessionConfig } from "./configManager"
 import { contentManager } from "./contentManager"
+import { addHighlightEvents, highlightOnclickFactory } from "./highlight"
 import { $, $$, calcTextWidth, setVar } from "./util"
 
 const snippetNode = $("#snippet") as HTMLDivElement
@@ -17,12 +18,14 @@ const setupLines = (node: Element) => {
     rows.forEach((row, idx) => {
         const newRow = document.createElement("div")
         newRow.classList.add("line")
+        newRow.dataset.highlight = "none"
         row.replaceWith(newRow)
 
         if (config.showLineNumbers) {
             const lineNum = document.createElement("div")
             lineNum.classList.add("line-number")
             lineNum.textContent = idx + 1 + startLine + ""
+            lineNum.addEventListener("click", highlightOnclickFactory(newRow))
             newRow.appendChild(lineNum)
         }
 
@@ -38,6 +41,8 @@ const setupLines = (node: Element) => {
 
         newRow.appendChild(lineCodeDiv)
     })
+
+    addHighlightEvents()
 }
 
 //@ts-check
