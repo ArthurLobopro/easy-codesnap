@@ -1,6 +1,6 @@
 import { getSessionConfig } from "./configManager"
 import { contentManager } from "./contentManager"
-import { addHighlightEvents, highlightOnclickFactory } from "./highlight"
+import { highlightOnclickFactory } from "./highlight"
 import { $, $$, calcTextWidth, setVar } from "./util"
 
 const snippetNode = $("#snippet") as HTMLDivElement
