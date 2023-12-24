@@ -1,7 +1,7 @@
 
-type highlightLevels = "none" | "add" | "remove"
+type highlightLevels = "none" | "focus" | "add" | "remove"
 
-const highlightOrder = ["none", "add", "remove"]
+const highlightOrder = ["none", "focus", "add", "remove"]
 
 export function highlightOnclickFactory(lineElement: HTMLDivElement) {
     return () => {

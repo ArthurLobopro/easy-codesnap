@@ -1,0 +1,41 @@
+.line-number:hover {
+    cursor: pointer;
+    color: var(--vscode-list-hoverForeground);
+}
+
+[data-highlight="focus"] {
+    --line-background: rgb(125 211 252 / 0.2);
+    --before-background: rgb(14, 165, 233);
+    --before-content: "";
+    --color: currentColor;
+}
+
+[data-highlight="add"]{
+    --line-background: rgb(134 239 172 / 0.15);
+    --before-background: transparent;
+    --before-content: "+";
+    --color: rgb(134, 239, 172);
+}
+
+[data-highlight="remove"]{
+    --line-background: rgb(252 165 165 / 0.15);
+    --before-background: transparent;
+    --before-content: "-";
+    --color: rgb(239, 68, 68);
+}
+
+.line:not([data-highlight="none"]) {
+    position: relative;
+    background-color: var(--line-background);
+}
+
+.line:not([data-highlight="none"])::before {
+    position: absolute;
+    left: -0.75rem;
+    display: block;
+    height: 100%;
+    width: 0.25rem;
+    color: var(--color);
+    content: var(--before-content);
+    background-color: var(--before-background);
+}
