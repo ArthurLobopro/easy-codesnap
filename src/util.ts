@@ -5,7 +5,7 @@ export { writeFile } from "fs/promises"
 
 type untypedObject = { [key: string]: any }
 
-export const readHtml = async (htmlPath: string, panel: vscode.WebviewPanel, context: vscode.ExtensionContext) => {
+export const loadHtml = async (htmlPath: string, panel: vscode.WebviewPanel, context: vscode.ExtensionContext) => {
 
     const { cspSource } = panel.webview
 

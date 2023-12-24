@@ -1,3 +1,8 @@
+## 1.4.5
+
+* Fix bug when a locked instance is closed prevents other instances to run correctly
+* Separate instances contexts to allow separate settings.
+
 ## 1.4.4
 
 * Add lock changes feature
