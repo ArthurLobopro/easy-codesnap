@@ -2,7 +2,7 @@ import { homedir } from "os"
 import path from "path"
 import * as vscode from "vscode"
 import { extensionSettingsNames } from "../constants"
-import { getSettings, readHtml, writeFile } from "../util"
+import { getSettings, loadHtml, writeFile } from "../util"
 
 type message = (
     { type: "copied" | "update-config" | "ready" } |
@@ -108,7 +108,7 @@ const createPanel = async (context: vscode.ExtensionContext) => {
         }
     )
 
-    panel.webview.html = await readHtml(
+    panel.webview.html = await loadHtml(
         path.resolve(context.extensionPath, "webview/index.html"),
         panel,
         context
