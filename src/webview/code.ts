@@ -41,8 +41,6 @@ const setupLines = (node: Element) => {
 
         newRow.appendChild(lineCodeDiv)
     })
-
-    addHighlightEvents()
 }
 
 //@ts-check
