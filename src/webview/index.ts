@@ -1,4 +1,4 @@
-import { pasteCode } from "./code"
+import { pasteCode, updateLineNumbers } from "./code"
 import { alreadyHasSessionConfig, getSessionConfig, setSessionConfig } from "./configManager"
 import { contentManager } from "./contentManager"
 import { btnSave, navbarNode, windowControlsNode, windowTitleNode } from "./elements"
@@ -39,6 +39,8 @@ export function updateConfig() {
     windowControlsNode.hidden = !showWindowControls
     windowTitleNode.hidden = !showWindowTitle
     windowTitleNode.textContent = windowTitle
+
+    updateLineNumbers()
 }
 
 btnSave.addEventListener("click", () => takeSnap())

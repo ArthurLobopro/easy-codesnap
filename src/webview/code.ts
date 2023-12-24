@@ -23,6 +23,8 @@ const setupLines = (node: Element) => {
 
         const lineNum = document.createElement("div")
         lineNum.classList.add("line-number")
+        lineNum.dataset.linenumber = idx + 1 + ""
+        lineNum.dataset.reallinenumber = idx + 1 + config.startLine + ""
         lineNum.textContent = idx + 1 + startLine + ""
         lineNum.addEventListener("click", highlightOnclickFactory(newRow))
         newRow.appendChild(lineNum)
@@ -39,6 +41,20 @@ const setupLines = (node: Element) => {
 
         newRow.appendChild(lineCodeDiv)
     })
+}
+
+export const updateLineNumbers = () => {
+    const { realLineNumbers } = getSessionConfig()
+
+    const lineNumbers = $$(".line-number")
+
+    lineNumbers.forEach(line => {
+        line.textContent = (
+            realLineNumbers ? line.dataset.reallinenumber : line.dataset.linenumber
+        ) as string
+    })
+
+    lineNumbers.length && setVar("line-number-width", calcTextWidth(String(lineNumbers.at(-1)?.textContent)))
 }
 
 //@ts-check
