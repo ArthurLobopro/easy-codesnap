@@ -1,5 +1,6 @@
 import { getSessionConfig } from "./configManager"
 import { contentManager } from "./contentManager"
+import { highlightOnclickFactory } from "./highlight"
 import { $, $$, calcTextWidth, setVar } from "./util"
 
 const snippetNode = $("#snippet") as HTMLDivElement
@@ -17,14 +18,16 @@ const setupLines = (node: Element) => {
     rows.forEach((row, idx) => {
         const newRow = document.createElement("div")
         newRow.classList.add("line")
+        newRow.dataset.highlight = "none"
         row.replaceWith(newRow)
 
-        if (config.showLineNumbers) {
-            const lineNum = document.createElement("div")
-            lineNum.classList.add("line-number")
-            lineNum.textContent = idx + 1 + startLine + ""
-            newRow.appendChild(lineNum)
-        }
+        const lineNum = document.createElement("div")
+        lineNum.classList.add("line-number")
+        lineNum.dataset.linenumber = idx + 1 + ""
+        lineNum.dataset.reallinenumber = idx + 1 + config.startLine + ""
+        lineNum.textContent = idx + 1 + startLine + ""
+        lineNum.addEventListener("click", highlightOnclickFactory(newRow))
+        newRow.appendChild(lineNum)
 
         const span = document.createElement("span")
         span.textContent = " "
@@ -40,7 +43,19 @@ const setupLines = (node: Element) => {
     })
 }
 
-//@ts-check
+export const updateLineNumbers = () => {
+    const { realLineNumbers } = getSessionConfig()
+
+    const lineNumbers = $$(".line-number")
+
+    lineNumbers.forEach(line => {
+        line.textContent = (
+            realLineNumbers ? line.dataset.reallinenumber : line.dataset.linenumber
+        ) as string
+    })
+
+    lineNumbers.length && setVar("line-number-width", calcTextWidth(String(lineNumbers.at(-1)?.textContent)))
+}
 
 const stripInitialIndent = (node: Element) => {
     const regIndent = /^\s+/u
@@ -57,7 +72,6 @@ const stripInitialIndent = (node: Element) => {
         span.textContent = (span.textContent as string).slice(minIndent)
     })
 }
-
 
 export const pasteCode = () => {
     snippetNode.innerHTML = contentManager.current

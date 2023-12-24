@@ -1,4 +1,4 @@
-import { pasteCode } from "./code"
+import { pasteCode, updateLineNumbers } from "./code"
 import { alreadyHasSessionConfig, getSessionConfig, setSessionConfig } from "./configManager"
 import { contentManager } from "./contentManager"
 import { btnSave, navbarNode, windowControlsNode, windowTitleNode } from "./elements"
@@ -18,7 +18,8 @@ export function updateConfig() {
         showWindowTitle,
         windowTitle,
         enableResizing,
-        roundingLevel
+        roundingLevel,
+        showLineNumbers
     } = getSessionConfig()
 
     setVar("ligatures", fontLigatures ? "normal" : "none")
@@ -32,12 +33,14 @@ export function updateConfig() {
     setVar("container-padding", containerPadding)
     setVar("window-border-radius", roundedCorners ? `${4 * roundingLevel}px` : 0 + "")
     setVar("enable-resizing", enableResizing ? "horizontal" : "none")
+    setVar("line-number-visibility", showLineNumbers ? "block" : "none")
 
     navbarNode.hidden = !showWindowControls && !showWindowTitle
     windowControlsNode.hidden = !showWindowControls
     windowTitleNode.hidden = !showWindowTitle
-
     windowTitleNode.textContent = windowTitle
+
+    updateLineNumbers()
 }
 
 btnSave.addEventListener("click", () => takeSnap())

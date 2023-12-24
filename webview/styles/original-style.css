@@ -93,6 +93,7 @@ body {
     width: var(--line-number-width);
     white-space: nowrap;
     flex: none;
+    display: var(--line-number-visibility);
 }
 
 .line-code {

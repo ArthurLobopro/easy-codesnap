@@ -2,7 +2,7 @@ import { homedir } from "os"
 import path from "path"
 import * as vscode from "vscode"
 import { extensionSettingsNames } from "../constants"
-import { getSettings, loadHtml, writeFile } from "../util"
+import { getSettings, hasOneSelection, loadHtml, writeFile } from "../util"
 
 type message = (
     { type: "copied" | "update-config" | "ready" } |
@@ -131,8 +131,4 @@ const saveImage = async (data: string) => {
             vscode.window.showInformationMessage(`Image saved on: ${uri.fsPath}`)
         })
     }
-}
-
-function hasOneSelection(selections: readonly vscode.Selection[]) {
-    return selections && selections.length === 1 && !selections[0].isEmpty
 }

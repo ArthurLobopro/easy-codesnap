@@ -1,4 +1,5 @@
 import * as vscode from "vscode"
+import { hasOneSelection } from "./util"
 
 export const createStatusbarButton = () => {
     const button = vscode.window.createStatusBarItem(vscode.StatusBarAlignment.Right, 150)
@@ -11,11 +12,21 @@ export const createStatusbarButton = () => {
         button.show()
     }
 
-    return vscode.window.onDidChangeTextEditorSelection(event => {
-        if (event.textEditor.selection.isEmpty) {
+    const changeEditorDispose = vscode.window.onDidChangeActiveTextEditor((editor) => {
+        if (editor && hasOneSelection(editor.selections)) {
+            button.show()
+        } else {
+            button.hide()
+        }
+    })
+
+    const changeSelectionDispose = vscode.window.onDidChangeTextEditorSelection(event => {
+        if (hasOneSelection(event.textEditor.selections)) {
             button.hide()
         } else {
             button.show()
         }
     })
+
+    return [changeEditorDispose, changeSelectionDispose]
 }

@@ -1,3 +1,9 @@
+## 1.5.0
+
+* Add highlight lines feature based on [CodeSnap-plus](https://github.com/eugenejeonme/CodeSnap-plus-fix)
+* Fix some button visibility bugs
+* Prevent some unnecessary code re-renders
+
 ## 1.4.5
 
 * Fix bug when a locked instance is closed prevents other instances to run correctly

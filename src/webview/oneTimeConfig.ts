@@ -78,8 +78,8 @@ function handleConfigBasedChange(input: HTMLInputElement) {
 }
 
 export function addListeners() {
-    showLineNumbersInput.addEventListener("change", handleViewBasedChange(showLineNumbersInput))
-    realLineNumbersInput.addEventListener("change", handleViewBasedChange(realLineNumbersInput))
+    showLineNumbersInput.addEventListener("change", handleConfigBasedChange(showLineNumbersInput))
+    realLineNumbersInput.addEventListener("change", handleConfigBasedChange(realLineNumbersInput))
 
     showWindowTitleInput.addEventListener("change", handleConfigBasedChange(showWindowTitleInput))
     showWindowControlsInput.addEventListener("change", handleConfigBasedChange(showWindowControlsInput))
