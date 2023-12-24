@@ -44,3 +44,7 @@ export const getSettings = (group: string, keys: string[]) => {
         return config
     }, {} as untypedObject)
 }
+
+export function hasOneSelection(selections: readonly vscode.Selection[]) {
+    return selections && selections.length === 1 && !selections[0].isEmpty
+}
