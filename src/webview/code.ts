@@ -21,13 +21,11 @@ const setupLines = (node: Element) => {
         newRow.dataset.highlight = "none"
         row.replaceWith(newRow)
 
-        if (config.showLineNumbers) {
-            const lineNum = document.createElement("div")
-            lineNum.classList.add("line-number")
-            lineNum.textContent = idx + 1 + startLine + ""
-            lineNum.addEventListener("click", highlightOnclickFactory(newRow))
-            newRow.appendChild(lineNum)
-        }
+        const lineNum = document.createElement("div")
+        lineNum.classList.add("line-number")
+        lineNum.textContent = idx + 1 + startLine + ""
+        lineNum.addEventListener("click", highlightOnclickFactory(newRow))
+        newRow.appendChild(lineNum)
 
         const span = document.createElement("span")
         span.textContent = " "

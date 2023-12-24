@@ -32,7 +32,8 @@
 .line:not([data-highlight="none"])::before {
     position: absolute;
     left: -0.75rem;
-    display: block;
+    display: flex;
+    justify-content: center;
     height: 100%;
     width: 0.25rem;
     color: var(--color);
