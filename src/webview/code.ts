@@ -57,8 +57,6 @@ export const updateLineNumbers = () => {
     lineNumbers.length && setVar("line-number-width", calcTextWidth(String(lineNumbers.at(-1)?.textContent)))
 }
 
-//@ts-check
-
 const stripInitialIndent = (node: Element) => {
     const regIndent = /^\s+/u
     const initialSpans = $$(":scope > div > span:first-child", node) as HTMLSpanElement[]
@@ -74,7 +72,6 @@ const stripInitialIndent = (node: Element) => {
         span.textContent = (span.textContent as string).slice(minIndent)
     })
 }
-
 
 export const pasteCode = () => {
     snippetNode.innerHTML = contentManager.current
