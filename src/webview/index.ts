@@ -4,7 +4,7 @@ import { contentManager } from "./contentManager"
 import { btnSave, navbarNode, windowControlsNode, windowTitleNode } from "./elements"
 import { addListeners, updateUIConfig } from "./oneTimeConfig"
 import { cameraFlashAnimation, takeSnap } from "./snap"
-import { setVar, vscode } from "./util"
+import { setVar, untypedObject, vscode } from "./util"
 
 export function updateConfig() {
     const {
@@ -54,50 +54,51 @@ document.addEventListener("paste", (e) => {
     }
 })
 
-window.addEventListener("message", ({ data: { type, ...config } }) => {
-    switch (type) {
-        case "update":
-            if (alreadyHasSessionConfig() && getSessionConfig().isLocked) {
+const actions = {
+    flash: cameraFlashAnimation,
+
+    update(config: untypedObject) {
+        if (alreadyHasSessionConfig() && getSessionConfig().isLocked) {
+            return
+        }
+        setSessionConfig(config)
+        updateConfig()
+        updateUIConfig()
+        document.execCommand("paste")
+    },
+
+    "update-text"(config: untypedObject) {
+        if (!alreadyHasSessionConfig()) {
+            setSessionConfig(config)
+        } else {
+            if (getSessionConfig().isLocked) {
                 return
             }
-            setSessionConfig(config)
-            updateConfig()
-            updateUIConfig()
-            document.execCommand("paste")
-            break
 
-        case "update-text":
+            const { startLine, windowTitle } = config
+            setSessionConfig({ startLine, windowTitle })
+        }
+        updateConfig()
+        document.execCommand("paste")
+    },
 
-            if (!alreadyHasSessionConfig()) {
-                setSessionConfig(config)
-            } else {
-                if (getSessionConfig().isLocked) {
-                    return
-                }
+    "update-config"(config: untypedObject) {
+        delete config.startLine
+        delete config.windowTitle
 
-                const { startLine, windowTitle } = config
-                setSessionConfig({ startLine, windowTitle })
-            }
-            updateConfig()
-            document.execCommand("paste")
-            break
+        setSessionConfig(config)
+        updateConfig()
+        updateUIConfig()
+        pasteCode()
+    }
+}
 
-        case "update-config":
-            delete config.startLine
-            delete config.windowTitle
+window.addEventListener("message", ({ data: { type, ...config } }) => {
+    if (type in actions) {
+        actions[type as keyof typeof actions](config)
+    } else {
+        console.log(`Unknow action on renderer: ${actions}`)
 
-            setSessionConfig(config)
-            updateConfig()
-            updateUIConfig()
-            pasteCode()
-            break
-
-        case "flash":
-            cameraFlashAnimation()
-            break
-
-        default:
-            break
     }
 })
 
