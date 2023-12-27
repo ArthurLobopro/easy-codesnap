@@ -1,3 +1,7 @@
+## 1.5.1
+
+* Fix: reversed button visibility state
+
 ## 1.5.0
 
 * Add highlight lines feature based on [CodeSnap-plus](https://github.com/eugenejeonme/CodeSnap-plus-fix)
