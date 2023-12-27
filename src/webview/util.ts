@@ -1,3 +1,5 @@
+export type untypedObject = { [key: string]: any }
+
 export function $<T extends HTMLElement>(q: string, c: Element = document as any) {
     return c.querySelector(q) as T
 }
