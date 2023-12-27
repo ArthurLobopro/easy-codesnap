@@ -10,51 +10,24 @@ type message = (
     { type: "save-config", config: {} }
 )
 
+type updateTypes = "config" | "text" | "both"
+
 export function SnapFactory(context: vscode.ExtensionContext) {
     return async () => {
         const panel = await createPanel(context)
 
-        const update = async (updateType: "config" | "text" | "both") => {
-            await vscode.commands.executeCommand("editor.action.clipboardCopyWithSyntaxHighlightingAction")
+        const update = async (updateType: updateTypes) => {
+            if (updateType !== "config") {
+                await vscode.commands.executeCommand("editor.action.clipboardCopyWithSyntaxHighlightingAction")
+            }
+
             panel.webview.postMessage({
                 type: updateType === "both" ? "update" : `update-${updateType}`,
                 ...getConfig()
             })
         }
 
-        const flash = () => panel.webview.postMessage({ type: "flash" })
-
-        const actions = {
-            async save({ data }: { data: string }) {
-                flash()
-                await saveImage(data)
-            },
-            copied() {
-                vscode.window.showInformationMessage("Image copied to clipboard!")
-            },
-            ready() {
-                const editor = vscode.window.activeTextEditor
-                if (editor && hasOneSelection(editor.selections)) { update("both") }
-            },
-            "update-config"() {
-                update("config")
-            },
-            "save-config"({ config }: { config: { [key: string]: any } }) {
-                const extensionSettings = vscode.workspace.getConfiguration("easy-codesnap")
-
-                extensionSettingsNames.forEach((name) => {
-                    if (name in config && extensionSettings.get(name) !== config[name]) {
-                        extensionSettings.update(
-                            name,
-                            config[name],
-                            vscode.ConfigurationTarget.Global
-                        )
-                    }
-                })
-
-                vscode.window.showInformationMessage("Settings saved as default!")
-            }
-        }
+        const actions = ActionsFactory({ panel, update })
 
         panel.webview.onDidReceiveMessage(async ({ type, ...args }: message) => {
             if (type in actions) {
@@ -65,9 +38,52 @@ export function SnapFactory(context: vscode.ExtensionContext) {
         })
 
         const selectionHandler = vscode.window.onDidChangeTextEditorSelection(
-            (e) => hasOneSelection(e.selections) && update("text")
+            (e) => (hasOneSelection(e.selections) && update("text"))
         )
         panel.onDidDispose(() => selectionHandler.dispose())
+    }
+}
+
+interface ActionFactoryProps {
+    panel: vscode.WebviewPanel
+    update: (type: updateTypes) => Promise<void>
+}
+
+function ActionsFactory(props: ActionFactoryProps) {
+    const { panel, update } = props
+
+    const flash = () => panel.webview.postMessage({ type: "flash" })
+
+    return {
+        async save({ data }: { data: string }) {
+            flash()
+            await saveImage(data)
+        },
+
+        copied: () => vscode.window.showInformationMessage("Image copied to clipboard!"),
+
+        ready() {
+            const editor = vscode.window.activeTextEditor
+            if (editor && hasOneSelection(editor.selections)) { update("both") }
+        },
+
+        "update-config": () => update("config"),
+
+        "save-config"({ config }: { config: { [key: string]: any } }) {
+            const extensionSettings = vscode.workspace.getConfiguration("easy-codesnap")
+
+            extensionSettingsNames.forEach((name) => {
+                if (name in config && extensionSettings.get(name) !== config[name]) {
+                    extensionSettings.update(
+                        name,
+                        config[name],
+                        vscode.ConfigurationTarget.Global
+                    )
+                }
+            })
+
+            vscode.window.showInformationMessage("Settings saved as default!")
+        }
     }
 }
 
