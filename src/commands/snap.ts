@@ -140,7 +140,7 @@ const saveImage = async (data: string) => {
         defaultUri: lastUsedImageUri
     })
 
-    lastUsedImageUri = uri as vscode.Uri
+    lastUsedImageUri = uri ?? lastUsedImageUri
 
     if (uri) {
         writeFile(uri.fsPath, Buffer.from(data, "base64")).then(() => {
