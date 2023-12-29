@@ -2,12 +2,13 @@ import { homedir } from "os"
 import path from "path"
 import * as vscode from "vscode"
 import { extensionSettingsNames } from "../constants"
+import { ExtensionConfig } from "../types"
 import { getSettings, hasOneSelection, loadHtml, writeFile } from "../util"
 
 type message = (
     { type: "copied" | "update-config" | "ready" } |
     { type: "save", data: string } |
-    { type: "save-config", config: {} }
+    { type: "save-config", config: ExtensionConfig }
 )
 
 type updateTypes = "config" | "text" | "both"
@@ -69,7 +70,7 @@ function ActionsFactory(props: ActionFactoryProps) {
 
         "update-config": () => update("config"),
 
-        "save-config"({ config }: { config: { [key: string]: any } }) {
+        "save-config"({ config }: { config: ExtensionConfig }) {
             const extensionSettings = vscode.workspace.getConfiguration("easy-codesnap")
 
             extensionSettingsNames.forEach((name) => {

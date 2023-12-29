@@ -14,4 +14,5 @@ export interface ExtensionConfig {
     roundingLevel: 1 | 2 | 3 | 4
 }
 
-export type untypedObject = { [key: string]: any } 
+export type untypedObject = { [key: string]: any }
+export type ConfigKey = keyof ExtensionConfig
