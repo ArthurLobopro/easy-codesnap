@@ -1,9 +1,8 @@
 import { readFile } from "fs/promises"
 import path from "path"
 import * as vscode from "vscode"
+import { untypedObject } from "./types"
 export { writeFile } from "fs/promises"
-
-type untypedObject = { [key: string]: any }
 
 export const loadHtml = async (htmlPath: string, panel: vscode.WebviewPanel, context: vscode.ExtensionContext) => {
 

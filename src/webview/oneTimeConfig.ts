@@ -1,5 +1,5 @@
 import { pasteCode as updateView } from "./code"
-import { ExtensionConfig, alreadyHasSessionConfig, getSessionConfig, setSessionConfig } from "./configManager"
+import { WebviewConfig, alreadyHasSessionConfig, getSessionConfig, setSessionConfig } from "./configManager"
 import { updateConfig } from "./index"
 import { vscode } from "./util"
 
@@ -89,19 +89,19 @@ export function addListeners() {
 
     shutterActionSelect.addEventListener("change", () => {
         setSessionConfig({
-            shutterAction: shutterActionSelect.value as ExtensionConfig["shutterAction"]
+            shutterAction: shutterActionSelect.value as WebviewConfig["shutterAction"]
         })
     })
 
     targetSelect.addEventListener("change", () => {
         setSessionConfig({
-            target: targetSelect.value as ExtensionConfig["target"]
+            target: targetSelect.value as WebviewConfig["target"]
         })
     })
 
     roundingLevelSelect.addEventListener("change", () => {
         setSessionConfig({
-            roundingLevel: Number(roundingLevelSelect.value) as ExtensionConfig["roundingLevel"]
+            roundingLevel: Number(roundingLevelSelect.value) as WebviewConfig["roundingLevel"]
         })
         updateConfig()
     })

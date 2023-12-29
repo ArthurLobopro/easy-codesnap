@@ -1,18 +1,6 @@
-export interface ExtensionConfig {
-    backgroundColor: string
-    boxShadow: string
-    containerPadding: string
-    roundedCorners: boolean
-    showWindowControls: boolean
-    showWindowTitle: boolean
-    showLineNumbers: boolean
-    realLineNumbers: boolean
-    transparentBackground: boolean
-    target: "container" | "window"
-    shutterAction: "save" | "copy"
-    enableResizing: boolean
-    roundingLevel: 1 | 2 | 3 | 4
+import { ExtensionConfig } from "../types"
 
+export interface WebviewConfig extends ExtensionConfig {
     startLine: number
     windowTitle: string
     tabSize: number
@@ -22,7 +10,7 @@ export interface ExtensionConfig {
 }
 
 class ConfigProvider {
-    static __config: ExtensionConfig = {} as any
+    static __config: WebviewConfig = {} as any
 
     static get hasConfig() {
         return !!Object.entries(this.__config).length
@@ -32,20 +20,20 @@ class ConfigProvider {
         return this.__config
     }
 
-    static set sessionConfig(config: ExtensionConfig) {
+    static set sessionConfig(config: WebviewConfig) {
         this.__config = config
     }
 }
 
-export const setSessionConfig = (config: Partial<ExtensionConfig>) => {
+export const setSessionConfig = (config: Partial<WebviewConfig>) => {
     if (alreadyHasSessionConfig()) {
         config = { ...getSessionConfig(), ...config }
     }
 
-    ConfigProvider.sessionConfig = config as ExtensionConfig
+    ConfigProvider.sessionConfig = config as WebviewConfig
 }
 
-export const getSessionConfig = (): ExtensionConfig => {
+export const getSessionConfig = (): WebviewConfig => {
     return ConfigProvider.sessionConfig
 }
 
