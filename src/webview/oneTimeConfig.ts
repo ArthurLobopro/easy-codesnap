@@ -77,7 +77,7 @@ export function addListeners() {
         setSessionConfig({
             roundingLevel: Number(roundingLevelSelect.value) as WebviewConfig["roundingLevel"]
         })
-        UIUpdater()
+        VarUpdater()
     })
 
     resetConfigButton.addEventListener("click", () => {
