@@ -1,4 +1,4 @@
-import { LineNumbersUpdater, pasteCode as updateView } from "./code"
+import { LineNumbersUpdater } from "./code"
 import { WebviewConfig, getSessionConfig, setSessionConfig } from "./configManager"
 import { LockButtonUpdater, UIUpdater } from "./ui/updaters"
 import { vscode } from "./util"
@@ -26,17 +26,6 @@ const biggerSelectWidth = `${targetSelect.getBoundingClientRect().width}px`
 
 shutterActionSelect.style.width = biggerSelectWidth
 roundingLevelSelect.style.width = biggerSelectWidth
-
-function handleViewBasedChange(input: HTMLInputElement) {
-    return () => {
-        const { configname } = input.dataset
-
-        setSessionConfig({
-            [configname as string]: input.checked
-        })
-        updateView()
-    }
-}
 
 function handleConfigBasedChange(input: HTMLInputElement, updater = UIUpdater) {
     return () => {
