@@ -15,6 +15,7 @@ import {
     showWindowTitleInput,
     shutterActionSelect,
     targetSelect,
+    toggleLinkedButton,
     toggleLockedButton,
     transparentBackgroundInput
 } from "./elements"
@@ -128,5 +129,16 @@ export function addListeners() {
         }
 
         setSessionConfig({ isLocked: !getSessionConfig().isLocked })
+    })
+
+    toggleLinkedButton.addEventListener("click", () => {
+        const isLinked = toggleLinkedButton.dataset.state === "linked"
+
+        toggleLinkedButton.dataset.state = !isLinked ? "linked" : "unlinked"
+        toggleLinkedButton.title = !isLinked ? "Broken Conection to editor" : "Conect to editor"
+
+        setSessionConfig({
+            isLinked: !isLinked
+        })
     })
 }

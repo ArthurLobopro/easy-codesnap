@@ -71,12 +71,14 @@ const actions = {
         if (!alreadyHasSessionConfig()) {
             setSessionConfig(config)
         } else {
-            if (getSessionConfig().isLocked) {
+            const { isLocked, isLinked, editorID } = getSessionConfig()
+
+            if (isLocked || isLinked && editorID !== config.editorID) {
                 return
             }
 
-            const { startLine, windowTitle } = config
-            setSessionConfig({ startLine, windowTitle })
+            const { startLine, windowTitle, editorID: newEditorID } = config
+            setSessionConfig({ startLine, windowTitle, editorID: newEditorID })
         }
         updateConfig()
         document.execCommand("paste")

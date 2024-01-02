@@ -7,6 +7,9 @@ export interface WebviewConfig extends ExtensionConfig {
     fontLigatures: boolean
 
     isLocked: boolean
+
+    isLinked: boolean
+    editorID: string
 }
 
 class ConfigProvider {

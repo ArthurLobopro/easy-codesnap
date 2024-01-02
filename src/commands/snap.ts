@@ -17,14 +17,15 @@ export function SnapFactory(context: vscode.ExtensionContext) {
     return async () => {
         const panel = await createPanel(context)
 
-        const update = async (updateType: updateTypes) => {
+        const update = async (updateType: updateTypes, editorURI?: string) => {
             if (updateType !== "config") {
                 await vscode.commands.executeCommand("editor.action.clipboardCopyWithSyntaxHighlightingAction")
             }
 
             panel.webview.postMessage({
                 type: updateType === "both" ? "update" : `update-${updateType}`,
-                ...getConfig()
+                ...getConfig(),
+                ...(editorURI ? { editorID: editorURI } : {})
             })
         }
 
@@ -39,7 +40,7 @@ export function SnapFactory(context: vscode.ExtensionContext) {
         })
 
         const selectionHandler = vscode.window.onDidChangeTextEditorSelection(
-            (e) => (hasOneSelection(e.selections) && update("text"))
+            (e) => (hasOneSelection(e.selections) && update("text", e.textEditor.document.uri.toString()))
         )
         panel.onDidDispose(() => selectionHandler.dispose())
     }
@@ -47,7 +48,7 @@ export function SnapFactory(context: vscode.ExtensionContext) {
 
 interface ActionFactoryProps {
     panel: vscode.WebviewPanel
-    update: (type: updateTypes) => Promise<void>
+    update: (type: updateTypes, editorURI?: string) => Promise<void>
 }
 
 function ActionsFactory(props: ActionFactoryProps) {
@@ -65,7 +66,7 @@ function ActionsFactory(props: ActionFactoryProps) {
 
         ready() {
             const editor = vscode.window.activeTextEditor
-            if (editor && hasOneSelection(editor.selections)) { update("both") }
+            if (editor && hasOneSelection(editor.selections)) { update("both", editor.document.uri.toString()) }
         },
 
         "update-config": () => update("config"),
