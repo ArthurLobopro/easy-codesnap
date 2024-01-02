@@ -1,6 +1,6 @@
 import { LineNumbersUpdater, pasteCode as updateView } from "./code"
 import { WebviewConfig, getSessionConfig, setSessionConfig } from "./configManager"
-import { UIUpdater } from "./ui/updaters"
+import { LockButtonUpdater, UIUpdater } from "./ui/updaters"
 import { vscode } from "./util"
 
 import {
@@ -89,19 +89,8 @@ export function addListeners() {
     })
 
     toggleLockedButton.addEventListener("click", () => {
-        const isLocked = !getSessionConfig().isLocked
-        toggleLockedButton.title = isLocked ? "Unlock changes" : "Lock changes"
-
-        toggleLockedButton.classList.remove("codicon-unlock")
-        toggleLockedButton.classList.remove("codicon-lock")
-
-        if (isLocked) {
-            toggleLockedButton.classList.add("codicon-lock")
-        } else {
-            toggleLockedButton.classList.add("codicon-unlock")
-        }
-
         setSessionConfig({ isLocked: !getSessionConfig().isLocked })
+        LockButtonUpdater()
     })
 
     toggleLinkedButton.addEventListener("click", () => {

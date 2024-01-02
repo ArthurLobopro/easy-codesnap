@@ -1,6 +1,6 @@
 import { LineNumbersUpdater } from "../code"
 import { getSessionConfig } from "../configManager"
-import { enableResizingInput, navbarNode, realLineNumbersInput, roundedCornersInput, roundingLevelSelect, showLineNumbersInput, showWindowControlsInput, showWindowTitleInput, shutterActionSelect, targetSelect, transparentBackgroundInput, windowControlsNode, windowTitleNode } from "../elements"
+import { enableResizingInput, navbarNode, realLineNumbersInput, roundedCornersInput, roundingLevelSelect, showLineNumbersInput, showWindowControlsInput, showWindowTitleInput, shutterActionSelect, targetSelect, toggleLockedButton, transparentBackgroundInput, windowControlsNode, windowTitleNode } from "../elements"
 import { setVar } from "../util"
 
 export function VarUpdater() {
@@ -50,6 +50,7 @@ export function UIUpdater() {
     VisibilityUpdater()
     LineNumbersUpdater()
     OneTimeConfigUpdater()
+    LockButtonUpdater()
 
     windowTitleNode.textContent = windowTitle
 }
@@ -70,4 +71,14 @@ export function OneTimeConfigUpdater() {
     shutterActionSelect.value = shutterAction
     targetSelect.value = target
     roundingLevelSelect.value = roundingLevel + ""
+}
+
+export function LockButtonUpdater() {
+    const { isLocked } = getSessionConfig()
+
+    toggleLockedButton.classList.remove("codicon-unlock")
+    toggleLockedButton.classList.remove("codicon-lock")
+
+    toggleLockedButton.classList.add(isLocked ? "codicon-lock" : "codicon-unlock")
+    toggleLockedButton.title = isLocked ? "Unlock changes" : "Lock changes"
 }
