@@ -135,7 +135,7 @@ export function addListeners() {
         const isLinked = toggleLinkedButton.dataset.state === "linked"
 
         toggleLinkedButton.dataset.state = !isLinked ? "linked" : "unlinked"
-        toggleLinkedButton.title = !isLinked ? "Broken Conection to editor" : "Conect to editor"
+        toggleLinkedButton.title = !isLinked ? "Broken Connection to editor" : "Connect to editor"
 
         setSessionConfig({
             isLinked: !isLinked
