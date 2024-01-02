@@ -43,7 +43,7 @@ const setupLines = (node: Element) => {
     })
 }
 
-export const updateLineNumbers = () => {
+export const LineNumbersUpdater = () => {
     const { realLineNumbers } = getSessionConfig()
 
     const lineNumbers = $$(".line-number")

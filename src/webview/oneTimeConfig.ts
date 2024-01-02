@@ -1,6 +1,6 @@
-import { pasteCode as updateView } from "./code"
-import { WebviewConfig, alreadyHasSessionConfig, getSessionConfig, setSessionConfig } from "./configManager"
-import { updateConfig } from "./index"
+import { LineNumbersUpdater, pasteCode as updateView } from "./code"
+import { WebviewConfig, getSessionConfig, setSessionConfig } from "./configManager"
+import { UIUpdater } from "./ui/updaters"
 import { vscode } from "./util"
 
 import {
@@ -20,41 +20,12 @@ import {
     transparentBackgroundInput
 } from "./elements"
 
+import { VarUpdater, VisibilityUpdater } from "./ui/updaters"
+
 const biggerSelectWidth = `${targetSelect.getBoundingClientRect().width}px`
 
 shutterActionSelect.style.width = biggerSelectWidth
 roundingLevelSelect.style.width = biggerSelectWidth
-
-export function updateUIConfig(force = false) {
-    if (!alreadyHasSessionConfig() && !force) {
-        return
-    }
-
-    const {
-        showLineNumbers,
-        realLineNumbers,
-        showWindowControls,
-        roundedCorners,
-        transparentBackground,
-        showWindowTitle,
-        shutterAction,
-        target,
-        enableResizing,
-        roundingLevel
-    } = getSessionConfig()
-
-    showWindowTitleInput.checked = showWindowTitle
-    showLineNumbersInput.checked = showLineNumbers
-    realLineNumbersInput.checked = realLineNumbers
-    showWindowControlsInput.checked = showWindowControls
-    roundedCornersInput.checked = roundedCorners
-    transparentBackgroundInput.checked = transparentBackground
-    enableResizingInput.checked = enableResizing
-
-    shutterActionSelect.value = shutterAction
-    targetSelect.value = target
-    roundingLevelSelect.value = roundingLevel + ""
-}
 
 function handleViewBasedChange(input: HTMLInputElement) {
     return () => {
@@ -67,24 +38,26 @@ function handleViewBasedChange(input: HTMLInputElement) {
     }
 }
 
-function handleConfigBasedChange(input: HTMLInputElement) {
+function handleConfigBasedChange(input: HTMLInputElement, updater = UIUpdater) {
     return () => {
         const { configname } = input.dataset
 
         setSessionConfig({
             [configname as string]: input.checked
         })
-        updateConfig()
+
+        updater()
     }
 }
 
 export function addListeners() {
-    showLineNumbersInput.addEventListener("change", handleConfigBasedChange(showLineNumbersInput))
-    realLineNumbersInput.addEventListener("change", handleConfigBasedChange(realLineNumbersInput))
+    showLineNumbersInput.addEventListener("change", handleConfigBasedChange(showLineNumbersInput, VarUpdater))
+    realLineNumbersInput.addEventListener("change", handleConfigBasedChange(realLineNumbersInput, LineNumbersUpdater))
 
-    showWindowTitleInput.addEventListener("change", handleConfigBasedChange(showWindowTitleInput))
-    showWindowControlsInput.addEventListener("change", handleConfigBasedChange(showWindowControlsInput))
-    roundedCornersInput.addEventListener("change", handleConfigBasedChange(roundedCornersInput))
+    showWindowTitleInput.addEventListener("change", handleConfigBasedChange(showWindowTitleInput, VisibilityUpdater))
+    showWindowControlsInput.addEventListener("change", handleConfigBasedChange(showWindowControlsInput, VisibilityUpdater))
+
+    roundedCornersInput.addEventListener("change", handleConfigBasedChange(roundedCornersInput, VarUpdater))
     transparentBackgroundInput.addEventListener("change", handleConfigBasedChange(transparentBackgroundInput))
     enableResizingInput.addEventListener("change", handleConfigBasedChange(enableResizingInput))
 
@@ -104,7 +77,7 @@ export function addListeners() {
         setSessionConfig({
             roundingLevel: Number(roundingLevelSelect.value) as WebviewConfig["roundingLevel"]
         })
-        updateConfig()
+        UIUpdater()
     })
 
     resetConfigButton.addEventListener("click", () => {

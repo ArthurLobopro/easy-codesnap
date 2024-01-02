@@ -1,47 +1,11 @@
-import { pasteCode, updateLineNumbers } from "./code"
+import { pasteCode } from "./code"
 import { alreadyHasSessionConfig, getSessionConfig, setSessionConfig } from "./configManager"
 import { contentManager } from "./contentManager"
-import { btnSave, navbarNode, windowControlsNode, windowTitleNode } from "./elements"
-import { addListeners, updateUIConfig } from "./oneTimeConfig"
+import { btnSave } from "./elements"
+import { addListeners } from "./oneTimeConfig"
 import { cameraFlashAnimation, takeSnap } from "./snap"
-import { setVar, untypedObject, vscode } from "./util"
-
-export function updateConfig() {
-    const {
-        fontLigatures,
-        tabSize,
-        backgroundColor,
-        boxShadow,
-        containerPadding,
-        roundedCorners,
-        showWindowControls,
-        showWindowTitle,
-        windowTitle,
-        enableResizing,
-        roundingLevel,
-        showLineNumbers
-    } = getSessionConfig()
-
-    setVar("ligatures", fontLigatures ? "normal" : "none")
-    if (typeof fontLigatures === "string") {
-        setVar("font-features", fontLigatures)
-    }
-
-    setVar("tab-size", tabSize + "")
-    setVar("container-background-color", backgroundColor)
-    setVar("box-shadow", boxShadow)
-    setVar("container-padding", containerPadding)
-    setVar("window-border-radius", roundedCorners ? `${4 * roundingLevel}px` : 0 + "")
-    setVar("enable-resizing", enableResizing ? "horizontal" : "none")
-    setVar("line-number-visibility", showLineNumbers ? "block" : "none")
-
-    navbarNode.hidden = !showWindowControls && !showWindowTitle
-    windowControlsNode.hidden = !showWindowControls
-    windowTitleNode.hidden = !showWindowTitle
-    windowTitleNode.textContent = windowTitle
-
-    updateLineNumbers()
-}
+import { OneTimeConfigUpdater, UIUpdater } from "./ui/updaters"
+import { untypedObject, vscode } from "./util"
 
 btnSave.addEventListener("click", () => takeSnap())
 
@@ -62,8 +26,7 @@ const actions = {
             return
         }
         setSessionConfig(config)
-        updateConfig()
-        updateUIConfig()
+        UIUpdater()
         document.execCommand("paste")
     },
 
@@ -80,7 +43,7 @@ const actions = {
             const { startLine, windowTitle, editorID: newEditorID } = config
             setSessionConfig({ startLine, windowTitle, editorID: newEditorID })
         }
-        updateConfig()
+        UIUpdater()
         document.execCommand("paste")
     },
 
@@ -89,8 +52,8 @@ const actions = {
         delete config.windowTitle
 
         setSessionConfig(config)
-        updateConfig()
-        updateUIConfig()
+        UIUpdater()
+        OneTimeConfigUpdater()
         pasteCode()
     }
 }
