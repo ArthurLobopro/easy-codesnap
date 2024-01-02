@@ -15,7 +15,7 @@
 		// "noUnusedParameters": true,  /* Report errors on unused parameters. */
 	},
 	"include": [
-		"./*.ts",
+		"./**/*.ts",
 		"../types.d.ts"
 	]
 }
