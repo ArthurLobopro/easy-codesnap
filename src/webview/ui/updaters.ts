@@ -86,6 +86,6 @@ export function LockButtonUpdater() {
 export function LinkButtonUpdater() {
     const { isLinked } = getSessionConfig()
 
-    toggleLinkedButton.dataset.state = isLinked ? "unlinked" : "linked"
-    toggleLinkedButton.title = isLinked ? "Connect to editor" : "Broken Connection to editor"
+    toggleLinkedButton.dataset.state = isLinked ? "linked" : "unlinked"
+    toggleLinkedButton.title = isLinked ? "Broken Connection to editor" : "Connect to editor"
 }
