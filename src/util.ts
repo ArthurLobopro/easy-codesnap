@@ -4,7 +4,7 @@ import * as vscode from "vscode"
 import { untypedObject } from "./types"
 export { writeFile } from "fs/promises"
 
-export const loadHtml = async (htmlPath: string, panel: vscode.WebviewPanel, context: vscode.ExtensionContext) => {
+export async function loadHtml(htmlPath: string, panel: vscode.WebviewPanel, context: vscode.ExtensionContext) {
 
     const { cspSource } = panel.webview
 
@@ -18,20 +18,18 @@ export const loadHtml = async (htmlPath: string, panel: vscode.WebviewPanel, con
     return (await readFile(htmlPath, "utf-8"))
         .replace(
             /(src|href)="([^"]*)"/gu,
-            (_, type, src) =>
-                `${type}="${panel.webview.asWebviewUri(
-                    vscode.Uri.file(path.resolve(htmlPath, "..", src))
-                )}"`
+            (_, type, src) => `${type}="${panel.webview.asWebviewUri(
+                vscode.Uri.file(path.resolve(htmlPath, "..", src))
+            )}"`
         )
         .replace(/%CSP_SOURCE%/gu, CSP)
 }
 
-export const getSettings = (group: string, keys: string[]) => {
+export function getSettings(group: string, keys: string[]) {
     const settings = vscode.workspace.getConfiguration(group)
     const editor = vscode.window.activeTextEditor
     const language = editor?.document?.languageId
-    const languageSettings =
-        language && vscode.workspace.getConfiguration().get(`[${language}]`) as untypedObject
+    const languageSettings = language && vscode.workspace.getConfiguration().get(`[${language}]`) as untypedObject
 
     return keys.reduce((config, key) => {
         if (languageSettings) {
