@@ -4,7 +4,7 @@ import { contentManager } from "./contentManager"
 import { btnSave } from "./elements"
 import { cameraFlashAnimation, takeSnap } from "./snap"
 import { addListeners } from "./ui/listeners"
-import { OneTimeConfigUpdater, UIUpdater } from "./ui/updaters"
+import { UIUpdater } from "./ui/updaters"
 import { untypedObject, vscode } from "./util"
 
 btnSave.addEventListener("click", () => takeSnap())
@@ -12,7 +12,9 @@ btnSave.addEventListener("click", () => takeSnap())
 document.addEventListener("copy", () => takeSnap({ ...getSessionConfig(), shutterAction: "copy" }))
 
 document.addEventListener("paste", (e) => {
-    if (!getSessionConfig().isLocked) {
+    const { isLocked } = getSessionConfig()
+
+    if (!isLocked) {
         contentManager.update(e.clipboardData as DataTransfer)
         pasteCode()
     }
@@ -53,7 +55,6 @@ const actions = {
 
         setSessionConfig(config)
         UIUpdater()
-        OneTimeConfigUpdater()
         pasteCode()
     }
 }
@@ -63,7 +64,6 @@ window.addEventListener("message", ({ data: { type, ...config } }) => {
         actions[type as keyof typeof actions](config)
     } else {
         console.log(`Unknow action on renderer: ${actions}`)
-
     }
 })
 
