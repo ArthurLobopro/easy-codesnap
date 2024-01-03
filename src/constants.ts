@@ -1,3 +1,5 @@
+import { ConfigKey } from "./types"
+
 export const CodeSnapConfigNames = [
     "backgroundColor",
     "boxShadow",
@@ -16,4 +18,4 @@ export const extensionSettingsNames = [
     ...CodeSnapConfigNames,
     "enableResizing",
     "roundingLevel"
-]
+] as ConfigKey[]

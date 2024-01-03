@@ -1,3 +1,7 @@
+## 1.5.2
+
+* Feat: add link to editor
+
 ## 1.5.1
 
 * Fix: reversed button visibility state

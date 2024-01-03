@@ -6,20 +6,22 @@ This project is fully based on [CodeSnap](https://github.com/kufii/CodeSnap) ext
 
 - Quickly save screenshots of your code
 - Copy screenshots to your clipboard
-- Appearence configurable
+- Appearance configurable
 - Import your settings from CodeSnap
 - One time settings
+- Lock changes
+- Link on editor
 
 ## How to Use
 
 - Select the code from your editor
-- Click in the camera icon in your statusbar
+- Click on the camera icon on vscode statusbar
 
 ![icon screenshot](https://raw.githubusercontent.com/ArthurLobopro/easy-codesnap/master/screenshots/screenshot-icon.png)
 
 - You can also use the **`Easy CodeSnap`** command in your command palette.
 
-- Make the final adjusts and take your code snapshot.
+- Make the final adjustments and take your code snapshot.
 
 ![](https://raw.githubusercontent.com/ArthurLobopro/easy-codesnap/master/screenshots/one-time-config.gif)
 
@@ -32,28 +34,32 @@ This project is fully based on [CodeSnap](https://github.com/kufii/CodeSnap) ext
 
 The Easy CodeSnap configuration is like the CodeSnap configuration:
 
-**`codesnap.backgroundColor`:** The background color of the snippet's container. Can be any valid CSS color.
+**`easy-codesnap.backgroundColor`:** The background color of the snippet's container. Can be any valid CSS color.
 
-**`codesnap.boxShadow`:** The CSS box-shadow for the snippet. Can be any valid CSS box shadow.
+**`easy-codesnap.boxShadow`:** The CSS box-shadow for the snippet. Can be any valid CSS box shadow.
 
-**`codesnap.containerPadding`:** The padding for the snippet's container. Can be any valid CSS padding.
+**`easy-codesnap.containerPadding`:** The padding for the snippet's container. Can be any valid CSS padding.
 
-**`codesnap.roundedCorners`:** Boolean value to use rounded corners or square corners for the window.
+**`easy-codesnap.roundedCorners`:** Boolean value to use rounded corners or square corners for the window.
 
-**`codesnap.showWindowControls`:** Boolean value to show or hide OS X style window buttons.
+**`easy-codesnap.showWindowControls`:** Boolean value to show or hide OS X style window buttons.
 
-**`codesnap.showWindowTitle`:** Boolean value to show or hide window title `folder_name - file_name`.
+**`easy-codesnap.showWindowTitle`:** Boolean value to show or hide window title `folder_name - file_name`.
 
-**`codesnap.showLineNumbers`:** Boolean value to show or hide line numbers.
+**`easy-codesnap.showLineNumbers`:** Boolean value to show or hide line numbers.
 
-**`codesnap.realLineNumbers`:** Boolean value to start from the real line number of the file instead of 1.
+**`easy-codesnap.realLineNumbers`:** Boolean value to start from the real line number of the file instead of 1.
 
-**`codesnap.transparentBackground`:** Boolean value to use a transparent background when taking the screenshot.
+**`easy-codesnap.transparentBackground`:** Boolean value to use a transparent background when taking the screenshot.
 
-**`codesnap.target`:** Either `container` to take the screenshot with the container, or `window` to only take the window.
+**`easy-codesnap.target`:** Either `container` to take the screenshot with the container, or `window` to only take the window.
 
-**`codesnap.shutterAction`:** Either `save` to save the screenshot into a file, or `copy` to copy the screenshot into the clipboard.
+**`easy-codesnap.shutterAction`:** Either `save` to save the screenshot into a file, or `copy` to copy the screenshot into the clipboard.
 
-## Acknowledgements
+**`easy-codesnap.enableResizing`:** Boolean value to enable resizing the snap container
 
-Thank you very much [kufii](https://github.com/kufii/) to make the [CodeSnap extension](https://github.com/kufii/CodeSnap), the base of this project.
+**`easy-codesnap.roundingLevel`:** Level to border rounding, only applied when `easy-codesnap.roundedCorners` is `true`
+
+## Acknowledgments
+
+Thank you very much [kufii](https://github.com/kufii/) to made the [CodeSnap extension](https://github.com/kufii/CodeSnap), the base of this project.

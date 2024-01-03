@@ -2,12 +2,13 @@ import { homedir } from "os"
 import path from "path"
 import * as vscode from "vscode"
 import { extensionSettingsNames } from "../constants"
+import { ExtensionConfig } from "../types"
 import { getSettings, hasOneSelection, loadHtml, writeFile } from "../util"
 
 type message = (
     { type: "copied" | "update-config" | "ready" } |
     { type: "save", data: string } |
-    { type: "save-config", config: {} }
+    { type: "save-config", config: ExtensionConfig }
 )
 
 type updateTypes = "config" | "text" | "both"
@@ -16,14 +17,15 @@ export function SnapFactory(context: vscode.ExtensionContext) {
     return async () => {
         const panel = await createPanel(context)
 
-        const update = async (updateType: updateTypes) => {
+        const update = async (updateType: updateTypes, editorURI?: string) => {
             if (updateType !== "config") {
                 await vscode.commands.executeCommand("editor.action.clipboardCopyWithSyntaxHighlightingAction")
             }
 
             panel.webview.postMessage({
                 type: updateType === "both" ? "update" : `update-${updateType}`,
-                ...getConfig()
+                ...getConfig(),
+                ...(editorURI ? { editorID: editorURI } : {})
             })
         }
 
@@ -38,7 +40,7 @@ export function SnapFactory(context: vscode.ExtensionContext) {
         })
 
         const selectionHandler = vscode.window.onDidChangeTextEditorSelection(
-            (e) => (hasOneSelection(e.selections) && update("text"))
+            (e) => (hasOneSelection(e.selections) && update("text", e.textEditor.document.uri.toString()))
         )
         panel.onDidDispose(() => selectionHandler.dispose())
     }
@@ -46,7 +48,7 @@ export function SnapFactory(context: vscode.ExtensionContext) {
 
 interface ActionFactoryProps {
     panel: vscode.WebviewPanel
-    update: (type: updateTypes) => Promise<void>
+    update: (type: updateTypes, editorURI?: string) => Promise<void>
 }
 
 function ActionsFactory(props: ActionFactoryProps) {
@@ -64,12 +66,12 @@ function ActionsFactory(props: ActionFactoryProps) {
 
         ready() {
             const editor = vscode.window.activeTextEditor
-            if (editor && hasOneSelection(editor.selections)) { update("both") }
+            if (editor && hasOneSelection(editor.selections)) { update("both", editor.document.uri.toString()) }
         },
 
         "update-config": () => update("config"),
 
-        "save-config"({ config }: { config: { [key: string]: any } }) {
+        "save-config"({ config }: { config: ExtensionConfig }) {
             const extensionSettings = vscode.workspace.getConfiguration("easy-codesnap")
 
             extensionSettingsNames.forEach((name) => {
@@ -140,7 +142,7 @@ const saveImage = async (data: string) => {
         defaultUri: lastUsedImageUri
     })
 
-    lastUsedImageUri = uri as vscode.Uri
+    lastUsedImageUri = uri ?? lastUsedImageUri
 
     if (uri) {
         writeFile(uri.fsPath, Buffer.from(data, "base64")).then(() => {
