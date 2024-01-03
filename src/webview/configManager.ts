@@ -19,6 +19,10 @@ class ConfigProvider {
         return !!Object.entries(this.__config).length
     }
 
+    static get keys() {
+        return Object.keys(this.__config)
+    }
+
     static get sessionConfig() {
         return this.__config
     }
@@ -43,3 +47,5 @@ export const getSessionConfig = (): WebviewConfig => {
 export const alreadyHasSessionConfig = () => {
     return ConfigProvider.hasConfig
 }
+
+export const getConfigKeys = () => ConfigProvider.keys

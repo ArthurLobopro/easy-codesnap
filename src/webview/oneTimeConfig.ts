@@ -1,6 +1,6 @@
 import { LineNumbersUpdater } from "./code"
-import { WebviewConfig, getSessionConfig, setSessionConfig } from "./configManager"
-import { LockButtonUpdater, UIUpdater } from "./ui/updaters"
+import { WebviewConfig, getConfigKeys, getSessionConfig, setSessionConfig } from "./configManager"
+import { LinkUpdater, LockButtonUpdater, UIUpdater } from "./ui/updaters"
 import { vscode } from "./util"
 
 import {
@@ -27,12 +27,23 @@ const biggerSelectWidth = `${targetSelect.getBoundingClientRect().width}px`
 shutterActionSelect.style.width = biggerSelectWidth
 roundingLevelSelect.style.width = biggerSelectWidth
 
-function handleConfigBasedChange(input: HTMLInputElement, updater = UIUpdater) {
+type BooleanProperties<T> = Pick<T, {
+    [K in keyof T]: T[K] extends boolean ? K : never
+}[keyof T]>
+
+type togglableOptions = BooleanProperties<WebviewConfig>
+
+function handleToggleBasedChange(element: HTMLInputElement, updater = UIUpdater) {
     return () => {
-        const { configname } = input.dataset
+        const { configname } = element.dataset as { configname: keyof togglableOptions }
+
+        if (!getConfigKeys().includes(configname)) {
+            console.error(`Error: Invalid config name "${configname}"`)
+            return
+        }
 
         setSessionConfig({
-            [configname as string]: input.checked
+            [configname]: !getSessionConfig()[configname]
         })
 
         updater()
@@ -40,15 +51,15 @@ function handleConfigBasedChange(input: HTMLInputElement, updater = UIUpdater) {
 }
 
 export function addListeners() {
-    showLineNumbersInput.addEventListener("change", handleConfigBasedChange(showLineNumbersInput, VarUpdater))
-    realLineNumbersInput.addEventListener("change", handleConfigBasedChange(realLineNumbersInput, LineNumbersUpdater))
+    showLineNumbersInput.addEventListener("change", handleToggleBasedChange(showLineNumbersInput, VarUpdater))
+    realLineNumbersInput.addEventListener("change", handleToggleBasedChange(realLineNumbersInput, LineNumbersUpdater))
 
-    showWindowTitleInput.addEventListener("change", handleConfigBasedChange(showWindowTitleInput, VisibilityUpdater))
-    showWindowControlsInput.addEventListener("change", handleConfigBasedChange(showWindowControlsInput, VisibilityUpdater))
+    showWindowTitleInput.addEventListener("change", handleToggleBasedChange(showWindowTitleInput, VisibilityUpdater))
+    showWindowControlsInput.addEventListener("change", handleToggleBasedChange(showWindowControlsInput, VisibilityUpdater))
 
-    roundedCornersInput.addEventListener("change", handleConfigBasedChange(roundedCornersInput, VarUpdater))
-    transparentBackgroundInput.addEventListener("change", handleConfigBasedChange(transparentBackgroundInput))
-    enableResizingInput.addEventListener("change", handleConfigBasedChange(enableResizingInput))
+    roundedCornersInput.addEventListener("change", handleToggleBasedChange(roundedCornersInput, VarUpdater))
+    enableResizingInput.addEventListener("change", handleToggleBasedChange(enableResizingInput, VarUpdater))
+    transparentBackgroundInput.addEventListener("change", handleToggleBasedChange(transparentBackgroundInput, () => { }))
 
     shutterActionSelect.addEventListener("change", () => {
         setSessionConfig({
@@ -83,13 +94,7 @@ export function addListeners() {
     })
 
     toggleLinkedButton.addEventListener("click", () => {
-        const isLinked = toggleLinkedButton.dataset.state === "linked"
-
-        toggleLinkedButton.dataset.state = !isLinked ? "linked" : "unlinked"
-        toggleLinkedButton.title = !isLinked ? "Broken Connection to editor" : "Connect to editor"
-
-        setSessionConfig({
-            isLinked: !isLinked
-        })
+        setSessionConfig({ isLinked: !getSessionConfig().isLinked })
+        LinkUpdater()
     })
 }
