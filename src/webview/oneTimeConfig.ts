@@ -1,6 +1,6 @@
 import { LineNumbersUpdater } from "./code"
 import { WebviewConfig, getConfigKeys, getSessionConfig, setSessionConfig } from "./configManager"
-import { LinkUpdater, LockButtonUpdater, UIUpdater } from "./ui/updaters"
+import { LinkButtonUpdater, LockButtonUpdater } from "./ui/updaters"
 import { vscode } from "./util"
 
 import {
@@ -33,7 +33,7 @@ type BooleanProperties<T> = Pick<T, {
 
 type togglableOptions = BooleanProperties<WebviewConfig>
 
-function handleToggleBasedChange(element: HTMLInputElement, updater = UIUpdater) {
+function handleToggleBasedChange(element: HTMLElement, updater: () => void) {
     return () => {
         const { configname } = element.dataset as { configname: keyof togglableOptions }
 
@@ -61,6 +61,9 @@ export function addListeners() {
     enableResizingInput.addEventListener("change", handleToggleBasedChange(enableResizingInput, VarUpdater))
     transparentBackgroundInput.addEventListener("change", handleToggleBasedChange(transparentBackgroundInput, () => { }))
 
+    toggleLockedButton.addEventListener("click", handleToggleBasedChange(toggleLockedButton, LockButtonUpdater))
+    toggleLinkedButton.addEventListener("click", handleToggleBasedChange(toggleLinkedButton, LinkButtonUpdater))
+
     shutterActionSelect.addEventListener("change", () => {
         setSessionConfig({
             shutterAction: shutterActionSelect.value as WebviewConfig["shutterAction"]
@@ -86,15 +89,5 @@ export function addListeners() {
 
     saveConfigButton.addEventListener("click", () => {
         vscode.postMessage({ type: "save-config", config: getSessionConfig() })
-    })
-
-    toggleLockedButton.addEventListener("click", () => {
-        setSessionConfig({ isLocked: !getSessionConfig().isLocked })
-        LockButtonUpdater()
-    })
-
-    toggleLinkedButton.addEventListener("click", () => {
-        setSessionConfig({ isLinked: !getSessionConfig().isLinked })
-        LinkUpdater()
     })
 }

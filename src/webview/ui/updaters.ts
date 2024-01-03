@@ -83,7 +83,7 @@ export function LockButtonUpdater() {
     toggleLockedButton.title = isLocked ? "Unlock changes" : "Lock changes"
 }
 
-export function LinkUpdater() {
+export function LinkButtonUpdater() {
     const { isLinked } = getSessionConfig()
 
     toggleLinkedButton.dataset.state = isLinked ? "unlinked" : "linked"
