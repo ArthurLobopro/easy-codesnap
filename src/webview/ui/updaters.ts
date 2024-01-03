@@ -1,6 +1,6 @@
 import { LineNumbersUpdater } from "../code"
 import { getSessionConfig } from "../configManager"
-import { enableResizingInput, navbarNode, realLineNumbersInput, roundedCornersInput, roundingLevelSelect, showLineNumbersInput, showWindowControlsInput, showWindowTitleInput, shutterActionSelect, targetSelect, toggleLockedButton, transparentBackgroundInput, windowControlsNode, windowTitleNode } from "../elements"
+import { enableResizingInput, navbarNode, realLineNumbersInput, roundedCornersInput, roundingLevelSelect, showLineNumbersInput, showWindowControlsInput, showWindowTitleInput, shutterActionSelect, targetSelect, toggleLinkedButton, toggleLockedButton, transparentBackgroundInput, windowControlsNode, windowTitleNode } from "../elements"
 import { setVar } from "../util"
 
 export function VarUpdater() {
@@ -81,4 +81,11 @@ export function LockButtonUpdater() {
 
     toggleLockedButton.classList.add(isLocked ? "codicon-lock" : "codicon-unlock")
     toggleLockedButton.title = isLocked ? "Unlock changes" : "Lock changes"
+}
+
+export function LinkUpdater() {
+    const { isLinked } = getSessionConfig()
+
+    toggleLinkedButton.dataset.state = isLinked ? "unlinked" : "linked"
+    toggleLinkedButton.title = isLinked ? "Connect to editor" : "Broken Connection to editor"
 }
