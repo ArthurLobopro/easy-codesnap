@@ -1,7 +1,7 @@
-import { LineNumbersUpdater } from "./code"
-import { WebviewConfig, getConfigKeys, getSessionConfig, setSessionConfig } from "./configManager"
-import { LinkButtonUpdater, LockButtonUpdater } from "./ui/updaters"
-import { vscode } from "./util"
+import { LineNumbersUpdater } from "../code"
+import { WebviewConfig, getConfigKeys, getSessionConfig, setSessionConfig } from "../configManager"
+import { vscode } from "../util"
+import { LinkButtonUpdater, LockButtonUpdater, VarUpdater, VisibilityUpdater } from "./updaters"
 
 import {
     enableResizingInput,
@@ -18,9 +18,7 @@ import {
     toggleLinkedButton,
     toggleLockedButton,
     transparentBackgroundInput
-} from "./elements"
-
-import { VarUpdater, VisibilityUpdater } from "./ui/updaters"
+} from "../elements"
 
 const biggerSelectWidth = `${targetSelect.getBoundingClientRect().width}px`
 
