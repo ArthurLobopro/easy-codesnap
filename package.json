@@ -2,7 +2,7 @@
   "name": "easy-codesnap",
   "displayName": "Easy CodeSnap",
   "description": "Take beautiful screenshots of your code 📷",
-  "version": "1.5.2",
+  "version": "1.6.0",
   "repository": {
     "type": "git",
     "url": "https://github.com/ArthurLobopro/easy-codesnap"
@@ -28,7 +28,11 @@
       },
       {
         "command": "easy-codesnap.importSettings",
-        "title": "Import CodeSnap Settings"
+        "title": "Easy CodeSnap: Import CodeSnap Settings"
+      },
+      {
+        "command": "easy-codesnap.openSettings",
+        "title": "Easy CodeSnap: Open Settings"
       }
     ],
     "menus": {
@@ -133,6 +137,18 @@
             3,
             4
           ]
+        },
+        "easy-codesnap.lockOnOpen": {
+          "scope": "resource",
+          "type": "boolean",
+          "default": false,
+          "description": "Auto Lock the snap screen on open"
+        },
+        "easy-codesnap.linkOnOpen": {
+          "scope": "resource",
+          "type": "boolean",
+          "default": false,
+          "description": "Auto link the snap screen to editor on open"
         }
       }
     }
@@ -159,11 +175,12 @@
     "glob": "^10.3.10",
     "mocha": "^10.2.0",
     "ts-loader": "^9.5.1",
-    "typescript": "^5.2.2",
+    "typescript": "^5.3.3",
     "webpack": "^5.89.0",
     "webpack-cli": "^5.1.4"
   },
   "dependencies": {
+    "@arthur-lobo/object-pick": "^1.0.0",
     "@vscode/codicons": "^0.0.35",
     "dom-to-image-even-more": "^1.0.4"
   }

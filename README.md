@@ -60,6 +60,10 @@ The Easy CodeSnap configuration is like the CodeSnap configuration:
 
 **`easy-codesnap.roundingLevel`:** Level to border rounding, only applied when `easy-codesnap.roundedCorners` is `true`
 
+**`easy-codesnap.lockOnOpen`:** If the Snap Screen needs to be locked on open
+
+**`easy-codesnap.linkOnOpen`:** If the Snap Screen needs to be linked to editor on open
+
 ## Acknowledgments
 
 Thank you very much [kufii](https://github.com/kufii/) to made the [CodeSnap extension](https://github.com/kufii/CodeSnap), the base of this project.
