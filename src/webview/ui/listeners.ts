@@ -5,6 +5,7 @@ import { LinkButtonUpdater, LockButtonUpdater, VarUpdater, VisibilityUpdater } f
 
 import {
     enableResizingInput,
+    openSettingsButton,
     realLineNumbersInput,
     resetConfigButton,
     roundedCornersInput,
@@ -87,5 +88,9 @@ export function addListeners() {
 
     saveConfigButton.addEventListener("click", () => {
         vscode.postMessage({ type: "save-config", config: getSessionConfig() })
+    })
+
+    openSettingsButton.addEventListener("click", () => {
+        vscode.postMessage({ type: "open-settings" })
     })
 }

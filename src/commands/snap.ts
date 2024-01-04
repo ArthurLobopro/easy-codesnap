@@ -8,7 +8,8 @@ import { getSettings, hasOneSelection, loadHtml, writeFile } from "../util"
 type message = (
     { type: "copied" | "update-config" | "ready" } |
     { type: "save", data: string } |
-    { type: "save-config", config: ExtensionConfig }
+    { type: "save-config", config: ExtensionConfig } |
+    { type: "open-settings" }
 )
 
 type updateTypes = "config" | "text" | "both"
@@ -85,6 +86,10 @@ function ActionsFactory(props: ActionFactoryProps) {
             })
 
             vscode.window.showInformationMessage("Settings saved as default!")
+        },
+
+        "open-settings": () => {
+            vscode.commands.executeCommand("workbench.action.openSettings", "@ext:ArthurLobo.easy-codesnap")
         }
     }
 }
