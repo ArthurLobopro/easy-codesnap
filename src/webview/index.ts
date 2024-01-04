@@ -29,9 +29,16 @@ const actions = {
         if (alreadyHasSessionConfig() && getSessionConfig().isLocked) {
             return
         }
-        setSessionConfig(config)
-        UIUpdater()
+
+        setSessionConfig(pickAllExcept(config, ["linkOnOpen", "lockOnOpen"]))
         document.execCommand("paste")
+
+        setSessionConfig({
+            isLinked: config.linkOnOpen,
+            isLocked: config.lockOnOpen
+        })
+
+        UIUpdater()
     },
 
     "update-text"(config: ConfigSentToWebview) {
@@ -51,7 +58,18 @@ const actions = {
     },
 
     "update-config"(config: ConfigSentToWebview) {
-        setSessionConfig(pickAllExcept(config, ["startLine", "windowTitle", "editorID"]))
+        setSessionConfig(
+            pickAllExcept(
+                config,
+                [
+                    "startLine",
+                    "windowTitle",
+                    "editorID",
+                    "linkOnOpen",
+                    "lockOnOpen"
+                ]
+            )
+        )
         UIUpdater()
         pasteCode()
     }

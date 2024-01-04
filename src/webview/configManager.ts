@@ -1,6 +1,6 @@
 import { ConfigSentToWebview } from "../types"
 
-export interface WebviewConfig extends ConfigSentToWebview {
+export interface WebviewConfig extends Omit<ConfigSentToWebview, "lockOnOpen" | "linkOnOpen"> {
     isLocked: boolean
     isLinked: boolean
 }
@@ -36,12 +36,7 @@ export const setSessionConfig = (config: Partial<WebviewConfig>) => {
     ConfigProvider.sessionConfig = config as WebviewConfig
 }
 
-export const getSessionConfig = (): WebviewConfig => {
-    return ConfigProvider.sessionConfig
-}
-
-export const alreadyHasSessionConfig = () => {
-    return ConfigProvider.hasConfig
-}
+export const getSessionConfig = (): WebviewConfig => ConfigProvider.sessionConfig
+export const alreadyHasSessionConfig = () => ConfigProvider.hasConfig
 
 export const getConfigKeys = () => ConfigProvider.keys

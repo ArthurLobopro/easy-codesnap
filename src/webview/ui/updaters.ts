@@ -51,6 +51,7 @@ export function UIUpdater() {
     LineNumbersUpdater()
     OneTimeConfigUpdater()
     LockButtonUpdater()
+    LinkButtonUpdater()
 
     windowTitleNode.textContent = windowTitle
 }

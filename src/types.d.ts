@@ -12,6 +12,8 @@ export interface ExtensionConfig {
     target: "container" | "window"
     shutterAction: "save" | "copy"
     roundingLevel: 1 | 2 | 3 | 4
+    lockOnOpen: boolean
+    linkOnOpen: boolean
 }
 
 export interface ConfigSentToWebview extends ExtensionConfig {
