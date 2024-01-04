@@ -133,6 +133,18 @@
             3,
             4
           ]
+        },
+        "easy-codesnap.lockOnOpen": {
+          "scope": "resource",
+          "type": "boolean",
+          "default": false,
+          "description": "Auto Lock the snap screen on open"
+        },
+        "easy-codesnap.linkOnOpen": {
+          "scope": "resource",
+          "type": "boolean",
+          "default": false,
+          "description": "Auto link the snap screen to editor on open"
         }
       }
     }
