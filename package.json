@@ -28,7 +28,11 @@
       },
       {
         "command": "easy-codesnap.importSettings",
-        "title": "Import CodeSnap Settings"
+        "title": "Easy CodeSnap: Import CodeSnap Settings"
+      },
+      {
+        "command": "easy-codesnap.openSettings",
+        "title": "Easy CodeSnap: Open Settings"
       }
     ],
     "menus": {

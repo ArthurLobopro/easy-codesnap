@@ -89,7 +89,7 @@ function ActionsFactory(props: ActionFactoryProps) {
         },
 
         "open-settings": () => {
-            vscode.commands.executeCommand("workbench.action.openSettings", "@ext:ArthurLobo.easy-codesnap")
+            vscode.commands.executeCommand("easy-codesnap.openSettings")
         }
     }
 }
