@@ -1,3 +1,9 @@
+## 1.6.0
+
+* Feat: Add open extension settings command
+* Feat: Add open extension settings button on Snap Screen
+* Feat: add the `easy-codesnap.lockOnOpen` and `easy-codesnap.linkOnOpen` settings
+
 ## 1.5.2
 
 * Feat: add link to editor
