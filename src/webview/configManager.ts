@@ -1,15 +1,8 @@
-import { ExtensionConfig } from "../types"
+import { ConfigSentToWebview } from "../types"
 
-export interface WebviewConfig extends ExtensionConfig {
-    startLine: number
-    windowTitle: string
-    tabSize: number
-    fontLigatures: boolean
-
+export interface WebviewConfig extends ConfigSentToWebview {
     isLocked: boolean
-
     isLinked: boolean
-    editorID: string
 }
 
 class ConfigProvider {

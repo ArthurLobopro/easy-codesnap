@@ -1,3 +1,5 @@
+import { pick, pickAllExcept } from "@arthur-lobo/object-pick"
+import { ConfigSentToWebview } from "../types"
 import { pasteCode } from "./code"
 import { alreadyHasSessionConfig, getSessionConfig, setSessionConfig } from "./configManager"
 import { contentManager } from "./contentManager"
@@ -5,7 +7,7 @@ import { btnSave } from "./elements"
 import { cameraFlashAnimation, takeSnap } from "./snap"
 import { addListeners } from "./ui/listeners"
 import { UIUpdater } from "./ui/updaters"
-import { untypedObject, vscode } from "./util"
+import { vscode } from "./util"
 
 btnSave.addEventListener("click", () => takeSnap())
 
@@ -23,7 +25,7 @@ document.addEventListener("paste", (e) => {
 const actions = {
     flash: cameraFlashAnimation,
 
-    update(config: untypedObject) {
+    update(config: ConfigSentToWebview) {
         if (alreadyHasSessionConfig() && getSessionConfig().isLocked) {
             return
         }
@@ -32,7 +34,7 @@ const actions = {
         document.execCommand("paste")
     },
 
-    "update-text"(config: untypedObject) {
+    "update-text"(config: ConfigSentToWebview) {
         if (!alreadyHasSessionConfig()) {
             setSessionConfig(config)
         } else {
@@ -42,18 +44,14 @@ const actions = {
                 return
             }
 
-            const { startLine, windowTitle, editorID: newEditorID } = config
-            setSessionConfig({ startLine, windowTitle, editorID: newEditorID })
+            setSessionConfig(pick(config, ["windowTitle", "startLine", "editorID"]))
         }
         UIUpdater()
         document.execCommand("paste")
     },
 
-    "update-config"(config: untypedObject) {
-        delete config.startLine
-        delete config.windowTitle
-
-        setSessionConfig(config)
+    "update-config"(config: ConfigSentToWebview) {
+        setSessionConfig(pickAllExcept(config, ["startLine", "windowTitle", "editorID"]))
         UIUpdater()
         pasteCode()
     }
