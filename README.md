@@ -1,6 +1,6 @@
 # Easy CodeSnap
 
-This project is fully based on [CodeSnap](https://github.com/kufii/CodeSnap) extension.
+![Banner](https://raw.githubusercontent.com/ArthurLobopro/easy-codesnap/main/screenshots/banner.png)
 
 ## Features
 
@@ -23,7 +23,7 @@ This project is fully based on [CodeSnap](https://github.com/kufii/CodeSnap) ext
 
 - Make the final adjustments and take your code snapshot.
 
-![](https://raw.githubusercontent.com/ArthurLobopro/easy-codesnap/master/screenshots/one-time-config.gif)
+![](https://raw.githubusercontent.com/ArthurLobopro/easy-codesnap/main/screenshots/one-time-config.gif)
 
 ## Commands
 
