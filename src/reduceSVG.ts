@@ -13,9 +13,18 @@ const svgoConfig: { plugins: PluginConfig[] } = {
                         unknownAttrs: true,
                         keepAriaAttrs: false,
                         keepDataAttrs: false
-                    }
+                    },
+
                 }
             }
+        },
+        {
+            name: "removeAttrs",
+            params: {
+                attrs: [
+                    "textLength",
+                ],
+            },
         }
     ]
 }
@@ -23,6 +32,7 @@ const svgoConfig: { plugins: PluginConfig[] } = {
 export function reduceSVG(svgContent: string) {
     return optimize(svgContent, {
         floatPrecision: 8,
-        plugins: svgoConfig.plugins
+        plugins: svgoConfig.plugins,
+        multipass: true
     }).data
 }
