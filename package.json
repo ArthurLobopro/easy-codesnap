@@ -180,8 +180,10 @@
     "webpack-cli": "^5.1.4"
   },
   "dependencies": {
+    "@arthur-lobo/dom-to-image": "/home/arthur/Documentos/GitHub/dom-to-image/",
     "@arthur-lobo/object-pick": "^1.0.0",
     "@vscode/codicons": "^0.0.35",
-    "dom-to-image-even-more": "^1.0.4"
+    "dom-to-image": "^2.6.0",
+    "dom-to-svg": "^0.12.2"
   }
 }
