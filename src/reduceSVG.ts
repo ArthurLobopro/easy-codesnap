@@ -23,6 +23,7 @@ const svgoConfig: { plugins: PluginConfig[] } = {
             params: {
                 attrs: [
                     "textLength",
+                    "text-decoration"
                 ],
             },
         }
