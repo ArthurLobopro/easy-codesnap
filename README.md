@@ -56,6 +56,8 @@ The Easy CodeSnap configuration is like the CodeSnap configuration:
 
 **`easy-codesnap.shutterAction`:** Either `save` to save the screenshot into a file, or `copy` to copy the screenshot into the clipboard.
 
+**`easy-codesnap.saveFormat`:** Format to save the code snap.
+
 **`easy-codesnap.enableResizing`:** Boolean value to enable resizing the snap container
 
 **`easy-codesnap.roundingLevel`:** Level to border rounding, only applied when `easy-codesnap.roundedCorners` is `true`

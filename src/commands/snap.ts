@@ -2,14 +2,16 @@ import { homedir } from "os"
 import path from "path"
 import * as vscode from "vscode"
 import { extensionSettingsNames } from "../constants"
+import { reduceSVG } from "../reduceSVG"
 import { ExtensionConfig } from "../types"
 import { getSettings, hasOneSelection, loadHtml, writeFile } from "../util"
 
 type message = (
     { type: "copied" | "update-config" | "ready" } |
-    { type: "save", data: string } |
+    { type: "save", data: string, format: "svg" | "png" } |
     { type: "save-config", config: ExtensionConfig } |
-    { type: "open-settings" }
+    { type: "open-settings" } |
+    { type: "copy-svg", data: string }
 )
 
 type updateTypes = "config" | "text" | "both"
@@ -58,9 +60,16 @@ function ActionsFactory(props: ActionFactoryProps) {
     const flash = () => panel.webview.postMessage({ type: "flash" })
 
     return {
-        async save({ data }: { data: string }) {
+        async save({ data, format }: { data: string, format: "svg" | "png" }) {
             flash()
-            await saveImage(data)
+            switch (format) {
+                case "svg":
+                    await saveSVG(data)
+                    break
+                case "png":
+                    await savePNG(data)
+                    break
+            }
         },
 
         copied: () => vscode.window.showInformationMessage("Image copied to clipboard!"),
@@ -90,6 +99,10 @@ function ActionsFactory(props: ActionFactoryProps) {
 
         "open-settings": () => {
             vscode.commands.executeCommand("easy-codesnap.openSettings")
+        },
+
+        "copy-svg": ({ data }: { data: string }) => {
+            vscode.env.clipboard.writeText(reduceSVG(data))
         }
     }
 }
@@ -140,18 +153,38 @@ const createPanel = async (context: vscode.ExtensionContext) => {
     return panel
 }
 
-let lastUsedImageUri = vscode.Uri.file(path.resolve(homedir(), "Desktop/code.png"))
-const saveImage = async (data: string) => {
+const makeUri = vscode.Uri.parse
+const uriPath = (uri: vscode.Uri) => uri.fsPath
+
+let lastUsedImageUri = makeUri(path.resolve(homedir(), "Desktop"))
+const savePNG = async (data: string) => {
     const uri = await vscode.window.showSaveDialog({
         filters: { Images: ["png"] },
-        defaultUri: lastUsedImageUri
+        defaultUri: makeUri(path.resolve(uriPath(lastUsedImageUri), "code.png"))
     })
 
-    lastUsedImageUri = uri ?? lastUsedImageUri
+    lastUsedImageUri = uri ?? makeUri(uriPath(lastUsedImageUri).replace(path.dirname(uriPath(lastUsedImageUri)), ""))
 
     if (uri) {
         writeFile(uri.fsPath, Buffer.from(data, "base64")).then(() => {
             vscode.window.showInformationMessage(`Image saved on: ${uri.fsPath}`)
         })
+    }
+}
+
+
+
+const saveSVG = async (data: string) => {
+    const uri = await vscode.window.showSaveDialog({
+        filters: { Images: ["svg"] },
+        defaultUri: makeUri(path.resolve(uriPath(lastUsedImageUri), "code.svg"))
+    })
+
+    lastUsedImageUri = uri ?? makeUri(uriPath(lastUsedImageUri).replace(path.dirname(uriPath(lastUsedImageUri)), ""))
+
+    const reducedData = reduceSVG(data)
+
+    if (uri) {
+        writeFile(uri.fsPath, reducedData, "utf-8")
     }
 }
