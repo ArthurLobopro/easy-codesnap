@@ -11,6 +11,7 @@ import {
     roundedCornersInput,
     roundingLevelSelect,
     saveConfigButton,
+    saveFormatSelect,
     showLineNumbersInput,
     showWindowControlsInput,
     showWindowTitleInput,
@@ -25,6 +26,7 @@ const biggerSelectWidth = `${targetSelect.getBoundingClientRect().width}px`
 
 shutterActionSelect.style.width = biggerSelectWidth
 roundingLevelSelect.style.width = biggerSelectWidth
+saveFormatSelect.style.width = biggerSelectWidth
 
 type BooleanProperties<T> = Pick<T, {
     [K in keyof T]: T[K] extends boolean ? K : never
@@ -72,6 +74,12 @@ export function addListeners() {
     targetSelect.addEventListener("change", () => {
         setSessionConfig({
             target: targetSelect.value as WebviewConfig["target"]
+        })
+    })
+
+    saveFormatSelect.addEventListener("change", () => {
+        setSessionConfig({
+            saveFormat: saveFormatSelect.value as WebviewConfig["saveFormat"]
         })
     })
 
