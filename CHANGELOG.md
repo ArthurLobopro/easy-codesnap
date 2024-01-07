@@ -1,3 +1,7 @@
+## 1.7.0
+
+* Feat: Add save as svg.
+
 ## 1.6.0
 
 * Feat: Add open extension settings command
