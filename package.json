@@ -149,6 +149,16 @@
           "type": "boolean",
           "default": false,
           "description": "Auto link the snap screen to editor on open"
+        },
+        "easy-codesnap.saveFormat": {
+          "scope": "resource",
+          "type": "string",
+          "default": "png",
+          "description": "Save format",
+          "enum": [
+            "png",
+            "svg"
+          ]
         }
       }
     }
@@ -180,10 +190,10 @@
     "webpack-cli": "^5.1.4"
   },
   "dependencies": {
-    "@arthur-lobo/dom-to-image": "/home/arthur/Documentos/GitHub/dom-to-image/",
     "@arthur-lobo/object-pick": "^1.0.0",
     "@vscode/codicons": "^0.0.35",
     "dom-to-image": "^2.6.0",
-    "dom-to-svg": "^0.12.2"
+    "dom-to-svg": "^0.12.2",
+    "svgo": "^3.2.0"
   }
 }

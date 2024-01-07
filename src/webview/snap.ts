@@ -1,7 +1,11 @@
-import { toPNG, toSVG } from "@arthur-lobo/dom-to-image"
+//@ts-expect-error
+import domtoimage from "dom-to-image"
+//@ts-expect-error
+import { elementToSVG } from "dom-to-svg"
+
 import { WebviewConfig, getSessionConfig } from "./configManager"
 import { flashFx, snippetContainerNode, windowNode } from "./elements"
-import { once, redraw, setVar, vscode } from "./util"
+import { $$, once, redraw, setVar, vscode } from "./util"
 
 const SNAP_SCALE = 2
 
@@ -16,7 +20,19 @@ export const cameraFlashAnimation = async () => {
 }
 
 async function exportPNG(target: HTMLElement, action: WebviewConfig["shutterAction"]) {
-    const url = await toPNG(target)
+    const url = await domtoimage.toPng(target, {
+        bgColor: "transparent",
+        scale: SNAP_SCALE,
+        postProcess: (node: HTMLElement) => {
+            $$("#snippet-container, #snippet, .line, .line-code span", node)
+                .forEach(
+                    (span: HTMLElement) => (span.style.width = "unset")
+                )
+
+            $$(".line-code", node)
+                .forEach((span) => (span.style.width = "100%"))
+        }
+    })
 
     const data = url.slice(url.indexOf(",") + 1)
 
@@ -34,10 +50,10 @@ async function exportPNG(target: HTMLElement, action: WebviewConfig["shutterActi
 }
 
 async function exportSVG(target: HTMLElement, action: WebviewConfig["shutterAction"]) {
-    const svg = toSVG(target)
+    const svg = new XMLSerializer().serializeToString(elementToSVG(target)).replace(/<style>.*?<\/style>/gs, "")
 
     if (action === "copy") {
-        navigator.clipboard.writeText(svg)
+        vscode.postMessage({ type: "copy-svg", data: svg })
         cameraFlashAnimation()
         vscode.postMessage({ type: "copied" })
     } else {
@@ -54,9 +70,13 @@ export async function takeSnap(config = getSessionConfig()) {
 
     const target = config.target === "container" ? snippetContainerNode : windowNode
 
-    // await exportPNG(target, config.shutterAction)
-    await exportSVG(target, config.shutterAction)
-    // console.log(await toPNG(target))
+    if (config.saveFormat === "png") {
+        await exportPNG(target, config.shutterAction)
+    }
+
+    if (config.saveFormat === "svg") {
+        await exportSVG(target, config.shutterAction)
+    }
 
     windowNode.style.resize = ""
     setVar("container-background-color", config.backgroundColor)

@@ -14,6 +14,7 @@ export interface ExtensionConfig {
     roundingLevel: 1 | 2 | 3 | 4
     lockOnOpen: boolean
     linkOnOpen: boolean
+    saveFormat: "png" | "svg"
 }
 
 export interface ConfigSentToWebview extends ExtensionConfig {
