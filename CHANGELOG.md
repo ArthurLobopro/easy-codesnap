@@ -1,3 +1,9 @@
+## 1.7.1
+
+* Fix: format select doesn't update.
+* Fix: Incorrect svg text rendering
+* Feat: smaller svgs
+
 ## 1.7.0
 
 * Feat: Add save as svg.
