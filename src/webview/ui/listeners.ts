@@ -1,7 +1,6 @@
-import LineNumbersUpdater from "../code"
 import { WebviewConfig, getConfigKeys, getSessionConfig, setSessionConfig } from "../configManager"
 import { vscode } from "../util"
-import { LinkButtonUpdater, LockButtonUpdater, VarUpdater, VisibilityUpdater } from "./updaters"
+import { LineNumbersUpdater, LinkButtonUpdater, LockButtonUpdater, VarUpdater, VisibilityUpdater } from "./updaters"
 
 import {
     enableResizingInput,
