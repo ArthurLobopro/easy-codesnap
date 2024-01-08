@@ -1,7 +1,6 @@
-import LineNumbersUpdater from "../code"
 import { getSessionConfig } from "../configManager"
 import { enableResizingInput, navbarNode, realLineNumbersInput, roundedCornersInput, roundingLevelSelect, saveFormatSelect, showLineNumbersInput, showWindowControlsInput, showWindowTitleInput, shutterActionSelect, targetSelect, toggleLinkedButton, toggleLockedButton, transparentBackgroundInput, windowControlsNode, windowTitleNode } from "../elements"
-import { setVar } from "../util"
+import { $$, calcTextWidth, setVar } from "../util"
 
 export function VarUpdater() {
     const {
@@ -91,4 +90,18 @@ export function LinkButtonUpdater() {
 
     toggleLinkedButton.dataset.state = isLinked ? "linked" : "unlinked"
     toggleLinkedButton.title = isLinked ? "Broken Connection to editor" : "Connect to editor"
+}
+
+function LineNumbersUpdater() {
+    const { realLineNumbers } = getSessionConfig()
+
+    const lineNumbers = $$(".line-number")
+
+    lineNumbers.forEach(line => {
+        line.textContent = (
+            realLineNumbers ? line.dataset.reallinenumber : line.dataset.linenumber
+        ) as string
+    })
+
+    lineNumbers.length && setVar("line-number-width", calcTextWidth(String(lineNumbers.at(-1)?.textContent)))
 }
