@@ -1,7 +1,7 @@
 import * as vscode from "vscode"
 import { hasOneSelection } from "./util"
 
-export const createStatusbarButton = () => {
+export function createStatusbarButton() {
     const button = vscode.window.createStatusBarItem(vscode.StatusBarAlignment.Right, 150)
     button.text = "$(device-camera)"
     button.tooltip = "Snap code"

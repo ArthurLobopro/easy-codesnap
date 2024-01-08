@@ -1,4 +1,4 @@
-import { LineNumbersUpdater } from "../code"
+import LineNumbersUpdater from "../code"
 import { getSessionConfig } from "../configManager"
 import { enableResizingInput, navbarNode, realLineNumbersInput, roundedCornersInput, roundingLevelSelect, saveFormatSelect, showLineNumbersInput, showWindowControlsInput, showWindowTitleInput, shutterActionSelect, targetSelect, toggleLinkedButton, toggleLockedButton, transparentBackgroundInput, windowControlsNode, windowTitleNode } from "../elements"
 import { setVar } from "../util"
