@@ -107,7 +107,7 @@ function ActionsFactory(props: ActionFactoryProps) {
     }
 }
 
-const getConfig = () => {
+function getConfig() {
     const editorSettings = getSettings("editor", ["fontLigatures", "tabSize"])
 
     const editor = vscode.window.activeTextEditor
@@ -132,7 +132,7 @@ const getConfig = () => {
     }
 }
 
-const createPanel = async (context: vscode.ExtensionContext) => {
+async function createPanel(context: vscode.ExtensionContext) {
     const panel = vscode.window.createWebviewPanel(
         "easy-codesnap",
         "Easy CodeSnap 📸",
@@ -157,7 +157,8 @@ const makeUri = vscode.Uri.parse
 const uriPath = (uri: vscode.Uri) => uri.fsPath
 
 let lastUsedImageUri = makeUri(path.resolve(homedir(), "Desktop"))
-const savePNG = async (data: string) => {
+
+async function savePNG(data: string) {
     const uri = await vscode.window.showSaveDialog({
         filters: { Images: ["png"] },
         defaultUri: makeUri(path.resolve(uriPath(lastUsedImageUri), "code.png"))
@@ -172,9 +173,7 @@ const savePNG = async (data: string) => {
     }
 }
 
-
-
-const saveSVG = async (data: string) => {
+async function saveSVG(data: string) {
     const uri = await vscode.window.showSaveDialog({
         filters: { Images: ["svg"] },
         defaultUri: makeUri(path.resolve(uriPath(lastUsedImageUri), "code.svg"))

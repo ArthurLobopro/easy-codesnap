@@ -9,7 +9,7 @@ import { $$, once, redraw, setVar, vscode } from "./util"
 
 const SNAP_SCALE = 2
 
-export const cameraFlashAnimation = async () => {
+export async function cameraFlashAnimation() {
     flashFx.style.display = "block"
     redraw(flashFx)
     flashFx.style.opacity = "0"
@@ -17,6 +17,27 @@ export const cameraFlashAnimation = async () => {
     await once(flashFx, "transitionend")
     flashFx.style.display = "none"
     flashFx.style.opacity = "1"
+}
+
+export async function takeSnap(config = getSessionConfig()) {
+    windowNode.style.resize = "none"
+
+    if (config.transparentBackground || config.target === "window") {
+        setVar("container-background-color", "transparent")
+    }
+
+    const target = config.target === "container" ? snippetContainerNode : windowNode
+
+    if (config.saveFormat === "png") {
+        await exportPNG(target, config.shutterAction)
+    }
+
+    if (config.saveFormat === "svg") {
+        await exportSVG(target, config.shutterAction)
+    }
+
+    windowNode.style.resize = ""
+    setVar("container-background-color", config.backgroundColor)
 }
 
 async function exportPNG(target: HTMLElement, action: WebviewConfig["shutterAction"]) {
@@ -59,25 +80,4 @@ async function exportSVG(target: HTMLElement, action: WebviewConfig["shutterActi
     } else {
         vscode.postMessage({ type: action, data: svg, format: "svg" })
     }
-}
-
-export async function takeSnap(config = getSessionConfig()) {
-    windowNode.style.resize = "none"
-
-    if (config.transparentBackground || config.target === "window") {
-        setVar("container-background-color", "transparent")
-    }
-
-    const target = config.target === "container" ? snippetContainerNode : windowNode
-
-    if (config.saveFormat === "png") {
-        await exportPNG(target, config.shutterAction)
-    }
-
-    if (config.saveFormat === "svg") {
-        await exportSVG(target, config.shutterAction)
-    }
-
-    windowNode.style.resize = ""
-    setVar("container-background-color", config.backgroundColor)
 }

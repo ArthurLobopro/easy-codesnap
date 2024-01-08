@@ -1,7 +1,6 @@
-import { LineNumbersUpdater } from "../code"
 import { getSessionConfig } from "../configManager"
-import { enableResizingInput, navbarNode, realLineNumbersInput, roundedCornersInput, roundingLevelSelect, showLineNumbersInput, showWindowControlsInput, showWindowTitleInput, shutterActionSelect, targetSelect, toggleLinkedButton, toggleLockedButton, transparentBackgroundInput, windowControlsNode, windowTitleNode } from "../elements"
-import { setVar } from "../util"
+import { enableResizingInput, navbarNode, realLineNumbersInput, roundedCornersInput, roundingLevelSelect, saveFormatSelect, showLineNumbersInput, showWindowControlsInput, showWindowTitleInput, shutterActionSelect, targetSelect, toggleLinkedButton, toggleLockedButton, transparentBackgroundInput, windowControlsNode, windowTitleNode } from "../elements"
+import { $$, calcTextWidth, setVar } from "../util"
 
 export function VarUpdater() {
     const {
@@ -58,7 +57,8 @@ export function UIUpdater() {
 
 export function OneTimeConfigUpdater() {
     const {
-        showLineNumbers, realLineNumbers, showWindowControls, roundedCorners, transparentBackground, showWindowTitle, shutterAction, target, enableResizing, roundingLevel
+        showLineNumbers, realLineNumbers, showWindowControls, roundedCorners, transparentBackground, showWindowTitle, shutterAction, target, enableResizing, roundingLevel,
+        saveFormat
     } = getSessionConfig()
 
     showWindowTitleInput.checked = showWindowTitle
@@ -72,6 +72,7 @@ export function OneTimeConfigUpdater() {
     shutterActionSelect.value = shutterAction
     targetSelect.value = target
     roundingLevelSelect.value = roundingLevel + ""
+    saveFormatSelect.value = saveFormat
 }
 
 export function LockButtonUpdater() {
@@ -89,4 +90,18 @@ export function LinkButtonUpdater() {
 
     toggleLinkedButton.dataset.state = isLinked ? "linked" : "unlinked"
     toggleLinkedButton.title = isLinked ? "Broken Connection to editor" : "Connect to editor"
+}
+
+function LineNumbersUpdater() {
+    const { realLineNumbers } = getSessionConfig()
+
+    const lineNumbers = $$(".line-number")
+
+    lineNumbers.forEach(line => {
+        line.textContent = (
+            realLineNumbers ? line.dataset.reallinenumber : line.dataset.linenumber
+        ) as string
+    })
+
+    lineNumbers.length && setVar("line-number-width", calcTextWidth(String(lineNumbers.at(-1)?.textContent)))
 }

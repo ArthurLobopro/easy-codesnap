@@ -5,7 +5,7 @@ import { $, $$, calcTextWidth, setVar } from "./util"
 
 const snippetNode = $("#snippet") as HTMLDivElement
 
-const setupLines = (node: Element) => {
+function setupLines(node: Element) {
     const config = getSessionConfig()
 
     $$(":scope > br", node).forEach((row) => (row.outerHTML = "<div>&nbsp;</div>"))
@@ -43,21 +43,7 @@ const setupLines = (node: Element) => {
     })
 }
 
-export const LineNumbersUpdater = () => {
-    const { realLineNumbers } = getSessionConfig()
-
-    const lineNumbers = $$(".line-number")
-
-    lineNumbers.forEach(line => {
-        line.textContent = (
-            realLineNumbers ? line.dataset.reallinenumber : line.dataset.linenumber
-        ) as string
-    })
-
-    lineNumbers.length && setVar("line-number-width", calcTextWidth(String(lineNumbers.at(-1)?.textContent)))
-}
-
-const stripInitialIndent = (node: Element) => {
+function stripInitialIndent(node: Element) {
     const regIndent = /^\s+/u
     const initialSpans = $$(":scope > div > span:first-child", node) as HTMLSpanElement[]
     if (initialSpans.some((span) => !regIndent.test(span.textContent as string))) { return }
@@ -73,7 +59,7 @@ const stripInitialIndent = (node: Element) => {
     })
 }
 
-export const pasteCode = () => {
+export function pasteCode() {
     snippetNode.innerHTML = contentManager.current
     const code = $("div", snippetNode) as HTMLDivElement
     snippetNode.style.fontSize = code.style.fontSize
