@@ -18,11 +18,13 @@ export const roundedCornersInput = $<HTMLInputElement>("input[data-configname='r
 export const transparentBackgroundInput = $<HTMLInputElement>("input[data-configname='transparentBackground']")
 export const enableResizingInput = $<HTMLInputElement>("input[data-configname='enableResizing']")
 
+//Selects
 export const shutterActionSelect = $<HTMLSelectElement>("select[data-configname='shutterAction']")
 export const saveFormatSelect = $<HTMLSelectElement>("select[data-configname='saveFormat']")
 export const targetSelect = $<HTMLSelectElement>("select[data-configname='target']")
 export const roundingLevelSelect = $<HTMLSelectElement>("select[data-configname='roundingLevel']")
 
+//Buttons
 export const openSettingsButton = $<HTMLLIElement>("[data-action='open-settings']")
 export const resetConfigButton = $<HTMLLIElement>("[data-action='reset-config']")
 export const saveConfigButton = $<HTMLLIElement>("[data-action='save-config']")
