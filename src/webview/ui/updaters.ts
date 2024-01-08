@@ -92,7 +92,7 @@ export function LinkButtonUpdater() {
     toggleLinkedButton.title = isLinked ? "Broken Connection to editor" : "Connect to editor"
 }
 
-function LineNumbersUpdater() {
+export function LineNumbersUpdater() {
     const { realLineNumbers } = getSessionConfig()
 
     const lineNumbers = $$(".line-number")
