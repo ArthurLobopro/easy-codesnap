@@ -1,3 +1,7 @@
+## 1.7.2
+
+* Reduce bundle size
+
 ## 1.7.1
 
 * Fix: format select doesn't update.
