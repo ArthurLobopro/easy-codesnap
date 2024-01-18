@@ -1,3 +1,7 @@
+## 1.8.1
+
+Fix: Align correctly control buttons when using windows style without window title.
+
 ## 1.8.0
 
 Feat: Add `windowStyle` option.
