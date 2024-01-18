@@ -23,6 +23,7 @@ export const shutterActionSelect = $<HTMLSelectElement>("select[data-configname=
 export const saveFormatSelect = $<HTMLSelectElement>("select[data-configname='saveFormat']")
 export const targetSelect = $<HTMLSelectElement>("select[data-configname='target']")
 export const roundingLevelSelect = $<HTMLSelectElement>("select[data-configname='roundingLevel']")
+export const windowStyleSelect = $<HTMLSelectElement>("select[data-configname='windowStyle']")
 
 //Buttons
 export const openSettingsButton = $<HTMLLIElement>("[data-action='open-settings']")

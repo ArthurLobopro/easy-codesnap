@@ -20,5 +20,6 @@ export const extensionSettingsNames = [
     "roundingLevel",
     "lockOnOpen",
     "linkOnOpen",
-    "saveFormat"
+    "saveFormat",
+    "windowStyle"
 ] as ConfigKey[]

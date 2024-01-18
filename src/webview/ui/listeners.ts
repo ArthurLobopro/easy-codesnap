@@ -1,6 +1,6 @@
 import { WebviewConfig, getConfigKeys, getSessionConfig, setSessionConfig } from "../configManager"
 import { vscode } from "../util"
-import { LineNumbersUpdater, LinkButtonUpdater, LockButtonUpdater, VarUpdater, VisibilityUpdater } from "./updaters"
+import { LineNumbersUpdater, LinkButtonUpdater, LockButtonUpdater, UIUpdater, VarUpdater, VisibilityUpdater } from "./updaters"
 
 import {
     enableResizingInput,
@@ -18,11 +18,13 @@ import {
     targetSelect,
     toggleLinkedButton,
     toggleLockedButton,
-    transparentBackgroundInput
+    transparentBackgroundInput,
+    windowStyleSelect
 } from "../elements"
 
-const biggerSelectWidth = `${targetSelect.getBoundingClientRect().width}px`
+const biggerSelectWidth = `${windowStyleSelect.getBoundingClientRect().width}px`
 
+targetSelect.style.width = biggerSelectWidth
 shutterActionSelect.style.width = biggerSelectWidth
 roundingLevelSelect.style.width = biggerSelectWidth
 saveFormatSelect.style.width = biggerSelectWidth
@@ -87,6 +89,13 @@ export function addListeners() {
             roundingLevel: Number(roundingLevelSelect.value) as WebviewConfig["roundingLevel"]
         })
         VarUpdater()
+    })
+
+    windowStyleSelect.addEventListener("change", () => {
+        setSessionConfig({
+            windowStyle: windowStyleSelect.value as WebviewConfig["windowStyle"]
+        })
+        UIUpdater()
     })
 
     resetConfigButton.addEventListener("click", () => {

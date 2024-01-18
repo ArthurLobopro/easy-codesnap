@@ -159,6 +159,16 @@
             "png",
             "svg"
           ]
+        },
+        "easy-codesnap.windowStyle": {
+          "scope": "resource",
+          "type": "string",
+          "default": "macos",
+          "description": "Window Style",
+          "enum": [
+            "macos",
+            "windows"
+          ]
         }
       }
     }

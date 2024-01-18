@@ -15,6 +15,7 @@ export interface ExtensionConfig {
     lockOnOpen: boolean
     linkOnOpen: boolean
     saveFormat: "png" | "svg"
+    windowStyle: "macos" | "windows"
 }
 
 export interface ConfigSentToWebview extends ExtensionConfig {
