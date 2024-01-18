@@ -5,11 +5,11 @@
     display: flex;
 }
 
-#window[data-style="macos"]{
+#window[data-style="macos"] #navbar{
     justify-content: left;
 }
 
-#window[data-style="windows"]{
+#window[data-style="windows"] #navbar{
     justify-content: right;
 }
 
