@@ -1,5 +1,5 @@
 import { getSessionConfig } from "../configManager"
-import { enableResizingInput, navbarNode, realLineNumbersInput, roundedCornersInput, roundingLevelSelect, saveFormatSelect, showLineNumbersInput, showWindowControlsInput, showWindowTitleInput, shutterActionSelect, targetSelect, toggleLinkedButton, toggleLockedButton, transparentBackgroundInput, windowControlsNode, windowTitleNode } from "../elements"
+import { enableResizingInput, navbarNode, realLineNumbersInput, roundedCornersInput, roundingLevelSelect, saveFormatSelect, showLineNumbersInput, showWindowControlsInput, showWindowTitleInput, shutterActionSelect, targetSelect, toggleLinkedButton, toggleLockedButton, transparentBackgroundInput, windowControlsNode, windowNode, windowStyleSelect, windowTitleNode } from "../elements"
 import { $$, calcTextWidth, setVar } from "../util"
 
 export function VarUpdater() {
@@ -43,6 +43,7 @@ export function VisibilityUpdater() {
 export function UIUpdater() {
     const {
         windowTitle,
+        windowStyle
     } = getSessionConfig()
 
     VarUpdater()
@@ -53,12 +54,13 @@ export function UIUpdater() {
     LinkButtonUpdater()
 
     windowTitleNode.textContent = windowTitle
+    windowNode.dataset.style = windowStyle
 }
 
 export function OneTimeConfigUpdater() {
     const {
         showLineNumbers, realLineNumbers, showWindowControls, roundedCorners, transparentBackground, showWindowTitle, shutterAction, target, enableResizing, roundingLevel,
-        saveFormat
+        saveFormat, windowStyle
     } = getSessionConfig()
 
     showWindowTitleInput.checked = showWindowTitle
@@ -73,6 +75,7 @@ export function OneTimeConfigUpdater() {
     targetSelect.value = target
     roundingLevelSelect.value = roundingLevel + ""
     saveFormatSelect.value = saveFormat
+    windowStyleSelect.value = windowStyle
 }
 
 export function LockButtonUpdater() {

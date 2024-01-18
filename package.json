@@ -2,7 +2,7 @@
   "name": "easy-codesnap",
   "displayName": "Easy CodeSnap",
   "description": "Take beautiful screenshots of your code 📷",
-  "version": "1.7.2",
+  "version": "1.8.0",
   "repository": {
     "type": "git",
     "url": "https://github.com/ArthurLobopro/easy-codesnap"
@@ -158,6 +158,16 @@
           "enum": [
             "png",
             "svg"
+          ]
+        },
+        "easy-codesnap.windowStyle": {
+          "scope": "resource",
+          "type": "string",
+          "default": "macos",
+          "description": "Window Style",
+          "enum": [
+            "macos",
+            "windows"
           ]
         }
       }

@@ -1,0 +1,80 @@
+#navbar {
+    /* overflow: hidden;
+    text-align: center; */
+    margin-bottom: 15px;
+    display: flex;
+}
+
+#window[data-style="macos"]{
+    justify-content: left;
+}
+
+#window[data-style="windows"]{
+    justify-content: right;
+}
+
+#window-title {
+    width: 100%;
+}
+
+#window[data-style="macos"] #window-title {
+    /* width of window controls (and a bit) so they don't overlap */
+    margin: 0 80px;
+}
+
+#window-controls {
+    display: flex;
+    margin-top: 2px;
+}
+
+#window[data-style="macos"] #window-controls {
+    /* float: left; */
+    justify-self: left;
+}
+
+#window[data-style="windows"] #window-controls {
+    gap: 16px;
+    float: right;
+    justify-self: right;
+    order: 3;
+}
+
+#window-controls[hidden] {
+    display: none;
+}
+
+.dot {
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.red {
+    background-color: #ff5f5a;
+}
+
+.yellow {
+    background-color: #ffbe2e;
+}
+
+.green {
+    background-color: #2aca44;
+}
+
+#window-controls .button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 14px;
+    height: 14px;
+}
+
+#window[data-style="macos"] #window-controls *.button {
+    display: none;
+}
+
+#window[data-style="windows"] #window-controls *.dot {
+    display: none;
+}
