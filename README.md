@@ -54,6 +54,8 @@ The Easy CodeSnap configuration is like the CodeSnap configuration:
 
 **`easy-codesnap.target`:** Either `container` to take the screenshot with the container, or `window` to only take the window.
 
+**`easy-codesnap.windowStyle`:** Changes if the window should like `macos` or `windows`.
+
 **`easy-codesnap.shutterAction`:** Either `save` to save the screenshot into a file, or `copy` to copy the screenshot into the clipboard.
 
 **`easy-codesnap.saveFormat`:** Format to save the code snap.

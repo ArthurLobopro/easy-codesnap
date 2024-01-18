@@ -1,3 +1,7 @@
+## 1.8.0
+
+Feat: Add `windowStyle` option.
+
 ## 1.7.2
 
 * Reduce bundle size
