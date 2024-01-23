@@ -5,8 +5,7 @@ import { alreadyHasSessionConfig, getSessionConfig, setSessionConfig } from "./c
 import { btnSave } from "./elements"
 import { cameraFlashAnimation, takeSnap } from "./snap"
 import { addListeners } from "./ui/listeners"
-import { UIUpdater } from "./ui/updaters"
-import { UpdateCode } from "./ui/updaters/UpdateCode"
+import { UIUpdater, UpdateCode } from "./ui/updaters"
 import { vscode } from "./util"
 
 btnSave.addEventListener("click", () => takeSnap())

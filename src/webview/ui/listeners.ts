@@ -1,6 +1,11 @@
-import { WebviewConfig, getSessionConfig, setSessionConfig } from "../configManager"
-import { vscode } from "../util"
-import { LineNumbersUpdater, LinkButtonUpdater, LockButtonUpdater, UIUpdater, VarUpdater, VisibilityUpdater } from "./updaters"
+import {
+    LineNumbersUpdater,
+    LinkButtonUpdater,
+    LockButtonUpdater,
+    UIUpdater,
+    VarUpdater,
+    VisibilityUpdater
+} from "./updaters"
 
 import {
     enableResizingInput,
@@ -21,6 +26,9 @@ import {
     transparentBackgroundInput,
     windowStyleSelect
 } from "../elements"
+
+import { WebviewConfig, getSessionConfig, setSessionConfig } from "../configManager"
+import { vscode } from "../util"
 
 type BooleanProperties<T> = Pick<T, {
     [K in keyof T]: T[K] extends boolean ? K : never
