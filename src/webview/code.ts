@@ -59,7 +59,7 @@ function stripInitialIndent(node: Element) {
     })
 }
 
-export function pasteCode() {
+export function UpdateCode() {
     snippetNode.innerHTML = ContentManager.current
     const code = $("div", snippetNode) as HTMLDivElement
     snippetNode.style.fontSize = code.style.fontSize

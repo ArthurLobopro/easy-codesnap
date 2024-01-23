@@ -1,7 +1,7 @@
 import { pick, pickAllExcept } from "@arthur-lobo/object-pick"
 import { ConfigSentToWebview } from "../types"
 import { ContentManager } from "./ContentManager"
-import { pasteCode } from "./code"
+import { UpdateCode } from "./code"
 import { alreadyHasSessionConfig, getSessionConfig, setSessionConfig } from "./configManager"
 import { btnSave } from "./elements"
 import { cameraFlashAnimation, takeSnap } from "./snap"
@@ -18,7 +18,7 @@ document.addEventListener("paste", (e) => {
 
     if (!isLocked) {
         ContentManager.update(e.clipboardData as DataTransfer)
-        pasteCode()
+        UpdateCode()
     }
 })
 
@@ -71,7 +71,7 @@ const actions = {
             )
         )
         UIUpdater()
-        pasteCode()
+        UpdateCode()
     }
 }
 
