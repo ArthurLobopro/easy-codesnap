@@ -17,7 +17,6 @@ document.addEventListener("paste", (e) => {
 
     if (!isLocked) {
         ContentManager.update(e.clipboardData as DataTransfer)
-        UpdateCode()
     }
 })
 

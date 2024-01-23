@@ -1,3 +1,5 @@
+import { UpdateCode } from "./ui/updaters"
+
 function getClipboardHtml(clip: DataTransfer) {
     const html = clip.getData("text/html")
 
@@ -17,6 +19,7 @@ export class ContentManager {
 
     static update(data: DataTransfer) {
         this.#clipboard_data = getClipboardHtml(data)
+        UpdateCode()
     }
 
     static get current() {
