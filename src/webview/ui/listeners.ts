@@ -69,6 +69,7 @@ function handleSelectBasedChange(select: HTMLSelectElement, configName: keyof se
 }
 
 export function addListeners() {
+    //Toggles
     showLineNumbersInput.addEventListener("change", handleToggleBasedChange(showLineNumbersInput, VarUpdater))
     realLineNumbersInput.addEventListener("change", handleToggleBasedChange(realLineNumbersInput, LineNumbersUpdater))
 
@@ -82,38 +83,15 @@ export function addListeners() {
     toggleLockedButton.addEventListener("click", handleToggleBasedChange(toggleLockedButton, LockButtonUpdater))
     toggleLinkedButton.addEventListener("click", handleToggleBasedChange(toggleLinkedButton, LinkButtonUpdater))
 
-    shutterActionSelect.addEventListener("change", () => {
-        setSessionConfig({
-            shutterAction: shutterActionSelect.value as WebviewConfig["shutterAction"]
-        })
-    })
+    //Selects
+    shutterActionSelect.addEventListener("change", handleSelectBasedChange(shutterActionSelect, "shutterAction"))
+    targetSelect.addEventListener("change", handleSelectBasedChange(targetSelect, "target"))
+    saveFormatSelect.addEventListener("change", handleSelectBasedChange(saveFormatSelect, "saveFormat"))
 
-    targetSelect.addEventListener("change", () => {
-        setSessionConfig({
-            target: targetSelect.value as WebviewConfig["target"]
-        })
-    })
+    roundingLevelSelect.addEventListener("change", handleSelectBasedChange(roundingLevelSelect, "roundingLevel", VarUpdater))
+    windowStyleSelect.addEventListener("change", handleSelectBasedChange(windowStyleSelect, "windowStyle", UIUpdater))
 
-    saveFormatSelect.addEventListener("change", () => {
-        setSessionConfig({
-            saveFormat: saveFormatSelect.value as WebviewConfig["saveFormat"]
-        })
-    })
-
-    roundingLevelSelect.addEventListener("change", () => {
-        setSessionConfig({
-            roundingLevel: Number(roundingLevelSelect.value) as WebviewConfig["roundingLevel"]
-        })
-        VarUpdater()
-    })
-
-    windowStyleSelect.addEventListener("change", () => {
-        setSessionConfig({
-            windowStyle: windowStyleSelect.value as WebviewConfig["windowStyle"]
-        })
-        UIUpdater()
-    })
-
+    //Message Buttons
     resetConfigButton.addEventListener("click", () => {
         vscode.postMessage({ type: "update-config" })
     })
