@@ -1,7 +1,7 @@
-import { getSessionConfig } from "./configManager"
-import { contentManager } from "./contentManager"
-import { highlightOnclickFactory } from "./highlight"
-import { $, $$, calcTextWidth, setVar } from "./util"
+import { getSessionConfig } from "../../configManager"
+import { ContentManager } from "../../ContentManager"
+import { highlightOnclickFactory } from "../../highlight"
+import { $, $$, calcTextWidth, setVar } from "../../util"
 
 const snippetNode = $("#snippet") as HTMLDivElement
 
@@ -59,8 +59,8 @@ function stripInitialIndent(node: Element) {
     })
 }
 
-export function pasteCode() {
-    snippetNode.innerHTML = contentManager.current
+export function UpdateCode() {
+    snippetNode.innerHTML = ContentManager.current
     const code = $("div", snippetNode) as HTMLDivElement
     snippetNode.style.fontSize = code.style.fontSize
     snippetNode.style.lineHeight = code.style.lineHeight

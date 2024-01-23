@@ -1,3 +1,7 @@
+## 1.8.2
+
+Fix: Remove void space on top when window title and window controls are hidden
+
 ## 1.8.1
 
 Fix: Align correctly control buttons when using windows style without window title.

@@ -1,6 +1,11 @@
-import { WebviewConfig, getConfigKeys, getSessionConfig, setSessionConfig } from "../configManager"
-import { vscode } from "../util"
-import { LineNumbersUpdater, LinkButtonUpdater, LockButtonUpdater, UIUpdater, VarUpdater, VisibilityUpdater } from "./updaters"
+import {
+    LineNumbersUpdater,
+    LinkButtonUpdater,
+    LockButtonUpdater,
+    UIUpdater,
+    VarUpdater,
+    VisibilityUpdater
+} from "./updaters"
 
 import {
     enableResizingInput,
@@ -22,82 +27,76 @@ import {
     windowStyleSelect
 } from "../elements"
 
-const biggerSelectWidth = `${windowStyleSelect.getBoundingClientRect().width}px`
-
-targetSelect.style.width = biggerSelectWidth
-shutterActionSelect.style.width = biggerSelectWidth
-roundingLevelSelect.style.width = biggerSelectWidth
-saveFormatSelect.style.width = biggerSelectWidth
+import { WebviewConfig, getSessionConfig, setSessionConfig } from "../configManager"
+import { vscode } from "../util"
 
 type BooleanProperties<T> = Pick<T, {
     [K in keyof T]: T[K] extends boolean ? K : never
 }[keyof T]>
 
-type togglableOptions = BooleanProperties<WebviewConfig>
+type NotBooleanProperties<T> = Pick<T, {
+    [K in keyof T]: T[K] extends boolean ? never : K
+}[keyof T]>
 
-function handleToggleBasedChange(element: HTMLElement, updater: () => void) {
-    return () => {
-        const { configname } = element.dataset as { configname: keyof togglableOptions }
+type togglableNames = keyof BooleanProperties<WebviewConfig>
 
-        if (!getConfigKeys().includes(configname)) {
-            console.error(`Error: Invalid config name "${configname}"`)
-            return
-        }
+type events = "change" | "click"
+type updater = () => void
 
+function handleToggleEvent(element: HTMLElement, configName: togglableNames, event: events, updater?: updater) {
+    element.addEventListener(event, () => {
         setSessionConfig({
-            [configname]: !getSessionConfig()[configname]
+            [configName]: !getSessionConfig()[configName]
         })
 
-        updater()
-    }
+        updater && updater()
+    })
+}
+
+function handleToggleBasedClick(element: HTMLElement, configName: togglableNames, updater?: updater) {
+    handleToggleEvent(element, configName, "click", updater)
+}
+
+function handleToggleBasedChange(element: HTMLElement, configName: togglableNames, updater?: updater) {
+    handleToggleEvent(element, configName, "change", updater)
+}
+
+type selectOptions = NotBooleanProperties<WebviewConfig>
+
+function handleSelectBasedChange(select: HTMLSelectElement, configName: keyof selectOptions, updater?: () => void) {
+    select.addEventListener("change", () => {
+        setSessionConfig({
+            [configName]: select.value
+        })
+
+        updater && updater()
+    })
 }
 
 export function addListeners() {
-    showLineNumbersInput.addEventListener("change", handleToggleBasedChange(showLineNumbersInput, VarUpdater))
-    realLineNumbersInput.addEventListener("change", handleToggleBasedChange(realLineNumbersInput, LineNumbersUpdater))
+    //Toggles
+    handleToggleBasedChange(showLineNumbersInput, "showLineNumbers", VarUpdater)
+    handleToggleBasedChange(realLineNumbersInput, "realLineNumbers", LineNumbersUpdater)
 
-    showWindowTitleInput.addEventListener("change", handleToggleBasedChange(showWindowTitleInput, VisibilityUpdater))
-    showWindowControlsInput.addEventListener("change", handleToggleBasedChange(showWindowControlsInput, VisibilityUpdater))
+    handleToggleBasedChange(showWindowTitleInput, "showWindowTitle", VisibilityUpdater)
+    handleToggleBasedChange(showWindowControlsInput, "showWindowControls", VisibilityUpdater)
 
-    roundedCornersInput.addEventListener("change", handleToggleBasedChange(roundedCornersInput, VarUpdater))
-    enableResizingInput.addEventListener("change", handleToggleBasedChange(enableResizingInput, VarUpdater))
-    transparentBackgroundInput.addEventListener("change", handleToggleBasedChange(transparentBackgroundInput, () => { }))
+    handleToggleBasedChange(roundedCornersInput, "roundedCorners", VarUpdater)
+    handleToggleBasedChange(enableResizingInput, "enableResizing", VarUpdater)
+    handleToggleBasedChange(transparentBackgroundInput, "transparentBackground")
 
-    toggleLockedButton.addEventListener("click", handleToggleBasedChange(toggleLockedButton, LockButtonUpdater))
-    toggleLinkedButton.addEventListener("click", handleToggleBasedChange(toggleLinkedButton, LinkButtonUpdater))
+    handleToggleBasedClick(toggleLinkedButton, "isLinked", LinkButtonUpdater)
+    handleToggleBasedClick(toggleLockedButton, "isLocked", LockButtonUpdater)
 
-    shutterActionSelect.addEventListener("change", () => {
-        setSessionConfig({
-            shutterAction: shutterActionSelect.value as WebviewConfig["shutterAction"]
-        })
-    })
+    //Selects
+    handleSelectBasedChange(shutterActionSelect, "shutterAction")
+    handleSelectBasedChange(targetSelect, "target")
+    handleSelectBasedChange(saveFormatSelect, "saveFormat")
 
-    targetSelect.addEventListener("change", () => {
-        setSessionConfig({
-            target: targetSelect.value as WebviewConfig["target"]
-        })
-    })
+    handleSelectBasedChange(roundingLevelSelect, "roundingLevel", VarUpdater)
+    handleSelectBasedChange(windowStyleSelect, "windowStyle", UIUpdater)
 
-    saveFormatSelect.addEventListener("change", () => {
-        setSessionConfig({
-            saveFormat: saveFormatSelect.value as WebviewConfig["saveFormat"]
-        })
-    })
-
-    roundingLevelSelect.addEventListener("change", () => {
-        setSessionConfig({
-            roundingLevel: Number(roundingLevelSelect.value) as WebviewConfig["roundingLevel"]
-        })
-        VarUpdater()
-    })
-
-    windowStyleSelect.addEventListener("change", () => {
-        setSessionConfig({
-            windowStyle: windowStyleSelect.value as WebviewConfig["windowStyle"]
-        })
-        UIUpdater()
-    })
-
+    //Message Buttons
     resetConfigButton.addEventListener("click", () => {
         vscode.postMessage({ type: "update-config" })
     })
