@@ -39,8 +39,24 @@ type NotBooleanProperties<T> = Pick<T, {
 
 type togglableOptions = BooleanProperties<WebviewConfig>
 
+function handleToggleEvent(element: HTMLElement, configName: keyof togglableOptions, event: "change" | "click", updater?: () => void) {
+    element.addEventListener(event, () => {
+        setSessionConfig({
+            [configName]: !getSessionConfig()[configName]
+        })
+
+        updater && updater()
+    })
+}
+
+function handleToggleBasedClick(element: HTMLElement, configName: keyof togglableOptions, updater?: () => void) {
+    handleToggleEvent(element, configName, "click", updater)
+}
+
 function handleToggleBasedChange(element: HTMLElement, updater: () => void) {
     return () => {
+        console.log("Change!")
+
         const { configname } = element.dataset as { configname: keyof togglableOptions }
 
         if (!getConfigKeys().includes(configname)) {
@@ -80,8 +96,8 @@ export function addListeners() {
     enableResizingInput.addEventListener("change", handleToggleBasedChange(enableResizingInput, VarUpdater))
     transparentBackgroundInput.addEventListener("change", handleToggleBasedChange(transparentBackgroundInput, () => { }))
 
-    toggleLockedButton.addEventListener("click", handleToggleBasedChange(toggleLockedButton, LockButtonUpdater))
-    toggleLinkedButton.addEventListener("click", handleToggleBasedChange(toggleLinkedButton, LinkButtonUpdater))
+    handleToggleBasedClick(toggleLinkedButton, "isLinked", LinkButtonUpdater)
+    handleToggleBasedClick(toggleLockedButton, "isLocked", LockButtonUpdater)
 
     //Selects
     handleSelectBasedChange(shutterActionSelect, "shutterAction")
