@@ -33,6 +33,10 @@ type BooleanProperties<T> = Pick<T, {
     [K in keyof T]: T[K] extends boolean ? K : never
 }[keyof T]>
 
+type NotBooleanProperties<T> = Pick<T, {
+    [K in keyof T]: T[K] extends boolean ? never : K
+}[keyof T]>
+
 type togglableOptions = BooleanProperties<WebviewConfig>
 
 function handleToggleBasedChange(element: HTMLElement, updater: () => void) {
@@ -49,6 +53,18 @@ function handleToggleBasedChange(element: HTMLElement, updater: () => void) {
         })
 
         updater()
+    }
+}
+
+type selectOptions = NotBooleanProperties<WebviewConfig>
+
+function handleSelectBasedChange(select: HTMLSelectElement, configName: keyof selectOptions, updater?: () => void) {
+    return () => {
+        setSessionConfig({
+            [configName]: select.value
+        })
+
+        updater && updater()
     }
 }
 
