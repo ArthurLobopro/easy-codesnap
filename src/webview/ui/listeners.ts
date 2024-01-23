@@ -22,13 +22,6 @@ import {
     windowStyleSelect
 } from "../elements"
 
-const biggerSelectWidth = `${windowStyleSelect.getBoundingClientRect().width}px`
-
-targetSelect.style.width = biggerSelectWidth
-shutterActionSelect.style.width = biggerSelectWidth
-roundingLevelSelect.style.width = biggerSelectWidth
-saveFormatSelect.style.width = biggerSelectWidth
-
 type BooleanProperties<T> = Pick<T, {
     [K in keyof T]: T[K] extends boolean ? K : never
 }[keyof T]>

@@ -38,6 +38,13 @@ export function VisibilityUpdater() {
     navbarNode.hidden = !showWindowControls && !showWindowTitle
     windowControlsNode.hidden = !showWindowControls
     windowTitleNode.hidden = !showWindowTitle
+
+    const biggerSelectWidth = `${windowStyleSelect.getBoundingClientRect().width}px`
+
+    targetSelect.style.width = biggerSelectWidth
+    shutterActionSelect.style.width = biggerSelectWidth
+    roundingLevelSelect.style.width = biggerSelectWidth
+    saveFormatSelect.style.width = biggerSelectWidth
 }
 
 export function UIUpdater() {
