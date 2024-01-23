@@ -1,12 +1,12 @@
 import { pick, pickAllExcept } from "@arthur-lobo/object-pick"
 import { ConfigSentToWebview } from "../types"
 import { ContentManager } from "./ContentManager"
-import { UpdateCode } from "./code"
 import { alreadyHasSessionConfig, getSessionConfig, setSessionConfig } from "./configManager"
 import { btnSave } from "./elements"
 import { cameraFlashAnimation, takeSnap } from "./snap"
 import { addListeners } from "./ui/listeners"
 import { UIUpdater } from "./ui/updaters"
+import { UpdateCode } from "./ui/updaters/UpdateCode"
 import { vscode } from "./util"
 
 btnSave.addEventListener("click", () => takeSnap())
