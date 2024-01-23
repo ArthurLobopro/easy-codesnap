@@ -1,11 +1,14 @@
-const getClipboardHtml = (clip: DataTransfer) => {
+function getClipboardHtml(clip: DataTransfer) {
     const html = clip.getData("text/html")
+
     if (html) { return html }
+
     const text = clip
         .getData("text/plain")
         .split("\n")
         .map((line) => `<div>${line}</div>`)
         .join("")
+
     return `<div>${text}</div>`
 }
 
