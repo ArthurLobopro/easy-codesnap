@@ -59,13 +59,13 @@ function handleToggleBasedChange(element: HTMLElement, updater: () => void) {
 type selectOptions = NotBooleanProperties<WebviewConfig>
 
 function handleSelectBasedChange(select: HTMLSelectElement, configName: keyof selectOptions, updater?: () => void) {
-    return () => {
+    select.addEventListener("change", () => {
         setSessionConfig({
             [configName]: select.value
         })
 
         updater && updater()
-    }
+    })
 }
 
 export function addListeners() {
@@ -84,12 +84,12 @@ export function addListeners() {
     toggleLinkedButton.addEventListener("click", handleToggleBasedChange(toggleLinkedButton, LinkButtonUpdater))
 
     //Selects
-    shutterActionSelect.addEventListener("change", handleSelectBasedChange(shutterActionSelect, "shutterAction"))
-    targetSelect.addEventListener("change", handleSelectBasedChange(targetSelect, "target"))
-    saveFormatSelect.addEventListener("change", handleSelectBasedChange(saveFormatSelect, "saveFormat"))
+    handleSelectBasedChange(shutterActionSelect, "shutterAction")
+    handleSelectBasedChange(targetSelect, "target")
+    handleSelectBasedChange(saveFormatSelect, "saveFormat")
 
-    roundingLevelSelect.addEventListener("change", handleSelectBasedChange(roundingLevelSelect, "roundingLevel", VarUpdater))
-    windowStyleSelect.addEventListener("change", handleSelectBasedChange(windowStyleSelect, "windowStyle", UIUpdater))
+    handleSelectBasedChange(roundingLevelSelect, "roundingLevel", VarUpdater)
+    handleSelectBasedChange(windowStyleSelect, "windowStyle", UIUpdater)
 
     //Message Buttons
     resetConfigButton.addEventListener("click", () => {
