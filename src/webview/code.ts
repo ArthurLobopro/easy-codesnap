@@ -1,5 +1,5 @@
 import { getSessionConfig } from "./configManager"
-import { contentManager } from "./contentManager"
+import { ContentManager } from "./ContentManager"
 import { highlightOnclickFactory } from "./highlight"
 import { $, $$, calcTextWidth, setVar } from "./util"
 
@@ -60,7 +60,7 @@ function stripInitialIndent(node: Element) {
 }
 
 export function pasteCode() {
-    snippetNode.innerHTML = contentManager.current
+    snippetNode.innerHTML = ContentManager.current
     const code = $("div", snippetNode) as HTMLDivElement
     snippetNode.style.fontSize = code.style.fontSize
     snippetNode.style.lineHeight = code.style.lineHeight

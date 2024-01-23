@@ -9,16 +9,14 @@ const getClipboardHtml = (clip: DataTransfer) => {
     return `<div>${text}</div>`
 }
 
-class ContentManager {
-    #clipboard_data!: string
+export class ContentManager {
+    static #clipboard_data: string
 
-    update(data: DataTransfer) {
+    static update(data: DataTransfer) {
         this.#clipboard_data = getClipboardHtml(data)
     }
 
-    get current() {
+    static get current() {
         return this.#clipboard_data
     }
 }
-
-export const contentManager = new ContentManager()

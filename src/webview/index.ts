@@ -1,8 +1,8 @@
 import { pick, pickAllExcept } from "@arthur-lobo/object-pick"
 import { ConfigSentToWebview } from "../types"
+import { ContentManager } from "./ContentManager"
 import { pasteCode } from "./code"
 import { alreadyHasSessionConfig, getSessionConfig, setSessionConfig } from "./configManager"
-import { contentManager } from "./contentManager"
 import { btnSave } from "./elements"
 import { cameraFlashAnimation, takeSnap } from "./snap"
 import { addListeners } from "./ui/listeners"
@@ -17,7 +17,7 @@ document.addEventListener("paste", (e) => {
     const { isLocked } = getSessionConfig()
 
     if (!isLocked) {
-        contentManager.update(e.clipboardData as DataTransfer)
+        ContentManager.update(e.clipboardData as DataTransfer)
         pasteCode()
     }
 })
