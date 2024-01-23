@@ -35,7 +35,7 @@ export function VisibilityUpdater() {
         showWindowTitle,
     } = getSessionConfig()
 
-    navbarNode.hidden = !showWindowControls && !showWindowTitle
+    navbarNode.style.display = !showWindowControls && !showWindowTitle ? "none" : ""
     windowControlsNode.hidden = !showWindowControls
     windowTitleNode.hidden = !showWindowTitle
 

@@ -22,6 +22,11 @@
     margin: 0 80px;
 }
 
+#window[data-style="macos"] #window-controls[hidden] + #window-title{
+    margin: 0;
+    text-align: center;
+}
+
 #window-controls {
     display: flex;
     margin-top: 2px;
