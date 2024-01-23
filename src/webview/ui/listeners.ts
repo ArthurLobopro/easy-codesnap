@@ -1,4 +1,4 @@
-import { WebviewConfig, getConfigKeys, getSessionConfig, setSessionConfig } from "../configManager"
+import { WebviewConfig, getSessionConfig, setSessionConfig } from "../configManager"
 import { vscode } from "../util"
 import { LineNumbersUpdater, LinkButtonUpdater, LockButtonUpdater, UIUpdater, VarUpdater, VisibilityUpdater } from "./updaters"
 
@@ -37,9 +37,12 @@ type NotBooleanProperties<T> = Pick<T, {
     [K in keyof T]: T[K] extends boolean ? never : K
 }[keyof T]>
 
-type togglableOptions = BooleanProperties<WebviewConfig>
+type togglableNames = keyof BooleanProperties<WebviewConfig>
 
-function handleToggleEvent(element: HTMLElement, configName: keyof togglableOptions, event: "change" | "click", updater?: () => void) {
+type events = "change" | "click"
+type updater = () => void
+
+function handleToggleEvent(element: HTMLElement, configName: togglableNames, event: events, updater?: updater) {
     element.addEventListener(event, () => {
         setSessionConfig({
             [configName]: !getSessionConfig()[configName]
@@ -49,27 +52,12 @@ function handleToggleEvent(element: HTMLElement, configName: keyof togglableOpti
     })
 }
 
-function handleToggleBasedClick(element: HTMLElement, configName: keyof togglableOptions, updater?: () => void) {
+function handleToggleBasedClick(element: HTMLElement, configName: togglableNames, updater?: updater) {
     handleToggleEvent(element, configName, "click", updater)
 }
 
-function handleToggleBasedChange(element: HTMLElement, updater: () => void) {
-    return () => {
-        console.log("Change!")
-
-        const { configname } = element.dataset as { configname: keyof togglableOptions }
-
-        if (!getConfigKeys().includes(configname)) {
-            console.error(`Error: Invalid config name "${configname}"`)
-            return
-        }
-
-        setSessionConfig({
-            [configname]: !getSessionConfig()[configname]
-        })
-
-        updater()
-    }
+function handleToggleBasedChange(element: HTMLElement, configName: togglableNames, updater?: updater) {
+    handleToggleEvent(element, configName, "change", updater)
 }
 
 type selectOptions = NotBooleanProperties<WebviewConfig>
@@ -86,15 +74,15 @@ function handleSelectBasedChange(select: HTMLSelectElement, configName: keyof se
 
 export function addListeners() {
     //Toggles
-    showLineNumbersInput.addEventListener("change", handleToggleBasedChange(showLineNumbersInput, VarUpdater))
-    realLineNumbersInput.addEventListener("change", handleToggleBasedChange(realLineNumbersInput, LineNumbersUpdater))
+    handleToggleBasedChange(showLineNumbersInput, "showLineNumbers", VarUpdater)
+    handleToggleBasedChange(realLineNumbersInput, "realLineNumbers", LineNumbersUpdater)
 
-    showWindowTitleInput.addEventListener("change", handleToggleBasedChange(showWindowTitleInput, VisibilityUpdater))
-    showWindowControlsInput.addEventListener("change", handleToggleBasedChange(showWindowControlsInput, VisibilityUpdater))
+    handleToggleBasedChange(showWindowTitleInput, "showWindowTitle", VisibilityUpdater)
+    handleToggleBasedChange(showWindowControlsInput, "showWindowControls", VisibilityUpdater)
 
-    roundedCornersInput.addEventListener("change", handleToggleBasedChange(roundedCornersInput, VarUpdater))
-    enableResizingInput.addEventListener("change", handleToggleBasedChange(enableResizingInput, VarUpdater))
-    transparentBackgroundInput.addEventListener("change", handleToggleBasedChange(transparentBackgroundInput, () => { }))
+    handleToggleBasedChange(roundedCornersInput, "roundedCorners", VarUpdater)
+    handleToggleBasedChange(enableResizingInput, "enableResizing", VarUpdater)
+    handleToggleBasedChange(transparentBackgroundInput, "transparentBackground")
 
     handleToggleBasedClick(toggleLinkedButton, "isLinked", LinkButtonUpdater)
     handleToggleBasedClick(toggleLockedButton, "isLocked", LockButtonUpdater)
