@@ -7,9 +7,7 @@ export { writeFile } from "fs/promises"
 function buildCSP(cspSource: string) {
     return [
         `default-src ${cspSource}`,
-        `img-src ${cspSource}`,
-        "data:",
-        "https:",
+        `img-src ${cspSource} data: https:`,
         `script-src ${cspSource}`,
         `style-src 'unsafe-inline' ${cspSource}`,
         `font-src ${cspSource}`
