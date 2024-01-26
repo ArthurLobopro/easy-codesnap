@@ -149,6 +149,10 @@
     background-color: var(--vscode-list-hoverBackground);
 }
 
+load-svg{
+    display: flex;
+}
+
 [data-state="unlinked"]>#link-icon,
 [data-state="linked"]>#unlink-icon {
     display: none;
