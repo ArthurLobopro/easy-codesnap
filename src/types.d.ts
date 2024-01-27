@@ -43,3 +43,10 @@ export type selectNames = keyof Pick<
     WebviewConfig,
     "roundingLevel" | "saveFormat" | "shutterAction" | "target" | "windowStyle"
 >
+
+export type message =
+    { type: "copied" | "update-config" | "ready"; } |
+    { type: "save"; data: string; format: "svg" | "png"; } |
+    { type: "save-config"; config: Omit<ExtensionConfig, "lockOnOpen" | "linkOnOpen">; } |
+    { type: "open-settings"; } |
+    { type: "copy-svg"; data: string; };

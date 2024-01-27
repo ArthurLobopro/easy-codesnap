@@ -1,3 +1,5 @@
+import { message } from "../types";
+
 export type untypedObject = { [key: string]: any };
 
 export function $<T extends HTMLElement>(
@@ -31,6 +33,8 @@ export const calcTextWidth = (text: string) => {
     return width + 1 + "px";
 };
 
-declare const acquireVsCodeApi: () => { postMessage: (message: any) => void };
+declare const acquireVsCodeApi: () => {
+    postMessage: (message: message) => void;
+};
 
 export const vscode = acquireVsCodeApi();

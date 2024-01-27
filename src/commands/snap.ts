@@ -3,15 +3,8 @@ import path from "path";
 import * as vscode from "vscode";
 import { extensionSettingsNames } from "../constants";
 import { reduceSVG } from "../reduceSVG";
-import { ExtensionConfig } from "../types";
+import { ExtensionConfig, message } from "../types";
 import { getSettings, hasOneSelection, loadHtml, writeFile } from "../util";
-
-type message =
-    | { type: "copied" | "update-config" | "ready" }
-    | { type: "save"; data: string; format: "svg" | "png" }
-    | { type: "save-config"; config: ExtensionConfig }
-    | { type: "open-settings" }
-    | { type: "copy-svg"; data: string };
 
 type updateTypes = "config" | "text" | "both";
 
