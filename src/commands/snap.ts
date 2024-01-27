@@ -61,13 +61,15 @@ interface ActionFactoryProps {
     update: (type: updateTypes, editorURI?: string) => Promise<void>;
 }
 
+type SaveProps = { data: string; format: "svg" | "png" };
+
 function ActionsFactory(props: ActionFactoryProps) {
     const { panel, update } = props;
 
     const flash = () => panel.webview.postMessage({ type: "flash" });
 
     return {
-        async save({ data, format }: { data: string; format: "svg" | "png" }) {
+        async save({ data, format }: SaveProps) {
             flash();
             switch (format) {
                 case "svg":
@@ -79,8 +81,9 @@ function ActionsFactory(props: ActionFactoryProps) {
             }
         },
 
-        copied: () =>
-            vscode.window.showInformationMessage("Image copied to clipboard!"),
+        copied() {
+            vscode.window.showInformationMessage("Image copied to clipboard!");
+        },
 
         ready() {
             const editor = vscode.window.activeTextEditor;
@@ -111,11 +114,11 @@ function ActionsFactory(props: ActionFactoryProps) {
             vscode.window.showInformationMessage("Settings saved as default!");
         },
 
-        "open-settings": () => {
+        "open-settings"() {
             vscode.commands.executeCommand("easy-codesnap.openSettings");
         },
 
-        "copy-svg": ({ data }: { data: string }) => {
+        "copy-svg"({ data }: { data: string }) {
             vscode.env.clipboard.writeText(reduceSVG(data));
         },
     };

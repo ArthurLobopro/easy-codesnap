@@ -12,9 +12,9 @@ export const CodeSnapConfigNames = [
     "transparentBackground",
     "target",
     "shutterAction",
-];
+] as const;
 
-export const extensionSettingsNames = [
+export const extensionSettingsNames: ConfigKey[] = [
     ...CodeSnapConfigNames,
     "enableResizing",
     "roundingLevel",
@@ -22,4 +22,4 @@ export const extensionSettingsNames = [
     "linkOnOpen",
     "saveFormat",
     "windowStyle",
-] as ConfigKey[];
+];
