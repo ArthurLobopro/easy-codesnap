@@ -1,8 +1,24 @@
-import { togglableNames } from "../types";
+import { selectNames, togglableNames } from "../types";
 import { $ } from "./util";
 
-const getToggle = (name: togglableNames) =>
-    $<HTMLInputElement>(`input[data-configname='${name}']`);
+function getToggle(name: togglableNames) {
+    return $<HTMLInputElement>(`input[data-configname="${name}"]`);
+}
+
+function getSelect(name: selectNames) {
+    return $<HTMLSelectElement>(`select[data-configname="${name}"]`);
+}
+
+type buttonActions =
+    | "open-settings"
+    | "reset-config"
+    | "save-config"
+    | "toggle-lock"
+    | "toggle-link";
+
+function getButton(action: buttonActions) {
+    return $<HTMLLIElement>(`[data-action="${action}"]`);
+}
 
 //Original Interface
 export const navbarNode = $("#navbar");
@@ -23,33 +39,15 @@ export const transparentBackgroundInput = getToggle("transparentBackground");
 export const enableResizingInput = getToggle("enableResizing");
 
 //Selects
-export const shutterActionSelect = $<HTMLSelectElement>(
-    "select[data-configname='shutterAction']",
-);
-export const saveFormatSelect = $<HTMLSelectElement>(
-    "select[data-configname='saveFormat']",
-);
-export const targetSelect = $<HTMLSelectElement>(
-    "select[data-configname='target']",
-);
-export const roundingLevelSelect = $<HTMLSelectElement>(
-    "select[data-configname='roundingLevel']",
-);
-export const windowStyleSelect = $<HTMLSelectElement>(
-    "select[data-configname='windowStyle']",
-);
+export const shutterActionSelect = getSelect("shutterAction");
+export const saveFormatSelect = getSelect("saveFormat");
+export const targetSelect = getSelect("target");
+export const roundingLevelSelect = getSelect("roundingLevel");
+export const windowStyleSelect = getSelect("windowStyle");
 
 //Buttons
-export const openSettingsButton = $<HTMLLIElement>(
-    "[data-action='open-settings']",
-);
-export const resetConfigButton = $<HTMLLIElement>(
-    "[data-action='reset-config']",
-);
-export const saveConfigButton = $<HTMLLIElement>("[data-action='save-config']");
-export const toggleLockedButton = $<HTMLButtonElement>(
-    "[data-action='toggle-lock']",
-);
-export const toggleLinkedButton = $<HTMLButtonElement>(
-    "[data-action='toggle-link']",
-);
+export const openSettingsButton = getButton("open-settings");
+export const resetConfigButton = getButton("reset-config");
+export const saveConfigButton = getButton("save-config");
+export const toggleLockedButton = getButton("toggle-lock");
+export const toggleLinkedButton = getButton("toggle-link");

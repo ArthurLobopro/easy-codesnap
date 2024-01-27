@@ -30,9 +30,16 @@ export interface ConfigSentToWebview extends ExtensionConfig {
 
 export type untypedObject = { [key: string]: any }
 export type ConfigKey = keyof ExtensionConfig
+
 type BooleanProperties<T> = Pick<
     T, {
         [K in keyof T]: T[K] extends boolean ? K : never;
     }[keyof T]
 >;
+
 export type togglableNames = keyof BooleanProperties<WebviewConfig>;
+
+export type selectNames = keyof Pick<
+    WebviewConfig,
+    "roundingLevel" | "saveFormat" | "shutterAction" | "target" | "windowStyle"
+>

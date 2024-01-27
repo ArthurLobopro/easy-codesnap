@@ -1,12 +1,5 @@
-import {
-    LineNumbersUpdater,
-    LinkButtonUpdater,
-    LockButtonUpdater,
-    UIUpdater,
-    VarUpdater,
-    VisibilityUpdater,
-} from "./updaters";
-
+import { selectNames, togglableNames } from "../../types";
+import { getSessionConfig, setSessionConfig } from "../configManager";
 import {
     enableResizingInput,
     openSettingsButton,
@@ -26,14 +19,15 @@ import {
     transparentBackgroundInput,
     windowStyleSelect,
 } from "../elements";
-
-import { togglableNames } from "../../types";
-import {
-    WebviewConfig,
-    getSessionConfig,
-    setSessionConfig,
-} from "../configManager";
 import { vscode } from "../util";
+import {
+    LineNumbersUpdater,
+    LinkButtonUpdater,
+    LockButtonUpdater,
+    UIUpdater,
+    VarUpdater,
+    VisibilityUpdater,
+} from "./updaters";
 
 type NotBooleanProperties<T> = Pick<
     T,
@@ -76,11 +70,9 @@ function handleToggleBasedChange(
     handleToggleEvent(element, configName, "change", updater);
 }
 
-type selectOptions = NotBooleanProperties<WebviewConfig>;
-
 function handleSelectBasedChange(
     select: HTMLSelectElement,
-    configName: keyof selectOptions,
+    configName: selectNames,
     updater?: () => void,
 ) {
     select.addEventListener("change", () => {
