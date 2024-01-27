@@ -1,4 +1,8 @@
+import { togglableNames } from "../types";
 import { $ } from "./util";
+
+const getToggle = (name: togglableNames) =>
+    $<HTMLInputElement>(`input[data-configname='${name}']`);
 
 //Original Interface
 export const navbarNode = $("#navbar");
@@ -10,27 +14,13 @@ export const snippetContainerNode = $("#snippet-container");
 export const flashFx = $("#flash-fx");
 
 //One time config elements
-export const showWindowTitleInput = $<HTMLInputElement>(
-    "input[data-configname='showWindowTitle']",
-);
-export const showLineNumbersInput = $<HTMLInputElement>(
-    "input[data-configname='showLineNumbers']",
-);
-export const realLineNumbersInput = $<HTMLInputElement>(
-    "input[data-configname='realLineNumbers']",
-);
-export const showWindowControlsInput = $<HTMLInputElement>(
-    "input[data-configname='showWindowControls']",
-);
-export const roundedCornersInput = $<HTMLInputElement>(
-    "input[data-configname='roundedCorners']",
-);
-export const transparentBackgroundInput = $<HTMLInputElement>(
-    "input[data-configname='transparentBackground']",
-);
-export const enableResizingInput = $<HTMLInputElement>(
-    "input[data-configname='enableResizing']",
-);
+export const showWindowTitleInput = getToggle("showWindowTitle");
+export const showLineNumbersInput = getToggle("showLineNumbers");
+export const realLineNumbersInput = getToggle("realLineNumbers");
+export const showWindowControlsInput = getToggle("showWindowControls");
+export const roundedCornersInput = getToggle("roundedCorners");
+export const transparentBackgroundInput = getToggle("transparentBackground");
+export const enableResizingInput = getToggle("enableResizing");
 
 //Selects
 export const shutterActionSelect = $<HTMLSelectElement>(

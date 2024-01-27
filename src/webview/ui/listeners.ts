@@ -27,6 +27,7 @@ import {
     windowStyleSelect,
 } from "../elements";
 
+import { togglableNames } from "../../types";
 import {
     WebviewConfig,
     getSessionConfig,
@@ -34,21 +35,12 @@ import {
 } from "../configManager";
 import { vscode } from "../util";
 
-type BooleanProperties<T> = Pick<
-    T,
-    {
-        [K in keyof T]: T[K] extends boolean ? K : never;
-    }[keyof T]
->;
-
 type NotBooleanProperties<T> = Pick<
     T,
     {
         [K in keyof T]: T[K] extends boolean ? never : K;
     }[keyof T]
 >;
-
-type togglableNames = keyof BooleanProperties<WebviewConfig>;
 
 type events = "change" | "click";
 type updater = () => void;

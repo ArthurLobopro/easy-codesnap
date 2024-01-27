@@ -1,3 +1,5 @@
+import { WebviewConfig } from "./webview/configManager"
+
 export interface ExtensionConfig {
     boxShadow: string
     backgroundColor: string
@@ -28,3 +30,9 @@ export interface ConfigSentToWebview extends ExtensionConfig {
 
 export type untypedObject = { [key: string]: any }
 export type ConfigKey = keyof ExtensionConfig
+type BooleanProperties<T> = Pick<
+    T, {
+        [K in keyof T]: T[K] extends boolean ? K : never;
+    }[keyof T]
+>;
+export type togglableNames = keyof BooleanProperties<WebviewConfig>;
