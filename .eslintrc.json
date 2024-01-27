@@ -8,23 +8,39 @@
     "plugins": [
         "@typescript-eslint"
     ],
+    "extends": [
+        "plugin:prettier/recommended"
+    ],
     "rules": {
         "@typescript-eslint/naming-convention": [
             "warn",
             {
                 "selector": "import",
-                "format": [ "camelCase", "PascalCase" ]
+                "format": [
+                    "camelCase",
+                    "PascalCase"
+                ]
+            }
+        ],
+        "prettier/prettier": [
+            "error",
+            {
+                "printWidth": 80,
+                "tabWidth": 4,
+                "singleQuote": false,
+                "trailingComma": "all",
+                "arrowParens": "always",
+                "semi": true
             }
         ],
         "curly": "warn",
         "eqeqeq": "warn",
         "no-throw-literal": "warn",
-        "semi": "off",
+        "semi": "warn",
         "quotes": "warn"
     },
     "ignorePatterns": [
-        "out",
-        "dist",
+        "*.js",
         "**/*.d.ts"
     ]
 }
