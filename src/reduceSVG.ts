@@ -1,4 +1,4 @@
-import { PluginConfig, optimize } from "svgo"
+import { PluginConfig, optimize } from "svgo";
 
 const svgoConfig: { plugins: PluginConfig[] } = {
     plugins: [
@@ -12,28 +12,24 @@ const svgoConfig: { plugins: PluginConfig[] } = {
                         uselessOverrides: true,
                         unknownAttrs: true,
                         keepAriaAttrs: false,
-                        keepDataAttrs: false
+                        keepDataAttrs: false,
                     },
-
-                }
-            }
+                },
+            },
         },
         {
             name: "removeAttrs",
             params: {
-                attrs: [
-                    "textLength",
-                    "text-decoration"
-                ],
+                attrs: ["textLength", "text-decoration"],
             },
-        }
-    ]
-}
+        },
+    ],
+};
 
 export function reduceSVG(svgContent: string) {
     return optimize(svgContent, {
         floatPrecision: 8,
         plugins: svgoConfig.plugins,
-        multipass: true
-    }).data
+        multipass: true,
+    }).data;
 }

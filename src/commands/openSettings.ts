@@ -1,5 +1,8 @@
-import * as vscode from "vscode"
+import * as vscode from "vscode";
 
 export function openSettings() {
-    vscode.commands.executeCommand("workbench.action.openSettings", "@ext:ArthurLobo.easy-codesnap")
+    vscode.commands.executeCommand(
+        "workbench.action.openSettings",
+        "@ext:ArthurLobo.easy-codesnap",
+    );
 }
