@@ -11,6 +11,7 @@
 
 #window[data-style="windows"] #navbar{
     margin-top: -8px;
+    margin-right: -4px;
     justify-content: right;
 }
 
