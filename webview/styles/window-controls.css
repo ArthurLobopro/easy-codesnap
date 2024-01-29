@@ -10,6 +10,7 @@
 }
 
 #window[data-style="windows"] #navbar{
+    margin-top: -8px;
     justify-content: right;
 }
 
