@@ -1,3 +1,8 @@
+## 1.8.3
+
+Fix: Position of title bar on Windows mode.
+Refactor: Use `@arthur-lobo/load-svg` to dynamically load svgs.
+
 ## 1.8.2
 
 Fix: Remove void space on top when window title and window controls are hidden
