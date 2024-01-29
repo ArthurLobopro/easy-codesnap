@@ -7,10 +7,10 @@
   resolved "https://registry.yarnpkg.com/@aashutoshrathi/word-wrap/-/word-wrap-1.2.6.tgz#bd9154aec9983f77b3a034ecaa015c2e4201f6cf"
   integrity sha512-1Yjs2SvM8TflER/OD3cOjhWWOZb58A2t7wpE2S9XfBYTiIl+XFhQG2bjy4Pu1I+EAlCNUzRDYDdFwFYUKvXcIA==
 
-"@arthur-lobo/load-svg@^1.0.0":
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/@arthur-lobo/load-svg/-/load-svg-1.0.0.tgz#35c96177682f28fb96a5feb07bdec76084c7d1e2"
-  integrity sha512-Ki+g+KJTpAtPqZF7xr3XqW0SKH8OMJ5pGQJGyCVLCPoN+0pOYmpZfwnpPpm1fRdck6s4SOhX/hTALl3rk10f+w==
+"@arthur-lobo/load-svg@^1.0.1":
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/@arthur-lobo/load-svg/-/load-svg-1.0.1.tgz#8a6aef8d8fa51a84e0d2fee3414f6c2074c1b33c"
+  integrity sha512-ab1PCuo7CqvqJd2Px2XxCe/+Dq8FKMGu1/7U/pkYw7OJWYILASQ39ZZDnYDZdP0JSdnDBO3mrvjEaRzXp2Rhfg==
 
 "@arthur-lobo/object-pick@^1.0.0":
   version "1.0.0"
