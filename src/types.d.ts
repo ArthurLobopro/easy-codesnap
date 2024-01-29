@@ -1,3 +1,5 @@
+import { WebviewConfig } from "./webview/configManager"
+
 export interface ExtensionConfig {
     boxShadow: string
     backgroundColor: string
@@ -28,3 +30,23 @@ export interface ConfigSentToWebview extends ExtensionConfig {
 
 export type untypedObject = { [key: string]: any }
 export type ConfigKey = keyof ExtensionConfig
+
+type BooleanProperties<T> = Pick<
+    T, {
+        [K in keyof T]: T[K] extends boolean ? K : never;
+    }[keyof T]
+>;
+
+export type togglableNames = keyof BooleanProperties<WebviewConfig>;
+
+export type selectNames = keyof Pick<
+    WebviewConfig,
+    "roundingLevel" | "saveFormat" | "shutterAction" | "target" | "windowStyle"
+>
+
+export type message =
+    { type: "copied" | "update-config" | "ready"; } |
+    { type: "save"; data: string; format: "svg" | "png"; } |
+    { type: "save-config"; config: Omit<ExtensionConfig, "lockOnOpen" | "linkOnOpen">; } |
+    { type: "open-settings"; } |
+    { type: "copy-svg"; data: string; };

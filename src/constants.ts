@@ -1,4 +1,4 @@
-import { ConfigKey } from "./types"
+import { ConfigKey } from "./types";
 
 export const CodeSnapConfigNames = [
     "backgroundColor",
@@ -11,15 +11,15 @@ export const CodeSnapConfigNames = [
     "realLineNumbers",
     "transparentBackground",
     "target",
-    "shutterAction"
-]
+    "shutterAction",
+] as const;
 
-export const extensionSettingsNames = [
+export const extensionSettingsNames: ConfigKey[] = [
     ...CodeSnapConfigNames,
     "enableResizing",
     "roundingLevel",
     "lockOnOpen",
     "linkOnOpen",
     "saveFormat",
-    "windowStyle"
-] as ConfigKey[]
+    "windowStyle",
+];
