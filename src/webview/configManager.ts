@@ -4,6 +4,7 @@ export interface WebviewConfig
     extends Omit<ConfigSentToWebview, "lockOnOpen" | "linkOnOpen"> {
     isLocked: boolean;
     isLinked: boolean;
+    zoom: number;
 }
 
 class ConfigProvider {
@@ -31,8 +32,7 @@ export const setSessionConfig = (config: Partial<WebviewConfig>) => {
         config = { ...getSessionConfig(), ...config };
     }
 
-    config.isLocked = config.isLocked ?? false;
-    config.isLinked = config.isLinked ?? false;
+    config.zoom = config.zoom ?? 100;
 
     ConfigProvider.sessionConfig = config as WebviewConfig;
 };

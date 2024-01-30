@@ -5,6 +5,7 @@ import { LineNumbersUpdater } from "./LineNumbersUpdater";
 import { OneTimeConfigUpdater } from "./OneTimeConfigUpdater";
 import { VarUpdater } from "./VarUpdater";
 import { VisibilityUpdater } from "./VisibilityUpdater";
+import { ZoomUpdater } from "./ZoomUpdater";
 
 export function UIUpdater() {
     const { windowTitle, windowStyle } = getSessionConfig();
@@ -15,6 +16,7 @@ export function UIUpdater() {
     OneTimeConfigUpdater();
     LockButtonUpdater();
     LinkButtonUpdater();
+    ZoomUpdater();
 
     windowTitleNode.textContent = windowTitle;
     windowNode.dataset.style = windowStyle;

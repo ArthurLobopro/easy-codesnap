@@ -5,3 +5,4 @@ export * from "./UIUpdater";
 export * from "./UpdateCode";
 export * from "./VarUpdater";
 export * from "./VisibilityUpdater";
+export * from "./ZoomUpdater";

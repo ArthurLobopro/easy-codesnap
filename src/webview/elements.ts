@@ -14,7 +14,9 @@ type buttonActions =
     | "reset-config"
     | "save-config"
     | "toggle-lock"
-    | "toggle-link";
+    | "toggle-link"
+    | "zoom-in"
+    | "zoom-out";
 
 function getButton(action: buttonActions) {
     return $<HTMLLIElement>(`[data-action="${action}"]`);
@@ -44,6 +46,7 @@ export const saveFormatSelect = getSelect("saveFormat");
 export const targetSelect = getSelect("target");
 export const roundingLevelSelect = getSelect("roundingLevel");
 export const windowStyleSelect = getSelect("windowStyle");
+export const zoomSelect = getSelect("zoom");
 
 //Buttons
 export const openSettingsButton = getButton("open-settings");
@@ -51,3 +54,5 @@ export const resetConfigButton = getButton("reset-config");
 export const saveConfigButton = getButton("save-config");
 export const toggleLockedButton = getButton("toggle-lock");
 export const toggleLinkedButton = getButton("toggle-link");
+export const zoomInButton = getButton("zoom-in");
+export const zoomOutButton = getButton("zoom-out");

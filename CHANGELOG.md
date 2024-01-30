@@ -1,3 +1,7 @@
+## 1.9.0
+
+Feat: Add zoom features.
+
 ## 1.8.3
 
 Fix: Position of title bar on Windows mode.

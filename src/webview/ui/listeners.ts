@@ -18,8 +18,11 @@ import {
     toggleLockedButton,
     transparentBackgroundInput,
     windowStyleSelect,
+    zoomInButton,
+    zoomOutButton,
+    zoomSelect,
 } from "../elements";
-import { vscode } from "../util";
+import { $, vscode } from "../util";
 import {
     LineNumbersUpdater,
     LinkButtonUpdater,
@@ -27,6 +30,7 @@ import {
     UIUpdater,
     VarUpdater,
     VisibilityUpdater,
+    ZoomUpdater,
 } from "./updaters";
 
 type NotBooleanProperties<T> = Pick<
@@ -125,6 +129,7 @@ export function addListeners() {
 
     handleSelectBasedChange(roundingLevelSelect, "roundingLevel", VarUpdater);
     handleSelectBasedChange(windowStyleSelect, "windowStyle", UIUpdater);
+    handleSelectBasedChange(zoomSelect, "zoom", ZoomUpdater);
 
     //Message Buttons
     resetConfigButton.addEventListener("click", () => {
@@ -137,5 +142,33 @@ export function addListeners() {
 
     openSettingsButton.addEventListener("click", () => {
         vscode.postMessage({ type: "open-settings" });
+    });
+
+    zoomOutButton.addEventListener("click", () => {
+        const option = $<HTMLOptionElement>("option:checked", zoomSelect);
+
+        const previousOption = (option &&
+            option.previousElementSibling) as HTMLOptionElement;
+
+        if (previousOption) {
+            setSessionConfig({
+                zoom: Number(previousOption.value),
+            });
+            ZoomUpdater();
+        }
+    });
+
+    zoomInButton.addEventListener("click", () => {
+        const option = $<HTMLOptionElement>("option:checked", zoomSelect);
+
+        const nextOption = (option &&
+            option.nextElementSibling) as HTMLOptionElement;
+
+        if (nextOption) {
+            setSessionConfig({
+                zoom: Number(nextOption.value),
+            });
+            ZoomUpdater();
+        }
     });
 }
