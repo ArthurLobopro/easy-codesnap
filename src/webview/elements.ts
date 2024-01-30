@@ -44,6 +44,7 @@ export const saveFormatSelect = getSelect("saveFormat");
 export const targetSelect = getSelect("target");
 export const roundingLevelSelect = getSelect("roundingLevel");
 export const windowStyleSelect = getSelect("windowStyle");
+export const zoomSelect = getSelect("zoom");
 
 //Buttons
 export const openSettingsButton = getButton("open-settings");

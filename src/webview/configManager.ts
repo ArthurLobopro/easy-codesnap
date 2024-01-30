@@ -4,6 +4,7 @@ export interface WebviewConfig
     extends Omit<ConfigSentToWebview, "lockOnOpen" | "linkOnOpen"> {
     isLocked: boolean;
     isLinked: boolean;
+    zoom: number;
 }
 
 class ConfigProvider {

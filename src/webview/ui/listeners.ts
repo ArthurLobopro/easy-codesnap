@@ -18,6 +18,7 @@ import {
     toggleLockedButton,
     transparentBackgroundInput,
     windowStyleSelect,
+    zoomSelect,
 } from "../elements";
 import { vscode } from "../util";
 import {
@@ -27,6 +28,7 @@ import {
     UIUpdater,
     VarUpdater,
     VisibilityUpdater,
+    ZoomUpdater,
 } from "./updaters";
 
 type NotBooleanProperties<T> = Pick<
@@ -43,7 +45,7 @@ function handleToggleEvent(
     element: HTMLElement,
     configName: togglableNames,
     event: events,
-    updater?: updater,
+    updater?: updater
 ) {
     element.addEventListener(event, () => {
         setSessionConfig({
@@ -57,7 +59,7 @@ function handleToggleEvent(
 function handleToggleBasedClick(
     element: HTMLElement,
     configName: togglableNames,
-    updater?: updater,
+    updater?: updater
 ) {
     handleToggleEvent(element, configName, "click", updater);
 }
@@ -65,7 +67,7 @@ function handleToggleBasedClick(
 function handleToggleBasedChange(
     element: HTMLElement,
     configName: togglableNames,
-    updater?: updater,
+    updater?: updater
 ) {
     handleToggleEvent(element, configName, "change", updater);
 }
@@ -73,7 +75,7 @@ function handleToggleBasedChange(
 function handleSelectBasedChange(
     select: HTMLSelectElement,
     configName: selectNames,
-    updater?: () => void,
+    updater?: () => void
 ) {
     select.addEventListener("change", () => {
         setSessionConfig({
@@ -89,30 +91,30 @@ export function addListeners() {
     handleToggleBasedChange(
         showLineNumbersInput,
         "showLineNumbers",
-        VarUpdater,
+        VarUpdater
     );
     handleToggleBasedChange(
         realLineNumbersInput,
         "realLineNumbers",
-        LineNumbersUpdater,
+        LineNumbersUpdater
     );
 
     handleToggleBasedChange(
         showWindowTitleInput,
         "showWindowTitle",
-        VisibilityUpdater,
+        VisibilityUpdater
     );
     handleToggleBasedChange(
         showWindowControlsInput,
         "showWindowControls",
-        VisibilityUpdater,
+        VisibilityUpdater
     );
 
     handleToggleBasedChange(roundedCornersInput, "roundedCorners", VarUpdater);
     handleToggleBasedChange(enableResizingInput, "enableResizing", VarUpdater);
     handleToggleBasedChange(
         transparentBackgroundInput,
-        "transparentBackground",
+        "transparentBackground"
     );
 
     handleToggleBasedClick(toggleLinkedButton, "isLinked", LinkButtonUpdater);
@@ -125,6 +127,7 @@ export function addListeners() {
 
     handleSelectBasedChange(roundingLevelSelect, "roundingLevel", VarUpdater);
     handleSelectBasedChange(windowStyleSelect, "windowStyle", UIUpdater);
+    handleSelectBasedChange(zoomSelect, "zoom", ZoomUpdater);
 
     //Message Buttons
     resetConfigButton.addEventListener("click", () => {
