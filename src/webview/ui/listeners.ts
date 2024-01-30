@@ -18,9 +18,11 @@ import {
     toggleLockedButton,
     transparentBackgroundInput,
     windowStyleSelect,
+    zoomInButton,
+    zoomOutButton,
     zoomSelect,
 } from "../elements";
-import { vscode } from "../util";
+import { $, vscode } from "../util";
 import {
     LineNumbersUpdater,
     LinkButtonUpdater,
@@ -140,5 +142,33 @@ export function addListeners() {
 
     openSettingsButton.addEventListener("click", () => {
         vscode.postMessage({ type: "open-settings" });
+    });
+
+    zoomOutButton.addEventListener("click", () => {
+        const option = $<HTMLOptionElement>("option:checked", zoomSelect);
+
+        const previousOption = (option &&
+            option.previousElementSibling) as HTMLOptionElement;
+
+        if (previousOption) {
+            setSessionConfig({
+                zoom: Number(previousOption.value),
+            });
+            ZoomUpdater();
+        }
+    });
+
+    zoomInButton.addEventListener("click", () => {
+        const option = $<HTMLOptionElement>("option:checked", zoomSelect);
+
+        const nextOption = (option &&
+            option.nextElementSibling) as HTMLOptionElement;
+
+        if (nextOption) {
+            setSessionConfig({
+                zoom: Number(nextOption.value),
+            });
+            ZoomUpdater();
+        }
     });
 }
