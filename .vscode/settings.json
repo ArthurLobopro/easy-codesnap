@@ -13,4 +13,5 @@
     "[typescript]": {
         "editor.defaultFormatter": "esbenp.prettier-vscode"
     },
+    "prettier.trailingComma": "all"
 }
