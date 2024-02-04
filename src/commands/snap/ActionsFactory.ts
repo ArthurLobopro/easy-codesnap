@@ -22,13 +22,12 @@ export function ActionsFactory(props: ActionFactoryProps) {
     return {
         async save({ data, format }: SaveProps) {
             flash();
+
             switch (format) {
                 case "svg":
-                    await saveSVG(data);
-                    break;
+                    return await saveSVG(data);
                 case "png":
-                    await savePNG(data);
-                    break;
+                    return await savePNG(data);
             }
         },
 
