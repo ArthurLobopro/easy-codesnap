@@ -1,8 +1,8 @@
-import { getSessionConfig } from "../../configManager";
+import { SessionConfig } from "../../SessionConfig";
 import { $$, calcTextWidth, setVar } from "../../util";
 
 export function LineNumbersUpdater() {
-    const { realLineNumbers } = getSessionConfig();
+    const realLineNumbers = SessionConfig.get("realLineNumbers");
 
     const lineNumbers = $$(".line-number");
 

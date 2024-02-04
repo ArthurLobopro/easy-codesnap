@@ -1,4 +1,4 @@
-import { getSessionConfig } from "../../configManager";
+import { SessionConfig } from "../../SessionConfig";
 import { setVar } from "../../util";
 
 export function VarUpdater() {
@@ -12,7 +12,7 @@ export function VarUpdater() {
         enableResizing,
         roundingLevel,
         showLineNumbers,
-    } = getSessionConfig();
+    } = SessionConfig.get();
 
     setVar("ligatures", fontLigatures ? "normal" : "none");
     if (typeof fontLigatures === "string") {

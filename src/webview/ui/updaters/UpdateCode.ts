@@ -1,12 +1,12 @@
-import { getSessionConfig } from "../../configManager";
 import { ContentManager } from "../../ContentManager";
+import { SessionConfig } from "../../SessionConfig";
 import { highlightOnclickFactory } from "../../highlight";
 import { $, $$, calcTextWidth, setVar } from "../../util";
 
 const snippetNode = $("#snippet") as HTMLDivElement;
 
 function setupLines(node: Element) {
-    const config = getSessionConfig();
+    const config = SessionConfig.get();
 
     $$(":scope > br", node).forEach(
         (row) => (row.outerHTML = "<div>&nbsp;</div>"),

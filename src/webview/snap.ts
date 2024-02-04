@@ -3,7 +3,7 @@ import domtoimage from "dom-to-image";
 //@ts-expect-error
 import { elementToSVG } from "dom-to-svg";
 
-import { WebviewConfig, getSessionConfig } from "./configManager";
+import { SessionConfig, WebviewConfig } from "./SessionConfig";
 import { flashFx, snippetContainerNode, windowNode } from "./elements";
 import { $$, once, redraw, setVar, vscode } from "./util";
 
@@ -19,7 +19,7 @@ export async function cameraFlashAnimation() {
     flashFx.style.opacity = "1";
 }
 
-export async function takeSnap(config = getSessionConfig()) {
+export async function takeSnap(config = SessionConfig.get()) {
     windowNode.style.resize = "none";
 
     if (config.transparentBackground || config.target === "window") {

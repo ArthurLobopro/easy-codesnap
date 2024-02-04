@@ -1,10 +1,6 @@
 import { pick, pickAllExcept } from "@arthur-lobo/object-pick";
 import { ConfigSentToWebview } from "../types";
-import {
-    alreadyHasSessionConfig,
-    getSessionConfig,
-    setSessionConfig,
-} from "./configManager";
+import { SessionConfig } from "./SessionConfig";
 import { cameraFlashAnimation } from "./snap";
 import { UIUpdater, UpdateCode } from "./ui/updaters";
 
@@ -14,14 +10,15 @@ export const actions = {
     flash: cameraFlashAnimation,
 
     update(config: ConfigSentToWebview) {
-        if (alreadyHasSessionConfig() && getSessionConfig().isLocked) {
+        if (SessionConfig.hasConfig && SessionConfig.get("isLocked")) {
             return;
         }
 
-        setSessionConfig(pickAllExcept(config, ["linkOnOpen", "lockOnOpen"]));
+        SessionConfig.set(pickAllExcept(config, ["linkOnOpen", "lockOnOpen"]));
+
         document.execCommand("paste");
 
-        setSessionConfig({
+        SessionConfig.set({
             isLinked: config.linkOnOpen,
             isLocked: config.lockOnOpen,
         });
@@ -30,16 +27,16 @@ export const actions = {
     },
 
     "update-text"(config: ConfigSentToWebview) {
-        if (!alreadyHasSessionConfig()) {
-            setSessionConfig(config);
+        if (!SessionConfig.hasConfig) {
+            SessionConfig.set(config);
         } else {
-            const { isLocked, isLinked, editorID } = getSessionConfig();
+            const { isLocked, isLinked, editorID } = SessionConfig.get();
 
             if (isLocked || (isLinked && editorID !== config.editorID)) {
                 return;
             }
 
-            setSessionConfig(
+            SessionConfig.set(
                 pick(config, ["windowTitle", "startLine", "editorID"]),
             );
         }
@@ -49,7 +46,7 @@ export const actions = {
     },
 
     "update-config"(config: ConfigSentToWebview) {
-        setSessionConfig(
+        SessionConfig.set(
             pickAllExcept(config, [
                 "startLine",
                 "windowTitle",

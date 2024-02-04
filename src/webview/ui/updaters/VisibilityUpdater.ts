@@ -1,4 +1,4 @@
-import { getSessionConfig } from "../../configManager";
+import { SessionConfig } from "../../SessionConfig";
 import {
     navbarNode,
     roundingLevelSelect,
@@ -11,7 +11,7 @@ import {
 } from "../../elements";
 
 export function VisibilityUpdater() {
-    const { showWindowControls, showWindowTitle } = getSessionConfig();
+    const { showWindowControls, showWindowTitle } = SessionConfig.get();
 
     navbarNode.style.display =
         !showWindowControls && !showWindowTitle ? "none" : "";

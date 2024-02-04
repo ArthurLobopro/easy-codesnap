@@ -1,5 +1,7 @@
-import { selectNames, togglableNames } from "../../types";
-import { getSessionConfig, setSessionConfig } from "../configManager";
+import { selectNames, TogglableConfigNames } from "../../types";
+import { SessionConfig } from "../SessionConfig";
+import { $, vscode } from "../util";
+
 import {
     enableResizingInput,
     openSettingsButton,
@@ -22,7 +24,7 @@ import {
     zoomOutButton,
     zoomSelect,
 } from "../elements";
-import { $, vscode } from "../util";
+
 import {
     LineNumbersUpdater,
     LinkButtonUpdater,
@@ -45,14 +47,12 @@ type updater = () => void;
 
 function handleToggleEvent(
     element: HTMLElement,
-    configName: togglableNames,
+    configName: TogglableConfigNames,
     event: events,
     updater?: updater,
 ) {
     element.addEventListener(event, () => {
-        setSessionConfig({
-            [configName]: !getSessionConfig()[configName],
-        });
+        SessionConfig.toggle(configName);
 
         updater && updater();
     });
@@ -60,7 +60,7 @@ function handleToggleEvent(
 
 function handleToggleBasedClick(
     element: HTMLElement,
-    configName: togglableNames,
+    configName: TogglableConfigNames,
     updater?: updater,
 ) {
     handleToggleEvent(element, configName, "click", updater);
@@ -68,7 +68,7 @@ function handleToggleBasedClick(
 
 function handleToggleBasedChange(
     element: HTMLElement,
-    configName: togglableNames,
+    configName: TogglableConfigNames,
     updater?: updater,
 ) {
     handleToggleEvent(element, configName, "change", updater);
@@ -80,7 +80,7 @@ function handleSelectBasedChange(
     updater?: () => void,
 ) {
     select.addEventListener("change", () => {
-        setSessionConfig({
+        SessionConfig.set({
             [configName]: select.value,
         });
 
@@ -137,7 +137,10 @@ export function addListeners() {
     });
 
     saveConfigButton.addEventListener("click", () => {
-        vscode.postMessage({ type: "save-config", config: getSessionConfig() });
+        vscode.postMessage({
+            type: "save-config",
+            config: SessionConfig.get(),
+        });
     });
 
     openSettingsButton.addEventListener("click", () => {
@@ -151,9 +154,10 @@ export function addListeners() {
             option.previousElementSibling) as HTMLOptionElement;
 
         if (previousOption) {
-            setSessionConfig({
+            SessionConfig.set({
                 zoom: Number(previousOption.value),
             });
+
             ZoomUpdater();
         }
     });
@@ -165,9 +169,10 @@ export function addListeners() {
             option.nextElementSibling) as HTMLOptionElement;
 
         if (nextOption) {
-            setSessionConfig({
+            SessionConfig.set({
                 zoom: Number(nextOption.value),
             });
+
             ZoomUpdater();
         }
     });

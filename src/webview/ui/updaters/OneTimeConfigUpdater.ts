@@ -1,4 +1,4 @@
-import { getSessionConfig } from "../../configManager";
+import { SessionConfig } from "../../SessionConfig";
 import {
     enableResizingInput,
     realLineNumbersInput,
@@ -28,7 +28,7 @@ export function OneTimeConfigUpdater() {
         roundingLevel,
         saveFormat,
         windowStyle,
-    } = getSessionConfig();
+    } = SessionConfig.get();
 
     showWindowTitleInput.checked = showWindowTitle;
     showLineNumbersInput.checked = showLineNumbers;

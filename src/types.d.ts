@@ -1,4 +1,4 @@
-import { WebviewConfig } from "./webview/configManager";
+import { WebviewConfig } from "./webview/SessionConfig";
 
 export interface ExtensionConfig {
     boxShadow: string;
@@ -38,7 +38,7 @@ type BooleanProperties<T> = Pick<
     }[keyof T]
 >;
 
-export type togglableNames = keyof BooleanProperties<WebviewConfig>;
+export type TogglableConfigNames = keyof BooleanProperties<WebviewConfig>;
 
 export type selectNames = keyof Pick<
     WebviewConfig,

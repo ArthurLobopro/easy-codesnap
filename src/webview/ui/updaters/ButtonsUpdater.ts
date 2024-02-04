@@ -1,8 +1,8 @@
-import { getSessionConfig } from "../../configManager";
+import { SessionConfig } from "../../SessionConfig";
 import { toggleLinkedButton, toggleLockedButton } from "../../elements";
 
 export function LockButtonUpdater() {
-    const { isLocked } = getSessionConfig();
+    const isLocked = SessionConfig.get("isLocked");
 
     toggleLockedButton.classList.remove("codicon-unlock");
     toggleLockedButton.classList.remove("codicon-lock");
@@ -14,7 +14,7 @@ export function LockButtonUpdater() {
 }
 
 export function LinkButtonUpdater() {
-    const { isLinked } = getSessionConfig();
+    const isLinked = SessionConfig.get("isLinked");
 
     toggleLinkedButton.dataset.state = isLinked ? "linked" : "unlinked";
     toggleLinkedButton.title = isLinked
