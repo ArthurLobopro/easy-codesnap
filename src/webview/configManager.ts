@@ -7,6 +7,8 @@ export interface WebviewConfig
     zoom: number;
 }
 
+export type WebViewConfigKey = keyof WebviewConfig;
+
 export class ConfigProvider {
     static __config: WebviewConfig = {} as any;
 
@@ -18,18 +20,24 @@ export class ConfigProvider {
         return Object.keys(this.__config);
     }
 
-    static get() {
+    static get<T extends WebViewConfigKey>(name: T): WebviewConfig[T];
+    static get(): WebviewConfig;
+    static get(name?: WebViewConfigKey) {
+        if (name) {
+            return this.__config[name];
+        }
+
         return this.__config;
     }
 
     static set(config: Partial<WebviewConfig>) {
-        if (alreadyHasSessionConfig()) {
+        if (this.hasConfig) {
             config = { ...getSessionConfig(), ...config };
         }
 
         config.zoom = config.zoom ?? 100;
 
-        this.sessionConfig = config as WebviewConfig;
+        this.__config = config as WebviewConfig;
     }
 
     static set sessionConfig(config: WebviewConfig) {

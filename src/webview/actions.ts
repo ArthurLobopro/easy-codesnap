@@ -1,9 +1,8 @@
 import { pick, pickAllExcept } from "@arthur-lobo/object-pick";
 import { ConfigSentToWebview } from "../types";
+import { ConfigProvider } from "./configManager";
 import { cameraFlashAnimation } from "./snap";
 import { UIUpdater, UpdateCode } from "./ui/updaters";
-
-import { ConfigProvider } from "./configManager";
 
 export type actionsKey = keyof typeof actions;
 
@@ -11,7 +10,7 @@ export const actions = {
     flash: cameraFlashAnimation,
 
     update(config: ConfigSentToWebview) {
-        if (ConfigProvider.hasConfig && ConfigProvider.get().isLocked) {
+        if (ConfigProvider.hasConfig && ConfigProvider.get("isLocked")) {
             return;
         }
 
