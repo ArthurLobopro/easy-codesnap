@@ -31,13 +31,13 @@ export class SessionConfig {
     }
 
     static set(config: Partial<WebviewConfig>) {
-        if (this.hasConfig) {
-            config = { ...getSessionConfig(), ...config };
-        }
+        const newConfig = this.hasConfig
+            ? Object.assign({}, this.__config, config)
+            : config;
 
-        config.zoom = config.zoom ?? 100;
+        newConfig.zoom = newConfig.zoom ?? 100;
 
-        this.__config = config as WebviewConfig;
+        this.__config = newConfig as WebviewConfig;
     }
 
     static toggle(name: TogglableConfigNames) {
@@ -48,16 +48,3 @@ export class SessionConfig {
         this.__config = config;
     }
 }
-
-export const setSessionConfig = (config: Partial<WebviewConfig>) => {
-    if (alreadyHasSessionConfig()) {
-        config = { ...getSessionConfig(), ...config };
-    }
-
-    config.zoom = config.zoom ?? 100;
-
-    SessionConfig.sessionConfig = config as WebviewConfig;
-};
-
-export const getSessionConfig = (): WebviewConfig => SessionConfig.get();
-export const alreadyHasSessionConfig = () => SessionConfig.hasConfig;
