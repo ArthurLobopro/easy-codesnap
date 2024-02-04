@@ -1,12 +1,13 @@
 import { pick, pickAllExcept } from "@arthur-lobo/object-pick";
 import { ConfigSentToWebview } from "../types";
+import { cameraFlashAnimation } from "./snap";
+import { UIUpdater, UpdateCode } from "./ui/updaters";
+
 import {
     alreadyHasSessionConfig,
     getSessionConfig,
     setSessionConfig,
 } from "./configManager";
-import { cameraFlashAnimation } from "./snap";
-import { UIUpdater, UpdateCode } from "./ui/updaters";
 
 export type actionsKey = keyof typeof actions;
 

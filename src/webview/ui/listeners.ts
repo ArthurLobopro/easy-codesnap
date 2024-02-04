@@ -1,5 +1,7 @@
 import { selectNames, togglableNames } from "../../types";
 import { getSessionConfig, setSessionConfig } from "../configManager";
+import { $, vscode } from "../util";
+
 import {
     enableResizingInput,
     openSettingsButton,
@@ -22,7 +24,7 @@ import {
     zoomOutButton,
     zoomSelect,
 } from "../elements";
-import { $, vscode } from "../util";
+
 import {
     LineNumbersUpdater,
     LinkButtonUpdater,

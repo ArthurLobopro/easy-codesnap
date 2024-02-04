@@ -22,4 +22,4 @@ export const extensionSettingsNames: ConfigKey[] = [
     "linkOnOpen",
     "saveFormat",
     "windowStyle",
-];
+] as const;

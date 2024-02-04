@@ -1,4 +1,5 @@
 import { getSessionConfig } from "../../configManager";
+
 import {
     enableResizingInput,
     realLineNumbersInput,

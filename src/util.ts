@@ -31,10 +31,11 @@ export async function loadHtml(
         ),
     );
 
-    const CSP = `<meta http-equiv="Content-Security-Policy" content="${buildCSP(
-        cspSource,
-    )}" />
-    <link href="${codiconsUri}" rel="stylesheet" />`;
+    const CSP = [
+        `<meta http-equiv="Content-Security-Policy" 
+            content="${buildCSP(cspSource)}" />`,
+        `<link href="${codiconsUri}" rel="stylesheet" />`,
+    ].join("\n");
 
     return (await readFile(htmlPath, "utf-8"))
         .replace(
@@ -51,6 +52,7 @@ export function getSettings(group: string, keys: string[]) {
     const settings = vscode.workspace.getConfiguration(group);
     const editor = vscode.window.activeTextEditor;
     const language = editor?.document?.languageId;
+
     const languageSettings =
         language &&
         (vscode.workspace
