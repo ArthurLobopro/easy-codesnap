@@ -3,11 +3,7 @@ import { ConfigSentToWebview } from "../types";
 import { cameraFlashAnimation } from "./snap";
 import { UIUpdater, UpdateCode } from "./ui/updaters";
 
-import {
-    alreadyHasSessionConfig,
-    getSessionConfig,
-    setSessionConfig,
-} from "./configManager";
+import { ConfigProvider } from "./configManager";
 
 export type actionsKey = keyof typeof actions;
 
@@ -15,14 +11,15 @@ export const actions = {
     flash: cameraFlashAnimation,
 
     update(config: ConfigSentToWebview) {
-        if (alreadyHasSessionConfig() && getSessionConfig().isLocked) {
+        if (ConfigProvider.hasConfig && ConfigProvider.get().isLocked) {
             return;
         }
 
-        setSessionConfig(pickAllExcept(config, ["linkOnOpen", "lockOnOpen"]));
+        ConfigProvider.set(pickAllExcept(config, ["linkOnOpen", "lockOnOpen"]));
+
         document.execCommand("paste");
 
-        setSessionConfig({
+        ConfigProvider.set({
             isLinked: config.linkOnOpen,
             isLocked: config.lockOnOpen,
         });
@@ -31,16 +28,16 @@ export const actions = {
     },
 
     "update-text"(config: ConfigSentToWebview) {
-        if (!alreadyHasSessionConfig()) {
-            setSessionConfig(config);
+        if (!ConfigProvider.hasConfig) {
+            ConfigProvider.set(config);
         } else {
-            const { isLocked, isLinked, editorID } = getSessionConfig();
+            const { isLocked, isLinked, editorID } = ConfigProvider.get();
 
             if (isLocked || (isLinked && editorID !== config.editorID)) {
                 return;
             }
 
-            setSessionConfig(
+            ConfigProvider.set(
                 pick(config, ["windowTitle", "startLine", "editorID"]),
             );
         }
@@ -50,7 +47,7 @@ export const actions = {
     },
 
     "update-config"(config: ConfigSentToWebview) {
-        setSessionConfig(
+        ConfigProvider.set(
             pickAllExcept(config, [
                 "startLine",
                 "windowTitle",
