@@ -57,5 +57,3 @@ export const setSessionConfig = (config: Partial<WebviewConfig>) => {
 
 export const getSessionConfig = (): WebviewConfig => SessionConfig.get();
 export const alreadyHasSessionConfig = () => SessionConfig.hasConfig;
-
-export const getConfigKeys = () => SessionConfig.keys;
