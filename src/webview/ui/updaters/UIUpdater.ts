@@ -1,4 +1,4 @@
-import { getSessionConfig } from "../../SessionConfig";
+import { SessionConfig } from "../../SessionConfig";
 import { windowNode, windowTitleNode } from "../../elements";
 import { LinkButtonUpdater, LockButtonUpdater } from "./ButtonsUpdater";
 import { LineNumbersUpdater } from "./LineNumbersUpdater";
@@ -8,7 +8,7 @@ import { VisibilityUpdater } from "./VisibilityUpdater";
 import { ZoomUpdater } from "./ZoomUpdater";
 
 export function UIUpdater() {
-    const { windowTitle, windowStyle } = getSessionConfig();
+    const { windowTitle, windowStyle } = SessionConfig.get();
 
     VarUpdater();
     VisibilityUpdater();

@@ -1,4 +1,4 @@
-import { ConfigSentToWebview } from "../types";
+import { ConfigSentToWebview, TogglableConfigNames } from "../types";
 
 export interface WebviewConfig
     extends Omit<ConfigSentToWebview, "lockOnOpen" | "linkOnOpen"> {
@@ -38,6 +38,10 @@ export class SessionConfig {
         config.zoom = config.zoom ?? 100;
 
         this.__config = config as WebviewConfig;
+    }
+
+    static toggle(name: TogglableConfigNames) {
+        this.__config[name] = !this.get(name);
     }
 
     static set sessionConfig(config: WebviewConfig) {

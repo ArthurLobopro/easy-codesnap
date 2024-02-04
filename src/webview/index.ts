@@ -1,6 +1,6 @@
 import { registerInsertSVG, registerLoadSVG } from "@arthur-lobo/load-svg";
 import { ContentManager } from "./ContentManager";
-import { getSessionConfig } from "./SessionConfig";
+import { SessionConfig } from "./SessionConfig";
 import { actions, actionsKey } from "./actions";
 import { btnSave } from "./elements";
 import { takeSnap } from "./snap";
@@ -13,13 +13,11 @@ registerInsertSVG();
 btnSave.addEventListener("click", () => takeSnap());
 
 document.addEventListener("copy", () =>
-    takeSnap({ ...getSessionConfig(), shutterAction: "copy" }),
+    takeSnap({ ...SessionConfig.get(), shutterAction: "copy" }),
 );
 
 document.addEventListener("paste", (e) => {
-    const { isLocked } = getSessionConfig();
-
-    if (!isLocked) {
+    if (!SessionConfig.get("isLocked")) {
         ContentManager.update(e.clipboardData as DataTransfer);
     }
 });

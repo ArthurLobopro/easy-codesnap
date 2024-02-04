@@ -1,9 +1,9 @@
-import { getSessionConfig } from "../../SessionConfig";
+import { SessionConfig } from "../../SessionConfig";
 import { zoomInButton, zoomOutButton, zoomSelect } from "../../elements";
 import { setVar } from "../../util";
 
 export function ZoomUpdater() {
-    const { zoom } = getSessionConfig();
+    const zoom = SessionConfig.get("zoom");
 
     zoomInButton.classList.remove("disabled");
     zoomOutButton.classList.remove("disabled");
