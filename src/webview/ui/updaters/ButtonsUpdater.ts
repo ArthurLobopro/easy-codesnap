@@ -1,4 +1,4 @@
-import { getSessionConfig } from "../../configManager";
+import { getSessionConfig } from "../../SessionConfig";
 import { toggleLinkedButton, toggleLockedButton } from "../../elements";
 
 export function LockButtonUpdater() {

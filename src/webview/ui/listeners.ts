@@ -1,5 +1,5 @@
 import { selectNames, togglableNames } from "../../types";
-import { getSessionConfig, setSessionConfig } from "../configManager";
+import { getSessionConfig, setSessionConfig } from "../SessionConfig";
 import { $, vscode } from "../util";
 
 import {

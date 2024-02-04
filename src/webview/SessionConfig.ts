@@ -9,7 +9,7 @@ export interface WebviewConfig
 
 export type WebViewConfigKey = keyof WebviewConfig;
 
-export class ConfigProvider {
+export class SessionConfig {
     static __config: WebviewConfig = {} as any;
 
     static get hasConfig() {
@@ -52,10 +52,10 @@ export const setSessionConfig = (config: Partial<WebviewConfig>) => {
 
     config.zoom = config.zoom ?? 100;
 
-    ConfigProvider.sessionConfig = config as WebviewConfig;
+    SessionConfig.sessionConfig = config as WebviewConfig;
 };
 
-export const getSessionConfig = (): WebviewConfig => ConfigProvider.get();
-export const alreadyHasSessionConfig = () => ConfigProvider.hasConfig;
+export const getSessionConfig = (): WebviewConfig => SessionConfig.get();
+export const alreadyHasSessionConfig = () => SessionConfig.hasConfig;
 
-export const getConfigKeys = () => ConfigProvider.keys;
+export const getConfigKeys = () => SessionConfig.keys;

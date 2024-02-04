@@ -1,4 +1,4 @@
-import { getSessionConfig } from "../../configManager";
+import { getSessionConfig } from "../../SessionConfig";
 import { $$, calcTextWidth, setVar } from "../../util";
 
 export function LineNumbersUpdater() {

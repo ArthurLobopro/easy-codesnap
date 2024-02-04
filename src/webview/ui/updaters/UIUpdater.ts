@@ -1,4 +1,4 @@
-import { getSessionConfig } from "../../configManager";
+import { getSessionConfig } from "../../SessionConfig";
 import { windowNode, windowTitleNode } from "../../elements";
 import { LinkButtonUpdater, LockButtonUpdater } from "./ButtonsUpdater";
 import { LineNumbersUpdater } from "./LineNumbersUpdater";

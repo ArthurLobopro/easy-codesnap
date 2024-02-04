@@ -1,5 +1,5 @@
-import { getSessionConfig } from "../../configManager";
 import { ContentManager } from "../../ContentManager";
+import { getSessionConfig } from "../../SessionConfig";
 import { highlightOnclickFactory } from "../../highlight";
 import { $, $$, calcTextWidth, setVar } from "../../util";
 

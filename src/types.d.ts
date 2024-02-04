@@ -1,4 +1,4 @@
-import { WebviewConfig } from "./webview/configManager";
+import { WebviewConfig } from "./webview/SessionConfig";
 
 export interface ExtensionConfig {
     boxShadow: string;

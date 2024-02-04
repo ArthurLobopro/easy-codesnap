@@ -1,7 +1,7 @@
 import { registerInsertSVG, registerLoadSVG } from "@arthur-lobo/load-svg";
 import { ContentManager } from "./ContentManager";
+import { getSessionConfig } from "./SessionConfig";
 import { actions, actionsKey } from "./actions";
-import { getSessionConfig } from "./configManager";
 import { btnSave } from "./elements";
 import { takeSnap } from "./snap";
 import { addListeners } from "./ui/listeners";

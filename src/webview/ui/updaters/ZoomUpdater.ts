@@ -1,4 +1,4 @@
-import { getSessionConfig } from "../../configManager";
+import { getSessionConfig } from "../../SessionConfig";
 import { zoomInButton, zoomOutButton, zoomSelect } from "../../elements";
 import { setVar } from "../../util";
 
