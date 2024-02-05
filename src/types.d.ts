@@ -1,5 +1,3 @@
-import { WebviewConfig } from "./webview/SessionConfig";
-
 export interface ExtensionConfig {
     boxShadow: string;
     backgroundColor: string;
@@ -27,6 +25,15 @@ export interface ConfigSentToWebview extends ExtensionConfig {
     fontLigatures: boolean;
     editorID: string;
 }
+
+export interface WebviewConfig
+    extends Omit<ConfigSentToWebview, "lockOnOpen" | "linkOnOpen"> {
+    isLocked: boolean;
+    isLinked: boolean;
+    zoom: number;
+}
+
+export type WebViewConfigKey = keyof WebviewConfig;
 
 export type untypedObject = { [key: string]: any };
 export type ConfigKey = keyof ExtensionConfig;

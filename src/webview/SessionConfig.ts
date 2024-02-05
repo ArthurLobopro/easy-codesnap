@@ -1,13 +1,8 @@
-import { ConfigSentToWebview, TogglableConfigNames } from "../types";
-
-export interface WebviewConfig
-    extends Omit<ConfigSentToWebview, "lockOnOpen" | "linkOnOpen"> {
-    isLocked: boolean;
-    isLinked: boolean;
-    zoom: number;
-}
-
-export type WebViewConfigKey = keyof WebviewConfig;
+import {
+    TogglableConfigNames,
+    WebviewConfig,
+    WebViewConfigKey,
+} from "../types";
 
 export class SessionConfig {
     static __config: WebviewConfig = {} as any;
