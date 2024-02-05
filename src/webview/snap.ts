@@ -3,7 +3,8 @@ import domtoimage from "dom-to-image";
 //@ts-expect-error
 import { elementToSVG } from "dom-to-svg";
 
-import { SessionConfig, WebviewConfig } from "./SessionConfig";
+import { WebviewConfig } from "../types";
+import { SessionConfig } from "./SessionConfig";
 import { flashFx, snippetContainerNode, windowNode } from "./elements";
 import { $$, once, redraw, setVar, vscode } from "./util";
 
