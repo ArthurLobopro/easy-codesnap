@@ -20,8 +20,8 @@
 }
 
 #window[data-style="macos"] #window-title {
-    /* width of window controls (and a bit) so they don't overlap */
-    margin: 0 80px;
+    margin: 0 80px 0 0;
+    text-align: center;
 }
 
 #window[data-style="macos"] #window-controls[hidden] + #window-title{
