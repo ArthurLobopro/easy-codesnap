@@ -8,7 +8,11 @@ import { VisibilityUpdater } from "./VisibilityUpdater";
 import { ZoomUpdater } from "./ZoomUpdater";
 
 export function UIUpdater() {
-    const { windowTitle, windowStyle } = SessionConfig.get();
+    const {
+        templates: { fileName, workspace },
+        windowStyle,
+        windowTitleTemplate,
+    } = SessionConfig.get();
 
     VarUpdater();
     VisibilityUpdater();
@@ -18,6 +22,8 @@ export function UIUpdater() {
     LinkButtonUpdater();
     ZoomUpdater();
 
-    windowTitleNode.textContent = windowTitle;
+    windowTitleNode.textContent = windowTitleTemplate
+        .replace(/\{fileName\}/g, fileName)
+        .replace(/\{workspace\}/g, workspace);
     windowNode.dataset.style = windowStyle;
 }

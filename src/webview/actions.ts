@@ -37,7 +37,7 @@ export const actions = {
             }
 
             SessionConfig.set(
-                pick(config, ["windowTitle", "startLine", "editorID"]),
+                pick(config, ["templates", "startLine", "editorID"]),
             );
         }
 
@@ -49,7 +49,7 @@ export const actions = {
         SessionConfig.set(
             pickAllExcept(config, [
                 "startLine",
-                "windowTitle",
+                "templates",
                 "editorID",
                 "linkOnOpen",
                 "lockOnOpen",

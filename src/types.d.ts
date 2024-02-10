@@ -16,14 +16,18 @@ export interface ExtensionConfig {
     linkOnOpen: boolean;
     saveFormat: "png" | "svg";
     windowStyle: "macos" | "windows";
+    windowTitleTemplate: string;
 }
 
 export interface ConfigSentToWebview extends ExtensionConfig {
     startLine: number;
-    windowTitle: string;
     tabSize: number;
     fontLigatures: boolean;
     editorID: string;
+    templates: {
+        fileName: string;
+        workspace: string;
+    };
 }
 
 export interface WebviewConfig

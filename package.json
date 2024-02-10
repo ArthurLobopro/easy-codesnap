@@ -82,6 +82,13 @@
           "default": false,
           "description": "Display window title with open folder / file name"
         },
+        "easy-codesnap.windowTitleTemplate": {
+          "scope": "resource",
+          "type": "string",
+          "default":"{workspace} - {fileName}",
+          "minLength": 1,
+          "description": "Defines the template to show snippet window title, you can use {workspace} and {fileName} variables"
+        },
         "easy-codesnap.showLineNumbers": {
           "scope": "resource",
           "type": "boolean",
