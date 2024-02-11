@@ -67,6 +67,7 @@ The Easy CodeSnap configuration is like the CodeSnap configuration:
 **`easy-codesnap.lockOnOpen`:** If the Snap Screen needs to be locked on open
 
 **`easy-codesnap.linkOnOpen`:** If the Snap Screen needs to be linked to editor on open
+**`windowTitleTemplate`** Defines the template to show snippet window title, you can use `{workspace}` and `{fileName}` variables
 
 ## Acknowledgments
 
