@@ -2,7 +2,7 @@
   "name": "easy-codesnap",
   "displayName": "Easy CodeSnap",
   "description": "Take beautiful screenshots of your code 📷",
-  "version": "1.9.0",
+  "version": "1.10.0",
   "repository": {
     "type": "git",
     "url": "https://github.com/ArthurLobopro/easy-codesnap"
@@ -81,6 +81,13 @@
           "type": "boolean",
           "default": false,
           "description": "Display window title with open folder / file name"
+        },
+        "easy-codesnap.windowTitleTemplate": {
+          "scope": "resource",
+          "type": "string",
+          "default":"{workspace} - {fileName}",
+          "minLength": 1,
+          "description": "Defines the template to show snippet window title, you can use {workspace} and {fileName} variables"
         },
         "easy-codesnap.showLineNumbers": {
           "scope": "resource",

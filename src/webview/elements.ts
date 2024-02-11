@@ -25,7 +25,7 @@ function getButton(action: buttonActions) {
 //Original Interface
 export const navbarNode = $("#navbar");
 export const windowControlsNode = $("#window-controls");
-export const windowTitleNode = $("#window-title");
+export const windowTitleNode = $<HTMLDivElement>("#window-title");
 export const btnSave = $("#save");
 export const windowNode = $("#window");
 export const snippetContainerNode = $("#snippet-container");

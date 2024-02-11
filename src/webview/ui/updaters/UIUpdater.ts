@@ -1,5 +1,6 @@
 import { SessionConfig } from "../../SessionConfig";
 import { windowNode, windowTitleNode } from "../../elements";
+import { getDefaultWindowTitle } from "../../util";
 import { LinkButtonUpdater, LockButtonUpdater } from "./ButtonsUpdater";
 import { LineNumbersUpdater } from "./LineNumbersUpdater";
 import { OneTimeConfigUpdater } from "./OneTimeConfigUpdater";
@@ -8,7 +9,7 @@ import { VisibilityUpdater } from "./VisibilityUpdater";
 import { ZoomUpdater } from "./ZoomUpdater";
 
 export function UIUpdater() {
-    const { windowTitle, windowStyle } = SessionConfig.get();
+    const { windowStyle, shouldUpdateTitle } = SessionConfig.get();
 
     VarUpdater();
     VisibilityUpdater();
@@ -18,6 +19,9 @@ export function UIUpdater() {
     LinkButtonUpdater();
     ZoomUpdater();
 
-    windowTitleNode.textContent = windowTitle;
+    if (shouldUpdateTitle) {
+        windowTitleNode.textContent = getDefaultWindowTitle();
+    }
+
     windowNode.dataset.style = windowStyle;
 }

@@ -19,9 +19,29 @@
     width: 100%;
 }
 
+#window [data-action="reset-title"]{
+    display: none;
+}
+
+[data-action="reset-title"]:hover{
+    background-color: var(--vscode-list-hoverBackground);
+}
+
+#window[data-style="windows"] [data-action="reset-title"]{
+   transform: translateX(calc(-100% - 2px));
+}
+
+#window-title:focus{
+    outline: 1px solid var(--vscode-settings-focusedRowBorder);
+}
+
+#window-title:focus + [data-action="reset-title"]{
+    display: block;
+}
+
 #window[data-style="macos"] #window-title {
-    /* width of window controls (and a bit) so they don't overlap */
-    margin: 0 80px;
+    margin: 0 80px 0 0;
+    text-align: center;
 }
 
 #window[data-style="macos"] #window-controls[hidden] + #window-title{

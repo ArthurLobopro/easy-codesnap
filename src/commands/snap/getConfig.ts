@@ -18,16 +18,19 @@ export function getConfig() {
     const selection = editor?.selection;
     const startLine = selection ? selection.start.line : 0;
 
-    let windowTitle = "";
+    let fileName = "";
     if (editor) {
         const activeFileName = editor.document.uri.path.split("/").pop();
-        windowTitle = `${vscode.workspace.name} - ${activeFileName}`;
+        fileName = activeFileName as string;
     }
 
     return {
         ...editorSettings,
         ...extensionSettings,
         startLine,
-        windowTitle,
+        templates: {
+            fileName,
+            workspace: vscode.workspace.name,
+        },
     };
 }

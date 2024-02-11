@@ -1,3 +1,8 @@
+## 1.10.0
+
+Feat: Add `easy-codesnap.windowTitleTemplate` option.
+Feat: Editable Window Title
+
 ## 1.9.0
 
 Feat: Add zoom features.
