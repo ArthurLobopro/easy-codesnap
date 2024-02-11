@@ -46,6 +46,8 @@ The Easy CodeSnap configuration is like the CodeSnap configuration:
 
 **`easy-codesnap.showWindowTitle`:** Boolean value to show or hide window title `folder_name - file_name`.
 
+**`easy-codesnap.windowTitleTemplate`** Defines the template to show snippet window title, you can use `{workspace}` and `{fileName}` variables
+
 **`easy-codesnap.showLineNumbers`:** Boolean value to show or hide line numbers.
 
 **`easy-codesnap.realLineNumbers`:** Boolean value to start from the real line number of the file instead of 1.
@@ -67,7 +69,6 @@ The Easy CodeSnap configuration is like the CodeSnap configuration:
 **`easy-codesnap.lockOnOpen`:** If the Snap Screen needs to be locked on open
 
 **`easy-codesnap.linkOnOpen`:** If the Snap Screen needs to be linked to editor on open
-**`windowTitleTemplate`** Defines the template to show snippet window title, you can use `{workspace}` and `{fileName}` variables
 
 ## Acknowledgments
 
