@@ -1,5 +1,6 @@
 import { SessionConfig } from "../../SessionConfig";
 import { windowNode, windowTitleNode } from "../../elements";
+import { getDefaultWindowTitle } from "../../util";
 import { LinkButtonUpdater, LockButtonUpdater } from "./ButtonsUpdater";
 import { LineNumbersUpdater } from "./LineNumbersUpdater";
 import { OneTimeConfigUpdater } from "./OneTimeConfigUpdater";
@@ -8,11 +9,7 @@ import { VisibilityUpdater } from "./VisibilityUpdater";
 import { ZoomUpdater } from "./ZoomUpdater";
 
 export function UIUpdater() {
-    const {
-        templates: { fileName, workspace },
-        windowStyle,
-        windowTitleTemplate,
-    } = SessionConfig.get();
+    const { windowStyle, shouldUpdateTitle } = SessionConfig.get();
 
     VarUpdater();
     VisibilityUpdater();
@@ -22,8 +19,9 @@ export function UIUpdater() {
     LinkButtonUpdater();
     ZoomUpdater();
 
-    windowTitleNode.textContent = windowTitleTemplate
-        .replace(/\{fileName\}/g, fileName)
-        .replace(/\{workspace\}/g, workspace);
+    if (shouldUpdateTitle) {
+        windowTitleNode.textContent = getDefaultWindowTitle();
+    }
+
     windowNode.dataset.style = windowStyle;
 }

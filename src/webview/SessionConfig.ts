@@ -31,6 +31,7 @@ export class SessionConfig {
             : config;
 
         newConfig.zoom = newConfig.zoom ?? 100;
+        newConfig.shouldUpdateTitle = newConfig.shouldUpdateTitle ?? true;
 
         this.__config = newConfig as WebviewConfig;
     }

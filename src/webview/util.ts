@@ -1,4 +1,5 @@
 import { message } from "../types";
+import { SessionConfig } from "./SessionConfig";
 
 export type untypedObject = { [key: string]: any };
 
@@ -38,3 +39,14 @@ declare const acquireVsCodeApi: () => {
 };
 
 export const vscode = acquireVsCodeApi();
+
+export function getDefaultWindowTitle() {
+    const {
+        templates: { fileName, workspace },
+        windowTitleTemplate,
+    } = SessionConfig.get();
+
+    return windowTitleTemplate
+        .replace(/\{fileName\}/g, fileName)
+        .replace(/\{workspace\}/g, workspace);
+}

@@ -35,6 +35,7 @@ export interface WebviewConfig
     isLocked: boolean;
     isLinked: boolean;
     zoom: number;
+    shouldUpdateTitle: boolean;
 }
 
 export type WebViewConfigKey = keyof WebviewConfig;
