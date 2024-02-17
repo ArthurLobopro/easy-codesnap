@@ -37,13 +37,16 @@ export async function loadHtml(
         `<link href="${codiconsUri}" rel="stylesheet" />`,
     ].join("\n");
 
+    const getAssetPath = (src: string) => {
+        return panel.webview.asWebviewUri(
+            vscode.Uri.file(path.resolve(htmlPath, "..", src)),
+        );
+    };
+
     return (await readFile(htmlPath, "utf-8"))
         .replace(
             /(src|href)="([^"]*)"/gu,
-            (_, type, src) =>
-                `${type}="${panel.webview.asWebviewUri(
-                    vscode.Uri.file(path.resolve(htmlPath, "..", src)),
-                )}"`,
+            (_, type, src) => `${type}="${getAssetPath(src)}"`,
         )
         .replace(/%CSP_SOURCE%/gu, CSP);
 }
@@ -55,9 +58,7 @@ export function getSettings(group: string, keys: string[]) {
 
     const languageSettings =
         language &&
-        (vscode.workspace
-            .getConfiguration()
-            .get(`[${language}]`) as untypedObject);
+        vscode.workspace.getConfiguration().get<untypedObject>(`[${language}]`);
 
     return keys.reduce((config, key) => {
         if (languageSettings) {
