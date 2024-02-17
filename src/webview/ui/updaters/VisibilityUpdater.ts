@@ -10,6 +10,10 @@ import {
     windowTitleNode,
 } from "../../elements";
 
+function getWidth(element: HTMLElement) {
+    return element.getBoundingClientRect().width;
+}
+
 export function VisibilityUpdater() {
     const { showWindowControls, showWindowTitle } = SessionConfig.get();
 
@@ -18,9 +22,7 @@ export function VisibilityUpdater() {
     windowControlsNode.hidden = !showWindowControls;
     windowTitleNode.hidden = !showWindowTitle;
 
-    const biggerSelectWidth = `${
-        windowStyleSelect.getBoundingClientRect().width
-    }px`;
+    const biggerSelectWidth = `${getWidth(windowStyleSelect)}px`;
 
     targetSelect.style.width = biggerSelectWidth;
     shutterActionSelect.style.width = biggerSelectWidth;

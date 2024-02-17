@@ -15,7 +15,7 @@ function setupLines(node: Element) {
     const startLine = config.realLineNumbers ? config.startLine : 0;
 
     const rows = $$(":scope > div", node);
-    setVar("line-number-width", calcTextWidth(rows.length + startLine + ""));
+    setVar("line-number-width", calcTextWidth(`${rows.length + startLine}`));
 
     rows.forEach((row, idx) => {
         const newRow = document.createElement("div");
@@ -25,9 +25,9 @@ function setupLines(node: Element) {
 
         const lineNum = document.createElement("div");
         lineNum.classList.add("line-number");
-        lineNum.dataset.linenumber = idx + 1 + "";
-        lineNum.dataset.reallinenumber = idx + 1 + config.startLine + "";
-        lineNum.textContent = idx + 1 + startLine + "";
+        lineNum.dataset.linenumber = `${idx + 1}`;
+        lineNum.dataset.reallinenumber = `${idx + 1 + config.startLine}`;
+        lineNum.textContent = `${idx + 1 + startLine}`;
         lineNum.addEventListener("click", highlightOnclickFactory(newRow));
         newRow.appendChild(lineNum);
 

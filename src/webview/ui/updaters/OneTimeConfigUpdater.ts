@@ -40,7 +40,7 @@ export function OneTimeConfigUpdater() {
 
     shutterActionSelect.value = shutterAction;
     targetSelect.value = target;
-    roundingLevelSelect.value = roundingLevel + "";
+    roundingLevelSelect.value = roundingLevel.toString();
     saveFormatSelect.value = saveFormat;
     windowStyleSelect.value = windowStyle;
 }
