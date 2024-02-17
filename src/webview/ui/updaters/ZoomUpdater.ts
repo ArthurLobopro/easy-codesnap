@@ -16,6 +16,6 @@ export function ZoomUpdater() {
         zoomInButton.classList.add("disabled");
     }
 
-    zoomSelect.value = zoom + "";
+    zoomSelect.value = zoom.toString();
     setVar("zoom", zoom + "%");
 }

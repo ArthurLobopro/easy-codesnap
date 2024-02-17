@@ -19,14 +19,16 @@ export function VarUpdater() {
         setVar("font-features", fontLigatures);
     }
 
-    setVar("tab-size", tabSize + "");
+    setVar("tab-size", tabSize.toString());
     setVar("container-background-color", backgroundColor);
     setVar("box-shadow", boxShadow);
     setVar("container-padding", containerPadding);
+
     setVar(
         "window-border-radius",
-        roundedCorners ? `${4 * roundingLevel}px` : 0 + "",
+        roundedCorners ? `${4 * roundingLevel}px` : "0",
     );
+
     setVar("enable-resizing", enableResizing ? "horizontal" : "none");
     setVar("line-number-visibility", showLineNumbers ? "block" : "none");
 }
