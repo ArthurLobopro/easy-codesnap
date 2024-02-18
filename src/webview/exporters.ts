@@ -1,5 +1,5 @@
 //@ts-expect-error
-import domtoimage from "dom-to-image";
+import domtoimage from "dom-to-image-even-more";
 //@ts-expect-error
 import { elementToSVG } from "dom-to-svg";
 
