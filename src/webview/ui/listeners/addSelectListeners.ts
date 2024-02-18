@@ -1,6 +1,7 @@
 import {
     roundingLevelSelect,
     saveFormatSelect,
+    saveScaleSelect,
     shutterActionSelect,
     targetSelect,
     windowStyleSelect,
@@ -13,6 +14,7 @@ export function addSelectListeners() {
     handleSelectBasedChange(shutterActionSelect, "shutterAction");
     handleSelectBasedChange(targetSelect, "target");
     handleSelectBasedChange(saveFormatSelect, "saveFormat");
+    handleSelectBasedChange(saveScaleSelect, "saveScale");
 
     handleSelectBasedChange(roundingLevelSelect, "roundingLevel", VarUpdater);
     handleSelectBasedChange(windowStyleSelect, "windowStyle", UIUpdater);

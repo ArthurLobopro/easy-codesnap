@@ -17,6 +17,7 @@ export interface ExtensionConfig {
     saveFormat: "png" | "svg";
     windowStyle: "macos" | "windows";
     windowTitleTemplate: string;
+    saveScale: 1 | 1.5 | 2;
 }
 
 export interface ConfigSentToWebview extends ExtensionConfig {
@@ -60,6 +61,7 @@ export type selectNames = keyof Pick<
     | "target"
     | "windowStyle"
     | "zoom"
+    | "saveScale"
 >;
 
 export type message =
