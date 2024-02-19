@@ -1,3 +1,7 @@
+## 1.11.0
+
+Feat: Add `easy-codesnap.saveScale` option.
+
 ## 1.10.0
 
 Feat: Add `easy-codesnap.windowTitleTemplate` option.

@@ -1,21 +1,22 @@
 //@ts-expect-error
-import domtoimage from "dom-to-image";
+import domtoimage from "dom-to-image-even-more";
 //@ts-expect-error
 import { elementToSVG } from "dom-to-svg";
 
 import { WebviewConfig } from "../types";
+import { SessionConfig } from "./SessionConfig";
 import { cameraFlashAnimation } from "./snap";
 import { $$, vscode } from "./util";
-
-const SNAP_SCALE = 2;
 
 export async function exportPNG(
     target: HTMLElement,
     action: WebviewConfig["shutterAction"],
 ) {
+    const scale = SessionConfig.get("saveScale");
+
     const url = await domtoimage.toPng(target, {
         bgColor: "transparent",
-        scale: SNAP_SCALE,
+        scale,
         postProcess: (node: HTMLElement) => {
             $$(
                 "#snippet-container, #snippet, .line, .line-code span",

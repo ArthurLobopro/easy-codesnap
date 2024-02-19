@@ -5,6 +5,7 @@ import {
     roundedCornersInput,
     roundingLevelSelect,
     saveFormatSelect,
+    saveScaleSelect,
     showLineNumbersInput,
     showWindowControlsInput,
     showWindowTitleInput,
@@ -28,6 +29,7 @@ export function OneTimeConfigUpdater() {
         roundingLevel,
         saveFormat,
         windowStyle,
+        saveScale,
     } = SessionConfig.get();
 
     showWindowTitleInput.checked = showWindowTitle;
@@ -43,4 +45,5 @@ export function OneTimeConfigUpdater() {
     roundingLevelSelect.value = roundingLevel.toString();
     saveFormatSelect.value = saveFormat;
     windowStyleSelect.value = windowStyle;
+    saveScaleSelect.value = saveScale.toString();
 }

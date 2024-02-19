@@ -3,6 +3,7 @@ import {
     navbarNode,
     roundingLevelSelect,
     saveFormatSelect,
+    saveScaleSelect,
     shutterActionSelect,
     targetSelect,
     windowControlsNode,
@@ -28,4 +29,5 @@ export function VisibilityUpdater() {
     shutterActionSelect.style.width = biggerSelectWidth;
     roundingLevelSelect.style.width = biggerSelectWidth;
     saveFormatSelect.style.width = biggerSelectWidth;
+    saveScaleSelect.style.width = biggerSelectWidth;
 }

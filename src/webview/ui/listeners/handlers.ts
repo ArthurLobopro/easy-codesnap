@@ -37,9 +37,13 @@ export function handleSelectBasedChange(
     configName: selectNames,
     updater?: () => void,
 ) {
+    const treater = ["saveScale", "roundingLevel"].includes(configName)
+        ? Number
+        : (v: any) => v;
+
     select.addEventListener("change", () => {
         SessionConfig.set({
-            [configName]: select.value,
+            [configName]: treater(select.value),
         });
 
         updater && updater();
