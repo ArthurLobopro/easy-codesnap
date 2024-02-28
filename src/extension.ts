@@ -1,8 +1,6 @@
 import * as vscode from "vscode";
-import { importSettings } from "./commands/importSettings";
-import { openSettings } from "./commands/openSettings";
-import { SnapFactory } from "./commands/snap";
-import { createStatusbarButton } from "./statusBarButton";
+import { StatusbarButton } from "./StatusBarButton";
+import { SnapFactory, importSettings, openSettings } from "./commands";
 
 export function activate(context: vscode.ExtensionContext) {
     context.subscriptions.push(
@@ -18,7 +16,7 @@ export function activate(context: vscode.ExtensionContext) {
             "easy-codesnap.openSettings",
             openSettings,
         ),
-        ...createStatusbarButton(),
+        new StatusbarButton(),
     );
 }
 
