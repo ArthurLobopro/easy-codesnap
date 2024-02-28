@@ -30,7 +30,7 @@ export function getConfig() {
         startLine,
         templates: {
             fileName,
-            workspace: vscode.workspace.name,
+            workspace: vscode.workspace.name ?? "",
         },
     };
 }
