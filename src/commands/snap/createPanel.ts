@@ -1,6 +1,6 @@
 import path from "path";
 import * as vscode from "vscode";
-import { loadHtml } from "../../util";
+import { loadHtml } from "./loadHtml";
 
 export async function createPanel(context: vscode.ExtensionContext) {
     const panel = vscode.window.createWebviewPanel(
