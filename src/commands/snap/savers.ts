@@ -6,6 +6,7 @@ import { writeFile } from "../../util";
 
 const makeUri = vscode.Uri.parse;
 const uriPath = (uri: vscode.Uri) => uri.fsPath;
+
 let lastUsedImageUri = makeUri(path.resolve(homedir(), "Desktop"));
 
 export async function savePNG(data: string) {

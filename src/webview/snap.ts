@@ -23,13 +23,9 @@ export async function takeSnap(config = SessionConfig.get()) {
     const target =
         config.target === "container" ? snippetContainerNode : windowNode;
 
-    if (config.saveFormat === "png") {
-        await exportPNG(target, config.shutterAction);
-    }
+    const exporter = config.saveFormat === "svg" ? exportSVG : exportPNG;
 
-    if (config.saveFormat === "svg") {
-        await exportSVG(target, config.shutterAction);
-    }
+    await exporter(target, config.shutterAction);
 
     windowNode.style.resize = "";
     setVar("container-background-color", config.backgroundColor);

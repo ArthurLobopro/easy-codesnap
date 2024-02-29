@@ -33,8 +33,10 @@ export function calcTextWidth(text: string) {
     const div = document.body.appendChild(document.createElement("div"));
     div.classList.add("size-test");
     div.textContent = text;
+
     const width = div.clientWidth;
     div.remove();
+
     return width + 1 + "px";
 }
 
