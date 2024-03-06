@@ -2,7 +2,7 @@
   "name": "easy-codesnap",
   "displayName": "Easy CodeSnap",
   "description": "Take beautiful screenshots of your code 📷",
-  "version": "1.11.0",
+  "version": "1.12.0",
   "repository": {
     "type": "git",
     "url": "https://github.com/ArthurLobopro/easy-codesnap"
@@ -186,6 +186,19 @@
           "enum": [
             "macos",
             "windows"
+          ]
+        },
+        "easy-codesnap.aspect-ratio": {
+          "scope": "resource",
+          "type": "string",
+          "default": "none",
+          "description": "Defines an aspect ratio to snap (when container is the target)",
+          "enum": [
+            "none",
+            "1:1",
+            "4:5",
+            "9:16",
+            "16:9"
           ]
         }
       }
