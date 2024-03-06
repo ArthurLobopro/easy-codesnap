@@ -18,6 +18,7 @@ export interface ExtensionConfig {
     windowStyle: "macos" | "windows";
     windowTitleTemplate: string;
     saveScale: 1 | 1.5 | 2;
+    aspectRatio: "none" | "1:1" | "4:5" | "9:16" | "16:9";
 }
 
 export interface ConfigSentToWebview extends ExtensionConfig {
@@ -62,6 +63,7 @@ export type selectNames = keyof Pick<
     | "windowStyle"
     | "zoom"
     | "saveScale"
+    | "aspectRatio"
 >;
 
 export type message =

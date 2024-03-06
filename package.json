@@ -187,6 +187,19 @@
             "macos",
             "windows"
           ]
+        },
+        "easy-codesnap.aspect-ratio": {
+          "scope": "resource",
+          "type": "string",
+          "default": "none",
+          "description": "Aspect ratio applied on window container",
+          "enum": [
+            "none",
+            "1:1",
+            "4:5",
+            "9:16",
+            "16:9"
+          ]
         }
       }
     }

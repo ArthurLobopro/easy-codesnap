@@ -1,4 +1,5 @@
 import {
+    aspectRatioSelect,
     roundingLevelSelect,
     saveFormatSelect,
     saveScaleSelect,
@@ -7,7 +8,12 @@ import {
     windowStyleSelect,
     zoomSelect,
 } from "../../elements";
-import { UIUpdater, VarUpdater, ZoomUpdater } from "../updaters";
+import {
+    UIUpdater,
+    VarUpdater,
+    VisibilityUpdater,
+    ZoomUpdater,
+} from "../updaters";
 import { handleSelectBasedChange } from "./handlers";
 
 export function addSelectListeners() {
@@ -19,4 +25,9 @@ export function addSelectListeners() {
     handleSelectBasedChange(roundingLevelSelect, "roundingLevel", VarUpdater);
     handleSelectBasedChange(windowStyleSelect, "windowStyle", UIUpdater);
     handleSelectBasedChange(zoomSelect, "zoom", ZoomUpdater);
+    handleSelectBasedChange(
+        aspectRatioSelect,
+        "aspectRatio",
+        VisibilityUpdater,
+    );
 }
