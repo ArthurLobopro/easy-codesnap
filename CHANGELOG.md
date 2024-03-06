@@ -1,3 +1,7 @@
+## 1.12.0
+
+Feat: Add `easy-codesnap.aspect-ratio` option.
+
 ## 1.11.0
 
 Feat: Add `easy-codesnap.saveScale` option.

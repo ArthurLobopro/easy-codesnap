@@ -192,7 +192,7 @@
           "scope": "resource",
           "type": "string",
           "default": "none",
-          "description": "Aspect ratio applied on window container",
+          "description": "Defines an aspect ratio to snap (when container is the target)",
           "enum": [
             "none",
             "1:1",
