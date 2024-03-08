@@ -29,6 +29,10 @@ function setupLines(node: Element) {
         lineNum.dataset.reallinenumber = `${idx + 1 + config.startLine}`;
         lineNum.textContent = `${idx + 1 + startLine}`;
         lineNum.addEventListener("click", highlightOnclickFactory(newRow));
+        lineNum.addEventListener(
+            "contextmenu",
+            highlightOnclickFactory(newRow, "context"),
+        );
         newRow.appendChild(lineNum);
 
         const span = document.createElement("span");
