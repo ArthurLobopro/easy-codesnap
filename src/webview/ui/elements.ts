@@ -1,5 +1,5 @@
-import { selectNames, TogglableConfigNames } from "../types";
-import { $ } from "./util";
+import { selectNames, TogglableConfigNames } from "../../types";
+import { $ } from "../util";
 
 function getToggle(name: TogglableConfigNames) {
     return $<HTMLInputElement>(`input[data-configname="${name}"]`);

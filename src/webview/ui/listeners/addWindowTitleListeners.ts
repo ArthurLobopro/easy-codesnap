@@ -1,6 +1,6 @@
 import { SessionConfig } from "../../SessionConfig";
-import { windowTitleNode } from "../../elements";
 import { getDefaultWindowTitle } from "../../util";
+import { windowTitleNode } from "../elements";
 
 export function addWindowTitleListeners() {
     windowTitleNode.addEventListener("dblclick", () => {

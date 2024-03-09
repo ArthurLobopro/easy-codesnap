@@ -1,6 +1,6 @@
 import { SessionConfig } from "../../SessionConfig";
-import { zoomInButton, zoomOutButton, zoomSelect } from "../../elements";
 import { $ } from "../../util";
+import { zoomInButton, zoomOutButton, zoomSelect } from "../elements";
 import { ZoomUpdater } from "../updaters";
 
 export function addZoomListeners() {

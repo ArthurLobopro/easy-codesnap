@@ -13,7 +13,7 @@ import {
     targetSelect,
     transparentBackgroundInput,
     windowStyleSelect,
-} from "../../elements";
+} from "../elements";
 
 export function OneTimeConfigUpdater() {
     const {

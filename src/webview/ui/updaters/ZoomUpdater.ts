@@ -1,6 +1,6 @@
 import { SessionConfig } from "../../SessionConfig";
-import { zoomInButton, zoomOutButton, zoomSelect } from "../../elements";
 import { setVar } from "../../util";
+import { zoomInButton, zoomOutButton, zoomSelect } from "../elements";
 
 export function ZoomUpdater() {
     const zoom = SessionConfig.get("zoom");

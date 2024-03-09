@@ -1,6 +1,6 @@
 import { SessionConfig } from "./SessionConfig";
-import { flashFx, snippetContainerNode, windowNode } from "./elements";
 import { exportPNG, exportSVG } from "./exporters";
+import { flashFx, snippetContainerNode, windowNode } from "./ui/elements";
 import { once, redraw, setVar } from "./util";
 
 export async function cameraFlashAnimation() {

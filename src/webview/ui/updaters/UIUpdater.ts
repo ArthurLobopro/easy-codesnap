@@ -1,6 +1,6 @@
 import { SessionConfig } from "../../SessionConfig";
-import { windowNode, windowTitleNode } from "../../elements";
 import { getDefaultWindowTitle } from "../../util";
+import { windowNode, windowTitleNode } from "../elements";
 import { LinkButtonUpdater, LockButtonUpdater } from "./ButtonsUpdater";
 import { LineNumbersUpdater } from "./LineNumbersUpdater";
 import { OneTimeConfigUpdater } from "./OneTimeConfigUpdater";

@@ -1,5 +1,5 @@
 import { SessionConfig } from "../../SessionConfig";
-import { toggleLinkedButton, toggleLockedButton } from "../../elements";
+import { toggleLinkedButton, toggleLockedButton } from "../elements";
 
 export function LockButtonUpdater() {
     const isLocked = SessionConfig.get("isLocked");

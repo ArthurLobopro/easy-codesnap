@@ -8,7 +8,7 @@ import {
     toggleLinkedButton,
     toggleLockedButton,
     transparentBackgroundInput,
-} from "../../elements";
+} from "../elements";
 import {
     LineNumbersUpdater,
     LinkButtonUpdater,
