@@ -2,13 +2,18 @@ type highlightLevels = "none" | "focus" | "add" | "remove";
 
 const highlightOrder = ["none", "focus", "add", "remove"];
 
-export function highlightOnclickFactory(lineElement: HTMLDivElement) {
-    return () => {
-        const currentHighlight = lineElement.dataset
-            .highlight as highlightLevels;
+export function highlightOnclickFactory(
+    lineElement: HTMLDivElement,
+    type?: "click" | "context",
+) {
+    return (ev: MouseEvent) => {
+        ev.preventDefault();
+        ev.stopPropagation();
 
+        const currentHighlight = lineElement.dataset.highlight || "none";
         const currentIndex = highlightOrder.indexOf(currentHighlight);
-        const newIndex = currentIndex + 1;
+
+        const newIndex = currentIndex + (type === "context" ? -1 : 1);
 
         lineElement.dataset.highlight =
             newIndex === highlightOrder.length
