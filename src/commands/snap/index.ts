@@ -1,13 +1,23 @@
 import * as vscode from "vscode";
 import { message } from "../../types";
 import { hasOneSelection } from "../../util";
+import { Command } from "../Command";
 import { ActionsFactory, updateTypes } from "./ActionsFactory";
 import { createPanel } from "./createPanel";
 import { getConfig } from "./getConfig";
 
-export function SnapFactory(context: vscode.ExtensionContext) {
-    return async () => {
-        const panel = await createPanel(context);
+export class SnapCommand extends Command {
+    context: vscode.ExtensionContext;
+
+    name = "easy-codesnap.snap";
+
+    constructor(context: vscode.ExtensionContext) {
+        super();
+        this.context = context;
+    }
+
+    async exec() {
+        const panel = await createPanel(this.context);
 
         const update = async (updateType: updateTypes, editorURI?: string) => {
             if (updateType !== "config") {
@@ -43,5 +53,5 @@ export function SnapFactory(context: vscode.ExtensionContext) {
                 update("text", e.textEditor.document.uri.toString()),
         );
         panel.onDidDispose(() => selectionHandler.dispose());
-    };
+    }
 }
