@@ -1,3 +1,7 @@
+## 1.13.0
+
+Feat: Add `easy-codesnap.fullLinesSelection` option
+
 ## 1.12.1
 
 Feat: Context menu toggles the highlight level in the reverse order.
