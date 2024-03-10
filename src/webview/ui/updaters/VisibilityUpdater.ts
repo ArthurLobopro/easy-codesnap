@@ -12,7 +12,7 @@ import {
     windowNode,
     windowStyleSelect,
     windowTitleNode,
-} from "../../elements";
+} from "../elements";
 
 function getWidth(element: HTMLElement) {
     return element.getBoundingClientRect().width;

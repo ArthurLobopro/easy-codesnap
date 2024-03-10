@@ -19,6 +19,7 @@ export interface ExtensionConfig {
     windowTitleTemplate: string;
     saveScale: 1 | 1.5 | 2;
     aspectRatio: "none" | "1:1" | "4:5" | "9:16" | "16:9";
+    fullLinesSelection: boolean;
 }
 
 export interface ConfigSentToWebview extends ExtensionConfig {

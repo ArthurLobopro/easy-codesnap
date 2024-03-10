@@ -7,7 +7,7 @@ import {
     targetSelect,
     windowStyleSelect,
     zoomSelect,
-} from "../../elements";
+} from "../elements";
 import {
     UIUpdater,
     VarUpdater,

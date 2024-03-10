@@ -1,10 +1,10 @@
 import { SessionConfig } from "../../SessionConfig";
+import { vscode } from "../../util";
 import {
     openSettingsButton,
     resetConfigButton,
     saveConfigButton,
-} from "../../elements";
-import { vscode } from "../../util";
+} from "../elements";
 
 export function addButtonListeners() {
     resetConfigButton.addEventListener("click", () => {

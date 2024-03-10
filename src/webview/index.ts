@@ -2,8 +2,8 @@ import { registerInsertSVG, registerLoadSVG } from "@arthur-lobo/load-svg";
 import { ContentManager } from "./ContentManager";
 import { SessionConfig } from "./SessionConfig";
 import { actions, actionsKey } from "./actions";
-import { btnSave } from "./elements";
 import { takeSnap } from "./snap";
+import { btnSave } from "./ui/elements";
 import { addListeners } from "./ui/listeners";
 import { vscode } from "./util";
 

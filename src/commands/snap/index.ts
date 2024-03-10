@@ -1,13 +1,23 @@
 import * as vscode from "vscode";
 import { message } from "../../types";
-import { hasOneSelection } from "../../util";
-import { ActionsFactory, updateTypes } from "./ActionsFactory";
+import { getSettings, hasOneSelection } from "../../util";
+import { Command } from "../Command";
+import { SnapActions, updateTypes } from "./SnapActions";
 import { createPanel } from "./createPanel";
 import { getConfig } from "./getConfig";
 
-export function SnapFactory(context: vscode.ExtensionContext) {
-    return async () => {
-        const panel = await createPanel(context);
+export class SnapCommand extends Command {
+    context: vscode.ExtensionContext;
+
+    name = "easy-codesnap.snap";
+
+    constructor(context: vscode.ExtensionContext) {
+        super();
+        this.context = context;
+    }
+
+    async exec() {
+        const panel = await createPanel(this.context);
 
         const update = async (updateType: updateTypes, editorURI?: string) => {
             if (updateType !== "config") {
@@ -23,7 +33,7 @@ export function SnapFactory(context: vscode.ExtensionContext) {
             });
         };
 
-        const actions = ActionsFactory({ panel, update });
+        const actions = new SnapActions({ panel, update });
 
         panel.webview.onDidReceiveMessage(
             async ({ type, ...args }: message) => {
@@ -37,11 +47,29 @@ export function SnapFactory(context: vscode.ExtensionContext) {
             },
         );
 
+        const { fullLinesSelection } = getSettings("easy-codesnap", [
+            "fullLinesSelection",
+        ]);
+
+        const activeEditor = vscode.window.activeTextEditor;
+        if (
+            fullLinesSelection &&
+            activeEditor &&
+            hasOneSelection(activeEditor.selections)
+        ) {
+            const selection = activeEditor.selection;
+
+            activeEditor.selection = new vscode.Selection(
+                new vscode.Position(selection.start.line, 0),
+                selection.isReversed ? selection.anchor : selection.active,
+            );
+        }
+
         const selectionHandler = vscode.window.onDidChangeTextEditorSelection(
             (e) =>
                 hasOneSelection(e.selections) &&
                 update("text", e.textEditor.document.uri.toString()),
         );
         panel.onDidDispose(() => selectionHandler.dispose());
-    };
+    }
 }

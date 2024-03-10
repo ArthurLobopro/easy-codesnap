@@ -1,7 +1,7 @@
 import { ContentManager } from "../../ContentManager";
 import { SessionConfig } from "../../SessionConfig";
-import { highlightOnclickFactory } from "../../highlight";
 import { $, $$, calcTextWidth, setVar } from "../../util";
+import { highlightOnclickFactory } from "../highlight";
 
 const snippetNode = $("#snippet") as HTMLDivElement;
 
