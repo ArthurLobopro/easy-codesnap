@@ -2,7 +2,7 @@ import * as vscode from "vscode";
 import { message } from "../../types";
 import { hasOneSelection } from "../../util";
 import { Command } from "../Command";
-import { ActionsFactory, updateTypes } from "./ActionsFactory";
+import { SnapActions, updateTypes } from "./ActionsFactory";
 import { createPanel } from "./createPanel";
 import { getConfig } from "./getConfig";
 
@@ -33,7 +33,7 @@ export class SnapCommand extends Command {
             });
         };
 
-        const actions = ActionsFactory({ panel, update });
+        const actions = new SnapActions({ panel, update });
 
         panel.webview.onDidReceiveMessage(
             async ({ type, ...args }: message) => {
