@@ -200,6 +200,12 @@
             "9:16",
             "16:9"
           ]
+        },
+        "easy-codesnap.fullLinesSelection": {
+          "scope": "resource",
+          "type":"boolean",
+          "default": false,
+          "description": "Does get full line selection when open snap scren"
         }
       }
     }

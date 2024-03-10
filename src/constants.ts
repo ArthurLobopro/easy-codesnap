@@ -25,4 +25,5 @@ export const extensionSettingsNames: ConfigKey[] = [
     "windowTitleTemplate",
     "saveScale",
     "aspectRatio",
+    "fullLinesSelection",
 ] as const;

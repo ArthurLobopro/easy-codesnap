@@ -1,6 +1,6 @@
 import * as vscode from "vscode";
 import { message } from "../../types";
-import { hasOneSelection } from "../../util";
+import { getSettings, hasOneSelection } from "../../util";
 import { Command } from "../Command";
 import { SnapActions, updateTypes } from "./SnapActions";
 import { createPanel } from "./createPanel";
@@ -46,6 +46,24 @@ export class SnapCommand extends Command {
                 }
             },
         );
+
+        const { fullLinesSelection } = getSettings("easy-codesnap", [
+            "fullLinesSelection",
+        ]);
+
+        const activeEditor = vscode.window.activeTextEditor;
+        if (
+            fullLinesSelection &&
+            activeEditor &&
+            hasOneSelection(activeEditor.selections)
+        ) {
+            const selection = activeEditor.selection;
+
+            activeEditor.selection = new vscode.Selection(
+                new vscode.Position(selection.start.line, 0),
+                selection.isReversed ? selection.anchor : selection.active,
+            );
+        }
 
         const selectionHandler = vscode.window.onDidChangeTextEditorSelection(
             (e) =>
