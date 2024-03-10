@@ -2,7 +2,7 @@ import * as vscode from "vscode";
 import { message } from "../../types";
 import { hasOneSelection } from "../../util";
 import { Command } from "../Command";
-import { SnapActions, updateTypes } from "./ActionsFactory";
+import { SnapActions, updateTypes } from "./SnapActions";
 import { createPanel } from "./createPanel";
 import { getConfig } from "./getConfig";
 

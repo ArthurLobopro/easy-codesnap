@@ -9,16 +9,16 @@ export type updateTypes = "config" | "text" | "both";
 
 type SaveProps = { data: string; format: "svg" | "png" };
 
-interface ActionFactoryProps {
+interface SnapActionsProps {
     panel: vscode.WebviewPanel;
     update: (type: updateTypes, editorURI?: string) => Promise<void>;
 }
 
 export class SnapActions {
     private panel: vscode.WebviewPanel;
-    private update: ActionFactoryProps["update"];
+    private update: SnapActionsProps["update"];
 
-    constructor(props: ActionFactoryProps) {
+    constructor(props: SnapActionsProps) {
         this.panel = props.panel;
         this.update = (...args) => props.update(...args);
     }
