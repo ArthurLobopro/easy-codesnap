@@ -9,14 +9,7 @@ const uriPath = (uri: vscode.Uri) => uri.fsPath;
 
 let lastUsedImageUri = makeUri(path.resolve(homedir(), "Desktop"));
 
-export async function savePNG(data: string) {
-    const uri = await vscode.window.showSaveDialog({
-        filters: { Images: ["png"] },
-        defaultUri: makeUri(
-            path.resolve(uriPath(lastUsedImageUri), "code.png"),
-        ),
-    });
-
+function assignLastUsedImageUri(uri: vscode.Uri | undefined) {
     lastUsedImageUri =
         uri ??
         makeUri(
@@ -25,6 +18,21 @@ export async function savePNG(data: string) {
                 "",
             ),
         );
+}
+
+async function getSaveUri(format: "png" | "svg") {
+    return await vscode.window.showSaveDialog({
+        filters: { Images: [format] },
+        defaultUri: makeUri(
+            path.resolve(uriPath(lastUsedImageUri), `code.${format}`),
+        ),
+    });
+}
+
+export async function savePNG(data: string) {
+    const uri = await getSaveUri("png");
+
+    assignLastUsedImageUri(uri);
 
     if (uri) {
         writeFile(uri.fsPath, Buffer.from(data, "base64")).then(() => {
@@ -36,21 +44,9 @@ export async function savePNG(data: string) {
 }
 
 export async function saveSVG(data: string) {
-    const uri = await vscode.window.showSaveDialog({
-        filters: { Images: ["svg"] },
-        defaultUri: makeUri(
-            path.resolve(uriPath(lastUsedImageUri), "code.svg"),
-        ),
-    });
+    const uri = await getSaveUri("svg");
 
-    lastUsedImageUri =
-        uri ??
-        makeUri(
-            uriPath(lastUsedImageUri).replace(
-                path.dirname(uriPath(lastUsedImageUri)),
-                "",
-            ),
-        );
+    assignLastUsedImageUri(uri);
 
     const reducedData = reduceSVG(data);
 

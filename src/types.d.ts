@@ -2,24 +2,26 @@ export interface ExtensionConfig {
     boxShadow: string;
     backgroundColor: string;
     containerPadding: string;
+    windowTitleTemplate: string;
+
+    lockOnOpen: boolean;
+    linkOnOpen: boolean;
     roundedCorners: boolean;
     enableResizing: boolean;
     showWindowTitle: boolean;
     showLineNumbers: boolean;
     realLineNumbers: boolean;
     showWindowControls: boolean;
+    fullLinesSelection: boolean;
     transparentBackground: boolean;
+
+    saveScale: 1 | 1.5 | 2;
+    roundingLevel: 1 | 2 | 3 | 4;
+    saveFormat: "png" | "svg";
     target: "container" | "window";
     shutterAction: "save" | "copy";
-    roundingLevel: 1 | 2 | 3 | 4;
-    lockOnOpen: boolean;
-    linkOnOpen: boolean;
-    saveFormat: "png" | "svg";
     windowStyle: "macos" | "windows";
-    windowTitleTemplate: string;
-    saveScale: 1 | 1.5 | 2;
     aspectRatio: "none" | "1:1" | "4:5" | "9:16" | "16:9";
-    fullLinesSelection: boolean;
 }
 
 export interface ConfigSentToWebview extends ExtensionConfig {

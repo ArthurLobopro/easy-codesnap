@@ -1,10 +1,8 @@
 import * as vscode from "vscode";
-import { message } from "../../types";
 import { getSettings, hasOneSelection } from "../../util";
 import { Command } from "../Command";
-import { SnapActions, updateTypes } from "./SnapActions";
-import { createPanel } from "./createPanel";
-import { getConfig } from "./getConfig";
+import { PanelBuilder } from "./PanelBuilder";
+import { PanelController } from "./PanelController";
 
 export class SnapCommand extends Command {
     context: vscode.ExtensionContext;
@@ -17,46 +15,21 @@ export class SnapCommand extends Command {
     }
 
     async exec() {
-        const panel = await createPanel(this.context);
+        const panel = await new PanelBuilder(this.context).build();
 
-        const update = async (updateType: updateTypes, editorURI?: string) => {
-            if (updateType !== "config") {
-                await vscode.commands.executeCommand(
-                    "editor.action.clipboardCopyWithSyntaxHighlightingAction",
-                );
-            }
-
-            panel.webview.postMessage({
-                type: updateType === "both" ? "update" : `update-${updateType}`,
-                ...getConfig(),
-                ...(editorURI ? { editorID: editorURI } : {}),
-            });
-        };
-
-        const actions = new SnapActions({ panel, update });
-
-        panel.webview.onDidReceiveMessage(
-            async ({ type, ...args }: message) => {
-                if (type in actions) {
-                    actions[type]({ ...args } as any);
-                } else {
-                    vscode.window.showErrorMessage(
-                        `Easy CodeSnap 📸: Unknown shutterAction "${type}"`,
-                    );
-                }
-            },
-        );
+        const panelController = new PanelController(panel);
+        panelController.init();
 
         const { fullLinesSelection } = getSettings("easy-codesnap", [
             "fullLinesSelection",
         ]);
 
+        fullLinesSelection && this.setFullLineSelection();
+    }
+
+    setFullLineSelection() {
         const activeEditor = vscode.window.activeTextEditor;
-        if (
-            fullLinesSelection &&
-            activeEditor &&
-            hasOneSelection(activeEditor.selections)
-        ) {
+        if (activeEditor && hasOneSelection(activeEditor.selections)) {
             const selection = activeEditor.selection;
 
             activeEditor.selection = new vscode.Selection(
@@ -64,12 +37,5 @@ export class SnapCommand extends Command {
                 selection.isReversed ? selection.anchor : selection.active,
             );
         }
-
-        const selectionHandler = vscode.window.onDidChangeTextEditorSelection(
-            (e) =>
-                hasOneSelection(e.selections) &&
-                update("text", e.textEditor.document.uri.toString()),
-        );
-        panel.onDidDispose(() => selectionHandler.dispose());
     }
 }
