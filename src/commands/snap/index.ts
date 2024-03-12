@@ -1,8 +1,8 @@
 import * as vscode from "vscode";
 import { getSettings, hasOneSelection } from "../../util";
 import { Command } from "../Command";
+import { PanelBuilder } from "./PanelBuilder";
 import { PanelController } from "./PanelController";
-import { createPanel } from "./createPanel";
 
 export class SnapCommand extends Command {
     context: vscode.ExtensionContext;
@@ -15,7 +15,7 @@ export class SnapCommand extends Command {
     }
 
     async exec() {
-        const panel = await createPanel(this.context);
+        const panel = await new PanelBuilder(this.context).build();
 
         const panelController = new PanelController(panel);
         panelController.init();
