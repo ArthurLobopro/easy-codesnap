@@ -26,7 +26,7 @@
 
     <div id="center-wrapper">
         <button class="codicon codicon-zoom-out" data-action="zoom-out"></button>
-        <select data-configname="zoom" >
+        <select data-configname="zoom">
             <option value="50">50%</option>
             <option value="75">75%</option>
             <option value="100" selected>100%</option>
@@ -145,19 +145,28 @@
 
                 <li class="separator"></li>
 
-                <li data-action="open-settings" title="Open extension settings">
+                <li data-action="open-settings" class="tooltip horizontal-left">
                     <span class="codicon codicon-gear"></span>
                     Open Settings
+                    <snap class="tooltip-text">
+                        Open extension settings
+                    </snap>
                 </li>
 
-                <li data-action="reset-config" title="Reset settings to default">
+                <li data-action="reset-config" class="tooltip horizontal-left">
                     <span class="codicon codicon-sync"></span>
                     Reset Settings
+                    <span class="tooltip-text">
+                        Reset settings to default
+                    </span>
                 </li>
 
-                <li data-action="save-config" title="Save current settings as default">
+                <li data-action="save-config" class="tooltip horizontal-left">
                     <span class="codicon codicon-save-all"></span>
                     Save Settings
+                    <snap class="tooltip-text">
+                        Save current settings as default
+                    </snap>
                 </li>
             </ul>
         </details>
