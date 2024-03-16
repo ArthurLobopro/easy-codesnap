@@ -2,4 +2,10 @@
 @import url(./styles/one-time-config.css);
 @import url(./styles/highlight.css);
 @import url(./styles/window-controls.css);
-@import url(./styles/tooltip.css)
+@import url(./styles/tooltip.css);
+
+:root{
+    --background-color: var(--vscode-editorHoverWidget-background);
+    --border-color: var(--vscode-editorHoverWidget-border);
+    --color: var(--vscode-foreground);
+}

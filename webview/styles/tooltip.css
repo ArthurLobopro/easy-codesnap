@@ -7,6 +7,7 @@
     --tooltip-tag-size: 5px;
     --background-color: #161B22;
     --border-color: gray;
+    --color: #DCE3EA;
 }
 
 .tooltip {
@@ -19,7 +20,7 @@
     width: max-content;
 
     background-color: var(--background-color);
-    color: #DCE3EA;
+    color: var(--color);
     text-align: center;
     font-size: 12px;
 
@@ -48,16 +49,16 @@
     top: calc(100% + var(--tooltip-tag-size));
 }
 
-.tooltip:not(:is(.left, .right)) .tooltip-text {
+.tooltip:not(:is(.right, .left, .horizontal-left)) .tooltip-text:not(:is(.right, .left)) {
     left: 50%;
     translate: -50%;
 }
 
-.tooltip.left .tooltip-text {
+.tooltip.right .tooltip-text {
     left: 0%;
 }
 
-.tooltip.right .tooltip-text {
+.tooltip.left .tooltip-text {
     right: 0%;
     translate: 0%;
 }
@@ -119,22 +120,22 @@
     --border-width: calc(var(--tooltip-tag-size) + 1px);
 }
 
-.tooltip:not(:is(.left, .right))::after,
-.tooltip:not(:is(.left, .right))::before {
+.tooltip:not(:is(.right, .left))::after,
+.tooltip:not(:is(.right, .left))::before {
     --left: 50%;
-}
-
-.tooltip:not(:is(.horizontal-left)).left::after,
-.tooltip:not(:is(.horizontal-left)).left::before {
-    --left: clamp(8px, 12px, 25%);
 }
 
 .tooltip:not(:is(.horizontal-left)).right::after,
 .tooltip:not(:is(.horizontal-left)).right::before {
+    --left: clamp(8px, 12px, 25%);
+}
+
+.tooltip:not(:is(.horizontal-left)).left::after,
+.tooltip:not(:is(.horizontal-left)).left::before {
     --right: clamp(8px, 12px, 25%);
 }
 
-.tooltip:not(:is(.horizontal-left)).right::after{
+.tooltip:not(:is(.horizontal-left)).left::after{
     --translateX: -1px;
 }
 
