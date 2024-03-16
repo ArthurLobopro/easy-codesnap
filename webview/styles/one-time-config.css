@@ -148,6 +148,11 @@ select>option {
     cursor: pointer;
 }
 
+:is(#center-wrapper, #left-wrapper) :is(button.codicon,
+    button>.codicon) {
+    font-size: 24px;
+}
+
 #left-wrapper>button:hover,
 #center-wrapper>button:hover {
     background-color: var(--vscode-list-hoverBackground);
@@ -180,7 +185,7 @@ select>option {
 }
 
 
-#center-wrapper>button.disabled{
+#center-wrapper>button.disabled {
     color: var(--vscode-disabledForeground);
 }
 
