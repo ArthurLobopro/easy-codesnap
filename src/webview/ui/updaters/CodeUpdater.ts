@@ -2,11 +2,14 @@ import { ContentManager } from "../../ContentManager";
 import { SessionConfig } from "../../SessionConfig";
 import { $, $$, calcTextWidth, setVar } from "../../util";
 import { highlightOnclickFactory } from "../highlight";
+import { UpdateRatio } from "./VisibilityUpdater";
 
 const snippetNode = $("#snippet") as HTMLDivElement;
 
 function setupLines(node: Element) {
     const config = SessionConfig.get();
+
+    UpdateRatio("none");
 
     $$(":scope > br", node).forEach(
         (row) => (row.outerHTML = "<div>&nbsp;</div>"),
@@ -47,6 +50,8 @@ function setupLines(node: Element) {
 
         newRow.appendChild(lineCodeDiv);
     });
+
+    UpdateRatio(config.aspectRatio);
 }
 
 function stripInitialIndent(node: Element) {
