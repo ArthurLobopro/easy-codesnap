@@ -1,14 +1,6 @@
 import { selectNames, TogglableConfigNames } from "../../types";
 import { $ } from "../util";
 
-function getToggle(name: TogglableConfigNames) {
-    return $<HTMLInputElement>(`input[data-configname="${name}"]`);
-}
-
-function getSelect(name: selectNames) {
-    return $<HTMLSelectElement>(`select[data-configname="${name}"]`);
-}
-
 type buttonActions =
     | "open-settings"
     | "reset-config"
@@ -20,6 +12,14 @@ type buttonActions =
 
 function getButton(action: buttonActions) {
     return $<HTMLLIElement>(`[data-action="${action}"]`);
+}
+
+function getToggle(name: TogglableConfigNames) {
+    return $<HTMLInputElement>(`input[data-configname="${name}"]`);
+}
+
+function getSelect(name: selectNames) {
+    return $<HTMLSelectElement>(`select[data-configname="${name}"]`);
 }
 
 //Original Interface
