@@ -1,3 +1,11 @@
+## 1.13.2
+
+Fix: Aspect Ratio 1:1 now works correctly
+
+## 1.13.1
+
+Feat: Add Tooltips on some buttons
+
 ## 1.13.0
 
 Feat: Add `easy-codesnap.fullLinesSelection` option

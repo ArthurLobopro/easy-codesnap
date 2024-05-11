@@ -1,3 +1,4 @@
+import { WebviewConfig } from "../../../types";
 import { SessionConfig } from "../../SessionConfig";
 import {
     aspectRatioSelect,
@@ -38,19 +39,27 @@ export function VisibilityUpdater() {
     saveScaleSelect.style.width = biggerSelectWidth;
     aspectRatioSelect.style.width = biggerSelectWidth;
 
+    UpdateRatio(aspectRatio);
+}
+
+export function UpdateRatio(
+    aspectRatio: WebviewConfig["aspectRatio"] = SessionConfig.get(
+        "aspectRatio",
+    ),
+) {
     if (aspectRatio && aspectRatio !== "none") {
-        updateRatio(
+        updateRatioByProportion(
             (aspectRatio?.split(":").map(Number) as [number, number]) || [0, 0],
         );
     } else {
-        updateRatio([0, 0]);
+        updateRatioByProportion([0, 0]);
     }
 }
 
 const nextMultipleOf = (value: number, multipleOf: number) =>
     value + (value % multipleOf);
 
-function updateRatio(ratio: [number, number]) {
+function updateRatioByProportion(ratio: [number, number]) {
     snippetContainerNode.style.minWidth = "";
     windowNode.style.flex = "";
 
@@ -58,7 +67,14 @@ function updateRatio(ratio: [number, number]) {
         return;
     }
 
-    const { height } = snippetContainerNode.getBoundingClientRect();
+    const { height, width } = snippetContainerNode.getBoundingClientRect();
+
+    if (ratio[0] === ratio[1]) {
+        if (height > width) {
+            snippetContainerNode.style.minWidth = `${Math.floor(height)}px`;
+            windowNode.style.flex = "1";
+        }
+    }
 
     if (ratio[0] > ratio[1]) {
         const minHeight = nextMultipleOf(height, ratio[1]);
