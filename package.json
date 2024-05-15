@@ -38,7 +38,8 @@
     "menus": {
       "editor/context": [
         {
-          "command": "easy-codesnap.snap"
+          "command": "easy-codesnap.snap",
+          "when": "editorHasSelection && !editorHasMultipleSelections"
         }
       ]
     },
