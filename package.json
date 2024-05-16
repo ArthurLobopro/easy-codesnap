@@ -2,7 +2,7 @@
   "name": "easy-codesnap",
   "displayName": "Easy CodeSnap",
   "description": "Take beautiful screenshots of your code 📷",
-  "version": "1.13.2",
+  "version": "1.13.3",
   "repository": {
     "type": "git",
     "url": "https://github.com/ArthurLobopro/easy-codesnap"
@@ -38,7 +38,8 @@
     "menus": {
       "editor/context": [
         {
-          "command": "easy-codesnap.snap"
+          "command": "easy-codesnap.snap",
+          "when": "editorHasSelection && !editorHasMultipleSelections"
         }
       ]
     },
