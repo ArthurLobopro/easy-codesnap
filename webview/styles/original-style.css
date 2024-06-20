@@ -24,7 +24,7 @@ body {
 
 #snippet-scroll {
     max-width: 100%;
-    overflow-x: scroll;
+    overflow-x: auto;
     margin: auto;
     zoom: var(--zoom);
 }
