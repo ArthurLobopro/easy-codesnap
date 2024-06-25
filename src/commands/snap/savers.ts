@@ -1,13 +1,11 @@
-import { homedir , platform} from "os";
-import path from "path";
+import { homedir, platform } from "node:os";
+import path from "node:path";
 import * as vscode from "vscode";
 import { reduceSVG } from "../../reduceSVG";
 import { writeFile } from "../../util";
 
-const isWin = platform() === 'win32';
-const makeUri = isWin
-    ? vscode.Uri.file
-    : vscode.Uri.parse;
+const isWin = platform() === "win32";
+const makeUri = isWin ? vscode.Uri.file : vscode.Uri.parse;
 const uriPath = (uri: vscode.Uri) => uri.fsPath;
 
 let lastUsedImageUri = makeUri(path.resolve(homedir(), "Desktop"));

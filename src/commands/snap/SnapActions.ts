@@ -1,7 +1,7 @@
 import * as vscode from "vscode";
 import { extensionSettingsNames } from "../../constants";
 import { reduceSVG } from "../../reduceSVG";
-import { ExtensionConfig } from "../../types";
+import type { ExtensionConfig } from "../../types";
 import { hasOneSelection } from "../../util";
 import { savePNG, saveSVG } from "./savers";
 
