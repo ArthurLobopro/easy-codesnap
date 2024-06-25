@@ -19,3 +19,6 @@ webpack.config.js
 #Codicons
 !node_modules/@vscode/codicons/dist/*.css
 !node_modules/@vscode/codicons/dist/*.ttf
+
+#Custom tooltip
+!node_modules/@arthur-lobo/custom-tooltip/dist/index.css
