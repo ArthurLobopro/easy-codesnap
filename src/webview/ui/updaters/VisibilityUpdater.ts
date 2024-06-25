@@ -1,4 +1,4 @@
-import { WebviewConfig } from "../../../types";
+import type { WebviewConfig } from "../../../types";
 import { SessionConfig } from "../../SessionConfig";
 import {
     aspectRatioSelect,

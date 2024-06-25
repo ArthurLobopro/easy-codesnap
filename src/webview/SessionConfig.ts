@@ -1,7 +1,7 @@
-import {
+import type {
     TogglableConfigNames,
-    WebviewConfig,
     WebViewConfigKey,
+    WebviewConfig,
 } from "../types";
 
 export class SessionConfig {

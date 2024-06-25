@@ -1,4 +1,4 @@
-import { selectNames, TogglableConfigNames } from "../../types";
+import type { TogglableConfigNames, selectNames } from "../../types";
 import { $ } from "../util";
 
 type buttonActions =

@@ -3,7 +3,7 @@ import domtoimage from "dom-to-image-even-more";
 //@ts-expect-error
 import { elementToSVG } from "dom-to-svg";
 
-import { WebviewConfig } from "../types";
+import type { WebviewConfig } from "../types";
 import { SessionConfig } from "./SessionConfig";
 import { cameraFlashAnimation } from "./snap";
 import { $$, vscode } from "./util";
@@ -21,11 +21,13 @@ export async function exportPNG(
             $$(
                 "#snippet-container, #snippet, .line, .line-code span",
                 node,
-            ).forEach((span: HTMLElement) => (span.style.width = "unset"));
+            ).forEach((span: HTMLElement) => {
+                span.style.width = "unset";
+            });
 
-            $$(".line-code", node).forEach(
-                (span) => (span.style.width = "100%"),
-            );
+            $$(".line-code", node).forEach((span) => {
+                span.style.width = "100%";
+            });
         },
     });
 

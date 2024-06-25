@@ -1,4 +1,4 @@
-import { TogglableConfigNames, selectNames } from "../../../types";
+import type { TogglableConfigNames, selectNames } from "../../../types";
 import { SessionConfig } from "../../SessionConfig";
 
 type events = "change" | "click";
@@ -12,7 +12,7 @@ function handleToggleEvent(
     element.addEventListener(event, () => {
         SessionConfig.toggle(configName);
 
-        updater && updater();
+        updater?.();
     });
 }
 
@@ -46,6 +46,6 @@ export function handleSelectBasedChange(
             [configName]: treater(select.value),
         });
 
-        updater && updater();
+        updater?.();
     });
 }

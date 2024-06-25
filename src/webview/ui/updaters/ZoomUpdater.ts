@@ -17,5 +17,5 @@ export function ZoomUpdater() {
     }
 
     zoomSelect.value = zoom.toString();
-    setVar("zoom", zoom + "%");
+    setVar("zoom", `${zoom}%`);
 }

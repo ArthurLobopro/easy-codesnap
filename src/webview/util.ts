@@ -1,4 +1,4 @@
-import { message } from "../types";
+import type { message } from "../types";
 import { SessionConfig } from "./SessionConfig";
 
 export type untypedObject = { [key: string]: any };
@@ -26,7 +26,7 @@ export function once(elem: Element, evt: string) {
 export const redraw = (node: Element) => node.clientHeight;
 
 export function setVar(key: string, value: string, node = document.body) {
-    return node.style.setProperty("--" + key, value);
+    return node.style.setProperty(`--${key}`, value);
 }
 
 export function calcTextWidth(text: string) {
@@ -37,7 +37,7 @@ export function calcTextWidth(text: string) {
     const width = div.clientWidth;
     div.remove();
 
-    return width + 1 + "px";
+    return `${width + 1}px`;
 }
 
 declare const acquireVsCodeApi: () => {

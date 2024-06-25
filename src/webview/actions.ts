@@ -1,5 +1,5 @@
 import { pick, pickAllExcept } from "@arthur-lobo/object-pick";
-import { ConfigSentToWebview } from "../types";
+import type { ConfigSentToWebview } from "../types";
 import { SessionConfig } from "./SessionConfig";
 import { cameraFlashAnimation } from "./snap";
 import { UIUpdater, UpdateCode } from "./ui/updaters";
