@@ -8,16 +8,12 @@
         "rules": {
             "recommended": true,
             "complexity": {
-                "useLiteralKeys": "off",
                 "noForEach": "off",
                 "noStaticOnlyClass": "off",
                 "noThisInStatic": "off"
             },
             "suspicious": {
                 "noExplicitAny": "off"
-            },
-            "correctness": {
-                "useExhaustiveDependencies": "off"
             }
         }
     },
