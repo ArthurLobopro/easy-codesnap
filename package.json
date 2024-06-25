@@ -227,6 +227,7 @@
     "lint": "eslint ./ --ext ts,js"
   },
   "devDependencies": {
+    "@biomejs/biome": "^1.8.2",
     "@types/node": "18.x",
     "@types/vscode": "^1.80.0",
     "@typescript-eslint/eslint-plugin": "^6.9.0",
