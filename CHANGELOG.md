@@ -1,3 +1,7 @@
+## 1.14.2
+
+HotFix: Broken CSS import fixed
+
 ## 1.13.2
 
 Fix: Aspect Ratio 1:1 now works correctly

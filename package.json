@@ -2,7 +2,7 @@
   "name": "easy-codesnap",
   "displayName": "Easy CodeSnap",
   "description": "Take beautiful screenshots of your code 📷",
-  "version": "1.14.1",
+  "version": "1.14.2",
   "repository": {
     "type": "git",
     "url": "https://github.com/ArthurLobopro/easy-codesnap"
@@ -221,7 +221,6 @@
     "lint": "eslint ./ --ext ts,js"
   },
   "devDependencies": {
-    "@arthur-lobo/custom-tooltip": "^1.0.0",
     "@types/node": "18.x",
     "@types/vscode": "^1.80.0",
     "@typescript-eslint/eslint-plugin": "^6.9.0",
@@ -236,6 +235,7 @@
     "webpack-cli": "^5.1.4"
   },
   "dependencies": {
+    "@arthur-lobo/custom-tooltip": "^1.0.0",
     "@arthur-lobo/load-svg": "^1.0.1",
     "@arthur-lobo/object-pick": "^1.0.0",
     "@vscode/codicons": "^0.0.35",
