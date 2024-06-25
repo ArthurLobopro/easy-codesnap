@@ -2,7 +2,7 @@
   "name": "easy-codesnap",
   "displayName": "Easy CodeSnap",
   "description": "Take beautiful screenshots of your code 📷",
-  "version": "1.14.0",
+  "version": "1.14.1",
   "repository": {
     "type": "git",
     "url": "https://github.com/ArthurLobopro/easy-codesnap"
@@ -204,7 +204,7 @@
         },
         "easy-codesnap.fullLinesSelection": {
           "scope": "resource",
-          "type":"boolean",
+          "type": "boolean",
           "default": false,
           "description": "Does get full line selection when open snap scren"
         }
@@ -221,6 +221,7 @@
     "lint": "eslint ./ --ext ts,js"
   },
   "devDependencies": {
+    "@arthur-lobo/custom-tooltip": "^1.0.0",
     "@types/node": "18.x",
     "@types/vscode": "^1.80.0",
     "@typescript-eslint/eslint-plugin": "^6.9.0",
