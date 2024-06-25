@@ -1,15 +1,17 @@
 {
-	"$schema": "https://biomejs.dev/schemas/1.8.2/schema.json",
-	"organizeImports": {
-		"enabled": true
-	},
-	"linter": {
+    "$schema": "https://biomejs.dev/schemas/1.8.2/schema.json",
+    "organizeImports": {
+        "enabled": true
+    },
+    "linter": {
         "enabled": true,
         "rules": {
             "recommended": true,
             "complexity": {
                 "useLiteralKeys": "off",
-                "noForEach": "off"
+                "noForEach": "off",
+                "noStaticOnlyClass": "off",
+                "noThisInStatic": "off"
             },
             "suspicious": {
                 "noExplicitAny": "off"
@@ -19,9 +21,14 @@
             }
         }
     },
-	"formatter": {
+    "formatter": {
         "enabled": true,
         "indentStyle": "space",
         "indentWidth": 4
+    },
+    "files": {
+        "include": [
+            "./src/**/*.ts"
+        ]
     }
 }
