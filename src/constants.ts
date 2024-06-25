@@ -1,4 +1,4 @@
-import { ConfigKey } from "./types";
+import type { ConfigKey } from "./types";
 
 export const CodeSnapConfigNames = [
     "backgroundColor",

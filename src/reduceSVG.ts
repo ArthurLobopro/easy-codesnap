@@ -1,4 +1,4 @@
-import { PluginConfig, optimize } from "svgo";
+import { type PluginConfig, optimize } from "svgo";
 
 const svgoConfig: { plugins: PluginConfig[] } = {
     plugins: [
