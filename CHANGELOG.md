@@ -1,3 +1,7 @@
+## 1.15.0
+
+Feat: Add Highlight line number option
+
 ## 1.14.2
 
 HotFix: Broken CSS import fixed
