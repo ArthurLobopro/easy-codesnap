@@ -20,15 +20,26 @@ function getWidth(element: HTMLElement) {
 }
 
 export function VisibilityUpdater() {
-    const { showWindowControls, showWindowTitle, aspectRatio } =
-        SessionConfig.get();
+    const {
+        showWindowControls,
+        showWindowTitle,
+        aspectRatio,
+        highlightLineNumber,
+    } = SessionConfig.get();
 
     navbarNode.style.display =
         !showWindowControls && !showWindowTitle ? "none" : "";
+
     windowControlsNode.hidden = !showWindowControls;
     windowTitleNode.hidden = !showWindowTitle;
+
     snippetContainerNode.style.aspectRatio =
         aspectRatio === "none" ? "" : aspectRatio?.replace(":", " / ");
+
+    windowNode.classList.remove("line-number-hightlight");
+    if (highlightLineNumber) {
+        windowNode.classList.add("line-number-hightlight");
+    }
 
     const biggerSelectWidth = `${getWidth(windowStyleSelect)}px`;
 

@@ -6,9 +6,10 @@ html {
     --box-shadow: rgba(0, 0, 0, 0.55) 0px 20px 68px;
     --container-padding: 3em;
     --window-border-radius: 4px;
-    box-sizing: border-box;
     --enable-resizing: horizontal;
     --zoom: 100%;
+    
+    box-sizing: border-box;
 }
 
 body {

@@ -14,6 +14,7 @@ export interface ExtensionConfig {
     showWindowControls: boolean;
     fullLinesSelection: boolean;
     transparentBackground: boolean;
+    highlightLineNumber: boolean;
 
     saveScale: 1 | 1.5 | 2;
     roundingLevel: 1 | 2 | 3 | 4;

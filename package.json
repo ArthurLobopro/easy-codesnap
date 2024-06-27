@@ -83,6 +83,12 @@
           "default": false,
           "description": "Display window title with open folder / file name"
         },
+        "easy-codesnap.highlightLineNumber": {
+          "scope": "resource",
+          "type": "boolean",
+          "default": false,
+          "description": "When a line is highlighted, the line number color will keep the hover effect"
+        },
         "easy-codesnap.windowTitleTemplate": {
           "scope": "resource",
           "type": "string",

@@ -26,4 +26,5 @@ export const extensionSettingsNames: ConfigKey[] = [
     "saveScale",
     "aspectRatio",
     "fullLinesSelection",
+    "highlightLineNumber",
 ] as const;
