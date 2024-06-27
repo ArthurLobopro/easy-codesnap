@@ -1,7 +1,7 @@
 import * as vscode from "vscode";
-import { message } from "../../types";
+import type { message } from "../../types";
 import { hasOneSelection } from "../../util";
-import { SnapActions, updateTypes } from "./SnapActions";
+import { SnapActions, type updateTypes } from "./SnapActions";
 import { getConfig } from "./getConfig";
 
 export class PanelController {

@@ -11,9 +11,9 @@ function setupLines(node: Element) {
 
     UpdateRatio("none");
 
-    $$(":scope > br", node).forEach(
-        (row) => (row.outerHTML = "<div>&nbsp;</div>"),
-    );
+    $$(":scope > br", node).forEach((row) => {
+        row.outerHTML = "<div>&nbsp;</div>";
+    });
 
     const startLine = config.realLineNumbers ? config.startLine : 0;
 

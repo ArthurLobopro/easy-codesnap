@@ -1,0 +1,30 @@
+{
+    "$schema": "https://biomejs.dev/schemas/1.8.2/schema.json",
+    "organizeImports": {
+        "enabled": true
+    },
+    "linter": {
+        "enabled": true,
+        "rules": {
+            "recommended": true,
+            "complexity": {
+                "noForEach": "off",
+                "noStaticOnlyClass": "off",
+                "noThisInStatic": "off"
+            },
+            "suspicious": {
+                "noExplicitAny": "off"
+            }
+        }
+    },
+    "formatter": {
+        "enabled": true,
+        "indentStyle": "space",
+        "indentWidth": 4
+    },
+    "files": {
+        "include": [
+            "./src/**/*.ts"
+        ]
+    }
+}

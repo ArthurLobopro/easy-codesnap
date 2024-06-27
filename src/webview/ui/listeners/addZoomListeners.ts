@@ -7,8 +7,8 @@ export function addZoomListeners() {
     zoomOutButton.addEventListener("click", () => {
         const option = $<HTMLOptionElement>("option:checked", zoomSelect);
 
-        const previousOption = (option &&
-            option.previousElementSibling) as HTMLOptionElement;
+        const previousOption =
+            option?.previousElementSibling as HTMLOptionElement;
 
         if (previousOption) {
             SessionConfig.set({
@@ -22,8 +22,7 @@ export function addZoomListeners() {
     zoomInButton.addEventListener("click", () => {
         const option = $<HTMLOptionElement>("option:checked", zoomSelect);
 
-        const nextOption = (option &&
-            option.nextElementSibling) as HTMLOptionElement;
+        const nextOption = option?.nextElementSibling as HTMLOptionElement;
 
         if (nextOption) {
             SessionConfig.set({

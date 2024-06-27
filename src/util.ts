@@ -1,6 +1,6 @@
 import * as vscode from "vscode";
-import { untypedObject } from "./types";
-export { writeFile } from "fs/promises";
+import type { untypedObject } from "./types";
+export { writeFile } from "node:fs/promises";
 
 export function getSettings(group: string, keys: string[]) {
     const settings = vscode.workspace.getConfiguration(group);

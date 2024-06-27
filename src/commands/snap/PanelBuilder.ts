@@ -1,5 +1,5 @@
-import { readFile } from "fs/promises";
-import path from "path";
+import { readFile } from "node:fs/promises";
+import path from "node:path";
 import * as vscode from "vscode";
 
 function buildCSP(cspSource: string) {
@@ -16,7 +16,7 @@ function buildCSP(cspSource: string) {
 
 export class PanelBuilder {
     private context: vscode.ExtensionContext;
-    private html: string = "";
+    private html = "";
     private WEBVIEW_PATH: string;
 
     panel!: vscode.WebviewPanel;
