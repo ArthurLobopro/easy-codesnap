@@ -39,6 +39,7 @@ export const showWindowControlsInput = getToggle("showWindowControls");
 export const roundedCornersInput = getToggle("roundedCorners");
 export const transparentBackgroundInput = getToggle("transparentBackground");
 export const enableResizingInput = getToggle("enableResizing");
+export const highlightLineNumberInput = getToggle("highlightLineNumber");
 
 //Selects
 export const shutterActionSelect = getSelect("shutterAction");

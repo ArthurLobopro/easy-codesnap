@@ -1,6 +1,7 @@
 import { SessionConfig } from "../../SessionConfig";
 import {
     enableResizingInput,
+    highlightLineNumberInput,
     realLineNumbersInput,
     roundedCornersInput,
     roundingLevelSelect,
@@ -30,6 +31,7 @@ export function OneTimeConfigUpdater() {
         saveFormat,
         windowStyle,
         saveScale,
+        highlightLineNumber,
     } = SessionConfig.get();
 
     showWindowTitleInput.checked = showWindowTitle;
@@ -39,6 +41,7 @@ export function OneTimeConfigUpdater() {
     roundedCornersInput.checked = roundedCorners;
     transparentBackgroundInput.checked = transparentBackground;
     enableResizingInput.checked = enableResizing;
+    highlightLineNumberInput.checked = highlightLineNumber;
 
     shutterActionSelect.value = shutterAction;
     targetSelect.value = target;

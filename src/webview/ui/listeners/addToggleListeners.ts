@@ -1,5 +1,6 @@
 import {
     enableResizingInput,
+    highlightLineNumberInput,
     realLineNumbersInput,
     roundedCornersInput,
     showLineNumbersInput,
@@ -38,6 +39,11 @@ export function addToogleListeners() {
     handleToggleBasedChange(
         showWindowControlsInput,
         "showWindowControls",
+        VisibilityUpdater,
+    );
+    handleToggleBasedChange(
+        highlightLineNumberInput,
+        "highlightLineNumber",
         VisibilityUpdater,
     );
 
