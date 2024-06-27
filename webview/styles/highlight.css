@@ -42,5 +42,5 @@
 }
 
 #window.line-number-hightlight .line:not([data-highlight="none"]) > .line-number{
-    color: var(--vscode-list-hoverForeground);
+    color: var(--vscode-editorLineNumber-activeForeground);
 }
