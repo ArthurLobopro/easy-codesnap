@@ -57,7 +57,10 @@ export async function exportSVG(
 ) {
     const svg = new XMLSerializer()
         .serializeToString(elementToSVG(target))
-        .replace(/<style>.*?<\/style>/gs, "");
+        .replace(
+            /<style>.*?<\/style>/gs,
+            "<style>.line-number,#window-title{user-select:none;}</style>",
+        );
 
     if (action === "copy") {
         vscode.postMessage({ type: "copy-svg", data: svg });
