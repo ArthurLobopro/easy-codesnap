@@ -221,7 +221,7 @@
     "vscode:prepublish": "npm run package",
     "webpack": "webpack --mode development",
     "webpack-dev": "webpack --mode development --watch",
-    "package": "webpack --mode production --devtool hidden-source-map",
+    "package": "webpack --mode production",
     "compile": "yarn run webpack",
     "watch": "yarn webpack-dev",
     "lint": "biome check --write ./src"
