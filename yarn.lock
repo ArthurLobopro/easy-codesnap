@@ -2,15 +2,15 @@
 # yarn lockfile v1
 
 
-"@arthur-lobo/custom-tooltip@^1.0.0":
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/@arthur-lobo/custom-tooltip/-/custom-tooltip-1.0.0.tgz#57cd0c0a0a73fe1337446485cb75d053c0016703"
-  integrity sha512-OVVyhl3Pouqw2V3w95sUMJFZH9lk9xtlwX2X09mOPZHkiqhMX6715Cxqeu8b/zu5xqikGJBLm+DqUulrXHjXDg==
+"@arthur-lobo/custom-tooltip@^1.0.2":
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/@arthur-lobo/custom-tooltip/-/custom-tooltip-1.0.2.tgz#5b8a8aad136d3c1fa4dcd06fedc0dfc1252b3838"
+  integrity sha512-tPIFzWT4VIYRhmPIJkepZo+WJ+KuP3afIDpDHWgLvh3IknPyYk1kCcHdP/KHyamHQbXH6vz/FRWcTXfY133erA==
 
-"@arthur-lobo/load-svg@^1.0.1":
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/@arthur-lobo/load-svg/-/load-svg-1.0.1.tgz#8a6aef8d8fa51a84e0d2fee3414f6c2074c1b33c"
-  integrity sha512-ab1PCuo7CqvqJd2Px2XxCe/+Dq8FKMGu1/7U/pkYw7OJWYILASQ39ZZDnYDZdP0JSdnDBO3mrvjEaRzXp2Rhfg==
+"@arthur-lobo/load-svg@^1.0.2":
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/@arthur-lobo/load-svg/-/load-svg-1.0.2.tgz#1b2d1aa155b415c80c48f413c511a209178522fc"
+  integrity sha512-eE2FLQHugZ0f1uH7GHKtYpHt1Z4CK9l6k/Z2tbUYpualP5Ky6qy1KOSdflupcqhoYMB1Da45NBi36ZbrOiREaw==
 
 "@arthur-lobo/object-pick@^1.0.0":
   version "1.0.0"
