@@ -8,6 +8,8 @@
 - Copy screenshots to your clipboard
 - Appearance configurable
 - Import your settings from CodeSnap
+- Highlight lines
+- Save to PNG or SVG
 - One time settings
 - Lock changes
 - Link on editor
