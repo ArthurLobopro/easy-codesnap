@@ -42,8 +42,6 @@ The Easy CodeSnap configuration is like the CodeSnap configuration:
 
 **`easy-codesnap.containerPadding`:** The padding for the snippet's container. Can be any valid CSS padding.
 
-**`easy-codesnap.roundedCorners`:** Boolean value to use rounded corners or square corners for the window.
-
 **`easy-codesnap.showWindowControls`:** Boolean value to show or hide OS X style window buttons.
 
 **`easy-codesnap.showWindowTitle`:** Boolean value to show or hide window title `folder_name - file_name`.
@@ -56,8 +54,6 @@ The Easy CodeSnap configuration is like the CodeSnap configuration:
 
 **`easy-codesnap.transparentBackground`:** Boolean value to use a transparent background when taking the screenshot.
 
-**`easy-codesnap.target`:** Either `container` to take the screenshot with the container, or `window` to only take the window.
-
 **`easy-codesnap.windowStyle`:** Changes if the window should like `macos` or `windows`.
 
 **`easy-codesnap.shutterAction`:** Either `save` to save the screenshot into a file, or `copy` to copy the screenshot into the clipboard.
@@ -65,8 +61,6 @@ The Easy CodeSnap configuration is like the CodeSnap configuration:
 **`easy-codesnap.saveFormat`:** Format to save the code snap.
 
 **`easy-codesnap.enableResizing`:** Boolean value to enable resizing the snap container
-
-**`easy-codesnap.roundingLevel`:** Level to border rounding, only applied when `easy-codesnap.roundedCorners` is `true`
 
 **`easy-codesnap.aspect-ratio`** Defines an aspect ratio to snap (when **container** is the target).
 

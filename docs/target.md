@@ -1,6 +1,6 @@
 # Target
 
-The `easy-codesnap.target` only can be `container` or `window`.
+The target (`easy-codesnap.target`) only can be `container` or `window`.
 
 When it's setted to be `container`, the screenshot will take all container area like this:
 
