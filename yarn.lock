@@ -2,10 +2,10 @@
 # yarn lockfile v1
 
 
-"@arthur-lobo/custom-tooltip@^1.0.2":
-  version "1.0.2"
-  resolved "https://registry.yarnpkg.com/@arthur-lobo/custom-tooltip/-/custom-tooltip-1.0.2.tgz#5b8a8aad136d3c1fa4dcd06fedc0dfc1252b3838"
-  integrity sha512-tPIFzWT4VIYRhmPIJkepZo+WJ+KuP3afIDpDHWgLvh3IknPyYk1kCcHdP/KHyamHQbXH6vz/FRWcTXfY133erA==
+"@arthur-lobo/custom-tooltip@^1.0.3":
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/@arthur-lobo/custom-tooltip/-/custom-tooltip-1.0.3.tgz#ef3844142377df3c1bacf2c02ed052ef43de2112"
+  integrity sha512-l6Fz70mcs+Sb9Zzz6MZQXlMNRkA+5hsN9R8BLa/yZYQ+SQerI7vh6nZiwR3Pfpo/SdL/+DY3TgO+jaDWOso7og==
 
 "@arthur-lobo/load-svg@^1.0.2":
   version "1.0.2"
