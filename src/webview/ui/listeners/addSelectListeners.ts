@@ -18,10 +18,10 @@ import { handleSelectBasedChange } from "./handlers";
 
 export function addSelectListeners() {
     handleSelectBasedChange(shutterActionSelect, "shutterAction");
-    handleSelectBasedChange(targetSelect, "target");
     handleSelectBasedChange(saveFormatSelect, "saveFormat");
     handleSelectBasedChange(saveScaleSelect, "saveScale");
 
+    handleSelectBasedChange(targetSelect, "target", VisibilityUpdater);
     handleSelectBasedChange(roundingLevelSelect, "roundingLevel", VarUpdater);
     handleSelectBasedChange(windowStyleSelect, "windowStyle", UIUpdater);
     handleSelectBasedChange(zoomSelect, "zoom", ZoomUpdater);

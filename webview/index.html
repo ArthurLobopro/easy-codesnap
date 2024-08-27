@@ -49,9 +49,13 @@
             </summary>
             <ul>
                 <li>
-                    <label>
+                    <label class="tooltip horizontal-left">
                         Show Window Title
                         <input type="checkbox" data-configname="showWindowTitle" tabindex="-1">
+                        <span class="tooltip-text">
+                            You can edit the Window Title text by double-clicking it.
+                            You can edit the default Window Title text clicking <span class="link" data-openconfig="windowTitleTemplate">here</span>
+                        </span>
                     </label>
                 </li>
                 <li>
@@ -94,6 +98,16 @@
                     <label>
                         Line Number Hightlight
                         <input type="checkbox" data-configname="highlightLineNumber" tabindex="-1">
+                    </label>
+                </li>
+                <li>
+                    <label class="tooltip horizontal-left">
+                        Watermark
+                        <input type="checkbox" data-configname="watermark" tabindex="-1">
+                        <span class="tooltip-text">
+                            You can edit the Watermark text by double-clicking it.
+                            You can edit the default Watermark text clicking <span class="link" data-openconfig="defaultWatermarkText">here</span>
+                        </span>
                     </label>
                 </li>
 
@@ -192,6 +206,7 @@
     <div id="snippet-scroll">
         <div id="snippet-container">
             <div id="window" data-style="macos">
+                <div id="watermark"></div>
                 <div id="navbar">
                     <div id="window-controls">
                         <div class="red dot"></div>

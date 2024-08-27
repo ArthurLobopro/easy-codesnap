@@ -1,3 +1,8 @@
+## 1.16.0
+
+Feat: Add Custom Watermark
+Improve: Some new util tooltips
+
 ## 1.15.0
 
 Feat: Add Highlight line number option

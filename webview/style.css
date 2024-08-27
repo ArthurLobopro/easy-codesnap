@@ -3,6 +3,7 @@
 @import url(./styles/highlight.css);
 @import url(./styles/window-controls.css);
 @import url(./styles/tooltip.css);
+@import url(./styles/watermark.css);
 
 :root{
     --background-color: var(--vscode-editorHoverWidget-background);

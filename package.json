@@ -2,7 +2,7 @@
   "name": "easy-codesnap",
   "displayName": "Easy CodeSnap",
   "description": "Take beautiful screenshots of your code 📷",
-  "version": "1.15.1",
+  "version": "1.16.0",
   "repository": {
     "type": "git",
     "url": "https://github.com/ArthurLobopro/easy-codesnap"
@@ -213,6 +213,16 @@
           "type": "boolean",
           "default": false,
           "description": "Does get full line selection when open snap scren"
+        },
+        "easy-codesnap.watermark": {
+          "scope": "resource",
+          "type": "boolean",
+          "default": false
+        },
+        "easy-codesnap.defaultWatermarkText": {
+          "scope": "resource",
+          "type": "string",
+          "default": "Made with Easy CodeSnap"
         }
       }
     }
@@ -236,7 +246,7 @@
     "webpack-cli": "^5.1.4"
   },
   "dependencies": {
-    "@arthur-lobo/custom-tooltip": "^1.0.2",
+    "@arthur-lobo/custom-tooltip": "^1.0.3",
     "@arthur-lobo/load-svg": "^1.0.2",
     "@arthur-lobo/object-pick": "^1.0.0",
     "@vscode/codicons": "^0.0.35",

@@ -9,6 +9,7 @@ import {
     toggleLinkedButton,
     toggleLockedButton,
     transparentBackgroundInput,
+    watermarkInput,
 } from "../elements";
 import {
     LineNumbersUpdater,
@@ -46,6 +47,7 @@ export function addToogleListeners() {
         "highlightLineNumber",
         VisibilityUpdater,
     );
+    handleToggleBasedChange(watermarkInput, "watermark", VisibilityUpdater);
 
     handleToggleBasedChange(roundedCornersInput, "roundedCorners", VarUpdater);
     handleToggleBasedChange(enableResizingInput, "enableResizing", VarUpdater);
