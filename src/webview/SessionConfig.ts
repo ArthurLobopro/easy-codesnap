@@ -32,6 +32,8 @@ export class SessionConfig {
 
         newConfig.zoom = newConfig.zoom ?? 100;
         newConfig.shouldUpdateTitle = newConfig.shouldUpdateTitle ?? true;
+        newConfig.watermarkText =
+            newConfig.watermarkText ?? newConfig.defaultWatermarkText;
 
         this.__config = newConfig as WebviewConfig;
     }

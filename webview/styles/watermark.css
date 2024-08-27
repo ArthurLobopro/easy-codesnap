@@ -1,0 +1,20 @@
+#snippet-container:has(#watermark[data-target="container"]){
+    position: relative;
+}
+
+#window:has(#watermark[data-target="window"]){
+    position: relative;
+}
+
+#watermark{
+    position: absolute;
+    bottom: 2px;
+    left: 4px;
+    right: 4px;
+
+    text-align: right;
+}
+
+#watermark:focus{
+    outline: 1px solid var(--vscode-settings-focusedRowBorder);
+}

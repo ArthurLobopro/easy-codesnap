@@ -9,6 +9,7 @@ import {
     shutterActionSelect,
     snippetContainerNode,
     targetSelect,
+    watermarkElement,
     windowControlsNode,
     windowNode,
     windowStyleSelect,
@@ -25,6 +26,9 @@ export function VisibilityUpdater() {
         showWindowTitle,
         aspectRatio,
         highlightLineNumber,
+        watermarkText,
+        target,
+        watermark,
     } = SessionConfig.get();
 
     navbarNode.style.display =
@@ -39,6 +43,14 @@ export function VisibilityUpdater() {
     windowNode.classList.remove("line-number-hightlight");
     if (highlightLineNumber) {
         windowNode.classList.add("line-number-hightlight");
+    }
+
+    if (watermark) {
+        watermarkElement.style.display = "";
+        watermarkElement.innerText = watermarkText;
+        watermarkElement.dataset.target = target;
+    } else {
+        watermarkElement.style.display = "none";
     }
 
     const biggerSelectWidth = `${getWidth(windowStyleSelect)}px`;

@@ -13,6 +13,7 @@ import {
     shutterActionSelect,
     targetSelect,
     transparentBackgroundInput,
+    watermarkInput,
     windowStyleSelect,
 } from "../elements";
 
@@ -32,6 +33,7 @@ export function OneTimeConfigUpdater() {
         windowStyle,
         saveScale,
         highlightLineNumber,
+        watermark,
     } = SessionConfig.get();
 
     showWindowTitleInput.checked = showWindowTitle;
@@ -42,6 +44,7 @@ export function OneTimeConfigUpdater() {
     transparentBackgroundInput.checked = transparentBackground;
     enableResizingInput.checked = enableResizing;
     highlightLineNumberInput.checked = highlightLineNumber;
+    watermarkInput.checked = watermark;
 
     shutterActionSelect.value = shutterAction;
     targetSelect.value = target;
