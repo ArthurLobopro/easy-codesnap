@@ -77,6 +77,13 @@ export class SnapActions {
         vscode.commands.executeCommand("easy-codesnap.openSettings");
     }
 
+    "open-config"({ configName }: { configName: string }) {
+        vscode.commands.executeCommand(
+            "workbench.action.openSettings",
+            `@id:easy-codesnap.${configName}`,
+        );
+    }
+
     "copy-svg"({ data }: { data: string }) {
         vscode.env.clipboard.writeText(reduceSVG(data));
     }

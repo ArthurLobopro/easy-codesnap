@@ -114,3 +114,12 @@ body {
     transition: opacity 200ms ease;
     opacity: 1;
 }
+
+.link {
+    color: var(--vscode-textLink-foreground);
+    cursor: pointer;
+}
+
+.link:hover {
+    text-decoration: underline;
+}

@@ -81,4 +81,5 @@ export type message =
           config: Omit<ExtensionConfig, "lockOnOpen" | "linkOnOpen">;
       }
     | { type: "open-settings" }
-    | { type: "copy-svg"; data: string };
+    | { type: "copy-svg"; data: string }
+    | { type: "open-config"; configName: string };
