@@ -3,6 +3,7 @@ export interface ExtensionConfig {
     backgroundColor: string;
     containerPadding: string;
     windowTitleTemplate: string;
+    defaultWatermarkText: string;
 
     lockOnOpen: boolean;
     linkOnOpen: boolean;
@@ -15,6 +16,7 @@ export interface ExtensionConfig {
     fullLinesSelection: boolean;
     transparentBackground: boolean;
     highlightLineNumber: boolean;
+    watermark: boolean;
 
     saveScale: 1 | 1.5 | 2;
     roundingLevel: 1 | 2 | 3 | 4;
@@ -42,6 +44,7 @@ export interface WebviewConfig
     isLinked: boolean;
     zoom: number;
     shouldUpdateTitle: boolean;
+    watermarkText: string;
 }
 
 export type WebViewConfigKey = keyof WebviewConfig;

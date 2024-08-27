@@ -213,6 +213,16 @@
           "type": "boolean",
           "default": false,
           "description": "Does get full line selection when open snap scren"
+        },
+        "easy-codesnap.watermark": {
+          "scope": "resource",
+          "type": "boolean",
+          "default": false
+        },
+        "easy-codesnap.defaultWatermarkText": {
+          "scope": "resource",
+          "type": "string",
+          "default": "Made with Easy CodeSnap"
         }
       }
     }

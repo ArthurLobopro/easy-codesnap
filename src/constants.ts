@@ -27,4 +27,6 @@ export const extensionSettingsNames: ConfigKey[] = [
     "aspectRatio",
     "fullLinesSelection",
     "highlightLineNumber",
+    "watermark",
+    "defaultWatermarkText",
 ] as const;
