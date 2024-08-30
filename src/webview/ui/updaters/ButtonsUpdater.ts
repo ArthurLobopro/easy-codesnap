@@ -12,7 +12,7 @@ export function LockButtonUpdater() {
 
     icon.classList.add(isLocked ? "codicon-lock" : "codicon-unlock");
 
-    $(".tooltip-text", toggleLockedButton).innerText = isLocked
+    $(`[data-state="isLocked"]`, toggleLockedButton).innerText = isLocked
         ? "Unlock changes"
         : "Lock changes";
 }
@@ -22,7 +22,7 @@ export function LinkButtonUpdater() {
 
     toggleLinkedButton.dataset.state = isLinked ? "linked" : "unlinked";
 
-    $(".tooltip-text", toggleLinkedButton).innerText = isLinked
+    $(`[data-state="isLinked"]`, toggleLinkedButton).innerText = isLinked
         ? "Broken editor conection"
         : "Connect to editor";
 }
