@@ -4,15 +4,17 @@
 
 ## Features
 
+- Import your settings from CodeSnap
 - Quickly save screenshots of your code
 - Copy screenshots to your clipboard
 - Appearance configurable
-- Import your settings from CodeSnap
 - Highlight lines
 - Save to PNG or SVG
 - One time settings
 - Lock changes
 - Link on editor
+- Custom Watermark
+- And much more!
 
 ## How to Use
 
