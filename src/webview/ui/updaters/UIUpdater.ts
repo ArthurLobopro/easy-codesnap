@@ -11,13 +11,13 @@ import { ZoomUpdater } from "./ZoomUpdater";
 export function UIUpdater() {
     const { windowStyle, shouldUpdateTitle } = SessionConfig.get();
 
-    VarUpdater();
+    new VarUpdater().update();
     VisibilityUpdater();
     LineNumbersUpdater();
     OneTimeConfigUpdater();
-    LockButtonUpdater();
-    LinkButtonUpdater();
-    ZoomUpdater();
+    new LockButtonUpdater().update();
+    new LinkButtonUpdater().update();
+    new ZoomUpdater().update();
 
     if (shouldUpdateTitle) {
         windowTitleNode.textContent = getDefaultWindowTitle();

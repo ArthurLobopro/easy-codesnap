@@ -1,28 +1,41 @@
 import { SessionConfig } from "../../SessionConfig";
 import { $ } from "../../util";
+import { Updater } from "../Updater";
 import { toggleLinkedButton, toggleLockedButton } from "../elements";
 
-export function LockButtonUpdater() {
-    const isLocked = SessionConfig.get("isLocked");
+export class LockButtonUpdater extends Updater {
+    constructor() {
+        super(["isLocked"]);
+    }
 
-    const icon = $(".codicon", toggleLockedButton);
+    update(): void {
+        const isLocked = SessionConfig.get("isLocked");
 
-    icon.classList.remove("codicon-unlock");
-    icon.classList.remove("codicon-lock");
+        const icon = $(".codicon", toggleLockedButton);
 
-    icon.classList.add(isLocked ? "codicon-lock" : "codicon-unlock");
+        icon.classList.remove("codicon-unlock");
+        icon.classList.remove("codicon-lock");
 
-    $(`[data-state="isLocked"]`, toggleLockedButton).innerText = isLocked
-        ? "Unlock changes"
-        : "Lock changes";
+        icon.classList.add(isLocked ? "codicon-lock" : "codicon-unlock");
+
+        $(`[data-state="isLocked"]`, toggleLockedButton).innerText = isLocked
+            ? "Unlock changes"
+            : "Lock changes";
+    }
 }
 
-export function LinkButtonUpdater() {
-    const isLinked = SessionConfig.get("isLinked");
+export class LinkButtonUpdater extends Updater {
+    constructor() {
+        super(["isLinked"]);
+    }
 
-    toggleLinkedButton.dataset.state = isLinked ? "linked" : "unlinked";
+    update(): void {
+        const isLinked = SessionConfig.get("isLinked");
 
-    $(`[data-state="isLinked"]`, toggleLinkedButton).innerText = isLinked
-        ? "Broken editor conection"
-        : "Connect to editor";
+        toggleLinkedButton.dataset.state = isLinked ? "linked" : "unlinked";
+
+        $(`[data-state="isLinked"]`, toggleLinkedButton).innerText = isLinked
+            ? "Broken editor conection"
+            : "Connect to editor";
+    }
 }
