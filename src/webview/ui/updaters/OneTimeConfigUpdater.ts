@@ -68,6 +68,11 @@ export class OneTimeConfigUpdater extends Updater {
         highlightLineNumberInput.checked = highlightLineNumber;
         watermarkInput.checked = watermark;
 
+        realLineNumbersInput.disabled = !showLineNumbers;
+        highlightLineNumberInput.disabled = !showLineNumbers;
+        roundingLevelSelect.disabled = !roundedCorners;
+        transparentBackgroundInput.disabled = target !== "container";
+
         shutterActionSelect.value = shutterAction;
         targetSelect.value = target;
         roundingLevelSelect.value = roundingLevel.toString();

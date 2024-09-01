@@ -5,11 +5,12 @@ import { windowControlsNode, windowNode, windowTitleNode } from "../elements";
 
 export class WindowUpdater extends Updater {
     constructor() {
-        super(["windowStyle", "shouldUpdateTitle"]);
+        super(["windowStyle", "shouldUpdateTitle", "showWindowControls"]);
     }
 
     update() {
-        const { windowStyle, shouldUpdateTitle } = SessionConfig.get();
+        const { windowStyle, shouldUpdateTitle, showWindowControls } =
+            SessionConfig.get();
 
         if (shouldUpdateTitle) {
             windowTitleNode.textContent = getDefaultWindowTitle();
@@ -18,6 +19,8 @@ export class WindowUpdater extends Updater {
         windowNode.dataset.style = windowStyle;
 
         windowTitleNode.style.marginRight =
-            windowStyle === "macos" ? `${getWidth(windowControlsNode)}px` : "";
+            windowStyle === "macos" && showWindowControls
+                ? `${getWidth(windowControlsNode)}px`
+                : "";
     }
 }

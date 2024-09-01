@@ -51,7 +51,7 @@
     background-color: var(--vscode-sideBar-background);
 }
 
-#one-time-config li:not(.separator) {
+#one-time-config li:not(.separator, .title) {
     border-radius: 4px;
     padding: 4px;
     font-size: 16px;
@@ -66,7 +66,7 @@
     padding: 0 !important;
 }
 
-#one-time-config li:has(label>input) > label{
+#one-time-config li:has(label>input)>label {
     padding: 4px;
 }
 
@@ -84,6 +84,24 @@
     height: 1px;
     background-color: var(--vscode-foreground);
     margin: 8px 4px;
+}
+
+.title {
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+.title span{
+    flex-shrink: 0;
+    padding-inline: 4px;
+    font-size: 12px;
+}
+
+.title::after, .title::before {
+    content: "";
+    border-bottom: 1px solid var(--vscode-foreground);
+    width: 100%;
 }
 
 #one-time-config li:has(>select) {
@@ -112,6 +130,15 @@
     aspect-ratio: 1/1;
     outline: 0;
     cursor: pointer;
+}
+
+li:has(:disabled),
+select:disabled {
+    color: var(--vscode-disabledForeground);
+}
+
+code {
+    color: currentColor;
 }
 
 select {

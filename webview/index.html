@@ -50,6 +50,9 @@
                 <load-svg src="./assets/config.svg"></load-svg>
             </summary>
             <ul>
+                <div class="title">
+                    <span>Line Options</span>
+                </div>
                 <li>
                     <label class="tooltip horizontal-left">
                         Show Line Numbers
@@ -60,9 +63,13 @@
                     </label>
                 </li>
                 <li>
-                    <label>
+                    <label class="tooltip horizontal-left">
                         Real Line Numbers
                         <input type="checkbox" data-configname="realLineNumbers" tabindex="-1">
+                        <span class="tooltip-text">
+                            Show real line numbers.
+                            Only valid when <code>Show Line Numbers</code> is marked
+                        </span>
                     </label>
                 </li>
                 <li>
@@ -71,8 +78,21 @@
                         <input type="checkbox" data-configname="highlightLineNumber" tabindex="-1">
                         <span class="tooltip-text">
                             When you highlight a line, the line number text will also be highlighted.
+                            Only valid when <code>Show Line Numbers</code> is marked
                         </span>
                     </label>
+                </li>
+
+                <div class="title">
+                    <span>Window Options</span>
+                </div>
+
+                <li>
+                    Window Style
+                    <select data-configname="windowStyle" tabindex="-1">
+                        <option value="macos">MacOS</option>
+                        <option value="windows">Windows</option>
+                    </select>
                 </li>
                 <li>
                     <label class="tooltip horizontal-left">
@@ -96,18 +116,58 @@
                         <input type="checkbox" data-configname="roundedCorners" tabindex="-1">
                     </label>
                 </li>
+                <li class="tooltip horizontal-left">
+                    Rounding Level
+                    <select data-configname="roundingLevel" tabindex="-1">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                    </select>
+                    <span class="tooltip-text">
+                        The Window rounding level. Only valid when <code>Rounded Corners</code> is marked
+                    </span>
+                </li>
+
+                <div class="title">
+                    <span>Other Options</span>
+                </div>
+
                 <li>
-                    <label>
+                    Target
+                    <select data-configname="target" tabindex="-1">
+                        <option value="window">window</option>
+                        <option value="container">container</option>
+                    </select>
+                </li>
+                <li>
+                    <label class="tooltip horizontal-left">
                         Transparent Background
                         <input type="checkbox" data-configname="transparentBackground" tabindex="-1">
+                        <span class="tooltip-text">
+                            When you take the Snap, the container background will be transparent.
+                            Only valid when <code>Target</code> is <code>container</code>
+                        </span>
                     </label>
                 </li>
+
                 <li>
                     <label>
                         Enable Resizing
                         <input type="checkbox" data-configname="enableResizing" tabindex="-1">
                     </label>
                 </li>
+                <li>
+                    Aspect Ratio
+                    <select data-configname="aspectRatio">
+                        <option value="none">none</option>
+                        <option value="1:1">1:1</option>
+                        <option value="4:5">4:5</option>
+                        <option value="9:16">9:16</option>
+                        <option value="16:9">16:9</option>
+                    </select>
+                </li>
+
                 <li>
                     <label class="tooltip horizontal-left">
                         Watermark
@@ -118,16 +178,12 @@
                         </span>
                     </label>
                 </li>
+                
+                <div class="title">
+                    <span> Save Options</span>
+                </div>
 
-                <li class="separator"></li>
-
-                <li>
-                    Target
-                    <select data-configname="target" tabindex="-1">
-                        <option value="window">window</option>
-                        <option value="container">container</option>
-                    </select>
-                </li>
+                
                 <li>
                     Save Action
                     <select data-configname="shutterAction" tabindex="-1">
@@ -150,34 +206,12 @@
                         <option value="svg">svg</option>
                     </select>
                 </li>
-                <li>
-                    Aspect Ratio
-                    <select data-configname="aspectRatio">
-                        <option value="none">none</option>
-                        <option value="1:1">1:1</option>
-                        <option value="4:5">4:5</option>
-                        <option value="9:16">9:16</option>
-                        <option value="16:9">16:9</option>
-                    </select>
-                </li>
-                <li>
-                    Window Style
-                    <select data-configname="windowStyle" tabindex="-1">
-                        <option value="macos">MacOS</option>
-                        <option value="windows">Windows</option>
-                    </select>
-                </li>
-                <li>
-                    Rounding Level
-                    <select data-configname="roundingLevel" tabindex="-1">
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                    </select>
-                </li>
+                
+                
 
-                <li class="separator"></li>
+                <div class="title">
+                    <span>Actions</span>
+                </div>
 
                 <li data-action="open-settings" class="tooltip horizontal-left">
                     <span class="codicon codicon-gear"></span>
