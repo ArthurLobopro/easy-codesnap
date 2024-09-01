@@ -61,8 +61,13 @@
     align-items: center;
 }
 
-#one-time-config li:has(>label>input) {
+#one-time-config li:has(label>input) {
     cursor: pointer;
+    padding: 0 !important;
+}
+
+#one-time-config li:has(label>input) > label{
+    padding: 4px;
 }
 
 #one-time-config li[data-action] {
