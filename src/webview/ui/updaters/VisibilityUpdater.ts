@@ -1,5 +1,6 @@
 import type { WebviewConfig } from "../../../types";
 import { SessionConfig } from "../../SessionConfig";
+import { getWidth } from "../../util";
 import { Updater } from "../Updater";
 import {
     aspectRatioSelect,
@@ -74,10 +75,6 @@ export class VisibilityUpdater extends Updater {
 
         UpdateRatio(aspectRatio);
     }
-}
-
-function getWidth(element: HTMLElement) {
-    return element.getBoundingClientRect().width;
 }
 
 export function UpdateRatio(

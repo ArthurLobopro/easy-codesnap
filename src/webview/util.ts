@@ -56,3 +56,7 @@ export function getDefaultWindowTitle() {
         .replace(/\{fileName\}/g, fileName)
         .replace(/\{workspace\}/g, workspace);
 }
+
+export function getWidth(element: HTMLElement) {
+    return element.getBoundingClientRect().width;
+}

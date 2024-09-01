@@ -1,7 +1,7 @@
 import { SessionConfig } from "../../SessionConfig";
-import { getDefaultWindowTitle } from "../../util";
+import { getDefaultWindowTitle, getWidth } from "../../util";
 import { Updater } from "../Updater";
-import { windowNode, windowTitleNode } from "../elements";
+import { windowControlsNode, windowNode, windowTitleNode } from "../elements";
 
 export class WindowUpdater extends Updater {
     constructor() {
@@ -16,5 +16,8 @@ export class WindowUpdater extends Updater {
         }
 
         windowNode.dataset.style = windowStyle;
+
+        windowTitleNode.style.marginRight =
+            windowStyle === "macos" ? `${getWidth(windowControlsNode)}px` : "";
     }
 }
