@@ -54,7 +54,6 @@ const config = (env, argv) => {
       output: {
         path: path.resolve(__dirname, "dist/webview"),
         filename: "webview.js",
-        libraryTarget: "commonjs2",
         devtoolModuleFilenameTemplate: "../[resource-path]"
       },
       devtool,
