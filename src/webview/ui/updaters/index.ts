@@ -1,5 +1,10 @@
+import type { WebViewConfigKey } from "../../../types";
 import { LinkButtonUpdater, LockButtonUpdater } from "./ButtonsUpdater";
+import { LineNumbersUpdater } from "./LineNumbersUpdater";
+import { OneTimeConfigUpdater } from "./OneTimeConfigUpdater";
 import { VarUpdater } from "./VarUpdater";
+import { VisibilityUpdater } from "./VisibilityUpdater";
+import { WindowUpdater } from "./WindowUpdater";
 import { ZoomUpdater } from "./ZoomUpdater";
 
 export * from "./ButtonsUpdater";
@@ -16,4 +21,18 @@ export const updaters = [
     new LinkButtonUpdater(),
     new ZoomUpdater(),
     new VarUpdater(),
+    new VisibilityUpdater(),
+    new LineNumbersUpdater(),
+    new OneTimeConfigUpdater(),
+    new WindowUpdater(),
 ];
+
+export function GenericUpdate(keys: WebViewConfigKey[]) {
+    updaters
+        .filter((updater) => {
+            return updater.dependencies.some((dependency) =>
+                keys.includes(dependency),
+            );
+        })
+        .forEach((updater) => updater.update());
+}

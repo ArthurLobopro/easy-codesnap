@@ -1,22 +1,29 @@
 import { SessionConfig } from "../../SessionConfig";
 import { $$, calcTextWidth, setVar } from "../../util";
+import { Updater } from "../Updater";
 
-export function LineNumbersUpdater() {
-    const realLineNumbers = SessionConfig.get("realLineNumbers");
+export class LineNumbersUpdater extends Updater {
+    constructor() {
+        super(["realLineNumbers"]);
+    }
 
-    const lineNumbers = $$(".line-number");
+    update() {
+        const realLineNumbers = SessionConfig.get("realLineNumbers");
 
-    lineNumbers.forEach((line) => {
-        line.textContent = (
-            realLineNumbers
-                ? line.dataset.reallinenumber
-                : line.dataset.linenumber
-        ) as string;
-    });
+        const lineNumbers = $$(".line-number");
 
-    lineNumbers.length &&
-        setVar(
-            "line-number-width",
-            calcTextWidth(String(lineNumbers.at(-1)?.textContent)),
-        );
+        lineNumbers.forEach((line) => {
+            line.textContent = (
+                realLineNumbers
+                    ? line.dataset.reallinenumber
+                    : line.dataset.linenumber
+            ) as string;
+        });
+
+        lineNumbers.length &&
+            setVar(
+                "line-number-width",
+                calcTextWidth(String(lineNumbers.at(-1)?.textContent)),
+            );
+    }
 }

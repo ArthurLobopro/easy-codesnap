@@ -1,5 +1,6 @@
 import type { WebviewConfig } from "../../../types";
 import { SessionConfig } from "../../SessionConfig";
+import { Updater } from "../Updater";
 import {
     aspectRatioSelect,
     navbarNode,
@@ -16,53 +17,67 @@ import {
     windowTitleNode,
 } from "../elements";
 
-function getWidth(element: HTMLElement) {
-    return element.getBoundingClientRect().width;
+export class VisibilityUpdater extends Updater {
+    constructor() {
+        super([
+            "showWindowControls",
+            "showWindowTitle",
+            "aspectRatio",
+            "highlightLineNumber",
+            "watermarkText",
+            "target",
+            "watermark",
+        ]);
+    }
+
+    update() {
+        const {
+            showWindowControls,
+            showWindowTitle,
+            aspectRatio,
+            highlightLineNumber,
+            watermarkText,
+            target,
+            watermark,
+        } = SessionConfig.get();
+
+        navbarNode.style.display =
+            !showWindowControls && !showWindowTitle ? "none" : "";
+
+        windowControlsNode.hidden = !showWindowControls;
+        windowTitleNode.hidden = !showWindowTitle;
+
+        snippetContainerNode.style.aspectRatio =
+            aspectRatio === "none" ? "" : aspectRatio?.replace(":", " / ");
+
+        windowNode.classList.remove("line-number-hightlight");
+        if (highlightLineNumber) {
+            windowNode.classList.add("line-number-hightlight");
+        }
+
+        if (watermark) {
+            watermarkElement.style.display = "";
+            watermarkElement.innerText = watermarkText;
+            watermarkElement.dataset.target = target;
+        } else {
+            watermarkElement.style.display = "none";
+        }
+
+        const biggerSelectWidth = `${getWidth(windowStyleSelect)}px`;
+
+        targetSelect.style.width = biggerSelectWidth;
+        shutterActionSelect.style.width = biggerSelectWidth;
+        roundingLevelSelect.style.width = biggerSelectWidth;
+        saveFormatSelect.style.width = biggerSelectWidth;
+        saveScaleSelect.style.width = biggerSelectWidth;
+        aspectRatioSelect.style.width = biggerSelectWidth;
+
+        UpdateRatio(aspectRatio);
+    }
 }
 
-export function VisibilityUpdater() {
-    const {
-        showWindowControls,
-        showWindowTitle,
-        aspectRatio,
-        highlightLineNumber,
-        watermarkText,
-        target,
-        watermark,
-    } = SessionConfig.get();
-
-    navbarNode.style.display =
-        !showWindowControls && !showWindowTitle ? "none" : "";
-
-    windowControlsNode.hidden = !showWindowControls;
-    windowTitleNode.hidden = !showWindowTitle;
-
-    snippetContainerNode.style.aspectRatio =
-        aspectRatio === "none" ? "" : aspectRatio?.replace(":", " / ");
-
-    windowNode.classList.remove("line-number-hightlight");
-    if (highlightLineNumber) {
-        windowNode.classList.add("line-number-hightlight");
-    }
-
-    if (watermark) {
-        watermarkElement.style.display = "";
-        watermarkElement.innerText = watermarkText;
-        watermarkElement.dataset.target = target;
-    } else {
-        watermarkElement.style.display = "none";
-    }
-
-    const biggerSelectWidth = `${getWidth(windowStyleSelect)}px`;
-
-    targetSelect.style.width = biggerSelectWidth;
-    shutterActionSelect.style.width = biggerSelectWidth;
-    roundingLevelSelect.style.width = biggerSelectWidth;
-    saveFormatSelect.style.width = biggerSelectWidth;
-    saveScaleSelect.style.width = biggerSelectWidth;
-    aspectRatioSelect.style.width = biggerSelectWidth;
-
-    UpdateRatio(aspectRatio);
+function getWidth(element: HTMLElement) {
+    return element.getBoundingClientRect().width;
 }
 
 export function UpdateRatio(

@@ -11,33 +11,16 @@ import {
     transparentBackgroundInput,
     watermarkInput,
 } from "../elements";
-import { LineNumbersUpdater, VisibilityUpdater } from "../updaters";
 import { handleToggleBasedChange, handleToggleBasedClick } from "./handlers";
 
 export function addToogleListeners() {
     handleToggleBasedChange(showLineNumbersInput, "showLineNumbers");
-    handleToggleBasedChange(
-        realLineNumbersInput,
-        "realLineNumbers",
-        LineNumbersUpdater,
-    );
+    handleToggleBasedChange(realLineNumbersInput, "realLineNumbers");
 
-    handleToggleBasedChange(
-        showWindowTitleInput,
-        "showWindowTitle",
-        VisibilityUpdater,
-    );
-    handleToggleBasedChange(
-        showWindowControlsInput,
-        "showWindowControls",
-        VisibilityUpdater,
-    );
-    handleToggleBasedChange(
-        highlightLineNumberInput,
-        "highlightLineNumber",
-        VisibilityUpdater,
-    );
-    handleToggleBasedChange(watermarkInput, "watermark", VisibilityUpdater);
+    handleToggleBasedChange(showWindowTitleInput, "showWindowTitle");
+    handleToggleBasedChange(showWindowControlsInput, "showWindowControls");
+    handleToggleBasedChange(highlightLineNumberInput, "highlightLineNumber");
+    handleToggleBasedChange(watermarkInput, "watermark");
 
     handleToggleBasedChange(roundedCornersInput, "roundedCorners");
     handleToggleBasedChange(enableResizingInput, "enableResizing");

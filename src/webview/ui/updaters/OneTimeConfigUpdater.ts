@@ -1,4 +1,5 @@
 import { SessionConfig } from "../../SessionConfig";
+import { Updater } from "../Updater";
 import {
     enableResizingInput,
     highlightLineNumberInput,
@@ -17,39 +18,61 @@ import {
     windowStyleSelect,
 } from "../elements";
 
-export function OneTimeConfigUpdater() {
-    const {
-        showLineNumbers,
-        realLineNumbers,
-        showWindowControls,
-        roundedCorners,
-        transparentBackground,
-        showWindowTitle,
-        shutterAction,
-        target,
-        enableResizing,
-        roundingLevel,
-        saveFormat,
-        windowStyle,
-        saveScale,
-        highlightLineNumber,
-        watermark,
-    } = SessionConfig.get();
+export class OneTimeConfigUpdater extends Updater {
+    constructor() {
+        super([
+            "showLineNumbers",
+            "realLineNumbers",
+            "showWindowControls",
+            "roundedCorners",
+            "transparentBackground",
+            "showWindowTitle",
+            "shutterAction",
+            "target",
+            "enableResizing",
+            "roundingLevel",
+            "saveFormat",
+            "windowStyle",
+            "saveScale",
+            "highlightLineNumber",
+            "watermark",
+        ]);
+    }
 
-    showWindowTitleInput.checked = showWindowTitle;
-    showLineNumbersInput.checked = showLineNumbers;
-    realLineNumbersInput.checked = realLineNumbers;
-    showWindowControlsInput.checked = showWindowControls;
-    roundedCornersInput.checked = roundedCorners;
-    transparentBackgroundInput.checked = transparentBackground;
-    enableResizingInput.checked = enableResizing;
-    highlightLineNumberInput.checked = highlightLineNumber;
-    watermarkInput.checked = watermark;
+    update() {
+        const {
+            showLineNumbers,
+            realLineNumbers,
+            showWindowControls,
+            roundedCorners,
+            transparentBackground,
+            showWindowTitle,
+            shutterAction,
+            target,
+            enableResizing,
+            roundingLevel,
+            saveFormat,
+            windowStyle,
+            saveScale,
+            highlightLineNumber,
+            watermark,
+        } = SessionConfig.get();
 
-    shutterActionSelect.value = shutterAction;
-    targetSelect.value = target;
-    roundingLevelSelect.value = roundingLevel.toString();
-    saveFormatSelect.value = saveFormat;
-    windowStyleSelect.value = windowStyle;
-    saveScaleSelect.value = saveScale.toString();
+        showWindowTitleInput.checked = showWindowTitle;
+        showLineNumbersInput.checked = showLineNumbers;
+        realLineNumbersInput.checked = realLineNumbers;
+        showWindowControlsInput.checked = showWindowControls;
+        roundedCornersInput.checked = roundedCorners;
+        transparentBackgroundInput.checked = transparentBackground;
+        enableResizingInput.checked = enableResizing;
+        highlightLineNumberInput.checked = highlightLineNumber;
+        watermarkInput.checked = watermark;
+
+        shutterActionSelect.value = shutterAction;
+        targetSelect.value = target;
+        roundingLevelSelect.value = roundingLevel.toString();
+        saveFormatSelect.value = saveFormat;
+        windowStyleSelect.value = windowStyle;
+        saveScaleSelect.value = saveScale.toString();
+    }
 }
