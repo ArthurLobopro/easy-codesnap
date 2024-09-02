@@ -3,6 +3,7 @@ import type {
     WebViewConfigKey,
     WebviewConfig,
 } from "../types";
+import { GenericUpdate } from "./ui/updaters";
 
 export class SessionConfig {
     static __config: WebviewConfig = {} as any;
@@ -36,10 +37,16 @@ export class SessionConfig {
             newConfig.watermarkText ?? newConfig.defaultWatermarkText;
 
         this.__config = newConfig as WebviewConfig;
+
+        const updatedKeys = Object.keys(config) as WebViewConfigKey[];
+        GenericUpdate(updatedKeys);
     }
 
     static toggle(name: TogglableConfigNames) {
-        this.__config[name] = !this.get(name);
+        // this.__config[name] = !this.get(name);
+        this.set({
+            [name]: !this.get(name),
+        });
     }
 
     static set sessionConfig(config: WebviewConfig) {

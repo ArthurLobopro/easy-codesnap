@@ -1,34 +1,51 @@
 import { SessionConfig } from "../../SessionConfig";
 import { setVar } from "../../util";
+import { Updater } from "../Updater";
 
-export function VarUpdater() {
-    const {
-        fontLigatures,
-        tabSize,
-        backgroundColor,
-        boxShadow,
-        containerPadding,
-        roundedCorners,
-        enableResizing,
-        roundingLevel,
-        showLineNumbers,
-    } = SessionConfig.get();
-
-    setVar("ligatures", fontLigatures ? "normal" : "none");
-    if (typeof fontLigatures === "string") {
-        setVar("font-features", fontLigatures);
+export class VarUpdater extends Updater {
+    constructor() {
+        super([
+            "fontLigatures",
+            "tabSize",
+            "backgroundColor",
+            "boxShadow",
+            "containerPadding",
+            "roundedCorners",
+            "enableResizing",
+            "roundingLevel",
+            "showLineNumbers",
+        ]);
     }
 
-    setVar("tab-size", tabSize.toString());
-    setVar("container-background-color", backgroundColor);
-    setVar("box-shadow", boxShadow);
-    setVar("container-padding", containerPadding);
+    update() {
+        const {
+            fontLigatures,
+            tabSize,
+            backgroundColor,
+            boxShadow,
+            containerPadding,
+            roundedCorners,
+            enableResizing,
+            roundingLevel,
+            showLineNumbers,
+        } = SessionConfig.get();
 
-    setVar(
-        "window-border-radius",
-        roundedCorners ? `${4 * roundingLevel}px` : "0",
-    );
+        setVar("ligatures", fontLigatures ? "normal" : "none");
+        if (typeof fontLigatures === "string") {
+            setVar("font-features", fontLigatures);
+        }
 
-    setVar("enable-resizing", enableResizing ? "horizontal" : "none");
-    setVar("line-number-visibility", showLineNumbers ? "block" : "none");
+        setVar("tab-size", tabSize.toString());
+        setVar("container-background-color", backgroundColor);
+        setVar("box-shadow", boxShadow);
+        setVar("container-padding", containerPadding);
+
+        setVar(
+            "window-border-radius",
+            roundedCorners ? `${4 * roundingLevel}px` : "0",
+        );
+
+        setVar("enable-resizing", enableResizing ? "horizontal" : "none");
+        setVar("line-number-visibility", showLineNumbers ? "block" : "none");
+    }
 }

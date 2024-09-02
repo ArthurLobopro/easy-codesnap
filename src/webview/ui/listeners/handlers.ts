@@ -2,40 +2,34 @@ import type { TogglableConfigNames, selectNames } from "../../../types";
 import { SessionConfig } from "../../SessionConfig";
 
 type events = "change" | "click";
-type updater = () => void;
+
 function handleToggleEvent(
     element: HTMLElement,
     configName: TogglableConfigNames,
     event: events,
-    updater?: updater,
 ) {
     element.addEventListener(event, () => {
         SessionConfig.toggle(configName);
-
-        updater?.();
     });
 }
 
 export function handleToggleBasedClick(
     element: HTMLElement,
     configName: TogglableConfigNames,
-    updater?: updater,
 ) {
-    handleToggleEvent(element, configName, "click", updater);
+    handleToggleEvent(element, configName, "click");
 }
 
 export function handleToggleBasedChange(
     element: HTMLElement,
     configName: TogglableConfigNames,
-    updater?: updater,
 ) {
-    handleToggleEvent(element, configName, "change", updater);
+    handleToggleEvent(element, configName, "change");
 }
 
 export function handleSelectBasedChange(
     select: HTMLSelectElement,
     configName: selectNames,
-    updater?: () => void,
 ) {
     const treater = ["saveScale", "roundingLevel"].includes(configName)
         ? Number
@@ -45,7 +39,5 @@ export function handleSelectBasedChange(
         SessionConfig.set({
             [configName]: treater(select.value),
         });
-
-        updater?.();
     });
 }

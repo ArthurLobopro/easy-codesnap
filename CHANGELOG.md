@@ -1,3 +1,9 @@
+## 1.17.0
+
+Improve: More new util tooltips
+Improve: Better One Time Config Organization
+Fix: Some minor fixes
+
 ## 1.16.0
 
 Feat: Add Custom Watermark

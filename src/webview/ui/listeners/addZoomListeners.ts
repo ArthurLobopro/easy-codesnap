@@ -1,7 +1,6 @@
 import { SessionConfig } from "../../SessionConfig";
 import { $ } from "../../util";
 import { zoomInButton, zoomOutButton, zoomSelect } from "../elements";
-import { ZoomUpdater } from "../updaters";
 
 export function addZoomListeners() {
     zoomOutButton.addEventListener("click", () => {
@@ -14,8 +13,6 @@ export function addZoomListeners() {
             SessionConfig.set({
                 zoom: Number(previousOption.value),
             });
-
-            ZoomUpdater();
         }
     });
 
@@ -28,8 +25,6 @@ export function addZoomListeners() {
             SessionConfig.set({
                 zoom: Number(nextOption.value),
             });
-
-            ZoomUpdater();
         }
     });
 }

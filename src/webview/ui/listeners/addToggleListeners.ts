@@ -11,51 +11,24 @@ import {
     transparentBackgroundInput,
     watermarkInput,
 } from "../elements";
-import {
-    LineNumbersUpdater,
-    LinkButtonUpdater,
-    LockButtonUpdater,
-    VarUpdater,
-    VisibilityUpdater,
-} from "../updaters";
 import { handleToggleBasedChange, handleToggleBasedClick } from "./handlers";
 
 export function addToogleListeners() {
-    handleToggleBasedChange(
-        showLineNumbersInput,
-        "showLineNumbers",
-        VarUpdater,
-    );
-    handleToggleBasedChange(
-        realLineNumbersInput,
-        "realLineNumbers",
-        LineNumbersUpdater,
-    );
+    handleToggleBasedChange(showLineNumbersInput, "showLineNumbers");
+    handleToggleBasedChange(realLineNumbersInput, "realLineNumbers");
 
-    handleToggleBasedChange(
-        showWindowTitleInput,
-        "showWindowTitle",
-        VisibilityUpdater,
-    );
-    handleToggleBasedChange(
-        showWindowControlsInput,
-        "showWindowControls",
-        VisibilityUpdater,
-    );
-    handleToggleBasedChange(
-        highlightLineNumberInput,
-        "highlightLineNumber",
-        VisibilityUpdater,
-    );
-    handleToggleBasedChange(watermarkInput, "watermark", VisibilityUpdater);
+    handleToggleBasedChange(showWindowTitleInput, "showWindowTitle");
+    handleToggleBasedChange(showWindowControlsInput, "showWindowControls");
+    handleToggleBasedChange(highlightLineNumberInput, "highlightLineNumber");
+    handleToggleBasedChange(watermarkInput, "watermark");
 
-    handleToggleBasedChange(roundedCornersInput, "roundedCorners", VarUpdater);
-    handleToggleBasedChange(enableResizingInput, "enableResizing", VarUpdater);
+    handleToggleBasedChange(roundedCornersInput, "roundedCorners");
+    handleToggleBasedChange(enableResizingInput, "enableResizing");
     handleToggleBasedChange(
         transparentBackgroundInput,
         "transparentBackground",
     );
 
-    handleToggleBasedClick(toggleLinkedButton, "isLinked", LinkButtonUpdater);
-    handleToggleBasedClick(toggleLockedButton, "isLocked", LockButtonUpdater);
+    handleToggleBasedClick(toggleLinkedButton, "isLinked");
+    handleToggleBasedClick(toggleLockedButton, "isLocked");
 }
