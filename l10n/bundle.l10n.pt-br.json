@@ -7,5 +7,22 @@
     "Window Options": "Opções da Janela",
     "Line Options": "Opções de Linha",
     "Save Options": "Opções de salvamento",
-    "Actions": "Ações"
+    "Actions": "Ações",
+    "Show Line Numbers": "Mostrar Número de Linhas",
+    "Real Line Numbers": "Número Real de Linhas",
+    "Line Number Hightlight": "Destaque no Número da Linha",
+    "Window Style": "Estilo da Janela",
+    "Show Window Title": "Mostrar Título da Janela",
+    "Show Window Controls": "Mostrar Controles da Janela",
+    "Rounded Corners": "Cantos Arredondados",
+    "Rounding Level": "Nível de Arredondamento",
+    "Enable Resizing": "Ativar Redimensionamento",
+    "Watermark": "Marca D'água",
+    "Save Action": "Ação de Salvamento",
+    "Save Scale": "Salvar na Escala",
+    "Save Format": "Salvar no Formato",
+    "Open Settings": "Abrir Configurações",
+    "Reset Settings": "Resetar Configurações",
+    "Save Settings": "Salvar Configurações"
+    
 }
