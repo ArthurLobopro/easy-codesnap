@@ -2,7 +2,7 @@ import { homedir, platform } from "node:os";
 import path from "node:path";
 import * as vscode from "vscode";
 import { reduceSVG } from "../../reduceSVG";
-import { writeFile } from "../../util";
+import { t, writeFile } from "../../util";
 
 const isWin = platform() === "win32";
 const makeUri = isWin ? vscode.Uri.file : vscode.Uri.parse;
@@ -38,7 +38,7 @@ export async function savePNG(data: string) {
     if (uri) {
         writeFile(uri.fsPath, Buffer.from(data, "base64")).then(() => {
             vscode.window.showInformationMessage(
-                `Image saved on: ${uri.fsPath}`,
+                t("Image saved on: {0}", uri.fsPath),
             );
         });
     }

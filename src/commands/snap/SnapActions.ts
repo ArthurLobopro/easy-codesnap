@@ -2,7 +2,7 @@ import * as vscode from "vscode";
 import { extensionSettingsNames } from "../../constants";
 import { reduceSVG } from "../../reduceSVG";
 import type { ExtensionConfig } from "../../types";
-import { hasOneSelection } from "../../util";
+import { hasOneSelection, t } from "../../util";
 import { savePNG, saveSVG } from "./savers";
 
 export type updateTypes = "config" | "text" | "both";
@@ -39,7 +39,7 @@ export class SnapActions {
     }
 
     copied() {
-        vscode.window.showInformationMessage("Image copied to clipboard!");
+        vscode.window.showInformationMessage(t("Image copied to clipboard!"));
     }
 
     ready() {
@@ -70,7 +70,7 @@ export class SnapActions {
             }
         });
 
-        vscode.window.showInformationMessage("Settings saved as default!");
+        vscode.window.showInformationMessage(t("Settings saved as default!"));
     }
 
     "open-settings"() {

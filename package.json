@@ -3,6 +3,7 @@
   "displayName": "Easy CodeSnap",
   "description": "Take beautiful screenshots of your code 📷",
   "version": "1.17.0",
+  "l10n": "./l10n",
   "repository": {
     "type": "git",
     "url": "https://github.com/ArthurLobopro/easy-codesnap"
@@ -28,11 +29,11 @@
       },
       {
         "command": "easy-codesnap.importSettings",
-        "title": "Easy CodeSnap: Import CodeSnap Settings"
+        "title": "%commands.importSettings.title%"
       },
       {
         "command": "easy-codesnap.openSettings",
-        "title": "Easy CodeSnap: Open Settings"
+        "title": "%commands.openSettings.title%"
       }
     ],
     "menus": {
