@@ -2,5 +2,10 @@
     "Settings saved as default!": "Configurações salvas como padrão!",
     "Image copied to clipboard!": "Imagem copiada para a área de transferência",
     "Image saved on: {0}": "Imagem salva em: {0}",
-    "Easy CodeSnap 📸: Unknown internal action \"{type}\"":"Easy CodeSnap 📸: Ação interna desconhecida \"{type}\""
+    "Easy CodeSnap 📸: Unknown internal action \"{type}\"":"Easy CodeSnap 📸: Ação interna desconhecida \"{type}\"",
+    "Other Options": "Outras opções",
+    "Window Options": "Opções da Janela",
+    "Line Options": "Opções de Linha",
+    "Save Options": "Opções de salvamento",
+    "Actions": "Ações"
 }

@@ -60,3 +60,5 @@ export function getDefaultWindowTitle() {
 export function getWidth(element: HTMLElement) {
     return element.getBoundingClientRect().width;
 }
+
+export { t } from "@vscode/l10n";

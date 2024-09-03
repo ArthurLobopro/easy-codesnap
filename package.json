@@ -251,6 +251,7 @@
     "@arthur-lobo/load-svg": "^1.0.2",
     "@arthur-lobo/object-pick": "^1.0.0",
     "@vscode/codicons": "^0.0.35",
+    "@vscode/l10n": "^0.0.18",
     "dom-to-image-even-more": "^1.0.4",
     "dom-to-svg": "^0.12.2",
     "svgo": "^3.2.0"

@@ -22,6 +22,9 @@ export class PanelController {
             type: updateType === "both" ? "update" : `update-${updateType}`,
             ...getConfig(),
             ...(editorURI ? { editorID: editorURI } : {}),
+            ...(updateType === "both"
+                ? { bundle: JSON.stringify(vscode.l10n.bundle) }
+                : {}),
         });
     }
 
