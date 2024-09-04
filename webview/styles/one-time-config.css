@@ -54,7 +54,7 @@
 #one-time-config li:not(.separator, .title) {
     border-radius: 4px;
     padding: 4px;
-    font-size: 16px;
+    font-size: 14px;
     list-style-type: none;
 
     display: flex;
