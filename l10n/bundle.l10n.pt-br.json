@@ -2,7 +2,7 @@
     "Settings saved as default!": "Configurações salvas como padrão!",
     "Image copied to clipboard!": "Imagem copiada para a área de transferência",
     "Image saved on: {0}": "Imagem salva em: {0}",
-    "Easy CodeSnap 📸: Unknown internal action \"{type}\"":"Easy CodeSnap 📸: Ação interna desconhecida \"{type}\"",
+    "Easy CodeSnap 📸: Unknown internal action \"{type}\"": "Easy CodeSnap 📸: Ação interna desconhecida \"{type}\"",
     "Other Options": "Outras Opções",
     "Window Options": "Opções da Janela",
     "Line Options": "Opções de Linha",
@@ -23,6 +23,16 @@
     "Save Format": "Salvar no Formato",
     "Open Settings": "Abrir Configurações",
     "Reset Settings": "Resetar Configurações",
-    "Save Settings": "Salvar Configurações"
-    
+    "Save Settings": "Salvar Configurações",
+    "Transparent Background": "Fundo Transparente",
+    "Target": "Alvo",
+    "Aspect Ratio": "Proporção",
+    "If you want to highlight a line, you can click on the line number": "Se você quiser destacar uma linha, você pode clicar no número desta linha",
+    "Show real line numbers.": "Mostra o número real de linhas",
+    "Only valid when `Show Line Numbers` is marked": "Apenas é válido quando `Mostrar Número de Linhas` está ativo",
+    "The Window rounding level.": "O nível de arredondamento da janela.",
+    "Only valid when `Rounded Corners` is marked": "Apenas válido quando `Cantos Arredondados` está ativo",
+    "Save current settings as default": "Salvar configurações atuais como padrão",
+    "Reset settings to default": "Restaurar configurações para o padrão",
+    "Open extension settings": "Abrir configurações da extensão"
 }
