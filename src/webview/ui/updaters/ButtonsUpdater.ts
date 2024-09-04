@@ -1,5 +1,5 @@
 import { SessionConfig } from "../../SessionConfig";
-import { $ } from "../../util";
+import { $, t } from "../../util";
 import { Updater } from "../Updater";
 import { toggleLinkedButton, toggleLockedButton } from "../elements";
 
@@ -18,9 +18,10 @@ export class LockButtonUpdater extends Updater {
 
         icon.classList.add(isLocked ? "codicon-lock" : "codicon-unlock");
 
-        $(`[data-state="isLocked"]`, toggleLockedButton).innerText = isLocked
-            ? "Unlock changes"
-            : "Lock changes";
+        const buttonText = isLocked ? "Unlock changes" : "Lock changes";
+
+        $(`[data-state="isLocked"]`, toggleLockedButton).innerText =
+            t(buttonText);
     }
 }
 
@@ -34,8 +35,11 @@ export class LinkButtonUpdater extends Updater {
 
         toggleLinkedButton.dataset.state = isLinked ? "linked" : "unlinked";
 
-        $(`[data-state="isLinked"]`, toggleLinkedButton).innerText = isLinked
+        const buttonText = isLinked
             ? "Broken editor conection"
             : "Connect to editor";
+
+        $(`[data-state="isLinked"]`, toggleLinkedButton).innerText =
+            t(buttonText);
     }
 }

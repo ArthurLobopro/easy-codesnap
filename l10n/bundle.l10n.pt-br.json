@@ -34,5 +34,13 @@
     "Only valid when `Rounded Corners` is marked": "Apenas válido quando `Cantos Arredondados` está ativo",
     "Save current settings as default": "Salvar configurações atuais como padrão",
     "Reset settings to default": "Restaurar configurações para o padrão",
-    "Open extension settings": "Abrir configurações da extensão"
+    "Open extension settings": "Abrir configurações da extensão",
+    "here": "aqui",
+    "Lock changes": "Bloquear alterações",
+    "Unlock changes": "Desbloquear alterações",
+    "Broken editor conection": "Desconectar do editor",
+    "Connect to editor": "Conectar com o editor",
+    "Locked Snap Screens will not listen any selection changes.": "Telas de captura bloqueadas não irão capturar nenhuma mudança de seleção.",
+    "Linked Snap Screens will listen only to current editor selection changes.": "Telas de captura conectadas irão capturar apenas mudanças de seleção do editor atual.",
+    "To change the default behavior, click": "Para mudar o comportamento padrão, clique"
 }
