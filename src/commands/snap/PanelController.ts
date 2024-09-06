@@ -1,6 +1,6 @@
 import * as vscode from "vscode";
 import type { message } from "../../types";
-import { hasOneSelection } from "../../util";
+import { hasOneSelection, t } from "../../util";
 import { SnapActions, type updateTypes } from "./SnapActions";
 import { getConfig } from "./getConfig";
 
@@ -22,6 +22,9 @@ export class PanelController {
             type: updateType === "both" ? "update" : `update-${updateType}`,
             ...getConfig(),
             ...(editorURI ? { editorID: editorURI } : {}),
+            ...(updateType === "both"
+                ? { bundle: JSON.stringify(vscode.l10n.bundle) }
+                : {}),
         });
     }
 
@@ -34,7 +37,10 @@ export class PanelController {
                     actions[type]({ ...args } as any);
                 } else {
                     vscode.window.showErrorMessage(
-                        `Easy CodeSnap 📸: Unknown shutterAction "${type}"`,
+                        t(
+                            `Easy CodeSnap 📸: Unknown internal action "{type}"`,
+                            { type },
+                        ),
                     );
                 }
             },

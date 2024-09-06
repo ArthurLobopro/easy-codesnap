@@ -2,7 +2,8 @@
   "name": "easy-codesnap",
   "displayName": "Easy CodeSnap",
   "description": "Take beautiful screenshots of your code 📷",
-  "version": "1.17.0",
+  "version": "1.18.0",
+  "l10n": "./l10n",
   "repository": {
     "type": "git",
     "url": "https://github.com/ArthurLobopro/easy-codesnap"
@@ -24,15 +25,15 @@
     "commands": [
       {
         "command": "easy-codesnap.snap",
-        "title": "Easy CodeSnap"
+        "title": "%commands.snap.title%"
       },
       {
         "command": "easy-codesnap.importSettings",
-        "title": "Easy CodeSnap: Import CodeSnap Settings"
+        "title": "%commands.importSettings.title%"
       },
       {
         "command": "easy-codesnap.openSettings",
-        "title": "Easy CodeSnap: Open Settings"
+        "title": "%commands.openSettings.title%"
       }
     ],
     "menus": {
@@ -250,6 +251,7 @@
     "@arthur-lobo/load-svg": "^1.0.2",
     "@arthur-lobo/object-pick": "^1.0.0",
     "@vscode/codicons": "^0.0.35",
+    "@vscode/l10n": "^0.0.18",
     "dom-to-image-even-more": "^1.0.4",
     "dom-to-svg": "^0.12.2",
     "svgo": "^3.2.0"

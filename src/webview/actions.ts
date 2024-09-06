@@ -1,4 +1,5 @@
 import { pick, pickAllExcept } from "@arthur-lobo/object-pick";
+import * as l10n from "@vscode/l10n";
 import type { ConfigSentToWebview } from "../types";
 import { SessionConfig } from "./SessionConfig";
 import { cameraFlashAnimation } from "./snap";
@@ -9,12 +10,18 @@ export type actionsKey = keyof typeof actions;
 export const actions = {
     flash: cameraFlashAnimation,
 
-    update(config: ConfigSentToWebview) {
+    update(config: ConfigSentToWebview & { bundle: string }) {
         if (SessionConfig.hasConfig && SessionConfig.get("isLocked")) {
             return;
         }
 
-        SessionConfig.set(pickAllExcept(config, ["linkOnOpen", "lockOnOpen"]));
+        l10n.config({
+            contents: JSON.parse(config.bundle),
+        });
+
+        SessionConfig.set(
+            pickAllExcept(config, ["linkOnOpen", "lockOnOpen", "bundle"]),
+        );
 
         document.execCommand("paste");
 
