@@ -1,3 +1,8 @@
+## 1.18.0
+
+Feat: Languages support (need to be translated)
+Feat: PT-BR translation
+
 ## 1.17.0
 
 Improve: More new util tooltips
