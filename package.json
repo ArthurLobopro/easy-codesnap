@@ -2,7 +2,7 @@
   "name": "easy-codesnap",
   "displayName": "Easy CodeSnap",
   "description": "Take beautiful screenshots of your code 📷",
-  "version": "1.17.0",
+  "version": "1.18.0",
   "l10n": "./l10n",
   "repository": {
     "type": "git",
