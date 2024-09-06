@@ -25,7 +25,7 @@
     "commands": [
       {
         "command": "easy-codesnap.snap",
-        "title": "Easy CodeSnap"
+        "title": "%commands.snap.title%"
       },
       {
         "command": "easy-codesnap.importSettings",
