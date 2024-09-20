@@ -16,7 +16,7 @@ export const actions = {
         }
 
         l10n.config({
-            contents: JSON.parse(config.bundle),
+            contents: JSON.parse(config.bundle ?? "{}"),
         });
 
         SessionConfig.set(
