@@ -12,24 +12,13 @@ export async function exportPNG(
     target: HTMLElement,
     action: WebviewConfig["shutterAction"],
 ) {
-    const scale = SessionConfig.get("saveScale");
-
-    const url = await domtoimage.toPng(target, {
-        bgColor: "transparent",
-        scale,
-        postProcess: (node: HTMLElement) => {
-            $$(
-                "#snippet-container, #snippet, .line, .line-code span",
-                node,
-            ).forEach((span: HTMLElement) => {
-                span.style.width = "unset";
-            });
-
-            $$(".line-code", node).forEach((span) => {
-                span.style.width = "100%";
-            });
-        },
-    });
+    const url = await (async () => {
+        try {
+            return await toPNG(target);
+        } catch (error) {
+            return await toPNGFallback(target);
+        }
+    })();
 
     const data = url.slice(url.indexOf(",") + 1);
 
@@ -69,4 +58,65 @@ export async function exportSVG(
     } else {
         vscode.postMessage({ type: action, data: svg, format: "svg" });
     }
+}
+
+async function toPNG(target: HTMLElement) {
+    const scale = SessionConfig.get("saveScale");
+
+    return await await domtoimage.toPng(target, {
+        bgColor: "transparent",
+        scale,
+        postProcess: (node: HTMLElement) => {
+            $$(
+                "#snippet-container, #snippet, .line, .line-code span",
+                node,
+            ).forEach((span: HTMLElement) => {
+                span.style.width = "unset";
+            });
+
+            $$(".line-code", node).forEach((span) => {
+                span.style.width = "100%";
+            });
+        },
+    });
+}
+
+async function toPNGFallback(target: HTMLElement) {
+    const scale = SessionConfig.get("saveScale");
+
+    const canvas = document.createElement("canvas");
+    const ctx = canvas.getContext("2d");
+
+    const width = target.clientWidth * scale;
+    const height = target.clientHeight * scale;
+
+    canvas.width = width;
+    canvas.height = height;
+
+    function svgToDataURI(svgString: string) {
+        const encodedSvg = encodeURIComponent(svgString)
+            .replace(/%0A/g, "")
+            .replace(/%20/g, " ");
+
+        return `data:image/svg+xml;charset=utf-8,${encodedSvg}`;
+    }
+
+    const image = await (async (): Promise<HTMLImageElement> => {
+        return new Promise((resolve) => {
+            const img = new Image();
+
+            img.width = width;
+            img.height = height;
+
+            img.src = svgToDataURI(
+                new XMLSerializer().serializeToString(elementToSVG(target)),
+            );
+
+            img.onload = () => resolve(img);
+        });
+    })();
+
+    ctx?.drawImage(image, 0, 0, width, height);
+
+    return canvas.toDataURL();
 }
