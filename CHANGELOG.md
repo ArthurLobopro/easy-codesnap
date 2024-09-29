@@ -1,3 +1,7 @@
+## 1.18.3
+
+Feat: Add support to letterSpacing
+
 ## 1.18.0
 
 Feat: Languages support (need to be translated)
