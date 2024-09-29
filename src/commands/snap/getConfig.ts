@@ -3,7 +3,11 @@ import { extensionSettingsNames } from "../../constants";
 import { getSettings } from "../../util";
 
 export function getConfig() {
-    const editorSettings = getSettings("editor", ["fontLigatures", "tabSize"]);
+    const editorSettings = getSettings("editor", [
+        "fontLigatures",
+        "tabSize",
+        "letterSpacing",
+    ]);
 
     const editor = vscode.window.activeTextEditor;
     if (editor) {

@@ -30,6 +30,7 @@ export interface ExtensionConfig {
 export interface ConfigSentToWebview extends ExtensionConfig {
     startLine: number;
     tabSize: number;
+    letterSpacing: number;
     fontLigatures: boolean;
     editorID: string;
     templates: {

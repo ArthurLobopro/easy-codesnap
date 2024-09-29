@@ -1,6 +1,12 @@
-import { type PluginConfig, optimize } from "svgo";
+import { type Config, optimize } from "svgo";
 
-const svgoConfig: { plugins: PluginConfig[] } = {
+export function reduceSVG(svgContent: string) {
+    return optimize(svgContent, svgoConfig).data;
+}
+
+const svgoConfig: Config = {
+    floatPrecision: 8,
+    multipass: true,
     plugins: [
         {
             name: "preset-default",
@@ -25,11 +31,3 @@ const svgoConfig: { plugins: PluginConfig[] } = {
         },
     ],
 };
-
-export function reduceSVG(svgContent: string) {
-    return optimize(svgContent, {
-        floatPrecision: 8,
-        plugins: svgoConfig.plugins,
-        multipass: true,
-    }).data;
-}
