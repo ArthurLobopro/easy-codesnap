@@ -14,6 +14,7 @@ export class VarUpdater extends Updater {
             "enableResizing",
             "roundingLevel",
             "showLineNumbers",
+            "letterSpacing",
         ]);
     }
 
@@ -28,6 +29,7 @@ export class VarUpdater extends Updater {
             enableResizing,
             roundingLevel,
             showLineNumbers,
+            letterSpacing,
         } = SessionConfig.get();
 
         setVar("ligatures", fontLigatures ? "normal" : "none");
@@ -35,6 +37,9 @@ export class VarUpdater extends Updater {
             setVar("font-features", fontLigatures);
         }
 
+        console.log("Letter Spacing", letterSpacing);
+
+        setVar("letter-spacing", `${letterSpacing}px`);
         setVar("tab-size", tabSize.toString());
         setVar("container-background-color", backgroundColor);
         setVar("box-shadow", boxShadow);
