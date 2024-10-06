@@ -17,7 +17,7 @@
     "Rounded Corners": "圓角",
     "Rounding Level": "圓角等級",
     "Enable Resizing": "調整大小",
-    "Watermark": "水印",
+    "Watermark": "浮水印",
     "Save Action": "儲存動作",
     "Save Scale": "儲存比例",
     "Save Format": "儲存格式",
@@ -49,5 +49,5 @@
     "Only valid when `Target` is `container`": "僅當 `Target` 為 `container` 時有效",
     "When you take the Snapshot, the container background will be transparent.": "當您拍攝快照時，容器背景將是透明的。",
     "You can edit the Watermark text by double-clicking it.": "您可以透過雙擊浮水印文字來編輯它。",
-    "You can edit the default Watermark text clicking": "您可以點擊編輯預設水印文本"
+    "You can edit the default Watermark text clicking": "您可以點擊編輯預設浮水印文本"
 }
