@@ -9,7 +9,7 @@
     "easy-codesnap.showWindowControls": "顯示 OS X 風格的視窗控件",
     "easy-codesnap.showWindowTitle": "顯示帶有開啟的資料夾/檔案名稱的視窗標題",
     "easy-codesnap.windowTitleTemplate": "定義顯示片段視窗標題的模板，您可以使用 {workspace} 和 {fileName} 變數",
-    "easy-codesnap.showLineNumber": "顯示行號",
+    "easy-codesnap.showLineNumbers": "顯示行號",
     "easy-codesnap.realLineNumbers": "從所選內容的行號而不是 1 開始",
     "easy-codesnap.highlightLineNumber": "當一行被高亮時，使用 activeForeground vscode 主題顏色來高亮行號。",
     "easy-codesnap.transparentBackground": "截圖時使用透明背景",
