@@ -15,6 +15,7 @@ node_modules
 webpack.config.js
 .yarnrc
 .gitignore
+biome.json
 
 #Codicons
 !node_modules/@vscode/codicons/dist/*.css
