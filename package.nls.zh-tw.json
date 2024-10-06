@@ -11,7 +11,7 @@
     "easy-codesnap.windowTitleTemplate": "定義顯示片段視窗標題的模板，您可以使用 {workspace} 和 {fileName} 變數",
     "easy-codesnap.showLineNumbers": "顯示行號",
     "easy-codesnap.realLineNumbers": "從所選內容的行號而不是 1 開始",
-    "easy-codesnap.highlightLineNumber": "當一行被高亮時，使用 activeForeground vscode 主題顏色來高亮行號。",
+    "easy-codesnap.highlightLineNumber": "當一行被高亮時，使用 `editorLineNumber-activeForeground` vscode 主題顏色來高亮行號。",
     "easy-codesnap.transparentBackground": "截圖時使用透明背景",
     "easy-codesnap.target": "使用或不使用容器進行拍攝",
     "easy-codesnap.shutterAction": "快門按鈕的行為",

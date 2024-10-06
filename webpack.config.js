@@ -25,7 +25,7 @@ const config = (env, argv) => {
       },
       devtool,
       externals: {
-        vscode: "commonjs vscode"
+        vscode: "commonjs vscode",
       },
       resolve: {
         // support reading TypeScript and JavaScript files, 📖 -> https://github.com/TypeStrong/ts-loader
@@ -41,7 +41,7 @@ const config = (env, argv) => {
             exclude: [/node_modules/],
             use: [
               {
-                loader: "ts-loader"
+                loader: "esbuild-loader"
               }
             ]
           }
@@ -71,9 +71,9 @@ const config = (env, argv) => {
             exclude: [/node_modules/],
             use: [
               {
-                loader: "ts-loader",
+                loader: "esbuild-loader",
                 options: {
-                  configFile: path.resolve(__dirname, "./src/webview/tsconfig.json")
+                  tsconfig: "./src/webview/tsconfig.json"
                 }
               }
             ]
