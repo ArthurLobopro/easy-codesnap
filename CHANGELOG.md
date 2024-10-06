@@ -1,3 +1,8 @@
+## 1.19.0
+
+Feat: Add missing pt-br strings
+Feat: Add zh-tw translations
+
 ## 1.18.3
 
 Feat: Add support to letterSpacing
