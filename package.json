@@ -260,13 +260,18 @@
     "package": "webpack --mode production",
     "compile": "yarn run webpack",
     "watch": "yarn webpack-dev",
+    "unit_test": "yarn run jest",
     "lint": "biome check --write ./src"
   },
   "devDependencies": {
     "@biomejs/biome": "^1.8.2",
+    "@jest/globals": "^29.7.0",
     "@types/node": "18.x",
     "@types/vscode": "^1.80.0",
+    "esbuild": "^0.24.0",
+    "esbuild-jest": "^0.5.0",
     "esbuild-loader": "^4.2.2",
+    "jest": "^29.7.0",
     "typescript": "^5.3.3",
     "webpack": "^5.89.0",
     "webpack-cli": "^5.1.4"
