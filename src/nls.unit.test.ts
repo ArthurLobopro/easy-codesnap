@@ -1,12 +1,11 @@
 import { describe, expect, it } from "@jest/globals";
 import { contributes } from "../package.json";
 import * as nls_en from "../package.nls.json";
-import * as nls_tw from "../package.nls.zh-tw.json";
 import * as nls_pt_br from "../package.nls.pt-br.json";
+import * as nls_tw from "../package.nls.zh-tw.json";
 
 import * as l10n_br from "../l10n/bundle.l10n.pt-br.json";
 import * as l10n_tw from "../l10n/bundle.l10n.zh-tw.json";
-
 
 describe("check nls", () => {
     it("check : package.nls.json", () => {

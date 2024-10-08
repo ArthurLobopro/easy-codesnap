@@ -1,7 +1,7 @@
-import { describe, expect, it } from "@jest/globals";
-import { JSDOM } from "jsdom";
 import * as fs from "node:fs";
 import * as path from "node:path";
+import { describe, expect, it } from "@jest/globals";
+import { JSDOM } from "jsdom";
 
 import * as l10n_br from "../l10n/bundle.l10n.pt-br.json";
 
