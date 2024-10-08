@@ -7,7 +7,6 @@ import * as nls_pt_br from "../package.nls.pt-br.json";
 import * as l10n_br from "../l10n/bundle.l10n.pt-br.json";
 import * as l10n_tw from "../l10n/bundle.l10n.zh-tw.json";
 
-//
 
 describe("check nls", () => {
     it("check : package.nls.json", () => {
