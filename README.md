@@ -1,6 +1,7 @@
 # Easy CodeSnap
 
 ![Banner](https://raw.githubusercontent.com/ArthurLobopro/easy-codesnap/main/screenshots/banner.png)
+**Repositories**: [Github](https://github.com/ArthurLobopro/easy-codesnap)
 
 ## Features
 
@@ -16,6 +17,10 @@
 - Custom Watermark
 - And much more!
 
+## Install
+
+Install extension via Visual Studio Marketplace [Easy CodeSnap](https://marketplace.visualstudio.com/items?itemName=ArthurLobo.easy-codesnap).
+
 ## How to Use
 
 - Select the code from your editor
@@ -27,18 +32,18 @@
 
 - Make the final adjustments and take your code snapshot.
 
-![](https://raw.githubusercontent.com/ArthurLobopro/easy-codesnap/main/screenshots/one-time-config.gif)
+![gif](https://raw.githubusercontent.com/ArthurLobopro/easy-codesnap/main/screenshots/one-time-config.gif)
 
 ## Commands
 
 - You can take your code snapshot from the command palette using the **`Easy CodeSnap`** command
 - You can import your CodeSnap configuration using the **`Import CodeSnap Settings`** command
 
-## Languages
+## Extension Settings
 
-* en-US. American English
-* pt-BR. Português Brasileiro
-* zh-TW. Taiwanese Mandarin (Thanks [CoffeeChaton](https://github.com/CoffeeChaton))
+- [en-US](./package.nls.json). American English
+- [pt-BR](./package.nls.pt-br.json). Português Brasileiro
+- [zh-TW](./package.nls.zh-tw.json). Taiwanese Mandarin (Thanks [CoffeeChaton](https://github.com/CoffeeChaton))
 
 ## Acknowledgments
 
