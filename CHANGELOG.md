@@ -1,3 +1,7 @@
+## 1.19.1
+
+Feat: Restore cliboard content after rendering code
+
 ## 1.19.0
 
 Feat: Add missing pt-br strings
