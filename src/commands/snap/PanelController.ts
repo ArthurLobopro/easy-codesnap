@@ -1,11 +1,13 @@
 import * as vscode from "vscode";
 import type { message } from "../../types";
 import { hasOneSelection, t } from "../../util";
+import { ClipboardKeeper } from "./ClipboardKeeper";
 import { SnapActions, type updateTypes } from "./SnapActions";
 import { getConfig } from "./getConfig";
 
 export class PanelController {
     panel: vscode.WebviewPanel;
+    clipboard = new ClipboardKeeper();
 
     constructor(panel: vscode.WebviewPanel) {
         this.panel = panel;
@@ -13,6 +15,14 @@ export class PanelController {
 
     async update(updateType: updateTypes, editorURI?: string) {
         if (updateType !== "config") {
+            this.clipboard.cancelRestore();
+
+            this.panel.webview.postMessage({
+                type: "backup-clipboard",
+            });
+
+            await this.clipboard.save();
+
             await vscode.commands.executeCommand(
                 "editor.action.clipboardCopyWithSyntaxHighlightingAction",
             );
@@ -26,6 +36,10 @@ export class PanelController {
                 ? { bundle: JSON.stringify(vscode.l10n.bundle) }
                 : {}),
         });
+
+        if (updateType !== "config") {
+            await this.clipboard.restore();
+        }
     }
 
     init() {

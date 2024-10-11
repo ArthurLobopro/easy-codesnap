@@ -2,7 +2,7 @@
   "name": "easy-codesnap",
   "displayName": "Easy CodeSnap",
   "description": "Take beautiful screenshots of your code 📷",
-  "version": "1.19.0",
+  "version": "1.19.1",
   "l10n": "./l10n",
   "repository": {
     "type": "git",
@@ -263,7 +263,7 @@
     "lint": "biome check --write ./src"
   },
   "devDependencies": {
-    "@biomejs/biome": "^1.8.2",
+    "@biomejs/biome": "^1.9.3",
     "@types/node": "18.x",
     "@types/vscode": "^1.80.0",
     "esbuild-loader": "^4.2.2",
