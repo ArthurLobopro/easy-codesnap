@@ -1,3 +1,7 @@
+## 1.19.3
+
+Feat: Added Chinese Mandarin by [CoffeeChaton](https://github.com/CoffeeChaton)
+
 ## 1.19.1
 
 Feat: Restore cliboard content after rendering code

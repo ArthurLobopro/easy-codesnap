@@ -39,6 +39,7 @@
 * en-US. American English
 * pt-BR. Português Brasileiro
 * zh-TW. Taiwanese Mandarin (Thanks [CoffeeChaton](https://github.com/CoffeeChaton))
+* zh-CN. Chinese Mandarin (Thanks [CoffeeChaton](https://github.com/CoffeeChaton))
 
 ## Acknowledgments
 
