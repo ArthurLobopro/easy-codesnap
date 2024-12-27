@@ -5,6 +5,7 @@ import { actions, type actionsKey } from "./actions";
 import { takeSnap } from "./snap";
 import { btnSave } from "./ui/elements";
 import { addListeners } from "./ui/listeners";
+import { TranslationUpdater } from "./ui/updaters/TranslationUpdater";
 import { vscode } from "./util";
 
 registerLoadSVG();
@@ -34,6 +35,7 @@ window.addEventListener(
     "DOMContentLoaded",
     () => {
         addListeners();
+        TranslationUpdater();
         vscode.postMessage({ type: "ready" });
     },
     { once: true },
