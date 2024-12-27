@@ -4,6 +4,7 @@ import type { ConfigSentToWebview } from "../types";
 import { SessionConfig } from "./SessionConfig";
 import { cameraFlashAnimation } from "./snap";
 import { UpdateCode } from "./ui/updaters";
+import { TranslationUpdater } from "./ui/updaters/TranslationUpdater";
 
 export type actionsKey = keyof typeof actions;
 
@@ -18,6 +19,8 @@ export const actions = {
         l10n.config({
             contents: JSON.parse(config.bundle ?? "{}"),
         });
+
+        TranslationUpdater();
 
         SessionConfig.set(
             pickAllExcept(config, ["linkOnOpen", "lockOnOpen", "bundle"]),
