@@ -3,7 +3,7 @@ import * as l10n from "@vscode/l10n";
 import type { ConfigSentToWebview } from "../types";
 import { SessionConfig } from "./SessionConfig";
 import { cameraFlashAnimation } from "./snap";
-import { UIUpdater, UpdateCode } from "./ui/updaters";
+import { UpdateCode } from "./ui/updaters";
 
 export type actionsKey = keyof typeof actions;
 
@@ -29,8 +29,6 @@ export const actions = {
             isLinked: config.linkOnOpen,
             isLocked: config.lockOnOpen,
         });
-
-        UIUpdater();
     },
 
     "update-text"(config: ConfigSentToWebview) {
@@ -48,7 +46,6 @@ export const actions = {
             );
         }
 
-        UIUpdater();
         document.execCommand("paste");
     },
 
@@ -63,7 +60,6 @@ export const actions = {
             ]),
         );
 
-        UIUpdater();
         UpdateCode();
     },
 };
