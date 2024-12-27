@@ -27,7 +27,7 @@ window.addEventListener("message", ({ data: { type, ...config } }) => {
     if (type in actions) {
         actions[type as actionsKey](config);
     } else {
-        console.log(`Unknow action on renderer: ${actions}`);
+        console.log(`Unknow action on renderer: ${type}`);
     }
 });
 
