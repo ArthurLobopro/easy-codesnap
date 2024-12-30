@@ -28,6 +28,7 @@ export class VisibilityUpdater extends Updater {
             "watermarkText",
             "target",
             "watermark",
+            "enableResizing",
         ]);
     }
 
@@ -40,6 +41,7 @@ export class VisibilityUpdater extends Updater {
             watermarkText,
             target,
             watermark,
+            enableResizing,
         } = SessionConfig.get();
 
         navbarNode.style.display =
@@ -62,6 +64,10 @@ export class VisibilityUpdater extends Updater {
             watermarkElement.dataset.target = target;
         } else {
             watermarkElement.style.display = "none";
+        }
+
+        if (!enableResizing) {
+            windowNode.style.width = "";
         }
 
         const biggerSelectWidth = `${getWidth(windowStyleSelect)}px`;
