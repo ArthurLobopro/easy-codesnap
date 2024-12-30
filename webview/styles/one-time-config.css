@@ -88,6 +88,10 @@
     margin: 8px 4px;
 }
 
+#one-time-config li .tooltip-text {
+    cursor: default;
+}
+
 .title {
     display: flex;
     align-items: center;
