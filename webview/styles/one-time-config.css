@@ -43,12 +43,13 @@
     background-color: var(--vscode-list-hoverBackground);
 }
 
-#one-time-config ul {
+#one-time-config nav {
     margin-top: 34px;
     padding: 4px;
     border-radius: 4px;
 
     background-color: var(--vscode-sideBar-background);
+    min-width: max-content;
 }
 
 #one-time-config li:not(.separator, .title) {
@@ -59,6 +60,7 @@
 
     display: flex;
     align-items: center;
+    box-sizing: border-box;
 }
 
 #one-time-config li:has(label>input) {
@@ -86,19 +88,25 @@
     margin: 8px 4px;
 }
 
+#one-time-config li .tooltip-text {
+    cursor: default;
+}
+
 .title {
     display: flex;
     align-items: center;
     width: 100%;
+    padding: 4px 0;
 }
 
-.title span{
+.title span {
     flex-shrink: 0;
     padding-inline: 4px;
     font-size: 12px;
 }
 
-.title::after, .title::before {
+.title::after,
+.title::before {
     content: "";
     border-bottom: 1px solid var(--vscode-foreground);
     width: 100%;

@@ -29,6 +29,8 @@
     "Aspect Ratio": "Proporção",
     "Lock changes": "Bloquear alterações",
     "Unlock changes": "Desbloquear alterações",
+    "Zoom in": "Aumentar zoom",
+    "Zoom out": "Diminuir zoom",
     "Broken editor conection": "Desconectar do editor",
     "Connect to editor": "Conectar com o editor",
     "here": "aqui",
@@ -49,5 +51,7 @@
     "Only valid when `Target` is `container`": "Apenas válido quando `Alvo` for `container`",
     "When you take the Snapshot, the container background will be transparent.": "Quando você capturar a Snapshot, a cor de fundo do container será transparente.",
     "You can edit the Watermark text by double-clicking it.": "Você pode editar o texto da Marca D'água clicando duas vezes nela.",
-    "You can edit the default Watermark text clicking": "Você pode editar o texto padrão da Marca D'água clicando"
+    "You can edit the default Watermark text clicking": "Você pode editar o texto padrão da Marca D'água clicando",
+    "Enables manual resizing of the `Snap Window`.": "Ativa o redimencionamento manual da `Snap Window`.",
+    "Disabling this will also reset the `Snap Window` size.": "Desativar isso também irá resetar o tamanho da `Snap Window`."
 }

@@ -1,3 +1,8 @@
+## 1.19.4
+
+Feat: Reset Snap Window on disable Resizing
+Fix: Little UI fixes
+
 ## 1.19.3
 
 Feat: Added Chinese Mandarin by [CoffeeChaton](https://github.com/CoffeeChaton)

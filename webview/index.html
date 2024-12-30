@@ -38,7 +38,10 @@
   </div>
 
   <div id="center-wrapper">
-    <button class="codicon codicon-zoom-out" data-action="zoom-out"></button>
+    <button class="tooltip bottom" data-action="zoom-out">
+      <span class="codicon codicon-zoom-out"></span>
+      <span class="tooltip-text" data-l10n="Zoom out"></span>
+    </button>
     <select data-configname="zoom">
       <option value="50">50%</option>
       <option value="75">75%</option>
@@ -46,7 +49,10 @@
       <option value="125">125%</option>
       <option value="150">150%</option>
     </select>
-    <button class="codicon codicon-zoom-in" data-action="zoom-in"></button>
+    <button class="tooltip bottom" data-action="zoom-in">
+      <span class="codicon codicon-zoom-in"></span>
+      <span class="tooltip-text" data-l10n="Zoom in"></span>
+    </button>
   </div>
 
   <div id="one-time-config-wrapper">
@@ -54,7 +60,7 @@
       <summary tabindex="-1">
         <load-svg src="./assets/config.svg"></load-svg>
       </summary>
-      <ul>
+      <nav>
         <div class="title">
           <span data-l10n="Line Options"></span>
         </div>
@@ -107,7 +113,7 @@
               <span data-l10n="You can edit the Window Title text by double-clicking it."></span>
               <span data-l10n="You can edit the default Window Title text clicking"></span>
               <span class="link"
-                data-openconfig="windowTitleTemplate">here</span>
+                data-openconfig="windowTitleTemplate" data-l10n="here"></span>
             </span>
           </label>
         </li>
@@ -160,9 +166,13 @@
         </li>
 
         <li>
-          <label>
+          <label class="tooltip horizontal-left">
             <span data-l10n="Enable Resizing"></span>
             <input type="checkbox" data-configname="enableResizing" tabindex="-1">
+            <span class="tooltip-text">
+              <span data-l10n="Enables manual resizing of the `Snap Window`."></span>
+              <span data-l10n="Disabling this will also reset the `Snap Window` size."></span>
+            </span>
           </label>
         </li>
         <li>
@@ -238,7 +248,7 @@
           <span data-l10n="Save Settings"></span>
           <span class="tooltip-text" data-l10n="Save current settings as default"></span>
         </li>
-      </ul>
+      </nav>
     </details>
   </div>
 

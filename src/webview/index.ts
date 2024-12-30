@@ -5,6 +5,7 @@ import { actions, type actionsKey } from "./actions";
 import { takeSnap } from "./snap";
 import { btnSave } from "./ui/elements";
 import { addListeners } from "./ui/listeners";
+import { TranslationUpdater } from "./ui/updaters/TranslationUpdater";
 import { vscode } from "./util";
 
 registerLoadSVG();
@@ -26,7 +27,7 @@ window.addEventListener("message", ({ data: { type, ...config } }) => {
     if (type in actions) {
         actions[type as actionsKey](config);
     } else {
-        console.log(`Unknow action on renderer: ${actions}`);
+        console.log(`Unknow action on renderer: ${type}`);
     }
 });
 
@@ -34,6 +35,7 @@ window.addEventListener(
     "DOMContentLoaded",
     () => {
         addListeners();
+        TranslationUpdater();
         vscode.postMessage({ type: "ready" });
     },
     { once: true },
