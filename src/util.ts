@@ -22,7 +22,7 @@ export function getSettings(group: string, keys: string[]) {
     }, {} as untypedObject);
 }
 
-export function hasOneSelection(selections: readonly vscode.Selection[]) {
+export function hasOneSelection(selections?: readonly vscode.Selection[]) {
     return selections && selections.length === 1 && !selections[0].isEmpty;
 }
 

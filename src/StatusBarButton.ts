@@ -14,7 +14,9 @@ export class StatusbarButton {
         button.color = "inherit";
         button.command = "easy-codesnap.snap";
 
-        if (vscode.window.activeTextEditor?.selection.isEmpty === false) {
+        const { activeTextEditor } = vscode.window;
+
+        if (hasOneSelection(activeTextEditor?.selections)) {
             button.show();
         }
 
