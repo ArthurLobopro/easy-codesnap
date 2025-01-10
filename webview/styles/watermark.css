@@ -25,7 +25,7 @@
     position: relative;
 }
 
-#snippet-container:has(#watermark[data-target="container"]) #watermark{
+#snippet-container:has(#watermark[data-target="container"][data-watermark-position^="top"]) #watermark{
     top: 2px;
     bottom: unset;
 }
