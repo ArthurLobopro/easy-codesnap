@@ -42,13 +42,13 @@ export class WatermarkUpdater extends Updater {
 
             watermarkPositionXSelect.value = watermarkX;
             watermarkPositionYSelect.value = watermarkY;
+
+            watermarkElement.setAttribute(
+                "data-watermark-position",
+                watermarkPosition,
+            );
         }
 
         watermarkPositionYSelect.disabled = target === "window";
-
-        watermarkElement.setAttribute(
-            "data-watermark-position",
-            watermarkPosition,
-        );
     }
 }

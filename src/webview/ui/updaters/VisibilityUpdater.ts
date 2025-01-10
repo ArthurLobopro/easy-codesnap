@@ -25,11 +25,7 @@ export class VisibilityUpdater extends Updater {
             "showWindowTitle",
             "aspectRatio",
             "highlightLineNumber",
-            "watermarkText",
-            "target",
-            "watermark",
             "enableResizing",
-            "watermarkPosition",
         ]);
     }
 
