@@ -11,7 +11,6 @@ import {
     shutterActionSelect,
     snippetContainerNode,
     targetSelect,
-    watermarkElement,
     watermarkPositionXSelect,
     watermarkPositionYSelect,
     windowControlsNode,
@@ -40,11 +39,7 @@ export class VisibilityUpdater extends Updater {
             showWindowTitle,
             aspectRatio,
             highlightLineNumber,
-            watermarkText,
-            target,
-            watermark,
             enableResizing,
-            watermarkPosition,
         } = SessionConfig.get();
 
         navbarNode.style.display =
@@ -60,34 +55,6 @@ export class VisibilityUpdater extends Updater {
         if (highlightLineNumber) {
             windowNode.classList.add("line-number-hightlight");
         }
-
-        if (watermark) {
-            watermarkElement.style.display = "";
-            watermarkElement.innerText = watermarkText;
-            watermarkElement.dataset.target = target;
-
-            watermarkPositionXSelect.parentElement!.style.display = "";
-            watermarkPositionYSelect.parentElement!.style.display = "";
-        } else {
-            watermarkElement.style.display = "none";
-
-            watermarkPositionXSelect.parentElement!.style.display = "none";
-            watermarkPositionYSelect.parentElement!.style.display = "none";
-        }
-
-        watermarkElement.setAttribute(
-            "data-watermark-position",
-            watermarkPosition,
-        );
-
-        if (watermarkPosition) {
-            const [watermarkY, watermarkX] = watermarkPosition.split("-");
-
-            watermarkPositionXSelect.value = watermarkX;
-            watermarkPositionYSelect.value = watermarkY;
-        }
-
-        console.log(watermarkPosition);
 
         if (!enableResizing) {
             windowNode.style.width = "";

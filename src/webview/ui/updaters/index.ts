@@ -4,6 +4,7 @@ import { LineNumbersUpdater } from "./LineNumbersUpdater";
 import { OneTimeConfigUpdater } from "./OneTimeConfigUpdater";
 import { VarUpdater } from "./VarUpdater";
 import { VisibilityUpdater } from "./VisibilityUpdater";
+import { WatermarkUpdater } from "./WatermarkUpdater";
 import { WindowUpdater } from "./WindowUpdater";
 import { ZoomUpdater } from "./ZoomUpdater";
 
@@ -25,6 +26,7 @@ export const updaters = [
     new LineNumbersUpdater(),
     new OneTimeConfigUpdater(),
     new WindowUpdater(),
+    new WatermarkUpdater(),
 ];
 
 export function GenericUpdate(keys: WebViewConfigKey[]) {
