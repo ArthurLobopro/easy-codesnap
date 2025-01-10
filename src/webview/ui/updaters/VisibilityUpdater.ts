@@ -30,6 +30,7 @@ export class VisibilityUpdater extends Updater {
             "target",
             "watermark",
             "enableResizing",
+            "watermarkPosition",
         ]);
     }
 
@@ -74,12 +75,19 @@ export class VisibilityUpdater extends Updater {
             watermarkPositionYSelect.parentElement!.style.display = "none";
         }
 
-        windowNode.setAttribute("data-watermark-position", watermarkPosition);
+        watermarkElement.setAttribute(
+            "data-watermark-position",
+            watermarkPosition,
+        );
 
-        const [watermarkY, watermarkX] = watermarkPosition.split("-");
+        if (watermarkPosition) {
+            const [watermarkY, watermarkX] = watermarkPosition.split("-");
 
-        watermarkPositionXSelect.value = watermarkX;
-        watermarkPositionYSelect.value = watermarkY;
+            watermarkPositionXSelect.value = watermarkX;
+            watermarkPositionYSelect.value = watermarkY;
+        }
+
+        console.log(watermarkPosition);
 
         if (!enableResizing) {
             windowNode.style.width = "";

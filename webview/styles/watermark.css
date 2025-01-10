@@ -1,20 +1,31 @@
-#snippet-container:has(#watermark[data-target="container"]){
-    position: relative;
+#watermark{
+    position: absolute;
+    bottom: 2px;
+    left: 4px;
+    right: 4px;
+}
+
+#watermark:focus{
+    outline: 1px solid var(--vscode-settings-focusedRowBorder);
+}
+
+#watermark[data-watermark-position$="-right"]{
+    text-align: right;
+}
+
+#watermark[data-watermark-position$="-left"]{
+    text-align: left;
 }
 
 #window:has(#watermark[data-target="window"]){
     position: relative;
 }
 
-#watermark{
-    position: absolute;
-    bottom: 2px;
-    left: 4px;
-    right: 4px;
-
-    text-align: right;
+#snippet-container:has(#watermark[data-target="container"]){
+    position: relative;
 }
 
-#watermark:focus{
-    outline: 1px solid var(--vscode-settings-focusedRowBorder);
+#snippet-container:has(#watermark[data-target="container"]) #watermark{
+    top: 2px;
+    bottom: unset;
 }

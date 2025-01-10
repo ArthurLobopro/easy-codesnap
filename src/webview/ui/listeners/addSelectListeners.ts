@@ -29,8 +29,8 @@ export function addSelectListeners() {
 
         SessionConfig.set({
             watermarkPosition: [
+                watermarkPosition.split("-")[0],
                 watermarkPositionXSelect.value,
-                watermarkPosition.split("-").at(-1),
             ].join("-") as ExtensionConfig["watermarkPosition"],
         });
     });
@@ -40,8 +40,8 @@ export function addSelectListeners() {
 
         SessionConfig.set({
             watermarkPosition: [
-                watermarkPosition.split("-").at(0),
                 watermarkPositionYSelect.value,
+                watermarkPosition.split("-")[1],
             ].join("-") as ExtensionConfig["watermarkPosition"],
         });
     });

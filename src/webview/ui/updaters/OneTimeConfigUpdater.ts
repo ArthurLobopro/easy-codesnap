@@ -15,6 +15,8 @@ import {
     targetSelect,
     transparentBackgroundInput,
     watermarkInput,
+    watermarkPositionXSelect,
+    watermarkPositionYSelect,
     windowStyleSelect,
 } from "../elements";
 
@@ -56,6 +58,7 @@ export class OneTimeConfigUpdater extends Updater {
             saveScale,
             highlightLineNumber,
             watermark,
+            watermarkPosition,
         } = SessionConfig.get();
 
         showWindowTitleInput.checked = showWindowTitle;
@@ -79,5 +82,11 @@ export class OneTimeConfigUpdater extends Updater {
         saveFormatSelect.value = saveFormat;
         windowStyleSelect.value = windowStyle;
         saveScaleSelect.value = saveScale.toString();
+
+        if (watermarkPosition) {
+            const [watermarkY, watermarkX] = watermarkPosition.split("-");
+            watermarkPositionXSelect.value = watermarkX;
+            watermarkPositionYSelect.value = watermarkY;
+        }
     }
 }
