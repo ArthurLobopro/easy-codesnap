@@ -34,6 +34,10 @@
     "Broken editor conection": "Desconectar do editor",
     "Connect to editor": "Conectar com o editor",
     "here": "aqui",
+    "Top": "Em cima",
+    "Bottom": "Em baixo",
+    "Left": "Esquerda",
+    "Right": "Direita",
     "If you want to highlight a line, you can click on the line number": "Se você quiser destacar uma linha, você pode clicar no número desta linha",
     "Show real line numbers.": "Mostra o número real das linhas",
     "Only valid when `Show Line Numbers` is marked": "Apenas é válido quando `Mostrar Número de Linhas` está ativo",
@@ -53,5 +57,7 @@
     "You can edit the Watermark text by double-clicking it.": "Você pode editar o texto da Marca D'água clicando duas vezes nela.",
     "You can edit the default Watermark text clicking": "Você pode editar o texto padrão da Marca D'água clicando",
     "Enables manual resizing of the `Snap Window`.": "Ativa o redimencionamento manual da `Snap Window`.",
-    "Disabling this will also reset the `Snap Window` size.": "Desativar isso também irá resetar o tamanho da `Snap Window`."
+    "Disabling this will also reset the `Snap Window` size.": "Desativar isso também irá resetar o tamanho da `Snap Window`.",
+    "Watermark Y position": "Posição Y da marca d'água",
+    "Watermark X position": "Posição X da marca d'água"
 }

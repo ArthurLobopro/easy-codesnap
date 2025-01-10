@@ -1,3 +1,7 @@
+## 1.20.0
+
+Feat: Add watermark position feature
+
 ## 1.19.4
 
 Feat: Reset Snap Window on disable Resizing

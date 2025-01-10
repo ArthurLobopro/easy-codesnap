@@ -2,7 +2,7 @@
   "name": "easy-codesnap",
   "displayName": "Easy CodeSnap",
   "description": "Take beautiful screenshots of your code 📷",
-  "version": "1.19.5",
+  "version": "1.20.0",
   "l10n": "./l10n",
   "repository": {
     "type": "git",
@@ -249,6 +249,19 @@
           "type": "string",
           "default": "Made with Easy CodeSnap",
           "description": "%easy-codesnap.defaultWatermarkText%"
+        },
+        "easy-codesnap.watermarkPosition": {
+          "order": 24,
+          "scope": "resource",
+          "type": "string",
+          "default": "bottom-right",
+          "description": "%easy-codesnap.watermarkPosition%",
+          "enum": [
+            "bottom-right",
+            "bottom-left",
+            "top-right",
+            "top-left"
+          ]
         }
       }
     }

@@ -25,5 +25,6 @@
     "easy-codesnap.aspect-ratio": "Define uma proporção para a captura (quando container é o alvo)",
     "easy-codesnap.fullLinesSelection": "Selecionar o texto completo de todas as linhas quando abrir a tela de Snap",
     "easy-codesnap.watermark": "Mostrar marca d'água",
-    "easy-codesnap.defaultWatermarkText": "Texto padrão da marca d'água"
+    "easy-codesnap.defaultWatermarkText": "Texto padrão da marca d'água",
+    "easy-codesnap.watermarkPosition": "Posição da marca d'água"
 }

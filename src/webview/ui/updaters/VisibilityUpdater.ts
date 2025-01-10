@@ -11,10 +11,10 @@ import {
     shutterActionSelect,
     snippetContainerNode,
     targetSelect,
-    watermarkElement,
+    watermarkPositionXSelect,
+    watermarkPositionYSelect,
     windowControlsNode,
     windowNode,
-    windowStyleSelect,
     windowTitleNode,
 } from "../elements";
 
@@ -25,9 +25,6 @@ export class VisibilityUpdater extends Updater {
             "showWindowTitle",
             "aspectRatio",
             "highlightLineNumber",
-            "watermarkText",
-            "target",
-            "watermark",
             "enableResizing",
         ]);
     }
@@ -38,9 +35,6 @@ export class VisibilityUpdater extends Updater {
             showWindowTitle,
             aspectRatio,
             highlightLineNumber,
-            watermarkText,
-            target,
-            watermark,
             enableResizing,
         } = SessionConfig.get();
 
@@ -58,26 +52,33 @@ export class VisibilityUpdater extends Updater {
             windowNode.classList.add("line-number-hightlight");
         }
 
-        if (watermark) {
-            watermarkElement.style.display = "";
-            watermarkElement.innerText = watermarkText;
-            watermarkElement.dataset.target = target;
-        } else {
-            watermarkElement.style.display = "none";
-        }
-
         if (!enableResizing) {
             windowNode.style.width = "";
         }
 
-        const biggerSelectWidth = `${getWidth(windowStyleSelect)}px`;
+        const selects = [
+            targetSelect,
+            shutterActionSelect,
+            roundingLevelSelect,
+            saveFormatSelect,
+            saveScaleSelect,
+            aspectRatioSelect,
+            watermarkPositionXSelect,
+            watermarkPositionYSelect,
+        ];
 
-        targetSelect.style.width = biggerSelectWidth;
-        shutterActionSelect.style.width = biggerSelectWidth;
-        roundingLevelSelect.style.width = biggerSelectWidth;
-        saveFormatSelect.style.width = biggerSelectWidth;
-        saveScaleSelect.style.width = biggerSelectWidth;
-        aspectRatioSelect.style.width = biggerSelectWidth;
+        const biggerSelect = selects.reduce((prev, curr) => {
+            const prevWidth = getWidth(prev);
+            const currWidth = getWidth(curr);
+
+            return prevWidth >= currWidth ? prev : curr;
+        }, targetSelect);
+
+        const biggerSelectWidth = `${getWidth(biggerSelect)}px`;
+
+        for (const select of selects) {
+            select.style.width = biggerSelectWidth;
+        }
 
         UpdateRatio(aspectRatio);
     }
