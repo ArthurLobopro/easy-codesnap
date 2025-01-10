@@ -249,6 +249,19 @@
           "type": "string",
           "default": "Made with Easy CodeSnap",
           "description": "%easy-codesnap.defaultWatermarkText%"
+        },
+        "easy-codesnap.watermarkPosition": {
+          "order": 24,
+          "scope": "resource",
+          "type": "string",
+          "default": "bottom-right",
+          "description": "%easy-codesnap.watermarkPosition%",
+          "enum": [
+            "bottom-right",
+            "bottom-left",
+            "top-right",
+            "top-left"
+          ]
         }
       }
     }

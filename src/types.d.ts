@@ -25,6 +25,11 @@ export interface ExtensionConfig {
     shutterAction: "save" | "copy";
     windowStyle: "macos" | "windows";
     aspectRatio: "none" | "1:1" | "4:5" | "9:16" | "16:9";
+    watermarkPosition:
+        | "bottom-right"
+        | "bottom-left"
+        | "top-right"
+        | "top-left";
 }
 
 export interface ConfigSentToWebview extends ExtensionConfig {
@@ -62,17 +67,19 @@ type BooleanProperties<T> = Pick<
 
 export type TogglableConfigNames = keyof BooleanProperties<WebviewConfig>;
 
-export type selectNames = keyof Pick<
-    WebviewConfig,
-    | "roundingLevel"
-    | "saveFormat"
-    | "shutterAction"
-    | "target"
-    | "windowStyle"
-    | "zoom"
-    | "saveScale"
-    | "aspectRatio"
->;
+export type selectNames =
+    | keyof Pick<
+          WebviewConfig,
+          | "roundingLevel"
+          | "saveFormat"
+          | "shutterAction"
+          | "target"
+          | "windowStyle"
+          | "zoom"
+          | "saveScale"
+          | "aspectRatio"
+      >
+    | ("watermarkPosition-Y" | "watermarkPosition-X");
 
 export type message =
     | { type: "copied" | "update-config" | "ready" }

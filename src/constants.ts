@@ -29,4 +29,5 @@ export const extensionSettingsNames: ConfigKey[] = [
     "highlightLineNumber",
     "watermark",
     "defaultWatermarkText",
+    "watermarkPosition",
 ] as const;

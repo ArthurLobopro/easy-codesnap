@@ -12,9 +12,10 @@ import {
     snippetContainerNode,
     targetSelect,
     watermarkElement,
+    watermarkPositionXSelect,
+    watermarkPositionYSelect,
     windowControlsNode,
     windowNode,
-    windowStyleSelect,
     windowTitleNode,
 } from "../elements";
 
@@ -42,6 +43,7 @@ export class VisibilityUpdater extends Updater {
             target,
             watermark,
             enableResizing,
+            watermarkPosition,
         } = SessionConfig.get();
 
         navbarNode.style.display =
@@ -62,22 +64,50 @@ export class VisibilityUpdater extends Updater {
             watermarkElement.style.display = "";
             watermarkElement.innerText = watermarkText;
             watermarkElement.dataset.target = target;
+
+            watermarkPositionXSelect.parentElement!.style.display = "";
+            watermarkPositionYSelect.parentElement!.style.display = "";
         } else {
             watermarkElement.style.display = "none";
+
+            watermarkPositionXSelect.parentElement!.style.display = "none";
+            watermarkPositionYSelect.parentElement!.style.display = "none";
         }
+
+        windowNode.setAttribute("data-watermark-position", watermarkPosition);
+
+        const [watermarkY, watermarkX] = watermarkPosition.split("-");
+
+        watermarkPositionXSelect.value = watermarkX;
+        watermarkPositionYSelect.value = watermarkY;
 
         if (!enableResizing) {
             windowNode.style.width = "";
         }
 
-        const biggerSelectWidth = `${getWidth(windowStyleSelect)}px`;
+        const selects = [
+            targetSelect,
+            shutterActionSelect,
+            roundingLevelSelect,
+            saveFormatSelect,
+            saveScaleSelect,
+            aspectRatioSelect,
+            watermarkPositionXSelect,
+            watermarkPositionYSelect,
+        ];
 
-        targetSelect.style.width = biggerSelectWidth;
-        shutterActionSelect.style.width = biggerSelectWidth;
-        roundingLevelSelect.style.width = biggerSelectWidth;
-        saveFormatSelect.style.width = biggerSelectWidth;
-        saveScaleSelect.style.width = biggerSelectWidth;
-        aspectRatioSelect.style.width = biggerSelectWidth;
+        const biggerSelect = selects.reduce((prev, curr) => {
+            const prevWidth = getWidth(prev);
+            const currWidth = getWidth(curr);
+
+            return prevWidth >= currWidth ? prev : curr;
+        }, targetSelect);
+
+        const biggerSelectWidth = `${getWidth(biggerSelect)}px`;
+
+        for (const select of selects) {
+            select.style.width = biggerSelectWidth;
+        }
 
         UpdateRatio(aspectRatio);
     }
