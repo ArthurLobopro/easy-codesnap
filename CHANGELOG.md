@@ -1,3 +1,7 @@
+## 1.20.1
+
+Feat: Add new highlight level
+
 ## 1.20.0
 
 Feat: Add watermark position feature
