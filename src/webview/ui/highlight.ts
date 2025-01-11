@@ -1,6 +1,4 @@
-type highlightLevels = "none" | "focus" | "add" | "remove";
-
-const highlightOrder = ["none", "focus", "add", "remove"];
+const highlightOrder = ["none", "focus", "add", "remove", "vscode"];
 
 export function highlightOnclickFactory(
     lineElement: HTMLDivElement,

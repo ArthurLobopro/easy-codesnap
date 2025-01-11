@@ -10,18 +10,22 @@
     --color: currentColor;
 }
 
-[data-highlight="add"]{
+[data-highlight="add"] {
     --line-background: rgb(134 239 172 / 0.15);
     --before-background: transparent;
     --before-content: "+";
     --color: rgb(134, 239, 172);
 }
 
-[data-highlight="remove"]{
+[data-highlight="remove"] {
     --line-background: rgb(252 165 165 / 0.15);
     --before-background: transparent;
     --before-content: "-";
     --color: rgb(239, 68, 68);
+}
+
+[data-highlight="vscode"] {
+    --line-background: var(--vscode-editor-selectionBackground);
 }
 
 .line:not([data-highlight="none"]) {
@@ -41,6 +45,6 @@
     background-color: var(--before-background);
 }
 
-#window.line-number-hightlight .line:not([data-highlight="none"]) > .line-number{
+#window.line-number-hightlight .line:not([data-highlight="none"])>.line-number {
     color: var(--vscode-editorLineNumber-activeForeground);
 }
