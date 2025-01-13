@@ -24,6 +24,7 @@ export function once(elem: Element, evt: string) {
 }
 
 export const redraw = (node: Element) => node.clientHeight;
+export const px = (px: any) => `${px}px`;
 
 export function setVar(key: string, value: string, node = document.body) {
     return node.style.setProperty(`--${key}`, value);

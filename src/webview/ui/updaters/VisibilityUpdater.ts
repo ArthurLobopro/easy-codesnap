@@ -1,6 +1,6 @@
 import type { WebviewConfig } from "../../../types";
 import { SessionConfig } from "../../SessionConfig";
-import { getWidth } from "../../util";
+import { getWidth, px } from "../../util";
 import { Updater } from "../Updater";
 import {
     aspectRatioSelect,
@@ -43,9 +43,6 @@ export class VisibilityUpdater extends Updater {
 
         windowControlsNode.hidden = !showWindowControls;
         windowTitleNode.hidden = !showWindowTitle;
-
-        snippetContainerNode.style.aspectRatio =
-            aspectRatio === "none" ? "" : aspectRatio?.replace(":", " / ");
 
         windowNode.classList.remove("line-number-hightlight");
         if (highlightLineNumber) {
@@ -103,6 +100,7 @@ const nextMultipleOf = (value: number, multipleOf: number) =>
 
 function updateRatioByProportion(ratio: [number, number]) {
     snippetContainerNode.style.minWidth = "";
+    snippetContainerNode.style.minHeight = "";
     windowNode.style.flex = "";
 
     if (ratio.includes(0)) {
@@ -115,7 +113,18 @@ function updateRatioByProportion(ratio: [number, number]) {
         if (height > width) {
             snippetContainerNode.style.minWidth = `${Math.floor(height)}px`;
             windowNode.style.flex = "1";
+            return;
         }
+
+        snippetContainerNode.style.minHeight = `${Math.floor(width)}px`;
+        windowNode.style.flex = "1";
+        return;
+    }
+
+    if (ratio[1] === 1) {
+        snippetContainerNode.style.minWidth = `${Math.floor(height * ratio[0])}px`;
+        windowNode.style.flex = "1";
+        return;
     }
 
     if (ratio[0] > ratio[1]) {
@@ -123,6 +132,20 @@ function updateRatioByProportion(ratio: [number, number]) {
         const minWidth = (minHeight * ratio[0]) / ratio[1];
 
         snippetContainerNode.style.minWidth = `${Math.floor(minWidth)}px`;
+        windowNode.style.flex = "1";
+        return;
+    }
+
+    if (ratio[1] > ratio[0]) {
+        const minWidth = nextMultipleOf(width, ratio[0]);
+        const minHeight = (minWidth * ratio[1]) / ratio[0];
+
+        if (width > height) {
+            snippetContainerNode.style.minHeight = px(minHeight);
+        } else {
+            snippetContainerNode.style.minWidth = px(minWidth);
+        }
+
         windowNode.style.flex = "1";
     }
 }

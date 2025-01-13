@@ -1,3 +1,8 @@
+##
+
+Feat: Add new Aspect Ratio level
+Fix: Correct Aspect Ratio
+
 ## 1.20.1
 
 Feat: Add new highlight level
