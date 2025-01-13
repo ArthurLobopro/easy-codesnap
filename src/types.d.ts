@@ -24,7 +24,7 @@ export interface ExtensionConfig {
     target: "container" | "window";
     shutterAction: "save" | "copy";
     windowStyle: "macos" | "windows";
-    aspectRatio: "none" | "1:1" | "4:5" | "9:16" | "16:9";
+    aspectRatio: "none" | "1:1" | "1,91:1" | "4:5" | "9:16" | "16:9";
     watermarkPosition:
         | "bottom-right"
         | "bottom-left"

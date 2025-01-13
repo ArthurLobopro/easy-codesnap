@@ -226,7 +226,8 @@
             "1:1",
             "4:5",
             "9:16",
-            "16:9"
+            "16:9",
+            "1,91:1"
           ]
         },
         "easy-codesnap.fullLinesSelection": {
