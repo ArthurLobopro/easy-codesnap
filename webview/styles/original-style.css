@@ -36,7 +36,6 @@ body {
     justify-content: center;
     align-items: center;
     padding: var(--container-padding);
-    background-color: var(--container-background-color);
     background: var(--container-background-color);
     width: max-content;
     box-sizing: border-box;
@@ -95,7 +94,6 @@ body {
 }
 
 .shutter {
-    enable-background: new 0 0 28.3 28.3;
     width: 64px;
     height: 64px;
     cursor: pointer;
