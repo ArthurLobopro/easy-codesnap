@@ -7,90 +7,102 @@
 }
 
 #one-time-config {
-    /* background-color: var(--vscode-sideBar-background); */
-
     border-radius: 4px;
     position: relative;
     z-index: 1;
+
+    &>summary {
+        width: 24px;
+        height: 24px;
+        border-radius: 4px;
+        padding: 4px;
+        outline: 0;
+    
+        position: absolute;
+        right: 0;
+        top: 0;
+        cursor: pointer;
+
+        &::marker {
+            content: "";
+        }
+
+        &:hover {
+            background-color: var(--vscode-toolbar-hoverBackground);
+        }
+
+        &>svg {
+            *[stroke]:not([stroke="none"]) {
+                stroke: var(--vscode-foreground);
+            }
+
+            *[fill]:not([fill="none"]) {
+                fill: var(--vscode-foreground);
+            }
+        }
+    }
+
+    nav {
+        margin-top: 34px;
+        padding: 4px;
+        border-radius: 4px;
+    
+        background-color: var(--vscode-sideBar-background);
+        min-width: max-content;
+    }
+
+    li {
+        &:not(.separator, .title) {
+            border-radius: 4px;
+            padding: 4px;
+            font-size: 14px;
+            list-style-type: none;
+        
+            display: flex;
+            align-items: center;
+            box-sizing: border-box;
+        }
+
+        &:has(label>input) {
+            cursor: pointer;
+            padding: 0 !important;
+
+            &>label {
+                padding: 4px;
+            }
+        }
+
+        &:has(>select) {
+            cursor: auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            gap: 4px;
+        }
+
+        &[data-action] {
+            cursor: pointer;
+            gap: 4px;
+        }
+
+        &:not(.separator):hover {
+            background-color: var(--vscode-sideBar-dropBackground);
+        }
+
+        &.separator {
+            display: block;
+            height: 1px;
+            background-color: var(--vscode-foreground);
+            margin: 8px 4px;
+        }
+
+        .tooltip-text {
+            cursor: default;
+        }
+    }
 }
 
-#one-time-config>summary {
-    width: 24px;
-    height: 24px;
-    border-radius: 4px;
-    padding: 4px;
-    outline: 0;
-
-    position: absolute;
-    right: 0;
-    top: 0;
-    cursor: pointer;
-}
-
-#one-time-config>summary::marker {
-    content: "";
-}
-
-#one-time-config>summary>svg *[stroke]:not([stroke="none"]) {
-    stroke: var(--vscode-foreground);
-}
-
-#one-time-config>summary>svg *[fill]:not([fill="none"]) {
-    fill: var(--vscode-foreground);
-}
-
-#one-time-config>summary:hover {
-    background-color: var(--vscode-toolbar-hoverBackground);
-}
-
-#one-time-config nav {
-    margin-top: 34px;
-    padding: 4px;
-    border-radius: 4px;
-
-    background-color: var(--vscode-sideBar-background);
-    min-width: max-content;
-}
-
-#one-time-config li:not(.separator, .title) {
-    border-radius: 4px;
-    padding: 4px;
-    font-size: 14px;
-    list-style-type: none;
-
-    display: flex;
-    align-items: center;
-    box-sizing: border-box;
-}
-
-#one-time-config li:has(label>input) {
-    cursor: pointer;
-    padding: 0 !important;
-}
-
-#one-time-config li:has(label>input)>label {
-    padding: 4px;
-}
-
-#one-time-config li[data-action] {
-    cursor: pointer;
-    gap: 4px;
-}
-
-#one-time-config li:not(.separator):hover {
-    background-color: var(--vscode-sideBar-dropBackground);
-}
-
-#one-time-config li.separator {
-    display: block;
-    height: 1px;
-    background-color: var(--vscode-foreground);
-    margin: 8px 4px;
-}
-
-#one-time-config li .tooltip-text {
-    cursor: default;
-}
 
 .title {
     display: flex;
@@ -110,15 +122,6 @@
     content: "";
     border-bottom: 1px solid var(--vscode-foreground);
     width: 100%;
-}
-
-#one-time-config li:has(>select) {
-    cursor: auto;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    width: 100%;
-    gap: 4px;
 }
 
 #one-time-config li>label {
