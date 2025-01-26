@@ -40,7 +40,7 @@
 }
 
 #one-time-config>summary:hover {
-    background-color: var(--vscode-list-hoverBackground);
+    background-color: var(--vscode-toolbar-hoverBackground);
 }
 
 #one-time-config nav {
@@ -172,35 +172,11 @@ select>option {
     display: flex;
     align-items: center;
     gap: 8px;
-}
 
-#left-wrapper>button,
-#center-wrapper>button {
-    display: flex;
-    font-size: 24px;
-    padding: 4px;
-
-    background-color: var(--vscode-background);
-    color: var(--vscode-foreground);
-
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-}
-
-:is(#center-wrapper, #left-wrapper) :is(button.codicon,
-    button>.codicon) {
-    font-size: 24px;
-}
-
-#left-wrapper>button:hover,
-#center-wrapper>button:hover {
-    background-color: var(--vscode-list-hoverBackground);
-}
-
-[data-state="unlinked"]>#link-icon,
-[data-state="linked"]>#unlink-icon {
-    display: none;
+    [data-state="unlinked"]>#link-icon,
+    [data-state="linked"]>#unlink-icon {
+        display: none;
+    }
 }
 
 #center-wrapper {
@@ -212,31 +188,53 @@ select>option {
     top: 5px;
     left: 50%;
     transform: translateX(-50%);
+
+    [data-configname=zoom] {
+        width: 60px;
+        background-color: transparent;
+        color: var(--vscode-foreground);
+        border: none;
+        height: 32px;
+
+        &:hover {
+            background-color: var(--vscode-toolbar-hoverBackground);
+        }
+    }
+
+    &>button {
+        font-size: 20px;
+
+        height: 32px;
+        aspect-ratio: 1/1;
+
+        display: grid;
+        place-items: center;
+
+        &.disabled {
+            color: var(--vscode-disabledForeground);
+        }
+    }
 }
 
-#center-wrapper>button {
-    font-size: 20px;
+:is(#left-wrapper, #center-wrapper) {
+    >button {
+        display: flex;
+        font-size: 24px;
+        padding: 4px;
 
-    height: 32px;
-    aspect-ratio: 1/1;
+        background-color: var(--vscode-background);
+        color: var(--vscode-foreground);
 
-    display: grid;
-    place-items: center;
-}
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
 
+        &:hover {
+            background-color: var(--vscode-toolbar-hoverBackground);
+        }
+    }
 
-#center-wrapper>button.disabled {
-    color: var(--vscode-disabledForeground);
-}
-
-[data-configname=zoom] {
-    width: 60px;
-    background-color: transparent;
-    color: var(--vscode-foreground);
-    border: none;
-    height: 32px;
-}
-
-[data-configname=zoom]:hover {
-    background-color: var(--vscode-list-hoverBackground);
+    :is(button.codicon, button>.codicon) {
+        font-size: 24px;
+    }
 }
