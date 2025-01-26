@@ -31,18 +31,18 @@
 .line:not([data-highlight="none"]) {
     position: relative;
     background-color: var(--line-background);
-}
 
-.line:not([data-highlight="none"])::before {
-    position: absolute;
-    left: -0.75rem;
-    display: flex;
-    justify-content: center;
-    height: 100%;
-    width: 0.25rem;
-    color: var(--color);
-    content: var(--before-content);
-    background-color: var(--before-background);
+    &::before {
+        position: absolute;
+        left: -0.75rem;
+        display: flex;
+        justify-content: center;
+        height: 100%;
+        width: 0.25rem;
+        color: var(--color);
+        content: var(--before-content);
+        background-color: var(--before-background);
+    }
 }
 
 #window.line-number-hightlight .line:not([data-highlight="none"])>.line-number {
