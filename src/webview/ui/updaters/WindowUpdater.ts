@@ -1,5 +1,5 @@
 import { SessionConfig } from "../../SessionConfig";
-import { getDefaultWindowTitle, getWidth } from "../../util";
+import { getDefaultWindowTitle, getWidth, px } from "../../util";
 import { Updater } from "../Updater";
 import { windowControlsNode, windowNode, windowTitleNode } from "../elements";
 
@@ -20,7 +20,7 @@ export class WindowUpdater extends Updater {
 
         windowTitleNode.style.marginRight =
             windowStyle === "macos" && showWindowControls
-                ? `${getWidth(windowControlsNode)}px`
+                ? px(getWidth(windowControlsNode))
                 : "";
     }
 }

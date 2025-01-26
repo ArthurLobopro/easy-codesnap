@@ -38,7 +38,7 @@ export function calcTextWidth(text: string) {
     const width = div.clientWidth;
     div.remove();
 
-    return `${width + 1}px`;
+    return px(width + 1);
 }
 
 declare const acquireVsCodeApi: () => {
