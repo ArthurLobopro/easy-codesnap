@@ -10,13 +10,14 @@
 
     #window-controls {
         justify-self: left;
+        gap: 8px;
 
         *.button {
             display: none;
         }
     }
 
-    #window-controls[hidden] + #window-title {
+    #window-controls[hidden]+#window-title {
         margin: 0;
         text-align: center;
     }
@@ -56,13 +57,12 @@
 
 #window-controls {
     display: flex;
-    margin-top: 2px;
 
     .button {
         display: flex;
         justify-content: center;
         align-items: center;
-    
+
         width: 14px;
         height: 14px;
     }
@@ -71,17 +71,16 @@
         width: 15px;
         height: 15px;
         border-radius: 50%;
-        margin-right: 10px;
     }
-    
+
     .red {
         background-color: #ff5f5a;
     }
-    
+
     .yellow {
         background-color: #ffbe2e;
     }
-    
+
     .green {
         background-color: #2aca44;
     }
