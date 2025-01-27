@@ -4,6 +4,7 @@
 @import url(./styles/window-controls.css);
 @import url(./styles/tooltip.css);
 @import url(./styles/watermark.css);
+@import url(./styles/top-header.css);
 
 :root{
     --background-color: var(--vscode-editorHoverWidget-background);

@@ -1,11 +1,3 @@
-#one-time-config-wrapper {
-    position: absolute;
-    right: 5px;
-    top: 5px;
-    border-radius: 4px;
-    display: flex;
-}
-
 #one-time-config {
     border-radius: 4px;
     position: relative;
@@ -167,57 +159,7 @@ select>option {
     color: var(--vscode-foreground);
 }
 
-#left-wrapper {
-    position: absolute;
-    left: 5px;
-    top: 5px;
 
-    display: flex;
-    align-items: center;
-    gap: 8px;
-
-    [data-state="unlinked"]>#link-icon,
-    [data-state="linked"]>#unlink-icon {
-        display: none;
-    }
-}
-
-#center-wrapper {
-    display: flex;
-    align-items: center;
-    gap: 4px;
-
-    position: absolute;
-    top: 5px;
-    left: 50%;
-    transform: translateX(-50%);
-
-    [data-configname=zoom] {
-        width: 60px;
-        background-color: transparent;
-        color: var(--vscode-foreground);
-        border: none;
-        height: 32px;
-
-        &:hover {
-            background-color: var(--vscode-toolbar-hoverBackground);
-        }
-    }
-
-    &>button {
-        font-size: 20px;
-
-        height: 32px;
-        aspect-ratio: 1/1;
-
-        display: grid;
-        place-items: center;
-
-        &.disabled {
-            color: var(--vscode-disabledForeground);
-        }
-    }
-}
 
 :is(#left-wrapper, #center-wrapper) {
     >button {
