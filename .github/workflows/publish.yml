@@ -30,7 +30,9 @@ jobs:
         run: npm install --global ovsx
 
       - name: Get Version
-        run: VERSION=$(grep '"version"' package.json | awk -F '"' '{print $4}')
+        run: |
+          VERSION=$(grep '"version"' package.json | awk -F '"' '{print $4}')
+          echo "version=$VERSION" >> $GITHUB_ENV
 
       - name: Publish on Open VSX
         run: |
@@ -38,3 +40,4 @@ jobs:
           ovsx publish $filename
         env:
           OVSX_PAT: ${{secrets.OPEN_VSX_TOKEN}}
+          VERSION: ${{ env.version }}
