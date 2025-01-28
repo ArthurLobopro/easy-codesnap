@@ -24,6 +24,10 @@ body {
     user-select: none;
 }
 
+code {
+    color: currentColor;
+}
+
 #snippet-scroll {
     max-width: 100%;
     overflow-x: auto;

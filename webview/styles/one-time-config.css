@@ -92,6 +92,25 @@
         .tooltip-text {
             cursor: default;
         }
+
+        &>label {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            cursor: pointer;
+            gap: 4px;
+        }
+
+        input[type="checkbox"] {
+            background-color: var(--vscode-settings-checkboxBackground);
+            color: var(--vscode-settings-checkboxForeground);
+        
+            height: 100%;
+            aspect-ratio: 1/1;
+            outline: 0;
+            cursor: pointer;
+        }
     }
 }
 
@@ -116,32 +135,9 @@
     width: 100%;
 }
 
-#one-time-config li>label {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    width: 100%;
-    cursor: pointer;
-    gap: 4px;
-}
-
-#one-time-config input[type="checkbox"] {
-    background-color: var(--vscode-settings-checkboxBackground);
-    color: var(--vscode-settings-checkboxForeground);
-
-    height: 100%;
-    aspect-ratio: 1/1;
-    outline: 0;
-    cursor: pointer;
-}
-
 li:has(:disabled),
 select:disabled {
     color: var(--vscode-disabledForeground);
-}
-
-code {
-    color: currentColor;
 }
 
 select {
@@ -157,29 +153,4 @@ select {
 select>option {
     background-color: var(--vscode-sideBar-background);
     color: var(--vscode-foreground);
-}
-
-
-
-:is(#left-wrapper, #center-wrapper) {
-    >button {
-        display: flex;
-        font-size: 24px;
-        padding: 4px;
-
-        background-color: var(--vscode-background);
-        color: var(--vscode-foreground);
-
-        border: none;
-        border-radius: 4px;
-        cursor: pointer;
-
-        &:hover {
-            background-color: var(--vscode-toolbar-hoverBackground);
-        }
-    }
-
-    :is(button.codicon, button>.codicon) {
-        font-size: 24px;
-    }
 }
