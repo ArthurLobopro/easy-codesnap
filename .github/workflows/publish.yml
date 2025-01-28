@@ -36,8 +36,8 @@ jobs:
 
       - name: Publish on Open VSX
         run: |
-          filename="easy-codesnap-$VERSION.vsix"
-          ovsx publish $filename
+          ls *.vsix
+          ovsx publish "easy-codesnap-$VERSION.vsix"
         env:
           OVSX_PAT: ${{secrets.OPEN_VSX_TOKEN}}
           VERSION: ${{ env.version }}
