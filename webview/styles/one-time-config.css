@@ -1,96 +1,119 @@
-#one-time-config-wrapper {
-    position: absolute;
-    right: 5px;
-    top: 5px;
-    border-radius: 4px;
-    display: flex;
-}
-
 #one-time-config {
-    /* background-color: var(--vscode-sideBar-background); */
-
     border-radius: 4px;
     position: relative;
     z-index: 1;
+
+    &>summary {
+        width: 24px;
+        height: 24px;
+        border-radius: 4px;
+        padding: 4px;
+        outline: 0;
+    
+        position: absolute;
+        right: 0;
+        top: 0;
+        cursor: pointer;
+
+        &::marker {
+            content: "";
+        }
+
+        &:hover {
+            background-color: var(--vscode-toolbar-hoverBackground);
+        }
+
+        &>svg {
+            *[stroke]:not([stroke="none"]) {
+                stroke: var(--vscode-foreground);
+            }
+
+            *[fill]:not([fill="none"]) {
+                fill: var(--vscode-foreground);
+            }
+        }
+    }
+
+    nav {
+        margin-top: 34px;
+        padding: 4px;
+        border-radius: 4px;
+    
+        background-color: var(--vscode-sideBar-background);
+        min-width: max-content;
+    }
+
+    li {
+        &:not(.separator, .title) {
+            border-radius: 4px;
+            padding: 4px;
+            font-size: 14px;
+            list-style-type: none;
+        
+            display: flex;
+            align-items: center;
+            box-sizing: border-box;
+        }
+
+        &:has(label>input) {
+            cursor: pointer;
+            padding: 0 !important;
+
+            &>label {
+                padding: 4px;
+            }
+        }
+
+        &:has(>select) {
+            cursor: auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            gap: 4px;
+        }
+
+        &[data-action] {
+            cursor: pointer;
+            gap: 4px;
+        }
+
+        &:not(.separator):hover {
+            background-color: var(--vscode-sideBar-dropBackground);
+        }
+
+        &.separator {
+            display: block;
+            height: 1px;
+            background-color: var(--vscode-foreground);
+            margin: 8px 4px;
+        }
+
+        .tooltip-text {
+            cursor: default;
+        }
+
+        &>label {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            cursor: pointer;
+            gap: 4px;
+        }
+
+        input[type="checkbox"] {
+            background-color: var(--vscode-settings-checkboxBackground);
+            color: var(--vscode-settings-checkboxForeground);
+        
+            height: 100%;
+            aspect-ratio: 1/1;
+            outline: 0;
+            cursor: pointer;
+        }
+    }
 }
 
-#one-time-config>summary {
-    width: 24px;
-    height: 24px;
-    border-radius: 4px;
-    padding: 4px;
-    outline: 0;
-
-    position: absolute;
-    right: 0;
-    top: 0;
-    cursor: pointer;
-}
-
-#one-time-config>summary::marker {
-    content: "";
-}
-
-#one-time-config>summary>svg *[stroke]:not([stroke="none"]) {
-    stroke: var(--vscode-foreground);
-}
-
-#one-time-config>summary>svg *[fill]:not([fill="none"]) {
-    fill: var(--vscode-foreground);
-}
-
-#one-time-config>summary:hover {
-    background-color: var(--vscode-list-hoverBackground);
-}
-
-#one-time-config nav {
-    margin-top: 34px;
-    padding: 4px;
-    border-radius: 4px;
-
-    background-color: var(--vscode-sideBar-background);
-    min-width: max-content;
-}
-
-#one-time-config li:not(.separator, .title) {
-    border-radius: 4px;
-    padding: 4px;
-    font-size: 14px;
-    list-style-type: none;
-
-    display: flex;
-    align-items: center;
-    box-sizing: border-box;
-}
-
-#one-time-config li:has(label>input) {
-    cursor: pointer;
-    padding: 0 !important;
-}
-
-#one-time-config li:has(label>input)>label {
-    padding: 4px;
-}
-
-#one-time-config li[data-action] {
-    cursor: pointer;
-    gap: 4px;
-}
-
-#one-time-config li:not(.separator):hover {
-    background-color: var(--vscode-sideBar-dropBackground);
-}
-
-#one-time-config li.separator {
-    display: block;
-    height: 1px;
-    background-color: var(--vscode-foreground);
-    margin: 8px 4px;
-}
-
-#one-time-config li .tooltip-text {
-    cursor: default;
-}
 
 .title {
     display: flex;
@@ -112,41 +135,9 @@
     width: 100%;
 }
 
-#one-time-config li:has(>select) {
-    cursor: auto;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    width: 100%;
-    gap: 4px;
-}
-
-#one-time-config li>label {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    width: 100%;
-    cursor: pointer;
-    gap: 4px;
-}
-
-#one-time-config input[type="checkbox"] {
-    background-color: var(--vscode-settings-checkboxBackground);
-    color: var(--vscode-settings-checkboxForeground);
-
-    height: 100%;
-    aspect-ratio: 1/1;
-    outline: 0;
-    cursor: pointer;
-}
-
 li:has(:disabled),
 select:disabled {
     color: var(--vscode-disabledForeground);
-}
-
-code {
-    color: currentColor;
 }
 
 select {
@@ -162,81 +153,4 @@ select {
 select>option {
     background-color: var(--vscode-sideBar-background);
     color: var(--vscode-foreground);
-}
-
-#left-wrapper {
-    position: absolute;
-    left: 5px;
-    top: 5px;
-
-    display: flex;
-    align-items: center;
-    gap: 8px;
-}
-
-#left-wrapper>button,
-#center-wrapper>button {
-    display: flex;
-    font-size: 24px;
-    padding: 4px;
-
-    background-color: var(--vscode-background);
-    color: var(--vscode-foreground);
-
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-}
-
-:is(#center-wrapper, #left-wrapper) :is(button.codicon,
-    button>.codicon) {
-    font-size: 24px;
-}
-
-#left-wrapper>button:hover,
-#center-wrapper>button:hover {
-    background-color: var(--vscode-list-hoverBackground);
-}
-
-[data-state="unlinked"]>#link-icon,
-[data-state="linked"]>#unlink-icon {
-    display: none;
-}
-
-#center-wrapper {
-    display: flex;
-    align-items: center;
-    gap: 4px;
-
-    position: absolute;
-    top: 5px;
-    left: 50%;
-    transform: translateX(-50%);
-}
-
-#center-wrapper>button {
-    font-size: 20px;
-
-    height: 32px;
-    aspect-ratio: 1/1;
-
-    display: grid;
-    place-items: center;
-}
-
-
-#center-wrapper>button.disabled {
-    color: var(--vscode-disabledForeground);
-}
-
-[data-configname=zoom] {
-    width: 60px;
-    background-color: transparent;
-    color: var(--vscode-foreground);
-    border: none;
-    height: 32px;
-}
-
-[data-configname=zoom]:hover {
-    background-color: var(--vscode-list-hoverBackground);
 }

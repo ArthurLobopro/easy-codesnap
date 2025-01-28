@@ -2,7 +2,7 @@
   "name": "easy-codesnap",
   "displayName": "Easy CodeSnap",
   "description": "Take beautiful screenshots of your code 📷",
-  "version": "1.20.2",
+  "version": "1.21.0",
   "l10n": "./l10n",
   "repository": {
     "type": "git",
@@ -11,7 +11,7 @@
   "license": "MIT",
   "icon": "icon.png",
   "engines": {
-    "vscode": "^1.80.0"
+    "vscode": "^1.96.0"
   },
   "publisher": "ArthurLobo",
   "categories": [
@@ -277,11 +277,11 @@
     "lint": "biome check --write ./src"
   },
   "devDependencies": {
-    "@biomejs/biome": "^1.9.3",
+    "@biomejs/biome": "^1.9.4",
     "@types/node": "18.x",
-    "@types/vscode": "^1.80.0",
+    "@types/vscode": "^1.96.0",
     "esbuild-loader": "^4.2.2",
-    "typescript": "^5.7.2",
+    "typescript": "^5.7.3",
     "webpack": "^5.97.1",
     "webpack-cli": "^6.0.1"
   },

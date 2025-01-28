@@ -1,95 +1,91 @@
+#window[data-style="macos"] {
+    #navbar {
+        justify-content: left;
+    }
+
+    #window-title {
+        margin: 0;
+        text-align: center;
+    }
+
+    #window-controls {
+        justify-self: left;
+        gap: 8px;
+
+        *.button {
+            display: none;
+        }
+    }
+
+    #window-controls[hidden]+#window-title {
+        margin: 0;
+        text-align: center;
+    }
+}
+
+#window[data-style="windows"] {
+    #navbar {
+        margin-top: -8px;
+        margin-right: -4px;
+        justify-content: right;
+    }
+
+    #window-controls {
+        gap: 16px;
+        float: right;
+        justify-self: right;
+        order: 3;
+
+        *.dot {
+            display: none;
+        }
+    }
+}
+
 #navbar {
-    /* overflow: hidden;
-    text-align: center; */
     margin-bottom: 15px;
     display: flex;
-}
-
-#window[data-style="macos"] #navbar{
-    justify-content: left;
-}
-
-#window[data-style="windows"] #navbar{
-    margin-top: -8px;
-    margin-right: -4px;
-    justify-content: right;
 }
 
 #window-title {
     width: 100%;
 }
 
-#window[data-style="windows"] [data-action="reset-title"]{
-   transform: translateX(calc(-100% - 2px));
-}
-
-#window-title:focus{
+#window-title:focus {
     outline: 1px solid var(--vscode-settings-focusedRowBorder);
-}
-
-#window[data-style="macos"] #window-title {
-    margin: 0;
-    text-align: center;
-}
-
-#window[data-style="macos"] #window-controls[hidden] + #window-title{
-    margin: 0;
-    text-align: center;
 }
 
 #window-controls {
     display: flex;
-    margin-top: 2px;
-}
 
-#window[data-style="macos"] #window-controls {
-    /* float: left; */
-    justify-self: left;
-}
+    .button {
+        display: flex;
+        justify-content: center;
+        align-items: center;
 
-#window[data-style="windows"] #window-controls {
-    gap: 16px;
-    float: right;
-    justify-self: right;
-    order: 3;
-}
+        width: 14px;
+        height: 14px;
+    }
 
-#window-controls[hidden] {
-    display: none;
-}
+    .dot {
+        width: 15px;
+        height: 15px;
+        border-radius: 50%;
+    }
 
-.dot {
-    width: 15px;
-    height: 15px;
-    border-radius: 50%;
-    margin-right: 10px;
-}
+    .red {
+        background-color: #ff5f5a;
+    }
 
-.red {
-    background-color: #ff5f5a;
-}
+    .yellow {
+        background-color: #ffbe2e;
+    }
 
-.yellow {
-    background-color: #ffbe2e;
-}
+    .green {
+        background-color: #2aca44;
+    }
 
-.green {
-    background-color: #2aca44;
-}
-
-#window-controls .button {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    width: 14px;
-    height: 14px;
-}
-
-#window[data-style="macos"] #window-controls *.button {
-    display: none;
-}
-
-#window[data-style="windows"] #window-controls *.dot {
-    display: none;
+    &[hidden] {
+        display: none;
+    }
 }

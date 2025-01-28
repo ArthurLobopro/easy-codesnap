@@ -112,18 +112,15 @@ function updateRatioByProportion(ratio: [number, number]) {
     if (ratio[0] === ratio[1]) {
         if (height > width) {
             snippetContainerNode.style.minWidth = `${Math.floor(height)}px`;
-            windowNode.style.flex = "1";
             return;
         }
 
         snippetContainerNode.style.minHeight = `${Math.floor(width)}px`;
-        windowNode.style.flex = "1";
         return;
     }
 
     if (ratio[1] === 1) {
-        snippetContainerNode.style.minWidth = `${Math.floor(height * ratio[0])}px`;
-        windowNode.style.flex = "1";
+        snippetContainerNode.style.minWidth = px(Math.floor(height * ratio[0]));
         return;
     }
 
@@ -131,21 +128,16 @@ function updateRatioByProportion(ratio: [number, number]) {
         const minHeight = nextMultipleOf(height, ratio[1]);
         const minWidth = (minHeight * ratio[0]) / ratio[1];
 
-        snippetContainerNode.style.minWidth = `${Math.floor(minWidth)}px`;
-        windowNode.style.flex = "1";
+        snippetContainerNode.style.minWidth = px(Math.floor(minWidth));
         return;
     }
 
-    if (ratio[1] > ratio[0]) {
-        const minWidth = nextMultipleOf(width, ratio[0]);
-        const minHeight = (minWidth * ratio[1]) / ratio[0];
+    const minWidth = nextMultipleOf(width, ratio[0]);
+    const minHeight = (minWidth * ratio[1]) / ratio[0];
 
-        if (width > height) {
-            snippetContainerNode.style.minHeight = px(minHeight);
-        } else {
-            snippetContainerNode.style.minWidth = px(minWidth);
-        }
-
-        windowNode.style.flex = "1";
+    if (width > height) {
+        snippetContainerNode.style.minHeight = px(minHeight);
+    } else {
+        snippetContainerNode.style.minWidth = px(minWidth);
     }
 }

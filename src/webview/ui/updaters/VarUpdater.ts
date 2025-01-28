@@ -1,5 +1,5 @@
 import { SessionConfig } from "../../SessionConfig";
-import { setVar } from "../../util";
+import { px, setVar } from "../../util";
 import { Updater } from "../Updater";
 
 export class VarUpdater extends Updater {
@@ -39,7 +39,7 @@ export class VarUpdater extends Updater {
 
         console.log("Letter Spacing", letterSpacing);
 
-        setVar("letter-spacing", `${letterSpacing}px`);
+        setVar("letter-spacing", px(letterSpacing));
         setVar("tab-size", tabSize.toString());
         setVar("container-background-color", backgroundColor);
         setVar("box-shadow", boxShadow);
@@ -47,7 +47,7 @@ export class VarUpdater extends Updater {
 
         setVar(
             "window-border-radius",
-            roundedCorners ? `${4 * roundingLevel}px` : "0",
+            roundedCorners ? px(4 * roundingLevel) : "0",
         );
 
         setVar("enable-resizing", enableResizing ? "horizontal" : "none");

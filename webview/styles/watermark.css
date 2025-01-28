@@ -3,18 +3,18 @@
     bottom: 2px;
     left: 4px;
     right: 4px;
-}
 
-#watermark:focus{
-    outline: 1px solid var(--vscode-settings-focusedRowBorder);
-}
+    &:focus{
+        outline: 1px solid var(--vscode-settings-focusedRowBorder);
+    }
 
-#watermark[data-watermark-position$="-right"]{
-    text-align: right;
-}
+    &[data-watermark-position$="-right"]{
+        text-align: right;
+    }
 
-#watermark[data-watermark-position$="-left"]{
-    text-align: left;
+    &[data-watermark-position$="-left"]{
+        text-align: left;
+    }
 }
 
 #window:has(#watermark[data-target="window"]){
@@ -23,9 +23,9 @@
 
 #snippet-container:has(#watermark[data-target="container"]){
     position: relative;
-}
 
-#snippet-container:has(#watermark[data-target="container"][data-watermark-position^="top"]) #watermark{
-    top: 2px;
-    bottom: unset;
+    &:has([data-watermark-position^="top"]) #watermark{
+        top: 2px;
+        bottom: unset;
+    }
 }
