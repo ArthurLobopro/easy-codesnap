@@ -1,4 +1,8 @@
-##
+## 1.21.0
+
+Feat: Now Works with 1.96.0 or greater
+
+## 1.20.2
 
 Feat: Add new Aspect Ratio level
 Fix: Correct Aspect Ratio
