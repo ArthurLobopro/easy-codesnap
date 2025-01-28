@@ -34,6 +34,9 @@ jobs:
           VERSION=$(grep '"version"' package.json | awk -F '"' '{print $4}')
           echo "version=$VERSION" >> $GITHUB_ENV
 
+      - name: Build Again
+        run: vsce package
+
       - name: Publish on Open VSX
         run: |
           ls *.vsix
