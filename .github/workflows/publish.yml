@@ -23,5 +23,18 @@ jobs:
       - name: Install vsce
         run: npm i -g @vscode/vsce
 
-      - name: Publish Extension
+      - name: Publish Extension on VSCODE
         run: vsce publish -p ${{secrets.PUBLISH_TOKEN}} --skip-duplicate
+      
+      - name: Install Open VSX
+        run: npm install --global ovsx
+
+      - name: Get Version
+        run: VERSION=$(grep '"version"' package.json | awk -F '"' '{print $4}')
+
+      - name: Publish on Open VSX
+        run: |
+          filename="easy-codesnap-$VERSION.vsix"
+          ovsx publish $filename
+        env:
+          OVSX_PAT: ${{secrets.OPEN_VSX_TOKEN}}
