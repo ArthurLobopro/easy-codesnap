@@ -64,208 +64,237 @@
           <load-svg src="./assets/config.svg"></load-svg>
         </summary>
         <nav>
-          <div class="title">
-            <span data-l10n="Line Options"></span>
-          </div>
+          <details class="expand-content" open>
+            <summary>
+              <span class="codicon-chevron-down"></span>
+              <span data-l10n="Line Options"></span>
+              <span class="codicon-chevron-down"></span>
+            </summary>
 
-          <li>
-            <label class="tooltip horizontal-left">
-              <span data-l10n="Show Line Numbers"></span>
-              <input data-l10n="" type="checkbox" data-configname="showLineNumbers" tabindex="-1">
-              <span class="tooltip-text"
-                data-l10n="If you want to highlight a line, you can click on the line number"></span>
-            </label>
-          </li>
-          <li>
-            <label class="tooltip horizontal-left">
-              <span data-l10n="Real Line Numbers"></span>
-              <input type="checkbox" data-configname="realLineNumbers" tabindex="-1">
-              <span class="tooltip-text">
-                <span data-l10n="Show real line numbers."></span>
-                <span data-l10n="Only valid when `Show Line Numbers` is marked"></span>
-              </span>
-            </label>
-          </li>
-          <li>
-            <label class="tooltip horizontal-left">
-              <span data-l10n="Line Number Hightlight"></span>
-              <input type="checkbox" data-configname="highlightLineNumber" tabindex="-1">
-              <span class="tooltip-text">
-                <span data-l10n="When you highlight a line, the line number text will also be highlighted."></span>
-                <span data-l10n="Only valid when `Show Line Numbers` is marked"></span>
-              </span>
-            </label>
-          </li>
+            <div>
+              <li>
+                <label class="tooltip horizontal-left">
+                  <span data-l10n="Show Line Numbers"></span>
+                  <input data-l10n="" type="checkbox" data-configname="showLineNumbers" tabindex="-1">
+                  <span class="tooltip-text"
+                    data-l10n="If you want to highlight a line, you can click on the line number"></span>
+                </label>
+              </li>
+              <li>
+                <label class="tooltip horizontal-left">
+                  <span data-l10n="Real Line Numbers"></span>
+                  <input type="checkbox" data-configname="realLineNumbers" tabindex="-1">
+                  <span class="tooltip-text">
+                    <span data-l10n="Show real line numbers."></span>
+                    <span data-l10n="Only valid when `Show Line Numbers` is marked"></span>
+                  </span>
+                </label>
+              </li>
+              <li>
+                <label class="tooltip horizontal-left">
+                  <span data-l10n="Line Number Hightlight"></span>
+                  <input type="checkbox" data-configname="highlightLineNumber" tabindex="-1">
+                  <span class="tooltip-text">
+                    <span data-l10n="When you highlight a line, the line number text will also be highlighted."></span>
+                    <span data-l10n="Only valid when `Show Line Numbers` is marked"></span>
+                  </span>
+                </label>
+              </li>
+            </div>
+          </details>
 
-          <div class="title">
-            <span data-l10n="Window Options"></span>
-          </div>
+          <details class="expand-content" open>
+            <summary>
+              <span class="codicon-chevron-down"></span>
+              <span data-l10n="Window Options"></span>
+              <span class="codicon-chevron-down"></span>
+            </summary>
 
-          <li>
-            <span data-l10n="Window Style"></span>
-            <select data-configname="windowStyle" tabindex="-1">
-              <option value="macos">MacOS</option>
-              <option value="windows">Windows</option>
-            </select>
-          </li>
-          <li>
-            <label class="tooltip horizontal-left">
-              <span data-l10n="Show Window Title"></span>
-              <input type="checkbox" data-configname="showWindowTitle" tabindex="-1">
-              <span class="tooltip-text">
-                <span data-l10n="You can edit the Window Title text by double-clicking it."></span>
-                <span data-l10n="You can edit the default Window Title text clicking"></span>
-                <span class="link" data-openconfig="windowTitleTemplate" data-l10n="here"></span>
-              </span>
-            </label>
-          </li>
-          <li>
-            <label>
-              <span data-l10n="Show Window Controls"></span>
-              <input type="checkbox" data-configname="showWindowControls" tabindex="-1">
-            </label>
-          </li>
-          <li>
-            <label>
-              <span data-l10n="Rounded Corners"></span>
-              <input type="checkbox" data-configname="roundedCorners" tabindex="-1">
-            </label>
-          </li>
-          <li class="tooltip horizontal-left">
-            <span data-l10n="Rounding Level"></span>
-            <select data-configname="roundingLevel" tabindex="-1">
-              <option value="1">1</option>
-              <option value="2">2</option>
-              <option value="3">3</option>
-              <option value="4">4</option>
-            </select>
-            <span class="tooltip-text">
-              <span data-l10n="The Window rounding level."></span>
-              <span data-l10n="Only valid when `Rounded Corners` is marked"></span>
-            </span>
-          </li>
+            <div>
+              <li>
+                <span data-l10n="Window Style"></span>
+                <select data-configname="windowStyle" tabindex="-1">
+                  <option value="macos">MacOS</option>
+                  <option value="windows">Windows</option>
+                </select>
+              </li>
+              <li>
+                <label class="tooltip horizontal-left">
+                  <span data-l10n="Show Window Title"></span>
+                  <input type="checkbox" data-configname="showWindowTitle" tabindex="-1">
+                  <span class="tooltip-text">
+                    <span data-l10n="You can edit the Window Title text by double-clicking it."></span>
+                    <span data-l10n="You can edit the default Window Title text clicking"></span>
+                    <span class="link" data-openconfig="windowTitleTemplate" data-l10n="here"></span>
+                  </span>
+                </label>
+              </li>
+              <li>
+                <label>
+                  <span data-l10n="Show Window Controls"></span>
+                  <input type="checkbox" data-configname="showWindowControls" tabindex="-1">
+                </label>
+              </li>
+              <li>
+                <label>
+                  <span data-l10n="Rounded Corners"></span>
+                  <input type="checkbox" data-configname="roundedCorners" tabindex="-1">
+                </label>
+              </li>
+              <li class="tooltip horizontal-left">
+                <span data-l10n="Rounding Level"></span>
+                <select data-configname="roundingLevel" tabindex="-1">
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                </select>
+                <span class="tooltip-text">
+                  <span data-l10n="The Window rounding level."></span>
+                  <span data-l10n="Only valid when `Rounded Corners` is marked"></span>
+                </span>
+              </li>
+            </div>
+          </details>
 
-          <div class="title">
-            <span data-l10n="Other Options"></span>
-          </div>
+          <details class="expand-content" open>
+            <summary>
+              <div class="codicon-chevron-down"></div>
+              <span data-l10n="Other Options"></span>
+              <div class="codicon-chevron-down"></div>
+            </summary>
 
-          <li>
-            <span data-l10n="Target"></span>
-            <select data-configname="target" tabindex="-1">
-              <option value="window">window</option>
-              <option value="container">container</option>
-            </select>
-          </li>
-          <li>
-            <label class="tooltip horizontal-left">
-              <span data-l10n="Transparent Background"></span>
-              <input type="checkbox" data-configname="transparentBackground" tabindex="-1">
-              <span class="tooltip-text">
-                <span data-l10n="When you take the Snapshot, the container background will be transparent."></span>
-                <span data-l10n="Only valid when `Target` is `container`"></span>
-              </span>
-            </label>
-          </li>
+            <div>
+              <li>
+                <span data-l10n="Target"></span>
+                <select data-configname="target" tabindex="-1">
+                  <option value="window">window</option>
+                  <option value="container">container</option>
+                </select>
+              </li>
+              <li>
+                <label class="tooltip horizontal-left">
+                  <span data-l10n="Transparent Background"></span>
+                  <input type="checkbox" data-configname="transparentBackground" tabindex="-1">
+                  <span class="tooltip-text">
+                    <span data-l10n="When you take the Snapshot, the container background will be transparent."></span>
+                    <span data-l10n="Only valid when `Target` is `container`"></span>
+                  </span>
+                </label>
+              </li>
 
-          <li>
-            <label class="tooltip horizontal-left">
-              <span data-l10n="Enable Resizing"></span>
-              <input type="checkbox" data-configname="enableResizing" tabindex="-1">
-              <span class="tooltip-text">
-                <span data-l10n="Enables manual resizing of the `Snap Window`."></span>
-                <span data-l10n="Disabling this will also reset the `Snap Window` size."></span>
-              </span>
-            </label>
-          </li>
-          <li>
-            <span data-l10n="Aspect Ratio"></span>
-            <select data-configname="aspectRatio">
-              <option value="none">none</option>
-              <option value="1:1">1:1</option>
-              <option value="1.91:1">1,91:1</option>
-              <option value="4:5">4:5</option>
-              <option value="9:16">9:16</option>
-              <option value="16:9">16:9</option>
-            </select>
-          </li>
+              <li>
+                <label class="tooltip horizontal-left">
+                  <span data-l10n="Enable Resizing"></span>
+                  <input type="checkbox" data-configname="enableResizing" tabindex="-1">
+                  <span class="tooltip-text">
+                    <span data-l10n="Enables manual resizing of the `Snap Window`."></span>
+                    <span data-l10n="Disabling this will also reset the `Snap Window` size."></span>
+                  </span>
+                </label>
+              </li>
+              <li>
+                <span data-l10n="Aspect Ratio"></span>
+                <select data-configname="aspectRatio">
+                  <option value="none">none</option>
+                  <option value="1:1">1:1</option>
+                  <option value="1.91:1">1,91:1</option>
+                  <option value="4:5">4:5</option>
+                  <option value="9:16">9:16</option>
+                  <option value="16:9">16:9</option>
+                </select>
+              </li>
 
-          <li>
-            <label class="tooltip horizontal-left">
-              <span data-l10n="Watermark"></span>
-              <input type="checkbox" data-configname="watermark" tabindex="-1">
-              <span class="tooltip-text">
-                <span data-l10n="You can edit the Watermark text by double-clicking it."></span>
-                <span data-l10n="You can edit the default Watermark text clicking"></span>
-                <span class="link" data-openconfig="defaultWatermarkText" data-l10n="here"></span>
-              </span>
-            </label>
-          </li>
+              <li>
+                <label class="tooltip horizontal-left">
+                  <span data-l10n="Watermark"></span>
+                  <input type="checkbox" data-configname="watermark" tabindex="-1">
+                  <span class="tooltip-text">
+                    <span data-l10n="You can edit the Watermark text by double-clicking it."></span>
+                    <span data-l10n="You can edit the default Watermark text clicking"></span>
+                    <span class="link" data-openconfig="defaultWatermarkText" data-l10n="here"></span>
+                  </span>
+                </label>
+              </li>
 
-          <li>
-            <span data-l10n="Watermark Y position"></span>
-            <select data-configname="watermarkPosition-Y">
-              <option value="bottom" data-l10n="Bottom"></option>
-              <option value="top" data-l10n="Top"></option>
-            </select>
-          </li>
+              <li>
+                <span data-l10n="Watermark Y position"></span>
+                <select data-configname="watermarkPosition-Y">
+                  <option value="bottom" data-l10n="Bottom"></option>
+                  <option value="top" data-l10n="Top"></option>
+                </select>
+              </li>
 
-          <li>
-            <span data-l10n="Watermark X position"></span>
-            <select data-configname="watermarkPosition-X">
-              <option value="right" data-l10n="Right"></option>
-              <option value="left" data-l10n="Left"></option>
-            </select>
-          </li>
+              <li>
+                <span data-l10n="Watermark X position"></span>
+                <select data-configname="watermarkPosition-X">
+                  <option value="right" data-l10n="Right"></option>
+                  <option value="left" data-l10n="Left"></option>
+                </select>
+              </li>
+            </div>
+          </details>
 
-          <div class="title">
-            <span data-l10n="Save Options"></span>
-          </div>
+          <details class="expand-content" open>
+            <summary>
+              <div class="codicon-chevron-down"></div>
+              <span data-l10n="Save Options"></span>
+              <div class="codicon-chevron-down"></div>
+            </summary>
 
+            <div>
+              <li>
+                <span data-l10n="Save Action"></span>
+                <select data-configname="shutterAction" tabindex="-1">
+                  <option value="copy">copy</option>
+                  <option value="save">save</option>
+                </select>
+              </li>
+              <li>
+                <span data-l10n="Save Scale"></span>
+                <select data-configname="saveScale">
+                  <option value="1">1x</option>
+                  <option value="1.5">1.5x</option>
+                  <option value="2">2x</option>
+                </select>
+              </li>
+              <li>
+                <span data-l10n="Save Format"></span>
+                <select data-configname="saveFormat" tabindex="-1">
+                  <option value="png">png</option>
+                  <option value="svg">svg</option>
+                </select>
+              </li>
+            </div>
+          </details>
 
-          <li>
-            <span data-l10n="Save Action"></span>
-            <select data-configname="shutterAction" tabindex="-1">
-              <option value="copy">copy</option>
-              <option value="save">save</option>
-            </select>
-          </li>
-          <li>
-            <span data-l10n="Save Scale"></span>
-            <select data-configname="saveScale">
-              <option value="1">1x</option>
-              <option value="1.5">1.5x</option>
-              <option value="2">2x</option>
-            </select>
-          </li>
-          <li>
-            <span data-l10n="Save Format"></span>
-            <select data-configname="saveFormat" tabindex="-1">
-              <option value="png">png</option>
-              <option value="svg">svg</option>
-            </select>
-          </li>
+          <details class="expand-content" open>
+            <summary>
+              <div class="codicon-chevron-down"></div>
+              <span data-l10n="Actions"></span>
+              <div class="codicon-chevron-down"></div>
+            </summary>
 
-          <div class="title">
-            <span data-l10n="Actions"></span>
-          </div>
+            <div>
+              <li data-action="open-settings" class="tooltip horizontal-left">
+                <span class="codicon codicon-gear"></span>
+                <span data-l10n="Open Settings"></span>
+                <span class="tooltip-text" data-l10n="Open extension settings"></span>
+              </li>
 
-          <li data-action="open-settings" class="tooltip horizontal-left">
-            <span class="codicon codicon-gear"></span>
-            <span data-l10n="Open Settings"></span>
-            <span class="tooltip-text" data-l10n="Open extension settings"></span>
-          </li>
+              <li data-action="reset-config" class="tooltip horizontal-left">
+                <span class="codicon codicon-sync"></span>
+                <span data-l10n="Reset Settings"></span>
+                <span class="tooltip-text" data-l10n="Reset settings to default"></span>
+              </li>
 
-          <li data-action="reset-config" class="tooltip horizontal-left">
-            <span class="codicon codicon-sync"></span>
-            <span data-l10n="Reset Settings"></span>
-            <span class="tooltip-text" data-l10n="Reset settings to default"></span>
-          </li>
-
-          <li data-action="save-config" class="tooltip horizontal-left">
-            <span class="codicon codicon-save-all"></span>
-            <span data-l10n="Save Settings"></span>
-            <span class="tooltip-text" data-l10n="Save current settings as default"></span>
-          </li>
+              <li data-action="save-config" class="tooltip horizontal-left">
+                <span class="codicon codicon-save-all"></span>
+                <span data-l10n="Save Settings"></span>
+                <span class="tooltip-text" data-l10n="Save current settings as default"></span>
+              </li>
+            </div>
+          </details>
         </nav>
       </details>
     </div>

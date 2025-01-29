@@ -1,3 +1,7 @@
+## 1.21.1
+
+Feat: New expansible menus on One Time Config
+
 ## 1.21.0
 
 Feat: Now Works with 1.96.0 or greater
