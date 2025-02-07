@@ -16,7 +16,7 @@ export function getSettings(group: string, keys: string[]) {
             config[key] = languageSettings[`${group}.${key}`];
         }
 
-        config[key] = config[key] ?? settings.get(key);
+        config[key] ??= settings.get(key);
 
         return config;
     }, {} as untypedObject);
