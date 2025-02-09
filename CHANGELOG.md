@@ -1,3 +1,7 @@
+## 1.22.0
+
+Feat: New Watermark position input
+
 ## 1.21.1
 
 Feat: New expansible menus on One Time Config
