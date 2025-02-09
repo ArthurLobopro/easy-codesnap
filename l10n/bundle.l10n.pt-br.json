@@ -58,6 +58,6 @@
     "You can edit the default Watermark text clicking": "Você pode editar o texto padrão da Marca D'água clicando",
     "Enables manual resizing of the `Snap Window`.": "Ativa o redimencionamento manual da `Snap Window`.",
     "Disabling this will also reset the `Snap Window` size.": "Desativar isso também irá resetar o tamanho da `Snap Window`.",
-    "Watermark Y position": "Posição Y da marca d'água",
-    "Watermark X position": "Posição X da marca d'água"
+    "Show Watermark": "Mostrar marca d'água",
+    "The position of the watermark in the snapshot. Top positions are only available when `Target` is `container`": "A posição da marca d'água na captura de tela. Posições superiores só são disponíveis quando `Alvo` é `container`"
 }

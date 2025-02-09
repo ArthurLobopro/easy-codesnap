@@ -2,9 +2,11 @@ import type { ExtensionConfig } from "../../../types";
 import { SessionConfig } from "../../SessionConfig";
 import { Updater } from "../Updater";
 import {
+    watermarkBottomLeft,
+    watermarkBottomRight,
     watermarkElement,
-    watermarkPositionXSelect,
-    watermarkPositionYSelect,
+    watermarkTopLeft,
+    watermarkTopRight,
 } from "../elements";
 
 export class WatermarkUpdater extends Updater {
@@ -12,43 +14,67 @@ export class WatermarkUpdater extends Updater {
         super(["watermark", "watermarkText", "watermarkPosition", "target"]);
     }
 
+    private resetPositionInputs() {
+        [
+            watermarkTopLeft,
+            watermarkTopRight,
+            watermarkBottomRight,
+            watermarkBottomLeft,
+        ].forEach((el) => {
+            el.checked = false;
+            el.parentElement!.style.display = "";
+        });
+    }
+
+    private hideTops() {
+        [watermarkTopLeft, watermarkTopRight].forEach((el) => {
+            el.checked = false;
+            el.parentElement!.style.display = "none";
+        });
+    }
+
+    private inputs = {
+        "top-right": watermarkTopRight,
+        "top-left": watermarkTopLeft,
+        "bottom-right": watermarkBottomRight,
+        "bottom-left": watermarkBottomLeft,
+    };
+
     update() {
         const { watermark, watermarkText, watermarkPosition, target } =
             SessionConfig.get();
 
-        if (watermark) {
-            watermarkElement.style.display = "";
-            watermarkElement.innerText = watermarkText;
-            watermarkElement.dataset.target = target;
+        const [watermarkY, watermarkX] = watermarkPosition.split("-");
 
-            watermarkPositionXSelect.parentElement!.style.display = "";
-            watermarkPositionYSelect.parentElement!.style.display = "";
-        } else {
-            watermarkElement.style.display = "none";
-
-            watermarkPositionXSelect.parentElement!.style.display = "none";
-            watermarkPositionYSelect.parentElement!.style.display = "none";
+        if (target === "window" && watermarkY === "top") {
+            return SessionConfig.set({
+                watermarkPosition:
+                    `bottom-${watermarkX}` as ExtensionConfig["watermarkPosition"],
+            });
         }
 
+        this.resetPositionInputs();
+
+        if (target === "window") {
+            this.hideTops();
+        }
+
+        this.inputs[watermarkPosition].checked = true;
+
+        if (!watermark) {
+            watermarkElement.style.display = "none";
+            return;
+        }
+
+        watermarkElement.style.display = "";
+        watermarkElement.innerText = watermarkText;
+        watermarkElement.dataset.target = target;
+
         if (watermarkPosition) {
-            const [watermarkY, watermarkX] = watermarkPosition.split("-");
-
-            if (target === "window" && watermarkY === "top") {
-                return SessionConfig.set({
-                    watermarkPosition:
-                        `bottom-${watermarkX}` as ExtensionConfig["watermarkPosition"],
-                });
-            }
-
-            watermarkPositionXSelect.value = watermarkX;
-            watermarkPositionYSelect.value = watermarkY;
-
             watermarkElement.setAttribute(
                 "data-watermark-position",
                 watermarkPosition,
             );
         }
-
-        watermarkPositionYSelect.disabled = target === "window";
     }
 }

@@ -1,3 +1,5 @@
+import type { WebviewConfig } from "../../../types";
+import { SessionConfig } from "../../SessionConfig";
 import {
     enableResizingInput,
     highlightLineNumberInput,
@@ -9,7 +11,11 @@ import {
     toggleLinkedButton,
     toggleLockedButton,
     transparentBackgroundInput,
+    watermarkBottomLeft,
+    watermarkBottomRight,
     watermarkInput,
+    watermarkTopLeft,
+    watermarkTopRight,
 } from "../elements";
 import { handleToggleBasedChange, handleToggleBasedClick } from "./handlers";
 
@@ -31,4 +37,20 @@ export function addToogleListeners() {
 
     handleToggleBasedClick(toggleLinkedButton, "isLinked");
     handleToggleBasedClick(toggleLockedButton, "isLocked");
+
+    [
+        watermarkTopLeft,
+        watermarkTopRight,
+        watermarkBottomRight,
+        watermarkBottomLeft,
+    ].forEach((input) => {
+        input.addEventListener("change", () => {
+            if (input.checked) {
+                SessionConfig.set({
+                    watermarkPosition:
+                        input.value as WebviewConfig["watermarkPosition"],
+                });
+            }
+        });
+    });
 }

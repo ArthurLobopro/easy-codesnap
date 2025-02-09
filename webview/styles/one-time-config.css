@@ -55,7 +55,7 @@
             box-sizing: border-box;
         }
 
-        &:has(label>input) {
+        &:has(label>input:not([type="radio"])) {
             cursor: pointer;
             padding: 0 !important;
 
@@ -64,7 +64,7 @@
             }
         }
 
-        &:has(>select) {
+        &:has(>select, #watermark-position-wrapper) {
             cursor: auto;
             display: flex;
             align-items: center;
@@ -72,6 +72,11 @@
             width: 100%;
             gap: 4px;
         }
+
+        &:has(#watermark-position-wrapper) {
+            padding: 4px;
+        }
+
 
         &[data-action] {
             cursor: pointer;
@@ -110,6 +115,46 @@
             aspect-ratio: 1/1;
             outline: 0;
             cursor: pointer;
+        }
+
+        #watermark-position-wrapper {
+            --square-size: 12px;
+
+            display: grid;
+            background-color: currentColor;
+            gap: 1px;
+            border: 1px solid currentColor;
+            border-radius: 2px;
+            grid-template-columns: repeat(2, var(--square-size));
+            margin: 2px;
+
+            >label {
+                display: flex;
+                width: 100%;
+                aspect-ratio: auto 1/1;
+                background-color: var(--vscode-sideBar-background);
+                box-sizing: border-box;
+
+                >.bg{
+                    display: flex;
+                    width: 100%;
+                    height: 100%;
+                }
+
+                &:has(input:checked)>.bg {
+                    background-color: var(--vscode-focusBorder);
+                }
+
+                &:not(:has(input:checked)):hover > .bg {
+                    background-color: var(--vscode-focusBorder);
+                    opacity: .6;
+                }
+
+                >input {
+                    display: none;
+                    margin: 0;
+                }
+            }
         }
     }
 }

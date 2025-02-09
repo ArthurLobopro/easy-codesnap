@@ -11,8 +11,6 @@ import {
     shutterActionSelect,
     snippetContainerNode,
     targetSelect,
-    watermarkPositionXSelect,
-    watermarkPositionYSelect,
     windowControlsNode,
     windowNode,
     windowTitleNode,
@@ -60,8 +58,6 @@ export class VisibilityUpdater extends Updater {
             saveFormatSelect,
             saveScaleSelect,
             aspectRatioSelect,
-            watermarkPositionXSelect,
-            watermarkPositionYSelect,
         ];
 
         const biggerSelect = selects.reduce((prev, curr) => {
