@@ -52,8 +52,6 @@ export const windowStyleSelect = getSelect("windowStyle");
 export const zoomSelect = getSelect("zoom");
 export const saveScaleSelect = getSelect("saveScale");
 export const aspectRatioSelect = getSelect("aspectRatio");
-export const watermarkPositionYSelect = getSelect("watermarkPosition-Y");
-export const watermarkPositionXSelect = getSelect("watermarkPosition-X");
 
 //Buttons
 export const openSettingsButton = getButton("open-settings");
@@ -63,3 +61,13 @@ export const toggleLockedButton = getButton("toggle-lock");
 export const toggleLinkedButton = getButton("toggle-link");
 export const zoomInButton = getButton("zoom-in");
 export const zoomOutButton = getButton("zoom-out");
+
+//Watermark
+function getRadio(value: string) {
+    return $<HTMLInputElement>(`input[value="${value}"]`);
+}
+
+export const watermarkTopLeft = getRadio("top-left");
+export const watermarkTopRight = getRadio("top-right");
+export const watermarkBottomLeft = getRadio("bottom-left");
+export const watermarkBottomRight = getRadio("bottom-right");
