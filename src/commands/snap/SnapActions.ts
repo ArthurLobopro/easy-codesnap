@@ -1,6 +1,5 @@
 import * as vscode from "vscode";
 import { extensionSettingsNames } from "../../constants";
-import { reduceSVG } from "../../reduceSVG";
 import type { ExtensionConfig } from "../../types";
 import { hasOneSelection, t } from "../../util";
 import { savePNG, saveSVG } from "./savers";
@@ -85,6 +84,6 @@ export class SnapActions {
     }
 
     "copy-svg"({ data }: { data: string }) {
-        vscode.env.clipboard.writeText(reduceSVG(data));
+        vscode.env.clipboard.writeText(data);
     }
 }

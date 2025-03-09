@@ -5,6 +5,8 @@ import { elementToSVG } from "dom-to-svg";
 
 import type { WebviewConfig } from "../types";
 import { SessionConfig } from "./SessionConfig";
+//@ts-expect-error
+import { optimize } from "./lib/svgo.browser.js";
 import { cameraFlashAnimation } from "./snap";
 import { $$, vscode } from "./util";
 
@@ -51,8 +53,10 @@ export async function exportSVG(
             "<style>.line-number,#window-title{user-select:none;}</style>",
         );
 
+    const minifiedSvg = optimize(svg, svgoConfig).data;
+
     if (action === "copy") {
-        vscode.postMessage({ type: "copy-svg", data: svg });
+        vscode.postMessage({ type: "copy-svg", data: minifiedSvg });
         cameraFlashAnimation();
         vscode.postMessage({ type: "copied" });
     } else {
@@ -120,3 +124,31 @@ async function toPNGFallback(target: HTMLElement) {
 
     return canvas.toDataURL();
 }
+
+const svgoConfig = {
+    floatPrecision: 8,
+    multipass: true,
+    plugins: [
+        {
+            name: "preset-default",
+            params: {
+                overrides: {
+                    removeViewBox: false,
+                    removeUnknownsAndDefaults: {
+                        defaultAttrs: true,
+                        uselessOverrides: true,
+                        unknownAttrs: true,
+                        keepAriaAttrs: false,
+                        keepDataAttrs: false,
+                    },
+                },
+            },
+        },
+        {
+            name: "removeAttrs",
+            params: {
+                attrs: ["textLength", "text-decoration"],
+            },
+        },
+    ],
+};
