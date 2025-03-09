@@ -1,3 +1,7 @@
+## 1.22.1
+
+Feat: Run SVGO on Browser side to improve performance
+
 ## 1.22.0
 
 Feat: New Watermark position input

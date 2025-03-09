@@ -1,7 +1,6 @@
 import { homedir, platform } from "node:os";
 import path from "node:path";
 import * as vscode from "vscode";
-import { reduceSVG } from "../../reduceSVG";
 import { t, writeFile } from "../../util";
 
 const isWin = platform() === "win32";
@@ -49,9 +48,9 @@ export async function saveSVG(data: string) {
 
     assignLastUsedImageUri(uri);
 
-    const reducedData = reduceSVG(data);
+    //const reducedData = reduceSVG(data);
 
     if (uri) {
-        writeFile(uri.fsPath, reducedData, "utf-8");
+        writeFile(uri.fsPath, data, "utf-8");
     }
 }
