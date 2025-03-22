@@ -41,6 +41,15 @@
 * zh-TW. Taiwanese Mandarin (Thanks [CoffeeChaton](https://github.com/CoffeeChaton))
 * zh-CN. Chinese Mandarin (Thanks [CoffeeChaton](https://github.com/CoffeeChaton))
 
+## Help the Project
+
+If you want to help the project you can do one or more of these things:
+
+* Leave a good review on [VSCode Marketplace](https://marketplace.visualstudio.com/items?itemName=ArthurLobo.easy-codesnap&ssr=false#review-details) or [Open VSX](https://open-vsx.org/extension/ArthurLobo/easy-codesnap/reviews).
+* Leave a star on [GitHub repository](https://github.com/ArthurLobopro/easy-codesnap).
+* Create a feature request with some useful feature.
+* Create a pull request fixing something, adding some feature or adding/fixing a translation.
+
 ## Acknowledgments
 
 Thank you very much [kufii](https://github.com/kufii/) to made the [CodeSnap extension](https://github.com/kufii/CodeSnap), the base of this project.
