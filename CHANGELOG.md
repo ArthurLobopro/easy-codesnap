@@ -1,3 +1,8 @@
+## 1.23.0
+
+Feat: More save scale options
+Fix: Now the open command is blocked when you use it without the command prerequisites
+
 ## 1.22.1
 
 Feat: Run SVGO on Browser side to improve performance
