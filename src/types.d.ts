@@ -18,7 +18,7 @@ export interface ExtensionConfig {
     highlightLineNumber: boolean;
     watermark: boolean;
 
-    saveScale: 1 | 1.5 | 2;
+    saveScale: 0.5 | 0.75 | 1 | 1.5 | 2 | 3 | 4;
     roundingLevel: 1 | 2 | 3 | 4;
     saveFormat: "png" | "svg";
     target: "container" | "window";
