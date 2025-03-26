@@ -33,18 +33,15 @@ export class SnapCommand extends Command {
             "fullLinesSelection",
         ]);
 
-        fullLinesSelection && this.setFullLineSelection();
+        fullLinesSelection && this.setFullLineSelection(activeEditor);
     }
 
-    setFullLineSelection() {
-        const activeEditor = vscode.window.activeTextEditor;
-        if (activeEditor && hasOneSelection(activeEditor.selections)) {
-            const selection = activeEditor.selection;
+    setFullLineSelection(activeEditor: vscode.TextEditor) {
+        const selection = activeEditor.selection;
 
-            activeEditor.selection = new vscode.Selection(
-                new vscode.Position(selection.start.line, 0),
-                selection.isReversed ? selection.anchor : selection.active,
-            );
-        }
+        activeEditor.selection = new vscode.Selection(
+            new vscode.Position(selection.start.line, 0),
+            selection.isReversed ? selection.anchor : selection.active,
+        );
     }
 }
