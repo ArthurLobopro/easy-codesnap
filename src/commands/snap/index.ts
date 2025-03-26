@@ -1,5 +1,5 @@
 import * as vscode from "vscode";
-import { getSettings, hasOneSelection } from "../../util";
+import { getSettings, hasOneSelection, t } from "../../util";
 import { Command } from "../Command";
 import { PanelBuilder } from "./PanelBuilder";
 import { PanelController } from "./PanelController";
@@ -15,6 +15,15 @@ export class SnapCommand extends Command {
     }
 
     async exec() {
+        const activeEditor = vscode.window.activeTextEditor;
+
+        if (!activeEditor || !hasOneSelection(activeEditor.selections)) {
+            vscode.window.showErrorMessage(
+                `Easy CodeSnap: ${t("You must have one text selection!")}`,
+            );
+            return;
+        }
+
         const panel = await new PanelBuilder(this.context).build();
 
         const panelController = new PanelController(panel);
@@ -24,18 +33,15 @@ export class SnapCommand extends Command {
             "fullLinesSelection",
         ]);
 
-        fullLinesSelection && this.setFullLineSelection();
+        fullLinesSelection && this.setFullLineSelection(activeEditor);
     }
 
-    setFullLineSelection() {
-        const activeEditor = vscode.window.activeTextEditor;
-        if (activeEditor && hasOneSelection(activeEditor.selections)) {
-            const selection = activeEditor.selection;
+    setFullLineSelection(activeEditor: vscode.TextEditor) {
+        const selection = activeEditor.selection;
 
-            activeEditor.selection = new vscode.Selection(
-                new vscode.Position(selection.start.line, 0),
-                selection.isReversed ? selection.anchor : selection.active,
-            );
-        }
+        activeEditor.selection = new vscode.Selection(
+            new vscode.Position(selection.start.line, 0),
+            selection.isReversed ? selection.anchor : selection.active,
+        );
     }
 }

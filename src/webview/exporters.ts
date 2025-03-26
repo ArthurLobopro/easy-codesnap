@@ -5,8 +5,8 @@ import { elementToSVG } from "dom-to-svg";
 
 import type { WebviewConfig } from "../types";
 import { SessionConfig } from "./SessionConfig";
-//@ts-expect-error
-import { optimize } from "./lib/svgo.browser.js";
+import { optimize } from "svgo/dist/svgo.browser";
+import type { Config as SVGOConfig } from "svgo";
 import { cameraFlashAnimation } from "./snap";
 import { $$, vscode } from "./util";
 
@@ -125,7 +125,7 @@ async function toPNGFallback(target: HTMLElement) {
     return canvas.toDataURL();
 }
 
-const svgoConfig = {
+const svgoConfig: SVGOConfig = {
     floatPrecision: 8,
     multipass: true,
     plugins: [
