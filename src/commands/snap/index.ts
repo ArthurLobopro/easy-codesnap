@@ -1,5 +1,5 @@
 import * as vscode from "vscode";
-import { getSettings, hasOneSelection } from "../../util";
+import { getSettings, hasOneSelection, t } from "../../util";
 import { Command } from "../Command";
 import { PanelBuilder } from "./PanelBuilder";
 import { PanelController } from "./PanelController";
@@ -15,6 +15,15 @@ export class SnapCommand extends Command {
     }
 
     async exec() {
+        const activeEditor = vscode.window.activeTextEditor;
+
+        if (!activeEditor || !hasOneSelection(activeEditor.selections)) {
+            vscode.window.showErrorMessage(
+                `Easy CodeSnap: ${t("You must have one text selection!")}`,
+            );
+            return;
+        }
+
         const panel = await new PanelBuilder(this.context).build();
 
         const panelController = new PanelController(panel);
