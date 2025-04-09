@@ -13,6 +13,11 @@ export function highlightOnclickFactory(
 
         const newIndex = currentIndex + (type === "context" ? -1 : 1);
 
+        if (ev.ctrlKey) {
+            lineElement.dataset.highlight = "none";
+            return;
+        }
+
         lineElement.dataset.highlight =
             newIndex === highlightOrder.length
                 ? highlightOrder.at(0)
