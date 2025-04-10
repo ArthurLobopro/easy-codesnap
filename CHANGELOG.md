@@ -1,3 +1,9 @@
+## 1.24.0
+
+Feat: You can remove any line highlight using `Ctrl` + Click on line number
+Feat: German Translation by [sclause2412](https://github.com/sclause2412)
+Fix: Icons from One Time Config were not rendering
+
 ## 1.23.0
 
 Feat: More save scale options
