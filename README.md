@@ -40,6 +40,7 @@
 * pt-BR. Português Brasileiro
 * zh-TW. Taiwanese Mandarin (Thanks [CoffeeChaton](https://github.com/CoffeeChaton))
 * zh-CN. Chinese Mandarin (Thanks [CoffeeChaton](https://github.com/CoffeeChaton))
+* de. German (Thanks [sclause2412](https://github.com/sclause2412))
 
 ## Help the Project
 
