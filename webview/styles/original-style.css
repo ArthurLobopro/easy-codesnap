@@ -6,7 +6,6 @@ html {
     --box-shadow: rgba(0, 0, 0, 0.55) 0px 20px 68px;
     --container-padding: 3em;
     --window-border-radius: 4px;
-    --enable-resizing: horizontal;
     --letter-spacing: 0px;
     --zoom: 100%;
     
@@ -41,8 +40,20 @@ code {
     align-items: center;
     padding: var(--container-padding);
     background: var(--container-background-color);
-    width: max-content;
+    min-width: max-content;
+    min-height: max-content;
     box-sizing: border-box;
+
+    &[data-enableresizing="true"]{
+        &:is([data-target="container"]){
+            overflow: hidden;
+            resize: both;
+        }
+
+        #window{
+            resize: horizontal;
+        }
+    }
 }
 
 #window {
@@ -51,7 +62,6 @@ code {
     border-radius: var(--window-border-radius);
     box-shadow: var(--box-shadow);
     overflow: hidden;
-    resize: var(--enable-resizing);
     width: max-content;
     min-width: 100px;
     padding: 18px;
