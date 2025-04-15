@@ -10,6 +10,7 @@ import {
     saveScaleSelect,
     shutterActionSelect,
     snippetContainerNode,
+    targetProportion,
     targetSelect,
     windowControlsNode,
     windowNode,
@@ -24,6 +25,7 @@ export class VisibilityUpdater extends Updater {
             "aspectRatio",
             "highlightLineNumber",
             "enableResizing",
+            "target",
         ]);
     }
 
@@ -49,7 +51,10 @@ export class VisibilityUpdater extends Updater {
 
         if (!enableResizing) {
             windowNode.style.width = "";
+            snippetContainerNode.style.width = "";
         }
+
+        UpdateTargetProportion();
 
         const selects = [
             targetSelect,
@@ -74,6 +79,18 @@ export class VisibilityUpdater extends Updater {
         }
 
         UpdateRatio(aspectRatio);
+    }
+}
+
+export function UpdateTargetProportion() {
+    const target = SessionConfig.get("target");
+
+    if (target === "container") {
+        const { width, height } = snippetContainerNode.getBoundingClientRect();
+        targetProportion.innerText = `${width.toFixed(0)} x ${height.toFixed(0)}`;
+    } else {
+        const { width, height } = windowNode.getBoundingClientRect();
+        targetProportion.innerText = `${width.toFixed(0)} x ${height.toFixed(0)}`;
     }
 }
 

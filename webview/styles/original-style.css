@@ -27,11 +27,24 @@ code {
     color: currentColor;
 }
 
+div:has(#snippet-scroll){
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+    max-width: 100%;
+}
+
 #snippet-scroll {
     max-width: 100%;
     overflow-x: auto;
     margin: auto;
     zoom: var(--zoom);
+}
+
+#target-proportion{
+    color:  var(--vscode-foreground);
+    background-color: var(--vscode-sideBar-background);
+    padding: 2px;
 }
 
 #snippet-container {
