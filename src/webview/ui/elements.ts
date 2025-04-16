@@ -31,6 +31,7 @@ export const windowNode = $("#window");
 export const snippetContainerNode = $("#snippet-container");
 export const flashFx = $("#flash-fx");
 export const watermarkElement = $("#watermark");
+export const targetProportion = $("#target-proportion");
 
 //One time config elements
 export const showWindowTitleInput = getToggle("showWindowTitle");

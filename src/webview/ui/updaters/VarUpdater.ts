@@ -1,6 +1,7 @@
 import { SessionConfig } from "../../SessionConfig";
 import { px, setVar } from "../../util";
 import { Updater } from "../Updater";
+import { snippetContainerNode } from "../elements";
 
 export class VarUpdater extends Updater {
     constructor() {
@@ -15,6 +16,7 @@ export class VarUpdater extends Updater {
             "roundingLevel",
             "showLineNumbers",
             "letterSpacing",
+            "target",
         ]);
     }
 
@@ -30,6 +32,7 @@ export class VarUpdater extends Updater {
             roundingLevel,
             showLineNumbers,
             letterSpacing,
+            target,
         } = SessionConfig.get();
 
         setVar("ligatures", fontLigatures ? "normal" : "none");
@@ -50,7 +53,9 @@ export class VarUpdater extends Updater {
             roundedCorners ? px(4 * roundingLevel) : "0",
         );
 
-        setVar("enable-resizing", enableResizing ? "horizontal" : "none");
         setVar("line-number-visibility", showLineNumbers ? "block" : "none");
+
+        snippetContainerNode.dataset.enableresizing = String(enableResizing);
+        snippetContainerNode.dataset.target = target;
     }
 }

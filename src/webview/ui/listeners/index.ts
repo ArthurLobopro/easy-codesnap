@@ -1,6 +1,6 @@
 import { SessionConfig } from "../../SessionConfig";
-import { windowNode } from "../elements";
-import { UpdateRatio } from "../updaters";
+import { snippetContainerNode, windowNode } from "../elements";
+import { UpdateRatio, UpdateTargetProportion } from "../updaters";
 import { addButtonListeners } from "./addButtonListeners";
 import { addContentEditableListeners } from "./addContentEditableListeners";
 import { addHideOneTimeConfigListener } from "./addHideOneTimeConfigListener";
@@ -22,8 +22,11 @@ export function addListeners() {
         if (SessionConfig.get("aspectRatio") !== "none") {
             UpdateRatio();
         }
+
+        UpdateTargetProportion();
         console.log("Resize");
     });
 
+    resizeObserver.observe(snippetContainerNode);
     resizeObserver.observe(windowNode);
 }
