@@ -1,3 +1,7 @@
+## 1.25.0
+
+Feat: Window Container can be resized
+
 ## 1.24.0
 
 Feat: You can remove any line highlight using `Ctrl` + Click on line number
