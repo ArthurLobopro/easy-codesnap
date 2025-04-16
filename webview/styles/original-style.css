@@ -8,7 +8,7 @@ html {
     --window-border-radius: 4px;
     --letter-spacing: 0px;
     --zoom: 100%;
-    
+
     box-sizing: border-box;
 }
 
@@ -27,11 +27,12 @@ code {
     color: currentColor;
 }
 
-div:has(#snippet-scroll){
+div:has(#snippet-scroll) {
     display: flex;
     flex-direction: column;
     align-items: end;
     max-width: 100%;
+    gap: 4px;
 }
 
 #snippet-scroll {
@@ -41,10 +42,11 @@ div:has(#snippet-scroll){
     zoom: var(--zoom);
 }
 
-#target-proportion{
-    color:  var(--vscode-foreground);
+#target-proportion {
+    color: var(--vscode-foreground);
     background-color: var(--vscode-sideBar-background);
-    padding: 2px;
+    padding: 4px;
+    border-radius: 6px 4px;
 }
 
 #snippet-container {
@@ -57,13 +59,13 @@ div:has(#snippet-scroll){
     min-height: max-content;
     box-sizing: border-box;
 
-    &[data-enableresizing="true"]{
-        &:is([data-target="container"]){
+    &[data-enableresizing="true"] {
+        &:is([data-target="container"]) {
             overflow: hidden;
             resize: both;
         }
 
-        #window{
+        #window {
             resize: horizontal;
         }
     }
