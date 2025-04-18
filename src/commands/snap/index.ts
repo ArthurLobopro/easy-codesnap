@@ -41,7 +41,10 @@ export class SnapCommand extends Command {
 
         activeEditor.selection = new vscode.Selection(
             new vscode.Position(selection.start.line, 0),
-            selection.isReversed ? selection.anchor : selection.active,
+            new vscode.Position(
+                selection.end.line,
+                activeEditor.document.lineAt(selection.end.line).text.length,
+            ),
         );
     }
 }
