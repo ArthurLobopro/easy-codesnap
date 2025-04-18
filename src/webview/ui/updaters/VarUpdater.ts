@@ -17,6 +17,7 @@ export class VarUpdater extends Updater {
             "showLineNumbers",
             "letterSpacing",
             "target",
+            "maxCharWidth",
         ]);
     }
 
@@ -33,6 +34,7 @@ export class VarUpdater extends Updater {
             showLineNumbers,
             letterSpacing,
             target,
+            maxCharWidth,
         } = SessionConfig.get();
 
         setVar("ligatures", fontLigatures ? "normal" : "none");
@@ -54,6 +56,11 @@ export class VarUpdater extends Updater {
         );
 
         setVar("line-number-visibility", showLineNumbers ? "block" : "none");
+
+        setVar(
+            "max-char-width",
+            maxCharWidth === 0 ? "100%" : `${maxCharWidth.toFixed(0)}ch`,
+        );
 
         snippetContainerNode.dataset.enableresizing = String(enableResizing);
         snippetContainerNode.dataset.target = target;

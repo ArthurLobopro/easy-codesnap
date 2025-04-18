@@ -1,3 +1,7 @@
+## 1.26.0
+
+Feat: Maximum line width based on characters
+
 ## 1.25.0
 
 Feat: Window Container can be resized

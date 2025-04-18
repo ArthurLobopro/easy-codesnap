@@ -30,4 +30,5 @@ export const extensionSettingsNames: ConfigKey[] = [
     "watermark",
     "defaultWatermarkText",
     "watermarkPosition",
+    "maxCharWidth",
 ] as const;
