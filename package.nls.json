@@ -26,5 +26,6 @@
     "easy-codesnap.fullLinesSelection": "Does get full line selection when open snap scren",
     "easy-codesnap.watermark": "Enable watermark",
     "easy-codesnap.defaultWatermarkText": "Default watermark text",
-    "easy-codesnap.watermarkPosition": "Watermark position on screen"
+    "easy-codesnap.watermarkPosition": "Watermark position on screen",
+    "easy-codesnap.maxCharWidth": "Maximum line width based on characters. Use value 0 for no limit"
 }

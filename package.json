@@ -267,6 +267,14 @@
             "top-right",
             "top-left"
           ]
+        },
+        "easy-codesnap.maxCharWidth": {
+          "order": 25,
+          "scope": "resource",
+          "type": "integer",
+          "default": 0,
+          "minimum": 0,
+          "description": "%easy-codesnap.maxCharWidth%"
         }
       }
     }
