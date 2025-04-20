@@ -3,6 +3,7 @@ import { Updater } from "../Updater";
 import {
     enableResizingInput,
     highlightLineNumberInput,
+    maxCharWidthInput,
     realLineNumbersInput,
     roundedCornersInput,
     roundingLevelSelect,
@@ -56,6 +57,7 @@ export class OneTimeConfigUpdater extends Updater {
             saveScale,
             highlightLineNumber,
             watermark,
+            maxCharWidth,
         } = SessionConfig.get();
 
         showWindowTitleInput.checked = showWindowTitle;
@@ -79,5 +81,7 @@ export class OneTimeConfigUpdater extends Updater {
         saveFormatSelect.value = saveFormat;
         windowStyleSelect.value = windowStyle;
         saveScaleSelect.value = saveScale.toString();
+
+        maxCharWidthInput.value = String(maxCharWidth);
     }
 }

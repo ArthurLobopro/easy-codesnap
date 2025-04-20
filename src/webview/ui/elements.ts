@@ -43,6 +43,9 @@ export const transparentBackgroundInput = getToggle("transparentBackground");
 export const enableResizingInput = getToggle("enableResizing");
 export const highlightLineNumberInput = getToggle("highlightLineNumber");
 export const watermarkInput = getToggle("watermark");
+export const maxCharWidthInput = $<HTMLInputElement>(
+    `[data-configname="maxCharWidth"]`,
+);
 
 //Selects
 export const shutterActionSelect = getSelect("shutterAction");
