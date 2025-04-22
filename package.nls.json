@@ -8,7 +8,7 @@
     "easy-codesnap.roundedCorners": "Use rounded corners for the window",
     "easy-codesnap.showWindowControls": "Display OS X style window controls",
     "easy-codesnap.showWindowTitle": "Display window title with open folder / file name",
-    "easy-codesnap.windowTitleTemplate": "Defines the template to show snippet window title, you can use {workspace} and {fileName} variables",
+    "easy-codesnap.windowTitleTemplate": "Defines the template to show snippet window title, you can use {workspace}, {fileName} and {relativeFolder} variables",
     "easy-codesnap.showLineNumbers": "Display line numbers",
     "easy-codesnap.realLineNumbers": "Start from the selection's line number instead of 1",
     "easy-codesnap.highlightLineNumber": "When a line is highlighted, use 'editorLineNumber-activeForeground' vscode theme color to highlight the line number",

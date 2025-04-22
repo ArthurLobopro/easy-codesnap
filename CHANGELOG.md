@@ -1,3 +1,8 @@
+## 1.26.1
+
+Feat: Max char width on One Time Config
+Feat: relativeFolder as variable to title
+
 ## 1.26.0
 
 Feat: Maximum line width based on characters

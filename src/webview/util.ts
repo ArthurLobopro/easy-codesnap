@@ -49,13 +49,14 @@ export const vscode = acquireVsCodeApi();
 
 export function getDefaultWindowTitle() {
     const {
-        templates: { fileName, workspace },
+        templates: { fileName, workspace, relativeFolder },
         windowTitleTemplate,
     } = SessionConfig.get();
 
     return windowTitleTemplate
         .replace(/\{fileName\}/g, fileName)
-        .replace(/\{workspace\}/g, workspace);
+        .replace(/\{workspace\}/g, workspace)
+        .replace(/\{relativeFolder\}/g, relativeFolder);
 }
 
 export function getWidth(element: HTMLElement) {

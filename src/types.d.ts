@@ -43,6 +43,7 @@ export interface ConfigSentToWebview extends ExtensionConfig {
     templates: {
         fileName: string;
         workspace: string;
+        relativeFolder: string;
     };
 }
 

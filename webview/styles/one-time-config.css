@@ -64,7 +64,7 @@
             }
         }
 
-        &:has(>select, #watermark-position-wrapper) {
+        &:has(>select, #watermark-position-wrapper, input[type="number"]) {
             cursor: auto;
             display: flex;
             align-items: center;
@@ -107,6 +107,16 @@
             gap: 4px;
         }
 
+        select {
+            background-color: var(--vscode-sideBar-background);
+            color: var(--vscode-foreground);
+            border-radius: 4px;
+            padding: 2px 0;
+            cursor: pointer;
+        
+            outline: 0;
+        }
+
         input[type="checkbox"] {
             background-color: var(--vscode-settings-checkboxBackground);
             color: var(--vscode-settings-checkboxForeground);
@@ -115,6 +125,25 @@
             aspect-ratio: 1/1;
             outline: 0;
             cursor: pointer;
+        }
+
+        input[type="number"]{
+            background-color: var(--vscode-sideBar-background);
+            color: var(--vscode-foreground);
+
+            border: 1px solid var(--vscode-icon-foreground);
+            border-radius: 4px;
+            padding: 2px 0;
+            text-align: center;
+
+            &::-webkit-inner-spin-button {
+                display: none;
+            }
+
+            &:invalid{
+                border-color: var(--vscode-errorForeground);
+                outline-color: var(--vscode-errorForeground);
+            }
         }
 
         #watermark-position-wrapper {
@@ -183,16 +212,6 @@
 li:has(:disabled),
 select:disabled {
     color: var(--vscode-disabledForeground);
-}
-
-select {
-    background-color: var(--vscode-sideBar-background);
-    color: var(--vscode-foreground);
-    border-radius: 4px;
-    padding: 2px 0;
-    cursor: pointer;
-
-    outline: 0;
 }
 
 select>option {
