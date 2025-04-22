@@ -8,7 +8,7 @@
     "easy-codesnap.roundedCorners": "Usar cantos arredondados na janela",
     "easy-codesnap.showWindowControls": "Mostra os controles de janela com o estilo do OS selecionado",
     "easy-codesnap.showWindowTitle": "Mostrar o título da janela",
-    "easy-codesnap.windowTitleTemplate": "Define um modelo para mostrar o título da janela do snippet, você pode usar as variáveis {workspace} e {fileName}",
+    "easy-codesnap.windowTitleTemplate": "Define um modelo para mostrar o título da janela do snippet, você pode usar as variáveis {workspace}, {fileName} e {relativeFolder}",
     "easy-codesnap.showLineNumbers": "Mostrar números de linha",
     "easy-codesnap.realLineNumbers": "Mostrar os números de linha reais da seleção ao invés de começar do 1",
     "easy-codesnap.highlightLineNumber": "Quando uma linha está destacada, usa a cor `editorLineNumber-activeForeground` do tema de cores do vscode para destacar o número da linha",
