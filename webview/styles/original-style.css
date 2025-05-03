@@ -22,6 +22,8 @@ body {
     font-feature-settings: var(--font-features);
     tab-size: var(--tab-size);
     user-select: none;
+
+    padding-bottom: 1rem;
 }
 
 code {
@@ -152,7 +154,6 @@ div:has(#snippet-scroll) {
 
 #save-container {
     margin-top: 1rem;
-    margin-bottom: 1rem;
     text-align: center;
 }
 
