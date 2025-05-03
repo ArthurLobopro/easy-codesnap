@@ -1,3 +1,7 @@
+# 1.27.0
+
+Feat: Symbol Breadcrumb by [Kyrax324](https://github.com/Kyrax324)
+
 ## 1.26.1
 
 Feat: Max char width on One Time Config
