@@ -14,6 +14,8 @@ export class PanelController {
     }
 
     async update(updateType: updateTypes, editorURI?: string) {
+        let symbolBreadcrumbs: vscode.DocumentSymbol[] = [];
+
         if (updateType !== "config") {
             this.clipboard.cancelRestore();
 
@@ -26,6 +28,23 @@ export class PanelController {
             await vscode.commands.executeCommand(
                 "editor.action.clipboardCopyWithSyntaxHighlightingAction",
             );
+
+            const editor = vscode.window.visibleTextEditors[0];
+            const document = editor.document;
+            const position = editor.selection.active;
+
+            const symbols: vscode.DocumentSymbol[] =
+                await vscode.commands.executeCommand(
+                    "vscode.executeDocumentSymbolProvider",
+                    document.uri,
+                );
+
+            if (symbols) {
+                symbolBreadcrumbs = this.getSymbolBreadcrumbs(
+                    symbols,
+                    position,
+                );
+            }
         }
 
         this.panel.webview.postMessage({
@@ -35,6 +54,7 @@ export class PanelController {
             ...(updateType === "both"
                 ? { bundle: JSON.stringify(vscode.l10n.bundle) }
                 : {}),
+            symbolBreadcrumbs,
         });
 
         if (updateType !== "config") {
@@ -66,5 +86,26 @@ export class PanelController {
                 this.update("text", e.textEditor.document.uri.toString()),
         );
         this.panel.onDidDispose(() => selectionHandler.dispose());
+    }
+
+    getSymbolBreadcrumbs(
+        symbols: vscode.DocumentSymbol[],
+        position: vscode.Position,
+    ): vscode.DocumentSymbol[] {
+        const traverse = (
+            items: vscode.DocumentSymbol[],
+            currentPath: vscode.DocumentSymbol[],
+        ): vscode.DocumentSymbol[] => {
+            for (const symbol of items) {
+                if (symbol.range.contains(position)) {
+                    const newPath = [...currentPath, symbol];
+                    const deeperPath = traverse(symbol.children, newPath);
+                    return deeperPath.length > 0 ? deeperPath : newPath;
+                }
+            }
+            return [];
+        };
+
+        return traverse(symbols, []);
     }
 }

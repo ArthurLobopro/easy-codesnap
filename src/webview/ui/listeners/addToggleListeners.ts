@@ -2,6 +2,7 @@ import type { WebviewConfig } from "../../../types";
 import { SessionConfig } from "../../SessionConfig";
 import {
     enableResizingInput,
+    enableSymbolBreadcrumbInput,
     highlightLineNumberInput,
     realLineNumbersInput,
     roundedCornersInput,
@@ -30,6 +31,7 @@ export function addToogleListeners() {
 
     handleToggleBasedChange(roundedCornersInput, "roundedCorners");
     handleToggleBasedChange(enableResizingInput, "enableResizing");
+    handleToggleBasedChange(enableSymbolBreadcrumbInput, "enableSymbolBreadcrumb");
     handleToggleBasedChange(
         transparentBackgroundInput,
         "transparentBackground",

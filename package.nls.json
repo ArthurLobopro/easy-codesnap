@@ -16,6 +16,7 @@
     "easy-codesnap.target": "Take the shot with or without the container",
     "easy-codesnap.shutterAction": "The behavior of the shutter button",
     "easy-codesnap.enableResizing": "Enable resizing the snap container",
+    "easy-codesnap.enableSymbolBreadcrumb": "Enable symbol breadcrumb",
     "easy-codesnap.roundingLevel": "Change window border radius level",
     "easy-codesnap.lockOnOpen": "Auto Lock the snap screen on open",
     "easy-codesnap.linkOnOpen": "Auto link the snap screen to editor on open",

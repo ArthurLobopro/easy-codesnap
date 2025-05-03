@@ -3,7 +3,7 @@ import type {
     WebViewConfigKey,
     WebviewConfig,
 } from "../types";
-import { GenericUpdate } from "./ui/updaters";
+import { GenericUpdate, updateWindowTitle } from "./ui/updaters";
 
 export class SessionConfig {
     static __config: WebviewConfig = {} as any;
@@ -35,10 +35,15 @@ export class SessionConfig {
         newConfig.shouldUpdateTitle ??= true;
         newConfig.watermarkText ??= newConfig.defaultWatermarkText;
 
+        const currentFileName = this.__config.templates?.fileName;
         this.__config = newConfig as WebviewConfig;
 
         const updatedKeys = Object.keys(config) as WebViewConfigKey[];
         GenericUpdate(updatedKeys);
+
+        if (currentFileName && config.templates?.fileName !== currentFileName) {
+            updateWindowTitle();
+        }
     }
 
     static toggle(name: TogglableConfigNames) {

@@ -16,6 +16,7 @@
     "easy-codesnap.target": "Mache die Aufnahme mit oder ohne Container",
     "easy-codesnap.shutterAction": "Verhalten des Auslöseknopfs",
     "easy-codesnap.enableResizing": "Erlaube Größenänderung des Codefensters",
+    "easy-codesnap.enableSymbolBreadcrumb": "Erlaube Symbol-Breadcrumb",
     "easy-codesnap.roundingLevel": "Ändere Stufe des Fensterrahmen-Radius",
     "easy-codesnap.lockOnOpen": "Automatisches Sperren des Aufnahmefensters beim Öffnen",
     "easy-codesnap.linkOnOpen": "Automatisches Verbinden des Aufnahmefensters mit dem Editor beim Öffnen",
