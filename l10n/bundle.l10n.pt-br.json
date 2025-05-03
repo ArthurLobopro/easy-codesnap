@@ -59,6 +59,7 @@
     "Enables manual resizing of the `Snap Window`.": "Ativa o redimencionamento manual da `Snap Window`.",
     "Disabling this will also reset the `Snap Window` size.": "Desativar isso também irá resetar o tamanho da `Snap Window`.",
     "Show Watermark": "Mostrar marca d'água",
+    "Watermark Position": "Posição da marca d'água",
     "The position of the watermark in the snapshot. Top positions are only available when `Target` is `container`": "A posição da marca d'água na captura de tela. Posições superiores só são disponíveis quando `Alvo` é `container`",
     "Max char width": "Tamanho Máx. de Caracteres",
     "You must have one text selection!": "Você precisa ter algum texto selecionado!",
