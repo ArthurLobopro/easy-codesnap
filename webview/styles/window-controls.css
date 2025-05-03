@@ -28,11 +28,11 @@
         margin-top: -8px;
         margin-right: -4px;
         justify-content: right;
+        margin-bottom: 10px;
     }
 
     #window-controls {
         gap: 16px;
-        float: right;
         justify-self: right;
         order: 3;
 
