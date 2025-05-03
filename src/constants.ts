@@ -17,6 +17,7 @@ export const CodeSnapConfigNames = [
 export const extensionSettingsNames: ConfigKey[] = [
     ...CodeSnapConfigNames,
     "enableResizing",
+    "enableSymbolBreadcrumb",
     "roundingLevel",
     "lockOnOpen",
     "linkOnOpen",

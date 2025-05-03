@@ -4,6 +4,7 @@ import { getWidth, px } from "../../util";
 import { Updater } from "../Updater";
 import {
     aspectRatioSelect,
+    breadcrumbNode,
     navbarNode,
     roundingLevelSelect,
     saveFormatSelect,
@@ -16,6 +17,7 @@ import {
     windowNode,
     windowTitleNode,
 } from "../elements";
+import { setupBreadcrumb } from "./CodeUpdater";
 
 export class VisibilityUpdater extends Updater {
     constructor() {
@@ -25,6 +27,7 @@ export class VisibilityUpdater extends Updater {
             "aspectRatio",
             "highlightLineNumber",
             "enableResizing",
+            "enableSymbolBreadcrumb",
             "target",
         ]);
     }
@@ -36,6 +39,7 @@ export class VisibilityUpdater extends Updater {
             aspectRatio,
             highlightLineNumber,
             enableResizing,
+            enableSymbolBreadcrumb,
         } = SessionConfig.get();
 
         navbarNode.style.display =
@@ -52,6 +56,19 @@ export class VisibilityUpdater extends Updater {
         if (!enableResizing) {
             windowNode.style.width = "";
             snippetContainerNode.style.width = "";
+        }
+
+        if (breadcrumbNode) {
+            breadcrumbNode.style.display = enableSymbolBreadcrumb ? "flex" : "none";
+            
+            if (enableSymbolBreadcrumb) {
+                const breadcrumbContent = setupBreadcrumb();
+                if (breadcrumbContent) {
+                    breadcrumbNode.innerHTML = breadcrumbContent;
+                }
+            } else {
+                breadcrumbNode.innerHTML = "";
+            }
         }
 
         UpdateTargetProportion();

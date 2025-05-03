@@ -89,6 +89,23 @@ div:has(#snippet-scroll) {
     }
 }
 
+#breadcrumb {
+    display: flex;
+    padding: 4px;
+    margin-top: -6px;
+    margin-bottom: 2px;
+    border-top: 1px solid var(--border-color);
+    margin-left: -4px;
+
+    .breadcrumb-item {
+        display: flex;
+    }
+
+    .breadcrumb-label {
+        padding-left: 4px;
+    }
+}
+
 #snippet {
     max-width: 100%;
     white-space: pre-wrap;

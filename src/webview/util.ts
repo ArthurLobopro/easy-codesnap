@@ -59,6 +59,21 @@ export function getDefaultWindowTitle() {
         .replace(/\{relativeFolder\}/g, relativeFolder);
 }
 
+export function getSymbolBreadcrumbs() {
+    const {
+        symbolBreadcrumbs,
+        templates: { fileName },
+    } = SessionConfig.get();
+
+    return [
+        {
+            kind: "File",
+            name: fileName,
+        },
+        ...symbolBreadcrumbs,
+    ];
+}
+
 export function getWidth(element: HTMLElement) {
     return element.getBoundingClientRect().width;
 }

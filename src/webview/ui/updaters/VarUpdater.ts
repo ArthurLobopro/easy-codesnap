@@ -13,6 +13,7 @@ export class VarUpdater extends Updater {
             "containerPadding",
             "roundedCorners",
             "enableResizing",
+            "enableSymbolBreadcrumb",
             "roundingLevel",
             "showLineNumbers",
             "letterSpacing",
@@ -30,6 +31,7 @@ export class VarUpdater extends Updater {
             containerPadding,
             roundedCorners,
             enableResizing,
+            enableSymbolBreadcrumb,
             roundingLevel,
             showLineNumbers,
             letterSpacing,
@@ -63,6 +65,7 @@ export class VarUpdater extends Updater {
         );
 
         snippetContainerNode.dataset.enableresizing = String(enableResizing);
+        snippetContainerNode.dataset.enablesymbolbreadcrumb = String(enableSymbolBreadcrumb);
         snippetContainerNode.dataset.target = target;
     }
 }

@@ -5,8 +5,9 @@
 @import url(./styles/tooltip.css);
 @import url(./styles/watermark.css);
 @import url(./styles/top-header.css);
+@import url(./styles/codicon.css);
 
-:root{
+:root {
     --background-color: var(--vscode-editorHoverWidget-background);
     --border-color: var(--vscode-editorHoverWidget-border);
     --color: var(--vscode-foreground);

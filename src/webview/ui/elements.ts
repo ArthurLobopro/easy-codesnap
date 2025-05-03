@@ -32,6 +32,7 @@ export const snippetContainerNode = $("#snippet-container");
 export const flashFx = $("#flash-fx");
 export const watermarkElement = $("#watermark");
 export const targetProportion = $("#target-proportion");
+export const breadcrumbNode = $("#breadcrumb");
 
 //One time config elements
 export const showWindowTitleInput = getToggle("showWindowTitle");
@@ -41,6 +42,7 @@ export const showWindowControlsInput = getToggle("showWindowControls");
 export const roundedCornersInput = getToggle("roundedCorners");
 export const transparentBackgroundInput = getToggle("transparentBackground");
 export const enableResizingInput = getToggle("enableResizing");
+export const enableSymbolBreadcrumbInput = getToggle("enableSymbolBreadcrumb");
 export const highlightLineNumberInput = getToggle("highlightLineNumber");
 export const watermarkInput = getToggle("watermark");
 export const maxCharWidthInput = $<HTMLInputElement>(

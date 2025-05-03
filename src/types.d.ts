@@ -1,3 +1,5 @@
+import type { DocumentSymbol } from "vscode";
+
 export interface ExtensionConfig {
     boxShadow: string;
     backgroundColor: string;
@@ -9,6 +11,7 @@ export interface ExtensionConfig {
     linkOnOpen: boolean;
     roundedCorners: boolean;
     enableResizing: boolean;
+    enableSymbolBreadcrumb: boolean;
     showWindowTitle: boolean;
     showLineNumbers: boolean;
     realLineNumbers: boolean;
@@ -45,6 +48,7 @@ export interface ConfigSentToWebview extends ExtensionConfig {
         workspace: string;
         relativeFolder: string;
     };
+    symbolBreadcrumbs: DocumentSymbol[];
 }
 
 export interface WebviewConfig

@@ -154,6 +154,13 @@
           "default": true,
           "description": "%easy-codesnap.enableResizing%"
         },
+        "easy-codesnap.enableSymbolBreadcrumb": {
+          "order": 14,
+          "scope": "resource",
+          "type": "boolean",
+          "default": false,
+          "description": "%easy-codesnap.enableSymbolBreadcrumb%"
+        },
         "easy-codesnap.roundingLevel": {
           "order": 14,
           "scope": "resource",

@@ -1,10 +1,12 @@
+import { iconClassConfig } from "../../constants";
 import { ContentManager } from "../../ContentManager";
 import { SessionConfig } from "../../SessionConfig";
-import { $, $$, calcTextWidth, setVar } from "../../util";
+import { $, $$, calcTextWidth, getSymbolBreadcrumbs, setVar } from "../../util";
 import { highlightOnclickFactory } from "../highlight";
 import { UpdateRatio } from "./VisibilityUpdater";
 
 const snippetNode = $("#snippet") as HTMLDivElement;
+const breadcrumbNode = $("#breadcrumb") as HTMLDivElement;
 
 function setupLines(node: Element) {
     const config = SessionConfig.get();
@@ -79,12 +81,42 @@ function stripInitialIndent(node: Element) {
     });
 }
 
+export function setupBreadcrumb() {
+    const { enableSymbolBreadcrumb } = SessionConfig.get();
+    if (!enableSymbolBreadcrumb) {
+        return "";
+    }
+
+    const symbolBreadcrumbs = getSymbolBreadcrumbs();
+
+    const breadcrumbHTML = symbolBreadcrumbs
+        .map((symbol) => {
+            let html = `<div>${symbol.name}</div>`;
+
+            const symbolType = symbol.kind as keyof typeof iconClassConfig;
+
+            if (symbolType in iconClassConfig) {
+                const iconClass = iconClassConfig[symbolType] || "";
+                html = `<div class="breadcrumb-item"><div class="${iconClass}"></div><div class="breadcrumb-label">${symbol.name}</div></div>`;
+            }
+
+            return html;
+        })
+        .filter(Boolean)
+        .join('<div class="codicon codicon-chevron-right"></div>');
+
+    return breadcrumbHTML;
+}
+
 export function UpdateCode() {
     snippetNode.innerHTML = ContentManager.current;
     const code = $("div", snippetNode) as HTMLDivElement;
     snippetNode.style.fontSize = code.style.fontSize;
     snippetNode.style.lineHeight = code.style.lineHeight;
     snippetNode.innerHTML = code.innerHTML;
+
+    breadcrumbNode.innerHTML = setupBreadcrumb();
+
     stripInitialIndent(snippetNode);
     setupLines(snippetNode);
 }

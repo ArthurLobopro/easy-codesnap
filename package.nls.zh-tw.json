@@ -16,6 +16,7 @@
     "easy-codesnap.target": "使用或不使用容器進行拍攝",
     "easy-codesnap.shutterAction": "快門按鈕的行為",
     "easy-codesnap.enableResizing": "啟用調整快照容器的大小",
+    "easy-codesnap.enableSymbolBreadcrumb": "啟用符號麵包屑",
     "easy-codesnap.roundingLevel": "更改容器邊框半徑級別",
     "easy-codesnap.lockOnOpen": "開啟時自動鎖定快照畫面",
     "easy-codesnap.linkOnOpen": "開啟時自動將快照畫面連結到編輯器",

@@ -45,7 +45,12 @@ export const actions = {
             }
 
             SessionConfig.set(
-                pick(config, ["templates", "startLine", "editorID"]),
+                pick(config, [
+                    "templates",
+                    "startLine",
+                    "editorID",
+                    "symbolBreadcrumbs",
+                ]),
             );
         }
 

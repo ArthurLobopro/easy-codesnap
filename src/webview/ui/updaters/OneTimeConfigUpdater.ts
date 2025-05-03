@@ -2,6 +2,7 @@ import { SessionConfig } from "../../SessionConfig";
 import { Updater } from "../Updater";
 import {
     enableResizingInput,
+    enableSymbolBreadcrumbInput,
     highlightLineNumberInput,
     maxCharWidthInput,
     realLineNumbersInput,
@@ -31,6 +32,7 @@ export class OneTimeConfigUpdater extends Updater {
             "shutterAction",
             "target",
             "enableResizing",
+            "enableSymbolBreadcrumb",
             "roundingLevel",
             "saveFormat",
             "windowStyle",
@@ -51,6 +53,7 @@ export class OneTimeConfigUpdater extends Updater {
             shutterAction,
             target,
             enableResizing,
+            enableSymbolBreadcrumb,
             roundingLevel,
             saveFormat,
             windowStyle,
@@ -67,6 +70,7 @@ export class OneTimeConfigUpdater extends Updater {
         roundedCornersInput.checked = roundedCorners;
         transparentBackgroundInput.checked = transparentBackground;
         enableResizingInput.checked = enableResizing;
+        enableSymbolBreadcrumbInput.checked = enableSymbolBreadcrumb;
         highlightLineNumberInput.checked = highlightLineNumber;
         watermarkInput.checked = watermark;
 
