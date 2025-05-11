@@ -9,7 +9,7 @@ export class SessionConfig {
     static __config: WebviewConfig = {} as any;
 
     static get hasConfig() {
-        return !!Object.entries(this.__config).length;
+        return Object.entries(this.__config).length > 0;
     }
 
     static get keys() {
@@ -38,7 +38,7 @@ export class SessionConfig {
         const currentFileName = this.__config.templates?.fileName;
         this.__config = newConfig as WebviewConfig;
 
-        const updatedKeys = Object.keys(config) as WebViewConfigKey[];
+        const updatedKeys = Object.keys(newConfig) as WebViewConfigKey[];
         GenericUpdate(updatedKeys);
 
         if (currentFileName && config.templates?.fileName !== currentFileName) {
