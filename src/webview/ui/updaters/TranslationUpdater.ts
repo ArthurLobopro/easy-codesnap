@@ -1,6 +1,7 @@
 import { $$, t } from "../../util";
 
 export function TranslationUpdater() {
+    console.time("TranslationUpdater");
     $$("[data-l10n]").forEach((el) => {
         el.innerHTML = t(el.dataset.l10n as string).replace(
             /`(\S[^`]{1,}\S)`/g,
@@ -10,4 +11,5 @@ export function TranslationUpdater() {
             },
         );
     });
+    console.timeEnd("TranslationUpdater");
 }
