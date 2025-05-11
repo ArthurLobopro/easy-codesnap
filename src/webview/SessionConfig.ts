@@ -35,10 +35,17 @@ export class SessionConfig {
         newConfig.shouldUpdateTitle ??= true;
         newConfig.watermarkText ??= newConfig.defaultWatermarkText;
 
+        const updatedKeys = (
+            Object.keys(newConfig) as WebViewConfigKey[]
+        ).filter((key) => {
+            return (
+                !(key in this.__config) || this.__config[key] !== newConfig[key]
+            );
+        }) as WebViewConfigKey[];
+
         const currentFileName = this.__config.templates?.fileName;
         this.__config = newConfig as WebviewConfig;
 
-        const updatedKeys = Object.keys(newConfig) as WebViewConfigKey[];
         GenericUpdate(updatedKeys);
 
         if (currentFileName && config.templates?.fileName !== currentFileName) {
