@@ -33,6 +33,7 @@ export const updaters = [
 ];
 
 export function GenericUpdate(keys: WebViewConfigKey[]) {
+    console.time("GenericUpdate");
     updaters
         .filter((updater) => {
             return updater.dependencies.some((dependency) =>
@@ -40,6 +41,7 @@ export function GenericUpdate(keys: WebViewConfigKey[]) {
             );
         })
         .forEach((updater) => updater.update());
+    console.timeEnd("GenericUpdate");
 }
 
 export function updateWindowTitle() {
