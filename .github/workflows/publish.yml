@@ -35,7 +35,7 @@ jobs:
 
       - name: Get Version
         run: |
-          VERSION=$(grep '"version"' package.json | awk -F '"' '{print $4}')
+          VERSION=$(node -e "console.log(require('./package.json').version)")
           echo "version=$VERSION" >> $GITHUB_ENV
 
       - name: Build Again
