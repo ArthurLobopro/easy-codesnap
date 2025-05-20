@@ -1,7 +1,7 @@
 {
   "name": "easy-codesnap",
   "displayName": "Easy CodeSnap",
-  "description": "Take beautiful screenshots of your code 📷",
+  "description": "Extension to take beautiful custom screenshots of your code 📷",
   "version": "1.27.1",
   "l10n": "./l10n",
   "repository": {
@@ -287,6 +287,18 @@
       }
     }
   },
+  "keywords": [
+    "CodeSnap",
+    "Screenshot",
+    "Screenshot Tool",
+    "Screenshot Extension",
+    "Code Snapshot",
+    "Polacode",
+    "Code Screenshot",
+    "snippet",
+    "share",
+    "carbon"
+  ],
   "scripts": {
     "vscode:prepublish": "npm run package",
     "webpack": "webpack --mode development",
