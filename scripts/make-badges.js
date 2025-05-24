@@ -27,7 +27,7 @@ async function makeOpenVsxBadges() {
         .then(res => res.json())
 
     const versionBadge = makeBadge({
-        label: "Open VSX Version",
+        label: "Open VSX Registry",
         message: `v${version}`,
         color: "blue",
         style: "flat",
@@ -35,7 +35,7 @@ async function makeOpenVsxBadges() {
     })
 
     const downloadBadge = makeBadge({
-        label: "Open VSX Downloads",
+        label: "Downloads",
         message: `${(downloadCount / 1000).toPrecision(2)}k`,
         color: "blue",
         style: "flat",
@@ -89,7 +89,7 @@ async function makeVscodeBadges() {
     })
 
     const downloadBadge = makeBadge({
-        label: "Visual Studio Marketplace Downloads",
+        label: "Downloads",
         message: `${(installs / 1000).toPrecision(2)}k`,
         color: "blue",
         style: "flat",
