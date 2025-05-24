@@ -3,6 +3,8 @@ name: Publish Extension
 on:
   push:
     branches: [ main ]
+    paths:
+      - 'package.json'
 
 jobs:
   publish:
