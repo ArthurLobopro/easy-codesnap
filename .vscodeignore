@@ -8,6 +8,8 @@ screenshots/**
 **/*.map
 **/*.ts
 node_modules
+scripts/**
+badges/**
 
 #Config
 **/.eslintrc.json
