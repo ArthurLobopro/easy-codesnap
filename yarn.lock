@@ -502,10 +502,30 @@ ajv@^8.0.0, ajv@^8.9.0:
     json-schema-traverse "^1.0.0"
     require-from-string "^2.0.2"
 
+anafanafo@2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/anafanafo/-/anafanafo-2.0.0.tgz#43f56274680bc553dd67a9625a920f88d0057b5c"
+  integrity sha512-Nlfq7NC4AOkTJerWRIZcOAiMNtIDVIGWGvQ98O7Jl6Kr2Dk0dX5u4MqN778kSRTy5KRqchpLdF2RtLFEz9FVkQ==
+  dependencies:
+    char-width-table-consumer "^1.0.0"
+
+badge-maker@^4.1.0:
+  version "4.1.0"
+  resolved "https://registry.yarnpkg.com/badge-maker/-/badge-maker-4.1.0.tgz#4035b31e7dd3036d915eddb81699b42f9070b019"
+  integrity sha512-qYImXoz0WZRMaauqSMo6QNurKp26K3RcOhefuGfno50xmAzHEJsgHbP4gnHs6Ps53KgQgFi4MJKB6Rq8H7siww==
+  dependencies:
+    anafanafo "2.0.0"
+    css-color-converter "^2.0.0"
+
 big.js@^5.2.2:
   version "5.2.2"
   resolved "https://registry.yarnpkg.com/big.js/-/big.js-5.2.2.tgz#65f0af382f578bcdc742bd9c281e9cb2d7768328"
   integrity sha512-vyL2OymJxmarO8gxMr0mhChsO9QGwhynfuu4+MHTAW6czfq9humCB7rKpUjDd9YUiDPU4mzpyupFSvOClAwbmQ==
+
+binary-search@^1.3.5:
+  version "1.3.6"
+  resolved "https://registry.yarnpkg.com/binary-search/-/binary-search-1.3.6.tgz#e32426016a0c5092f0f3598836a1c7da3560565c"
+  integrity sha512-nbE1WxOTTrUWIfsfZ4aHGYu5DOuNkbxGokjV6Z2kxfJK3uaAb8zNK1muzOeipoLHZjInT4Br88BHpzevc681xA==
 
 boolbase@^1.0.0:
   version "1.0.0"
@@ -532,6 +552,13 @@ caniuse-lite@^1.0.30001688:
   resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30001690.tgz#f2d15e3aaf8e18f76b2b8c1481abde063b8104c8"
   integrity sha512-5ExiE3qQN6oF8Clf8ifIDcMRCRE/dMGcETG/XGMD8/XiXm6HXQgQTh1yZYLXXpSOsEUlJm1Xr7kGULZTuGtP/w==
 
+char-width-table-consumer@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/char-width-table-consumer/-/char-width-table-consumer-1.0.0.tgz#bb44ccd1ba3ed4fcdb062e22876721858a7697a8"
+  integrity sha512-Fz4UD0LBpxPgL9i29CJ5O4KANwaMnX/OhhbxzvNa332h+9+nRKyeuLw4wA51lt/ex67+/AdsoBQJF3kgX2feYQ==
+  dependencies:
+    binary-search "^1.3.5"
+
 chrome-trace-event@^1.0.2:
   version "1.0.3"
   resolved "https://registry.yarnpkg.com/chrome-trace-event/-/chrome-trace-event-1.0.3.tgz#1015eced4741e15d06664a957dbbf50d041e26ac"
@@ -545,6 +572,16 @@ clone-deep@^4.0.1:
     is-plain-object "^2.0.4"
     kind-of "^6.0.2"
     shallow-clone "^3.0.0"
+
+color-convert@^0.5.2:
+  version "0.5.3"
+  resolved "https://registry.yarnpkg.com/color-convert/-/color-convert-0.5.3.tgz#bdb6c69ce660fadffe0b0007cc447e1b9f7282bd"
+  integrity sha512-RwBeO/B/vZR3dfKL1ye/vx8MHZ40ugzpyfeVG5GsiuGnrlMWe2o8wxBbLCpw9CsxV+wHuzYlCiWnybrIA0ling==
+
+color-name@^1.1.4:
+  version "1.1.4"
+  resolved "https://registry.yarnpkg.com/color-name/-/color-name-1.1.4.tgz#c2a09a87acbde69543de6f63fa3995c826c536a2"
+  integrity sha512-dOy+3AuW3a2wNbZHIuMZpTcgjGuLU/uBL/ubcZF9OXbDo8ff4O8yVp5Bf0efS8uEoYo5q4Fx7dY9OgQGXgAsQA==
 
 colorette@^2.0.14:
   version "2.0.20"
@@ -580,6 +617,15 @@ cross-spawn@^7.0.3:
     shebang-command "^2.0.0"
     which "^2.0.1"
 
+css-color-converter@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/css-color-converter/-/css-color-converter-2.0.0.tgz#70c00fa451a19675e2808f28de9be360c84db5fb"
+  integrity sha512-oLIG2soZz3wcC3aAl/7Us5RS8Hvvc6I8G8LniF/qfMmrm7fIKQ8RIDDRZeKyGL2SrWfNqYspuLShbnjBMVWm8g==
+  dependencies:
+    color-convert "^0.5.2"
+    color-name "^1.1.4"
+    css-unit-converter "^1.1.2"
+
 css-select@^5.1.0:
   version "5.1.0"
   resolved "https://registry.yarnpkg.com/css-select/-/css-select-5.1.0.tgz#b8ebd6554c3637ccc76688804ad3f6a6fdaea8a6"
@@ -606,6 +652,11 @@ css-tree@~2.2.0:
   dependencies:
     mdn-data "2.0.28"
     source-map-js "^1.0.1"
+
+css-unit-converter@^1.1.2:
+  version "1.1.2"
+  resolved "https://registry.yarnpkg.com/css-unit-converter/-/css-unit-converter-1.1.2.tgz#4c77f5a1954e6dbff60695ecb214e3270436ab21"
+  integrity sha512-IiJwMC8rdZE0+xiEZHeru6YoONC4rfPMqGm2W85jMIbkFvv5nFTwJVFHam2eFrN6txmoUYFAFXiv8ICVeTO0MA==
 
 css-what@^6.1.0:
   version "6.1.0"
