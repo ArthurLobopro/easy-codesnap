@@ -314,6 +314,7 @@
     "@types/vscode": "^1.96.0",
     "badge-maker": "^4.1.0",
     "esbuild-loader": "^4.3.0",
+    "sharp": "^0.34.2",
     "typescript": "^5.8.2",
     "webpack": "^5.98.0",
     "webpack-cli": "^6.0.1"

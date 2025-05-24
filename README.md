@@ -1,8 +1,8 @@
 # Easy CodeSnap
 
-[![Visual Studio Marketplace](https://raw.githubusercontent.com/ArthurLobopro/easy-codesnap/refs/heads/Badges/vscode-version.svg)](https://marketplace.visualstudio.com/items?itemName=ArthurLobo.easy-codesnap)
-[![Installs](https://raw.githubusercontent.com/ArthurLobopro/easy-codesnap/refs/heads/Badges/vscode-downloads.svg)](https://marketplace.visualstudio.com/items?itemName=ArthurLobo.easy-codesnap)
-[![Open VSX Version](https://raw.githubusercontent.com/ArthurLobopro/easy-codesnap/refs/heads/Badges/open-vsx-version.svg)](https://open-vsx.org/extension/ArthurLobo/easy-codesnap) [![Open VSX Downloads](https://raw.githubusercontent.com/ArthurLobopro/easy-codesnap/refs/heads/Badges/open-vsx-downloads.svg)](https://open-vsx.org/extension/ArthurLobo/easy-codesnap)
+[![Visual Studio Marketplace](https://raw.githubusercontent.com/ArthurLobopro/easy-codesnap/refs/heads/Badges/vscode-version.png)](https://marketplace.visualstudio.com/items?itemName=ArthurLobo.easy-codesnap)
+[![Installs](https://raw.githubusercontent.com/ArthurLobopro/easy-codesnap/refs/heads/Badges/vscode-downloads.png)](https://marketplace.visualstudio.com/items?itemName=ArthurLobo.easy-codesnap)
+[![Open VSX Version](https://raw.githubusercontent.com/ArthurLobopro/easy-codesnap/refs/heads/Badges/open-vsx-version.png)](https://open-vsx.org/extension/ArthurLobo/easy-codesnap) [![Open VSX Downloads](https://raw.githubusercontent.com/ArthurLobopro/easy-codesnap/refs/heads/Badges/open-vsx-downloads.png)](https://open-vsx.org/extension/ArthurLobo/easy-codesnap)
 
 
 
