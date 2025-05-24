@@ -1,6 +1,7 @@
 //@ts-check
 
 const { makeBadge } = require("badge-maker")
+const sharp = require("sharp")
 const fs = require("fs")
 const path = require("path")
 
@@ -42,8 +43,9 @@ async function makeOpenVsxBadges() {
         logoBase64: svgs.openVsx,
     })
 
-    fs.writeFileSync(path.join(output_dir, "open-vsx-version.svg"), versionBadge)
-    fs.writeFileSync(path.join(output_dir, "open-vsx-downloads.svg"), downloadBadge)
+    sharp(Buffer.from(versionBadge, 'utf8')).png().toFile(path.join(output_dir, "open-vsx-version.png"))
+
+    sharp(Buffer.from(downloadBadge, 'utf8')).png().toFile(path.join(output_dir, "open-vsx-downloads.png"))
 }
 
 async function makeVscodeBadges() {
@@ -96,8 +98,9 @@ async function makeVscodeBadges() {
         logoBase64: svgs.vscode,
     })
 
-    fs.writeFileSync(path.join(output_dir, "vscode-version.svg"), versionBadge)
-    fs.writeFileSync(path.join(output_dir, "vscode-downloads.svg"), downloadBadge)
+
+    sharp(Buffer.from(versionBadge, 'utf8')).png().toFile(path.join(output_dir, "vscode-version.png"))
+    sharp(Buffer.from(downloadBadge, 'utf8')).png().toFile(path.join(output_dir, "vscode-downloads.png"))
 }
 
 async function main() {
