@@ -2,11 +2,14 @@
   "name": "easy-codesnap",
   "displayName": "Easy CodeSnap",
   "description": "Extension to take beautiful custom screenshots of your code 📷",
-  "version": "1.27.4",
+  "version": "1.27.5",
   "l10n": "./l10n",
   "repository": {
     "type": "git",
     "url": "https://github.com/ArthurLobopro/easy-codesnap"
+  },
+  "sponsor": {
+    "url": "https://buymeacoffee.com/arthurlobo"
   },
   "license": "MIT",
   "icon": "icon.png",
