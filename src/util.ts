@@ -1,5 +1,6 @@
 import * as vscode from "vscode";
 import type { untypedObject } from "./types";
+
 export { writeFile } from "node:fs/promises";
 
 export function getSettings(group: string, keys: string[]) {

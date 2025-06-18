@@ -1,4 +1,4 @@
-import type { TogglableConfigNames, selectNames } from "../../../types";
+import type { selectNames, TogglableConfigNames } from "../../../types";
 import { SessionConfig } from "../../SessionConfig";
 
 type events = "change" | "click";

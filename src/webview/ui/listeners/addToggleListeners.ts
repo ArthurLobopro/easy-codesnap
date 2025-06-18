@@ -31,7 +31,10 @@ export function addToogleListeners() {
 
     handleToggleBasedChange(roundedCornersInput, "roundedCorners");
     handleToggleBasedChange(enableResizingInput, "enableResizing");
-    handleToggleBasedChange(enableSymbolBreadcrumbInput, "enableSymbolBreadcrumb");
+    handleToggleBasedChange(
+        enableSymbolBreadcrumbInput,
+        "enableSymbolBreadcrumb",
+    );
     handleToggleBasedChange(
         transparentBackgroundInput,
         "transparentBackground",

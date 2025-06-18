@@ -1,6 +1,5 @@
 import type { ExtensionConfig } from "../../../types";
 import { SessionConfig } from "../../SessionConfig";
-import { Updater } from "../Updater";
 import {
     watermarkBottomLeft,
     watermarkBottomRight,
@@ -8,6 +7,7 @@ import {
     watermarkTopLeft,
     watermarkTopRight,
 } from "../elements";
+import { Updater } from "../Updater";
 
 export class WatermarkUpdater extends Updater {
     constructor() {

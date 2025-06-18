@@ -1,7 +1,7 @@
 import { SessionConfig } from "../../SessionConfig";
 import { getDefaultWindowTitle, getWidth, px } from "../../util";
-import { Updater } from "../Updater";
 import { windowControlsNode, windowNode, windowTitleNode } from "../elements";
+import { Updater } from "../Updater";
 
 export class WindowUpdater extends Updater {
     constructor() {

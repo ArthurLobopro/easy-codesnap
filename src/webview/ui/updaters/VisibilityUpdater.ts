@@ -1,7 +1,6 @@
 import type { WebviewConfig } from "../../../types";
 import { SessionConfig } from "../../SessionConfig";
 import { getWidth, px } from "../../util";
-import { Updater } from "../Updater";
 import {
     aspectRatioSelect,
     breadcrumbNode,
@@ -17,6 +16,7 @@ import {
     windowNode,
     windowTitleNode,
 } from "../elements";
+import { Updater } from "../Updater";
 import { setupBreadcrumb } from "./CodeUpdater";
 
 export class VisibilityUpdater extends Updater {
@@ -59,8 +59,10 @@ export class VisibilityUpdater extends Updater {
         }
 
         if (breadcrumbNode) {
-            breadcrumbNode.style.display = enableSymbolBreadcrumb ? "flex" : "none";
-            
+            breadcrumbNode.style.display = enableSymbolBreadcrumb
+                ? "flex"
+                : "none";
+
             if (enableSymbolBreadcrumb) {
                 const breadcrumbContent = setupBreadcrumb();
                 if (breadcrumbContent) {

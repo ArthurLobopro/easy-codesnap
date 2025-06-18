@@ -1,5 +1,5 @@
-import { SessionConfig } from "./SessionConfig";
 import { exportPNG, exportSVG } from "./exporters";
+import { SessionConfig } from "./SessionConfig";
 import { flashFx, snippetContainerNode, windowNode } from "./ui/elements";
 import { once, redraw, setVar } from "./util";
 

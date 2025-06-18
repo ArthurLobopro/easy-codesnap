@@ -1,7 +1,7 @@
 import { SessionConfig } from "../../SessionConfig";
 import { $, t } from "../../util";
-import { Updater } from "../Updater";
 import { toggleLinkedButton, toggleLockedButton } from "../elements";
+import { Updater } from "../Updater";
 
 export class LockButtonUpdater extends Updater {
     constructor() {
