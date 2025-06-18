@@ -312,7 +312,7 @@
     "lint": "biome check --write ./src"
   },
   "devDependencies": {
-    "@biomejs/biome": "^1.9.4",
+    "@biomejs/biome": "^2.0.0",
     "@types/node": "18.x",
     "@types/vscode": "^1.96.0",
     "badge-maker": "^4.1.0",
