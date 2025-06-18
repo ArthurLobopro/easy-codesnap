@@ -1,5 +1,4 @@
 import { SessionConfig } from "../../SessionConfig";
-import { Updater } from "../Updater";
 import {
     enableResizingInput,
     enableSymbolBreadcrumbInput,
@@ -19,6 +18,7 @@ import {
     watermarkInput,
     windowStyleSelect,
 } from "../elements";
+import { Updater } from "../Updater";
 
 export class OneTimeConfigUpdater extends Updater {
     constructor() {

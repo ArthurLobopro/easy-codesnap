@@ -2,11 +2,10 @@
 import domtoimage from "dom-to-image-even-more";
 //@ts-expect-error
 import { elementToSVG } from "dom-to-svg";
-
+import type { Config as SVGOConfig } from "svgo";
+import { optimize } from "svgo/dist/svgo.browser";
 import type { WebviewConfig } from "../types";
 import { SessionConfig } from "./SessionConfig";
-import { optimize } from "svgo/dist/svgo.browser";
-import type { Config as SVGOConfig } from "svgo";
 import { cameraFlashAnimation } from "./snap";
 import { $$, vscode } from "./util";
 
@@ -17,7 +16,7 @@ export async function exportPNG(
     const url = await (async () => {
         try {
             return await toPNG(target);
-        } catch (error) {
+        } catch (_error) {
             return await toPNGFallback(target);
         }
     })();

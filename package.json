@@ -2,11 +2,14 @@
   "name": "easy-codesnap",
   "displayName": "Easy CodeSnap",
   "description": "Extension to take beautiful custom screenshots of your code 📷",
-  "version": "1.27.4",
+  "version": "1.27.5",
   "l10n": "./l10n",
   "repository": {
     "type": "git",
     "url": "https://github.com/ArthurLobopro/easy-codesnap"
+  },
+  "sponsor": {
+    "url": "https://buymeacoffee.com/arthurlobo"
   },
   "license": "MIT",
   "icon": "icon.png",
@@ -309,7 +312,7 @@
     "lint": "biome check --write ./src"
   },
   "devDependencies": {
-    "@biomejs/biome": "^1.9.4",
+    "@biomejs/biome": "^2.0.0",
     "@types/node": "18.x",
     "@types/vscode": "^1.96.0",
     "badge-maker": "^4.1.0",

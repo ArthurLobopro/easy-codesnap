@@ -1,7 +1,7 @@
 import { SessionConfig } from "../../SessionConfig";
 import { px, setVar } from "../../util";
-import { Updater } from "../Updater";
 import { snippetContainerNode } from "../elements";
+import { Updater } from "../Updater";
 
 export class VarUpdater extends Updater {
     constructor() {
@@ -65,7 +65,9 @@ export class VarUpdater extends Updater {
         );
 
         snippetContainerNode.dataset.enableresizing = String(enableResizing);
-        snippetContainerNode.dataset.enablesymbolbreadcrumb = String(enableSymbolBreadcrumb);
+        snippetContainerNode.dataset.enablesymbolbreadcrumb = String(
+            enableSymbolBreadcrumb,
+        );
         snippetContainerNode.dataset.target = target;
     }
 }

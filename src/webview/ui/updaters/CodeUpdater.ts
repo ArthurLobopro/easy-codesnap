@@ -1,5 +1,5 @@
-import { iconClassConfig } from "../../constants";
 import { ContentManager } from "../../ContentManager";
+import { iconClassConfig } from "../../constants";
 import { SessionConfig } from "../../SessionConfig";
 import { $, $$, calcTextWidth, getSymbolBreadcrumbs, setVar } from "../../util";
 import { highlightOnclickFactory } from "../highlight";

@@ -1,7 +1,7 @@
 import { SessionConfig } from "../../SessionConfig";
 import { setVar } from "../../util";
-import { Updater } from "../Updater";
 import { zoomInButton, zoomOutButton, zoomSelect } from "../elements";
+import { Updater } from "../Updater";
 
 export class ZoomUpdater extends Updater {
     constructor() {

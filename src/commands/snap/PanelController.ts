@@ -2,8 +2,8 @@ import * as vscode from "vscode";
 import type { message } from "../../types";
 import { hasOneSelection, t } from "../../util";
 import { ClipboardKeeper } from "./ClipboardKeeper";
-import { SnapActions, type updateTypes } from "./SnapActions";
 import { getConfig } from "./getConfig";
+import { SnapActions, type updateTypes } from "./SnapActions";
 
 export class PanelController {
     panel: vscode.WebviewPanel;
