@@ -1,6 +1,6 @@
 {
-    "commands.snap.title": "打开 Easy CodeSnap",
-    "commands.openSettings.title": "Easy CodeSnap: 打开设置",
+    "commands.snap.title": "开启 Easy CodeSnap",
+    "commands.openSettings.title": "Easy CodeSnap: 开启设置",
     "commands.importSettings.title": "Easy CodeSnap: 导入 CodeSnap 设置",
     "easy-codesnap.backgroundColor": "定义代码快照容器的背景色。",
     "easy-codesnap.boxShadow": "定义代码快照的 CSS 盒阴影属性。",
