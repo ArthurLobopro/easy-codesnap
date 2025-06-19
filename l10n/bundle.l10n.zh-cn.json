@@ -45,7 +45,7 @@
     "Right": "右测",
     "Locked Snap Screens will not listen any selection changes.": "锁定的快照画面将不会响应任何选项更改。",
     "Linked Snap Screens will listen only to current editor selection changes.": "链接的快照画面仅响应当前编辑器选区更改。",
-    "To change the default behavior, click": "要更改默认行为，请点击",
+    "To change the default behavior, click": "若要更改默认行为，请点击",
     "If you want to highlight a line, you can click on the line number": "若要高亮某行，可以点击对应的行号",
     "Show real line numbers.": "显示真正的行号。",
     "Only valid when `Show Line Numbers` is marked": "仅当启用 `显示行号` 时生效",
