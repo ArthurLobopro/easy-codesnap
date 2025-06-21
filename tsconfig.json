@@ -10,9 +10,9 @@
 		"rootDir": "src",
 		"strict": true,
 		"noImplicitReturns": true,
-		"allowJs": true
 	},
 	"exclude": [
-		"./src/webview/**"
+		"./src/webview/**",
+		"./dist/**",
 	]
 }
