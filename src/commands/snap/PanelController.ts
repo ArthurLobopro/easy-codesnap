@@ -81,9 +81,16 @@ export class PanelController {
         );
 
         const selectionHandler = vscode.window.onDidChangeTextEditorSelection(
-            (e) =>
-                hasOneSelection(e.selections) &&
-                this.update("text", e.textEditor.document.uri.toString()),
+            (e) => {
+                if (e.kind === vscode.TextEditorSelectionChangeKind.Command) {
+                    return;
+                }
+
+                return (
+                    hasOneSelection(e.selections) &&
+                    this.update("text", e.textEditor.document.uri.toString())
+                );
+            },
         );
         this.panel.onDidDispose(() => selectionHandler.dispose());
     }

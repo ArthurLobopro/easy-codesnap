@@ -1,3 +1,9 @@
+# 1.28.0
+
+Feat: Japanese Translation by [mnt-h](https://github.com/mnt-h)
+Enchance: Updated Chinese Translation by [SorYoshino](https://github.com/SorYoshino)
+Fix: Fixed bug with VSCode Finder
+
 # 1.27.0
 
 Feat: Symbol Breadcrumb by [Kyrax324](https://github.com/Kyrax324)
