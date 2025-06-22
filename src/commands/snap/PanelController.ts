@@ -80,16 +80,26 @@ export class PanelController {
             },
         );
 
+        let selectionTimeout: NodeJS.Timeout | null = null;
+
         const selectionHandler = vscode.window.onDidChangeTextEditorSelection(
             (e) => {
                 if (e.kind === vscode.TextEditorSelectionChangeKind.Command) {
                     return;
                 }
 
-                return (
-                    hasOneSelection(e.selections) &&
-                    this.update("text", e.textEditor.document.uri.toString())
-                );
+                if (selectionTimeout) {
+                    clearTimeout(selectionTimeout);
+                }
+
+                if (hasOneSelection(e.selections)) {
+                    selectionTimeout = setTimeout(() => {
+                        this.update(
+                            "text",
+                            e.textEditor.document.uri.toString(),
+                        );
+                    }, 50);
+                }
             },
         );
         this.panel.onDidDispose(() => selectionHandler.dispose());
