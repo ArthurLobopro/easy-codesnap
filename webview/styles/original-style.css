@@ -8,9 +8,7 @@ html {
     --window-border-radius: 4px;
     --letter-spacing: 0px;
     --zoom: 100%;
-    --max-char-width: 100%
-
-    box-sizing: border-box;
+    --max-char-width: 100% box-sizing: border-box;
 }
 
 body {
@@ -189,4 +187,14 @@ div:has(#snippet-scroll) {
 
 .link:hover {
     text-decoration: underline;
+}
+
+.follow-colors {
+    *[stroke]:not([stroke="none"]) {
+        stroke: currentColor;
+    }
+
+    *[fill]:not([fill="none"]) {
+        fill: currentColor;
+    }
 }
