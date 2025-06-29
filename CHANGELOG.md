@@ -1,3 +1,7 @@
+# 1.28.1
+
+Fix: Mitigate unnecessary clipboard history polution 
+
 # 1.28.0
 
 Feat: Japanese Translation by [mnt-h](https://github.com/mnt-h)
