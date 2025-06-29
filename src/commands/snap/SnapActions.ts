@@ -62,9 +62,6 @@ export class SnapActions {
     }
 
     "set-webview-config" = ({ config }: { config: IPanelWebviewConfig }) => {
-        console.log("Setting webview config:");
-        console.log(config);
-
         this.webViewConfig.set(config);
     };
 

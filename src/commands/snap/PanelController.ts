@@ -86,21 +86,25 @@ export class PanelController {
         const selectionHandler = vscode.window.onDidChangeTextEditorSelection(
             (e) => {
                 console.log("Selection Changed");
-                console.log(this.webViewConfig.get());
+                const { isLocked, isLinked, linkedId } =
+                    this.webViewConfig.get();
 
                 if (
                     e.kind === vscode.TextEditorSelectionChangeKind.Command ||
-                    this.webViewConfig.get().isLocked
+                    isLocked
                 ) {
-                    console.log(
-                        "Ignoring selection change due to command or lock",
-                    );
+                    return;
+                }
+
+                const editorURI = e.textEditor.document.uri.toString();
+
+                if (isLinked && linkedId !== editorURI) {
                     return;
                 }
 
                 return (
                     hasOneSelection(e.selections) &&
-                    this.update("text", e.textEditor.document.uri.toString())
+                    this.update("text", editorURI)
                 );
             },
         );
