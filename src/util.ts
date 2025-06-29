@@ -28,3 +28,7 @@ export function hasOneSelection(selections?: readonly vscode.Selection[]) {
 }
 
 export const t = vscode.l10n.t;
+
+export async function delay(ms: number) {
+    return new Promise((resolve) => setTimeout(resolve, ms));
+}

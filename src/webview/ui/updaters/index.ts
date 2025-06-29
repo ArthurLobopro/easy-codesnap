@@ -5,6 +5,7 @@ import { windowTitleNode } from "../elements";
 import { LinkButtonUpdater, LockButtonUpdater } from "./ButtonsUpdater";
 import { LineNumbersUpdater } from "./LineNumbersUpdater";
 import { OneTimeConfigUpdater } from "./OneTimeConfigUpdater";
+import { StateUpdater } from "./StateUpdater";
 import { VarUpdater } from "./VarUpdater";
 import { VisibilityUpdater } from "./VisibilityUpdater";
 import { WatermarkUpdater } from "./WatermarkUpdater";
@@ -30,6 +31,7 @@ export const updaters = [
     new OneTimeConfigUpdater(),
     new WindowUpdater(),
     new WatermarkUpdater(),
+    new StateUpdater(),
 ];
 
 export function GenericUpdate(keys: WebViewConfigKey[]) {
