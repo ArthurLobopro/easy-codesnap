@@ -1,7 +1,11 @@
 import * as vscode from "vscode";
 import { extensionSettingsNames } from "../../constants";
 import type { ExtensionConfig } from "../../types";
-import { hasOneSelection, t } from "../../util";
+import { delay, hasOneSelection, t } from "../../util";
+import type {
+    IPanelWebviewConfig,
+    PanelWebviewConfig,
+} from "./PanelWebviewConfig";
 import { savePNG, saveSVG } from "./savers";
 
 export type updateTypes = "config" | "text" | "both";
@@ -11,14 +15,17 @@ type SaveProps = { data: string; format: "svg" | "png" };
 interface SnapActionsProps {
     panel: vscode.WebviewPanel;
     update: (type: updateTypes, editorURI?: string) => Promise<void>;
+    webViewConfig: PanelWebviewConfig;
 }
 
 export class SnapActions {
     private panel: vscode.WebviewPanel;
     private update: SnapActionsProps["update"];
+    private webViewConfig: PanelWebviewConfig;
 
     constructor(props: SnapActionsProps) {
         this.panel = props.panel;
+        this.webViewConfig = props.webViewConfig;
         this.update = (...args) => props.update(...args);
     }
 
@@ -41,12 +48,25 @@ export class SnapActions {
         vscode.window.showInformationMessage(t("Image copied to clipboard!"));
     }
 
-    ready() {
+    async ready() {
         const editor = vscode.window.activeTextEditor;
         if (editor && hasOneSelection(editor.selections)) {
             this.update("both", editor.document.uri.toString());
         }
+
+        await delay(100);
+
+        this.panel.webview.postMessage({
+            type: "get-webview-config",
+        });
     }
+
+    "set-webview-config" = ({ config }: { config: IPanelWebviewConfig }) => {
+        console.log("Setting webview config:");
+        console.log(config);
+
+        this.webViewConfig.set(config);
+    };
 
     "update-config"() {
         this.update("config");

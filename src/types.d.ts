@@ -1,4 +1,5 @@
 import type { DocumentSymbol } from "vscode";
+import type { IPanelWebviewConfig } from "./commands/snap/PanelWebviewConfig";
 
 export interface ExtensionConfig {
     boxShadow: string;
@@ -97,4 +98,8 @@ export type message =
       }
     | { type: "open-settings" }
     | { type: "copy-svg"; data: string }
-    | { type: "open-config"; configName: string };
+    | { type: "open-config"; configName: string }
+    | {
+          type: "set-webview-config";
+          config: IPanelWebviewConfig;
+      };

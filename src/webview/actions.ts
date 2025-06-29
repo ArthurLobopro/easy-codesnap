@@ -5,6 +5,7 @@ import { SessionConfig } from "./SessionConfig";
 import { cameraFlashAnimation } from "./snap";
 import { UpdateCode } from "./ui/updaters";
 import { TranslationUpdater } from "./ui/updaters/TranslationUpdater";
+import { vscode } from "./util";
 
 export type actionsKey = keyof typeof actions;
 
@@ -31,6 +32,17 @@ export const actions = {
         SessionConfig.set({
             isLinked: config.linkOnOpen,
             isLocked: config.lockOnOpen,
+        });
+    },
+
+    "get-webview-config"() {
+        vscode.postMessage({
+            type: "set-webview-config",
+            config: {
+                isLocked: SessionConfig.get("isLocked"),
+                isLinked: SessionConfig.get("isLinked"),
+                linkedId: SessionConfig.get("editorID") ?? "",
+            },
         });
     },
 

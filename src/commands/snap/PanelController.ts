@@ -3,11 +3,14 @@ import type { message } from "../../types";
 import { hasOneSelection, t } from "../../util";
 import { ClipboardKeeper } from "./ClipboardKeeper";
 import { getConfig } from "./getConfig";
+import { PanelWebviewConfig } from "./PanelWebviewConfig";
 import { SnapActions, type updateTypes } from "./SnapActions";
 
 export class PanelController {
     panel: vscode.WebviewPanel;
     clipboard = new ClipboardKeeper();
+
+    webViewConfig = new PanelWebviewConfig();
 
     constructor(panel: vscode.WebviewPanel) {
         this.panel = panel;
@@ -82,7 +85,16 @@ export class PanelController {
 
         const selectionHandler = vscode.window.onDidChangeTextEditorSelection(
             (e) => {
-                if (e.kind === vscode.TextEditorSelectionChangeKind.Command) {
+                console.log("Selection Changed");
+                console.log(this.webViewConfig.get());
+
+                if (
+                    e.kind === vscode.TextEditorSelectionChangeKind.Command ||
+                    this.webViewConfig.get().isLocked
+                ) {
+                    console.log(
+                        "Ignoring selection change due to command or lock",
+                    );
                     return;
                 }
 
