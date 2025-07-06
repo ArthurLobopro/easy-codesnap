@@ -52,84 +52,84 @@
       "title": "Easy CodeSnap",
       "properties": {
         "easy-codesnap.backgroundColor": {
-          "order": 1,
           "scope": "resource",
           "type": "string",
           "default": "#abb8c3",
-          "description": "%easy-codesnap.backgroundColor%"
+          "description": "%easy-codesnap.backgroundColor%",
+          "order": 1
         },
         "easy-codesnap.boxShadow": {
-          "order": 2,
           "scope": "resource",
           "type": "string",
           "default": "rgba(0, 0, 0, 0.55) 0px 20px 68px",
-          "description": "%easy-codesnap.boxShadow%"
+          "description": "%easy-codesnap.boxShadow%",
+          "order": 2
         },
         "easy-codesnap.containerPadding": {
-          "order": 3,
           "scope": "resource",
           "type": "string",
           "default": "3em",
-          "description": "%easy-codesnap.containerPadding%"
+          "description": "%easy-codesnap.containerPadding%",
+          "order": 3
         },
         "easy-codesnap.roundedCorners": {
           "scope": "resource",
           "type": "boolean",
           "default": true,
-          "description": "%easy-codesnap.roundedCorners%"
+          "description": "%easy-codesnap.roundedCorners%",
+          "order": 4
         },
         "easy-codesnap.showWindowControls": {
-          "order": 4,
           "scope": "resource",
           "type": "boolean",
           "default": true,
-          "description": "%easy-codesnap.showWindowControls%"
+          "description": "%easy-codesnap.showWindowControls%",
+          "order": 5
         },
         "easy-codesnap.showWindowTitle": {
-          "order": 5,
           "scope": "resource",
           "type": "boolean",
           "default": false,
-          "description": "%easy-codesnap.showWindowTitle%"
+          "description": "%easy-codesnap.showWindowTitle%",
+          "order": 6
         },
         "easy-codesnap.windowTitleTemplate": {
-          "order": 6,
           "scope": "resource",
           "type": "string",
           "default": "{workspace} - {fileName}",
           "minLength": 1,
-          "description": "%easy-codesnap.windowTitleTemplate%"
+          "description": "%easy-codesnap.windowTitleTemplate%",
+          "order": 7
         },
         "easy-codesnap.showLineNumbers": {
-          "order": 7,
           "scope": "resource",
           "type": "boolean",
           "default": true,
-          "description": "%easy-codesnap.showLineNumbers%"
+          "description": "%easy-codesnap.showLineNumbers%",
+          "order": 8
         },
         "easy-codesnap.realLineNumbers": {
-          "order": 8,
           "scope": "resource",
           "type": "boolean",
           "default": false,
-          "description": "%easy-codesnap.realLineNumbers%"
+          "description": "%easy-codesnap.realLineNumbers%",
+          "order": 9
         },
         "easy-codesnap.highlightLineNumber": {
-          "order": 9,
           "scope": "resource",
           "type": "boolean",
           "default": false,
-          "description": "%easy-codesnap.highlightLineNumber%"
+          "description": "%easy-codesnap.highlightLineNumber%",
+          "order": 10
         },
         "easy-codesnap.transparentBackground": {
-          "order": 10,
           "scope": "resource",
           "type": "boolean",
           "default": false,
-          "description": "%easy-codesnap.transparentBackground%"
+          "description": "%easy-codesnap.transparentBackground%",
+          "order": 11
         },
         "easy-codesnap.target": {
-          "order": 11,
           "scope": "resource",
           "type": "string",
           "enum": [
@@ -137,10 +137,10 @@
             "window"
           ],
           "default": "container",
-          "description": "%easy-codesnap.target%"
+          "description": "%easy-codesnap.target%",
+          "order": 12
         },
         "easy-codesnap.shutterAction": {
-          "order": 12,
           "scope": "resource",
           "type": "string",
           "enum": [
@@ -148,24 +148,24 @@
             "copy"
           ],
           "default": "copy",
-          "description": "%easy-codesnap.shutterAction%"
+          "description": "%easy-codesnap.shutterAction%",
+          "order": 13
         },
         "easy-codesnap.enableResizing": {
-          "order": 13,
           "scope": "resource",
           "type": "boolean",
           "default": true,
-          "description": "%easy-codesnap.enableResizing%"
+          "description": "%easy-codesnap.enableResizing%",
+          "order": 14
         },
         "easy-codesnap.enableSymbolBreadcrumb": {
-          "order": 14,
           "scope": "resource",
           "type": "boolean",
           "default": false,
-          "description": "%easy-codesnap.enableSymbolBreadcrumb%"
+          "description": "%easy-codesnap.enableSymbolBreadcrumb%",
+          "order": 15
         },
         "easy-codesnap.roundingLevel": {
-          "order": 14,
           "scope": "resource",
           "type": "number",
           "default": 1,
@@ -175,24 +175,24 @@
             2,
             3,
             4
-          ]
+          ],
+          "order": 16
         },
         "easy-codesnap.lockOnOpen": {
-          "order": 15,
           "scope": "resource",
           "type": "boolean",
           "default": false,
-          "description": "%easy-codesnap.lockOnOpen%"
+          "description": "%easy-codesnap.lockOnOpen%",
+          "order": 17
         },
         "easy-codesnap.linkOnOpen": {
-          "order": 16,
           "scope": "resource",
           "type": "boolean",
           "default": false,
-          "description": "%easy-codesnap.linkOnOpen%"
+          "description": "%easy-codesnap.linkOnOpen%",
+          "order": 18
         },
         "easy-codesnap.saveFormat": {
-          "order": 17,
           "scope": "resource",
           "type": "string",
           "default": "png",
@@ -200,10 +200,10 @@
           "enum": [
             "png",
             "svg"
-          ]
+          ],
+          "order": 19
         },
         "easy-codesnap.saveScale": {
-          "order": 18,
           "scope": "resource",
           "type": "number",
           "default": 1,
@@ -216,10 +216,10 @@
             2,
             3,
             4
-          ]
+          ],
+          "order": 20
         },
         "easy-codesnap.windowStyle": {
-          "order": 19,
           "scope": "resource",
           "type": "string",
           "default": "macos",
@@ -227,10 +227,10 @@
           "enum": [
             "macos",
             "windows"
-          ]
+          ],
+          "order": 21
         },
         "easy-codesnap.aspect-ratio": {
-          "order": 20,
           "scope": "resource",
           "type": "string",
           "default": "none",
@@ -242,31 +242,31 @@
             "9:16",
             "16:9",
             "1,91:1"
-          ]
+          ],
+          "order": 22
         },
         "easy-codesnap.fullLinesSelection": {
-          "order": 21,
           "scope": "resource",
           "type": "boolean",
           "default": false,
-          "description": "%easy-codesnap.fullLinesSelection%"
+          "description": "%easy-codesnap.fullLinesSelection%",
+          "order": 23
         },
         "easy-codesnap.watermark": {
-          "order": 22,
           "scope": "resource",
           "type": "boolean",
           "default": false,
-          "description": "%easy-codesnap.watermark%"
+          "description": "%easy-codesnap.watermark%",
+          "order": 24
         },
         "easy-codesnap.defaultWatermarkText": {
-          "order": 23,
           "scope": "resource",
           "type": "string",
           "default": "Made with Easy CodeSnap",
-          "description": "%easy-codesnap.defaultWatermarkText%"
+          "description": "%easy-codesnap.defaultWatermarkText%",
+          "order": 25
         },
         "easy-codesnap.watermarkPosition": {
-          "order": 24,
           "scope": "resource",
           "type": "string",
           "default": "bottom-right",
@@ -276,16 +276,17 @@
             "bottom-left",
             "top-right",
             "top-left"
-          ]
+          ],
+          "order": 26
         },
         "easy-codesnap.maxCharWidth": {
-          "order": 25,
           "scope": "resource",
           "type": "integer",
           "default": 0,
           "minimum": 0,
           "maximum": 200,
-          "description": "%easy-codesnap.maxCharWidth%"
+          "description": "%easy-codesnap.maxCharWidth%",
+          "order": 27
         }
       }
     }
@@ -325,7 +326,7 @@
   "dependencies": {
     "@arthur-lobo/custom-tooltip": "^1.0.3",
     "@arthur-lobo/load-svg": "^1.1.1",
-    "@arthur-lobo/object-pick": "^1.3.0",
+    "@arthur-lobo/object-pick": "^1.5.0",
     "@vscode/codicons": "^0.0.36",
     "@vscode/l10n": "^0.0.18",
     "dom-to-image-even-more": "^1.0.4",
