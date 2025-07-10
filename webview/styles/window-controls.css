@@ -36,10 +36,19 @@
         justify-self: right;
         order: 3;
 
+        &[data-icon-type="round"] .button [data-type="square"]{
+            display: none;
+        }
+        &[data-icon-type="square"] .button [data-type="round"]{
+            display: none;
+        }
+
         *.dot {
             display: none;
         }
     }
+
+
 }
 
 #navbar {

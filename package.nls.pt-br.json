@@ -28,5 +28,6 @@
     "easy-codesnap.watermark": "Mostrar marca d'água",
     "easy-codesnap.defaultWatermarkText": "Texto padrão da marca d'água",
     "easy-codesnap.watermarkPosition": "Posição da marca d'água",
-    "easy-codesnap.maxCharWidth": "Tamanho máximo da linha baseado em caracteres. Use o valor 0 para não limitar"
+    "easy-codesnap.maxCharWidth": "Tamanho máximo da linha baseado em caracteres. Use o valor 0 para não limitar",
+     "easy-codesnap.windowIconType": "O tipo de ícone da janela, apenas funciona quando `windowStyle` é `windows`"
 }

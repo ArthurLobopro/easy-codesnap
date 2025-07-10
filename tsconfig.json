@@ -7,9 +7,9 @@
 			"ES2024"
 		],
 		"sourceMap": true,
-		"rootDir": "src",
+		"rootDir": ".",
 		"strict": true,
-		"noImplicitReturns": true,
+		"noImplicitReturns": true
 	},
 	"exclude": [
 		"./src/webview/**",

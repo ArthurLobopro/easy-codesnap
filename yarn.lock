@@ -7,15 +7,15 @@
   resolved "https://registry.npmjs.org/@arthur-lobo/custom-tooltip/-/custom-tooltip-1.0.3.tgz"
   integrity sha512-l6Fz70mcs+Sb9Zzz6MZQXlMNRkA+5hsN9R8BLa/yZYQ+SQerI7vh6nZiwR3Pfpo/SdL/+DY3TgO+jaDWOso7og==
 
-"@arthur-lobo/load-svg@^1.0.2":
-  version "1.0.2"
-  resolved "https://registry.npmjs.org/@arthur-lobo/load-svg/-/load-svg-1.0.2.tgz"
-  integrity sha512-eE2FLQHugZ0f1uH7GHKtYpHt1Z4CK9l6k/Z2tbUYpualP5Ky6qy1KOSdflupcqhoYMB1Da45NBi36ZbrOiREaw==
+"@arthur-lobo/load-svg@^1.1.1":
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/@arthur-lobo/load-svg/-/load-svg-1.1.1.tgz#14b471811fbd919c7c8c99c3dd0d4f4026ed1138"
+  integrity sha512-DeftVlcBBBIOPmyYqn9imDiXXyg98/H5Ov5yhb7z+TCvtXKea8hXooBxR8mq3FGtMK7DkqwicOgAJAKAPMy7tA==
 
-"@arthur-lobo/object-pick@^1.3.0":
-  version "1.3.0"
-  resolved "https://registry.npmjs.org/@arthur-lobo/object-pick/-/object-pick-1.3.0.tgz"
-  integrity sha512-GGGN01vJG+eD0KYWFbQtaA12krpokuh8nWSIr0FD69X+GjGFqfSxTYSnf9zWySzVGEx0JgIfCuFnir/tz/cESg==
+"@arthur-lobo/object-pick@^1.5.0":
+  version "1.5.0"
+  resolved "https://registry.yarnpkg.com/@arthur-lobo/object-pick/-/object-pick-1.5.0.tgz#b43ef838d57e906c64f574e5b9f5fceb4595aeff"
+  integrity sha512-bxkPThBXHBl3U4CxEKxko3rot8YrJAKzelgePe5EDrhBX3B5E4Uj9gRH9gsMxfOJWDvMWGAPXG/qIFCor8zOeg==
 
 "@babel/polyfill@^7.7.0":
   version "7.12.1"
