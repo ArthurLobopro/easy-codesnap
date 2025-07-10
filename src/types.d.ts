@@ -30,6 +30,7 @@ export interface ExtensionConfig {
     target: "container" | "window";
     shutterAction: "save" | "copy";
     windowStyle: "macos" | "windows";
+    windowIconType: "round" | "square";
     aspectRatio: "none" | "1:1" | "1,91:1" | "4:5" | "9:16" | "16:9";
     watermarkPosition:
         | "bottom-right"
@@ -86,6 +87,7 @@ export type selectNames =
           | "zoom"
           | "saveScale"
           | "aspectRatio"
+          | "windowIconType"
       >
     | ("watermarkPosition-Y" | "watermarkPosition-X");
 

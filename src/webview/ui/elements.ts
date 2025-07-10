@@ -58,6 +58,7 @@ export const windowStyleSelect = getSelect("windowStyle");
 export const zoomSelect = getSelect("zoom");
 export const saveScaleSelect = getSelect("saveScale");
 export const aspectRatioSelect = getSelect("aspectRatio");
+export const windowIconTypeSelect = getSelect("windowIconType");
 
 //Buttons
 export const openSettingsButton = getButton("open-settings");

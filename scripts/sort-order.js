@@ -2,16 +2,17 @@
 const { writeFileSync } = require("fs");
 const { resolve } = require("path");
 
-const package = require("../package.json");
+const packageContent = require("../package.json");
 const { omit } = require("@arthur-lobo/object-pick");
 
-const properties = package.contributes.configuration.properties;
+const properties = packageContent.contributes.configuration.properties;
 
 Object.entries(properties).forEach(([key, value], index) => {
     properties[key] = {
+        //@ts-ignore
         ...omit(value, ["order"]),
         order: index + 1
     };
 });
 
-writeFileSync(resolve(__dirname, "../package.json"), JSON.stringify(package, null, 2));
+writeFileSync(resolve(__dirname, "../package.json"), JSON.stringify(packageContent, null, 2));

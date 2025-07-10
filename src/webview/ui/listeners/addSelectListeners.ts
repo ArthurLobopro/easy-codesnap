@@ -5,6 +5,7 @@ import {
     saveScaleSelect,
     shutterActionSelect,
     targetSelect,
+    windowIconTypeSelect,
     windowStyleSelect,
     zoomSelect,
 } from "../elements";
@@ -19,4 +20,5 @@ export function addSelectListeners() {
     handleSelectBasedChange(windowStyleSelect, "windowStyle");
     handleSelectBasedChange(zoomSelect, "zoom");
     handleSelectBasedChange(aspectRatioSelect, "aspectRatio");
+    handleSelectBasedChange(windowIconTypeSelect, "windowIconType");
 }

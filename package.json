@@ -230,6 +230,12 @@
           ],
           "order": 21
         },
+        "easy-codesnap.windowIconType": {
+          "scope": "resource",
+          "type": "string",
+          "enum": ["round", "square"],
+          "default": "round"
+        },
         "easy-codesnap.aspect-ratio": {
           "scope": "resource",
           "type": "string",

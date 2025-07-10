@@ -16,6 +16,7 @@ import {
     targetSelect,
     transparentBackgroundInput,
     watermarkInput,
+    windowIconTypeSelect,
     windowStyleSelect,
 } from "../elements";
 import { Updater } from "../Updater";
@@ -39,6 +40,7 @@ export class OneTimeConfigUpdater extends Updater {
             "saveScale",
             "highlightLineNumber",
             "watermark",
+            "windowIconType",
         ]);
     }
 
@@ -61,6 +63,7 @@ export class OneTimeConfigUpdater extends Updater {
             highlightLineNumber,
             watermark,
             maxCharWidth,
+            windowIconType,
         } = SessionConfig.get();
 
         showWindowTitleInput.checked = showWindowTitle;
@@ -85,6 +88,9 @@ export class OneTimeConfigUpdater extends Updater {
         saveFormatSelect.value = saveFormat;
         windowStyleSelect.value = windowStyle;
         saveScaleSelect.value = saveScale.toString();
+
+        windowIconTypeSelect.value = windowIconType;
+        windowIconTypeSelect.disabled = windowStyle !== "windows";
 
         maxCharWidthInput.value = String(maxCharWidth);
     }

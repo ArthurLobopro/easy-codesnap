@@ -119,6 +119,13 @@
                 </select>
               </li>
               <li>
+                <span data-l10n="Icon Type"></span>
+                <select data-configname="windowIconType">
+                  <option value="round" data-l10n="Rounded"></option>
+                  <option value="square" data-l10n="Square"></option>
+                </select>
+              </li>
+              <li>
                 <label class="tooltip horizontal-left">
                   <span data-l10n="Show Window Title"></span>
                   <input type="checkbox" data-configname="showWindowTitle" tabindex="-1">
@@ -345,18 +352,21 @@
         <div id="window" data-style="macos">
           <div id="watermark"></div>
           <div id="navbar">
-            <div id="window-controls">
+            <div id="window-controls" data-icon-type="round">
               <div class="red dot"></div>
               <div class="yellow dot"></div>
               <div class="green dot"></div>
               <div class="button">
-                <insert-svg src="./assets/windows/minimize.svg"></insert-svg>
+                <insert-svg data-type="square" src="./assets/windows/square/minimize.svg"></insert-svg>
+                <insert-svg data-type="round" src="./assets/windows/round/minimize.svg"></insert-svg>
               </div>
               <div class="button">
-                <insert-svg src="./assets/windows/maximize.svg"></insert-svg>
+                <insert-svg data-type="square" src="./assets/windows/square/maximize.svg"></insert-svg>
+                <insert-svg data-type="round" src="./assets/windows/round/maximize.svg"></insert-svg>
               </div>
               <div class="button">
-                <insert-svg src="./assets/windows/close.svg"></insert-svg>
+                <insert-svg data-type="square" src="./assets/windows/square/close.svg"></insert-svg>
+                <insert-svg data-type="round" src="./assets/windows/round/close.svg"></insert-svg>
               </div>
             </div>
             <div id="window-title"></div>
