@@ -1,3 +1,7 @@
+# 1.28.2
+
+Feat: add windowIconStyle
+
 # 1.28.1
 
 Fix: Mitigate unnecessary clipboard history polution 
