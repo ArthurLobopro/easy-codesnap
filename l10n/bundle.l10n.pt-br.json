@@ -65,5 +65,8 @@
     "You must have one text selection!": "Você precisa ter algum texto selecionado!",
     "Maximum line width based on characters. Use value 0 for no limit.": "Tamanho máximo da linha baseado em caracteres. Use o valor 0 para não limitar.",
     "Invalid values will be ignored and the last valid value will be restored": "Valores inválidos irão ser ignorados e o último valor válido será restaurado",
-    "Enable Symbol Breadcrumb": "Ativar Breadcrumb de Símbolos"
+    "Enable Symbol Breadcrumb": "Ativar Breadcrumb de Símbolos",
+    "Icon Type": "Tipo de ícone",
+    "Rounded": "Redondo",
+    "Square": "Quadrado"
 }
