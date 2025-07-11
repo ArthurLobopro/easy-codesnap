@@ -7,7 +7,6 @@ import {
     targetSelect,
     windowIconTypeSelect,
     windowStyleSelect,
-    zoomSelect,
 } from "../elements";
 import { handleSelectBasedChange } from "./handlers";
 
@@ -18,7 +17,7 @@ export function addSelectListeners() {
     handleSelectBasedChange(targetSelect, "target");
     handleSelectBasedChange(roundingLevelSelect, "roundingLevel");
     handleSelectBasedChange(windowStyleSelect, "windowStyle");
-    handleSelectBasedChange(zoomSelect, "zoom");
+    // handleSelectBasedChange(zoomSelect, "zoom");
     handleSelectBasedChange(aspectRatioSelect, "aspectRatio");
     handleSelectBasedChange(windowIconTypeSelect, "windowIconType");
 }

@@ -1,4 +1,5 @@
 import { $$, t } from "../../util";
+import { useTranslationUpdater } from "../react/contexts/TranslationContext";
 
 export function TranslationUpdater() {
     console.time("TranslationUpdater");
@@ -10,6 +11,8 @@ export function TranslationUpdater() {
                 return `<code>${content}</code>`;
             },
         );
+
+        useTranslationUpdater.getState().updateTranslation();
     });
     console.timeEnd("TranslationUpdater");
 }

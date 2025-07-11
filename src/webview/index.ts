@@ -7,6 +7,8 @@ import { btnSave } from "./ui/elements";
 import { addListeners } from "./ui/listeners";
 import { vscode } from "./util";
 
+import "./ui/reactRender";
+
 registerLoadSVG();
 registerInsertSVG();
 

@@ -10,7 +10,6 @@ import { VarUpdater } from "./VarUpdater";
 import { VisibilityUpdater } from "./VisibilityUpdater";
 import { WatermarkUpdater } from "./WatermarkUpdater";
 import { WindowUpdater } from "./WindowUpdater";
-import { ZoomUpdater } from "./ZoomUpdater";
 
 export * from "./ButtonsUpdater";
 export * from "./CodeUpdater";
@@ -24,7 +23,7 @@ export * from "./ZoomUpdater";
 export const updaters = [
     new LockButtonUpdater(),
     new LinkButtonUpdater(),
-    new ZoomUpdater(),
+    // new ZoomUpdater(),
     new VarUpdater(),
     new VisibilityUpdater(),
     new LineNumbersUpdater(),

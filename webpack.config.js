@@ -1,15 +1,15 @@
 //@ts-check
 
-"use strict"
+"use strict";
 
-const path = require("path")
+const path = require("path");
 
 /** 
  * @param {{mode: "production" | "development"}} argv 
  * @returns {import('webpack').Configuration[]}
  * */
 const config = (env, argv) => {
-  const devtool = argv.mode === "production" ? false : "source-map"
+  const devtool = argv.mode === "production" ? false : "source-map";
 
   return [
     {
@@ -35,7 +35,7 @@ const config = (env, argv) => {
       module: {
         rules: [
           {
-            test: /\.ts$/,
+            test: /\.tsx?$/,
             exclude: [/node_modules/],
             use: [
               {
@@ -58,14 +58,14 @@ const config = (env, argv) => {
       resolve: {
         // support reading TypeScript and JavaScript files, 📖 -> https://github.com/TypeStrong/ts-loader
         mainFields: ["browser", "module", "main"],
-        extensions: [".ts", ".js"],
+        extensions: [".tsx", ".ts", ".js"],
         alias: {},
         fallback: {}
       },
       module: {
         rules: [
           {
-            test: /\.ts$/,
+            test: /\.(ts|tsx)$/,
             exclude: [/node_modules/],
             use: [
               {
@@ -79,6 +79,6 @@ const config = (env, argv) => {
         ]
       }
     }
-  ]
-}
-module.exports = config
+  ];
+};
+module.exports = config;

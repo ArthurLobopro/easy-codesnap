@@ -8,13 +8,12 @@ import { addNumberInputListeners } from "./addNumberInputListeners";
 import { addOpenConfigListeners } from "./addOpenConfigListeners";
 import { addSelectListeners } from "./addSelectListeners";
 import { addToogleListeners } from "./addToggleListeners";
-import { addZoomListeners } from "./addZoomListeners";
 
 export function addListeners() {
     addToogleListeners();
     addSelectListeners();
     addButtonListeners();
-    addZoomListeners();
+    // addZoomListeners();
     addContentEditableListeners();
     addHideOneTimeConfigListener();
     addOpenConfigListeners();

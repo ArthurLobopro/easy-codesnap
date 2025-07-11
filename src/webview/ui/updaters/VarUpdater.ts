@@ -19,6 +19,7 @@ export class VarUpdater extends Updater {
             "letterSpacing",
             "target",
             "maxCharWidth",
+            "zoom",
         ]);
     }
 
@@ -37,6 +38,7 @@ export class VarUpdater extends Updater {
             letterSpacing,
             target,
             maxCharWidth,
+            zoom,
         } = SessionConfig.get();
 
         setVar("ligatures", fontLigatures ? "normal" : "none");
@@ -51,6 +53,7 @@ export class VarUpdater extends Updater {
         setVar("container-background-color", backgroundColor);
         setVar("box-shadow", boxShadow);
         setVar("container-padding", containerPadding);
+        setVar("zoom", `${zoom}%`);
 
         setVar(
             "window-border-radius",

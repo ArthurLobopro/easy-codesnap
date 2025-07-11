@@ -55,7 +55,7 @@ export const saveFormatSelect = getSelect("saveFormat");
 export const targetSelect = getSelect("target");
 export const roundingLevelSelect = getSelect("roundingLevel");
 export const windowStyleSelect = getSelect("windowStyle");
-export const zoomSelect = getSelect("zoom");
+// export const zoomSelect = getSelect("zoom");
 export const saveScaleSelect = getSelect("saveScale");
 export const aspectRatioSelect = getSelect("aspectRatio");
 export const windowIconTypeSelect = getSelect("windowIconType");
@@ -66,8 +66,8 @@ export const resetConfigButton = getButton("reset-config");
 export const saveConfigButton = getButton("save-config");
 export const toggleLockedButton = getButton("toggle-lock");
 export const toggleLinkedButton = getButton("toggle-link");
-export const zoomInButton = getButton("zoom-in");
-export const zoomOutButton = getButton("zoom-out");
+// export const zoomInButton = getButton("zoom-in");
+// export const zoomOutButton = getButton("zoom-out");
 
 //Watermark
 function getRadio(value: string) {
