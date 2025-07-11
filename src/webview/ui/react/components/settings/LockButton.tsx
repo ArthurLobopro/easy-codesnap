@@ -1,4 +1,4 @@
-import { vscode } from "../../../../util";
+import { text, vscode } from "../../../../util";
 import { useConfig, useSetConfig } from "../../hooks/useConfig";
 import { useTranslation } from "../../hooks/useTranslation";
 
@@ -21,16 +21,16 @@ export function LockButton() {
                 className={`codicon ${isLocked ? "codicon-lock" : "codicon-unlock"}`}
             />
             <span className="tooltip-text right">
-                <span data-state="isLocked">
-                    {t(isLocked ? "Unlock changes" : "Lock changes")}
-                </span>
-                . <br />
+                <span>{t(isLocked ? "Unlock changes" : "Lock changes")}.</span>{" "}
+                <br />
                 <span>
-                    {t(
-                        "Locked Snap Screens will not listen any selection changes.",
+                    {text(
+                        t(
+                            "Locked Snap Screens will not listen any selection changes.",
+                        ),
+                        t("To change the default behavior, click"),
                     )}
                 </span>
-                <span>{t("To change the default behavior, click")}</span>
                 <span
                     className="link"
                     data-openconfig="lockOnOpen"
@@ -41,6 +41,7 @@ export function LockButton() {
                         });
                     }}
                 >
+                    {" "}
                     {t("here")}
                 </span>
                 .

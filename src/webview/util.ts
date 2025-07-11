@@ -79,3 +79,5 @@ export function getWidth(element: HTMLElement) {
 }
 
 export { t } from "@vscode/l10n";
+
+export const text = (...args: string[]) => args.join(" ");

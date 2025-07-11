@@ -18,10 +18,8 @@ export function useConfigList<T extends keyof Omit<ISessionConfig, "set">>(
         Pick<ISessionConfig, "set">;
 }
 
-export function useConfig<T extends keyof Omit<ISessionConfig, "set">>(
-    keys: T,
-) {
-    return useSessionConfig((state) => state[keys]);
+export function useConfig<T extends keyof Omit<ISessionConfig, "set">>(key: T) {
+    return useSessionConfig((state) => state[key]);
 }
 
 export function useSetConfig() {

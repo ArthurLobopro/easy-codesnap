@@ -1,3 +1,4 @@
+import { text } from "../../../../util";
 import { useConfig, useSetConfig } from "../../hooks/useConfig";
 import { useTranslation } from "../../hooks/useTranslation";
 import { LinkIcon, UnlinkIcon } from "../icons";
@@ -23,13 +24,15 @@ export function LinkButton() {
                 <span data-state="isLinked">{t("Connect to editor")}</span>.{" "}
                 <br />
                 <span>
-                    {t(
-                        "Linked Snap Screens will listen only to current editor selection changes.",
+                    {text(
+                        t(
+                            "Linked Snap Screens will listen only to current editor selection changes.",
+                        ),
+                        t("To change the default behavior, click"),
                     )}
                 </span>
-                <span>{t("To change the default behavior, click")}</span>
                 <span className="link" data-openconfig="linkOnOpen">
-                    {t("here")}
+                    {` ${t("here")}`}
                 </span>
                 .
             </span>

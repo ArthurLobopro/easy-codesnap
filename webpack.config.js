@@ -98,4 +98,5 @@ const config = (env, argv) => {
     }
   ];
 };
+
 module.exports = config;
