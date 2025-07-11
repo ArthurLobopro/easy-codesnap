@@ -1,0 +1,38 @@
+import { useConfig, useSetConfig } from "../../hooks/useConfig";
+import { useTranslation } from "../../hooks/useTranslation";
+import { LinkIcon, UnlinkIcon } from "../icons";
+
+export function LinkButton() {
+    const { t } = useTranslation();
+
+    const set = useSetConfig();
+    const isLinked = useConfig("isLinked");
+
+    return (
+        <button
+            className="tooltip bottom"
+            id="link-indicator"
+            data-state="unlinked"
+            data-action="toggle-link"
+            data-configname="isLinked"
+            type="button"
+            onClick={() => set({ isLinked: !isLinked })}
+        >
+            {isLinked ? <LinkIcon /> : <UnlinkIcon />}
+            <span className="tooltip-text right">
+                <span data-state="isLinked">{t("Connect to editor")}</span>.{" "}
+                <br />
+                <span>
+                    {t(
+                        "Linked Snap Screens will listen only to current editor selection changes.",
+                    )}
+                </span>
+                <span>{t("To change the default behavior, click")}</span>
+                <span className="link" data-openconfig="linkOnOpen">
+                    {t("here")}
+                </span>
+                .
+            </span>
+        </button>
+    );
+}
