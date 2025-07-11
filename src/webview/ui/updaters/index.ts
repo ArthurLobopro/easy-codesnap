@@ -2,7 +2,6 @@ import type { WebViewConfigKey } from "../../../types";
 import { SessionConfig } from "../../SessionConfig";
 import { getDefaultWindowTitle } from "../../util";
 import { windowTitleNode } from "../elements";
-import { LinkButtonUpdater, LockButtonUpdater } from "./ButtonsUpdater";
 import { LineNumbersUpdater } from "./LineNumbersUpdater";
 import { OneTimeConfigUpdater } from "./OneTimeConfigUpdater";
 import { StateUpdater } from "./StateUpdater";
@@ -11,18 +10,16 @@ import { VisibilityUpdater } from "./VisibilityUpdater";
 import { WatermarkUpdater } from "./WatermarkUpdater";
 import { WindowUpdater } from "./WindowUpdater";
 
-export * from "./ButtonsUpdater";
 export * from "./CodeUpdater";
 export * from "./LineNumbersUpdater";
 export * from "./OneTimeConfigUpdater";
 export * from "./UIUpdater";
 export * from "./VarUpdater";
 export * from "./VisibilityUpdater";
-export * from "./ZoomUpdater";
 
 export const updaters = [
-    new LockButtonUpdater(),
-    new LinkButtonUpdater(),
+    // new LockButtonUpdater(),
+    // new LinkButtonUpdater(),
     // new ZoomUpdater(),
     new VarUpdater(),
     new VisibilityUpdater(),

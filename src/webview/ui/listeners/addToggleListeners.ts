@@ -9,8 +9,6 @@ import {
     showLineNumbersInput,
     showWindowControlsInput,
     showWindowTitleInput,
-    toggleLinkedButton,
-    toggleLockedButton,
     transparentBackgroundInput,
     watermarkBottomLeft,
     watermarkBottomRight,
@@ -18,7 +16,7 @@ import {
     watermarkTopLeft,
     watermarkTopRight,
 } from "../elements";
-import { handleToggleBasedChange, handleToggleBasedClick } from "./handlers";
+import { handleToggleBasedChange } from "./handlers";
 
 export function addToogleListeners() {
     handleToggleBasedChange(showLineNumbersInput, "showLineNumbers");
@@ -39,9 +37,6 @@ export function addToogleListeners() {
         transparentBackgroundInput,
         "transparentBackground",
     );
-
-    handleToggleBasedClick(toggleLinkedButton, "isLinked");
-    handleToggleBasedClick(toggleLockedButton, "isLocked");
 
     [
         watermarkTopLeft,

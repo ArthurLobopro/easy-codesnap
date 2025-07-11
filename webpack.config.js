@@ -75,7 +75,24 @@ const config = (env, argv) => {
                 }
               }
             ]
-          }
+          },
+          {
+            test: /\.svg$/i,
+            issuer: /\.[jt]sx?$/,
+            use: [
+              {
+                loader: '@svgr/webpack',
+                options: {
+                  exportType: "named",
+                  namedExport: "ReactComponent",
+                  expandProps: "end",
+                  svgProps: {},
+                  plugins: ["@svgr/plugin-jsx"],
+
+                }
+              },
+            ],
+          },
         ]
       }
     }

@@ -64,8 +64,8 @@ export const windowIconTypeSelect = getSelect("windowIconType");
 export const openSettingsButton = getButton("open-settings");
 export const resetConfigButton = getButton("reset-config");
 export const saveConfigButton = getButton("save-config");
-export const toggleLockedButton = getButton("toggle-lock");
-export const toggleLinkedButton = getButton("toggle-link");
+// export const toggleLockedButton = getButton("toggle-lock");
+// export const toggleLinkedButton = getButton("toggle-link");
 // export const zoomInButton = getButton("zoom-in");
 // export const zoomOutButton = getButton("zoom-out");
 

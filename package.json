@@ -323,6 +323,7 @@
   },
   "devDependencies": {
     "@biomejs/biome": "^2.0.0",
+    "@svgr/webpack": "^8.1.0",
     "@types/node": "18.x",
     "@types/react": "^19.1.8",
     "@types/react-dom": "^19.1.6",

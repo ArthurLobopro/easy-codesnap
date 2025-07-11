@@ -33,20 +33,16 @@ export function ZoomBar() {
 
     return (
         <>
-            <button className={`tooltip bottom ${zoom === ZOOM_LEVELS[0] ? "disabled" : ""}`} data-action="zoom-out" onClick={removeZoom}>
+            <button className={`tooltip bottom ${zoom === ZOOM_LEVELS[0] ? "disabled" : ""}`} onClick={removeZoom}>
                 <span className="codicon codicon-zoom-out"></span>
                 <span className="tooltip-text">
                     {t("Zoom out")}
                 </span>
             </button>
             <select data-configname="zoom" value={zoom} onChange={e => setZoom(Number(e.target.value) as ZoomLevel)}>
-                <option value="50">50%</option>
-                <option value="75">75%</option>
-                <option value="100" >100%</option>
-                <option value="125">125%</option>
-                <option value="150">150%</option>
+                {ZOOM_LEVELS.map((l) => <option value={l} key={l}>{l}%</option>)}
             </select>
-            <button className={`tooltip bottom ${zoom === ZOOM_LEVELS.at(-1) ? "disabled" : ""}`} data-action="zoom-in" onClick={addZoom}>
+            <button className={`tooltip bottom ${zoom === ZOOM_LEVELS.at(-1) ? "disabled" : ""}`} onClick={addZoom}>
                 <span className="codicon codicon-zoom-in"></span>
                 <span className="tooltip-text">{t("Zoom in")}</span>
             </button>

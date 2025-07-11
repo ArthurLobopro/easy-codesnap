@@ -1,6 +1,12 @@
 {
     "$schema": "https://biomejs.dev/schemas/2.0.0/schema.json",
-    "assist": { "actions": { "source": { "organizeImports": "on" } } },
+    "assist": {
+        "actions": {
+            "source": {
+                "organizeImports": "on"
+            }
+        }
+    },
     "linter": {
         "enabled": true,
         "rules": {
@@ -24,6 +30,10 @@
                 "useNumberNamespace": "error",
                 "noInferrableTypes": "error",
                 "noUselessElse": "error"
+            },
+            "a11y": {
+                "noStaticElementInteractions": "off",
+                "useKeyWithClickEvents": "off"
             }
         }
     },
@@ -33,6 +43,9 @@
         "indentWidth": 4
     },
     "files": {
-        "includes": ["src/**/*.ts"]
+        "includes": [
+            "src/**/*.ts",
+            "src/**/*.tsx"
+        ]
     }
 }
