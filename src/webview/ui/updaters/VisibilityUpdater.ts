@@ -6,9 +6,6 @@ import {
     breadcrumbNode,
     navbarNode,
     roundingLevelSelect,
-    saveFormatSelect,
-    saveScaleSelect,
-    shutterActionSelect,
     snippetContainerNode,
     targetProportion,
     targetSelect,
@@ -75,14 +72,7 @@ export class VisibilityUpdater extends Updater {
 
         UpdateTargetProportion();
 
-        const selects = [
-            targetSelect,
-            shutterActionSelect,
-            roundingLevelSelect,
-            saveFormatSelect,
-            saveScaleSelect,
-            aspectRatioSelect,
-        ];
+        const selects = [targetSelect, roundingLevelSelect, aspectRatioSelect];
 
         const biggerSelect = selects.reduce((prev, curr) => {
             const prevWidth = getWidth(prev);

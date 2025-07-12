@@ -4,12 +4,8 @@ import type {
     WebViewConfigKey,
     WebviewConfig,
 } from "../types";
+import { DEFAULT_SETTINGS } from "./constants";
 import { GenericUpdate, updateWindowTitle } from "./ui/updaters";
-
-const DEFAULT_SETTINGS: Partial<WebviewConfig> = {
-    isLocked: false,
-    isLinked: false,
-};
 
 export class SessionConfig {
     static __config: WebviewConfig = {} as any;
@@ -72,24 +68,19 @@ export class SessionConfig {
 }
 
 export interface ISessionConfig
-    extends Pick<WebviewConfig, "isLinked" | "isLocked"> {
-    set: (
-        config: Partial<Pick<WebviewConfig, "isLinked" | "isLocked">>,
-    ) => void;
+    extends Pick<
+        WebviewConfig,
+        | "isLinked"
+        | "isLocked"
+        | "zoom"
+        | "saveFormat"
+        | "saveScale"
+        | "shutterAction"
+    > {
+    set: (config: Partial<Omit<ISessionConfig, "set">>) => void;
 }
 
 export const useSessionConfig = create<ISessionConfig>((setState) => ({
-    // get<T extends keyof ISessionConfig["config"]>(
-    //     key?: T,
-    // ): GetValue<ISessionConfig["config"], T> {
-    //     if (key) {
-    //         return SessionConfig.get(key);
-    //     }
-
-    //     return (
-    //         SessionConfig.hasConfig ? SessionConfig.get() : DEFAULT_SETTINGS
-    //     ) as GetValue<ISessionConfig["config"], T>;
-    // },
     set(config) {
         setState((state) => {
             const { set, ...stateConfig } = state;
@@ -104,5 +95,5 @@ export const useSessionConfig = create<ISessionConfig>((setState) => ({
             return { ...stateConfig };
         });
     },
-    ...(DEFAULT_SETTINGS as Pick<WebviewConfig, "isLinked" | "isLocked">),
+    ...(DEFAULT_SETTINGS as Omit<ISessionConfig, "set">),
 }));

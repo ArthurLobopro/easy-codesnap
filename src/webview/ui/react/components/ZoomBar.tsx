@@ -1,31 +1,25 @@
-import { useContext, useEffect, useState } from "react";
-import { SessionConfig } from "../../../SessionConfig";
+import { useContext } from "react";
+import { ZOOM_LEVELS, type ZoomLevel } from "../../../constants";
 import { TranslationContext } from "../contexts/TranslationContext";
-
-const ZOOM_LEVELS = [50, 75, 100, 125, 150] as const;
-
-type ZoomLevel = (typeof ZOOM_LEVELS)[number];
+import { useConfig, useSetConfig } from "../hooks/useConfig";
 
 export function ZoomBar() {
     const { t } = useContext(TranslationContext);
 
-    const [zoom, setZoom] = useState<ZoomLevel>(100);
+    const set = useSetConfig();
+    const zoom = useConfig("zoom");
 
     const removeZoom = () => {
         if (zoom !== ZOOM_LEVELS.at(0)) {
-            setZoom(ZOOM_LEVELS[ZOOM_LEVELS.indexOf(zoom) - 1]);
+            set({ zoom: ZOOM_LEVELS[ZOOM_LEVELS.indexOf(zoom) - 1] });
         }
     };
 
     const addZoom = () => {
         if (zoom !== ZOOM_LEVELS.at(-1)) {
-            setZoom(ZOOM_LEVELS[ZOOM_LEVELS.indexOf(zoom) + 1]);
+            set({ zoom: ZOOM_LEVELS[ZOOM_LEVELS.indexOf(zoom) + 1] });
         }
     };
-
-    useEffect(() => {
-        SessionConfig.hasConfig && SessionConfig.set({ zoom });
-    }, [zoom]);
 
     console.log("ZoomBarRender");
 
@@ -42,11 +36,13 @@ export function ZoomBar() {
             <select
                 data-configname="zoom"
                 value={zoom}
-                onChange={(e) => setZoom(Number(e.target.value) as ZoomLevel)}
+                onChange={(e) =>
+                    set({ zoom: Number(e.target.value) as ZoomLevel })
+                }
             >
-                {ZOOM_LEVELS.map((l) => (
-                    <option value={l} key={l}>
-                        {l}%
+                {ZOOM_LEVELS.map((z) => (
+                    <option value={z} key={z}>
+                        {z}%
                     </option>
                 ))}
             </select>

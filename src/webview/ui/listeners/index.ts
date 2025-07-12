@@ -1,7 +1,6 @@
 import { SessionConfig } from "../../SessionConfig";
 import { snippetContainerNode, windowNode } from "../elements";
 import { UpdateRatio, UpdateTargetProportion } from "../updaters";
-import { addButtonListeners } from "./addButtonListeners";
 import { addContentEditableListeners } from "./addContentEditableListeners";
 import { addHideOneTimeConfigListener } from "./addHideOneTimeConfigListener";
 import { addNumberInputListeners } from "./addNumberInputListeners";
@@ -12,7 +11,6 @@ import { addToogleListeners } from "./addToggleListeners";
 export function addListeners() {
     addToogleListeners();
     addSelectListeners();
-    addButtonListeners();
     // addZoomListeners();
     addContentEditableListeners();
     addHideOneTimeConfigListener();

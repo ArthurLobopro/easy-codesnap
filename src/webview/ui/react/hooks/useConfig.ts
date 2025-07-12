@@ -14,8 +14,7 @@ export function useConfigList<T extends keyof Omit<ISessionConfig, "set">>(
         obj[key] = useConfig(key);
     }
 
-    return obj as PickProperties<Omit<ISessionConfig, "set">, T> &
-        Pick<ISessionConfig, "set">;
+    return obj as PickProperties<ISessionConfig, T>;
 }
 
 export function useConfig<T extends keyof Omit<ISessionConfig, "set">>(key: T) {

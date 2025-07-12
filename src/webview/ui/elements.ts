@@ -50,13 +50,10 @@ export const maxCharWidthInput = $<HTMLInputElement>(
 );
 
 //Selects
-export const shutterActionSelect = getSelect("shutterAction");
-export const saveFormatSelect = getSelect("saveFormat");
 export const targetSelect = getSelect("target");
 export const roundingLevelSelect = getSelect("roundingLevel");
 export const windowStyleSelect = getSelect("windowStyle");
 // export const zoomSelect = getSelect("zoom");
-export const saveScaleSelect = getSelect("saveScale");
 export const aspectRatioSelect = getSelect("aspectRatio");
 export const windowIconTypeSelect = getSelect("windowIconType");
 

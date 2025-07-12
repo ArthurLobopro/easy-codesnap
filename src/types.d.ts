@@ -1,6 +1,10 @@
 import type { DocumentSymbol } from "vscode";
 import type { IPanelWebviewConfig } from "./commands/snap/PanelWebviewConfig";
 
+export type SaveFormat = "png" | "svg";
+export type SaveScale = 0.5 | 0.75 | 1 | 1.5 | 2 | 3 | 4;
+export type SaveAction = "save" | "copy";
+
 export interface ExtensionConfig {
     boxShadow: string;
     backgroundColor: string;
@@ -24,11 +28,11 @@ export interface ExtensionConfig {
 
     maxCharWidth: number;
 
-    saveScale: 0.5 | 0.75 | 1 | 1.5 | 2 | 3 | 4;
+    saveScale: SaveScale;
     roundingLevel: 1 | 2 | 3 | 4;
-    saveFormat: "png" | "svg";
+    saveFormat: SaveFormat;
     target: "container" | "window";
-    shutterAction: "save" | "copy";
+    shutterAction: SaveAction;
     windowStyle: "macos" | "windows";
     windowIconType: "round" | "square";
     aspectRatio: "none" | "1:1" | "1,91:1" | "4:5" | "9:16" | "16:9";
@@ -53,11 +57,13 @@ export interface ConfigSentToWebview extends ExtensionConfig {
     symbolBreadcrumbs: DocumentSymbol[];
 }
 
+export type ZoomLevel = 50 | 75 | 100 | 125 | 150;
+
 export interface WebviewConfig
     extends Omit<ConfigSentToWebview, "lockOnOpen" | "linkOnOpen"> {
     isLocked: boolean;
     isLinked: boolean;
-    zoom: number;
+    zoom: ZoomLevel;
     shouldUpdateTitle: boolean;
     watermarkText: string;
 }

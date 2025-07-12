@@ -7,12 +7,9 @@ import {
     realLineNumbersInput,
     roundedCornersInput,
     roundingLevelSelect,
-    saveFormatSelect,
-    saveScaleSelect,
     showLineNumbersInput,
     showWindowControlsInput,
     showWindowTitleInput,
-    shutterActionSelect,
     targetSelect,
     transparentBackgroundInput,
     watermarkInput,
@@ -82,12 +79,9 @@ export class OneTimeConfigUpdater extends Updater {
         roundingLevelSelect.disabled = !roundedCorners;
         transparentBackgroundInput.disabled = target !== "container";
 
-        shutterActionSelect.value = shutterAction;
         targetSelect.value = target;
         roundingLevelSelect.value = roundingLevel.toString();
-        saveFormatSelect.value = saveFormat;
         windowStyleSelect.value = windowStyle;
-        saveScaleSelect.value = saveScale.toString();
 
         windowIconTypeSelect.value = windowIconType;
         windowIconTypeSelect.disabled = windowStyle !== "windows";
