@@ -76,6 +76,9 @@ export interface ISessionConfig
         | "saveFormat"
         | "saveScale"
         | "shutterAction"
+        | "watermark"
+        | "watermarkPosition"
+        | "target"
     > {
     set: (config: Partial<Omit<ISessionConfig, "set">>) => void;
 }

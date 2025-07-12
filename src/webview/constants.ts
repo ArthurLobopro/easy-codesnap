@@ -38,4 +38,7 @@ export const DEFAULT_SETTINGS: Partial<WebviewConfig> = {
     saveFormat: "png",
     saveScale: 1,
     shutterAction: "copy",
+    watermark: false,
+    watermarkPosition: "bottom-right",
+    target: "container",
 } as const;
