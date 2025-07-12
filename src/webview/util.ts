@@ -1,4 +1,4 @@
-import type { message } from "../types";
+import type { ExtensionConfig, message } from "../types";
 import { SessionConfig } from "./SessionConfig";
 
 export type untypedObject = { [key: string]: any };
@@ -81,3 +81,10 @@ export function getWidth(element: HTMLElement) {
 export { t } from "@vscode/l10n";
 
 export const text = (...args: string[]) => args.join(" ");
+
+export function openConfig(name: keyof ExtensionConfig) {
+    vscode.postMessage({
+        type: "open-config",
+        configName: name,
+    });
+}

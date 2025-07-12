@@ -1,4 +1,4 @@
-import { text, vscode } from "../../../../util";
+import { openConfig, text } from "../../../../util";
 import { useConfig, useSetConfig } from "../../hooks/useConfig";
 import { useTranslation } from "../../hooks/useTranslation";
 
@@ -34,12 +34,7 @@ export function LockButton() {
                 <span
                     className="link"
                     data-openconfig="lockOnOpen"
-                    onClick={() => {
-                        vscode.postMessage({
-                            type: "open-config",
-                            configName: "lockOnOpen",
-                        });
-                    }}
+                    onClick={() => openConfig("lockOnOpen")}
                 >
                     {" "}
                     {t("here")}

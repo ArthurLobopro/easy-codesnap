@@ -1,4 +1,4 @@
-import { text } from "../../../../util";
+import { openConfig, text } from "../../../../util";
 import { useConfig, useSetConfig } from "../../hooks/useConfig";
 import { useTranslation } from "../../hooks/useTranslation";
 import { LinkIcon, UnlinkIcon } from "../icons";
@@ -31,7 +31,7 @@ export function LinkButton() {
                         t("To change the default behavior, click"),
                     )}
                 </span>
-                <span className="link" data-openconfig="linkOnOpen">
+                <span className="link" onClick={() => openConfig("linkOnOpen")}>
                     {` ${t("here")}`}
                 </span>
                 .
