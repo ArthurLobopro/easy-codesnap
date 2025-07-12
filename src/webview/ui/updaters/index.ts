@@ -18,9 +18,6 @@ export * from "./VarUpdater";
 export * from "./VisibilityUpdater";
 
 export const updaters = [
-    // new LockButtonUpdater(),
-    // new LinkButtonUpdater(),
-    // new ZoomUpdater(),
     new VarUpdater(),
     new VisibilityUpdater(),
     new LineNumbersUpdater(),
