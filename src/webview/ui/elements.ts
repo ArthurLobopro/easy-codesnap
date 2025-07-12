@@ -44,7 +44,6 @@ export const transparentBackgroundInput = getToggle("transparentBackground");
 export const enableResizingInput = getToggle("enableResizing");
 export const enableSymbolBreadcrumbInput = getToggle("enableSymbolBreadcrumb");
 export const highlightLineNumberInput = getToggle("highlightLineNumber");
-export const watermarkInput = getToggle("watermark");
 export const maxCharWidthInput = $<HTMLInputElement>(
     `[data-configname="maxCharWidth"]`,
 );
@@ -65,13 +64,3 @@ export const saveConfigButton = getButton("save-config");
 // export const toggleLinkedButton = getButton("toggle-link");
 // export const zoomInButton = getButton("zoom-in");
 // export const zoomOutButton = getButton("zoom-out");
-
-//Watermark
-function getRadio(value: string) {
-    return $<HTMLInputElement>(`input[value="${value}"]`);
-}
-
-export const watermarkTopLeft = getRadio("top-left");
-export const watermarkTopRight = getRadio("top-right");
-export const watermarkBottomLeft = getRadio("bottom-left");
-export const watermarkBottomRight = getRadio("bottom-right");

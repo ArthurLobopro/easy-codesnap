@@ -12,7 +12,6 @@ import {
     showWindowTitleInput,
     targetSelect,
     transparentBackgroundInput,
-    watermarkInput,
     windowIconTypeSelect,
     windowStyleSelect,
 } from "../elements";
@@ -27,16 +26,12 @@ export class OneTimeConfigUpdater extends Updater {
             "roundedCorners",
             "transparentBackground",
             "showWindowTitle",
-            "shutterAction",
             "target",
             "enableResizing",
             "enableSymbolBreadcrumb",
             "roundingLevel",
-            "saveFormat",
             "windowStyle",
-            "saveScale",
             "highlightLineNumber",
-            "watermark",
             "windowIconType",
         ]);
     }
@@ -49,16 +44,12 @@ export class OneTimeConfigUpdater extends Updater {
             roundedCorners,
             transparentBackground,
             showWindowTitle,
-            shutterAction,
             target,
             enableResizing,
             enableSymbolBreadcrumb,
             roundingLevel,
-            saveFormat,
             windowStyle,
-            saveScale,
             highlightLineNumber,
-            watermark,
             maxCharWidth,
             windowIconType,
         } = SessionConfig.get();
@@ -72,7 +63,6 @@ export class OneTimeConfigUpdater extends Updater {
         enableResizingInput.checked = enableResizing;
         enableSymbolBreadcrumbInput.checked = enableSymbolBreadcrumb;
         highlightLineNumberInput.checked = highlightLineNumber;
-        watermarkInput.checked = watermark;
 
         realLineNumbersInput.disabled = !showLineNumbers;
         highlightLineNumberInput.disabled = !showLineNumbers;

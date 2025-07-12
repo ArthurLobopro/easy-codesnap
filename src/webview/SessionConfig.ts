@@ -48,6 +48,11 @@ export class SessionConfig {
         const currentFileName = this.__config.templates?.fileName;
         this.__config = newConfig as WebviewConfig;
 
+        //Remove before
+        if (updatedKeys.includes("target")) {
+            useSessionConfig.getState().set({ target: newConfig.target });
+        }
+
         GenericUpdate(updatedKeys);
 
         if (currentFileName && config.templates?.fileName !== currentFileName) {

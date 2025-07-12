@@ -1,7 +1,7 @@
 import { pick, pickAllExcept } from "@arthur-lobo/object-pick";
 import * as l10n from "@vscode/l10n";
 import type { ConfigSentToWebview } from "../types";
-import { SessionConfig } from "./SessionConfig";
+import { SessionConfig, useSessionConfig } from "./SessionConfig";
 import { cameraFlashAnimation } from "./snap";
 import { UpdateCode } from "./ui/updaters";
 import { TranslationUpdater } from "./ui/updaters/TranslationUpdater";
@@ -29,7 +29,7 @@ export const actions = {
 
         document.execCommand("paste");
 
-        SessionConfig.set({
+        useSessionConfig.getState().set({
             isLinked: config.linkOnOpen,
             isLocked: config.lockOnOpen,
         });
