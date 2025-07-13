@@ -3,6 +3,7 @@ import { useTranslationUpdater } from "../react/contexts/TranslationContext";
 
 export function TranslationUpdater() {
     console.time("TranslationUpdater");
+
     $$("[data-l10n]").forEach((el) => {
         el.innerHTML = t(el.dataset.l10n as string).replace(
             /`(\S[^`]{1,}\S)`/g,
@@ -11,8 +12,9 @@ export function TranslationUpdater() {
                 return `<code>${content}</code>`;
             },
         );
-
-        useTranslationUpdater.getState().updateTranslation();
     });
+
+    useTranslationUpdater.getState().updateTranslation();
+
     console.timeEnd("TranslationUpdater");
 }

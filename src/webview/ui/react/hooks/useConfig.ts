@@ -1,4 +1,4 @@
-/** biome-ignore-all lint/correctness/useHookAtTopLevel: <explanation> */
+/** biome-ignore-all lint/correctness/useHookAtTopLevel: It works here because arrays are constants */
 import { useMemo } from "react";
 import { type ISessionConfig, useSessionConfig } from "../../../SessionConfig";
 
