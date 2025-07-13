@@ -237,6 +237,7 @@
             "round",
             "square"
           ],
+          "description": "%easy-codesnap.windowIconType%",
           "default": "round"
         },
         "easy-codesnap.aspect-ratio": {
