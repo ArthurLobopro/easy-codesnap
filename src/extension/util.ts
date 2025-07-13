@@ -1,5 +1,5 @@
 import * as vscode from "vscode";
-import type { untypedObject } from "./types";
+import type { untypedObject } from "../types";
 
 export { writeFile } from "node:fs/promises";
 

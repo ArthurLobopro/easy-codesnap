@@ -14,7 +14,7 @@ const config = (env, argv) => {
   return [
     {
       target: "node",
-      entry: "./src/extension.ts",
+      entry: "./src/extension/extension.ts",
       output: {
         path: path.resolve(__dirname, "dist"),
         filename: "extension.js",
