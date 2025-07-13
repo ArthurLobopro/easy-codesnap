@@ -1,4 +1,4 @@
-import { useTranslation } from "../../../hooks/useTranslation";
+import { useTranslation } from "@hooks//useTranslation";
 import { DetailsContent, DetailsSummary, ExpandDetails } from "../../Details";
 import { SaveActionSelect } from "../selects/SaveActionSelect";
 import { SaveFormatSelect } from "../selects/SaveFormatSelect";

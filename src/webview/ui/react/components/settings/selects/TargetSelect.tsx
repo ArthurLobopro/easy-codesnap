@@ -1,7 +1,7 @@
-import type { Target } from "../../../../../../types";
-import { useConfig, useSetConfig } from "../../../hooks/useConfig";
-import { useUpdateSelectsWidth } from "../../../hooks/useSelectWidthUpdater";
-import { useTranslation } from "../../../hooks/useTranslation";
+import { useConfig, useSetConfig } from "@hooks//useConfig";
+import { useUpdateSelectsWidth } from "@hooks//useSelectWidthUpdater";
+import { useTranslation } from "@hooks//useTranslation";
+import type { Target } from "@/../types";
 
 export function TargetSelect() {
   const { t } = useTranslation();

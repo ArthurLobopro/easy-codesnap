@@ -1,6 +1,6 @@
-import { openConfig, text } from "../../../../../util";
-import { useConfigList, useSetConfig } from "../../../hooks/useConfig";
-import { useTranslation } from "../../../hooks/useTranslation";
+import { useConfigList, useSetConfig } from "@hooks//useConfig";
+import { useTranslation } from "@hooks//useTranslation";
+import { openConfig, text } from "@/util";
 import { DetailsContent, DetailsSummary, ExpandDetails } from "../../Details";
 import { IconTypeSelect } from "../selects/IconTypeSelect";
 import { RoundingLevelSelect } from "../selects/RoundigLevelSelect";

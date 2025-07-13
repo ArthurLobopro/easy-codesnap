@@ -1,8 +1,8 @@
-import type { SaveScale } from "../../../../../../types";
-import { SAVE_SCALES } from "../../../../../constants";
-import { useConfig, useSetConfig } from "../../../hooks/useConfig";
-import { useUpdateSelectsWidth } from "../../../hooks/useSelectWidthUpdater";
-import { useTranslation } from "../../../hooks/useTranslation";
+import { useConfig, useSetConfig } from "@hooks//useConfig";
+import { useUpdateSelectsWidth } from "@hooks//useSelectWidthUpdater";
+import { useTranslation } from "@hooks//useTranslation";
+import type { SaveScale } from "@/../types";
+import { SAVE_SCALES } from "@/constants";
 
 export function SaveScaleSelect() {
   const { t } = useTranslation();

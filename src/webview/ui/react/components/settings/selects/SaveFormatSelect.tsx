@@ -1,8 +1,8 @@
-import type { SaveFormat } from "../../../../../../types";
-import { SAVE_FORMATS } from "../../../../../constants";
-import { useConfig, useSetConfig } from "../../../hooks/useConfig";
-import { useUpdateSelectsWidth } from "../../../hooks/useSelectWidthUpdater";
-import { useTranslation } from "../../../hooks/useTranslation";
+import { useConfig, useSetConfig } from "@hooks//useConfig";
+import { useUpdateSelectsWidth } from "@hooks//useSelectWidthUpdater";
+import { useTranslation } from "@hooks//useTranslation";
+import type { SaveFormat } from "@/../types";
+import { SAVE_FORMATS } from "@/constants";
 
 export function SaveFormatSelect() {
   const { t } = useTranslation();

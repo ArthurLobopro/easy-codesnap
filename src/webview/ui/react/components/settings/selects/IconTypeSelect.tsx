@@ -1,7 +1,7 @@
-import type { WindowIconType } from "../../../../../../types";
-import { useConfigList, useSetConfig } from "../../../hooks/useConfig";
-import { useUpdateSelectsWidth } from "../../../hooks/useSelectWidthUpdater";
-import { useTranslation } from "../../../hooks/useTranslation";
+import { useConfigList, useSetConfig } from "@hooks//useConfig";
+import { useUpdateSelectsWidth } from "@hooks//useSelectWidthUpdater";
+import { useTranslation } from "@hooks//useTranslation";
+import type { WindowIconType } from "@/../types";
 
 export function IconTypeSelect() {
   const { t } = useTranslation();

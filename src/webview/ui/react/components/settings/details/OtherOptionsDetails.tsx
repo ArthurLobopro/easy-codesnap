@@ -1,6 +1,6 @@
-import { text } from "../../../../../util";
-import { useConfigList, useSetConfig } from "../../../hooks/useConfig";
-import { useTranslation } from "../../../hooks/useTranslation";
+import { useConfigList, useSetConfig } from "@hooks//useConfig";
+import { useTranslation } from "@hooks//useTranslation";
+import { text } from "@/util";
 import { DetailsContent, DetailsSummary, ExpandDetails } from "../../Details";
 import { AspectRatioSelect } from "../selects/AspectRatioSelect";
 import { TargetSelect } from "../selects/TargetSelect";

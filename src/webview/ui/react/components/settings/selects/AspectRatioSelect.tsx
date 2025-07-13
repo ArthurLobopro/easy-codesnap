@@ -1,8 +1,8 @@
-import type { AspectRatio } from "../../../../../../types";
-import { ASPECT_RATIOS } from "../../../../../constants";
-import { useConfig, useSetConfig } from "../../../hooks/useConfig";
-import { useUpdateSelectsWidth } from "../../../hooks/useSelectWidthUpdater";
-import { useTranslation } from "../../../hooks/useTranslation";
+import { useConfig, useSetConfig } from "@hooks//useConfig";
+import { useUpdateSelectsWidth } from "@hooks//useSelectWidthUpdater";
+import { useTranslation } from "@hooks//useTranslation";
+import type { AspectRatio } from "@/../types";
+import { ASPECT_RATIOS } from "@/constants";
 
 export function AspectRatioSelect() {
   const { t } = useTranslation();

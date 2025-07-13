@@ -1,4 +1,4 @@
-import { useTranslation } from "../../../hooks/useTranslation";
+import { useTranslation } from "@hooks//useTranslation";
 import { ActionButtons } from "../../ActionButtons";
 import { DetailsContent, DetailsSummary, ExpandDetails } from "../../Details";
 

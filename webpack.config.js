@@ -59,7 +59,11 @@ const config = (env, argv) => {
         // support reading TypeScript and JavaScript files, 📖 -> https://github.com/TypeStrong/ts-loader
         mainFields: ["browser", "module", "main"],
         extensions: [".tsx", ".ts", ".js"],
-        alias: {},
+        alias: {
+          "@": path.resolve(__dirname, "./src/webview"),
+          "@hooks": path.resolve(__dirname, "./src/webview/ui/react/"),
+
+        },
         fallback: {}
       },
       module: {

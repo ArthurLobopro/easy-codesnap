@@ -9,7 +9,11 @@
 		"sourceMap": true,
 		"rootDir": "./",
 		"strict": true,
-		"jsx": "react-jsx"
+		"jsx": "react-jsx",
+		"paths": {
+			"@/*": ["./*"],
+			"@hooks/*": ["./ui/react/hooks/*"]
+		}
 	},
 	"include": [
 		"./**/*.ts",
