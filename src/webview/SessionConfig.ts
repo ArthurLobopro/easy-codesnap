@@ -95,6 +95,9 @@ export interface ISessionConfig
         | "windowIconType"
         | "roundedCorners"
         | "roundingLevel"
+        | "realLineNumbers"
+        | "showLineNumbers"
+        | "highlightLineNumber"
     > {
     set: (config: Partial<Omit<ISessionConfig, "set">>) => void;
 }

@@ -4,10 +4,8 @@ import { UpdateRatio, UpdateTargetProportion } from "../updaters";
 import { addContentEditableListeners } from "./addContentEditableListeners";
 import { addHideOneTimeConfigListener } from "./addHideOneTimeConfigListener";
 import { addOpenConfigListeners } from "./addOpenConfigListeners";
-import { addToogleListeners } from "./addToggleListeners";
 
 export function addListeners() {
-    addToogleListeners();
     addContentEditableListeners();
     addHideOneTimeConfigListener();
     addOpenConfigListeners();

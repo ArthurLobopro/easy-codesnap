@@ -54,4 +54,7 @@ export const DEFAULT_SETTINGS: Omit<ISessionConfig, "set"> = {
     windowIconType: "round",
     roundedCorners: true,
     roundingLevel: 1,
+    showLineNumbers: true,
+    realLineNumbers: false,
+    highlightLineNumber: false,
 } as const;

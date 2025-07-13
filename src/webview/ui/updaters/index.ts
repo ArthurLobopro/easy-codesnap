@@ -3,7 +3,6 @@ import { SessionConfig } from "../../SessionConfig";
 import { getDefaultWindowTitle } from "../../util";
 import { windowTitleNode } from "../elements";
 import { LineNumbersUpdater } from "./LineNumbersUpdater";
-import { OneTimeConfigUpdater } from "./OneTimeConfigUpdater";
 import { StateUpdater } from "./StateUpdater";
 import { VarUpdater } from "./VarUpdater";
 import { VisibilityUpdater } from "./VisibilityUpdater";
@@ -12,7 +11,6 @@ import { WindowUpdater } from "./WindowUpdater";
 
 export * from "./CodeUpdater";
 export * from "./LineNumbersUpdater";
-export * from "./OneTimeConfigUpdater";
 export * from "./UIUpdater";
 export * from "./VarUpdater";
 export * from "./VisibilityUpdater";
@@ -21,7 +19,6 @@ export const updaters = [
     new VarUpdater(),
     new VisibilityUpdater(),
     new LineNumbersUpdater(),
-    new OneTimeConfigUpdater(),
     new WindowUpdater(),
     new WatermarkUpdater(),
     new StateUpdater(),
