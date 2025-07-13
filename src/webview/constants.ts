@@ -31,6 +31,7 @@ export const SAVE_FORMATS = ["png", "svg"] as const;
 export const SAVE_SCALES = [0.5, 0.75, 1, 1.5, 2, 3, 4] as const;
 export const SAVE_ACTIONS = ["save", "copy"];
 export const ASPECT_RATIOS = ["none", "1:1", "1.91:1", "4:5", "9:16", "16:9"];
+export const ROUNDING_LEVELS = [1, 2, 3, 4];
 
 export const DEFAULT_SETTINGS: Omit<ISessionConfig, "set"> = {
     isLocked: false,
@@ -47,4 +48,10 @@ export const DEFAULT_SETTINGS: Omit<ISessionConfig, "set"> = {
     enableSymbolBreadcrumb: false,
     maxCharWidth: 0,
     aspectRatio: "none",
+    showWindowTitle: false,
+    showWindowControls: true,
+    windowStyle: "macos",
+    windowIconType: "round",
+    roundedCorners: true,
+    roundingLevel: 1,
 } as const;

@@ -5,6 +5,7 @@ import { ActionDetails } from "./react/components/settings/details/ActionDetails
 import { OtherOptionsDetails } from "./react/components/settings/details/OtherOptionsDetails";
 import { SaveActionsDetails } from "./react/components/settings/details/SaveActionsDetails";
 import { WatermarkDetails } from "./react/components/settings/details/WaterMarkDetails";
+import { WindowOptionsDetails } from "./react/components/settings/details/WindowOptionsSelect";
 import { ZoomBar } from "./react/components/ZoomBar";
 import { TranslationProvider } from "./react/contexts/TranslationContext";
 
@@ -17,6 +18,7 @@ createRoot(document.querySelector("#center-wrapper")!).render(
         )}
         {createPortal(
             <>
+                <WindowOptionsDetails />
                 <OtherOptionsDetails />
                 <WatermarkDetails />
                 <SaveActionsDetails />

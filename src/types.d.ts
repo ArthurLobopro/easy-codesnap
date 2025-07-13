@@ -6,6 +6,9 @@ export type SaveScale = 0.5 | 0.75 | 1 | 1.5 | 2 | 3 | 4;
 export type SaveAction = "save" | "copy";
 export type Target = "container" | "window";
 export type AspectRatio = "none" | "1:1" | "1,91:1" | "4:5" | "9:16" | "16:9";
+export type WindowStyle = "macos" | "windows";
+export type WindowIconType = "round" | "square";
+export type RoundingLevel = 1 | 2 | 3 | 4;
 
 export interface ExtensionConfig {
     boxShadow: string;
@@ -31,12 +34,12 @@ export interface ExtensionConfig {
     maxCharWidth: number;
 
     saveScale: SaveScale;
-    roundingLevel: 1 | 2 | 3 | 4;
+    roundingLevel: RoundingLevel;
     saveFormat: SaveFormat;
     target: Target;
     shutterAction: SaveAction;
-    windowStyle: "macos" | "windows";
-    windowIconType: "round" | "square";
+    windowStyle: WindowStyle;
+    windowIconType: WindowIconType;
     aspectRatio: AspectRatio;
     watermarkPosition:
         | "bottom-right"

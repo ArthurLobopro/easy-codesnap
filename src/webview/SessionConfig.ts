@@ -28,7 +28,7 @@ export class SessionConfig {
         return this.__config;
     }
 
-    static set(config: Partial<WebviewConfig>) {
+    static set(config: Partial<WebviewConfig>, fromHook = false) {
         const newConfig = this.hasConfig
             ? Object.assign({}, this.__config, config)
             : config;
@@ -49,8 +49,8 @@ export class SessionConfig {
         this.__config = newConfig as WebviewConfig;
 
         //Remove before
-        if (updatedKeys.includes("target")) {
-            useSessionConfig.getState().set({ target: newConfig.target });
+        if (!fromHook) {
+            useSessionConfig.getState().set({ ...newConfig });
         }
 
         GenericUpdate(updatedKeys);
@@ -89,6 +89,12 @@ export interface ISessionConfig
         | "enableSymbolBreadcrumb"
         | "maxCharWidth"
         | "aspectRatio"
+        | "showWindowTitle"
+        | "showWindowControls"
+        | "windowStyle"
+        | "windowIconType"
+        | "roundedCorners"
+        | "roundingLevel"
     > {
     set: (config: Partial<Omit<ISessionConfig, "set">>) => void;
 }
@@ -98,7 +104,7 @@ export const useSessionConfig = create<ISessionConfig>((setState) => ({
         setState((state) => {
             const { set, ...stateConfig } = state;
 
-            SessionConfig.set({ ...config });
+            SessionConfig.set({ ...config }, true);
 
             for (const key in config) {
                 //@ts-ignore
@@ -108,5 +114,5 @@ export const useSessionConfig = create<ISessionConfig>((setState) => ({
             return { ...stateConfig };
         });
     },
-    ...(DEFAULT_SETTINGS as Omit<ISessionConfig, "set">),
+    ...DEFAULT_SETTINGS,
 }));
