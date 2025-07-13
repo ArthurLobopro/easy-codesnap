@@ -16,30 +16,30 @@ export * from "./VarUpdater";
 export * from "./VisibilityUpdater";
 
 export const updaters = [
-    new VarUpdater(),
-    new VisibilityUpdater(),
-    new LineNumbersUpdater(),
-    new WindowUpdater(),
-    new WatermarkUpdater(),
-    new StateUpdater(),
+  new VarUpdater(),
+  new VisibilityUpdater(),
+  new LineNumbersUpdater(),
+  new WindowUpdater(),
+  new WatermarkUpdater(),
+  new StateUpdater(),
 ];
 
 export function GenericUpdate(keys: WebViewConfigKey[]) {
-    console.time("GenericUpdate");
-    updaters
-        .filter((updater) => {
-            return updater.dependencies.some((dependency) =>
-                keys.includes(dependency),
-            );
-        })
-        .forEach((updater) => updater.update());
-    console.timeEnd("GenericUpdate");
+  console.time("GenericUpdate");
+  updaters
+    .filter((updater) => {
+      return updater.dependencies.some((dependency) =>
+        keys.includes(dependency),
+      );
+    })
+    .forEach((updater) => updater.update());
+  console.timeEnd("GenericUpdate");
 }
 
 export function updateWindowTitle() {
-    const { shouldUpdateTitle } = SessionConfig.get();
+  const { shouldUpdateTitle } = SessionConfig.get();
 
-    if (shouldUpdateTitle) {
-        windowTitleNode.textContent = getDefaultWindowTitle();
-    }
+  if (shouldUpdateTitle) {
+    windowTitleNode.textContent = getDefaultWindowTitle();
+  }
 }

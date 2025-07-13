@@ -5,46 +5,46 @@ import { PanelBuilder } from "./PanelBuilder";
 import { PanelController } from "./PanelController";
 
 export class SnapCommand extends Command {
-    context: vscode.ExtensionContext;
+  context: vscode.ExtensionContext;
 
-    name = "easy-codesnap.snap";
+  name = "easy-codesnap.snap";
 
-    constructor(context: vscode.ExtensionContext) {
-        super();
-        this.context = context;
+  constructor(context: vscode.ExtensionContext) {
+    super();
+    this.context = context;
+  }
+
+  async exec() {
+    const activeEditor = vscode.window.activeTextEditor;
+
+    if (!activeEditor || !hasOneSelection(activeEditor.selections)) {
+      vscode.window.showErrorMessage(
+        `Easy CodeSnap: ${t("You must have one text selection!")}`,
+      );
+      return;
     }
 
-    async exec() {
-        const activeEditor = vscode.window.activeTextEditor;
+    const panel = await new PanelBuilder(this.context).build();
 
-        if (!activeEditor || !hasOneSelection(activeEditor.selections)) {
-            vscode.window.showErrorMessage(
-                `Easy CodeSnap: ${t("You must have one text selection!")}`,
-            );
-            return;
-        }
+    const panelController = new PanelController(panel);
+    panelController.init();
 
-        const panel = await new PanelBuilder(this.context).build();
+    const { fullLinesSelection } = getSettings("easy-codesnap", [
+      "fullLinesSelection",
+    ]);
 
-        const panelController = new PanelController(panel);
-        panelController.init();
+    fullLinesSelection && this.setFullLineSelection(activeEditor);
+  }
 
-        const { fullLinesSelection } = getSettings("easy-codesnap", [
-            "fullLinesSelection",
-        ]);
+  setFullLineSelection(activeEditor: vscode.TextEditor) {
+    const selection = activeEditor.selection;
 
-        fullLinesSelection && this.setFullLineSelection(activeEditor);
-    }
-
-    setFullLineSelection(activeEditor: vscode.TextEditor) {
-        const selection = activeEditor.selection;
-
-        activeEditor.selection = new vscode.Selection(
-            new vscode.Position(selection.start.line, 0),
-            new vscode.Position(
-                selection.end.line,
-                activeEditor.document.lineAt(selection.end.line).text.length,
-            ),
-        );
-    }
+    activeEditor.selection = new vscode.Selection(
+      new vscode.Position(selection.start.line, 0),
+      new vscode.Position(
+        selection.end.line,
+        activeEditor.document.lineAt(selection.end.line).text.length,
+      ),
+    );
+  }
 }

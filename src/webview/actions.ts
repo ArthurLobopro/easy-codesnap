@@ -10,76 +10,76 @@ import { vscode } from "./util";
 export type actionsKey = keyof typeof actions;
 
 export const actions = {
-    flash: cameraFlashAnimation,
+  flash: cameraFlashAnimation,
 
-    update(config: ConfigSentToWebview & { bundle: string }) {
-        if (SessionConfig.hasConfig && SessionConfig.get("isLocked")) {
-            return;
-        }
+  update(config: ConfigSentToWebview & { bundle: string }) {
+    if (SessionConfig.hasConfig && SessionConfig.get("isLocked")) {
+      return;
+    }
 
-        l10n.config({
-            contents: JSON.parse(config.bundle ?? "{}"),
-        });
+    l10n.config({
+      contents: JSON.parse(config.bundle ?? "{}"),
+    });
 
-        TranslationUpdater();
+    TranslationUpdater();
 
-        SessionConfig.set(
-            pickAllExcept(config, ["linkOnOpen", "lockOnOpen", "bundle"]),
-        );
+    SessionConfig.set(
+      pickAllExcept(config, ["linkOnOpen", "lockOnOpen", "bundle"]),
+    );
 
-        document.execCommand("paste");
+    document.execCommand("paste");
 
-        useSessionConfig.getState().set({
-            isLinked: config.linkOnOpen,
-            isLocked: config.lockOnOpen,
-        });
-    },
+    useSessionConfig.getState().set({
+      isLinked: config.linkOnOpen,
+      isLocked: config.lockOnOpen,
+    });
+  },
 
-    "get-webview-config"() {
-        vscode.postMessage({
-            type: "set-webview-config",
-            config: {
-                isLocked: SessionConfig.get("isLocked"),
-                isLinked: SessionConfig.get("isLinked"),
-                linkedId: SessionConfig.get("editorID") ?? "",
-            },
-        });
-    },
+  "get-webview-config"() {
+    vscode.postMessage({
+      type: "set-webview-config",
+      config: {
+        isLocked: SessionConfig.get("isLocked"),
+        isLinked: SessionConfig.get("isLinked"),
+        linkedId: SessionConfig.get("editorID") ?? "",
+      },
+    });
+  },
 
-    "update-text"(config: ConfigSentToWebview) {
-        if (!SessionConfig.hasConfig) {
-            SessionConfig.set(config);
-        } else {
-            const { isLocked, isLinked, editorID } = SessionConfig.get();
+  "update-text"(config: ConfigSentToWebview) {
+    if (!SessionConfig.hasConfig) {
+      SessionConfig.set(config);
+    } else {
+      const { isLocked, isLinked, editorID } = SessionConfig.get();
 
-            if (isLocked || (isLinked && editorID !== config.editorID)) {
-                return;
-            }
+      if (isLocked || (isLinked && editorID !== config.editorID)) {
+        return;
+      }
 
-            SessionConfig.set(
-                pick(config, [
-                    "templates",
-                    "startLine",
-                    "editorID",
-                    "symbolBreadcrumbs",
-                ]),
-            );
-        }
+      SessionConfig.set(
+        pick(config, [
+          "templates",
+          "startLine",
+          "editorID",
+          "symbolBreadcrumbs",
+        ]),
+      );
+    }
 
-        document.execCommand("paste");
-    },
+    document.execCommand("paste");
+  },
 
-    "update-config"(config: ConfigSentToWebview) {
-        SessionConfig.set(
-            pickAllExcept(config, [
-                "startLine",
-                "templates",
-                "editorID",
-                "linkOnOpen",
-                "lockOnOpen",
-            ]),
-        );
+  "update-config"(config: ConfigSentToWebview) {
+    SessionConfig.set(
+      pickAllExcept(config, [
+        "startLine",
+        "templates",
+        "editorID",
+        "linkOnOpen",
+        "lockOnOpen",
+      ]),
+    );
 
-        UpdateCode();
-    },
+    UpdateCode();
+  },
 };

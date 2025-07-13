@@ -10,47 +10,47 @@ const uriPath = (uri: vscode.Uri) => uri.fsPath;
 let lastUsedImageUri = makeUri(path.resolve(homedir(), "Desktop"));
 
 function assignLastUsedImageUri(uri: vscode.Uri | undefined) {
-    lastUsedImageUri =
-        uri ??
-        makeUri(
-            uriPath(lastUsedImageUri).replace(
-                path.dirname(uriPath(lastUsedImageUri)),
-                "",
-            ),
-        );
+  lastUsedImageUri =
+    uri ??
+    makeUri(
+      uriPath(lastUsedImageUri).replace(
+        path.dirname(uriPath(lastUsedImageUri)),
+        "",
+      ),
+    );
 }
 
 async function getSaveUri(format: "png" | "svg") {
-    return await vscode.window.showSaveDialog({
-        filters: { Images: [format] },
-        defaultUri: makeUri(
-            path.resolve(uriPath(lastUsedImageUri), `code.${format}`),
-        ),
-    });
+  return await vscode.window.showSaveDialog({
+    filters: { Images: [format] },
+    defaultUri: makeUri(
+      path.resolve(uriPath(lastUsedImageUri), `code.${format}`),
+    ),
+  });
 }
 
 export async function savePNG(data: string) {
-    const uri = await getSaveUri("png");
+  const uri = await getSaveUri("png");
 
-    assignLastUsedImageUri(uri);
+  assignLastUsedImageUri(uri);
 
-    if (uri) {
-        writeFile(uri.fsPath, Buffer.from(data, "base64")).then(() => {
-            vscode.window.showInformationMessage(
-                t("Image saved on: {0}", uri.fsPath),
-            );
-        });
-    }
+  if (uri) {
+    writeFile(uri.fsPath, Buffer.from(data, "base64")).then(() => {
+      vscode.window.showInformationMessage(
+        t("Image saved on: {0}", uri.fsPath),
+      );
+    });
+  }
 }
 
 export async function saveSVG(data: string) {
-    const uri = await getSaveUri("svg");
+  const uri = await getSaveUri("svg");
 
-    assignLastUsedImageUri(uri);
+  assignLastUsedImageUri(uri);
 
-    //const reducedData = reduceSVG(data);
+  //const reducedData = reduceSVG(data);
 
-    if (uri) {
-        writeFile(uri.fsPath, data, "utf-8");
-    }
+  if (uri) {
+    writeFile(uri.fsPath, data, "utf-8");
+  }
 }

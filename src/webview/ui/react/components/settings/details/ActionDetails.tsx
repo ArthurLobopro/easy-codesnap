@@ -3,16 +3,16 @@ import { ActionButtons } from "../../ActionButtons";
 import { Details, DetailsContent, DetailsSummary } from "../../Details";
 
 export function ActionDetails() {
-    const { t } = useTranslation();
+  const { t } = useTranslation();
 
-    return (
-        <Details>
-            <DetailsSummary>
-                <span>{t("Actions")}</span>
-            </DetailsSummary>
-            <DetailsContent>
-                <ActionButtons />
-            </DetailsContent>
-        </Details>
-    );
+  return (
+    <Details>
+      <DetailsSummary>
+        <span>{t("Actions")}</span>
+      </DetailsSummary>
+      <DetailsContent>
+        <ActionButtons />
+      </DetailsContent>
+    </Details>
+  );
 }

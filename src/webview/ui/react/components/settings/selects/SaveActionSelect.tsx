@@ -4,30 +4,30 @@ import { useConfig, useSetConfig } from "../../../hooks/useConfig";
 import { useTranslation } from "../../../hooks/useTranslation";
 
 export function SaveActionSelect() {
-    const { t } = useTranslation();
+  const { t } = useTranslation();
 
-    const set = useSetConfig();
-    const saveAction = useConfig("shutterAction");
+  const set = useSetConfig();
+  const saveAction = useConfig("shutterAction");
 
-    return (
-        <li>
-            <span>{t("Save Action")}</span>
-            <select
-                data-configname="shutterAction"
-                tabIndex={-1}
-                value={saveAction}
-                onChange={(ev) => {
-                    set({
-                        shutterAction: ev.currentTarget.value as SaveAction,
-                    });
-                }}
-            >
-                {SAVE_ACTIONS.map((action) => (
-                    <option value={action} key={action}>
-                        {action}
-                    </option>
-                ))}
-            </select>
-        </li>
-    );
+  return (
+    <li>
+      <span>{t("Save Action")}</span>
+      <select
+        data-configname="shutterAction"
+        tabIndex={-1}
+        value={saveAction}
+        onChange={(ev) => {
+          set({
+            shutterAction: ev.currentTarget.value as SaveAction,
+          });
+        }}
+      >
+        {SAVE_ACTIONS.map((action) => (
+          <option value={action} key={action}>
+            {action}
+          </option>
+        ))}
+      </select>
+    </li>
+  );
 }

@@ -4,34 +4,34 @@ import { windowControlsNode, windowNode, windowTitleNode } from "../elements";
 import { Updater } from "../Updater";
 
 export class WindowUpdater extends Updater {
-    constructor() {
-        super([
-            "windowStyle",
-            "shouldUpdateTitle",
-            "showWindowControls",
-            "windowIconType",
-        ]);
+  constructor() {
+    super([
+      "windowStyle",
+      "shouldUpdateTitle",
+      "showWindowControls",
+      "windowIconType",
+    ]);
+  }
+
+  update() {
+    const {
+      windowStyle,
+      shouldUpdateTitle,
+      showWindowControls,
+      windowIconType,
+    } = SessionConfig.get();
+
+    if (shouldUpdateTitle) {
+      windowTitleNode.textContent = getDefaultWindowTitle();
     }
 
-    update() {
-        const {
-            windowStyle,
-            shouldUpdateTitle,
-            showWindowControls,
-            windowIconType,
-        } = SessionConfig.get();
+    windowControlsNode.setAttribute("data-icon-type", windowIconType);
 
-        if (shouldUpdateTitle) {
-            windowTitleNode.textContent = getDefaultWindowTitle();
-        }
+    windowNode.dataset.style = windowStyle;
 
-        windowControlsNode.setAttribute("data-icon-type", windowIconType);
-
-        windowNode.dataset.style = windowStyle;
-
-        windowTitleNode.style.marginRight =
-            windowStyle === "macos" && showWindowControls
-                ? px(getWidth(windowControlsNode))
-                : "";
-    }
+    windowTitleNode.style.marginRight =
+      windowStyle === "macos" && showWindowControls
+        ? px(getWidth(windowControlsNode))
+        : "";
+  }
 }

@@ -5,19 +5,19 @@ import { addContentEditableListeners } from "./addContentEditableListeners";
 import { addOpenConfigListeners } from "./addOpenConfigListeners";
 
 export function addListeners() {
-    addContentEditableListeners();
-    // addHideOneTimeConfigListener();
-    addOpenConfigListeners();
+  addContentEditableListeners();
+  // addHideOneTimeConfigListener();
+  addOpenConfigListeners();
 
-    const resizeObserver = new ResizeObserver(() => {
-        if (SessionConfig.get("aspectRatio") !== "none") {
-            UpdateRatio();
-        }
+  const resizeObserver = new ResizeObserver(() => {
+    if (SessionConfig.get("aspectRatio") !== "none") {
+      UpdateRatio();
+    }
 
-        UpdateTargetProportion();
-        console.log("Resize");
-    });
+    UpdateTargetProportion();
+    console.log("Resize");
+  });
 
-    resizeObserver.observe(snippetContainerNode);
-    resizeObserver.observe(windowNode);
+  resizeObserver.observe(snippetContainerNode);
+  resizeObserver.observe(windowNode);
 }

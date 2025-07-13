@@ -11,45 +11,45 @@ import { ZoomBar } from "./react/components/ZoomBar";
 import { TranslationProvider } from "./react/contexts/TranslationContext";
 
 createRoot(document.querySelector("#top-header")!).render(
-    <TranslationProvider>
-        <LeftWrapper />
-        <CenterWrapper />
-        <OneTimeConfig />
-    </TranslationProvider>,
+  <TranslationProvider>
+    <LeftWrapper />
+    <CenterWrapper />
+    <OneTimeConfig />
+  </TranslationProvider>,
 );
 
 function LeftWrapper() {
-    return (
-        <div id="left-wrapper">
-            <LeftButtons />
-        </div>
-    );
+  return (
+    <div id="left-wrapper">
+      <LeftButtons />
+    </div>
+  );
 }
 
 function CenterWrapper() {
-    return (
-        <div id="center-wrapper">
-            <ZoomBar />
-        </div>
-    );
+  return (
+    <div id="center-wrapper">
+      <ZoomBar />
+    </div>
+  );
 }
 
 function OneTimeConfig() {
-    return (
-        <div id="one-time-config-wrapper">
-            <details id="one-time-config">
-                <summary tabIndex={-1}>
-                    <ConfigIcon />
-                </summary>
-                <nav id="action-details">
-                    <LineOptionsDetails />
-                    <WindowOptionsDetails />
-                    <OtherOptionsDetails />
-                    <WatermarkDetails />
-                    <SaveActionsDetails />
-                    <ActionDetails />
-                </nav>
-            </details>
-        </div>
-    );
+  return (
+    <div id="one-time-config-wrapper">
+      <details id="one-time-config">
+        <summary tabIndex={-1}>
+          <ConfigIcon />
+        </summary>
+        <nav id="action-details">
+          <LineOptionsDetails />
+          <WindowOptionsDetails />
+          <OtherOptionsDetails />
+          <WatermarkDetails />
+          <SaveActionsDetails />
+          <ActionDetails />
+        </nav>
+      </details>
+    </div>
+  );
 }

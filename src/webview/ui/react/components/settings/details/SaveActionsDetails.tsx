@@ -5,18 +5,18 @@ import { SaveFormatSelect } from "../selects/SaveFormatSelect";
 import { SaveScaleSelect } from "../selects/SaveScaleSelect";
 
 export function SaveActionsDetails() {
-    const { t } = useTranslation();
+  const { t } = useTranslation();
 
-    return (
-        <Details>
-            <DetailsSummary>
-                <span>{t("Save Options")}</span>
-            </DetailsSummary>
-            <DetailsContent>
-                <SaveActionSelect />
-                <SaveFormatSelect />
-                <SaveScaleSelect />
-            </DetailsContent>
-        </Details>
-    );
+  return (
+    <Details>
+      <DetailsSummary>
+        <span>{t("Save Options")}</span>
+      </DetailsSummary>
+      <DetailsContent>
+        <SaveActionSelect />
+        <SaveFormatSelect />
+        <SaveScaleSelect />
+      </DetailsContent>
+    </Details>
+  );
 }
