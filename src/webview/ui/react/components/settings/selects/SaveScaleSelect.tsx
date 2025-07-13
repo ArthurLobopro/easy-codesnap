@@ -1,6 +1,7 @@
 import type { SaveScale } from "../../../../../../types";
 import { SAVE_SCALES } from "../../../../../constants";
 import { useConfig, useSetConfig } from "../../../hooks/useConfig";
+import { useUpdateSelectsWidth } from "../../../hooks/useSelectWidthUpdater";
 import { useTranslation } from "../../../hooks/useTranslation";
 
 export function SaveScaleSelect() {
@@ -8,6 +9,8 @@ export function SaveScaleSelect() {
 
   const set = useSetConfig();
   const saveScale = useConfig("saveScale");
+
+  useUpdateSelectsWidth();
 
   return (
     <li>

@@ -1,6 +1,7 @@
 import type { SaveFormat } from "../../../../../../types";
 import { SAVE_FORMATS } from "../../../../../constants";
 import { useConfig, useSetConfig } from "../../../hooks/useConfig";
+import { useUpdateSelectsWidth } from "../../../hooks/useSelectWidthUpdater";
 import { useTranslation } from "../../../hooks/useTranslation";
 
 export function SaveFormatSelect() {
@@ -8,6 +9,8 @@ export function SaveFormatSelect() {
 
   const set = useSetConfig();
   const saveFormat = useConfig("saveFormat");
+
+  useUpdateSelectsWidth();
 
   return (
     <li>

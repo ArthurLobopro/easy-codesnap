@@ -6,7 +6,7 @@ import { LineOptionsDetails } from "./react/components/settings/details/LineOpti
 import { OtherOptionsDetails } from "./react/components/settings/details/OtherOptionsDetails";
 import { SaveActionsDetails } from "./react/components/settings/details/SaveActionsDetails";
 import { WatermarkDetails } from "./react/components/settings/details/WaterMarkDetails";
-import { WindowOptionsDetails } from "./react/components/settings/details/WindowOptionsSelect";
+import { WindowOptionsDetails } from "./react/components/settings/details/WindowOptionsDetails";
 import { ZoomBar } from "./react/components/ZoomBar";
 import { TranslationProvider } from "./react/contexts/TranslationContext";
 

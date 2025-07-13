@@ -1,6 +1,7 @@
 import type { SaveAction } from "../../../../../../types";
 import { SAVE_ACTIONS } from "../../../../../constants";
 import { useConfig, useSetConfig } from "../../../hooks/useConfig";
+import { useUpdateSelectsWidth } from "../../../hooks/useSelectWidthUpdater";
 import { useTranslation } from "../../../hooks/useTranslation";
 
 export function SaveActionSelect() {
@@ -8,6 +9,8 @@ export function SaveActionSelect() {
 
   const set = useSetConfig();
   const saveAction = useConfig("shutterAction");
+
+  useUpdateSelectsWidth();
 
   return (
     <li>

@@ -1,9 +1,9 @@
-import type { AspectRatio, Target } from "../../../../../../types";
-import { ASPECT_RATIOS } from "../../../../../constants";
 import { text } from "../../../../../util";
 import { useConfigList, useSetConfig } from "../../../hooks/useConfig";
 import { useTranslation } from "../../../hooks/useTranslation";
 import { DetailsContent, DetailsSummary, ExpandDetails } from "../../Details";
+import { AspectRatioSelect } from "../selects/AspectRatioSelect";
+import { TargetSelect } from "../selects/TargetSelect";
 
 export function OtherOptionsDetails() {
   const { t } = useTranslation();
@@ -14,16 +14,14 @@ export function OtherOptionsDetails() {
     enableResizing,
     enableSymbolBreadcrumb,
     maxCharWidth,
-    aspectRatio,
   } = useConfigList([
     "target",
     "transparentBackground",
     "enableResizing",
     "enableSymbolBreadcrumb",
     "maxCharWidth",
-    "aspectRatio",
   ]);
-  const set = useSetConfig();
+  const { set, toggleCallback } = useSetConfig();
 
   return (
     <ExpandDetails>
@@ -31,19 +29,7 @@ export function OtherOptionsDetails() {
         <span>{t("Other Options")}</span>
       </DetailsSummary>
       <DetailsContent>
-        <li>
-          <span>{t("Target")}</span>
-          <select
-            tabIndex={-1}
-            value={target}
-            onChange={(ev) => {
-              set({ target: ev.currentTarget.value as Target });
-            }}
-          >
-            <option value="window">window</option>
-            <option value="container">container</option>
-          </select>
-        </li>
+        <TargetSelect />
         <li>
           <label className="tooltip horizontal-left">
             <span>{t("Transparent Background")}</span>
@@ -52,11 +38,7 @@ export function OtherOptionsDetails() {
               tabIndex={-1}
               checked={transparentBackground}
               disabled={target === "window"}
-              onChange={(ev) =>
-                set({
-                  transparentBackground: ev.currentTarget.checked,
-                })
-              }
+              onChange={toggleCallback("transparentBackground")}
             />
             <span className="tooltip-text">
               {text(
@@ -76,11 +58,7 @@ export function OtherOptionsDetails() {
               type="checkbox"
               tabIndex={-1}
               checked={enableResizing}
-              onChange={(ev) =>
-                set({
-                  enableResizing: ev.currentTarget.checked,
-                })
-              }
+              onChange={toggleCallback("enableResizing")}
             />
             <span className="tooltip-text">
               {text(
@@ -97,11 +75,7 @@ export function OtherOptionsDetails() {
               type="checkbox"
               tabIndex={-1}
               checked={enableSymbolBreadcrumb}
-              onChange={(ev) =>
-                set({
-                  enableSymbolBreadcrumb: ev.currentTarget.checked,
-                })
-              }
+              onChange={toggleCallback("enableSymbolBreadcrumb")}
             />
           </label>
         </li>
@@ -130,23 +104,7 @@ export function OtherOptionsDetails() {
             )}
           </span>
         </li>
-        <li>
-          <span>{t("Aspect Ratio")}</span>
-          <select
-            value={aspectRatio}
-            onChange={(ev) =>
-              set({
-                aspectRatio: ev.currentTarget.value as AspectRatio,
-              })
-            }
-          >
-            {ASPECT_RATIOS.map((ratio) => (
-              <option value={ratio} key={ratio}>
-                {ratio}
-              </option>
-            ))}
-          </select>
-        </li>
+        <AspectRatioSelect />
       </DetailsContent>
     </ExpandDetails>
   );
