@@ -40,7 +40,7 @@
     "formatter": {
         "enabled": true,
         "indentStyle": "space",
-        "indentWidth": 4
+        "indentWidth": 2
     },
     "files": {
         "includes": ["src/**/*.ts", "src/**/*.tsx"]
