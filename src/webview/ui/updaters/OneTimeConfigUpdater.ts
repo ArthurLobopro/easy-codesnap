@@ -1,17 +1,12 @@
 import { SessionConfig } from "../../SessionConfig";
 import {
-    enableResizingInput,
-    enableSymbolBreadcrumbInput,
     highlightLineNumberInput,
-    maxCharWidthInput,
     realLineNumbersInput,
     roundedCornersInput,
     roundingLevelSelect,
     showLineNumbersInput,
     showWindowControlsInput,
     showWindowTitleInput,
-    targetSelect,
-    transparentBackgroundInput,
     windowIconTypeSelect,
     windowStyleSelect,
 } from "../elements";
@@ -24,11 +19,7 @@ export class OneTimeConfigUpdater extends Updater {
             "realLineNumbers",
             "showWindowControls",
             "roundedCorners",
-            "transparentBackground",
             "showWindowTitle",
-            "target",
-            "enableResizing",
-            "enableSymbolBreadcrumb",
             "roundingLevel",
             "windowStyle",
             "highlightLineNumber",
@@ -42,15 +33,10 @@ export class OneTimeConfigUpdater extends Updater {
             realLineNumbers,
             showWindowControls,
             roundedCorners,
-            transparentBackground,
             showWindowTitle,
-            target,
-            enableResizing,
-            enableSymbolBreadcrumb,
             roundingLevel,
             windowStyle,
             highlightLineNumber,
-            maxCharWidth,
             windowIconType,
         } = SessionConfig.get();
 
@@ -59,23 +45,17 @@ export class OneTimeConfigUpdater extends Updater {
         realLineNumbersInput.checked = realLineNumbers;
         showWindowControlsInput.checked = showWindowControls;
         roundedCornersInput.checked = roundedCorners;
-        transparentBackgroundInput.checked = transparentBackground;
-        enableResizingInput.checked = enableResizing;
-        enableSymbolBreadcrumbInput.checked = enableSymbolBreadcrumb;
+
         highlightLineNumberInput.checked = highlightLineNumber;
 
         realLineNumbersInput.disabled = !showLineNumbers;
         highlightLineNumberInput.disabled = !showLineNumbers;
         roundingLevelSelect.disabled = !roundedCorners;
-        transparentBackgroundInput.disabled = target !== "container";
 
-        targetSelect.value = target;
         roundingLevelSelect.value = roundingLevel.toString();
         windowStyleSelect.value = windowStyle;
 
         windowIconTypeSelect.value = windowIconType;
         windowIconTypeSelect.disabled = windowStyle !== "windows";
-
-        maxCharWidthInput.value = String(maxCharWidth);
     }
 }

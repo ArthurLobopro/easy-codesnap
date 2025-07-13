@@ -1,14 +1,11 @@
 import type { WebviewConfig } from "../../../types";
 import { SessionConfig } from "../../SessionConfig";
-import { getWidth, px } from "../../util";
+import { px } from "../../util";
 import {
-    aspectRatioSelect,
     breadcrumbNode,
     navbarNode,
-    roundingLevelSelect,
     snippetContainerNode,
     targetProportion,
-    targetSelect,
     windowControlsNode,
     windowNode,
     windowTitleNode,
@@ -71,21 +68,6 @@ export class VisibilityUpdater extends Updater {
         }
 
         UpdateTargetProportion();
-
-        const selects = [targetSelect, roundingLevelSelect, aspectRatioSelect];
-
-        const biggerSelect = selects.reduce((prev, curr) => {
-            const prevWidth = getWidth(prev);
-            const currWidth = getWidth(curr);
-
-            return prevWidth >= currWidth ? prev : curr;
-        }, targetSelect);
-
-        const biggerSelectWidth = `${getWidth(biggerSelect)}px`;
-
-        for (const select of selects) {
-            select.style.width = biggerSelectWidth;
-        }
 
         UpdateRatio(aspectRatio);
     }

@@ -124,69 +124,6 @@
             </div>
           </details>
 
-          <details class="expand-content" open>
-            <summary>
-              <div class="codicon codicon-chevron-down"></div>
-              <span data-l10n="Other Options"></span>
-              <div class="codicon codicon-chevron-down"></div>
-            </summary>
-
-            <div>
-              <li>
-                <span data-l10n="Target"></span>
-                <select data-configname="target" tabindex="-1">
-                  <option value="window">window</option>
-                  <option value="container">container</option>
-                </select>
-              </li>
-              <li>
-                <label class="tooltip horizontal-left">
-                  <span data-l10n="Transparent Background"></span>
-                  <input type="checkbox" data-configname="transparentBackground" tabindex="-1">
-                  <span class="tooltip-text">
-                    <span data-l10n="When you take the Snapshot, the container background will be transparent."></span>
-                    <span data-l10n="Only valid when `Target` is `container`"></span>
-                  </span>
-                </label>
-              </li>
-
-              <li>
-                <label class="tooltip horizontal-left">
-                  <span data-l10n="Enable Resizing"></span>
-                  <input type="checkbox" data-configname="enableResizing" tabindex="-1">
-                  <span class="tooltip-text">
-                    <span data-l10n="Enables manual resizing of the `Snap Window`."></span>
-                    <span data-l10n="Disabling this will also reset the `Snap Window` size."></span>
-                  </span>
-                </label>
-              </li>
-              <li>
-                <label class="tooltip horizontal-left">
-                  <span data-l10n="Enable Symbol Breadcrumb"></span>
-                  <input type="checkbox" data-configname="enableSymbolBreadcrumb" tabindex="-1">
-                </label>
-              </li>
-              <li class="tooltip horizontal-left">
-                <span data-l10n="Max char width"></span>
-                <input type="number" data-configname="maxCharWidth" min="0" multiple="1" max="200" maxlength="3">
-                <span class="tooltip-text">
-                  <span data-l10n="Maximum line width based on characters. Use value 0 for no limit."></span>
-                  <span data-l10n="Invalid values will be ignored and the last valid value will be restored"></span>
-                </span>
-              </li>
-              <li>
-                <span data-l10n="Aspect Ratio"></span>
-                <select data-configname="aspectRatio">
-                  <option value="none">none</option>
-                  <option value="1:1">1:1</option>
-                  <option value="1.91:1">1,91:1</option>
-                  <option value="4:5">4:5</option>
-                  <option value="9:16">9:16</option>
-                  <option value="16:9">16:9</option>
-                </select>
-              </li>
-            </div>
-          </details>
         </nav>
 
         <nav id="action-details"></nav>

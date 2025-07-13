@@ -2,6 +2,7 @@ import { createPortal } from "react-dom";
 import { createRoot } from "react-dom/client";
 import { LeftButtons } from "./react/components/LeftButtons";
 import { ActionDetails } from "./react/components/settings/details/ActionDetails";
+import { OtherOptionsDetails } from "./react/components/settings/details/OtherOptionsDetails";
 import { SaveActionsDetails } from "./react/components/settings/details/SaveActionsDetails";
 import { WatermarkDetails } from "./react/components/settings/details/WaterMarkDetails";
 import { ZoomBar } from "./react/components/ZoomBar";
@@ -16,6 +17,7 @@ createRoot(document.querySelector("#center-wrapper")!).render(
         )}
         {createPortal(
             <>
+                <OtherOptionsDetails />
                 <WatermarkDetails />
                 <SaveActionsDetails />
                 <ActionDetails />

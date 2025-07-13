@@ -4,6 +4,8 @@ import type { IPanelWebviewConfig } from "./commands/snap/PanelWebviewConfig";
 export type SaveFormat = "png" | "svg";
 export type SaveScale = 0.5 | 0.75 | 1 | 1.5 | 2 | 3 | 4;
 export type SaveAction = "save" | "copy";
+export type Target = "container" | "window";
+export type AspectRatio = "none" | "1:1" | "1,91:1" | "4:5" | "9:16" | "16:9";
 
 export interface ExtensionConfig {
     boxShadow: string;
@@ -31,11 +33,11 @@ export interface ExtensionConfig {
     saveScale: SaveScale;
     roundingLevel: 1 | 2 | 3 | 4;
     saveFormat: SaveFormat;
-    target: "container" | "window";
+    target: Target;
     shutterAction: SaveAction;
     windowStyle: "macos" | "windows";
     windowIconType: "round" | "square";
-    aspectRatio: "none" | "1:1" | "1,91:1" | "4:5" | "9:16" | "16:9";
+    aspectRatio: AspectRatio;
     watermarkPosition:
         | "bottom-right"
         | "bottom-left"

@@ -84,6 +84,11 @@ export interface ISessionConfig
         | "watermark"
         | "watermarkPosition"
         | "target"
+        | "transparentBackground"
+        | "enableResizing"
+        | "enableSymbolBreadcrumb"
+        | "maxCharWidth"
+        | "aspectRatio"
     > {
     set: (config: Partial<Omit<ISessionConfig, "set">>) => void;
 }

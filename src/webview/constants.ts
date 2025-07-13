@@ -1,4 +1,4 @@
-import type { WebviewConfig } from "../types";
+import type { ISessionConfig } from "./SessionConfig";
 
 export const iconClassConfig = {
     String: "codicon codicon-symbol-string",
@@ -30,8 +30,9 @@ export type ZoomLevel = (typeof ZOOM_LEVELS)[number];
 export const SAVE_FORMATS = ["png", "svg"] as const;
 export const SAVE_SCALES = [0.5, 0.75, 1, 1.5, 2, 3, 4] as const;
 export const SAVE_ACTIONS = ["save", "copy"];
+export const ASPECT_RATIOS = ["none", "1:1", "1.91:1", "4:5", "9:16", "16:9"];
 
-export const DEFAULT_SETTINGS: Partial<WebviewConfig> = {
+export const DEFAULT_SETTINGS: Omit<ISessionConfig, "set"> = {
     isLocked: false,
     isLinked: false,
     zoom: 100,
@@ -41,4 +42,9 @@ export const DEFAULT_SETTINGS: Partial<WebviewConfig> = {
     watermark: false,
     watermarkPosition: "bottom-right",
     target: "container",
+    transparentBackground: false,
+    enableResizing: true,
+    enableSymbolBreadcrumb: false,
+    maxCharWidth: 0,
+    aspectRatio: "none",
 } as const;
