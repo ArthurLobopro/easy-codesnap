@@ -61,7 +61,7 @@ const config = (env, argv) => {
         extensions: [".tsx", ".ts", ".js"],
         alias: {
           "@": path.resolve(__dirname, "./src/webview"),
-          "@hooks": path.resolve(__dirname, "./src/webview/ui/react/"),
+          "@hooks": path.resolve(__dirname, "./src/webview/ui/react/hooks"),
 
         },
         fallback: {}
