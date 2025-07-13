@@ -44,7 +44,7 @@
     }
 
     li {
-        &:not(.separator, .title) {
+        &:not(.title) {
             border-radius: 4px;
             padding: 4px;
             font-size: 14px;
@@ -83,15 +83,8 @@
             gap: 4px;
         }
 
-        &:not(.separator):hover {
+        &:hover {
             background-color: var(--vscode-sideBar-dropBackground);
-        }
-
-        &.separator {
-            display: block;
-            height: 1px;
-            background-color: var(--vscode-foreground);
-            margin: 8px 4px;
         }
 
         .tooltip-text {
