@@ -1,4 +1,4 @@
-import { pick, pickAllExcept } from "@arthur-lobo/object-pick";
+import { omit, pick, pickAllExcept } from "@arthur-lobo/object-pick";
 import * as l10n from "@vscode/l10n";
 import type { ConfigSentToWebview } from "../types";
 import { SessionConfig, useSessionConfig } from "./SessionConfig";
@@ -23,9 +23,7 @@ export const actions = {
 
     TranslationUpdater();
 
-    SessionConfig.set(
-      pickAllExcept(config, ["linkOnOpen", "lockOnOpen", "bundle"]),
-    );
+    SessionConfig.set(omit(config, ["linkOnOpen", "lockOnOpen", "bundle"]));
 
     document.execCommand("paste");
 
