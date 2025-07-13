@@ -2,12 +2,11 @@ import { SessionConfig } from "../../SessionConfig";
 import { snippetContainerNode, windowNode } from "../elements";
 import { UpdateRatio, UpdateTargetProportion } from "../updaters";
 import { addContentEditableListeners } from "./addContentEditableListeners";
-import { addHideOneTimeConfigListener } from "./addHideOneTimeConfigListener";
 import { addOpenConfigListeners } from "./addOpenConfigListeners";
 
 export function addListeners() {
     addContentEditableListeners();
-    addHideOneTimeConfigListener();
+    // addHideOneTimeConfigListener();
     addOpenConfigListeners();
 
     const resizeObserver = new ResizeObserver(() => {

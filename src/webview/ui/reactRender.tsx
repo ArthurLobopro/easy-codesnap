@@ -1,5 +1,5 @@
-import { createPortal } from "react-dom";
 import { createRoot } from "react-dom/client";
+import { ConfigIcon } from "./react/components/icons";
 import { LeftButtons } from "./react/components/LeftButtons";
 import { ActionDetails } from "./react/components/settings/details/ActionDetails";
 import { LineOptionsDetails } from "./react/components/settings/details/LineOptionsDetails";
@@ -10,23 +10,46 @@ import { WindowOptionsDetails } from "./react/components/settings/details/Window
 import { ZoomBar } from "./react/components/ZoomBar";
 import { TranslationProvider } from "./react/contexts/TranslationContext";
 
-createRoot(document.querySelector("#center-wrapper")!).render(
+createRoot(document.querySelector("#top-header")!).render(
     <TranslationProvider>
-        <ZoomBar />
-        {createPortal(
-            <LeftButtons />,
-            document.querySelector("#left-wrapper")!,
-        )}
-        {createPortal(
-            <>
-                <LineOptionsDetails />
-                <WindowOptionsDetails />
-                <OtherOptionsDetails />
-                <WatermarkDetails />
-                <SaveActionsDetails />
-                <ActionDetails />
-            </>,
-            document.querySelector("#action-details")!,
-        )}
+        <LeftWrapper />
+        <CenterWrapper />
+        <OneTimeConfig />
     </TranslationProvider>,
 );
+
+function LeftWrapper() {
+    return (
+        <div id="left-wrapper">
+            <LeftButtons />
+        </div>
+    );
+}
+
+function CenterWrapper() {
+    return (
+        <div id="center-wrapper">
+            <ZoomBar />
+        </div>
+    );
+}
+
+function OneTimeConfig() {
+    return (
+        <div id="one-time-config-wrapper">
+            <details id="one-time-config">
+                <summary tabIndex={-1}>
+                    <ConfigIcon />
+                </summary>
+                <nav id="action-details">
+                    <LineOptionsDetails />
+                    <WindowOptionsDetails />
+                    <OtherOptionsDetails />
+                    <WatermarkDetails />
+                    <SaveActionsDetails />
+                    <ActionDetails />
+                </nav>
+            </details>
+        </div>
+    );
+}
