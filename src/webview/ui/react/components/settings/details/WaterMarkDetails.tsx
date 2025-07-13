@@ -1,7 +1,7 @@
 import { openConfig, text } from "../../../../../util";
 import { useConfigList, useSetConfig } from "../../../hooks/useConfig";
 import { useTranslation } from "../../../hooks/useTranslation";
-import { Details, DetailsContent, DetailsSummary } from "../../Details";
+import { DetailsContent, DetailsSummary, ExpandDetails } from "../../Details";
 
 export function WatermarkDetails() {
   const { t } = useTranslation();
@@ -14,7 +14,7 @@ export function WatermarkDetails() {
   const set = useSetConfig();
 
   return (
-    <Details>
+    <ExpandDetails>
       <DetailsSummary>
         <span>{t("Show Watermark")}</span>
       </DetailsSummary>
@@ -109,6 +109,6 @@ export function WatermarkDetails() {
           </span>
         </li>
       </DetailsContent>
-    </Details>
+    </ExpandDetails>
   );
 }

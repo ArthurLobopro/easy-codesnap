@@ -1,16 +1,37 @@
-import type { PropsWithChildren } from "react";
+import { type PropsWithChildren, useContext } from "react";
+import { DetailsContext, DetailsProvider } from "../contexts/DetailsContext";
 
-export function Details({ children }: PropsWithChildren) {
+function RawExpandDetails({ children }: PropsWithChildren) {
+  const { isOpen } = useContext(DetailsContext);
+
   return (
-    <details className="expand-content" onClick={(ev) => ev.stopPropagation()}>
+    <div
+      className="expand-content"
+      data-state={isOpen ? "open" : "closed"}
+      onClick={(ev) => ev.stopPropagation()}
+    >
       {children}
-    </details>
+    </div>
+  );
+}
+
+export function ExpandDetails({ children }: PropsWithChildren) {
+  return (
+    <DetailsProvider defaultOpen>
+      <RawExpandDetails>{children}</RawExpandDetails>
+    </DetailsProvider>
   );
 }
 
 export function DetailsSummary({ children }: PropsWithChildren) {
+  const { setIsOpen, isOpen } = useContext(DetailsContext);
   return (
-    <summary>
+    <summary
+      onClick={(ev) => {
+        ev.stopPropagation();
+        setIsOpen(!isOpen);
+      }}
+    >
       <div className="codicon codicon-chevron-down" />
       {children}
       <div className="codicon codicon-chevron-down" />
@@ -19,5 +40,7 @@ export function DetailsSummary({ children }: PropsWithChildren) {
 }
 
 export function DetailsContent({ children }: PropsWithChildren) {
-  return <div>{children}</div>;
+  const { isOpen } = useContext(DetailsContext);
+
+  return isOpen ? <div>{children}</div> : null;
 }

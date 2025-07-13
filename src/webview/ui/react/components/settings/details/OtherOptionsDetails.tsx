@@ -3,7 +3,7 @@ import { ASPECT_RATIOS } from "../../../../../constants";
 import { text } from "../../../../../util";
 import { useConfigList, useSetConfig } from "../../../hooks/useConfig";
 import { useTranslation } from "../../../hooks/useTranslation";
-import { Details, DetailsContent, DetailsSummary } from "../../Details";
+import { DetailsContent, DetailsSummary, ExpandDetails } from "../../Details";
 
 export function OtherOptionsDetails() {
   const { t } = useTranslation();
@@ -26,7 +26,7 @@ export function OtherOptionsDetails() {
   const set = useSetConfig();
 
   return (
-    <Details>
+    <ExpandDetails>
       <DetailsSummary>
         <span>{t("Other Options")}</span>
       </DetailsSummary>
@@ -148,6 +148,6 @@ export function OtherOptionsDetails() {
           </select>
         </li>
       </DetailsContent>
-    </Details>
+    </ExpandDetails>
   );
 }

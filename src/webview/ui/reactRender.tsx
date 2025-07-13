@@ -39,7 +39,7 @@ function OneTimeConfig() {
     <div id="one-time-config-wrapper">
       <details id="one-time-config">
         <summary tabIndex={-1}>
-          <ConfigIcon />
+          <ConfigIcon className="follow-colors" />
         </summary>
         <nav id="action-details">
           <LineOptionsDetails />

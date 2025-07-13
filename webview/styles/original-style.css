@@ -8,9 +8,7 @@ html {
     --window-border-radius: 4px;
     --letter-spacing: 0px;
     --zoom: 100%;
-    --max-char-width: 100%
-
-    box-sizing: border-box;
+    --max-char-width: 100% box-sizing: border-box;
 }
 
 body {
@@ -26,7 +24,7 @@ body {
     padding-bottom: 1rem;
 }
 
-.mr-1{
+.mr-1 {
     margin-right: 4px;
 }
 
@@ -193,4 +191,14 @@ div:has(#snippet-scroll) {
 
 .link:hover {
     text-decoration: underline;
+}
+
+svg.follow-colors {
+    *[stroke]:not([stroke="none"]) {
+        stroke: var(--vscode-foreground);
+    }
+
+    *[fill]:not([fill="none"]) {
+        fill: var(--vscode-foreground);
+    }
 }

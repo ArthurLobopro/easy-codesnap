@@ -22,16 +22,6 @@
         &:hover {
             background-color: var(--vscode-toolbar-hoverBackground);
         }
-
-        &>svg {
-            *[stroke]:not([stroke="none"]) {
-                stroke: var(--vscode-foreground);
-            }
-
-            *[fill]:not([fill="none"]) {
-                fill: var(--vscode-foreground);
-            }
-        }
     }
 
     nav {
@@ -192,7 +182,7 @@ select>option {
 }
 
 .expand-content {
-    &[open] {
+    &[data-state=open] {
         >summary {
             &:hover {
                 background-color: transparent;

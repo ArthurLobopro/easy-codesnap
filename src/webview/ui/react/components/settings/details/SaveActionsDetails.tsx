@@ -1,5 +1,5 @@
 import { useTranslation } from "../../../hooks/useTranslation";
-import { Details, DetailsContent, DetailsSummary } from "../../Details";
+import { DetailsContent, DetailsSummary, ExpandDetails } from "../../Details";
 import { SaveActionSelect } from "../selects/SaveActionSelect";
 import { SaveFormatSelect } from "../selects/SaveFormatSelect";
 import { SaveScaleSelect } from "../selects/SaveScaleSelect";
@@ -8,7 +8,7 @@ export function SaveActionsDetails() {
   const { t } = useTranslation();
 
   return (
-    <Details>
+    <ExpandDetails>
       <DetailsSummary>
         <span>{t("Save Options")}</span>
       </DetailsSummary>
@@ -17,6 +17,6 @@ export function SaveActionsDetails() {
         <SaveFormatSelect />
         <SaveScaleSelect />
       </DetailsContent>
-    </Details>
+    </ExpandDetails>
   );
 }

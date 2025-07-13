@@ -1,7 +1,7 @@
 import { text } from "../../../../../util";
 import { useConfigList, useSetConfig } from "../../../hooks/useConfig";
 import { useTranslation } from "../../../hooks/useTranslation";
-import { Details, DetailsContent, DetailsSummary } from "../../Details";
+import { DetailsContent, DetailsSummary, ExpandDetails } from "../../Details";
 
 export function LineOptionsDetails() {
   const { t } = useTranslation();
@@ -15,7 +15,7 @@ export function LineOptionsDetails() {
   const { toggleCallback } = useSetConfig();
 
   return (
-    <Details>
+    <ExpandDetails>
       <DetailsSummary>
         <span>{t("Line Options")}</span>
       </DetailsSummary>
@@ -73,6 +73,6 @@ export function LineOptionsDetails() {
           </label>
         </li>
       </DetailsContent>
-    </Details>
+    </ExpandDetails>
   );
 }
