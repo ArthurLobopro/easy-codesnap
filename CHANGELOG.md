@@ -1,3 +1,7 @@
+# 1.29.0
+
+Refactor: Rewrite One Time Config Using React
+
 # 1.28.2
 
 Feat: add windowIconStyle

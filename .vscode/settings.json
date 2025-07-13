@@ -1,10 +1,10 @@
 // Place your settings in this file to overwrite default and user settings.
 {
     "files.exclude": {
-        "out": false // set this to true to hide the "out" folder with the compiled JS files
+        "badges": true,
+        "node_modules": true,
     },
     "search.exclude": {
-        "out": true, // set this to false to include "out" folder in search results
         "dist": true
     },
     // Turn off tsc task auto detection since we have the necessary tasks as npm scripts
@@ -13,8 +13,16 @@
     "[typescript]": {
         "editor.defaultFormatter": "biomejs.biome",
         "editor.codeActionsOnSave": {
-            "source.fixAll.biome": "explicit"
+            "source.fixAll.biome": "explicit",
+            "source.organizeImports": "never"
         }
+    },
+    "[typescriptreact]": {
+        "editor.defaultFormatter": "biomejs.biome",
+        "editor.codeActionsOnSave": {
+            "source.fixAll.biome": "explicit",
+            "source.organizeImports": "never"
+        },
     },
     "explorer.fileNesting.enabled": true,
     "explorer.fileNesting.patterns": {

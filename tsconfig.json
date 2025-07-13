@@ -7,7 +7,7 @@
 			"ES2024"
 		],
 		"sourceMap": true,
-		"rootDir": ".",
+		"rootDir": "./src/",
 		"strict": true,
 		"noImplicitReturns": true
 	},
