@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import { createRoot } from "react-dom/client";
 import { ConfigIcon } from "./react/components/icons";
 import { LeftButtons } from "./react/components/LeftButtons";
@@ -35,20 +36,40 @@ function CenterWrapper() {
 }
 
 function OneTimeConfig() {
+  const [open, setOpen] = useState(false);
+
+  useEffect(() => {
+    const callback = () => setOpen(false);
+
+    if (open) {
+      window.addEventListener("click", callback);
+
+      return () => window.removeEventListener("click", callback);
+    }
+  }, [open]);
+
   return (
     <div id="one-time-config-wrapper">
-      <details id="one-time-config">
-        <summary tabIndex={-1}>
+      <details id="one-time-config" onClick={(ev) => ev.stopPropagation()}>
+        <summary
+          tabIndex={-1}
+          onClick={(ev) => {
+            ev.stopPropagation();
+            setOpen(!open);
+          }}
+        >
           <ConfigIcon className="follow-colors" />
         </summary>
-        <nav id="action-details">
-          <LineOptionsDetails />
-          <WindowOptionsDetails />
-          <OtherOptionsDetails />
-          <WatermarkDetails />
-          <SaveActionsDetails />
-          <ActionDetails />
-        </nav>
+        {open && (
+          <nav id="action-details">
+            <LineOptionsDetails />
+            <WindowOptionsDetails />
+            <OtherOptionsDetails />
+            <WatermarkDetails />
+            <SaveActionsDetails />
+            <ActionDetails />
+          </nav>
+        )}
       </details>
     </div>
   );
