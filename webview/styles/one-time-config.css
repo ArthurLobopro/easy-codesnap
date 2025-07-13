@@ -44,16 +44,15 @@
     }
 
     li {
-        &:not(.title) {
-            border-radius: 4px;
-            padding: 4px;
-            font-size: 14px;
-            list-style-type: none;
+        border-radius: 4px;
+        padding: 4px;
+        font-size: 14px;
+        list-style-type: none;
 
-            display: flex;
-            align-items: center;
-            box-sizing: border-box;
-        }
+        display: flex;
+        align-items: center;
+        box-sizing: border-box;
+
 
         &:has(label>input:not([type="radio"])) {
             cursor: pointer;
@@ -106,7 +105,7 @@
             border-radius: 4px;
             padding: 2px 0;
             cursor: pointer;
-        
+
             outline: 0;
         }
 
@@ -120,7 +119,7 @@
             cursor: pointer;
         }
 
-        input[type="number"]{
+        input[type="number"] {
             background-color: var(--vscode-sideBar-background);
             color: var(--vscode-foreground);
 
@@ -133,7 +132,7 @@
                 display: none;
             }
 
-            &:invalid{
+            &:invalid {
                 border-color: var(--vscode-errorForeground);
                 outline-color: var(--vscode-errorForeground);
             }
@@ -157,7 +156,7 @@
                 background-color: var(--vscode-sideBar-background);
                 box-sizing: border-box;
 
-                >.bg{
+                >.bg {
                     display: flex;
                     width: 100%;
                     height: 100%;
@@ -167,7 +166,7 @@
                     background-color: var(--vscode-focusBorder);
                 }
 
-                &:not(:has(input:checked)):hover > .bg {
+                &:not(:has(input:checked)):hover>.bg {
                     background-color: var(--vscode-focusBorder);
                     opacity: .6;
                 }
@@ -181,26 +180,6 @@
     }
 }
 
-
-.title {
-    display: flex;
-    align-items: center;
-    width: 100%;
-    padding: 4px 0;
-}
-
-.title span {
-    flex-shrink: 0;
-    padding-inline: 4px;
-    font-size: 12px;
-}
-
-.title::after,
-.title::before {
-    content: "";
-    border-bottom: 1px solid var(--vscode-foreground);
-    width: 100%;
-}
 
 li:has(:disabled),
 select:disabled {
