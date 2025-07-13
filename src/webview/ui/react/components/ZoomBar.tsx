@@ -34,7 +34,6 @@ export function ZoomBar() {
         <span className="tooltip-text">{t("Zoom out")}</span>
       </button>
       <select
-        data-configname="zoom"
         value={zoom}
         onChange={(e) => set({ zoom: Number(e.target.value) as ZoomLevel })}
       >

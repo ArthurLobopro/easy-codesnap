@@ -13,7 +13,6 @@ export function SaveScaleSelect() {
     <li>
       <span>{t("Save Scale")}</span>
       <select
-        data-configname="saveScale"
         value={saveScale}
         onChange={(ev) => {
           set({

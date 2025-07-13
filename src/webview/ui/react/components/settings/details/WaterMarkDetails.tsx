@@ -24,7 +24,6 @@ export function WatermarkDetails() {
             <span>{t("Show Watermark")}</span>
             <input
               type="checkbox"
-              data-configname="watermark"
               tabIndex={-1}
               checked={watermark}
               onChange={(ev) => set({ watermark: ev.currentTarget.checked })}

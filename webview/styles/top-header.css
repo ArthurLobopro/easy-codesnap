@@ -23,7 +23,7 @@
         align-items: center;
         gap: 8px;
         
-        [data-configname=zoom] {
+        select {
             width: 60px;
             background-color: transparent;
             color: var(--vscode-foreground);

@@ -107,7 +107,6 @@ export function WindowOptionsDetails() {
             <span>{t("Rounded Corners")}</span>
             <input
               type="checkbox"
-              data-configname="roundedCorners"
               tabIndex={-1}
               checked={roundedCorners}
               onChange={toggleCallback("roundedCorners")}
@@ -117,7 +116,6 @@ export function WindowOptionsDetails() {
         <li className="tooltip horizontal-left">
           <span>{t("Rounding Level")}</span>
           <select
-            data-configname="roundingLevel"
             tabIndex={-1}
             disabled={!roundedCorners}
             value={roundingLevel}

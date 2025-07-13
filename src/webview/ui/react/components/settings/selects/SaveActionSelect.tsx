@@ -13,7 +13,6 @@ export function SaveActionSelect() {
     <li>
       <span>{t("Save Action")}</span>
       <select
-        data-configname="shutterAction"
         tabIndex={-1}
         value={saveAction}
         onChange={(ev) => {

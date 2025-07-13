@@ -13,7 +13,6 @@ export function SaveFormatSelect() {
     <li>
       <span>{t("Save Format")}</span>
       <select
-        data-configname="saveFormat"
         tabIndex={-1}
         value={saveFormat}
         onChange={(ev) => {
