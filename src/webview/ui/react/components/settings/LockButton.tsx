@@ -12,8 +12,6 @@ export function LockButton() {
     <button
       className="tooltip bottom"
       id="lock-indicator"
-      data-action="toggle-lock"
-      data-configname="isLocked"
       onClick={() => set({ isLocked: !isLocked })}
       type="button"
     >
@@ -28,11 +26,7 @@ export function LockButton() {
             t("To change the default behavior, click"),
           )}
         </span>
-        <span
-          className="link"
-          data-openconfig="lockOnOpen"
-          onClick={() => openConfig("lockOnOpen")}
-        >
+        <span className="link" onClick={() => openConfig("lockOnOpen")}>
           {" "}
           {t("here")}
         </span>

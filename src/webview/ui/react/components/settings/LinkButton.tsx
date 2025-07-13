@@ -13,15 +13,12 @@ export function LinkButton() {
     <button
       className="tooltip bottom"
       id="link-indicator"
-      data-state="unlinked"
-      data-action="toggle-link"
-      data-configname="isLinked"
       type="button"
       onClick={() => set({ isLinked: !isLinked })}
     >
       {isLinked ? <LinkIcon /> : <UnlinkIcon />}
       <span className="tooltip-text right">
-        <span data-state="isLinked">{t("Connect to editor")}</span>. <br />
+        <span>{t("Connect to editor")}</span>. <br />
         <span>
           {text(
             t(

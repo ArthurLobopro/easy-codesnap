@@ -16,11 +16,6 @@
         display: flex;
         align-items: flex-start;
         gap: 8px;
-    
-        [data-state="unlinked"]>#link-icon,
-        [data-state="linked"]>#unlink-icon {
-            display: none;
-        }
     }
 
     #center-wrapper {
