@@ -49,12 +49,13 @@ function OneTimeConfig() {
   }, [open]);
 
   return (
-    <div id="one-time-config-wrapper">
-      <details id="one-time-config" onClick={(ev) => ev.stopPropagation()}>
+    <div id="one-time-config-wrapper" onClick={(ev) => ev.stopPropagation()}>
+      <details id="one-time-config" open={open}>
         <summary
           tabIndex={-1}
           onClick={(ev) => {
             ev.stopPropagation();
+            ev.preventDefault();
             setOpen(!open);
           }}
         >
