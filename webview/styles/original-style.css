@@ -149,7 +149,7 @@ div:has(#snippet-scroll) {
         max-width: var(--max-char-width);
 
         >span {
-            white-space: pre;
+            white-space: pre-wrap;
             width: max-content;
         }
     }
