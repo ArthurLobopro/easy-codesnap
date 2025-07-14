@@ -53,6 +53,17 @@ function setupLines(node: Element) {
     newRow.appendChild(lineCodeDiv);
   });
 
+  const finalSpans = $$(
+    ".line-code > span > span:last-child",
+    node,
+  ) as HTMLSpanElement[];
+
+  finalSpans.forEach((span) => {
+    if (span.textContent === " ") {
+      span.remove();
+    }
+  });
+
   UpdateRatio(config.aspectRatio);
 }
 
