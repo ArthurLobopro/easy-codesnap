@@ -130,7 +130,6 @@ div:has(#snippet-scroll) {
 .line-number {
     text-align: right;
     color: var(--vscode-editorLineNumber-foreground);
-    margin-right: 18px;
     width: var(--line-number-width);
     white-space: nowrap;
     flex: none;
@@ -141,6 +140,7 @@ div:has(#snippet-scroll) {
     display: flex;
     flex-wrap: wrap;
     width: 100%;
+    padding-left: 18px;
 
     >span {
         display: flex;
@@ -149,7 +149,7 @@ div:has(#snippet-scroll) {
         max-width: var(--max-char-width);
 
         >span {
-            white-space: pre;
+            white-space: pre-wrap;
             width: max-content;
         }
     }

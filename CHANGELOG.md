@@ -1,3 +1,7 @@
+# 1.29.1
+
+Fix: Small fixes
+
 # 1.29.0
 
 Refactor: Rewrite One Time Config Using React
