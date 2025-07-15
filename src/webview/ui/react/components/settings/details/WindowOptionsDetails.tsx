@@ -1,11 +1,7 @@
 import { useConfigList, useSetConfig } from "@hooks//useConfig";
 import { useTranslation } from "@hooks//useTranslation";
 import { openConfig, text } from "@/util";
-import {
-  DetailsContent,
-  ExpandDetails,
-  TextDetailsSummary,
-} from "../../ExpandDetails";
+import { DetailsContent, ExpandDetails, TextDetailsSummary } from "../../ExpandDetails";
 import { IconTypeSelect } from "../selects/IconTypeSelect";
 import { RoundingLevelSelect } from "../selects/RoundigLevelSelect";
 import { WindowStyleSelect } from "../selects/WindoStyleSelect";
@@ -14,9 +10,11 @@ export function WindowOptionsDetails() {
   const { t } = useTranslation();
 
   const { toggleCallback } = useSetConfig();
-  const { showWindowTitle, showWindowControls, roundedCorners } = useConfigList(
-    ["showWindowTitle", "showWindowControls", "roundedCorners"],
-  );
+  const { showWindowTitle, showWindowControls, roundedCorners } = useConfigList([
+    "showWindowTitle",
+    "showWindowControls",
+    "roundedCorners",
+  ]);
 
   return (
     <ExpandDetails>
@@ -36,16 +34,11 @@ export function WindowOptionsDetails() {
             <span className="tooltip-text">
               <span>
                 {text(
-                  t(
-                    "You can edit the Window Title text by double-clicking it.",
-                  ),
+                  t("You can edit the Window Title text by double-clicking it."),
                   t("You can edit the default Window Title text clicking"),
                 )}
               </span>
-              <span
-                className="link"
-                onClick={() => openConfig("windowTitleTemplate")}
-              >
+              <span className="link" onClick={() => openConfig("windowTitleTemplate")}>
                 {t("here")}
               </span>
             </span>
@@ -65,12 +58,7 @@ export function WindowOptionsDetails() {
         <li>
           <label>
             <span>{t("Rounded Corners")}</span>
-            <input
-              type="checkbox"
-              tabIndex={-1}
-              checked={roundedCorners}
-              onChange={toggleCallback("roundedCorners")}
-            />
+            <input type="checkbox" tabIndex={-1} checked={roundedCorners} onChange={toggleCallback("roundedCorners")} />
           </label>
         </li>
         <RoundingLevelSelect />

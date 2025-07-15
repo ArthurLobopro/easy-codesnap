@@ -23,10 +23,7 @@ export class PanelBuilder {
 
   constructor(context: vscode.ExtensionContext) {
     this.context = context;
-    this.WEBVIEW_PATH = path.resolve(
-      this.context.extensionPath,
-      "webview/index.html",
-    );
+    this.WEBVIEW_PATH = path.resolve(this.context.extensionPath, "webview/index.html");
   }
 
   async build() {
@@ -56,15 +53,10 @@ export class PanelBuilder {
 
   private replaceAssetPaths() {
     const getAssetPath = (src: string) => {
-      return this.panel.webview.asWebviewUri(
-        vscode.Uri.file(path.resolve(this.WEBVIEW_PATH, "..", src)),
-      );
+      return this.panel.webview.asWebviewUri(vscode.Uri.file(path.resolve(this.WEBVIEW_PATH, "..", src)));
     };
 
-    this.html = this.html.replace(
-      /(src|href)="([^"]*)"/gu,
-      (_, type, src) => `${type}="${getAssetPath(src)}"`,
-    );
+    this.html = this.html.replace(/(src|href)="([^"]*)"/gu, (_, type, src) => `${type}="${getAssetPath(src)}"`);
   }
 
   private addCSPAndCodicons() {
@@ -78,13 +70,7 @@ export class PanelBuilder {
 
   private getCodiconsUri() {
     return this.panel.webview.asWebviewUri(
-      vscode.Uri.joinPath(
-        this.context.extensionUri,
-        "node_modules",
-        "@vscode/codicons",
-        "dist",
-        "codicon.css",
-      ),
+      vscode.Uri.joinPath(this.context.extensionUri, "node_modules", "@vscode/codicons", "dist", "codicon.css"),
     );
   }
 }

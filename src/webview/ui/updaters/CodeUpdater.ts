@@ -34,10 +34,7 @@ function setupLines(node: Element) {
     lineNum.dataset.reallinenumber = `${idx + 1 + config.startLine}`;
     lineNum.textContent = `${idx + 1 + startLine}`;
     lineNum.addEventListener("click", highlightOnclickFactory(newRow));
-    lineNum.addEventListener(
-      "contextmenu",
-      highlightOnclickFactory(newRow, "context"),
-    );
+    lineNum.addEventListener("contextmenu", highlightOnclickFactory(newRow, "context"));
     newRow.appendChild(lineNum);
 
     const span = document.createElement("span");
@@ -53,10 +50,7 @@ function setupLines(node: Element) {
     newRow.appendChild(lineCodeDiv);
   });
 
-  const finalSpans = $$(
-    ".line-code > span > span:last-child",
-    node,
-  ) as HTMLSpanElement[];
+  const finalSpans = $$(".line-code > span > span:last-child", node) as HTMLSpanElement[];
 
   finalSpans.forEach((span) => {
     if (span.textContent === " ") {
@@ -69,20 +63,14 @@ function setupLines(node: Element) {
 
 function stripInitialIndent(node: Element) {
   const regIndent = /^\s+/u;
-  const initialSpans = $$(
-    ":scope > div > span:first-child",
-    node,
-  ) as HTMLSpanElement[];
-  if (
-    initialSpans.some((span) => !regIndent.test(span.textContent as string))
-  ) {
+  const initialSpans = $$(":scope > div > span:first-child", node) as HTMLSpanElement[];
+  if (initialSpans.some((span) => !regIndent.test(span.textContent as string))) {
     return;
   }
 
   const minIndent = Math.min(
     ...initialSpans.map((span) => {
-      return ((span.textContent as string).match(regIndent) as string[])[0]
-        .length;
+      return ((span.textContent as string).match(regIndent) as string[])[0].length;
     }),
   );
 

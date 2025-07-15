@@ -26,9 +26,5 @@ export const TranslationContext = createContext({} as ITranslateContext);
 export function TranslationProvider({ children }: PropsWithChildren) {
   const updates = useTranslationUpdater((state) => state.updates);
 
-  return (
-    <TranslationContext.Provider value={{ t, updates }}>
-      {children}
-    </TranslationContext.Provider>
-  );
+  return <TranslationContext.Provider value={{ t, updates }}>{children}</TranslationContext.Provider>;
 }

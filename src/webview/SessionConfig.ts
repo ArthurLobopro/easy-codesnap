@@ -1,9 +1,5 @@
 import { create } from "zustand";
-import type {
-  TogglableConfigNames,
-  WebViewConfigKey,
-  WebviewConfig,
-} from "../types";
+import type { TogglableConfigNames, WebViewConfigKey, WebviewConfig } from "../types";
 import { DEFAULT_SETTINGS } from "./constants";
 import { GenericUpdate } from "./ui/updaters";
 
@@ -29,18 +25,14 @@ export class SessionConfig {
   }
 
   static set(config: Partial<WebviewConfig>, fromHook = false) {
-    const newConfig = this.hasConfig
-      ? Object.assign({}, this.__config, config)
-      : config;
+    const newConfig = this.hasConfig ? Object.assign({}, this.__config, config) : config;
 
     newConfig.watermarkText ??= newConfig.defaultWatermarkText;
     newConfig.isReady ??= false;
 
-    const updatedKeys = (Object.keys(newConfig) as WebViewConfigKey[]).filter(
-      (key) => {
-        return !(key in this.__config) || this.__config[key] !== newConfig[key];
-      },
-    ) as WebViewConfigKey[];
+    const updatedKeys = (Object.keys(newConfig) as WebViewConfigKey[]).filter((key) => {
+      return !(key in this.__config) || this.__config[key] !== newConfig[key];
+    }) as WebViewConfigKey[];
 
     this.__config = newConfig as WebviewConfig;
 

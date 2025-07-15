@@ -55,22 +55,14 @@ export class VarUpdater extends Updater {
     setVar("container-padding", containerPadding);
     setVar("zoom", `${zoom}%`);
 
-    setVar(
-      "window-border-radius",
-      roundedCorners ? px(4 * roundingLevel) : "0",
-    );
+    setVar("window-border-radius", roundedCorners ? px(4 * roundingLevel) : "0");
 
     setVar("line-number-visibility", showLineNumbers ? "block" : "none");
 
-    setVar(
-      "max-char-width",
-      maxCharWidth === 0 ? "100%" : `${maxCharWidth.toFixed(0)}ch`,
-    );
+    setVar("max-char-width", maxCharWidth === 0 ? "100%" : `${maxCharWidth.toFixed(0)}ch`);
 
     snippetContainerNode.dataset.enableresizing = String(enableResizing);
-    snippetContainerNode.dataset.enablesymbolbreadcrumb = String(
-      enableSymbolBreadcrumb,
-    );
+    snippetContainerNode.dataset.enablesymbolbreadcrumb = String(enableSymbolBreadcrumb);
     snippetContainerNode.dataset.target = target;
   }
 }

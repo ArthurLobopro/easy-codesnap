@@ -1,21 +1,16 @@
 import { useConfigList, useSetConfig } from "@hooks//useConfig";
 import { useTranslation } from "@hooks//useTranslation";
 import { text } from "@/util";
-import {
-  DetailsContent,
-  ExpandDetails,
-  TextDetailsSummary,
-} from "../../ExpandDetails";
+import { DetailsContent, ExpandDetails, TextDetailsSummary } from "../../ExpandDetails";
 
 export function LineOptionsDetails() {
   const { t } = useTranslation();
 
-  const { showLineNumbers, realLineNumbers, highlightLineNumber } =
-    useConfigList([
-      "showLineNumbers",
-      "realLineNumbers",
-      "highlightLineNumber",
-    ]);
+  const { showLineNumbers, realLineNumbers, highlightLineNumber } = useConfigList([
+    "showLineNumbers",
+    "realLineNumbers",
+    "highlightLineNumber",
+  ]);
   const { toggleCallback } = useSetConfig();
 
   return (
@@ -32,9 +27,7 @@ export function LineOptionsDetails() {
               onChange={toggleCallback("showLineNumbers")}
             />
             <span className="tooltip-text">
-              {t(
-                "If you want to highlight a line, you can click on the line number",
-              )}
+              {t("If you want to highlight a line, you can click on the line number")}
             </span>
           </label>
         </li>
@@ -65,9 +58,7 @@ export function LineOptionsDetails() {
             <span className="tooltip-text">
               <span>
                 {text(
-                  t(
-                    "When you highlight a line, the line number text will also be highlighted.",
-                  ),
+                  t("When you highlight a line, the line number text will also be highlighted."),
                   t("Only valid when `Show Line Numbers` is marked"),
                 )}
               </span>

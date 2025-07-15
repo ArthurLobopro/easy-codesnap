@@ -1,20 +1,12 @@
 import { useConfigList, useSetConfig } from "@hooks//useConfig";
 import { useTranslation } from "@hooks//useTranslation";
 import { openConfig, text } from "@/util";
-import {
-  DetailsContent,
-  ExpandDetails,
-  TextDetailsSummary,
-} from "../../ExpandDetails";
+import { DetailsContent, ExpandDetails, TextDetailsSummary } from "../../ExpandDetails";
 
 export function WatermarkDetails() {
   const { t } = useTranslation();
 
-  const { watermark, watermarkPosition, target } = useConfigList([
-    "watermark",
-    "watermarkPosition",
-    "target",
-  ]);
+  const { watermark, watermarkPosition, target } = useConfigList(["watermark", "watermarkPosition", "target"]);
   const { set, toggleCallback } = useSetConfig();
 
   return (
@@ -24,12 +16,7 @@ export function WatermarkDetails() {
         <li>
           <label className="tooltip horizontal-left">
             <span>{t("Show Watermark")}</span>
-            <input
-              type="checkbox"
-              tabIndex={-1}
-              checked={watermark}
-              onChange={toggleCallback("watermark")}
-            />
+            <input type="checkbox" tabIndex={-1} checked={watermark} onChange={toggleCallback("watermark")} />
             <span className="tooltip-text">
               <span>
                 {text(
@@ -38,10 +25,7 @@ export function WatermarkDetails() {
                   " ",
                 )}
               </span>
-              <span
-                className="link"
-                onClick={() => openConfig("defaultWatermarkText")}
-              >
+              <span className="link" onClick={() => openConfig("defaultWatermarkText")}>
                 {t("here")}
               </span>
             </span>

@@ -5,10 +5,7 @@ import type { WindowIconType } from "@/../types";
 
 export function IconTypeSelect() {
   const { t } = useTranslation();
-  const { windowStyle, windowIconType } = useConfigList([
-    "windowStyle",
-    "windowIconType",
-  ]);
+  const { windowStyle, windowIconType } = useConfigList(["windowStyle", "windowIconType"]);
   const set = useSetConfig();
 
   useUpdateSelectsWidth();

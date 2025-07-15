@@ -14,8 +14,7 @@ export async function cameraFlashAnimation() {
 }
 
 export async function takeSnap(config = SessionConfig.get()) {
-  const target =
-    config.target === "container" ? snippetContainerNode : windowNode;
+  const target = config.target === "container" ? snippetContainerNode : windowNode;
 
   const exporter = config.saveFormat === "svg" ? exportSVG : exportPNG;
 

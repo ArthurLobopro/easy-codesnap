@@ -55,29 +55,14 @@ export const actions = {
         return;
       }
 
-      SessionConfig.set(
-        pick(config, [
-          "templates",
-          "startLine",
-          "editorID",
-          "symbolBreadcrumbs",
-        ]),
-      );
+      SessionConfig.set(pick(config, ["templates", "startLine", "editorID", "symbolBreadcrumbs"]));
     }
 
     document.execCommand("paste");
   },
 
   "update-config"(config: ConfigSentToWebview) {
-    SessionConfig.set(
-      pickAllExcept(config, [
-        "startLine",
-        "templates",
-        "editorID",
-        "linkOnOpen",
-        "lockOnOpen",
-      ]),
-    );
+    SessionConfig.set(pickAllExcept(config, ["startLine", "templates", "editorID", "linkOnOpen", "lockOnOpen"]));
 
     UpdateCode();
   },

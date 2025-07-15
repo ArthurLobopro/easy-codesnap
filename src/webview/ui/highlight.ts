@@ -1,9 +1,6 @@
 const highlightOrder = ["none", "focus", "add", "remove", "vscode"];
 
-export function highlightOnclickFactory(
-  lineElement: HTMLDivElement,
-  type?: "click" | "context",
-) {
+export function highlightOnclickFactory(lineElement: HTMLDivElement, type?: "click" | "context") {
   return (ev: MouseEvent) => {
     ev.preventDefault();
     ev.stopPropagation();
@@ -19,8 +16,6 @@ export function highlightOnclickFactory(
     }
 
     lineElement.dataset.highlight =
-      newIndex === highlightOrder.length
-        ? highlightOrder.at(0)
-        : highlightOrder.at(newIndex);
+      newIndex === highlightOrder.length ? highlightOrder.at(0) : highlightOrder.at(newIndex);
   };
 }

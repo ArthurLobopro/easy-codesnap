@@ -6,9 +6,7 @@ type PickProperties<T, K extends keyof T> = {
   [P in K]: T[P];
 };
 
-export function useConfigList<T extends keyof Omit<ISessionConfig, "set">>(
-  keys: readonly T[],
-) {
+export function useConfigList<T extends keyof Omit<ISessionConfig, "set">>(keys: readonly T[]) {
   const obj = {} as Record<T, ISessionConfig[T]>;
 
   for (const key of keys) {

@@ -60,8 +60,7 @@ export interface ConfigSentToWebview extends ExtensionConfig {
 
 export type ZoomLevel = 50 | 75 | 100 | 125 | 150;
 
-export interface WebviewConfig
-  extends Omit<ConfigSentToWebview, "lockOnOpen" | "linkOnOpen"> {
+export interface WebviewConfig extends Omit<ConfigSentToWebview, "lockOnOpen" | "linkOnOpen"> {
   isLocked: boolean;
   isLinked: boolean;
   zoom: ZoomLevel;

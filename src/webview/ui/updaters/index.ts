@@ -25,9 +25,7 @@ export function GenericUpdate(keys: WebViewConfigKey[]) {
   console.time("GenericUpdate");
   updaters
     .filter((updater) => {
-      return updater.dependencies.some((dependency) =>
-        keys.includes(dependency),
-      );
+      return updater.dependencies.some((dependency) => keys.includes(dependency));
     })
     .forEach((updater) => updater.update());
   console.timeEnd("GenericUpdate");

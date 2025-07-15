@@ -3,24 +3,16 @@ import { SessionConfig } from "./SessionConfig";
 
 export type untypedObject = { [key: string]: any };
 
-export function $<T extends HTMLElement>(
-  q: string,
-  c: Element = document as any,
-) {
+export function $<T extends HTMLElement>(q: string, c: Element = document as any) {
   return c.querySelector(q) as T;
 }
 
-export function $$<T extends HTMLElement>(
-  q: string,
-  c: Element = document as any,
-) {
+export function $$<T extends HTMLElement>(q: string, c: Element = document as any) {
   return Array.from(c.querySelectorAll(q)) as T[];
 }
 
 export function once(elem: Element, evt: string) {
-  return new Promise((done) =>
-    elem.addEventListener(evt, done, { once: true }),
-  );
+  return new Promise((done) => elem.addEventListener(evt, done, { once: true }));
 }
 
 export const redraw = (node: Element) => node.clientHeight;

@@ -8,17 +8,10 @@ import {
   SquareMaximize,
   SquareMinimize,
 } from "./react/components/icons";
-import {
-  useConfig,
-  useConfigList,
-  useSetConfig,
-} from "./react/hooks/useConfig";
+import { useConfig, useConfigList, useSetConfig } from "./react/hooks/useConfig";
 
 export function WindowControls() {
-  const { windowStyle, showWindowControls } = useConfigList([
-    "windowStyle",
-    "showWindowControls",
-  ]);
+  const { windowStyle, showWindowControls } = useConfigList(["windowStyle", "showWindowControls"]);
 
   const ref = useRef<HTMLDivElement>(null);
 
@@ -28,12 +21,7 @@ export function WindowControls() {
       return;
     }
 
-    setVar(
-      "macos-margin-right",
-      windowStyle === "macos"
-        ? px(ref.current.getBoundingClientRect().width)
-        : "0px",
-    );
+    setVar("macos-margin-right", windowStyle === "macos" ? px(ref.current.getBoundingClientRect().width) : "0px");
 
     return () => setVar("macos-margin-right", "0px");
   }, [ref.current, windowStyle, showWindowControls]);
@@ -87,13 +75,12 @@ function WindowsButtons() {
 }
 
 function WindowTitle() {
-  const { shouldUpdateTitle, isReady, showWindowTitle, templates } =
-    useConfigList([
-      "shouldUpdateTitle",
-      "showWindowTitle",
-      "isReady",
-      "templates",
-    ]);
+  const { shouldUpdateTitle, isReady, showWindowTitle, templates } = useConfigList([
+    "shouldUpdateTitle",
+    "showWindowTitle",
+    "isReady",
+    "templates",
+  ]);
 
   const set = useSetConfig();
 

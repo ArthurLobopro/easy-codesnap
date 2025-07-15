@@ -14,9 +14,7 @@ registerInsertSVG();
 
 btnSave.addEventListener("click", () => takeSnap());
 
-document.addEventListener("copy", () =>
-  takeSnap({ ...SessionConfig.get(), shutterAction: "copy" }),
-);
+document.addEventListener("copy", () => takeSnap({ ...SessionConfig.get(), shutterAction: "copy" }));
 
 document.addEventListener("paste", (e) => {
   if (!SessionConfig.get("isLocked")) {

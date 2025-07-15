@@ -1,13 +1,7 @@
 import type { WebviewConfig } from "../../../types";
 import { SessionConfig } from "../../SessionConfig";
 import { px } from "../../util";
-import {
-  breadcrumbNode,
-  navbarNode,
-  snippetContainerNode,
-  targetProportion,
-  windowNode,
-} from "../elements";
+import { breadcrumbNode, navbarNode, snippetContainerNode, targetProportion, windowNode } from "../elements";
 import { Updater } from "../Updater";
 import { setupBreadcrumb } from "./CodeUpdater";
 
@@ -34,8 +28,7 @@ export class VisibilityUpdater extends Updater {
       enableSymbolBreadcrumb,
     } = SessionConfig.get();
 
-    navbarNode.style.display =
-      !showWindowControls && !showWindowTitle ? "none" : "";
+    navbarNode.style.display = !showWindowControls && !showWindowTitle ? "none" : "";
 
     windowNode.classList.remove("line-number-hightlight");
     if (highlightLineNumber) {
@@ -78,20 +71,15 @@ export function UpdateTargetProportion() {
   }
 }
 
-export function UpdateRatio(
-  aspectRatio: WebviewConfig["aspectRatio"] = SessionConfig.get("aspectRatio"),
-) {
+export function UpdateRatio(aspectRatio: WebviewConfig["aspectRatio"] = SessionConfig.get("aspectRatio")) {
   if (aspectRatio && aspectRatio !== "none") {
-    updateRatioByProportion(
-      (aspectRatio?.split(":").map(Number) as [number, number]) || [0, 0],
-    );
+    updateRatioByProportion((aspectRatio?.split(":").map(Number) as [number, number]) || [0, 0]);
   } else {
     updateRatioByProportion([0, 0]);
   }
 }
 
-const nextMultipleOf = (value: number, multipleOf: number) =>
-  value + (value % multipleOf);
+const nextMultipleOf = (value: number, multipleOf: number) => value + (value % multipleOf);
 
 function updateRatioByProportion(ratio: [number, number]) {
   snippetContainerNode.style.minWidth = "";

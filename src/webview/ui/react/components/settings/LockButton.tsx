@@ -9,15 +9,8 @@ export function LockButton() {
   const isLocked = useConfig("isLocked");
 
   return (
-    <button
-      className="tooltip bottom"
-      id="lock-indicator"
-      onClick={() => set({ isLocked: !isLocked })}
-      type="button"
-    >
-      <span
-        className={`codicon ${isLocked ? "codicon-lock" : "codicon-unlock"}`}
-      />
+    <button className="tooltip bottom" id="lock-indicator" onClick={() => set({ isLocked: !isLocked })} type="button">
+      <span className={`codicon ${isLocked ? "codicon-lock" : "codicon-unlock"}`} />
       <span className="tooltip-text right">
         <span>{t(isLocked ? "Unlock changes" : "Lock changes")}.</span> <br />
         <span>

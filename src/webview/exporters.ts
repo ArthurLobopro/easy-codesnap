@@ -9,10 +9,7 @@ import { SessionConfig } from "./SessionConfig";
 import { cameraFlashAnimation } from "./snap";
 import { $$, vscode } from "./util";
 
-export async function exportPNG(
-  target: HTMLElement,
-  action: WebviewConfig["shutterAction"],
-) {
+export async function exportPNG(target: HTMLElement, action: WebviewConfig["shutterAction"]) {
   const url = await (async () => {
     try {
       return await toPNG(target);
@@ -41,16 +38,10 @@ export async function exportPNG(
   }
 }
 
-export async function exportSVG(
-  target: HTMLElement,
-  action: WebviewConfig["shutterAction"],
-) {
+export async function exportSVG(target: HTMLElement, action: WebviewConfig["shutterAction"]) {
   const svg = new XMLSerializer()
     .serializeToString(elementToSVG(target))
-    .replace(
-      /<style>.*?<\/style>/gs,
-      "<style>.line-number,#window-title{user-select:none;}</style>",
-    );
+    .replace(/<style>.*?<\/style>/gs, "<style>.line-number,#window-title{user-select:none;}</style>");
 
   const minifiedSvg = optimize(svg, svgoConfig).data;
 
@@ -70,11 +61,9 @@ async function toPNG(target: HTMLElement) {
     bgColor: "transparent",
     scale,
     postProcess: (node: HTMLElement) => {
-      $$("#snippet-container, #snippet, .line, .line-code span", node).forEach(
-        (span: HTMLElement) => {
-          span.style.width = "unset";
-        },
-      );
+      $$("#snippet-container, #snippet, .line, .line-code span", node).forEach((span: HTMLElement) => {
+        span.style.width = "unset";
+      });
 
       $$(".line-code", node).forEach((span) => {
         span.style.width = "100%";
@@ -96,9 +85,7 @@ async function toPNGFallback(target: HTMLElement) {
   canvas.height = height;
 
   function svgToDataURI(svgString: string) {
-    const encodedSvg = encodeURIComponent(svgString)
-      .replace(/%0A/g, "")
-      .replace(/%20/g, " ");
+    const encodedSvg = encodeURIComponent(svgString).replace(/%0A/g, "").replace(/%20/g, " ");
 
     return `data:image/svg+xml;charset=utf-8,${encodedSvg}`;
   }
@@ -110,9 +97,7 @@ async function toPNGFallback(target: HTMLElement) {
       img.width = width;
       img.height = height;
 
-      img.src = svgToDataURI(
-        new XMLSerializer().serializeToString(elementToSVG(target)),
-      );
+      img.src = svgToDataURI(new XMLSerializer().serializeToString(elementToSVG(target)));
 
       img.onload = () => resolve(img);
     });

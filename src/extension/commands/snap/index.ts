@@ -18,9 +18,7 @@ export class SnapCommand extends Command {
     const activeEditor = vscode.window.activeTextEditor;
 
     if (!activeEditor || !hasOneSelection(activeEditor.selections)) {
-      vscode.window.showErrorMessage(
-        `Easy CodeSnap: ${t("You must have one text selection!")}`,
-      );
+      vscode.window.showErrorMessage(`Easy CodeSnap: ${t("You must have one text selection!")}`);
       return;
     }
 
@@ -29,9 +27,7 @@ export class SnapCommand extends Command {
     const panelController = new PanelController(panel);
     panelController.init();
 
-    const { fullLinesSelection } = getSettings("easy-codesnap", [
-      "fullLinesSelection",
-    ]);
+    const { fullLinesSelection } = getSettings("easy-codesnap", ["fullLinesSelection"]);
 
     fullLinesSelection && this.setFullLineSelection(activeEditor);
   }
@@ -41,10 +37,7 @@ export class SnapCommand extends Command {
 
     activeEditor.selection = new vscode.Selection(
       new vscode.Position(selection.start.line, 0),
-      new vscode.Position(
-        selection.end.line,
-        activeEditor.document.lineAt(selection.end.line).text.length,
-      ),
+      new vscode.Position(selection.end.line, activeEditor.document.lineAt(selection.end.line).text.length),
     );
   }
 }
