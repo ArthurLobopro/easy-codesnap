@@ -48,8 +48,6 @@ export async function saveSVG(data: string) {
 
   assignLastUsedImageUri(uri);
 
-  //const reducedData = reduceSVG(data);
-
   if (uri) {
     writeFile(uri.fsPath, data, "utf-8");
   }

@@ -6,9 +6,7 @@ import {
   navbarNode,
   snippetContainerNode,
   targetProportion,
-  // windowControlsNode,
   windowNode,
-  // windowTitleNode,
 } from "../elements";
 import { Updater } from "../Updater";
 import { setupBreadcrumb } from "./CodeUpdater";
@@ -38,9 +36,6 @@ export class VisibilityUpdater extends Updater {
 
     navbarNode.style.display =
       !showWindowControls && !showWindowTitle ? "none" : "";
-
-    // windowControlsNode.hidden = !showWindowControls;
-    // windowTitleNode.hidden = !showWindowTitle;
 
     windowNode.classList.remove("line-number-hightlight");
     if (highlightLineNumber) {
