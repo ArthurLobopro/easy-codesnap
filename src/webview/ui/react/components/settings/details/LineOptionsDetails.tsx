@@ -1,7 +1,11 @@
 import { useConfigList, useSetConfig } from "@hooks//useConfig";
 import { useTranslation } from "@hooks//useTranslation";
 import { text } from "@/util";
-import { DetailsContent, DetailsSummary, ExpandDetails } from "../../Details";
+import {
+  DetailsContent,
+  ExpandDetails,
+  TextDetailsSummary,
+} from "../../ExpandDetails";
 
 export function LineOptionsDetails() {
   const { t } = useTranslation();
@@ -16,9 +20,7 @@ export function LineOptionsDetails() {
 
   return (
     <ExpandDetails>
-      <DetailsSummary>
-        <span>{t("Line Options")}</span>
-      </DetailsSummary>
+      <TextDetailsSummary text={t("Line Options")} />
       <DetailsContent>
         <li>
           <label className="tooltip horizontal-left">

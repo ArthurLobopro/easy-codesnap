@@ -1,7 +1,11 @@
 import { useConfigList, useSetConfig } from "@hooks//useConfig";
 import { useTranslation } from "@hooks//useTranslation";
 import { text } from "@/util";
-import { DetailsContent, DetailsSummary, ExpandDetails } from "../../Details";
+import {
+  DetailsContent,
+  ExpandDetails,
+  TextDetailsSummary,
+} from "../../ExpandDetails";
 import { AspectRatioSelect } from "../selects/AspectRatioSelect";
 import { TargetSelect } from "../selects/TargetSelect";
 
@@ -25,9 +29,7 @@ export function OtherOptionsDetails() {
 
   return (
     <ExpandDetails>
-      <DetailsSummary>
-        <span>{t("Other Options")}</span>
-      </DetailsSummary>
+      <TextDetailsSummary text={t("Other Options")} />
       <DetailsContent>
         <TargetSelect />
         <li>

@@ -1,7 +1,11 @@
 import { useConfigList, useSetConfig } from "@hooks//useConfig";
 import { useTranslation } from "@hooks//useTranslation";
 import { openConfig, text } from "@/util";
-import { DetailsContent, DetailsSummary, ExpandDetails } from "../../Details";
+import {
+  DetailsContent,
+  ExpandDetails,
+  TextDetailsSummary,
+} from "../../ExpandDetails";
 import { IconTypeSelect } from "../selects/IconTypeSelect";
 import { RoundingLevelSelect } from "../selects/RoundigLevelSelect";
 import { WindowStyleSelect } from "../selects/WindoStyleSelect";
@@ -16,9 +20,7 @@ export function WindowOptionsDetails() {
 
   return (
     <ExpandDetails>
-      <DetailsSummary>
-        <span>{t("Window Options")}</span>
-      </DetailsSummary>
+      <TextDetailsSummary text={t("Window Options")} />
       <DetailsContent>
         <WindowStyleSelect />
         <IconTypeSelect />

@@ -35,15 +35,15 @@
 
 #window-title {
     width: 100%;
-}
 
-#window-title:hover {
-    cursor: pointer;
-}
+    &:hover {
+        cursor: pointer;
+    }
 
-#window-title:focus {
-    outline: 1px solid var(--vscode-settings-focusedRowBorder);
-    cursor: text;
+    &:focus {
+        outline: 1px solid var(--vscode-settings-focusedRowBorder);
+        cursor: text;
+    }
 }
 
 #window-controls {

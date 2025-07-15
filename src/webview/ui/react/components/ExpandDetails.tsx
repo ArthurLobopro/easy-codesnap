@@ -23,6 +23,14 @@ export function ExpandDetails({ children }: PropsWithChildren) {
   );
 }
 
+export function TextDetailsSummary({ text }: { text: string }) {
+  return (
+    <DetailsSummary>
+      <span>{text}</span>
+    </DetailsSummary>
+  );
+}
+
 export function DetailsSummary({ children }: PropsWithChildren) {
   const { setIsOpen, isOpen } = useContext(DetailsContext);
   return (
