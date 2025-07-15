@@ -1,5 +1,6 @@
 import { useEffect, useRef } from "react";
 import { getDefaultWindowTitle, px, setVar } from "@/util";
+import { windowNode } from "./elements";
 import {
   RoundClose,
   RoundMaximize,
@@ -16,6 +17,8 @@ export function WindowControls() {
   const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    windowNode.dataset.style = windowStyle;
+
     if (!ref.current || !showWindowControls) {
       setVar("macos-margin-right", "0px");
       return;

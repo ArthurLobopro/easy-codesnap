@@ -1,6 +1,7 @@
 import { createPortal } from "react-dom";
 import { createRoot } from "react-dom/client";
 import { takeSnap } from "@/snap";
+import { navbarNode } from "./elements";
 import { OneTimeConfig } from "./OneTimeConfig";
 import { ShutterIcon } from "./react/components/icons";
 import { LeftButtons } from "./react/components/LeftButtons";
@@ -23,7 +24,7 @@ createRoot(document.querySelector("#top-header")!).render(
   </TranslationProvider>,
 );
 
-createRoot(document.querySelector("#navbar")!).render(<WindowControls />);
+createRoot(navbarNode).render(<WindowControls />);
 
 function LeftWrapper() {
   return (

@@ -4,7 +4,6 @@ import { StateUpdater } from "./StateUpdater";
 import { VarUpdater } from "./VarUpdater";
 import { VisibilityUpdater } from "./VisibilityUpdater";
 import { WatermarkUpdater } from "./WatermarkUpdater";
-import { WindowUpdater } from "./WindowUpdater";
 
 export * from "./CodeUpdater";
 export * from "./LineNumbersUpdater";
@@ -16,7 +15,6 @@ export const updaters = [
   new VarUpdater(),
   new VisibilityUpdater(),
   new LineNumbersUpdater(),
-  new WindowUpdater(),
   new WatermarkUpdater(),
   new StateUpdater(),
 ];
