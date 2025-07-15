@@ -36,6 +36,7 @@ export class SessionConfig {
     newConfig.zoom ??= 100;
     newConfig.shouldUpdateTitle ??= true;
     newConfig.watermarkText ??= newConfig.defaultWatermarkText;
+    newConfig.isReady ??= false;
 
     const updatedKeys = (Object.keys(newConfig) as WebViewConfigKey[]).filter(
       (key) => {
@@ -96,6 +97,8 @@ export interface ISessionConfig
     | "realLineNumbers"
     | "showLineNumbers"
     | "highlightLineNumber"
+    | "shouldUpdateTitle"
+    | "isReady"
   > {
   set: (config: Partial<Omit<ISessionConfig, "set">>) => void;
 }

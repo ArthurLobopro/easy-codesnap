@@ -1,7 +1,7 @@
 import type { WebViewConfigKey } from "../../../types";
 import { SessionConfig } from "../../SessionConfig";
 import { getDefaultWindowTitle } from "../../util";
-import { windowTitleNode } from "../elements";
+// import { windowTitleNode } from "../elements";
 import { LineNumbersUpdater } from "./LineNumbersUpdater";
 import { StateUpdater } from "./StateUpdater";
 import { VarUpdater } from "./VarUpdater";
@@ -39,7 +39,7 @@ export function GenericUpdate(keys: WebViewConfigKey[]) {
 export function updateWindowTitle() {
   const { shouldUpdateTitle } = SessionConfig.get();
 
-  if (shouldUpdateTitle) {
-    windowTitleNode.textContent = getDefaultWindowTitle();
-  }
+  // if (shouldUpdateTitle) {
+  //   windowTitleNode.textContent = getDefaultWindowTitle();
+  // }
 }

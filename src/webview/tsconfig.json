@@ -12,7 +12,8 @@
 		"jsx": "react-jsx",
 		"paths": {
 			"@/*": ["./*"],
-			"@hooks/*": ["./ui/react/hooks/*"]
+			"@hooks/*": ["./ui/react/hooks/*"],
+			"@assets/*": ["../../webview/assets/*"]
 		}
 	},
 	"include": [

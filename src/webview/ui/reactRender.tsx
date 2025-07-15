@@ -10,6 +10,7 @@ import { WatermarkDetails } from "./react/components/settings/details/WaterMarkD
 import { WindowOptionsDetails } from "./react/components/settings/details/WindowOptionsDetails";
 import { ZoomBar } from "./react/components/ZoomBar";
 import { TranslationProvider } from "./react/contexts/TranslationContext";
+import { WindowControls } from "./WindowControls";
 
 createRoot(document.querySelector("#top-header")!).render(
   <TranslationProvider>
@@ -18,6 +19,8 @@ createRoot(document.querySelector("#top-header")!).render(
     <OneTimeConfig />
   </TranslationProvider>,
 );
+
+createRoot(document.querySelector("#navbar")!).render(<WindowControls />);
 
 function LeftWrapper() {
   return (

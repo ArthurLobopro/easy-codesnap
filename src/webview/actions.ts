@@ -30,6 +30,7 @@ export const actions = {
     useSessionConfig.getState().set({
       isLinked: config.linkOnOpen,
       isLocked: config.lockOnOpen,
+      isReady: true,
     });
   },
 

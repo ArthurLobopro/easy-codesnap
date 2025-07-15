@@ -1,3 +1,9 @@
-export { ReactComponent as ConfigIcon } from "../../../../../webview/assets/config.svg";
-export { ReactComponent as LinkIcon } from "../../../../../webview/assets/link.svg";
-export { ReactComponent as UnlinkIcon } from "../../../../../webview/assets/unlink.svg";
+export { ReactComponent as ConfigIcon } from "@assets/config.svg";
+export { ReactComponent as LinkIcon } from "@assets/link.svg";
+export { ReactComponent as UnlinkIcon } from "@assets/unlink.svg";
+export { ReactComponent as RoundClose } from "@assets/windows/round/close.svg";
+export { ReactComponent as RoundMaximize } from "@assets/windows/round/maximize.svg";
+export { ReactComponent as RoundMinimize } from "@assets/windows/round/minimize.svg";
+export { ReactComponent as SquareClose } from "@assets/windows/square/close.svg";
+export { ReactComponent as SquareMaximize } from "@assets/windows/square/maximize.svg";
+export { ReactComponent as SquareMinimize } from "@assets/windows/square/minimize.svg";

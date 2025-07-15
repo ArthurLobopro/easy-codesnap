@@ -57,4 +57,6 @@ export const DEFAULT_SETTINGS: Omit<ISessionConfig, "set"> = {
   showLineNumbers: true,
   realLineNumbers: false,
   highlightLineNumber: false,
+  shouldUpdateTitle: true,
+  isReady: false,
 } as const;

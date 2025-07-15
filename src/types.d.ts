@@ -1,5 +1,5 @@
 import type { DocumentSymbol } from "vscode";
-import type { IPanelWebviewConfig } from "./commands/snap/PanelWebviewConfig";
+import type { IPanelWebviewConfig } from "./extension/commands/snap/PanelWebviewConfig";
 
 export type SaveFormat = "png" | "svg";
 export type SaveScale = 0.5 | 0.75 | 1 | 1.5 | 2 | 3 | 4;
@@ -67,6 +67,7 @@ export interface WebviewConfig
   zoom: ZoomLevel;
   shouldUpdateTitle: boolean;
   watermarkText: string;
+  isReady: boolean;
 }
 
 export type WebViewConfigKey = keyof WebviewConfig;
