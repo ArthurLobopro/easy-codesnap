@@ -1,4 +1,5 @@
 import { useEffect, useRef } from "react";
+import { SessionConfig } from "@/SessionConfig";
 import { getDefaultWindowTitle, px, setVar } from "@/util";
 import {
   RoundClose,
@@ -87,11 +88,13 @@ function WindowsButtons() {
 }
 
 function WindowTitle() {
-  const { shouldUpdateTitle, isReady, showWindowTitle } = useConfigList([
-    "shouldUpdateTitle",
-    "showWindowTitle",
-    "isReady",
-  ]);
+  const { shouldUpdateTitle, isReady, showWindowTitle, templates } =
+    useConfigList([
+      "shouldUpdateTitle",
+      "showWindowTitle",
+      "isReady",
+      "templates",
+    ]);
 
   const set = useSetConfig();
 
@@ -103,7 +106,7 @@ function WindowTitle() {
         ref.current.textContent = getDefaultWindowTitle();
       }
     }
-  }, [ref.current, isReady, shouldUpdateTitle]);
+  }, [ref.current, isReady, shouldUpdateTitle, templates]);
 
   return (
     <div

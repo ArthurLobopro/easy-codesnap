@@ -5,7 +5,7 @@ import type {
   WebviewConfig,
 } from "../types";
 import { DEFAULT_SETTINGS } from "./constants";
-import { GenericUpdate, updateWindowTitle } from "./ui/updaters";
+import { GenericUpdate } from "./ui/updaters";
 
 export class SessionConfig {
   static __config: WebviewConfig = {} as any;
@@ -33,8 +33,6 @@ export class SessionConfig {
       ? Object.assign({}, this.__config, config)
       : config;
 
-    newConfig.zoom ??= 100;
-    newConfig.shouldUpdateTitle ??= true;
     newConfig.watermarkText ??= newConfig.defaultWatermarkText;
     newConfig.isReady ??= false;
 
@@ -44,7 +42,6 @@ export class SessionConfig {
       },
     ) as WebViewConfigKey[];
 
-    const currentFileName = this.__config.templates?.fileName;
     this.__config = newConfig as WebviewConfig;
 
     //Remove before
@@ -53,14 +50,9 @@ export class SessionConfig {
     }
 
     GenericUpdate(updatedKeys);
-
-    if (currentFileName && config.templates?.fileName !== currentFileName) {
-      updateWindowTitle();
-    }
   }
 
   static toggle(name: TogglableConfigNames) {
-    // this.__config[name] = !this.get(name);
     this.set({
       [name]: !this.get(name),
     });
@@ -99,6 +91,7 @@ export interface ISessionConfig
     | "highlightLineNumber"
     | "shouldUpdateTitle"
     | "isReady"
+    | "templates"
   > {
   set: (config: Partial<Omit<ISessionConfig, "set">>) => void;
 }

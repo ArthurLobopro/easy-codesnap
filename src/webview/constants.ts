@@ -59,4 +59,9 @@ export const DEFAULT_SETTINGS: Omit<ISessionConfig, "set"> = {
   highlightLineNumber: false,
   shouldUpdateTitle: true,
   isReady: false,
+  templates: {
+    relativeFolder: "",
+    fileName: "",
+    workspace: "",
+  },
 } as const;
