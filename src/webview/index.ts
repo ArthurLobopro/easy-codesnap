@@ -1,18 +1,11 @@
-import { registerInsertSVG, registerLoadSVG } from "@arthur-lobo/load-svg";
 import { actions, type actionsKey } from "./actions";
 import { ContentManager } from "./ContentManager";
 import { SessionConfig } from "./SessionConfig";
 import { takeSnap } from "./snap";
-import { btnSave } from "./ui/elements";
 import { addListeners } from "./ui/listeners";
 import { vscode } from "./util";
 
 import "./ui/reactRender";
-
-registerLoadSVG();
-registerInsertSVG();
-
-btnSave.addEventListener("click", () => takeSnap());
 
 document.addEventListener("copy", () => takeSnap({ ...SessionConfig.get(), shutterAction: "copy" }));
 

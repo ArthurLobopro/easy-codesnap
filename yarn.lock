@@ -15,11 +15,6 @@
   resolved "https://registry.yarnpkg.com/@arthur-lobo/custom-tooltip/-/custom-tooltip-1.0.4.tgz#f87a0247563f4b0681f9975fabe5e0a3288c14e8"
   integrity sha512-3RAHfgkYGeZFPaPTMy9hn4dPqg1j4xpp9KLgxAdOE3hIsmGiZsBCA/pX51HIP/8DTLomSgkJ8CWaNMLcGYE7Tg==
 
-"@arthur-lobo/load-svg@^1.1.1":
-  version "1.1.1"
-  resolved "https://registry.yarnpkg.com/@arthur-lobo/load-svg/-/load-svg-1.1.1.tgz#14b471811fbd919c7c8c99c3dd0d4f4026ed1138"
-  integrity sha512-DeftVlcBBBIOPmyYqn9imDiXXyg98/H5Ov5yhb7z+TCvtXKea8hXooBxR8mq3FGtMK7DkqwicOgAJAKAPMy7tA==
-
 "@arthur-lobo/object-pick@^1.5.0":
   version "1.5.0"
   resolved "https://registry.yarnpkg.com/@arthur-lobo/object-pick/-/object-pick-1.5.0.tgz#b43ef838d57e906c64f574e5b9f5fceb4595aeff"

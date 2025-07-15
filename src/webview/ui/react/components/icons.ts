@@ -1,5 +1,6 @@
 export { ReactComponent as ConfigIcon } from "@assets/config.svg";
 export { ReactComponent as LinkIcon } from "@assets/link.svg";
+export { ReactComponent as ShutterIcon } from "@assets/shutter.svg";
 export { ReactComponent as UnlinkIcon } from "@assets/unlink.svg";
 export { ReactComponent as RoundClose } from "@assets/windows/round/close.svg";
 export { ReactComponent as RoundMaximize } from "@assets/windows/round/maximize.svg";
