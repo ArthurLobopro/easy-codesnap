@@ -1,5 +1,4 @@
 import { useEffect, useRef } from "react";
-import { SessionConfig } from "@/SessionConfig";
 import { getDefaultWindowTitle, px, setVar } from "@/util";
 import {
   RoundClose,

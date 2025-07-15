@@ -9,17 +9,7 @@
     }
 
     #window-controls {
-        justify-self: left;
         gap: 8px;
-
-        *.button {
-            display: none;
-        }
-    }
-
-    #window-controls[hidden]+#window-title {
-        margin: 0;
-        text-align: center;
     }
 }
 
@@ -35,20 +25,7 @@
         gap: 16px;
         justify-self: right;
         order: 3;
-
-        &[data-icon-type="round"] .button [data-type="square"]{
-            display: none;
-        }
-        &[data-icon-type="square"] .button [data-type="round"]{
-            display: none;
-        }
-
-        *.dot {
-            display: none;
-        }
     }
-
-
 }
 
 #navbar {
@@ -97,9 +74,5 @@
 
     .green {
         background-color: #2aca44;
-    }
-
-    &[hidden] {
-        display: none;
     }
 }
