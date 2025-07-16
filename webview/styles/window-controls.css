@@ -31,6 +31,7 @@
 #navbar {
     margin-bottom: 15px;
     display: flex;
+    gap: 4px;
 }
 
 #window-title {
