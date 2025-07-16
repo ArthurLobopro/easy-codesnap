@@ -2,17 +2,16 @@ import { useConfigList, useSetConfig } from "@hooks//useConfig";
 import { useTranslation } from "@hooks//useTranslation";
 import { text } from "@/util";
 import { DetailsContent, ExpandDetails, TextDetailsSummary } from "../../ExpandDetails";
+import { ToggleInput } from "../../ToggleInput";
 import { AspectRatioSelect } from "../selects/AspectRatioSelect";
 import { TargetSelect } from "../selects/TargetSelect";
 
 export function OtherOptionsDetails() {
   const { t } = useTranslation();
 
-  const { target, transparentBackground, enableResizing, enableSymbolBreadcrumb, maxCharWidth } = useConfigList([
+  const { target, transparentBackground, maxCharWidth } = useConfigList([
     "target",
     "transparentBackground",
-    "enableResizing",
-    "enableSymbolBreadcrumb",
     "maxCharWidth",
   ]);
   const { set, toggleCallback } = useSetConfig();
@@ -41,29 +40,17 @@ export function OtherOptionsDetails() {
           </label>
         </li>
 
-        <li>
-          <label className="tooltip horizontal-left">
-            <span>{t("Enable Resizing")}</span>
-            <input type="checkbox" tabIndex={-1} checked={enableResizing} onChange={toggleCallback("enableResizing")} />
-            <span className="tooltip-text">
-              {text(
-                t("Enables manual resizing of the `Snap Window`."),
-                t("Disabling this will also reset the `Snap Window` size."),
-              )}
-            </span>
-          </label>
-        </li>
-        <li>
-          <label>
-            <span>{t("Enable Symbol Breadcrumb")}</span>
-            <input
-              type="checkbox"
-              tabIndex={-1}
-              checked={enableSymbolBreadcrumb}
-              onChange={toggleCallback("enableSymbolBreadcrumb")}
-            />
-          </label>
-        </li>
+        <ToggleInput
+          config="enableResizing"
+          label={t("Enable Resizing")}
+          tooltip={text(
+            t("Enables manual resizing of the `Snap Window`."),
+            t("Disabling this will also reset the `Snap Window` size."),
+          )}
+        />
+
+        <ToggleInput config="enableSymbolBreadcrumb" label={t("Enable Symbol Breadcrumb")} />
+
         <li className="tooltip horizontal-left">
           <span>{t("Max char width")}</span>
           <input
