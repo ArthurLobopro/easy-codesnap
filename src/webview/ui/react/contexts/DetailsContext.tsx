@@ -11,15 +11,8 @@ export interface DetailsProviderProps extends PropsWithChildren {
   defaultOpen?: boolean;
 }
 
-export function DetailsProvider({
-  children,
-  defaultOpen = false,
-}: DetailsProviderProps) {
+export function DetailsProvider({ children, defaultOpen = false }: DetailsProviderProps) {
   const [isOpen, setIsOpen] = useState(defaultOpen);
 
-  return (
-    <DetailsContext.Provider value={{ isOpen, setIsOpen }}>
-      {children}
-    </DetailsContext.Provider>
-  );
+  return <DetailsContext.Provider value={{ isOpen, setIsOpen }}>{children}</DetailsContext.Provider>;
 }

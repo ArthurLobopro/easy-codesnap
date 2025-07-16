@@ -1,15 +1,6 @@
-import type { WebviewConfig } from "../../../types";
-import { SessionConfig } from "../../SessionConfig";
+import { SessionConfig, useSessionConfig } from "../../SessionConfig";
 import { px } from "../../util";
-import {
-  breadcrumbNode,
-  navbarNode,
-  snippetContainerNode,
-  targetProportion,
-  windowControlsNode,
-  windowNode,
-  windowTitleNode,
-} from "../elements";
+import { breadcrumbNode, navbarNode, snippetContainerNode, targetProportion, windowNode } from "../elements";
 import { Updater } from "../Updater";
 import { setupBreadcrumb } from "./CodeUpdater";
 
@@ -36,11 +27,7 @@ export class VisibilityUpdater extends Updater {
       enableSymbolBreadcrumb,
     } = SessionConfig.get();
 
-    navbarNode.style.display =
-      !showWindowControls && !showWindowTitle ? "none" : "";
-
-    windowControlsNode.hidden = !showWindowControls;
-    windowTitleNode.hidden = !showWindowTitle;
+    navbarNode.style.display = !showWindowControls && !showWindowTitle ? "none" : "";
 
     windowNode.classList.remove("line-number-hightlight");
     if (highlightLineNumber) {
@@ -72,7 +59,7 @@ export class VisibilityUpdater extends Updater {
 }
 
 export function UpdateTargetProportion() {
-  const target = SessionConfig.get("target");
+  const { target } = useSessionConfig.getState();
 
   if (target === "container") {
     const { width, height } = snippetContainerNode.getBoundingClientRect();
@@ -83,20 +70,15 @@ export function UpdateTargetProportion() {
   }
 }
 
-export function UpdateRatio(
-  aspectRatio: WebviewConfig["aspectRatio"] = SessionConfig.get("aspectRatio"),
-) {
+export function UpdateRatio(aspectRatio = useSessionConfig.getState().aspectRatio) {
   if (aspectRatio && aspectRatio !== "none") {
-    updateRatioByProportion(
-      (aspectRatio?.split(":").map(Number) as [number, number]) || [0, 0],
-    );
+    updateRatioByProportion((aspectRatio?.split(":").map(Number) as [number, number]) || [0, 0]);
   } else {
     updateRatioByProportion([0, 0]);
   }
 }
 
-const nextMultipleOf = (value: number, multipleOf: number) =>
-  value + (value % multipleOf);
+const nextMultipleOf = (value: number, multipleOf: number) => value + (value % multipleOf);
 
 function updateRatioByProportion(ratio: [number, number]) {
   snippetContainerNode.style.minWidth = "";

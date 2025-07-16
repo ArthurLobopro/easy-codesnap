@@ -28,19 +28,16 @@ export class PanelController {
 
       await this.clipboard.save();
 
-      await vscode.commands.executeCommand(
-        "editor.action.clipboardCopyWithSyntaxHighlightingAction",
-      );
+      await vscode.commands.executeCommand("editor.action.clipboardCopyWithSyntaxHighlightingAction");
 
       const editor = vscode.window.visibleTextEditors[0];
       const document = editor.document;
       const position = editor.selection.active;
 
-      const symbols: vscode.DocumentSymbol[] =
-        await vscode.commands.executeCommand(
-          "vscode.executeDocumentSymbolProvider",
-          document.uri,
-        );
+      const symbols: vscode.DocumentSymbol[] = await vscode.commands.executeCommand(
+        "vscode.executeDocumentSymbolProvider",
+        document.uri,
+      );
 
       if (symbols) {
         symbolBreadcrumbs = this.getSymbolBreadcrumbs(symbols, position);
@@ -51,9 +48,7 @@ export class PanelController {
       type: updateType === "both" ? "update" : `update-${updateType}`,
       ...getConfig(),
       ...(editorURI ? { editorID: editorURI } : {}),
-      ...(updateType === "both"
-        ? { bundle: JSON.stringify(vscode.l10n.bundle) }
-        : {}),
+      ...(updateType === "both" ? { bundle: JSON.stringify(vscode.l10n.bundle) } : {}),
       symbolBreadcrumbs,
     });
 
@@ -65,46 +60,34 @@ export class PanelController {
   init() {
     const actions = new SnapActions(this);
 
-    this.panel.webview.onDidReceiveMessage(
-      async ({ type, ...args }: message) => {
-        if (type in actions) {
-          actions[type]({ ...args } as any);
-        } else {
-          vscode.window.showErrorMessage(
-            t(`Easy CodeSnap 📸: Unknown internal action "{type}"`, { type }),
-          );
-        }
-      },
-    );
+    this.panel.webview.onDidReceiveMessage(async ({ type, ...args }: message) => {
+      if (type in actions) {
+        actions[type]({ ...args } as any);
+      } else {
+        vscode.window.showErrorMessage(t(`Easy CodeSnap 📸: Unknown internal action "{type}"`, { type }));
+      }
+    });
 
-    const selectionHandler = vscode.window.onDidChangeTextEditorSelection(
-      (e) => {
-        console.log("Selection Changed");
-        const { isLocked, isLinked, linkedId } = this.webViewConfig.get();
+    const selectionHandler = vscode.window.onDidChangeTextEditorSelection((e) => {
+      console.log("Selection Changed");
+      const { isLocked, isLinked, linkedId } = this.webViewConfig.get();
 
-        if (
-          e.kind === vscode.TextEditorSelectionChangeKind.Command ||
-          isLocked
-        ) {
-          return;
-        }
+      if (e.kind === vscode.TextEditorSelectionChangeKind.Command || isLocked) {
+        return;
+      }
 
-        const editorURI = e.textEditor.document.uri.toString();
+      const editorURI = e.textEditor.document.uri.toString();
 
-        if (isLinked && linkedId !== editorURI) {
-          return;
-        }
+      if (isLinked && linkedId !== editorURI) {
+        return;
+      }
 
-        return hasOneSelection(e.selections) && this.update("text", editorURI);
-      },
-    );
+      return hasOneSelection(e.selections) && this.update("text", editorURI);
+    });
     this.panel.onDidDispose(() => selectionHandler.dispose());
   }
 
-  getSymbolBreadcrumbs(
-    symbols: vscode.DocumentSymbol[],
-    position: vscode.Position,
-  ): vscode.DocumentSymbol[] {
+  getSymbolBreadcrumbs(symbols: vscode.DocumentSymbol[], position: vscode.Position): vscode.DocumentSymbol[] {
     const traverse = (
       items: vscode.DocumentSymbol[],
       currentPath: vscode.DocumentSymbol[],

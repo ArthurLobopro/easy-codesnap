@@ -10,10 +10,7 @@ function getClipboardHtml(clip: DataTransfer) {
   const text = clip
     .getData("text/plain")
     .split("\n")
-    .map(
-      (line) =>
-        `<div>${line.replace(/</g, "&lt;").replace(/>/g, "&gt;")}</div>`,
-    )
+    .map((line) => `<div>${line.replace(/</g, "&lt;").replace(/>/g, "&gt;")}</div>`)
     .join("");
 
   return `<div>${text}</div>`;

@@ -10,15 +10,13 @@ export class WatermarkUpdater extends Updater {
   }
 
   update() {
-    const { watermark, watermarkText, watermarkPosition, target } =
-      SessionConfig.get();
+    const { watermark, watermarkText, watermarkPosition, target } = SessionConfig.get();
 
     const [watermarkY, watermarkX] = watermarkPosition.split("-");
 
     if (target === "window" && watermarkY === "top") {
       return SessionConfig.set({
-        watermarkPosition:
-          `bottom-${watermarkX}` as ExtensionConfig["watermarkPosition"],
+        watermarkPosition: `bottom-${watermarkX}` as ExtensionConfig["watermarkPosition"],
       });
     }
 
@@ -32,10 +30,7 @@ export class WatermarkUpdater extends Updater {
     watermarkElement.dataset.target = target;
 
     if (watermarkPosition) {
-      watermarkElement.setAttribute(
-        "data-watermark-position",
-        watermarkPosition,
-      );
+      watermarkElement.setAttribute("data-watermark-position", watermarkPosition);
     }
   }
 }

@@ -3,7 +3,6 @@ import { $$, getWidth, setVar } from "../../../util";
 
 function updateSelectsWidth() {
   const selects = $$<HTMLSelectElement>("li select");
-  console.log(selects);
 
   setVar("bigger-select-width", "min-content");
 

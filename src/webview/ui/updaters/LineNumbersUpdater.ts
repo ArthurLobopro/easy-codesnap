@@ -13,15 +13,9 @@ export class LineNumbersUpdater extends Updater {
     const lineNumbers = $$(".line-number");
 
     lineNumbers.forEach((line) => {
-      line.textContent = (
-        realLineNumbers ? line.dataset.reallinenumber : line.dataset.linenumber
-      ) as string;
+      line.textContent = (realLineNumbers ? line.dataset.reallinenumber : line.dataset.linenumber) as string;
     });
 
-    lineNumbers.length &&
-      setVar(
-        "line-number-width",
-        calcTextWidth(String(lineNumbers.at(-1)?.textContent)),
-      );
+    lineNumbers.length && setVar("line-number-width", calcTextWidth(String(lineNumbers.at(-1)?.textContent)));
   }
 }

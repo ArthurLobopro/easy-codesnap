@@ -30,9 +30,7 @@ export function ActionButtons() {
       <li className="tooltip horizontal-left" onClick={saveConfig}>
         <span className="codicon codicon-save-all mr-1" />
         <span>{t("Save Settings")}</span>
-        <span className="tooltip-text">
-          {t("Save current settings as default")}
-        </span>
+        <span className="tooltip-text">{t("Save current settings as default")}</span>
       </li>
     </>
   );

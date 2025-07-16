@@ -1,9 +1,5 @@
 import type * as vscode from "vscode";
-import {
-  ImportSettingsCommand,
-  OpenSettingsCommand,
-  SnapCommand,
-} from "./commands";
+import { ImportSettingsCommand, OpenSettingsCommand, SnapCommand } from "./commands";
 import { StatusbarButton } from "./StatusBarButton";
 
 export function activate(context: vscode.ExtensionContext) {

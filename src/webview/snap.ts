@@ -14,12 +14,12 @@ export async function cameraFlashAnimation() {
 }
 
 export async function takeSnap(config = SessionConfig.get()) {
-  const target =
-    config.target === "container" ? snippetContainerNode : windowNode;
+  const target = config.target === "container" ? snippetContainerNode : windowNode;
 
   const exporter = config.saveFormat === "svg" ? exportSVG : exportPNG;
 
   windowNode.style.resize = "none";
+  snippetContainerNode.style.resize = "none";
 
   if (config.transparentBackground || config.target === "window") {
     setVar("container-background-color", "transparent");
@@ -32,6 +32,8 @@ export async function takeSnap(config = SessionConfig.get()) {
   await exporter(target, config.shutterAction);
 
   windowNode.style.resize = "";
+  snippetContainerNode.style.resize = "";
+
   setVar("container-background-color", config.backgroundColor);
   setVar("box-shadow", config.boxShadow);
 }

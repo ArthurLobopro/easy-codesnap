@@ -1,34 +1,24 @@
 import { useConfigList, useSetConfig } from "@hooks//useConfig";
 import { useTranslation } from "@hooks//useTranslation";
 import { openConfig, text } from "@/util";
-import { DetailsContent, DetailsSummary, ExpandDetails } from "../../Details";
+import { DetailsContent, ExpandDetails, TextDetailsSummary } from "../../ExpandDetails";
+import { ToggleInput } from "../../ToggleInput";
 
 export function WatermarkDetails() {
   const { t } = useTranslation();
 
-  const { watermark, watermarkPosition, target } = useConfigList([
-    "watermark",
-    "watermarkPosition",
-    "target",
-  ]);
+  const { watermarkPosition, target } = useConfigList(["watermarkPosition", "target"]);
   const set = useSetConfig();
 
   return (
     <ExpandDetails>
-      <DetailsSummary>
-        <span>{t("Show Watermark")}</span>
-      </DetailsSummary>
+      <TextDetailsSummary text={t("Show Watermark")} />
       <DetailsContent>
-        <li>
-          <label className="tooltip horizontal-left">
-            <span>{t("Show Watermark")}</span>
-            <input
-              type="checkbox"
-              tabIndex={-1}
-              checked={watermark}
-              onChange={(ev) => set({ watermark: ev.currentTarget.checked })}
-            />
-            <span className="tooltip-text">
+        <ToggleInput
+          config="watermark"
+          label={t("Show Watermark")}
+          tooltip={
+            <>
               <span>
                 {text(
                   t("You can edit the Watermark text by double-clicking it."),
@@ -36,15 +26,12 @@ export function WatermarkDetails() {
                   " ",
                 )}
               </span>
-              <span
-                className="link"
-                onClick={() => openConfig("defaultWatermarkText")}
-              >
+              <span className="link" onClick={() => openConfig("defaultWatermarkText")}>
                 {t("here")}
               </span>
-            </span>
-          </label>
-        </li>
+            </>
+          }
+        />
 
         <li className="tooltip horizontal-left">
           <span>{t("Watermark Position")}</span>

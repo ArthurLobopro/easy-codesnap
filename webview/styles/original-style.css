@@ -9,7 +9,8 @@ html {
     --letter-spacing: 0px;
     --zoom: 100%;
     --max-char-width: 100% box-sizing: border-box;
-    --bigger-select-width: min-content
+    --bigger-select-width: min-content;
+    --macos-margin-right: 0px
 }
 
 body {

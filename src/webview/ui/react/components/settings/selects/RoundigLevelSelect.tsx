@@ -7,10 +7,7 @@ import { text } from "@/util";
 
 export function RoundingLevelSelect() {
   const { t } = useTranslation();
-  const { roundingLevel, roundedCorners } = useConfigList([
-    "roundingLevel",
-    "roundedCorners",
-  ]);
+  const { roundingLevel, roundedCorners } = useConfigList(["roundingLevel", "roundedCorners"]);
   const set = useSetConfig();
 
   useUpdateSelectsWidth();
@@ -35,12 +32,7 @@ export function RoundingLevelSelect() {
         ))}
       </select>
       <span className="tooltip-text">
-        <span>
-          {text(
-            t("The Window rounding level."),
-            t("Only valid when `Rounded Corners` is marked"),
-          )}
-        </span>
+        <span>{text(t("The Window rounding level."), t("Only valid when `Rounded Corners` is marked"))}</span>
       </span>
     </li>
   );

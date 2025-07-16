@@ -2,10 +2,7 @@ import * as vscode from "vscode";
 import { extensionSettingsNames } from "../../constants";
 import type { ExtensionConfig } from "../../types";
 import { delay, hasOneSelection, t } from "../../util";
-import type {
-  IPanelWebviewConfig,
-  PanelWebviewConfig,
-} from "./PanelWebviewConfig";
+import type { IPanelWebviewConfig, PanelWebviewConfig } from "./PanelWebviewConfig";
 import { savePNG, saveSVG } from "./savers";
 
 export type updateTypes = "config" | "text" | "both";
@@ -70,16 +67,11 @@ export class SnapActions {
   }
 
   "save-config"({ config }: { config: ExtensionConfig }) {
-    const extensionSettings =
-      vscode.workspace.getConfiguration("easy-codesnap");
+    const extensionSettings = vscode.workspace.getConfiguration("easy-codesnap");
 
     extensionSettingsNames.forEach((name) => {
       if (name in config && extensionSettings.get(name) !== config[name]) {
-        extensionSettings.update(
-          name,
-          config[name],
-          vscode.ConfigurationTarget.Global,
-        );
+        extensionSettings.update(name, config[name], vscode.ConfigurationTarget.Global);
       }
     });
 
@@ -91,10 +83,7 @@ export class SnapActions {
   }
 
   "open-config"({ configName }: { configName: string }) {
-    vscode.commands.executeCommand(
-      "workbench.action.openSettings",
-      `@id:easy-codesnap.${configName}`,
-    );
+    vscode.commands.executeCommand("workbench.action.openSettings", `@id:easy-codesnap.${configName}`);
   }
 
   "copy-svg"({ data }: { data: string }) {

@@ -1,11 +1,7 @@
 import { create } from "zustand";
-import type {
-  TogglableConfigNames,
-  WebViewConfigKey,
-  WebviewConfig,
-} from "../types";
+import type { TogglableConfigNames, WebViewConfigKey, WebviewConfig } from "../types";
 import { DEFAULT_SETTINGS } from "./constants";
-import { GenericUpdate, updateWindowTitle } from "./ui/updaters";
+import { GenericUpdate } from "./ui/updaters";
 
 export class SessionConfig {
   static __config: WebviewConfig = {} as any;
@@ -29,21 +25,15 @@ export class SessionConfig {
   }
 
   static set(config: Partial<WebviewConfig>, fromHook = false) {
-    const newConfig = this.hasConfig
-      ? Object.assign({}, this.__config, config)
-      : config;
+    const newConfig = this.hasConfig ? Object.assign({}, this.__config, config) : config;
 
-    newConfig.zoom ??= 100;
-    newConfig.shouldUpdateTitle ??= true;
     newConfig.watermarkText ??= newConfig.defaultWatermarkText;
+    newConfig.isReady ??= false;
 
-    const updatedKeys = (Object.keys(newConfig) as WebViewConfigKey[]).filter(
-      (key) => {
-        return !(key in this.__config) || this.__config[key] !== newConfig[key];
-      },
-    ) as WebViewConfigKey[];
+    const updatedKeys = (Object.keys(newConfig) as WebViewConfigKey[]).filter((key) => {
+      return !(key in this.__config) || this.__config[key] !== newConfig[key];
+    }) as WebViewConfigKey[];
 
-    const currentFileName = this.__config.templates?.fileName;
     this.__config = newConfig as WebviewConfig;
 
     //Remove before
@@ -52,14 +42,9 @@ export class SessionConfig {
     }
 
     GenericUpdate(updatedKeys);
-
-    if (currentFileName && config.templates?.fileName !== currentFileName) {
-      updateWindowTitle();
-    }
   }
 
   static toggle(name: TogglableConfigNames) {
-    // this.__config[name] = !this.get(name);
     this.set({
       [name]: !this.get(name),
     });
@@ -96,6 +81,9 @@ export interface ISessionConfig
     | "realLineNumbers"
     | "showLineNumbers"
     | "highlightLineNumber"
+    | "shouldUpdateTitle"
+    | "isReady"
+    | "templates"
   > {
   set: (config: Partial<Omit<ISessionConfig, "set">>) => void;
 }
@@ -118,3 +106,9 @@ export const useSessionConfig = create<ISessionConfig>((setState) => ({
   },
   ...DEFAULT_SETTINGS,
 }));
+
+type BooleanKeys<T> = {
+  [K in keyof T]: T[K] extends boolean ? K : never;
+}[keyof T];
+
+export type BooleanSessionKeys = BooleanKeys<ISessionConfig>;

@@ -8,9 +8,7 @@ export function getSettings(group: string, keys: string[]) {
   const editor = vscode.window.activeTextEditor;
   const language = editor?.document?.languageId;
 
-  const languageSettings =
-    language &&
-    vscode.workspace.getConfiguration().get<untypedObject>(`[${language}]`);
+  const languageSettings = language && vscode.workspace.getConfiguration().get<untypedObject>(`[${language}]`);
 
   return keys.reduce((config, key) => {
     if (languageSettings) {

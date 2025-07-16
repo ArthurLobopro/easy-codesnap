@@ -57,4 +57,11 @@ export const DEFAULT_SETTINGS: Omit<ISessionConfig, "set"> = {
   showLineNumbers: true,
   realLineNumbers: false,
   highlightLineNumber: false,
+  shouldUpdateTitle: true,
+  isReady: false,
+  templates: {
+    relativeFolder: "",
+    fileName: "",
+    workspace: "",
+  },
 } as const;

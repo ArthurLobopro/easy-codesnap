@@ -5,11 +5,7 @@ function RawExpandDetails({ children }: PropsWithChildren) {
   const { isOpen } = useContext(DetailsContext);
 
   return (
-    <div
-      className="expand-content"
-      data-state={isOpen ? "open" : "closed"}
-      onClick={(ev) => ev.stopPropagation()}
-    >
+    <div className="expand-content" data-state={isOpen ? "open" : "closed"} onClick={(ev) => ev.stopPropagation()}>
       {children}
     </div>
   );
@@ -20,6 +16,14 @@ export function ExpandDetails({ children }: PropsWithChildren) {
     <DetailsProvider defaultOpen>
       <RawExpandDetails>{children}</RawExpandDetails>
     </DetailsProvider>
+  );
+}
+
+export function TextDetailsSummary({ text }: { text: string }) {
+  return (
+    <DetailsSummary>
+      <span>{text}</span>
+    </DetailsSummary>
   );
 }
 

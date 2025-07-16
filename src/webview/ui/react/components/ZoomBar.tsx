@@ -33,10 +33,7 @@ export function ZoomBar() {
         <span className="codicon codicon-zoom-out" />
         <span className="tooltip-text">{t("Zoom out")}</span>
       </button>
-      <select
-        value={zoom}
-        onChange={(e) => set({ zoom: Number(e.target.value) as ZoomLevel })}
-      >
+      <select value={zoom} onChange={(e) => set({ zoom: Number(e.target.value) as ZoomLevel })}>
         {ZOOM_LEVELS.map((z) => (
           <option value={z} key={z}>
             {z}%
