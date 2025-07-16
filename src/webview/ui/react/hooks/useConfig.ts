@@ -1,6 +1,6 @@
 /** biome-ignore-all lint/correctness/useHookAtTopLevel: It works here because arrays are constants */
 import { useMemo } from "react";
-import { type ISessionConfig, useSessionConfig } from "../../../SessionConfig";
+import { type BooleanSessionKeys, type ISessionConfig, useSessionConfig } from "../../../SessionConfig";
 
 type PickProperties<T, K extends keyof T> = {
   [P in K]: T[P];
@@ -20,10 +20,6 @@ export function useConfig<T extends keyof Omit<ISessionConfig, "set">>(key: T) {
   return useSessionConfig((state) => state[key]);
 }
 
-type BooleanKeys<T> = {
-  [K in keyof T]: T[K] extends boolean ? K : never;
-}[keyof T];
-
 export function useSetConfig() {
   const set = useSessionConfig((state) => state.set);
 
@@ -32,8 +28,8 @@ export function useSetConfig() {
   interface ModifiedSet {
     (config: Parameters<set>[0]): void;
     set: set;
-    toggle: (key: BooleanKeys<ISessionConfig>) => void;
-    toggleCallback: (key: BooleanKeys<ISessionConfig>) => () => void;
+    toggle: (key: BooleanSessionKeys) => void;
+    toggleCallback: (key: BooleanSessionKeys) => () => void;
   }
 
   return useMemo(() => {
