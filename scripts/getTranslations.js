@@ -44,7 +44,6 @@ function searchTranslationsCalls(files) {
 }
 
 const translateStrings = searchTranslationsCalls(listFiles(targetDir), targetRegex).filter(str => str);
-// console.log('Strings encontradas em t() com aspas duplas:', translateStrings);
 
 const getPercent = (total, x) => (x * 100 / total);
 
@@ -69,54 +68,26 @@ function getTranslationStatus(obj, filename) {
         }
     }
 
-
     return {
+        code: filename.split(".").at(-2),
+        coverage: getPercent(translateStrings.length, translateStrings.length - missingKeys.length),
         missingKeys,
         detachedKeys,
-        code: filename.split(".").at(-2),
-        coverage: getPercent(translateStrings.length, translateStrings.length - missingKeys.length)
     };
-
 }
 
-const TRANSLATIONS_FOLDER = path.resolve(__dirname, "../l10n");
-const JSONTranslationFiles = fs.readdirSync(TRANSLATIONS_FOLDER, { withFileTypes: true }).filter(file => file.isFile()).map(file => `${file.parentPath}/${file.name}`);
+function getAllTranslationStatus() {
+    const TRANSLATIONS_FOLDER = path.resolve(__dirname, "../l10n");
+    const JSONTranslationFiles = fs.readdirSync(TRANSLATIONS_FOLDER, { withFileTypes: true }).filter(file => file.isFile()).map(file => `${file.parentPath}/${file.name}`);
 
-const translationStatus = JSONTranslationFiles.map(filePath => {
-    return getTranslationStatus(require(filePath), path.basename(filePath));
-}).sort((v1, v2) => v2.coverage - v1.coverage);
+    return JSONTranslationFiles.map(filePath => {
+        return getTranslationStatus(require(filePath), path.basename(filePath));
+    }).sort((v1, v2) => v2.coverage - v1.coverage);
+}
 
-console.log("Translation Status");
-console.log(translationStatus);
+if (process.argv[1] === __filename) {
+    console.log("Translation Status");
+    console.log(getAllTranslationStatus());
+}
 
-
-const writeStream = fs.createWriteStream(path.resolve(__dirname, "../TranslationStatus.md"));
-
-writeStream.write(["# Coverage Languages\n\n", "Language | Coverage", "--- | ---\n"].join("\n"));
-translationStatus.forEach(status => {
-
-    const content = [`${status.code} | ${status.coverage.toFixed(2)}%\n`];
-
-    writeStream.write(content.join("\n"));
-});
-
-writeStream.write([
-    "\n\n",
-    "# Missing Strings\n"
-].join("\n"));
-
-translationStatus.forEach(status => {
-    if (status.missingKeys.length) {
-
-        writeStream.write([
-            "<details>",
-            `<summary>${status.code}</summary>\n`,
-            status.missingKeys.map(key => `<li>"${key}"</li>`).join("\n"),
-            "</details>",
-            "\n"
-        ].join("\n"));
-
-    }
-});
-
-writeStream.close();
+module.exports = { getAllTranslationStatus };
