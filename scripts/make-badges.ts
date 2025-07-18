@@ -1,17 +1,20 @@
-//@ts-check
+import { makeBadge , } from "badge-maker"
+import sharp from "sharp";
+import fs from "fs";
+import path from "path";
+import { fileURLToPath } from 'url';
 
-const { makeBadge } = require("badge-maker");
-const sharp = require("sharp");
-const fs = require("fs");
-const path = require("path");
+function fromTo(from: string, to: string) {
+    sharp(Buffer.from(from, 'utf8')).png().toFile(to);
+}
+
+//@ts-ignore
+const __dirname = path.dirname(fileURLToPath(import.meta.url))
 
 const svgs_dir = path.join(__dirname, "../.github/readme-assets");
 const output_dir = path.join(__dirname, "../badges");
 
-/**
- * @param {string} svg
- */
-function toBase64(svg) {
+function toBase64(svg: string) {
     const base64 = Buffer.from(svg).toString('base64');
 
     return `data:image/svg+xml;base64,${base64}`;
@@ -20,12 +23,15 @@ function toBase64(svg) {
 const svgs = {
     vscode: toBase64(fs.readFileSync(path.resolve(svgs_dir, "vscode.svg"), "utf8")),
     openVsx: toBase64(fs.readFileSync(path.resolve(svgs_dir, "open-vsx.svg"), "utf8")),
+    "pt-br": toBase64(fs.readFileSync(path.resolve(svgs_dir, "flags","br.svg"), "utf-8")),
+    "zh-tw": toBase64(fs.readFileSync(path.resolve(svgs_dir, "flags","tw.svg"), "utf-8")),
+    "zh-cn": toBase64(fs.readFileSync(path.resolve(svgs_dir, "flags","cn.svg"), "utf-8")),
+    "ja": toBase64(fs.readFileSync(path.resolve(svgs_dir, "flags","ja.svg"), "utf-8")),
+    "de": toBase64(fs.readFileSync(path.resolve(svgs_dir, "flags","de.svg"), "utf-8")),
 };
 
-/**
- * @param downloadCount {number}
- */
-function convertDownloadCount(downloadCount) {
+
+function convertDownloadCount(downloadCount: number) {
     const precision = downloadCount > 10000 ? 3 : 2;
 
     return `${(downloadCount / 1000).toPrecision(precision)}k`;
@@ -52,9 +58,8 @@ async function makeOpenVsxBadges() {
         logoBase64: svgs.openVsx,
     });
 
-    sharp(Buffer.from(versionBadge, 'utf8')).png().toFile(path.join(output_dir, "open-vsx-version.png"));
-
-    sharp(Buffer.from(downloadBadge, 'utf8')).png().toFile(path.join(output_dir, "open-vsx-downloads.png"));
+    fromTo(versionBadge, path.join(output_dir, "open-vsx-version.png"));
+    fromTo(downloadBadge, path.join(output_dir, "open-vsx-downloads.png"));
 }
 
 async function makeVscodeBadges() {
@@ -81,15 +86,16 @@ async function makeVscodeBadges() {
     })
         .then(res => res.json())
         .then(data => {
-            const ext = data.results[0].extensions[0];
-            //console.log(ext)
+            //@ts-ignore
+            const ext = data.results[0].extensions[0]!;
 
             return {
+                //@ts-ignore
                 installs: ext.statistics.find(s => s.statisticName === "install")?.value,
                 version: ext.versions[0].version,
             };
         })
-        .catch(console.error);
+        .catch(console.error) as {installs: number, version: string};
 
     const versionBadge = makeBadge({
         label: "Visual Studio Marketplace",
@@ -107,9 +113,39 @@ async function makeVscodeBadges() {
         logoBase64: svgs.vscode,
     });
 
+    fromTo(versionBadge, path.join(output_dir, "vscode-version.png"));
+    fromTo(downloadBadge, path.join(output_dir, "vscode-downloads.png"));
+}
 
-    sharp(Buffer.from(versionBadge, 'utf8')).png().toFile(path.join(output_dir, "vscode-version.png"));
-    sharp(Buffer.from(downloadBadge, 'utf8')).png().toFile(path.join(output_dir, "vscode-downloads.png"));
+//@ts-ignore
+import {getAllTranslationStatus} from "./getTranslations.js"
+
+function makeTranslationBadges() {
+    const translationStatus = getAllTranslationStatus();
+
+    const languageStrings = {
+        "pt-br": "Portuguese (pt-BR)",
+        "ja": "Japanese (ja)",
+        "de": "German (de)",
+        "zh-cn": "Chinese Mandarim (zh-CN)",
+        "zh-tw": "Taiwanese Mandarin (zh-TW)"
+    } as const;
+
+    for(const status of translationStatus){
+        if(status.code in languageStrings){
+            const badge = makeBadge({
+                //@ts-ignore
+                label: languageStrings[status.code],
+                message: status.coverage.toFixed(2) + "%",
+                style: "flat",
+                color: status.coverage === 100 ? "green" : "blue",
+                //@ts-ignore
+                ...(svgs[status.code] ? {logoBase64: svgs[status.code]} : {} )
+            })
+
+            fromTo(badge, path.resolve(output_dir, `./${status.code}.png`))
+        }
+    }
 }
 
 async function main() {
@@ -119,6 +155,7 @@ async function main() {
 
     await makeOpenVsxBadges();
     await makeVscodeBadges();
+    makeTranslationBadges()
 }
 
 main();
