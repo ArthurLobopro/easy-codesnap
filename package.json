@@ -322,8 +322,8 @@
     "compile": "yarn run webpack",
     "watch": "yarn webpack-dev",
     "lint": "biome check --write ./src",
-    "translation-status": "node ./scripts/buildTranslationsMarkdown.js",
-    "show-translation": "node ./scripts/getTranslations.js"
+    "translation-status": "node ./scripts/getTranslations.js",
+    "make-badges": "node --experimental-strip-types ./scripts/make-badges.ts"
   },
   "devDependencies": {
     "@biomejs/biome": "^2.0.0",
