@@ -23,13 +23,13 @@ jobs:
         - name: Setup Node
           uses: actions/setup-node@v4
           with:
-            node-version: "22.x"
+            node-version: "24.x"
 
         - name: Install Dependencies
           run: yarn install --frozen-lockfile
 
         - name: Generate Badges
-          run: node ./scripts/make-badges.js
+          run: yarn make-badges
           
         - name: Push Badges to badges branch
           uses: crazy-max/ghaction-github-pages@v3.1.0
