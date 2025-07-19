@@ -7,3 +7,4 @@ export const flashFx = $("#flash-fx");
 export const watermarkElement = $("#watermark");
 export const targetProportion = $("#target-proportion");
 export const breadcrumbNode = $("#breadcrumb");
+export const sample = $("#sample-wrapper");

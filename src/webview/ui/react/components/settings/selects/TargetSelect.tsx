@@ -2,6 +2,8 @@ import { useConfig, useSetConfig } from "@hooks//useConfig";
 import { useUpdateSelectsWidth } from "@hooks//useSelectWidthUpdater";
 import { useTranslation } from "@hooks//useTranslation";
 import type { Target } from "@/../types";
+import { snippetContainerNode, windowNode } from "@/ui/elements";
+import { HideSample, TargetSample } from "@/ui/updaters/SampleUpdater";
 
 export function TargetSelect() {
   const { t } = useTranslation();
@@ -11,7 +13,7 @@ export function TargetSelect() {
   useUpdateSelectsWidth();
 
   return (
-    <li>
+    <li className="tooltip horizontal-left">
       <span>{t("Target")}</span>
       <select
         tabIndex={-1}
@@ -20,9 +22,23 @@ export function TargetSelect() {
           set({ target: ev.currentTarget.value as Target });
         }}
       >
-        <option value="window">window</option>
-        <option value="container">container</option>
+        <option value="window">{t("Window")}</option>
+        <option value="container">{t("Container")}</option>
       </select>
+      <span className="tooltip-text">
+        {t("The target of the capture, can be ")}
+        <span className="link" onMouseEnter={() => TargetSample(windowNode)} onMouseLeave={() => HideSample()}>
+          {t("Window")}
+        </span>
+        <span> {t("or")} </span>
+        <span
+          className="link"
+          onMouseEnter={() => TargetSample(snippetContainerNode)}
+          onMouseLeave={() => HideSample()}
+        >
+          {t("Container")}
+        </span>
+      </span>
     </li>
   );
 }
