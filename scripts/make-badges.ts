@@ -28,6 +28,7 @@ const svgs = {
     "zh-cn": toBase64(fs.readFileSync(path.resolve(svgs_dir, "flags","cn.svg"), "utf-8")),
     "ja": toBase64(fs.readFileSync(path.resolve(svgs_dir, "flags","ja.svg"), "utf-8")),
     "de": toBase64(fs.readFileSync(path.resolve(svgs_dir, "flags","de.svg"), "utf-8")),
+     "us": toBase64(fs.readFileSync(path.resolve(svgs_dir, "flags","us.svg"), "utf-8")),
 };
 
 
@@ -124,7 +125,7 @@ function makeTranslationBadges() {
     const translationStatus = getAllTranslationStatus();
 
     const languageStrings = {
-        "pt-br": "Portuguese (pt-BR)",
+        "pt-br": "Brasilian Portuguese (pt-BR)",
         "ja": "Japanese (ja)",
         "de": "German (de)",
         "zh-cn": "Chinese Mandarim (zh-CN)",
@@ -146,6 +147,16 @@ function makeTranslationBadges() {
             fromTo(badge, path.resolve(output_dir, `./${status.code}.png`))
         }
     }
+
+    const defaultBadge = makeBadge({
+        label: "English (en-US)",
+        color: "green",
+        style: "flat",
+        message: "100% (default)",
+        logoBase64: svgs.us
+    })
+
+    fromTo(defaultBadge, path.resolve(output_dir, `./en-us.png`))
 }
 
 async function main() {
