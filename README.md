@@ -51,7 +51,7 @@ Badge | Language
 ![](https://raw.githubusercontent.com/ArthurLobopro/easy-codesnap/refs/heads/Badges/ja.png) | Japanese (Thanks [mnt-h](https://github.com/mnt-h))
 ![](https://raw.githubusercontent.com/ArthurLobopro/easy-codesnap/refs/heads/Badges/de.png) | German (Thanks [sclause2412](https://github.com/sclause2412))
 
-To contribute, see [Translation Guide](https://raw.githubusercontent.com/ArthurLobopro/easy-codesnap/refs/heads/main/TranslationGuide.md)
+To contribute, see [Translation Guide](https://github.com/ArthurLobopro/easy-codesnap/blob/main/TranslationGuide.md)
 
 ## Help the Project
 
