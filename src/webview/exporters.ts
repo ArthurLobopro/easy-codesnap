@@ -60,15 +60,6 @@ async function toPNG(target: HTMLElement) {
   return await await domtoimage.toPng(target, {
     bgColor: "transparent",
     scale,
-    postProcess: (node: HTMLElement) => {
-      $$("#snippet-container, #snippet, .line, .line-code span", node).forEach((span: HTMLElement) => {
-        span.style.width = "unset";
-      });
-
-      $$(".line-code", node).forEach((span) => {
-        span.style.width = "100%";
-      });
-    },
   });
 }
 
