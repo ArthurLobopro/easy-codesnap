@@ -39,7 +39,7 @@
     "here": "aqui",
     "If you want to highlight a line, you can click on the line number": "Se você quiser destacar uma linha, você pode clicar no número desta linha",
     "Show real line numbers.": "Mostra o número real das linhas",
-    "Only valid when `Show Line Numbers` is marked": "Apenas é válido quando `Mostrar Número de Linhas` está ativo",
+    "Only valid when `{showLineNumbers}` is marked": "Apenas é válido quando `{showLineNumbers}` está ativo",
     "The Window rounding level.": "O nível de arredondamento da janela.",
     "Only valid when `Rounded Corners` is marked": "Apenas válido quando `Cantos Arredondados` está ativo",
     "Save current settings as default": "Salvar configurações atuais como padrão",

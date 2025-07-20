@@ -21,7 +21,10 @@ export function LineOptionsDetails() {
           label={t("Real Line Numbers")}
           tooltip={
             <EscapeCodes
-              text={text(t("Show real line numbers."), t("Only valid when `Show Line Numbers` is marked"))}
+              text={text(
+                t("Show real line numbers."),
+                t("Only valid when `{showLineNumbers}` is marked", { showLineNumbers: t("Show Line Numbers") }),
+              )}
             />
           }
         />
@@ -32,7 +35,7 @@ export function LineOptionsDetails() {
             <EscapeCodes
               text={text(
                 t("When you highlight a line, the line number text will also be highlighted."),
-                t("Only valid when `Show Line Numbers` is marked"),
+                t("Only valid when `{showLineNumbers}` is marked", { showLineNumbers: t("Show Line Numbers") }),
               )}
             />
           }

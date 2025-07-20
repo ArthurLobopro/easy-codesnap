@@ -43,7 +43,7 @@
     "To change the default behavior, click": "若要變更預設行為，請點選",
     "If you want to highlight a line, you can click on the line number": "若要高亮某行，可以點選對應的行號",
     "Show real line numbers.": "顯示真實的行號。",
-    "Only valid when `Show Line Numbers` is marked": "僅在勾選 「顯示行號」 時生效",
+    "Only valid when `{showLineNumbers}` is marked": "僅在勾選 `{showLineNumbers}` 時生效",
     "When you highlight a line, the line number text will also be highlighted.": "高亮某行時，行號文字也會一併高亮。",
     "You can edit the Window Title text by double-clicking it.": "雙擊視窗標題即可變更文字。",
     "You can edit the default Window Title text clicking": "若要變更預設視窗標題文字，請點選",
