@@ -25,6 +25,10 @@
     "Save Settings": "Salvar Configurações",
     "Transparent Background": "Fundo Transparente",
     "Target": "Alvo",
+    "Window": "Janela",
+    "Container": "Container",
+    "or": "ou",
+    "The target of the capture, can be ": "O alvo para captura, pode ser ",
     "Aspect Ratio": "Proporção",
     "Lock changes": "Bloquear alterações",
     "Unlock changes": "Desbloquear alterações",
@@ -35,7 +39,7 @@
     "here": "aqui",
     "If you want to highlight a line, you can click on the line number": "Se você quiser destacar uma linha, você pode clicar no número desta linha",
     "Show real line numbers.": "Mostra o número real das linhas",
-    "Only valid when `Show Line Numbers` is marked": "Apenas é válido quando `Mostrar Número de Linhas` está ativo",
+    "Only valid when `{showLineNumbers}` is marked": "Apenas é válido quando `{showLineNumbers}` está ativo",
     "The Window rounding level.": "O nível de arredondamento da janela.",
     "Only valid when `Rounded Corners` is marked": "Apenas válido quando `Cantos Arredondados` está ativo",
     "Save current settings as default": "Salvar configurações atuais como padrão",
@@ -61,7 +65,8 @@
     "Maximum line width based on characters. Use value 0 for no limit.": "Tamanho máximo da linha baseado em caracteres. Use o valor 0 para não limitar.",
     "Invalid values will be ignored and the last valid value will be restored": "Valores inválidos irão ser ignorados e o último valor válido será restaurado",
     "Enable Symbol Breadcrumb": "Ativar Breadcrumb de Símbolos",
-    "Icon Type": "Tipo de ícone",
+    "Icon Style": "Tipo de ícone",
     "Rounded": "Redondo",
-    "Square": "Quadrado"
+    "Square": "Quadrado",
+    "Only valid when `{windowStyle}` is `Windows`. Changes the `Windows` icon style": "Apenas válido quando `{windowStyle}` é `Windows`. Muda o estilo dos ícones de `Windows`"
 }

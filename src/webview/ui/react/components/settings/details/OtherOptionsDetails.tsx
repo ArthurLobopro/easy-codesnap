@@ -1,6 +1,7 @@
 import { useConfigList, useSetConfig } from "@hooks//useConfig";
 import { useTranslation } from "@hooks//useTranslation";
 import { text } from "@/util";
+import { EscapeCodes } from "../../EscapeCodes";
 import { DetailsContent, ExpandDetails, TextDetailsSummary } from "../../ExpandDetails";
 import { ToggleInput } from "../../ToggleInput";
 import { AspectRatioSelect } from "../selects/AspectRatioSelect";
@@ -32,10 +33,12 @@ export function OtherOptionsDetails() {
               onChange={toggleCallback("transparentBackground")}
             />
             <span className="tooltip-text">
-              {text(
-                t("When you take the Snapshot, the container background will be transparent."),
-                t("Only valid when `Target` is `container`"),
-              )}
+              <EscapeCodes
+                text={text(
+                  t("When you take the Snapshot, the container background will be transparent."),
+                  t("Only valid when `Target` is `container`"),
+                )}
+              />
             </span>
           </label>
         </li>
@@ -43,10 +46,14 @@ export function OtherOptionsDetails() {
         <ToggleInput
           config="enableResizing"
           label={t("Enable Resizing")}
-          tooltip={text(
-            t("Enables manual resizing of the `Snap Window`."),
-            t("Disabling this will also reset the `Snap Window` size."),
-          )}
+          tooltip={
+            <EscapeCodes
+              text={text(
+                t("Enables manual resizing of the `Snap Window`."),
+                t("Disabling this will also reset the `Snap Window` size."),
+              )}
+            />
+          }
         />
 
         <ToggleInput config="enableSymbolBreadcrumb" label={t("Enable Symbol Breadcrumb")} />

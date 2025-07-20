@@ -35,7 +35,7 @@
     "here": "hier",
     "If you want to highlight a line, you can click on the line number": "Um eine Zeile hervorzuheben einfach auf die Zeilennummer klicken",
     "Show real line numbers.": "Zeige echte Zeilennummern",
-    "Only valid when `Show Line Numbers` is marked": "Nur gültig wenn `Zeige Zeilennummern` aktiviert ist",
+    "Only valid when `{showLineNumbers}` is marked": "Nur gültig wenn `{showLineNumbers}` aktiviert ist",
     "The Window rounding level.": "Rundungsstufe des Fensters.",
     "Only valid when `Rounded Corners` is marked": "Nur gültig wenn `Abgerundete Ecken` aktiviert ist",
     "Save current settings as default": "Speichere aktuelle Einstellungen als Standard",

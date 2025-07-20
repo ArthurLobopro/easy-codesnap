@@ -1,5 +1,6 @@
 import { useTranslation } from "@hooks//useTranslation";
 import { text } from "@/util";
+import { EscapeCodes } from "../../EscapeCodes";
 import { DetailsContent, ExpandDetails, TextDetailsSummary } from "../../ExpandDetails";
 import { ToggleInput } from "../../ToggleInput";
 
@@ -18,15 +19,26 @@ export function LineOptionsDetails() {
         <ToggleInput
           config="realLineNumbers"
           label={t("Real Line Numbers")}
-          tooltip={text(t("Show real line numbers."), t("Only valid when `Show Line Numbers` is marked"))}
+          tooltip={
+            <EscapeCodes
+              text={text(
+                t("Show real line numbers."),
+                t("Only valid when `{showLineNumbers}` is marked", { showLineNumbers: t("Show Line Numbers") }),
+              )}
+            />
+          }
         />
         <ToggleInput
           config="highlightLineNumber"
           label={t("Line Number Hightlight")}
-          tooltip={text(
-            t("When you highlight a line, the line number text will also be highlighted."),
-            t("Only valid when `Show Line Numbers` is marked"),
-          )}
+          tooltip={
+            <EscapeCodes
+              text={text(
+                t("When you highlight a line, the line number text will also be highlighted."),
+                t("Only valid when `{showLineNumbers}` is marked", { showLineNumbers: t("Show Line Numbers") }),
+              )}
+            />
+          }
         />
       </DetailsContent>
     </ExpandDetails>

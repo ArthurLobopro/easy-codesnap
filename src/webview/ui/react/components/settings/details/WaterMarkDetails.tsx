@@ -1,6 +1,7 @@
 import { useConfigList, useSetConfig } from "@hooks//useConfig";
 import { useTranslation } from "@hooks//useTranslation";
 import { openConfig, text } from "@/util";
+import { EscapeCodes } from "../../EscapeCodes";
 import { DetailsContent, ExpandDetails, TextDetailsSummary } from "../../ExpandDetails";
 import { ToggleInput } from "../../ToggleInput";
 
@@ -90,9 +91,11 @@ export function WatermarkDetails() {
             </label>
           </div>
           <span className="tooltip-text">
-            {t(
-              "The position of the watermark in the snapshot. Top positions are only available when `Target` is `container`",
-            )}
+            <EscapeCodes
+              text={t(
+                "The position of the watermark in the snapshot. Top positions are only available when `Target` is `container`",
+              )}
+            />
           </span>
         </li>
       </DetailsContent>

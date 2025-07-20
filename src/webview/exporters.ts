@@ -7,7 +7,7 @@ import { optimize } from "svgo/dist/svgo.browser";
 import type { WebviewConfig } from "../types";
 import { SessionConfig } from "./SessionConfig";
 import { cameraFlashAnimation } from "./snap";
-import { $$, vscode } from "./util";
+import { vscode } from "./util";
 
 export async function exportPNG(target: HTMLElement, action: WebviewConfig["shutterAction"]) {
   const url = await (async () => {
@@ -60,15 +60,6 @@ async function toPNG(target: HTMLElement) {
   return await await domtoimage.toPng(target, {
     bgColor: "transparent",
     scale,
-    postProcess: (node: HTMLElement) => {
-      $$("#snippet-container, #snippet, .line, .line-code span", node).forEach((span: HTMLElement) => {
-        span.style.width = "unset";
-      });
-
-      $$(".line-code", node).forEach((span) => {
-        span.style.width = "100%";
-      });
-    },
   });
 }
 
