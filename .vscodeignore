@@ -10,6 +10,7 @@ screenshots/**
 node_modules
 scripts/**
 badges/**
+webview/assets
 
 #Config
 **/.eslintrc.json
