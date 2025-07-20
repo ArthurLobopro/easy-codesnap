@@ -29,5 +29,5 @@
     "easy-codesnap.defaultWatermarkText": "Default watermark text",
     "easy-codesnap.watermarkPosition": "Watermark position on screen",
     "easy-codesnap.maxCharWidth": "Maximum line width based on characters. Use value 0 for no limit",
-    "easy-codesnap.windowIconType": "Wintow icon type, only works when `windowStyle` is `windows`"
+    "easy-codesnap.windowIconType": "Window icon style. Only effective when `windowStyle` is `Windows`"
 }
