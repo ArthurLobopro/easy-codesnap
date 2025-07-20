@@ -1,3 +1,9 @@
+# 1.30.0
+
+Feat: Better tooltips and samples
+Fix: Errors while taking snaps
+Fix: Error on showing translations
+
 # 1.29.1
 
 Fix: Small fixes
