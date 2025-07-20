@@ -7,7 +7,7 @@ import { optimize } from "svgo/dist/svgo.browser";
 import type { WebviewConfig } from "../types";
 import { SessionConfig } from "./SessionConfig";
 import { cameraFlashAnimation } from "./snap";
-import { $$, vscode } from "./util";
+import { vscode } from "./util";
 
 export async function exportPNG(target: HTMLElement, action: WebviewConfig["shutterAction"]) {
   const url = await (async () => {

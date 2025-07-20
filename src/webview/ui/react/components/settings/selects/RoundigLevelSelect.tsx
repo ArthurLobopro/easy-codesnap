@@ -3,7 +3,6 @@ import { useUpdateSelectsWidth } from "@hooks//useSelectWidthUpdater";
 import { useTranslation } from "@hooks//useTranslation";
 import type { RoundingLevel } from "@/../types";
 import { ROUNDING_LEVELS } from "@/constants";
-import { text } from "@/util";
 import { EscapeCodes } from "../../EscapeCodes";
 
 export function RoundingLevelSelect() {
