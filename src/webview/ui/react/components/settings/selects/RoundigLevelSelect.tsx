@@ -4,6 +4,7 @@ import { useTranslation } from "@hooks//useTranslation";
 import type { RoundingLevel } from "@/../types";
 import { ROUNDING_LEVELS } from "@/constants";
 import { text } from "@/util";
+import { EscapeCodes } from "../../EscapeCodes";
 
 export function RoundingLevelSelect() {
   const { t } = useTranslation();
@@ -32,7 +33,8 @@ export function RoundingLevelSelect() {
         ))}
       </select>
       <span className="tooltip-text">
-        <span>{text(t("The Window rounding level."), t("Only valid when `Rounded Corners` is marked"))}</span>
+        <span>{t("The Window rounding level.")} </span>
+        <EscapeCodes text={t("Only valid when `Rounded Corners` is marked")} />
       </span>
     </li>
   );

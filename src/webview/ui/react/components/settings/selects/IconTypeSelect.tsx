@@ -2,6 +2,7 @@ import { useConfigList, useSetConfig } from "@hooks//useConfig";
 import { useUpdateSelectsWidth } from "@hooks//useSelectWidthUpdater";
 import { useTranslation } from "@hooks//useTranslation";
 import type { WindowIconType } from "@/../types";
+import { EscapeCodes } from "../../EscapeCodes";
 
 export function IconTypeSelect() {
   const { t } = useTranslation();
@@ -11,8 +12,8 @@ export function IconTypeSelect() {
   useUpdateSelectsWidth();
 
   return (
-    <li>
-      <span>{t("Icon Type")}</span>
+    <li className="tooltip horizontal-left">
+      <span>{t("Icon Style")}</span>
       <select
         value={windowIconType}
         onChange={(ev) => {
@@ -25,6 +26,13 @@ export function IconTypeSelect() {
         <option value="round">{t("Rounded")}</option>
         <option value="square">{t("Square")}</option>
       </select>
+      <span className="tooltip-text">
+        <EscapeCodes
+          text={t("Only valid when `{windowStyle}` is `Windows`. Changes the `Windows` icon style", {
+            windowStyle: t("Window Style"),
+          })}
+        />
+      </span>
     </li>
   );
 }
