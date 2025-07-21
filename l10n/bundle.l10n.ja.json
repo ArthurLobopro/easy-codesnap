@@ -55,7 +55,7 @@
     "You can edit the Window Title text by double-clicking it.": "ウィンドウタイトルはダブルクリックで編集できます。",
     "You can edit the default Window Title text clicking": "デフォルトのウィンドウタイトルを編集するには、",
     "The Window rounding level.": "ウィンドウの角丸レベルを変更します。",
-    "Only valid when `Rounded Corners` is marked": "「角を丸くする」が有効な場合のみ有効です",
+    "Only valid when `{roundedCorners}` is marked": "`{roundedCorners}` が有効な場合のみ有効です",
     "The target of the capture, can be ": "キャプチャのターゲットは、次のいずれかです。",
     "When you take the Snapshot, the container background will be transparent.": "スナップショットを撮ると、背景が透明になります。",
     "Only valid when `Target` is `container`": "「ターゲット」が「背景も含む」の場合のみ有効です。",

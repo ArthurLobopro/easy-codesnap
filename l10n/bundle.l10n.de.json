@@ -37,7 +37,7 @@
     "Show real line numbers.": "Zeige echte Zeilennummern",
     "Only valid when `{showLineNumbers}` is marked": "Nur gültig wenn `{showLineNumbers}` aktiviert ist",
     "The Window rounding level.": "Rundungsstufe des Fensters.",
-    "Only valid when `Rounded Corners` is marked": "Nur gültig wenn `Abgerundete Ecken` aktiviert ist",
+    "Only valid when `{roundedCorners}` is marked": "Nur gültig wenn `{roundedCorners}` aktiviert ist",
     "Save current settings as default": "Speichere aktuelle Einstellungen als Standard",
     "Reset settings to default": "Einstellungen auf Standard zurücksetzen",
     "Open extension settings": "Einstellungen der Erweiterung öffnen",

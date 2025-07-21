@@ -41,7 +41,7 @@
     "Show real line numbers.": "Mostra o número real das linhas",
     "Only valid when `{showLineNumbers}` is marked": "Apenas é válido quando `{showLineNumbers}` está ativo",
     "The Window rounding level.": "O nível de arredondamento da janela.",
-    "Only valid when `Rounded Corners` is marked": "Apenas válido quando `Cantos Arredondados` está ativo",
+    "Only valid when `{roundedCorners}` is marked": "Apenas válido quando `{roundedCorners}` está ativo",
     "Save current settings as default": "Salvar configurações atuais como padrão",
     "Reset settings to default": "Restaurar configurações para o padrão",
     "Open extension settings": "Abrir configurações da extensão",
