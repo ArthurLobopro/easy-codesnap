@@ -50,7 +50,7 @@
     "The Window rounding level.": "窗口圆角等级。",
     "Only valid when `Rounded Corners` is marked": "仅当启用 `圆角` 时生效",
     "When you take the Snapshot, the container background will be transparent.": "进行快照时，容器背景将变为透明。",
-    "Only valid when `Target` is `container`": "仅当 `Target` 为 `container` 时生效",
+    "Only valid when `{target}` is `{container}`": "仅当 `{target}` 为 `{container}` 时生效",
     "Enables manual resizing of the `Snap Window`.": "启用手动调整 `快照窗口` 的大小。",
     "Disabling this will also reset the `Snap Window` size.": "禁用后将重置 `快照窗口` 的大小。",
     "Maximum line width based on characters. Use value 0 for no limit.": "基于字符数的最大行宽。 0 表示无限制。",

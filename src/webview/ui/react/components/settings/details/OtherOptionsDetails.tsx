@@ -36,7 +36,7 @@ export function OtherOptionsDetails() {
               <EscapeCodes
                 text={text(
                   t("When you take the Snapshot, the container background will be transparent."),
-                  t("Only valid when `Target` is `container`"),
+                  t("Only valid when `{target}` is `{container}`", { target: t("Target"), container: t("Container") }),
                 )}
               />
             </span>

@@ -51,7 +51,7 @@
     "When you highlight a line, the line number text will also be highlighted.": "Quando você destaca uma linha, o número de linha também será destacado.",
     "You can edit the Window Title text by double-clicking it.": "Você pode editar o Título da Janela clicando duas vezes nele",
     "You can edit the default Window Title text clicking": "Você pode editar o Título da Janela padrão clicando",
-    "Only valid when `Target` is `container`": "Apenas válido quando `Alvo` for `container`",
+    "Only valid when `{target}` is `{container}`": "Apenas válido quando `{target}` for `{container}`",
     "When you take the Snapshot, the container background will be transparent.": "Quando você capturar a Snapshot, a cor de fundo do container será transparente.",
     "You can edit the Watermark text by double-clicking it.": "Você pode editar o texto da Marca D'água clicando duas vezes nela.",
     "You can edit the default Watermark text clicking": "Você pode editar o texto padrão da Marca D'água clicando",

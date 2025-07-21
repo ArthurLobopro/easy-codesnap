@@ -47,7 +47,7 @@
     "When you highlight a line, the line number text will also be highlighted.": "Wenn eine Zeile ausgewählt wird, so wird auch die Zeilennummber hervorgehoben.",
     "You can edit the Window Title text by double-clicking it.": "Der Fenstertitel kann mit einem Doppelklick bearbeitet werden.",
     "You can edit the default Window Title text clicking": "Der Standard-Fenstertitel kann in den Einstellungen geändert werden:",
-    "Only valid when `Target` is `container`": "Nur gültig wenn das `Ziel` der `Container` ist",
+    "Only valid when `{target}` is `{container}`": "Nur gültig wenn das `{target}` der `{container}` ist",
     "When you take the Snapshot, the container background will be transparent.": "Beim Erstellen der Aufnahme ist der Hintergrund des Containers transparent.",
     "You can edit the Watermark text by double-clicking it.": "Das Wasserzeichen kann mit einem Doppelklick bearbeitet werden.",
     "You can edit the default Watermark text clicking": "Das Standard-Wasserzeichen kann in den Einstellungen geändert werden:",
