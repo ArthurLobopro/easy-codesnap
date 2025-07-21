@@ -1,5 +1,7 @@
 import { useConfigList, useSetConfig } from "@hooks//useConfig";
 import { useTranslation } from "@hooks//useTranslation";
+import { snippetContainerNode, windowNode } from "@/ui/elements";
+import { HideSample, TargetSample } from "@/ui/updaters/SampleUpdater";
 import { text } from "@/util";
 import { EscapeCodes } from "../../EscapeCodes";
 import { DetailsContent, ExpandDetails, TextDetailsSummary } from "../../ExpandDetails";
@@ -47,12 +49,21 @@ export function OtherOptionsDetails() {
           config="enableResizing"
           label={t("Enable Resizing")}
           tooltip={
-            <EscapeCodes
-              text={text(
-                t("Enables manual resizing of the `Snap Window`."),
-                t("Disabling this will also reset the `Snap Window` size."),
-              )}
-            />
+            <>
+              <span>{t("Enables manual resizing for ")}</span>
+              <span className="link" onMouseEnter={() => TargetSample(windowNode)} onMouseLeave={() => HideSample()}>
+                {t("Window")}
+              </span>
+              <span> {t("and")} </span>
+              <span
+                className="link"
+                onMouseEnter={() => TargetSample(snippetContainerNode)}
+                onMouseLeave={() => HideSample()}
+              >
+                {t("Container")}
+              </span>
+              . <EscapeCodes text={text(t("Disabling this will also remove any resizing you've done."))} />
+            </>
           }
         />
 
