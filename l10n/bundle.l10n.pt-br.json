@@ -69,5 +69,5 @@
     "Icon Style": "Tipo de ícone",
     "Rounded": "Redondo",
     "Square": "Quadrado",
-    "Only valid when `{windowStyle}` is `{windows}`. Changes the `{windows}` icon style": "Apenas válido quando `{windowStyle}` é `{windows}`. Muda o estilo dos ícones de `{windows}`"
+    "Only valid when `{windowStyle}` is `Windows`. Changes the `Windows` icon style": "Apenas válido quando `{windowStyle}` é `Windows`. Muda o estilo dos ícones de `Windows`"
 }

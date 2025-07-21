@@ -28,9 +28,8 @@ export function IconTypeSelect() {
       </select>
       <span className="tooltip-text">
         <EscapeCodes
-          text={t("Only valid when `{windowStyle}` is `{windows}`. Changes the `{windows}` icon style", {
+          text={t("Only valid when `{windowStyle}` is `Windows`. Changes the `Windows` icon style", {
             windowStyle: t("Window Style"),
-            windows: t("Windows"),
           })}
         />
       </span>
