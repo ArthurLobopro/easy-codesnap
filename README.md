@@ -42,14 +42,14 @@
 
 ## Languages
 
-Badge | Language
---- | ---
-![](https://raw.githubusercontent.com/ArthurLobopro/easy-codesnap/refs/heads/Badges/en-us.png) | American English - Default Language
-![](https://raw.githubusercontent.com/ArthurLobopro/easy-codesnap/refs/heads/Badges/pt-br.png) | Português Brasileiro
-![](https://raw.githubusercontent.com/ArthurLobopro/easy-codesnap/refs/heads/Badges/ja.png) | Japanese (Thanks [mnt-h](https://github.com/mnt-h))
-![](https://raw.githubusercontent.com/ArthurLobopro/easy-codesnap/refs/heads/Badges/zh-tw.png) | Taiwanese Mandarin (Thanks [CoffeeChaton](https://github.com/CoffeeChaton))
-![](https://raw.githubusercontent.com/ArthurLobopro/easy-codesnap/refs/heads/Badges/zh-cn.png) | Chinese Mandarin (Thanks [CoffeeChaton](https://github.com/CoffeeChaton))
-![](https://raw.githubusercontent.com/ArthurLobopro/easy-codesnap/refs/heads/Badges/de.png) | German (Thanks [sclause2412](https://github.com/sclause2412))
+Badge | Language | Maintainers
+--- | --- | ---
+![](https://raw.githubusercontent.com/ArthurLobopro/easy-codesnap/refs/heads/Badges/en-us.png) | American English - Default Language | Extension Owner
+![](https://raw.githubusercontent.com/ArthurLobopro/easy-codesnap/refs/heads/Badges/pt-br.png) | Português Brasileiro |  Extension Owner
+![](https://raw.githubusercontent.com/ArthurLobopro/easy-codesnap/refs/heads/Badges/zh-cn.png) | Chinese Mandarin | [SorYoshino](https://github.com/SorYoshino) [CoffeeChaton](https://github.com/CoffeeChaton) 
+![](https://raw.githubusercontent.com/ArthurLobopro/easy-codesnap/refs/heads/Badges/zh-tw.png) | Taiwanese Mandarin | [SorYoshino](https://github.com/SorYoshino) [CoffeeChaton](https://github.com/CoffeeChaton) 
+![](https://raw.githubusercontent.com/ArthurLobopro/easy-codesnap/refs/heads/Badges/ja.png) | Japanese | [mnt-h](https://github.com/mnt-h)
+![](https://raw.githubusercontent.com/ArthurLobopro/easy-codesnap/refs/heads/Badges/de.png) | German | [sclause2412](https://github.com/sclause2412)
 
 To contribute, see [Translation Guide](https://github.com/ArthurLobopro/easy-codesnap/blob/main/TranslationGuide.md)
 
