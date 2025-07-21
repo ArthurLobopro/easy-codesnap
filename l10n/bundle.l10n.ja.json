@@ -65,7 +65,7 @@
     "Invalid values will be ignored and the last valid value will be restored": "無効な値は無視され、最後の有効な値が復元されます。",
     "You can edit the Watermark text by double-clicking it.": "ウォーターマークのテキストはダブルクリックで編集できます。",
     "You can edit the default Watermark text clicking": "デフォルトのウォーターマークテキストを編集するには、",
-    "The position of the watermark in the snapshot. Top positions are only available when `Target` is `container`": "スナップショット内のウォーターマークの位置を選択します。上部の位置は「ターゲット」が「背景も含む」の場合のみ利用可能です。",
+    "The position of the watermark in the snapshot. Top positions are only available when `{target}` is `{container}`": "スナップショット内のウォーターマークの位置を選択します。上部の位置は `{target}` が `{container}` の場合のみ利用可能です。",
     "Open extension settings": "拡張機能の設定を開きます",
     "Reset settings to default": "設定をデフォルトにリセットします",
     "Save current settings as default": "現在の設定をデフォルトとして保存します"

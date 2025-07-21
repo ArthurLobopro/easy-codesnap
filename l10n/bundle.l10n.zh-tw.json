@@ -57,7 +57,7 @@
     "Invalid values will be ignored and the last valid value will be restored": "無效的數值將被忽略，並還原為上次變更的有效值。",
     "You can edit the Watermark text by double-clicking it.": "雙擊浮水印文字即可進行變更。",
     "You can edit the default Watermark text clicking": "若要變更預設浮水印文字，請點選",
-    "The position of the watermark in the snapshot. Top positions are only available when `Target` is `container`": "浮水印在快照中的位置。當 「Target」 為 「container」 時，才可使用頂部位置。",
+    "The position of the watermark in the snapshot. Top positions are only available when `{target}` is `{container}`": "浮水印在快照中的位置。當 `{target}` 為 `{container}` 時，才可使用頂部位置。",
     "Open extension settings": "開啟擴充功能設定",
     "Reset settings to default": "將設定重設為預設",
     "Save current settings as default": "將目前設定儲存為預設"

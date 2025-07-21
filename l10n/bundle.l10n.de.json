@@ -54,6 +54,6 @@
     "Enables manual resizing of the `Snap Window`.": "Aktiviert manuelle Größenänderung des `Aufnahmefensters`",
     "Disabling this will also reset the `Snap Window` size.": "Ausschalten dieser Funktioner setzt die Größe des `Aufnahmefensters` zurück.",
     "Show Watermark": "Zeige Wasserzeichen",
-    "The position of the watermark in the snapshot. Top positions are only available when `Target` is `container`": "Position des Wasserzeichens in der Aufnahme. Obere Positionen sind nur verfügbar wenn `Ziel` der `Container` ist",
+    "The position of the watermark in the snapshot. Top positions are only available when `{target}` is `{container}`": "Position des Wasserzeichens in der Aufnahme. Obere Positionen sind nur verfügbar wenn `{target}` der `{container}` ist",
     "You must have one text selection!": "Es muss ein Text ausgewählt werden!"
 }

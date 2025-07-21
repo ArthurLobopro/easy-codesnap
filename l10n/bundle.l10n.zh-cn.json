@@ -57,7 +57,7 @@
     "Invalid values will be ignored and the last valid value will be restored": "无效值将被忽略，并将恢复为最后一个有效值。",
     "You can edit the Watermark text by double-clicking it.": "双击水印文本即可编辑。",
     "You can edit the default Watermark text clicking": "若要编辑默认水印文本，请点击",
-    "The position of the watermark in the snapshot. Top positions are only available when `Target` is `container`": "快照中水印的位置。当 `Target` 为 `container` 时，才可使用顶部位置。",
+    "The position of the watermark in the snapshot. Top positions are only available when `{target}` is `{container}`": "快照中水印的位置。当 `{target}` 为 `{container}` 时，才可使用顶部位置。",
     "Open extension settings": "打开扩展设置",
     "Reset settings to default": "将设置重置为默认",
     "Save current settings as default": "将当前设置保存为默认"
