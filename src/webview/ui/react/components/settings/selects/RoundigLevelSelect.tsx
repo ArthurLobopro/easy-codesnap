@@ -33,7 +33,9 @@ export function RoundingLevelSelect() {
       </select>
       <span className="tooltip-text">
         <span>{t("The Window rounding level.")} </span>
-        <EscapeCodes text={t("Only valid when `Rounded Corners` is marked")} />
+        <EscapeCodes
+          text={t("Only valid when `{roundedCorners}` is marked", { roundedCorners: t("Rounded Corners") })}
+        />
       </span>
     </li>
   );
