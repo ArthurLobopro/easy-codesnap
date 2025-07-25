@@ -94,7 +94,7 @@ export function WatermarkDetails() {
             <EscapeCodes
               text={t(
                 "The position of the watermark in the snapshot. Top positions are only available when `{target}` is `{container}`",
-                { target: t("Target"), container: "Container" },
+                { target: t("Target"), container: t("Container") },
               )}
             />
           </span>
