@@ -35,7 +35,7 @@
             }
         }
     
-        &>button {
+        & button {
             font-size: 20px;
     
             height: 32px;
@@ -58,7 +58,7 @@
     }
 
     :is(#left-wrapper, #center-wrapper) {
-        >button {
+        button {
             display: flex;
             font-size: 24px;
             padding: 4px;

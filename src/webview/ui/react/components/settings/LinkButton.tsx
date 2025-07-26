@@ -1,7 +1,9 @@
+import { TooltipText } from "@arthur-lobo/react-custom-tooltip";
+import { useConfig, useSetConfig } from "@hooks/useConfig";
+import { useTranslation } from "@hooks/useTranslation";
 import { openConfig, text } from "../../../../util";
-import { useConfig, useSetConfig } from "../../hooks/useConfig";
-import { useTranslation } from "../../hooks/useTranslation";
 import { LinkIcon, UnlinkIcon } from "../icons";
+import { TooltipBottom } from "../TooltipBottom";
 
 export function LinkButton() {
   const { t } = useTranslation();
@@ -10,9 +12,11 @@ export function LinkButton() {
   const isLinked = useConfig("isLinked");
 
   return (
-    <button className="tooltip bottom" id="link-indicator" type="button" onClick={() => set({ isLinked: !isLinked })}>
-      {isLinked ? <LinkIcon /> : <UnlinkIcon />}
-      <span className="tooltip-text right">
+    <TooltipBottom horizontal="left">
+      <button id="link-indicator" type="button" onClick={() => set({ isLinked: !isLinked })}>
+        {isLinked ? <LinkIcon /> : <UnlinkIcon />}
+      </button>
+      <TooltipText>
         <span>{t(isLinked ? "Broken editor conection" : "Connect to editor")}</span>. <br />
         <span>
           {text(
@@ -24,7 +28,7 @@ export function LinkButton() {
           {` ${t("here")}`}
         </span>
         .
-      </span>
-    </button>
+      </TooltipText>
+    </TooltipBottom>
   );
 }

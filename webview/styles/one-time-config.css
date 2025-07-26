@@ -43,12 +43,26 @@
         align-items: center;
         box-sizing: border-box;
 
+        &:has(.react-custom-tooptip:only-child){
+            padding: 0;
+        }
+
+        &>*:only-child{
+            width: 100%;
+            display: flex;
+            align-items: center;
+
+            &.react-custom-tooptip{
+                height: 100%;
+                padding: 4px;
+            }
+        }
 
         &:has(label>input:not([type="radio"])) {
             cursor: pointer;
             padding: 0 !important;
 
-            &>label {
+            & label {
                 padding: 4px;
             }
         }
@@ -66,21 +80,11 @@
             padding: 4px;
         }
 
-
-        &[data-action] {
-            cursor: pointer;
-            gap: 4px;
-        }
-
         &:hover {
             background-color: var(--vscode-sideBar-dropBackground);
         }
 
-        .tooltip-text {
-            cursor: default;
-        }
-
-        &>label {
+        & label {
             display: flex;
             align-items: center;
             justify-content: space-between;
@@ -211,5 +215,9 @@ select>option {
         >.codicon-chevron-down {
             transition: 400ms;
         }
+    }
+
+    >div > div {
+        display: block;
     }
 }

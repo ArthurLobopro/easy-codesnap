@@ -2,12 +2,18 @@
 @import url(./styles/one-time-config.css);
 @import url(./styles/highlight.css);
 @import url(./styles/window-controls.css);
-@import url(./styles/tooltip.css);
 @import url(./styles/watermark.css);
 @import url(./styles/top-header.css);
 @import url(./styles/codicon.css);
 
 :root {
+    --background-color: var(--vscode-editorHoverWidget-background);
+    --border-color: var(--vscode-editorHoverWidget-border);
+    --color: var(--vscode-foreground);
+}
+
+.react-custom-tooltip.react-custom-tooltip {
+    --tooltip-max-width: 180px;
     --background-color: var(--vscode-editorHoverWidget-background);
     --border-color: var(--vscode-editorHoverWidget-border);
     --color: var(--vscode-foreground);

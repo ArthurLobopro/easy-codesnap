@@ -1,9 +1,11 @@
+import { TooltipText } from "@arthur-lobo/react-custom-tooltip";
 import { useConfig, useSetConfig } from "@hooks//useConfig";
 import { useUpdateSelectsWidth } from "@hooks//useSelectWidthUpdater";
 import { useTranslation } from "@hooks//useTranslation";
 import type { Target } from "@/../types";
 import { snippetContainerNode, windowNode } from "@/ui/elements";
 import { HideSample, TargetSample } from "@/ui/updaters/SampleUpdater";
+import { LeftTooltip } from "../../LeftTooltip";
 
 export function TargetSelect() {
   const { t } = useTranslation();
@@ -13,19 +15,21 @@ export function TargetSelect() {
   useUpdateSelectsWidth();
 
   return (
-    <li className="tooltip horizontal-left">
-      <span>{t("Target")}</span>
-      <select
-        tabIndex={-1}
-        value={target}
-        onChange={(ev) => {
-          set({ target: ev.currentTarget.value as Target });
-        }}
-      >
-        <option value="window">{t("Window")}</option>
-        <option value="container">{t("Container")}</option>
-      </select>
-      <span className="tooltip-text">
+    <LeftTooltip>
+      <li>
+        <span>{t("Target")}</span>
+        <select
+          tabIndex={-1}
+          value={target}
+          onChange={(ev) => {
+            set({ target: ev.currentTarget.value as Target });
+          }}
+        >
+          <option value="window">{t("Window")}</option>
+          <option value="container">{t("Container")}</option>
+        </select>
+      </li>
+      <TooltipText>
         {t("The target of the capture, can be ")}
         <span className="link" onMouseEnter={() => TargetSample(windowNode)} onMouseLeave={() => HideSample()}>
           {t("Window")}
@@ -38,7 +42,7 @@ export function TargetSelect() {
         >
           {t("Container")}
         </span>
-      </span>
-    </li>
+      </TooltipText>
+    </LeftTooltip>
   );
 }
