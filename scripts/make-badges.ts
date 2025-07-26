@@ -137,7 +137,7 @@ function makeTranslationBadges() {
             const badge = makeBadge({
                 //@ts-ignore
                 label: languageStrings[status.code],
-                message: status.coverage.toFixed(2) + "%",
+                message: toPercent(status.coverage) + "%",
                 style: "flat",
                 color: status.coverage === 100 ? "green" : "blue",
                 //@ts-ignore
@@ -157,6 +157,13 @@ function makeTranslationBadges() {
     })
 
     fromTo(defaultBadge, path.resolve(output_dir, `./en-us.png`))
+}
+
+function toPercent(n: number) {
+    const withDecimal = Number(n.toFixed(2))
+    const withoutDecimal = Number(n.toFixed(0))
+
+   return withDecimal > withDecimal ? withDecimal : withoutDecimal
 }
 
 async function main() {
