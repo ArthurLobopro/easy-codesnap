@@ -1,3 +1,8 @@
+# 1.30.4
+
+Refactor: Change Tooltip Tool
+I18n: Update Japanese and Mandarin translations
+
 # 1.30.0
 
 Feat: Better tooltips and samples
