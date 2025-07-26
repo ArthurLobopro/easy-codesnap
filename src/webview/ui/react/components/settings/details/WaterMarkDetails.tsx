@@ -1,8 +1,10 @@
+import { TooltipText } from "@arthur-lobo/react-custom-tooltip";
 import { useConfigList, useSetConfig } from "@hooks//useConfig";
 import { useTranslation } from "@hooks//useTranslation";
 import { openConfig, text } from "@/util";
 import { EscapeCodes } from "../../EscapeCodes";
 import { DetailsContent, ExpandDetails, TextDetailsSummary } from "../../ExpandDetails";
+import { LeftTooltip } from "../../LeftTooltip";
 import { ToggleInput } from "../../ToggleInput";
 
 export function WatermarkDetails() {
@@ -34,71 +36,73 @@ export function WatermarkDetails() {
           }
         />
 
-        <li className="tooltip horizontal-left">
-          <span>{t("Watermark Position")}</span>
-          <div id="watermark-position-wrapper">
-            {target === "container" && (
-              <>
-                <label>
-                  <div className="bg" />
-                  <input
-                    type="radio"
-                    name="watermark-position"
-                    value="top-left"
-                    checked={watermarkPosition === "top-left"}
-                    onChange={() =>
-                      set({
-                        watermarkPosition: "top-left",
-                      })
-                    }
-                  />
-                </label>
-                <label>
-                  <div className="bg" />
-                  <input
-                    type="radio"
-                    name="watermark-position"
-                    value="top-right"
-                    checked={watermarkPosition === "top-right"}
-                    onChange={() =>
-                      set({
-                        watermarkPosition: "top-right",
-                      })
-                    }
-                  />
-                </label>
-              </>
-            )}
-            <label>
-              <div className="bg" />
-              <input
-                type="radio"
-                name="watermark-position"
-                value="bottom-left"
-                checked={watermarkPosition === "bottom-left"}
-                onChange={() => set({ watermarkPosition: "bottom-left" })}
-              />
-            </label>
-            <label>
-              <div className="bg" />
-              <input
-                type="radio"
-                name="watermark-position"
-                value="bottom-right"
-                checked={watermarkPosition === "bottom-right"}
-                onChange={() => set({ watermarkPosition: "bottom-right" })}
-              />
-            </label>
-          </div>
-          <span className="tooltip-text">
+        <LeftTooltip>
+          <li>
+            <span>{t("Watermark Position")}</span>
+            <div id="watermark-position-wrapper">
+              {target === "container" && (
+                <>
+                  <label>
+                    <div className="bg" />
+                    <input
+                      type="radio"
+                      name="watermark-position"
+                      value="top-left"
+                      checked={watermarkPosition === "top-left"}
+                      onChange={() =>
+                        set({
+                          watermarkPosition: "top-left",
+                        })
+                      }
+                    />
+                  </label>
+                  <label>
+                    <div className="bg" />
+                    <input
+                      type="radio"
+                      name="watermark-position"
+                      value="top-right"
+                      checked={watermarkPosition === "top-right"}
+                      onChange={() =>
+                        set({
+                          watermarkPosition: "top-right",
+                        })
+                      }
+                    />
+                  </label>
+                </>
+              )}
+              <label>
+                <div className="bg" />
+                <input
+                  type="radio"
+                  name="watermark-position"
+                  value="bottom-left"
+                  checked={watermarkPosition === "bottom-left"}
+                  onChange={() => set({ watermarkPosition: "bottom-left" })}
+                />
+              </label>
+              <label>
+                <div className="bg" />
+                <input
+                  type="radio"
+                  name="watermark-position"
+                  value="bottom-right"
+                  checked={watermarkPosition === "bottom-right"}
+                  onChange={() => set({ watermarkPosition: "bottom-right" })}
+                />
+              </label>
+            </div>
+          </li>
+          <TooltipText>
             <EscapeCodes
               text={t(
                 "The position of the watermark in the snapshot. Top positions are only available when `{target}` is `{container}`",
                 { target: t("Target"), container: t("Container") },
               )}
             />
-          </span>
-        </li>
+          </TooltipText>
+        </LeftTooltip>
       </DetailsContent>
     </ExpandDetails>
   );
