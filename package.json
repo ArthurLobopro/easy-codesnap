@@ -340,7 +340,6 @@
     "webpack-cli": "^6.0.1"
   },
   "dependencies": {
-    "@arthur-lobo/custom-tooltip": "^1.0.3",
     "@arthur-lobo/object-pick": "^1.5.0",
     "@arthur-lobo/react-custom-tooltip": "^1.0.0",
     "@vscode/codicons": "^0.0.36",

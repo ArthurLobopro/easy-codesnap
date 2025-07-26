@@ -10,11 +10,6 @@
     "@jridgewell/gen-mapping" "^0.3.5"
     "@jridgewell/trace-mapping" "^0.3.24"
 
-"@arthur-lobo/custom-tooltip@^1.0.3":
-  version "1.0.4"
-  resolved "https://registry.yarnpkg.com/@arthur-lobo/custom-tooltip/-/custom-tooltip-1.0.4.tgz#f87a0247563f4b0681f9975fabe5e0a3288c14e8"
-  integrity sha512-3RAHfgkYGeZFPaPTMy9hn4dPqg1j4xpp9KLgxAdOE3hIsmGiZsBCA/pX51HIP/8DTLomSgkJ8CWaNMLcGYE7Tg==
-
 "@arthur-lobo/object-pick@^1.5.0":
   version "1.5.0"
   resolved "https://registry.yarnpkg.com/@arthur-lobo/object-pick/-/object-pick-1.5.0.tgz#b43ef838d57e906c64f574e5b9f5fceb4595aeff"

@@ -14,12 +14,8 @@ import { TargetSelect } from "../selects/TargetSelect";
 export function OtherOptionsDetails() {
   const { t } = useTranslation();
 
-  const { target, transparentBackground, maxCharWidth } = useConfigList([
-    "target",
-    "transparentBackground",
-    "maxCharWidth",
-  ]);
-  const { set, toggleCallback } = useSetConfig();
+  const { target, maxCharWidth } = useConfigList(["target", "maxCharWidth"]);
+  const { set } = useSetConfig();
 
   return (
     <ExpandDetails>
@@ -27,6 +23,7 @@ export function OtherOptionsDetails() {
       <DetailsContent>
         <TargetSelect />
         <ToggleInput
+          disabled={target !== "container"}
           config="transparentBackground"
           label={t("Transparent Background")}
           tooltip={

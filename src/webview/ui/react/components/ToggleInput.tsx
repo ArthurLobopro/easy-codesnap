@@ -10,12 +10,11 @@ interface ToggleInputProps {
   config: BooleanSessionKeys;
   label: string;
   tooltip?: ReactNode;
+  disabled?: boolean;
 }
 
-export const ToggleInput = memo(function ToggleInput({ config, label, tooltip }: ToggleInputProps) {
+export const ToggleInput = memo(function ToggleInput({ config, label, tooltip, disabled }: ToggleInputProps) {
   const { toggleCallback } = useSetConfig();
-
-  console.log(`Rendering ${config} input`);
 
   type WrapperProps = PropsWithChildren & { tooltip: ReactNode | null };
 
@@ -32,7 +31,13 @@ export const ToggleInput = memo(function ToggleInput({ config, label, tooltip }:
     <li>
       <Wrapper tooltip={tooltip ? <TooltipText>{tooltip}</TooltipText> : null}>
         <span>{label}</span>
-        <input type="checkbox" tabIndex={-1} checked={useConfig(config)} onChange={toggleCallback(config)} />
+        <input
+          type="checkbox"
+          tabIndex={-1}
+          checked={useConfig(config)}
+          onChange={toggleCallback(config)}
+          disabled={disabled}
+        />
       </Wrapper>
     </li>
   );
