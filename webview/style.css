@@ -12,3 +12,10 @@
     --border-color: var(--vscode-editorHoverWidget-border);
     --color: var(--vscode-foreground);
 }
+
+.react-custom-tooltip.react-custom-tooltip {
+    --tooltip-max-width: 180px;
+    --background-color: var(--vscode-editorHoverWidget-background);
+    --border-color: var(--vscode-editorHoverWidget-border);
+    --color: var(--vscode-foreground);
+}

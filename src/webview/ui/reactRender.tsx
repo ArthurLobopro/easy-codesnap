@@ -1,3 +1,4 @@
+import { Tooltip, TooltipText } from "@arthur-lobo/react-custom-tooltip";
 import { createPortal } from "react-dom";
 import { createRoot } from "react-dom/client";
 import { takeSnap } from "@/snap";
@@ -15,10 +16,10 @@ createRoot(document.querySelector("#top-header")!).render(
     <CenterWrapper />
     <OneTimeConfig />
     {createPortal(
-      <>
+      <Tooltip vertical="top" horizontal="center">
         <ShutterIcon onClick={() => takeSnap()} id="save" className="shutter" />
-        <span className="tooltip-text">Take Snap</span>
-      </>,
+        <TooltipText>Take Snap</TooltipText>
+      </Tooltip>,
       document.querySelector("#save-container")!,
     )}
   </TranslationProvider>,

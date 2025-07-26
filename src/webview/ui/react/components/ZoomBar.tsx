@@ -1,7 +1,9 @@
+import { TooltipText } from "@arthur-lobo/react-custom-tooltip";
 import { useContext } from "react";
 import { ZOOM_LEVELS, type ZoomLevel } from "../../../constants";
 import { TranslationContext } from "../contexts/TranslationContext";
 import { useConfig, useSetConfig } from "../hooks/useConfig";
+import { TooltipBottom } from "./TooltipBottom";
 
 export function ZoomBar() {
   const { t } = useContext(TranslationContext);
@@ -25,14 +27,13 @@ export function ZoomBar() {
 
   return (
     <>
-      <button
-        className={`tooltip bottom ${zoom === ZOOM_LEVELS[0] ? "disabled" : ""}`}
-        onClick={removeZoom}
-        type="button"
-      >
-        <span className="codicon codicon-zoom-out" />
-        <span className="tooltip-text">{t("Zoom out")}</span>
-      </button>
+      <TooltipBottom>
+        <button className={`${zoom === ZOOM_LEVELS[0] ? "disabled" : ""}`} onClick={removeZoom} type="button">
+          <span className="codicon codicon-zoom-out" />
+        </button>
+        <TooltipText>{t("Zoom out")}</TooltipText>
+      </TooltipBottom>
+
       <select value={zoom} onChange={(e) => set({ zoom: Number(e.target.value) as ZoomLevel })}>
         {ZOOM_LEVELS.map((z) => (
           <option value={z} key={z}>
@@ -40,14 +41,13 @@ export function ZoomBar() {
           </option>
         ))}
       </select>
-      <button
-        className={`tooltip bottom ${zoom === ZOOM_LEVELS.at(-1) ? "disabled" : ""}`}
-        onClick={addZoom}
-        type="button"
-      >
-        <span className="codicon codicon-zoom-in" />
-        <span className="tooltip-text">{t("Zoom in")}</span>
-      </button>
+
+      <TooltipBottom>
+        <button className={`${zoom === ZOOM_LEVELS.at(-1) ? "disabled" : ""}`} onClick={addZoom} type="button">
+          <span className="codicon codicon-zoom-in" />
+        </button>
+        <TooltipText>{t("Zoom in")}</TooltipText>
+      </TooltipBottom>
     </>
   );
 }
