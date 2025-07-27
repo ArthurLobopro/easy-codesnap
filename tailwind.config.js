@@ -4,7 +4,8 @@ export default {
     theme: {
         extend: {
             colors: {
-                "toolbar-hover-background": "var(--vscode-toolbar-hoverBackground)"
+                "toolbar-hover-background": "var(--vscode-toolbar-hoverBackground)",
+                "sidebar-background": "var(--vscode-sideBar-background)"
             }
         },
     },

@@ -324,7 +324,7 @@
     "lint": "biome check --write ./src",
     "translation-status": "node ./scripts/getTranslations.js",
     "make-badges": "node --experimental-strip-types ./scripts/make-badges.ts",
-    "build:css": "tailwindcss -i ./webview/style.css -o ./webview/output.css"
+    "build:css": "tailwindcss -i ./webview/style.css -o ./webview/output.css -m"
   },
   "devDependencies": {
     "@biomejs/biome": "^2.0.0",
