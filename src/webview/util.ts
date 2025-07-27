@@ -80,3 +80,5 @@ export function openConfig(name: keyof ExtensionConfig) {
     configName: name,
   });
 }
+
+export { twMerge as tw } from "tailwind-merge";

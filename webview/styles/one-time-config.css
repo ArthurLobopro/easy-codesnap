@@ -194,10 +194,6 @@ select>option {
             &:hover {
                 background-color: transparent;
             }
-
-            >.codicon-chevron-down {
-                rotate: 180deg;
-            }
         }
     }
 
@@ -210,10 +206,6 @@ select>option {
 
         &:hover {
             background-color: var(--vscode-toolbar-hoverBackground);
-        }
-
-        >.codicon-chevron-down {
-            transition: 400ms;
         }
     }
 

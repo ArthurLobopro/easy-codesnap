@@ -1,4 +1,5 @@
 import { type PropsWithChildren, useContext } from "react";
+import { tw } from "@/util";
 import { DetailsContext, DetailsProvider } from "../contexts/DetailsContext";
 
 function RawExpandDetails({ children }: PropsWithChildren) {
@@ -27,6 +28,10 @@ export function TextDetailsSummary({ text }: { text: string }) {
   );
 }
 
+function ChevronDown({ isOpen }: { isOpen: boolean }) {
+  return <div className={tw("codicon codicon-chevron-down transition-[400ms]", isOpen ? "rotate-180" : "")} />;
+}
+
 export function DetailsSummary({ children }: PropsWithChildren) {
   const { setIsOpen, isOpen } = useContext(DetailsContext);
   return (
@@ -36,9 +41,9 @@ export function DetailsSummary({ children }: PropsWithChildren) {
         setIsOpen(!isOpen);
       }}
     >
-      <div className="codicon codicon-chevron-down" />
+      <ChevronDown isOpen={isOpen} />
       {children}
-      <div className="codicon codicon-chevron-down" />
+      <ChevronDown isOpen={isOpen} />
     </summary>
   );
 }

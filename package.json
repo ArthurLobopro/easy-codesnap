@@ -351,6 +351,7 @@
     "react": "^18.1.0",
     "react-dom": "^18.1.0",
     "svgo": "^3.2.0",
+    "tailwind-merge": "^3.3.1",
     "zustand": "^5.0.6"
   }
 }
