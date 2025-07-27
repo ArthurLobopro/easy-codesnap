@@ -1,8 +1,8 @@
 /** biome-ignore-all lint/suspicious/noArrayIndexKey: key need to be index */
 import { memo } from "react";
 
-const codeRegex = /(`\S[^`]*\S`)/;
-const codeContentRegex = /`(\S[^`]*\S)`/;
+const codeRegex = /(`\S[^`]*\S`|`[^`\s]`)/;
+const codeContentRegex = /`(\S[^`]*\S|[^`\s])`/;
 
 export const EscapeCodes = memo(function EscapeCodes({ text }: { text: string }) {
   return text.split(codeRegex).map((part, i) => {
