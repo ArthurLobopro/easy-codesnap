@@ -189,26 +189,6 @@ select>option {
 }
 
 .expand-content {
-    &[data-state=open] {
-        >summary {
-            &:hover {
-                background-color: transparent;
-            }
-        }
-    }
-
-    >summary {
-        display: flex;
-        justify-content: space-between;
-        gap: 32px;
-        border-radius: 4px;
-        padding: 4px;
-
-        &:hover {
-            background-color: var(--vscode-toolbar-hoverBackground);
-        }
-    }
-
     >div > div {
         display: block;
     }

@@ -2,7 +2,11 @@
 export default {
     content: ["./src/webview/**/*.tsx", "./webview/index.html"],
     theme: {
-        extend: {},
+        extend: {
+            colors: {
+                "toolbar-hover-background": "var(--vscode-toolbar-hoverBackground)"
+            }
+        },
     },
     corePlugins: {
         preflight: false

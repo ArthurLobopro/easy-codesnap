@@ -36,6 +36,10 @@ export function DetailsSummary({ children }: PropsWithChildren) {
   const { setIsOpen, isOpen } = useContext(DetailsContext);
   return (
     <summary
+      className={tw(
+        "flex justify-between gap-8 rounded p-1",
+        isOpen ? "hover:bg-transparent" : "hover:bg-toolbar-hover-background",
+      )}
       onClick={(ev) => {
         ev.stopPropagation();
         setIsOpen(!isOpen);
