@@ -23,3 +23,10 @@ TranslationGuide.md
 #Codicons
 !node_modules/@vscode/codicons/dist/*.css
 !node_modules/@vscode/codicons/dist/*.ttf
+
+# Assets
+webview/assets
+
+# CSS
+webview/*.css
+!webview/output.css

@@ -5,7 +5,10 @@ export default {
         extend: {
             colors: {
                 "toolbar-hover-background": "var(--vscode-toolbar-hoverBackground)",
-                "sidebar-background": "var(--vscode-sideBar-background)"
+                "sidebar-background": "var(--vscode-sideBar-background)",
+                "vscode-foreground": "var(--vscode-foreground)",
+                "vscode-background": "var(--vscode-background)",
+                "vscode-disabled-foreground": "var(--vscode-disabledForeground)"
             }
         },
     },

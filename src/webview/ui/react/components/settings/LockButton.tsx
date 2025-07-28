@@ -1,8 +1,9 @@
 import { TooltipText } from "@arthur-lobo/react-custom-tooltip";
 import { useConfig, useSetConfig } from "@hooks/useConfig";
 import { useTranslation } from "@hooks/useTranslation";
-import { openConfig, text } from "../../../../util";
+import { openConfig, text, tw } from "../../../../util";
 import { TooltipBottom } from "../TooltipBottom";
+import { TopButton } from "../TopButton";
 
 export function LockButton() {
   const { t } = useTranslation();
@@ -12,9 +13,9 @@ export function LockButton() {
 
   return (
     <TooltipBottom horizontal="left">
-      <button className="tooltip bottom" id="lock-indicator" onClick={() => set({ isLocked: !isLocked })} type="button">
-        <span className={`codicon ${isLocked ? "codicon-lock" : "codicon-unlock"}`} />
-      </button>
+      <TopButton onClick={() => set({ isLocked: !isLocked })}>
+        <span className={`codicon ${isLocked ? "codicon-lock" : "codicon-unlock"}`} style={{ fontSize: 24 }} />
+      </TopButton>
       <TooltipText>
         <span>{t(isLocked ? "Unlock changes" : "Lock changes")}.</span> <br />
         <span>

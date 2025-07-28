@@ -157,12 +157,6 @@ div:has(#snippet-scroll) {
     text-align: center;
 }
 
-.shutter {
-    width: 64px;
-    height: 64px;
-    cursor: pointer;
-}
-
 .size-test {
     font-family: var(--vscode-editor-font-family) !important;
     font-size: calc(var(--vscode-editor-font-size) * 1px) !important;

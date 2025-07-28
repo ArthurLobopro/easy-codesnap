@@ -4,6 +4,7 @@ import { useTranslation } from "@hooks/useTranslation";
 import { openConfig, text } from "../../../../util";
 import { LinkIcon, UnlinkIcon } from "../icons";
 import { TooltipBottom } from "../TooltipBottom";
+import { TopButton } from "../TopButton";
 
 export function LinkButton() {
   const { t } = useTranslation();
@@ -13,9 +14,7 @@ export function LinkButton() {
 
   return (
     <TooltipBottom horizontal="left">
-      <button id="link-indicator" type="button" onClick={() => set({ isLinked: !isLinked })}>
-        {isLinked ? <LinkIcon /> : <UnlinkIcon />}
-      </button>
+      <TopButton onClick={() => set({ isLinked: !isLinked })}>{isLinked ? <LinkIcon /> : <UnlinkIcon />}</TopButton>
       <TooltipText>
         <span>{t(isLinked ? "Broken editor conection" : "Connect to editor")}</span>. <br />
         <span>

@@ -21,7 +21,7 @@ export function OneTimeConfig() {
   }, [open]);
 
   return (
-    <div id="one-time-config-wrapper" onClick={(ev) => ev.stopPropagation()}>
+    <div className="rounded flex justify-end" onClick={(ev) => ev.stopPropagation()}>
       <details id="one-time-config" className="rounded relative z-[1]" open={open}>
         <summary
           className="marker:content-[''] hover:bg-toolbar-hover-background cursor-pointer absolute right-0 top-0 p-1 rounded size-6 outline-0"
