@@ -27,10 +27,6 @@
         &:has(label>input:not([type="radio"])) {
             cursor: pointer;
             padding: 0 !important;
-
-            & label {
-                padding: 4px;
-            }
         }
 
         &:has(>select, #watermark-position-wrapper, input[type="number"]) {
@@ -48,15 +44,6 @@
 
         &:hover {
             background-color: var(--vscode-sideBar-dropBackground);
-        }
-
-        & label {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            width: 100%;
-            cursor: pointer;
-            gap: 4px;
         }
 
         input[type="checkbox"] {

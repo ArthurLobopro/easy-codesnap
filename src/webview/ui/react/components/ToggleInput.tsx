@@ -13,6 +13,10 @@ interface ToggleInputProps {
   disabled?: boolean;
 }
 
+const Label = ({ children }: PropsWithChildren) => (
+  <label className="flex justify-between items-center w-full cursor-pointer gap-1 p-1">{children}</label>
+);
+
 export const ToggleInput = memo(function ToggleInput({ config, label, tooltip, disabled }: ToggleInputProps) {
   const { toggleCallback } = useSetConfig();
 
@@ -21,11 +25,11 @@ export const ToggleInput = memo(function ToggleInput({ config, label, tooltip, d
   const Wrapper = tooltip
     ? ({ children, tooltip }: WrapperProps) => (
         <LeftTooltip>
-          <label>{children}</label>
+          <Label>{children}</Label>
           {tooltip}
         </LeftTooltip>
       )
-    : ({ children }: WrapperProps) => <label>{children}</label>;
+    : ({ children }: WrapperProps) => <Label>{children}</Label>;
 
   return (
     <li>

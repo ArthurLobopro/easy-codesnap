@@ -55,5 +55,5 @@ export function DetailsSummary({ children }: PropsWithChildren) {
 export function DetailsContent({ children }: PropsWithChildren) {
   const { isOpen } = useContext(DetailsContext);
 
-  return isOpen ? <div>{children}</div> : null;
+  return isOpen ? <div className="flex flex-col gap-1">{children}</div> : null;
 }
