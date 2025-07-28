@@ -1,20 +1,18 @@
 import { useConfig, useSetConfig } from "@hooks//useConfig";
-import { useUpdateSelectsWidth } from "@hooks//useSelectWidthUpdater";
 import { useTranslation } from "@hooks//useTranslation";
 import type { AspectRatio } from "@/../types";
 import { ASPECT_RATIOS } from "@/constants";
+import { ConfigSelect } from "../../ConfigSelect";
 
 export function AspectRatioSelect() {
   const { t } = useTranslation();
   const aspectRatio = useConfig("aspectRatio");
   const set = useSetConfig();
 
-  useUpdateSelectsWidth();
-
   return (
     <li>
       <span>{t("Aspect Ratio")}</span>
-      <select
+      <ConfigSelect
         value={aspectRatio}
         onChange={(ev) =>
           set({
@@ -27,7 +25,7 @@ export function AspectRatioSelect() {
             {ratio}
           </option>
         ))}
-      </select>
+      </ConfigSelect>
     </li>
   );
 }

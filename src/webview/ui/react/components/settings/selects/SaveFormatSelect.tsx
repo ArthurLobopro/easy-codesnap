@@ -1,8 +1,8 @@
 import { useConfig, useSetConfig } from "@hooks//useConfig";
-import { useUpdateSelectsWidth } from "@hooks//useSelectWidthUpdater";
 import { useTranslation } from "@hooks//useTranslation";
 import type { SaveFormat } from "@/../types";
 import { SAVE_FORMATS } from "@/constants";
+import { ConfigSelect } from "../../ConfigSelect";
 
 export function SaveFormatSelect() {
   const { t } = useTranslation();
@@ -10,12 +10,10 @@ export function SaveFormatSelect() {
   const set = useSetConfig();
   const saveFormat = useConfig("saveFormat");
 
-  useUpdateSelectsWidth();
-
   return (
     <li>
       <span>{t("Save Format")}</span>
-      <select
+      <ConfigSelect
         tabIndex={-1}
         value={saveFormat}
         onChange={(ev) => {
@@ -27,7 +25,7 @@ export function SaveFormatSelect() {
             {f}
           </option>
         ))}
-      </select>
+      </ConfigSelect>
     </li>
   );
 }

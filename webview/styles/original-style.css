@@ -194,3 +194,8 @@ svg.follow-colors {
         fill: var(--vscode-foreground);
     }
 }
+
+select>option {
+    background-color: var(--vscode-sideBar-background);
+    color: var(--vscode-foreground);
+}

@@ -1,8 +1,8 @@
 import { useConfig, useSetConfig } from "@hooks//useConfig";
-import { useUpdateSelectsWidth } from "@hooks//useSelectWidthUpdater";
 import { useTranslation } from "@hooks//useTranslation";
 import type { SaveAction } from "@/../types";
 import { SAVE_ACTIONS } from "@/constants";
+import { ConfigSelect } from "../../ConfigSelect";
 
 export function SaveActionSelect() {
   const { t } = useTranslation();
@@ -10,12 +10,10 @@ export function SaveActionSelect() {
   const set = useSetConfig();
   const saveAction = useConfig("shutterAction");
 
-  useUpdateSelectsWidth();
-
   return (
     <li>
       <span>{t("Save Action")}</span>
-      <select
+      <ConfigSelect
         tabIndex={-1}
         value={saveAction}
         onChange={(ev) => {
@@ -29,7 +27,7 @@ export function SaveActionSelect() {
             {action}
           </option>
         ))}
-      </select>
+      </ConfigSelect>
     </li>
   );
 }
