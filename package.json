@@ -327,7 +327,7 @@
     "build:css": "tailwindcss -i ./webview/style.css -o ./webview/output.css -m"
   },
   "devDependencies": {
-    "@biomejs/biome": "^2.0.0",
+    "@biomejs/biome": "^2.1.2",
     "@svgr/webpack": "^8.1.0",
     "@types/node": "18.x",
     "@types/react": "^19.1.8",
