@@ -5,6 +5,7 @@ import { openConfig, text } from "@/util";
 import { EscapeCodes } from "../../EscapeCodes";
 import { DetailsContent, ExpandDetails, TextDetailsSummary } from "../../ExpandDetails";
 import { LeftTooltip } from "../../LeftTooltip";
+import { SettingLine } from "../../SettingLine";
 import { ToggleInput } from "../../ToggleInput";
 
 export function WatermarkDetails() {
@@ -37,7 +38,7 @@ export function WatermarkDetails() {
         />
 
         <LeftTooltip>
-          <li>
+          <SettingLine>
             <span>{t("Watermark Position")}</span>
             <div id="watermark-position-wrapper">
               {target === "container" && (
@@ -93,7 +94,7 @@ export function WatermarkDetails() {
                 />
               </label>
             </div>
-          </li>
+          </SettingLine>
           <TooltipText>
             <EscapeCodes
               text={t(

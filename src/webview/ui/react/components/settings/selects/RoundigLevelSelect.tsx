@@ -6,6 +6,7 @@ import { ROUNDING_LEVELS } from "@/constants";
 import { ConfigSelect } from "../../ConfigSelect";
 import { EscapeCodes } from "../../EscapeCodes";
 import { LeftTooltip } from "../../LeftTooltip";
+import { SettingLineWithSelect } from "../../SettingLine";
 
 export function RoundingLevelSelect() {
   const { t } = useTranslation();
@@ -14,7 +15,7 @@ export function RoundingLevelSelect() {
 
   return (
     <LeftTooltip>
-      <li>
+      <SettingLineWithSelect>
         <span>{t("Rounding Level")}</span>
         <ConfigSelect
           tabIndex={-1}
@@ -32,7 +33,7 @@ export function RoundingLevelSelect() {
             </option>
           ))}
         </ConfigSelect>
-      </li>
+      </SettingLineWithSelect>
       <TooltipText>
         <span>{t("The Window rounding level.")} </span>
         <EscapeCodes

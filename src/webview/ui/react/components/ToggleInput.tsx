@@ -5,6 +5,7 @@ import { memo, type PropsWithChildren, type ReactNode } from "react";
 import type { BooleanSessionKeys } from "@/SessionConfig";
 import { useConfig, useSetConfig } from "../hooks/useConfig";
 import { LeftTooltip } from "./LeftTooltip";
+import { SettingLine } from "./SettingLine";
 
 interface ToggleInputProps {
   config: BooleanSessionKeys;
@@ -32,7 +33,7 @@ export const ToggleInput = memo(function ToggleInput({ config, label, tooltip, d
     : ({ children }: WrapperProps) => <Label>{children}</Label>;
 
   return (
-    <li>
+    <SettingLine>
       <Wrapper tooltip={tooltip ? <TooltipText>{tooltip}</TooltipText> : null}>
         <span>{label}</span>
         <input
@@ -43,6 +44,6 @@ export const ToggleInput = memo(function ToggleInput({ config, label, tooltip, d
           disabled={disabled}
         />
       </Wrapper>
-    </li>
+    </SettingLine>
   );
 });

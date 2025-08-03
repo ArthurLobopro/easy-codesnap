@@ -3,6 +3,7 @@ import { useTranslation } from "@hooks//useTranslation";
 import type { SaveFormat } from "@/../types";
 import { SAVE_FORMATS } from "@/constants";
 import { ConfigSelect } from "../../ConfigSelect";
+import { SettingLineWithSelect } from "../../SettingLine";
 
 export function SaveFormatSelect() {
   const { t } = useTranslation();
@@ -11,7 +12,7 @@ export function SaveFormatSelect() {
   const saveFormat = useConfig("saveFormat");
 
   return (
-    <li>
+    <SettingLineWithSelect>
       <span>{t("Save Format")}</span>
       <ConfigSelect
         tabIndex={-1}
@@ -26,6 +27,6 @@ export function SaveFormatSelect() {
           </option>
         ))}
       </ConfigSelect>
-    </li>
+    </SettingLineWithSelect>
   );
 }

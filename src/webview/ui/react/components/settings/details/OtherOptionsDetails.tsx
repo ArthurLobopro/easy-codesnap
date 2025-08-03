@@ -7,6 +7,7 @@ import { text } from "@/util";
 import { EscapeCodes } from "../../EscapeCodes";
 import { DetailsContent, ExpandDetails, TextDetailsSummary } from "../../ExpandDetails";
 import { LeftTooltip } from "../../LeftTooltip";
+import { SettingLineWithSelect } from "../../SettingLine";
 import { ToggleInput } from "../../ToggleInput";
 import { AspectRatioSelect } from "../selects/AspectRatioSelect";
 import { TargetSelect } from "../selects/TargetSelect";
@@ -63,7 +64,7 @@ export function OtherOptionsDetails() {
         <ToggleInput config="enableSymbolBreadcrumb" label={t("Enable Symbol Breadcrumb")} />
 
         <LeftTooltip>
-          <li>
+          <SettingLineWithSelect>
             <span>{t("Max char width")}</span>
             <input
               type="number"
@@ -77,7 +78,7 @@ export function OtherOptionsDetails() {
                 });
               }}
             />
-          </li>
+          </SettingLineWithSelect>
           <TooltipText>
             {text(
               t("Maximum line width based on characters. Use value 0 for no limit."),

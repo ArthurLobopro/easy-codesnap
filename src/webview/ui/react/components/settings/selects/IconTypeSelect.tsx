@@ -5,6 +5,7 @@ import type { WindowIconType } from "@/../types";
 import { ConfigSelect } from "../../ConfigSelect";
 import { EscapeCodes } from "../../EscapeCodes";
 import { LeftTooltip } from "../../LeftTooltip";
+import { SettingLineWithSelect } from "../../SettingLine";
 
 export function IconTypeSelect() {
   const { t } = useTranslation();
@@ -13,7 +14,7 @@ export function IconTypeSelect() {
 
   return (
     <LeftTooltip>
-      <li>
+      <SettingLineWithSelect>
         <span>{t("Icon Style")}</span>
         <ConfigSelect
           value={windowIconType}
@@ -27,7 +28,7 @@ export function IconTypeSelect() {
           <option value="round">{t("Rounded")}</option>
           <option value="square">{t("Square")}</option>
         </ConfigSelect>
-      </li>
+      </SettingLineWithSelect>
       <TooltipText>
         <EscapeCodes
           text={t("Only valid when `{windowStyle}` is `Windows`. Changes the `Windows` icon style", {

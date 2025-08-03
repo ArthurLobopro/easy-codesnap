@@ -3,6 +3,7 @@ import { useTranslation } from "@hooks//useTranslation";
 import type { AspectRatio } from "@/../types";
 import { ASPECT_RATIOS } from "@/constants";
 import { ConfigSelect } from "../../ConfigSelect";
+import { SettingLineWithSelect } from "../../SettingLine";
 
 export function AspectRatioSelect() {
   const { t } = useTranslation();
@@ -10,7 +11,7 @@ export function AspectRatioSelect() {
   const set = useSetConfig();
 
   return (
-    <li>
+    <SettingLineWithSelect>
       <span>{t("Aspect Ratio")}</span>
       <ConfigSelect
         value={aspectRatio}
@@ -26,6 +27,6 @@ export function AspectRatioSelect() {
           </option>
         ))}
       </ConfigSelect>
-    </li>
+    </SettingLineWithSelect>
   );
 }

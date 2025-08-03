@@ -6,6 +6,7 @@ import { snippetContainerNode, windowNode } from "@/ui/elements";
 import { HideSample, TargetSample } from "@/ui/updaters/SampleUpdater";
 import { ConfigSelect } from "../../ConfigSelect";
 import { LeftTooltip } from "../../LeftTooltip";
+import { SettingLineWithSelect } from "../../SettingLine";
 
 export function TargetSelect() {
   const { t } = useTranslation();
@@ -14,7 +15,7 @@ export function TargetSelect() {
 
   return (
     <LeftTooltip>
-      <li>
+      <SettingLineWithSelect>
         <span>{t("Target")}</span>
         <ConfigSelect
           tabIndex={-1}
@@ -26,7 +27,7 @@ export function TargetSelect() {
           <option value="window">{t("Window")}</option>
           <option value="container">{t("Container")}</option>
         </ConfigSelect>
-      </li>
+      </SettingLineWithSelect>
       <TooltipText>
         {t("The target of the capture, can be ")}
         <span className="link" onMouseEnter={() => TargetSample(windowNode)} onMouseLeave={() => HideSample()}>

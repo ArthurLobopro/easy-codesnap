@@ -3,6 +3,7 @@ import { useTranslation } from "@hooks//useTranslation";
 import type { SaveScale } from "@/../types";
 import { SAVE_SCALES } from "@/constants";
 import { ConfigSelect } from "../../ConfigSelect";
+import { SettingLineWithSelect } from "../../SettingLine";
 
 export function SaveScaleSelect() {
   const { t } = useTranslation();
@@ -11,7 +12,7 @@ export function SaveScaleSelect() {
   const saveScale = useConfig("saveScale");
 
   return (
-    <li>
+    <SettingLineWithSelect>
       <span>{t("Save Scale")}</span>
       <ConfigSelect
         value={saveScale}
@@ -27,6 +28,6 @@ export function SaveScaleSelect() {
           </option>
         ))}
       </ConfigSelect>
-    </li>
+    </SettingLineWithSelect>
   );
 }

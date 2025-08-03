@@ -1,7 +1,8 @@
 import { useConfig, useSetConfig } from "@hooks//useConfig";
-import { useTranslation } from "@hooks//useTranslation";
+import { useTranslation } from "@hooks/useTranslation";
 import type { WindowStyle } from "@/../types";
 import { ConfigSelect } from "../../ConfigSelect";
+import { SettingLineWithSelect } from "../../SettingLine";
 
 export function WindowStyleSelect() {
   const { t } = useTranslation();
@@ -9,7 +10,7 @@ export function WindowStyleSelect() {
   const set = useSetConfig();
 
   return (
-    <li>
+    <SettingLineWithSelect>
       <span>{t("Window Style")}</span>
       <ConfigSelect
         tabIndex={-1}
@@ -23,6 +24,6 @@ export function WindowStyleSelect() {
         <option value="macos">MacOS</option>
         <option value="windows">Windows</option>
       </ConfigSelect>
-    </li>
+    </SettingLineWithSelect>
   );
 }

@@ -3,6 +3,7 @@ import { useTranslation } from "@hooks//useTranslation";
 import type { SaveAction } from "@/../types";
 import { SAVE_ACTIONS } from "@/constants";
 import { ConfigSelect } from "../../ConfigSelect";
+import { SettingLineWithSelect } from "../../SettingLine";
 
 export function SaveActionSelect() {
   const { t } = useTranslation();
@@ -11,7 +12,7 @@ export function SaveActionSelect() {
   const saveAction = useConfig("shutterAction");
 
   return (
-    <li>
+    <SettingLineWithSelect>
       <span>{t("Save Action")}</span>
       <ConfigSelect
         tabIndex={-1}
@@ -28,6 +29,6 @@ export function SaveActionSelect() {
           </option>
         ))}
       </ConfigSelect>
-    </li>
+    </SettingLineWithSelect>
   );
 }

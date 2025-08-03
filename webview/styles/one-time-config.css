@@ -1,12 +1,6 @@
 #one-time-config {
     li {
-        border-radius: 4px;
-        padding: 4px;
-        font-size: 14px;
-        list-style-type: none;
-
-        display: flex;
-        align-items: center;
+    
         box-sizing: border-box;
 
         &:has(.react-custom-tooptip:only-child){
@@ -23,21 +17,7 @@
                 padding: 4px;
             }
         }
-
-        &:has(label>input:not([type="radio"])) {
-            cursor: pointer;
-            padding: 0 !important;
-        }
-
-        &:has(>select, #watermark-position-wrapper, input[type="number"]) {
-            cursor: auto;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            width: 100%;
-            gap: 4px;
-        }
-
+       
         &:has(#watermark-position-wrapper) {
             padding: 4px;
         }
