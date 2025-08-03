@@ -1,6 +1,10 @@
 import { Tooltip } from "@arthur-lobo/react-custom-tooltip";
 import type { PropsWithChildren } from "react";
 
-export function LeftTooltip({ children }: PropsWithChildren) {
-  return <Tooltip align="horizontal-left">{children}</Tooltip>;
+export function LeftTooltip({ children, className }: PropsWithChildren & PropsWithClassName) {
+  return (
+    <Tooltip align="horizontal-left" className={className}>
+      {children}
+    </Tooltip>
+  );
 }

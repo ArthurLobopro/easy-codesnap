@@ -19,7 +19,7 @@ export function ActionButtons() {
   return (
     <>
       <LeftTooltip>
-        <SettingLine onClick={openSettings}>
+        <SettingLine onClick={openSettings} className="p-1">
           <span className="codicon codicon-gear mr-1" />
           <span>{t("Open Settings")}</span>
         </SettingLine>
@@ -27,7 +27,7 @@ export function ActionButtons() {
       </LeftTooltip>
 
       <LeftTooltip>
-        <SettingLine onClick={resetConfig}>
+        <SettingLine onClick={resetConfig} className="p-1">
           <span className="codicon codicon-sync mr-1" />
           <span>{t("Reset Settings")}</span>
         </SettingLine>
@@ -35,7 +35,7 @@ export function ActionButtons() {
       </LeftTooltip>
 
       <LeftTooltip>
-        <SettingLine onClick={saveConfig}>
+        <SettingLine onClick={saveConfig} className="p-1">
           <span className="codicon codicon-save-all mr-1" />
           <span>{t("Save Settings")}</span>
         </SettingLine>

@@ -8,7 +8,13 @@ interface SettingLineProps extends PropsWithChildren {
 
 export function SettingLine({ children, onClick, className }: SettingLineProps) {
   return (
-    <li className={tw("cursor-pointer rounded flex items-center list-none text-sm", className)} onClick={onClick}>
+    <li
+      className={tw(
+        "cursor-pointer rounded flex items-center list-none text-sm hover:bg-vscode-sidebar-dropbackground box-border has-[:only-child]:p-0",
+        className,
+      )}
+      onClick={onClick}
+    >
       {children}
     </li>
   );

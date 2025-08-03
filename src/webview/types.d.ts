@@ -5,3 +5,5 @@ declare module "svgo/dist/svgo.browser" {
 declare module "*.svg" {
   export const ReactComponent: React.FunctionComponent<React.SVGProps<SVGSVGElement> & { title?: string }>;
 }
+
+type PropsWithClassName = { className?: string };

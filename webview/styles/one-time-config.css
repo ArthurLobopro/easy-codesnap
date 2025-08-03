@@ -1,100 +1,13 @@
-#one-time-config {
-    li {
-    
-        box-sizing: border-box;
+#watermark-position-wrapper {
+    --square-size: 12px;
 
-        &:has(.react-custom-tooptip:only-child){
-            padding: 0;
-        }
-
-        &>*:only-child{
-            width: 100%;
-            display: flex;
-            align-items: center;
-
-            &.react-custom-tooptip{
-                height: 100%;
-                padding: 4px;
-            }
-        }
-       
-        &:has(#watermark-position-wrapper) {
-            padding: 4px;
-        }
-
-        &:hover {
-            background-color: var(--vscode-sideBar-dropBackground);
-        }
-
-        input[type="checkbox"] {
-            background-color: var(--vscode-settings-checkboxBackground);
-            color: var(--vscode-settings-checkboxForeground);
-
-            height: 100%;
-            aspect-ratio: 1/1;
-            outline: 0;
-            cursor: pointer;
-        }
-
-        input[type="number"] {
-            background-color: var(--vscode-sideBar-background);
-            color: var(--vscode-foreground);
-
-            border: 1px solid var(--vscode-icon-foreground);
-            border-radius: 4px;
-            padding: 2px 0;
-            text-align: center;
-
-            &::-webkit-inner-spin-button {
-                display: none;
-            }
-
-            &:invalid {
-                border-color: var(--vscode-errorForeground);
-                outline-color: var(--vscode-errorForeground);
-            }
-        }
-
-        #watermark-position-wrapper {
-            --square-size: 12px;
-
-            display: grid;
-            background-color: currentColor;
-            gap: 1px;
-            border: 1px solid currentColor;
-            border-radius: 2px;
-            grid-template-columns: repeat(2, var(--square-size));
-            margin: 2px;
-
-            >label {
-                display: flex;
-                width: 100%;
-                aspect-ratio: auto 1/1;
-                background-color: var(--vscode-sideBar-background);
-                box-sizing: border-box;
-
-                >.bg {
-                    display: flex;
-                    width: 100%;
-                    height: 100%;
-                }
-
-                &:has(input:checked)>.bg {
-                    background-color: var(--vscode-focusBorder);
-                }
-
-                &:not(:has(input:checked)):hover>.bg {
-                    background-color: var(--vscode-focusBorder);
-                    opacity: .6;
-                }
-
-                >input {
-                    display: none;
-                    margin: 0;
-                }
-            }
-        }
-    }
+    display: grid;
+    background-color: currentColor;
+    gap: 1px;
+    border: 1px solid currentColor;
+    border-radius: 2px;
+    grid-template-columns: repeat(2, var(--square-size));
+    margin: 2px;
 }
 
 
@@ -103,8 +16,37 @@ select:disabled {
     color: var(--vscode-disabledForeground);
 }
 
+input[type="checkbox"] {
+    background-color: var(--vscode-settings-checkboxBackground);
+    color: var(--vscode-settings-checkboxForeground);
+
+    height: 100%;
+    aspect-ratio: 1/1;
+    outline: 0;
+    cursor: pointer;
+}
+
+input[type="number"] {
+    background-color: var(--vscode-sideBar-background);
+    color: var(--vscode-foreground);
+
+    border: 1px solid var(--vscode-icon-foreground);
+    border-radius: 4px;
+    padding: 2px 0;
+    text-align: center;
+
+    &::-webkit-inner-spin-button {
+        display: none;
+    }
+
+    &:invalid {
+        border-color: var(--vscode-errorForeground);
+        outline-color: var(--vscode-errorForeground);
+    }
+}
+
 .expand-content {
-    >div > div {
+    >div>div {
         display: block;
     }
 }

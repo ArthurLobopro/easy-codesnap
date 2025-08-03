@@ -8,7 +8,9 @@ export default {
                 "sidebar-background": "var(--vscode-sideBar-background)",
                 "vscode-foreground": "var(--vscode-foreground)",
                 "vscode-background": "var(--vscode-background)",
-                "vscode-disabled-foreground": "var(--vscode-disabledForeground)"
+                "vscode-disabled-foreground": "var(--vscode-disabledForeground)",
+                "vscode-focus-border": "var(--vscode-focusBorder)",
+                "vscode-sidebar-dropbackground": "var(--vscode-sideBar-dropBackground)"
             }
         },
     },
