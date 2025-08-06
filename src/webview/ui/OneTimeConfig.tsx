@@ -21,9 +21,10 @@ export function OneTimeConfig() {
   }, [open]);
 
   return (
-    <div id="one-time-config-wrapper" onClick={(ev) => ev.stopPropagation()}>
-      <details id="one-time-config" open={open}>
+    <div className="rounded flex justify-end" onClick={(ev) => ev.stopPropagation()}>
+      <details id="one-time-config" className="rounded relative z-[1]" open={open}>
         <summary
+          className="marker:content-[''] hover:bg-toolbar-hover-background cursor-pointer absolute right-0 top-0 p-1 rounded size-6 outline-0"
           tabIndex={-1}
           onClick={(ev) => {
             ev.stopPropagation();
@@ -34,7 +35,7 @@ export function OneTimeConfig() {
           <ConfigIcon className="follow-colors" />
         </summary>
         {open && (
-          <nav id="action-details">
+          <nav className="p-1 rounded mt-9 min-w-max bg-sidebar-background">
             <LineOptionsDetails />
             <WindowOptionsDetails />
             <OtherOptionsDetails />

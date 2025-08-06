@@ -26,10 +26,6 @@ body {
     padding-bottom: 1rem;
 }
 
-.mr-1 {
-    margin-right: 4px;
-}
-
 code {
     color: currentColor;
 }
@@ -161,12 +157,6 @@ div:has(#snippet-scroll) {
     text-align: center;
 }
 
-.shutter {
-    width: 64px;
-    height: 64px;
-    cursor: pointer;
-}
-
 .size-test {
     font-family: var(--vscode-editor-font-family) !important;
     font-size: calc(var(--vscode-editor-font-size) * 1px) !important;
@@ -203,4 +193,9 @@ svg.follow-colors {
     *[fill]:not([fill="none"]) {
         fill: var(--vscode-foreground);
     }
+}
+
+select>option {
+    background-color: var(--vscode-sideBar-background);
+    color: var(--vscode-foreground);
 }

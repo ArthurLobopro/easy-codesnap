@@ -18,3 +18,6 @@
     --border-color: var(--vscode-editorHoverWidget-border);
     --color: var(--vscode-foreground);
 }
+
+@tailwind base;
+@tailwind utilities;

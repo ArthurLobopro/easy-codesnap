@@ -4,6 +4,7 @@ import { ZOOM_LEVELS, type ZoomLevel } from "../../../constants";
 import { TranslationContext } from "../contexts/TranslationContext";
 import { useConfig, useSetConfig } from "../hooks/useConfig";
 import { TooltipBottom } from "./TooltipBottom";
+import { TopButton } from "./TopButton";
 
 export function ZoomBar() {
   const { t } = useContext(TranslationContext);
@@ -28,13 +29,17 @@ export function ZoomBar() {
   return (
     <>
       <TooltipBottom>
-        <button className={`${zoom === ZOOM_LEVELS[0] ? "disabled" : ""}`} onClick={removeZoom} type="button">
-          <span className="codicon codicon-zoom-out" />
-        </button>
+        <TopButton disabled={zoom === ZOOM_LEVELS[0]} onClick={removeZoom}>
+          <span className="codicon codicon-zoom-out" style={{ fontSize: 24 }} />
+        </TopButton>
         <TooltipText>{t("Zoom out")}</TooltipText>
       </TooltipBottom>
 
-      <select value={zoom} onChange={(e) => set({ zoom: Number(e.target.value) as ZoomLevel })}>
+      <select
+        className="bg-transparent hover:bg-toolbar-hover-background text-vscode-foreground border-none rounded h-8 w-16"
+        value={zoom}
+        onChange={(e) => set({ zoom: Number(e.target.value) as ZoomLevel })}
+      >
         {ZOOM_LEVELS.map((z) => (
           <option value={z} key={z}>
             {z}%
@@ -43,9 +48,9 @@ export function ZoomBar() {
       </select>
 
       <TooltipBottom>
-        <button className={`${zoom === ZOOM_LEVELS.at(-1) ? "disabled" : ""}`} onClick={addZoom} type="button">
-          <span className="codicon codicon-zoom-in" />
-        </button>
+        <TopButton disabled={zoom === ZOOM_LEVELS.at(-1)} onClick={addZoom}>
+          <span className="codicon codicon-zoom-in" style={{ fontSize: 24 }} />
+        </TopButton>
         <TooltipText>{t("Zoom in")}</TooltipText>
       </TooltipBottom>
     </>

@@ -3,6 +3,7 @@ import { SessionConfig } from "../../../SessionConfig";
 import { vscode } from "../../../util";
 import { useTranslation } from "../hooks/useTranslation";
 import { LeftTooltip } from "./LeftTooltip";
+import { SettingLine } from "./SettingLine";
 
 export function ActionButtons() {
   const { t } = useTranslation();
@@ -18,26 +19,26 @@ export function ActionButtons() {
   return (
     <>
       <LeftTooltip>
-        <li onClick={openSettings}>
+        <SettingLine onClick={openSettings} className="p-1">
           <span className="codicon codicon-gear mr-1" />
           <span>{t("Open Settings")}</span>
-        </li>
+        </SettingLine>
         <TooltipText>{t("Open extension settings")}</TooltipText>
       </LeftTooltip>
 
       <LeftTooltip>
-        <li onClick={resetConfig}>
+        <SettingLine onClick={resetConfig} className="p-1">
           <span className="codicon codicon-sync mr-1" />
           <span>{t("Reset Settings")}</span>
-        </li>
+        </SettingLine>
         <TooltipText>{t("Reset settings to default")}</TooltipText>
       </LeftTooltip>
 
       <LeftTooltip>
-        <li onClick={saveConfig}>
+        <SettingLine onClick={saveConfig} className="p-1">
           <span className="codicon codicon-save-all mr-1" />
           <span>{t("Save Settings")}</span>
-        </li>
+        </SettingLine>
         <TooltipText>{t("Save current settings as default")}</TooltipText>
       </LeftTooltip>
     </>

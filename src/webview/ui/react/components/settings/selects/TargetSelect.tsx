@@ -1,24 +1,23 @@
 import { TooltipText } from "@arthur-lobo/react-custom-tooltip";
 import { useConfig, useSetConfig } from "@hooks//useConfig";
-import { useUpdateSelectsWidth } from "@hooks//useSelectWidthUpdater";
 import { useTranslation } from "@hooks//useTranslation";
 import type { Target } from "@/../types";
 import { snippetContainerNode, windowNode } from "@/ui/elements";
 import { HideSample, TargetSample } from "@/ui/updaters/SampleUpdater";
+import { ConfigSelect } from "../../ConfigSelect";
 import { LeftTooltip } from "../../LeftTooltip";
+import { SettingLineWithSelect } from "../../SettingLine";
 
 export function TargetSelect() {
   const { t } = useTranslation();
   const target = useConfig("target");
   const set = useSetConfig();
 
-  useUpdateSelectsWidth();
-
   return (
     <LeftTooltip>
-      <li>
+      <SettingLineWithSelect>
         <span>{t("Target")}</span>
-        <select
+        <ConfigSelect
           tabIndex={-1}
           value={target}
           onChange={(ev) => {
@@ -27,8 +26,8 @@ export function TargetSelect() {
         >
           <option value="window">{t("Window")}</option>
           <option value="container">{t("Container")}</option>
-        </select>
-      </li>
+        </ConfigSelect>
+      </SettingLineWithSelect>
       <TooltipText>
         {t("The target of the capture, can be ")}
         <span className="link" onMouseEnter={() => TargetSample(windowNode)} onMouseLeave={() => HideSample()}>

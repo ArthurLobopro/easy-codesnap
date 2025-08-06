@@ -2,7 +2,7 @@
   "name": "easy-codesnap",
   "displayName": "Easy CodeSnap",
   "description": "Extension to take beautiful custom screenshots of your code 📷",
-  "version": "1.30.4",
+  "version": "1.30.5",
   "l10n": "./l10n",
   "repository": {
     "type": "git",
@@ -318,15 +318,16 @@
     "vscode:prepublish": "npm run package",
     "webpack": "webpack --mode development",
     "webpack-dev": "webpack --mode development --watch",
-    "package": "webpack --mode production",
+    "package": "yarn build:css && webpack --mode production",
     "compile": "yarn run webpack",
     "watch": "yarn webpack-dev",
     "lint": "biome check --write ./src",
     "translation-status": "node ./scripts/getTranslations.js",
-    "make-badges": "node --experimental-strip-types ./scripts/make-badges.ts"
+    "make-badges": "node --experimental-strip-types ./scripts/make-badges.ts",
+    "build:css": "tailwindcss -i ./webview/style.css -o ./webview/output.css -m"
   },
   "devDependencies": {
-    "@biomejs/biome": "^2.0.0",
+    "@biomejs/biome": "^2.1.2",
     "@svgr/webpack": "^8.1.0",
     "@types/node": "18.x",
     "@types/react": "^19.1.8",
@@ -335,13 +336,14 @@
     "badge-maker": "^4.1.0",
     "esbuild-loader": "^4.3.0",
     "sharp": "^0.34.2",
+    "tailwindcss": "^3",
     "typescript": "^5.8.2",
     "webpack": "^5.100.0",
     "webpack-cli": "^6.0.1"
   },
   "dependencies": {
     "@arthur-lobo/object-pick": "^1.5.0",
-    "@arthur-lobo/react-custom-tooltip": "^1.0.0",
+    "@arthur-lobo/react-custom-tooltip": "^1.0.1",
     "@vscode/codicons": "^0.0.36",
     "@vscode/l10n": "^0.0.18",
     "dom-to-image-even-more": "^1.0.4",
@@ -349,6 +351,7 @@
     "react": "^18.1.0",
     "react-dom": "^18.1.0",
     "svgo": "^3.2.0",
-    "zustand": "^5.0.6"
+    "tailwind-merge": "^3.3.1",
+    "zustand": "^5.0.7"
   }
 }

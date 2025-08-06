@@ -1,23 +1,22 @@
 import { TooltipText } from "@arthur-lobo/react-custom-tooltip";
 import { useConfigList, useSetConfig } from "@hooks//useConfig";
-import { useUpdateSelectsWidth } from "@hooks//useSelectWidthUpdater";
 import { useTranslation } from "@hooks//useTranslation";
 import type { WindowIconType } from "@/../types";
+import { ConfigSelect } from "../../ConfigSelect";
 import { EscapeCodes } from "../../EscapeCodes";
 import { LeftTooltip } from "../../LeftTooltip";
+import { SettingLineWithSelect } from "../../SettingLine";
 
 export function IconTypeSelect() {
   const { t } = useTranslation();
   const { windowStyle, windowIconType } = useConfigList(["windowStyle", "windowIconType"]);
   const set = useSetConfig();
 
-  useUpdateSelectsWidth();
-
   return (
     <LeftTooltip>
-      <li>
+      <SettingLineWithSelect>
         <span>{t("Icon Style")}</span>
-        <select
+        <ConfigSelect
           value={windowIconType}
           onChange={(ev) => {
             set({
@@ -28,8 +27,8 @@ export function IconTypeSelect() {
         >
           <option value="round">{t("Rounded")}</option>
           <option value="square">{t("Square")}</option>
-        </select>
-      </li>
+        </ConfigSelect>
+      </SettingLineWithSelect>
       <TooltipText>
         <EscapeCodes
           text={t("Only valid when `{windowStyle}` is `Windows`. Changes the `Windows` icon style", {

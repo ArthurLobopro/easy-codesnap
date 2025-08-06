@@ -17,7 +17,7 @@ createRoot(document.querySelector("#top-header")!).render(
     <OneTimeConfig />
     {createPortal(
       <Tooltip vertical="top" horizontal="center">
-        <ShutterIcon onClick={() => takeSnap()} id="save" className="shutter" />
+        <ShutterIcon onClick={() => takeSnap()} id="save" className="size-16 cursor-pointer" />
         <TooltipText>Take Snap</TooltipText>
       </Tooltip>,
       document.querySelector("#save-container")!,
@@ -29,7 +29,7 @@ createRoot(navbarNode).render(<WindowControls />);
 
 function LeftWrapper() {
   return (
-    <div id="left-wrapper">
+    <div className="flex items-start gap-2">
       <LeftButtons />
     </div>
   );
@@ -37,7 +37,7 @@ function LeftWrapper() {
 
 function CenterWrapper() {
   return (
-    <div id="center-wrapper">
+    <div className="flex items-center gap-2">
       <ZoomBar />
     </div>
   );

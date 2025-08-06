@@ -13,13 +13,20 @@ badges/**
 webview/assets
 
 #Config
-**/.eslintrc.json
 **/tsconfig.json
 webpack.config.js
 .yarnrc
 .gitignore
 biome.json
+TranslationGuide.md
 
 #Codicons
 !node_modules/@vscode/codicons/dist/*.css
 !node_modules/@vscode/codicons/dist/*.ttf
+
+# Assets
+webview/assets
+
+# CSS
+webview/*.css
+!webview/output.css

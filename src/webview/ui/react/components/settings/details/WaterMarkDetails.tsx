@@ -1,17 +1,44 @@
 import { TooltipText } from "@arthur-lobo/react-custom-tooltip";
-import { useConfigList, useSetConfig } from "@hooks//useConfig";
+import { useConfig, useSetConfig } from "@hooks//useConfig";
 import { useTranslation } from "@hooks//useTranslation";
 import { openConfig, text } from "@/util";
+import type { WebviewConfig } from "../../../../../../types";
 import { EscapeCodes } from "../../EscapeCodes";
 import { DetailsContent, ExpandDetails, TextDetailsSummary } from "../../ExpandDetails";
 import { LeftTooltip } from "../../LeftTooltip";
+import { SettingLineWithSelect } from "../../SettingLine";
 import { ToggleInput } from "../../ToggleInput";
+
+interface WatermarPositionInputProps {
+  value: WebviewConfig["watermarkPosition"];
+}
+
+function WatermarkPositionInput({ value }: WatermarPositionInputProps) {
+  const watermarkPosition = useConfig("watermarkPosition");
+  const set = useSetConfig();
+
+  return (
+    <label className="flex w-full aspect-square bg-sidebar-background has-[:checked]:bg-vscode-focus-border hover:has-[:not(:checked)]:bg-vscode-focus-border/60">
+      <input
+        type="radio"
+        name="watermark-position"
+        value={value}
+        checked={watermarkPosition === value}
+        className="hidden"
+        onChange={() =>
+          set({
+            watermarkPosition: value,
+          })
+        }
+      />
+    </label>
+  );
+}
 
 export function WatermarkDetails() {
   const { t } = useTranslation();
 
-  const { watermarkPosition, target } = useConfigList(["watermarkPosition", "target"]);
-  const set = useSetConfig();
+  const target = useConfig("target");
 
   return (
     <ExpandDetails>
@@ -37,63 +64,19 @@ export function WatermarkDetails() {
         />
 
         <LeftTooltip>
-          <li>
+          <SettingLineWithSelect>
             <span>{t("Watermark Position")}</span>
             <div id="watermark-position-wrapper">
               {target === "container" && (
                 <>
-                  <label>
-                    <div className="bg" />
-                    <input
-                      type="radio"
-                      name="watermark-position"
-                      value="top-left"
-                      checked={watermarkPosition === "top-left"}
-                      onChange={() =>
-                        set({
-                          watermarkPosition: "top-left",
-                        })
-                      }
-                    />
-                  </label>
-                  <label>
-                    <div className="bg" />
-                    <input
-                      type="radio"
-                      name="watermark-position"
-                      value="top-right"
-                      checked={watermarkPosition === "top-right"}
-                      onChange={() =>
-                        set({
-                          watermarkPosition: "top-right",
-                        })
-                      }
-                    />
-                  </label>
+                  <WatermarkPositionInput value="top-left" />
+                  <WatermarkPositionInput value="top-right" />
                 </>
               )}
-              <label>
-                <div className="bg" />
-                <input
-                  type="radio"
-                  name="watermark-position"
-                  value="bottom-left"
-                  checked={watermarkPosition === "bottom-left"}
-                  onChange={() => set({ watermarkPosition: "bottom-left" })}
-                />
-              </label>
-              <label>
-                <div className="bg" />
-                <input
-                  type="radio"
-                  name="watermark-position"
-                  value="bottom-right"
-                  checked={watermarkPosition === "bottom-right"}
-                  onChange={() => set({ watermarkPosition: "bottom-right" })}
-                />
-              </label>
+              <WatermarkPositionInput value="bottom-left" />
+              <WatermarkPositionInput value="bottom-right" />
             </div>
-          </li>
+          </SettingLineWithSelect>
           <TooltipText>
             <EscapeCodes
               text={t(

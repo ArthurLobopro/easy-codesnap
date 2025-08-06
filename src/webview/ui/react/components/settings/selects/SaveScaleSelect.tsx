@@ -1,8 +1,9 @@
 import { useConfig, useSetConfig } from "@hooks//useConfig";
-import { useUpdateSelectsWidth } from "@hooks//useSelectWidthUpdater";
 import { useTranslation } from "@hooks//useTranslation";
 import type { SaveScale } from "@/../types";
 import { SAVE_SCALES } from "@/constants";
+import { ConfigSelect } from "../../ConfigSelect";
+import { SettingLineWithSelect } from "../../SettingLine";
 
 export function SaveScaleSelect() {
   const { t } = useTranslation();
@@ -10,12 +11,10 @@ export function SaveScaleSelect() {
   const set = useSetConfig();
   const saveScale = useConfig("saveScale");
 
-  useUpdateSelectsWidth();
-
   return (
-    <li>
+    <SettingLineWithSelect>
       <span>{t("Save Scale")}</span>
-      <select
+      <ConfigSelect
         value={saveScale}
         onChange={(ev) => {
           set({
@@ -28,7 +27,7 @@ export function SaveScaleSelect() {
             {scale}x
           </option>
         ))}
-      </select>
-    </li>
+      </ConfigSelect>
+    </SettingLineWithSelect>
   );
 }
