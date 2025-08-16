@@ -51,134 +51,19 @@
       "type": "object",
       "title": "Easy CodeSnap",
       "properties": {
-        "easy-codesnap.showLineNumbers": {
+        "easy-codesnap.lockOnOpen": {
           "scope": "resource",
           "type": "boolean",
-          "default": true,
-          "description": "%easy-codesnap.showLineNumbers%",
+          "default": false,
+          "description": "%easy-codesnap.lockOnOpen%",
           "order": 1
         },
-        "easy-codesnap.realLineNumbers": {
+        "easy-codesnap.linkOnOpen": {
           "scope": "resource",
           "type": "boolean",
           "default": false,
-          "description": "%easy-codesnap.realLineNumbers%",
+          "description": "%easy-codesnap.linkOnOpen%",
           "order": 2
-        },
-        "easy-codesnap.highlightLineNumber": {
-          "scope": "resource",
-          "type": "boolean",
-          "default": false,
-          "description": "%easy-codesnap.highlightLineNumber%",
-          "order": 3
-        },
-        "easy-codesnap.fullLinesSelection": {
-          "scope": "resource",
-          "type": "boolean",
-          "default": false,
-          "description": "%easy-codesnap.fullLinesSelection%",
-          "order": 4
-        },
-        "easy-codesnap.maxCharWidth": {
-          "scope": "resource",
-          "type": "integer",
-          "default": 0,
-          "minimum": 0,
-          "maximum": 200,
-          "description": "%easy-codesnap.maxCharWidth%",
-          "order": 5
-        },
-        "easy-codesnap.windowStyle": {
-          "scope": "resource",
-          "type": "string",
-          "default": "macos",
-          "description": "%easy-codesnap.windowStyle%",
-          "enum": [
-            "macos",
-            "windows"
-          ],
-          "order": 6
-        },
-        "easy-codesnap.showWindowControls": {
-          "scope": "resource",
-          "type": "boolean",
-          "default": true,
-          "description": "%easy-codesnap.showWindowControls%",
-          "order": 7
-        },
-        "easy-codesnap.showWindowTitle": {
-          "scope": "resource",
-          "type": "boolean",
-          "default": false,
-          "description": "%easy-codesnap.showWindowTitle%",
-          "order": 8
-        },
-        "easy-codesnap.roundedCorners": {
-          "scope": "resource",
-          "type": "boolean",
-          "default": true,
-          "description": "%easy-codesnap.roundedCorners%",
-          "order": 9
-        },
-        "easy-codesnap.roundingLevel": {
-          "scope": "resource",
-          "type": "number",
-          "default": 1,
-          "description": "%easy-codesnap.roundingLevel%",
-          "enum": [
-            1,
-            2,
-            3,
-            4
-          ],
-          "order": 10
-        },
-        "easy-codesnap.windowTitleTemplate": {
-          "scope": "resource",
-          "type": "string",
-          "default": "{workspace} - {fileName}",
-          "minLength": 1,
-          "description": "%easy-codesnap.windowTitleTemplate%",
-          "order": 11
-        },
-        "easy-codesnap.transparentBackground": {
-          "scope": "resource",
-          "type": "boolean",
-          "default": false,
-          "description": "%easy-codesnap.transparentBackground%",
-          "order": 12
-        },
-        "easy-codesnap.target": {
-          "scope": "resource",
-          "type": "string",
-          "enum": [
-            "container",
-            "window"
-          ],
-          "default": "container",
-          "description": "%easy-codesnap.target%",
-          "order": 13
-        },
-        "easy-codesnap.backgroundColor": {
-          "scope": "resource",
-          "type": "string",
-          "default": "#abb8c3",
-          "description": "%easy-codesnap.backgroundColor%",
-          "order": 14
-        },
-        "easy-codesnap.boxShadow": {
-          "scope": "resource",
-          "type": "string",
-          "default": "rgba(0, 0, 0, 0.55) 0px 20px 68px",
-          "description": "%easy-codesnap.boxShadow%",
-          "order": 15
-        },
-        "easy-codesnap.containerPadding": {
-          "scope": "resource",
-          "type": "string",
-          "default": "3em",
-          "description": "%easy-codesnap.containerPadding%",
-          "order": 16
         },
         "easy-codesnap.shutterAction": {
           "scope": "resource",
@@ -189,35 +74,7 @@
           ],
           "default": "copy",
           "description": "%easy-codesnap.shutterAction%",
-          "order": 17
-        },
-        "easy-codesnap.enableResizing": {
-          "scope": "resource",
-          "type": "boolean",
-          "default": true,
-          "description": "%easy-codesnap.enableResizing%",
-          "order": 18
-        },
-        "easy-codesnap.enableSymbolBreadcrumb": {
-          "scope": "resource",
-          "type": "boolean",
-          "default": false,
-          "description": "%easy-codesnap.enableSymbolBreadcrumb%",
-          "order": 19
-        },
-        "easy-codesnap.lockOnOpen": {
-          "scope": "resource",
-          "type": "boolean",
-          "default": false,
-          "description": "%easy-codesnap.lockOnOpen%",
-          "order": 20
-        },
-        "easy-codesnap.linkOnOpen": {
-          "scope": "resource",
-          "type": "boolean",
-          "default": false,
-          "description": "%easy-codesnap.linkOnOpen%",
-          "order": 21
+          "order": 3
         },
         "easy-codesnap.saveFormat": {
           "scope": "resource",
@@ -228,7 +85,7 @@
             "png",
             "svg"
           ],
-          "order": 22
+          "order": 4
         },
         "easy-codesnap.saveScale": {
           "scope": "resource",
@@ -244,7 +101,46 @@
             3,
             4
           ],
-          "order": 23
+          "order": 5
+        },
+        "easy-codesnap.showLineNumbers": {
+          "scope": "resource",
+          "type": "boolean",
+          "default": true,
+          "description": "%easy-codesnap.showLineNumbers%",
+          "order": 6
+        },
+        "easy-codesnap.realLineNumbers": {
+          "scope": "resource",
+          "type": "boolean",
+          "default": false,
+          "description": "%easy-codesnap.realLineNumbers%",
+          "order": 7
+        },
+        "easy-codesnap.highlightLineNumber": {
+          "scope": "resource",
+          "type": "boolean",
+          "default": false,
+          "description": "%easy-codesnap.highlightLineNumber%",
+          "order": 8
+        },
+        "easy-codesnap.fullLinesSelection": {
+          "scope": "resource",
+          "type": "boolean",
+          "default": false,
+          "description": "%easy-codesnap.fullLinesSelection%",
+          "order": 9
+        },
+        "easy-codesnap.windowStyle": {
+          "scope": "resource",
+          "type": "string",
+          "default": "macos",
+          "description": "%easy-codesnap.windowStyle%",
+          "enum": [
+            "macos",
+            "windows"
+          ],
+          "order": 10
         },
         "easy-codesnap.windowIconType": {
           "scope": "resource",
@@ -255,6 +151,110 @@
           ],
           "description": "%easy-codesnap.windowIconType%",
           "default": "round",
+          "order": 11
+        },
+        "easy-codesnap.showWindowTitle": {
+          "scope": "resource",
+          "type": "boolean",
+          "default": false,
+          "description": "%easy-codesnap.showWindowTitle%",
+          "order": 12
+        },
+        "easy-codesnap.windowTitleTemplate": {
+          "scope": "resource",
+          "type": "string",
+          "default": "{workspace} - {fileName}",
+          "minLength": 1,
+          "description": "%easy-codesnap.windowTitleTemplate%",
+          "order": 13
+        },
+        "easy-codesnap.showWindowControls": {
+          "scope": "resource",
+          "type": "boolean",
+          "default": true,
+          "description": "%easy-codesnap.showWindowControls%",
+          "order": 14
+        },
+        "easy-codesnap.roundedCorners": {
+          "scope": "resource",
+          "type": "boolean",
+          "default": true,
+          "description": "%easy-codesnap.roundedCorners%",
+          "order": 15
+        },
+        "easy-codesnap.roundingLevel": {
+          "scope": "resource",
+          "type": "number",
+          "default": 1,
+          "description": "%easy-codesnap.roundingLevel%",
+          "enum": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "order": 16
+        },
+        "easy-codesnap.target": {
+          "scope": "resource",
+          "type": "string",
+          "enum": [
+            "container",
+            "window"
+          ],
+          "default": "container",
+          "description": "%easy-codesnap.target%",
+          "order": 17
+        },
+        "easy-codesnap.boxShadow": {
+          "scope": "resource",
+          "type": "string",
+          "default": "rgba(0, 0, 0, 0.55) 0px 20px 68px",
+          "description": "%easy-codesnap.boxShadow%",
+          "order": 18
+        },
+        "easy-codesnap.backgroundColor": {
+          "scope": "resource",
+          "type": "string",
+          "default": "#abb8c3",
+          "description": "%easy-codesnap.backgroundColor%",
+          "order": 19
+        },
+        "easy-codesnap.containerPadding": {
+          "scope": "resource",
+          "type": "string",
+          "default": "3em",
+          "description": "%easy-codesnap.containerPadding%",
+          "order": 20
+        },
+        "easy-codesnap.transparentBackground": {
+          "scope": "resource",
+          "type": "boolean",
+          "default": false,
+          "description": "%easy-codesnap.transparentBackground%",
+          "order": 21
+        },
+        "easy-codesnap.enableResizing": {
+          "scope": "resource",
+          "type": "boolean",
+          "default": true,
+          "description": "%easy-codesnap.enableResizing%",
+          "order": 22
+        },
+        "easy-codesnap.enableSymbolBreadcrumb": {
+          "scope": "resource",
+          "type": "boolean",
+          "default": false,
+          "description": "%easy-codesnap.enableSymbolBreadcrumb%",
+          "order": 23
+        },
+        "easy-codesnap.maxCharWidth": {
+          "scope": "resource",
+          "type": "integer",
+          "default": 0,
+          "minimum": 0,
+          "maximum": 200,
+          "description": "%easy-codesnap.maxCharWidth%",
           "order": 24
         },
         "easy-codesnap.aspect-ratio": {
