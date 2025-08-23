@@ -58,6 +58,7 @@
     "When you take the Snapshot, the container background will be transparent.": "Quando você capturar a Snapshot, a cor de fundo do container será transparente.",
     "You can edit the Watermark text by double-clicking it.": "Você pode editar o texto da Marca D'água clicando duas vezes nela.",
     "You can edit the default Watermark text clicking": "Você pode editar o texto padrão da Marca D'água clicando",
+    "Watermark Options": "Opções de marca d'água",
     "Show Watermark": "Mostrar marca d'água",
     "Watermark Position": "Posição da marca d'água",
     "The position of the watermark in the snapshot. Top positions are only available when `{target}` is `{container}`": "A posição da marca d'água na captura de tela. Posições superiores só são disponíveis quando `{target}` é `{container}`",
