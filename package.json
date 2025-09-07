@@ -93,7 +93,7 @@
             "%easy-codesnap.saveFormat.svg%"
           ],
           "markdownDescription": "%easy-codesnap.saveFormat%",
-          "order": 5
+          "order": 4
         },
         "easy-codesnap.saveScale": {
           "scope": "resource",
