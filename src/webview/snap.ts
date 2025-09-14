@@ -14,6 +14,7 @@ export async function cameraFlashAnimation() {
 }
 
 export async function takeSnap(config = SessionConfig.get()) {
+  console.time("TakeSnap");
   const target = config.target === "container" ? snippetContainerNode : windowNode;
 
   const exporter = config.saveFormat === "svg" ? exportSVG : exportPNG;
@@ -29,11 +30,14 @@ export async function takeSnap(config = SessionConfig.get()) {
     setVar("box-shadow", "none");
   }
 
+  console.timeLog("TakeSnap", "Starting Exporter");
   await exporter(target, config.shutterAction);
+  console.timeLog("TakeSnap", "Exporter Finished");
 
   windowNode.style.resize = "";
   snippetContainerNode.style.resize = "";
 
   setVar("container-background-color", config.backgroundColor);
   setVar("box-shadow", config.boxShadow);
+  console.timeEnd("TakeSnap");
 }

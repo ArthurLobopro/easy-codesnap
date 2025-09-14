@@ -1,3 +1,8 @@
+# 1.31.0
+
+Fix: Better regex to detect inline codes ``
+Fix: Some UI Fixes
+
 # 1.30.4
 
 Refactor: Change Tooltip Tool
