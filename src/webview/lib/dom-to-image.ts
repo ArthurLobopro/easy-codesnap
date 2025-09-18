@@ -320,7 +320,7 @@ function makeSvgDataUri(node: HTMLElement, width: string | number, height: strin
       return new XMLSerializer().serializeToString(node);
     })
     .then(util.escapeXhtml)
-    .then((xhtml) => '<foreignObject x="0" y="0" width="100%" height="100%">' + xhtml + "</foreignObject>")
+    .then((xhtml) => `<foreignObject x="0" y="0" width="100%" height="100%">${xhtml}</foreignObject>`)
     .then(
       (foreignObject) =>
         '<svg xmlns="http://www.w3.org/2000/svg" width="' +
@@ -331,7 +331,7 @@ function makeSvgDataUri(node: HTMLElement, width: string | number, height: strin
         foreignObject +
         "</svg>",
     )
-    .then((svg) => "data:image/svg+xml;charset=utf-8," + svg);
+    .then((svg) => `data:image/svg+xml;charset=utf-8,${svg}`);
 }
 
 function newUtil() {
@@ -650,7 +650,7 @@ function newFontFaces() {
         try {
           Array.from(sheet.cssRules || []).forEach(cssRules.push.bind(cssRules));
         } catch (e) {
-          console.log("Error while reading CSS rules from " + sheet.href, (e as Error).toString());
+          console.log(`Error while reading CSS rules from ${sheet.href}`, (e as Error).toString());
         }
       });
       return cssRules;
