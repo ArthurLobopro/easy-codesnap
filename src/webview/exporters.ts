@@ -1,11 +1,10 @@
 //@ts-expect-error
-import domtoimage from "dom-to-image-even-more";
-//@ts-expect-error
 import { elementToSVG } from "dom-to-svg";
 import type { Config as SVGOConfig } from "svgo";
 import { optimize } from "svgo/dist/svgo.browser";
 import type { WebviewConfig } from "../types";
-import { SessionConfig } from "./SessionConfig";
+import * as domtoimage from "./lib/dom-to-image";
+import { useSessionConfig } from "./SessionConfig";
 import { cameraFlashAnimation } from "./snap";
 import { vscode } from "./util";
 
@@ -14,6 +13,7 @@ export async function exportPNG(target: HTMLElement, action: WebviewConfig["shut
     try {
       return await toPNG(target);
     } catch (_error) {
+      console.log("Error while generating PNG, running fallback");
       return await toPNGFallback(target);
     }
   })();
@@ -55,16 +55,17 @@ export async function exportSVG(target: HTMLElement, action: WebviewConfig["shut
 }
 
 async function toPNG(target: HTMLElement) {
-  const scale = SessionConfig.get("saveScale");
-
-  return await await domtoimage.toPng(target, {
-    bgColor: "transparent",
-    scale,
+  console.time("toPNG");
+  const png = await await domtoimage.toPng(target, {
+    bgcolor: "transparent",
+    scale: useSessionConfig.getState().saveScale,
   });
+  console.timeEnd("toPNG");
+  return png;
 }
 
 async function toPNGFallback(target: HTMLElement) {
-  const scale = SessionConfig.get("saveScale");
+  const scale = useSessionConfig.getState().saveScale;
 
   const canvas = document.createElement("canvas");
   const ctx = canvas.getContext("2d");

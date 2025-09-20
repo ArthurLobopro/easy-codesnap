@@ -4,12 +4,14 @@
 		"target": "ES2024",
 		"outDir": "out",
 		"lib": [
-			"ES2024"
+			"ES2024",
+			"DOM"
 		],
 		"sourceMap": true,
 		"rootDir": "./src/",
 		"strict": true,
-		"noImplicitReturns": true
+		"noImplicitReturns": true,
+		"resolveJsonModule": true
 	},
 	"exclude": [
 		"./src/webview/**",

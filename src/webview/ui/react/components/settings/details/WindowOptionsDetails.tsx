@@ -24,6 +24,7 @@ export function WindowOptionsDetails() {
                 {text(
                   t("You can edit the Window Title text by double-clicking it."),
                   t("You can edit the default Window Title text clicking"),
+                  " ",
                 )}
               </span>
               <span className="link" onClick={() => openConfig("windowTitleTemplate")}>

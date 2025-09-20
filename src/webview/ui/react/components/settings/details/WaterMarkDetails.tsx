@@ -42,7 +42,7 @@ export function WatermarkDetails() {
 
   return (
     <ExpandDetails>
-      <TextDetailsSummary text={t("Show Watermark")} />
+      <TextDetailsSummary text={t("Watermark Options")} />
       <DetailsContent>
         <ToggleInput
           config="watermark"
