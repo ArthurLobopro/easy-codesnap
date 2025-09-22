@@ -1,7 +1,9 @@
 out
 dist
+.yarn/
 node_modules
 .vscode-test/
 *.vsix
 /badges
 output.css
+.yarnrc.yml
