@@ -18,7 +18,7 @@ function WatermarkPositionInput({ value }: WatermarPositionInputProps) {
   const set = useSetConfig();
 
   return (
-    <label className="flex w-full aspect-square bg-sidebar-background has-[:checked]:bg-vscode-focus-border hover:has-[:not(:checked)]:bg-vscode-focus-border/60">
+    <label className="flex w-full aspect-square">
       <input
         type="radio"
         name="watermark-position"

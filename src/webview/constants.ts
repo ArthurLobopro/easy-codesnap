@@ -64,4 +64,7 @@ export const DEFAULT_SETTINGS: Omit<ISessionConfig, "set"> = {
     fileName: "",
     workspace: "",
   },
+  uiCustomColors: {
+    watermarkPositionInputSelectedBackgroud: "",
+  },
 } as const;

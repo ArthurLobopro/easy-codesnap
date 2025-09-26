@@ -84,6 +84,7 @@ export interface ISessionConfig
     | "shouldUpdateTitle"
     | "isReady"
     | "templates"
+    | "uiCustomColors"
   > {
   set: (config: Partial<Omit<ISessionConfig, "set">>) => void;
 }
@@ -100,6 +101,8 @@ export const useSessionConfig = create<ISessionConfig>((setState) => ({
         //@ts-ignore
         stateConfig[key] = config[key];
       }
+
+      console.table(stateConfig);
 
       return { ...stateConfig };
     });

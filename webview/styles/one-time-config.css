@@ -1,52 +1,61 @@
 #watermark-position-wrapper {
-    --square-size: 12px;
+  --square-size: 12px;
 
-    display: grid;
-    background-color: currentColor;
-    gap: 1px;
-    border: 1px solid currentColor;
-    border-radius: 2px;
-    grid-template-columns: repeat(2, var(--square-size));
-    margin: 2px;
+  display: grid;
+  background-color: currentColor;
+  gap: 1px;
+  border: 1px solid currentColor;
+  border-radius: 2px;
+  grid-template-columns: repeat(2, var(--square-size));
+  margin: 2px;
 }
 
 
 li:has(:disabled),
 select:disabled {
-    color: var(--vscode-disabledForeground);
+  color: var(--vscode-disabledForeground);
 }
 
 input[type="checkbox"] {
-    background-color: var(--vscode-settings-checkboxBackground);
-    color: var(--vscode-settings-checkboxForeground);
+  background-color: var(--vscode-settings-checkboxBackground);
+  color: var(--vscode-settings-checkboxForeground);
 
-    height: 100%;
-    aspect-ratio: 1/1;
-    outline: 0;
-    cursor: pointer;
+  height: 100%;
+  aspect-ratio: 1/1;
+  outline: 0;
+  cursor: pointer;
 }
 
 input[type="number"] {
-    background-color: var(--vscode-sideBar-background);
-    color: var(--vscode-foreground);
+  background-color: var(--vscode-sideBar-background);
+  color: var(--vscode-foreground);
 
-    border: 1px solid var(--vscode-icon-foreground);
-    border-radius: 4px;
-    padding: 2px 0;
-    text-align: center;
+  border: 1px solid var(--vscode-icon-foreground);
+  border-radius: 4px;
+  padding: 2px 0;
+  text-align: center;
 
-    &::-webkit-inner-spin-button {
-        display: none;
-    }
+  &::-webkit-inner-spin-button {
+    display: none;
+  }
 
-    &:invalid {
-        border-color: var(--vscode-errorForeground);
-        outline-color: var(--vscode-errorForeground);
-    }
+  &:invalid {
+    border-color: var(--vscode-errorForeground);
+    outline-color: var(--vscode-errorForeground);
+  }
+}
+
+label.aspect-square:has(input[name="watermark-position"]) {
+  background-color: var(--vscode-sideBar-background);
+}
+
+label.aspect-square:has(input[name="watermark-position"]:checked) {
+  background-color: var(--vscode-focusBorder);
+  background-color: var(--watermarkPositionInputSelectedBackgroud, var(--vscode-focusBorder));
 }
 
 .expand-content {
-    >div>div {
-        display: block;
-    }
+  >div>div {
+    display: block;
+  }
 }
