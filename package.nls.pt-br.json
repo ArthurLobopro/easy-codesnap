@@ -48,6 +48,7 @@
     "easy-codesnap.enableSymbolBreadcrumb": "Habilita o breadcrumb de símbolos",
     "easy-codesnap.maxCharWidth": "Tamanho máximo da linha baseado em caracteres. Use o valor 0 para não limitar",
     "easy-codesnap.aspect-ratio": "Define uma proporção para a captura (quando container é o alvo)",
+    "easy-codesnap.aspect-ratio.none": "Não aplica nenhuma proporção específica para a captura de tela.",
     "easy-codesnap.aspect-ratio.1:1": "Aplica a proporção de 1:1 para a captura de tela (quadrado).",
     "easy-codesnap.aspect-ratio.4:5": "Aplica a proporção de 4:5 para a captura de tela (formato de retrato).",
     "easy-codesnap.aspect-ratio.9:16": "Aplica a proporção de 9:16 para a captura de tela (formato de midia vertical).",
