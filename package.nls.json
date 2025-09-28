@@ -60,5 +60,6 @@
     "easy-codesnap.watermarkPosition.top-left": "Places the watermark at the top-left corner of the snapshot.",
     "easy-codesnap.watermarkPosition.top-right": "Places the watermark at the top-right corner of the snapshot.",
     "easy-codesnap.watermarkPosition.bottom-left": "Places the watermark at the bottom-left corner of the snapshot.",
-    "easy-codesnap.watermarkPosition.bottom-right": "Places the watermark at the bottom-right corner of the snapshot."
+    "easy-codesnap.watermarkPosition.bottom-right": "Places the watermark at the bottom-right corner of the snapshot.",
+    "easy-codesnap.uiCustomColors": "Change some UI colors that may conflict with user theme."
 }

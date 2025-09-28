@@ -42,6 +42,10 @@ export interface ExtensionConfig {
   windowIconType: WindowIconType;
   aspectRatio: AspectRatio;
   watermarkPosition: "bottom-right" | "bottom-left" | "top-right" | "top-left";
+
+  uiCustomColors: {
+    watermarkPositionInputSelectedBackgroud: string;
+  };
 }
 
 export interface ConfigSentToWebview extends ExtensionConfig {

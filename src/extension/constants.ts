@@ -33,4 +33,5 @@ export const extensionSettingsNames: ConfigKey[] = [
   "watermarkPosition",
   "maxCharWidth",
   "windowIconType",
+  "uiCustomColors",
 ] as const;

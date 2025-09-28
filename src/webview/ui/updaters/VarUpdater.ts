@@ -20,6 +20,7 @@ export class VarUpdater extends Updater {
       "target",
       "maxCharWidth",
       "zoom",
+      "uiCustomColors",
     ]);
   }
 
@@ -39,6 +40,7 @@ export class VarUpdater extends Updater {
       target,
       maxCharWidth,
       zoom,
+      uiCustomColors,
     } = SessionConfig.get();
 
     setVar("ligatures", fontLigatures ? "normal" : "none");
@@ -64,5 +66,7 @@ export class VarUpdater extends Updater {
     snippetContainerNode.dataset.enableresizing = String(enableResizing);
     snippetContainerNode.dataset.enablesymbolbreadcrumb = String(enableSymbolBreadcrumb);
     snippetContainerNode.dataset.target = target;
+
+    Object.entries(uiCustomColors).forEach(([key, value]) => setVar(key, value));
   }
 }
