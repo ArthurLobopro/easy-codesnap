@@ -38,7 +38,7 @@
     "easy-codesnap.roundingLevel.3": "Aplica arrendondamento grande nos cantos na janela.",
     "easy-codesnap.roundingLevel.4": "Aplica arrendondamento muito grande nos cantos na janela.",
     "easy-codesnap.target": "Capturar a tela com ou sem o container",
-     "easy-codesnap.target.container": "Captura a Janela juntamente com o container que a envolve",
+    "easy-codesnap.target.container": "Captura a Janela juntamente com o container que a envolve",
     "easy-codesnap.target.window": "Captura apenas a Janela com o snippet de código, título e botões de efenteite.",
     "easy-codesnap.boxShadow": "A propriedade CSS `box-shadow` para o snippet",
     "easy-codesnap.backgroundColor": "A cor de fundo do container do snippet",
@@ -57,8 +57,9 @@
     "easy-codesnap.watermark": "Mostrar marca d'água",
     "easy-codesnap.defaultWatermarkText": "Texto padrão da marca d'água",
     "easy-codesnap.watermarkPosition": "Controla a posição da marca d'água. As posições do topo apenas são válidas quando [Easy-codesnap: Target](command:workbench.action.openSettings?%22@id:easy-codesnap.target%22) é `container`.",
-     "easy-codesnap.watermarkPosition.top-left": "Coloca a marca d'água no canto superior esquerdo.",
+    "easy-codesnap.watermarkPosition.top-left": "Coloca a marca d'água no canto superior esquerdo.",
     "easy-codesnap.watermarkPosition.top-right": "Coloca a marca d'água no canto superior direito.",
     "easy-codesnap.watermarkPosition.bottom-left": "Coloca a marca d'água no canto inferior esquerdo.",
-    "easy-codesnap.watermarkPosition.bottom-right": "Coloca a marca d'água no canto inferior direito."
+    "easy-codesnap.watermarkPosition.bottom-right": "Coloca a marca d'água no canto inferior direito.",
+    "easy-codesnap.uiCustomColors": "Muda algumas cores da UI que podem conflitar com o tema do usuário."
 }

@@ -348,7 +348,7 @@
           "markdownDescription": "%easy-codesnap.watermarkPosition%",
           "order": 28
         },
-        "easy-codesnap.uiCustomColors":{
+        "easy-codesnap.uiCustomColors": {
           "scope": "resource",
           "type": "object",
           "properties": {
@@ -360,6 +360,7 @@
           "default": {
             "watermarkPositionInputSelectedBackgroud": "var(--vscode-focusBorder)"
           },
+          "markdownDescription": "%easy-codesnap.uiCustomColors%",
           "order": 29
         }
       }
