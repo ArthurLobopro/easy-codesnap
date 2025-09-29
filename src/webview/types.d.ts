@@ -6,4 +6,4 @@ declare module "*.svg" {
   export const ReactComponent: React.FunctionComponent<React.SVGProps<SVGSVGElement> & { title?: string }>;
 }
 
-type PropsWithClassName = { className?: string };
+declare type PropsWithClassName = { className?: string };
