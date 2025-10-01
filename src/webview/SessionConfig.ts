@@ -1,5 +1,5 @@
 import { create } from "zustand";
-import type { TogglableConfigNames, WebViewConfigKey, WebviewConfig } from "../types";
+import type { WebViewConfigKey, WebviewConfig } from "../types";
 import { DEFAULT_SETTINGS } from "./constants";
 import { GenericUpdate } from "./ui/updaters";
 

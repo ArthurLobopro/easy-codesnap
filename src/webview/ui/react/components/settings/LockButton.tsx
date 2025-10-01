@@ -1,7 +1,7 @@
 import { TooltipText } from "@arthur-lobo/react-custom-tooltip";
 import { useConfig, useSetConfig } from "@hooks/useConfig";
 import { useTranslation } from "@hooks/useTranslation";
-import { openConfig, text, tw } from "../../../../util";
+import { openConfig, text } from "../../../../util";
 import { TooltipBottom } from "../TooltipBottom";
 import { TopButton } from "../TopButton";
 
