@@ -1,5 +1,5 @@
 import { create } from "zustand";
-import type { TogglableConfigNames, WebViewConfigKey, WebviewConfig } from "../types";
+import type { WebViewConfigKey, WebviewConfig } from "../types";
 import { DEFAULT_SETTINGS } from "./constants";
 import { GenericUpdate } from "./ui/updaters";
 
@@ -44,48 +44,12 @@ export class SessionConfig {
     GenericUpdate(updatedKeys);
   }
 
-  static toggle(name: TogglableConfigNames) {
-    this.set({
-      [name]: !this.get(name),
-    });
-  }
-
   static set sessionConfig(config: WebviewConfig) {
     this.__config = config;
   }
 }
 
-export interface ISessionConfig
-  extends Pick<
-    WebviewConfig,
-    | "isLinked"
-    | "isLocked"
-    | "zoom"
-    | "saveFormat"
-    | "saveScale"
-    | "shutterAction"
-    | "watermark"
-    | "watermarkPosition"
-    | "target"
-    | "transparentBackground"
-    | "enableResizing"
-    | "enableSymbolBreadcrumb"
-    | "maxCharWidth"
-    | "aspectRatio"
-    | "showWindowTitle"
-    | "showWindowControls"
-    | "windowStyle"
-    | "windowIconType"
-    | "roundedCorners"
-    | "roundingLevel"
-    | "realLineNumbers"
-    | "showLineNumbers"
-    | "highlightLineNumber"
-    | "shouldUpdateTitle"
-    | "isReady"
-    | "templates"
-    | "uiCustomColors"
-  > {
+export interface ISessionConfig extends WebviewConfig {
   set: (config: Partial<Omit<ISessionConfig, "set">>) => void;
 }
 

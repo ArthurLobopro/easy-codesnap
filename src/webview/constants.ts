@@ -67,4 +67,4 @@ export const DEFAULT_SETTINGS: Omit<ISessionConfig, "set"> = {
   uiCustomColors: {
     watermarkPositionInputSelectedBackgroud: "",
   },
-} as const;
+} as any;

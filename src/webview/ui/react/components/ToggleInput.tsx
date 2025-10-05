@@ -15,12 +15,9 @@ interface ToggleInputProps {
   disabled?: boolean;
 }
 
-const Label = ({ children }: PropsWithChildren) => (
+const Label = ({ children, className }: PropsWithChildren & PropsWithClassName) => (
   <label
-    className={tw(
-      "flex justify-between items-center w-full cursor-pointer gap-1 p-1 box-border",
-      "only:w-full group-only:p-0",
-    )}
+    className={tw("flex justify-between items-center w-full cursor-pointer gap-1 box-border", "only:w-full", className)}
   >
     {children}
   </label>
@@ -33,12 +30,12 @@ export const ToggleInput = memo(function ToggleInput({ config, label, tooltip, d
 
   const Wrapper = tooltip
     ? ({ children, tooltip }: WrapperProps) => (
-        <LeftTooltip className="only:w-full only:px-1 group">
+        <LeftTooltip className="only:w-full p-1">
           <Label>{children}</Label>
           {tooltip}
         </LeftTooltip>
       )
-    : ({ children }: WrapperProps) => <Label>{children}</Label>;
+    : ({ children }: WrapperProps) => <Label className="p-1">{children}</Label>;
 
   return (
     <SettingLine>

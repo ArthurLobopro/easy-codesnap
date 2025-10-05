@@ -1,5 +1,5 @@
 {
-  "$schema": "https://biomejs.dev/schemas/2.1.1/schema.json",
+  "$schema": "https://biomejs.dev/schemas/2.1.2/schema.json",
   "assist": {
     "actions": {
       "source": {
@@ -46,7 +46,13 @@
     "indentWidth": 2,
     "lineWidth": 120
   },
+  "json": {
+    "formatter": {
+      "enabled": true,
+      "indentWidth": 2
+    }
+  },
   "files": {
-    "includes": ["src/**/*.ts", "src/**/*.tsx"]
+    "includes": ["src/**/*.ts", "src/**/*.tsx", "!src/webview/lib/*.ts", "./package*.json", "./l10n/*.json"]
   }
 }
