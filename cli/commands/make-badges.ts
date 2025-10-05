@@ -1,8 +1,7 @@
+import fs from "node:fs";
+import path from "node:path";
 import { makeBadge } from "badge-maker";
-import fs from "fs";
-import path from "path";
 import sharp from "sharp";
-import { fileURLToPath } from "url";
 
 function fromTo(from: string, to: string) {
   sharp(Buffer.from(from, "utf8")).png().toFile(to);
@@ -118,8 +117,7 @@ async function makeVscodeBadges() {
   fromTo(downloadBadge, path.join(output_dir, "vscode-downloads.png"));
 }
 
-//@ts-ignore
-import { getAllTranslationStatus } from "../scripts/getTranslations.js";
+import { getAllTranslationStatus } from "../../scripts/getTranslations.ts";
 
 function makeTranslationBadges() {
   const translationStatus = getAllTranslationStatus();
@@ -137,7 +135,7 @@ function makeTranslationBadges() {
       const badge = makeBadge({
         //@ts-ignore
         label: languageStrings[status.code],
-        message: toPercent(status.coverage) + "%",
+        message: `${toPercent(status.coverage)}%`,
         style: "flat",
         color: status.coverage === 100 ? "green" : "blue",
         //@ts-ignore

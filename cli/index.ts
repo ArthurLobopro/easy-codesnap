@@ -1,8 +1,8 @@
 import { Argument, program as cli } from "commander";
 import ora from "ora";
-import { main as MakeBadges } from "./make-badges";
-import { SortNls } from "./sort.nls";
-import { SortOrder } from "./sort.order";
+import { main as MakeBadges } from "./commands/make-badges";
+import { SortNls } from "./commands/sort.nls";
+import { SortOrder } from "./commands/sort.order";
 
 cli
   .name("easy-builder")

@@ -1,8 +1,8 @@
 import { readFileSync, writeFileSync } from "node:fs";
 import { resolve } from "node:path";
 import { omit } from "@arthur-lobo/object-pick";
-import type { contributes } from "../package.json";
-import { root } from "./constants";
+import type { contributes } from "../../package.json";
+import { root } from "../constants";
 
 export function SortOrder() {
   const packageContent = JSON.parse(readFileSync(resolve(root, "./package.json"), "utf-8"));
