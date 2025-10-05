@@ -1,7 +1,8 @@
-import { readFileSync, writeFileSync } from "node:fs";
+import { readFileSync } from "node:fs";
 import { omit } from "@arthur-lobo/object-pick";
 import type { contributes } from "../../package.json";
 import { packagePath } from "../constants";
+import { saveToJson } from "../util";
 
 export function SortOrder() {
   const packageContent = JSON.parse(readFileSync(packagePath, "utf-8"));
@@ -18,5 +19,5 @@ export function SortOrder() {
     };
   });
 
-  writeFileSync(packagePath, JSON.stringify(packageContent, null, 2));
+  saveToJson(packageContent, packagePath);
 }
