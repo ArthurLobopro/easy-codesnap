@@ -390,6 +390,7 @@
     "translation-status": "tsx cli translation-status",
     "compress-json": "tsx cli compress-json",
     "make-badges": "tsx cli make-badges",
+    "sort": "tsx cli sort nls && tsx cli sort order",
     "build:css": "tailwindcss -i ./webview/style.css -o ./webview/output.css -m"
   },
   "devDependencies": {

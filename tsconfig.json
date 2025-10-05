@@ -16,7 +16,6 @@
 	"exclude": [
 		"./src/webview/**",
 		"./dist/**",
-		"./scripts/**",
 		"./cli"
 	]
 }
