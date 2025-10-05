@@ -1,8 +1,8 @@
 // Place your settings in this file to overwrite default and user settings.
 {
     "files.exclude": {
-        "badges": true,
-        // "node_modules": true,
+        // "badges": true,
+        "node_modules": true,
     },
     "search.exclude": {
         "dist": true
@@ -14,7 +14,8 @@
         "editor.defaultFormatter": "biomejs.biome",
         "editor.codeActionsOnSave": {
             "source.fixAll.biome": "explicit",
-            "source.organizeImports": "never"
+            "source.organizeImports": "never",
+            "source.removeUnusedImports": "always"
         }
     },
     "[typescriptreact]": {

@@ -387,9 +387,10 @@
     "watch": "yarn webpack-dev",
     "lint": "biome check",
     "lint:fix": "biome check --write",
-    "translation-status": "tsx ./scripts/getTranslations.ts",
-    "compress-json": "tsx ./scripts/compress-json.ts",
-    "make-badges": "tsx ./scripts/make-badges.ts",
+    "translation-status": "tsx cli translation-status",
+    "compress-json": "tsx cli compress-json",
+    "make-badges": "tsx cli make-badges",
+    "sort": "tsx cli sort nls && tsx cli sort order",
     "build:css": "tailwindcss -i ./webview/style.css -o ./webview/output.css -m"
   },
   "devDependencies": {
@@ -400,6 +401,7 @@
     "@types/react-dom": "^19.1.6",
     "@types/vscode": "^1.96.0",
     "badge-maker": "^4.1.0",
+    "commander": "^14.0.1",
     "esbuild-loader": "^4.3.0",
     "sharp": "^0.34.2",
     "tailwindcss": "^3",

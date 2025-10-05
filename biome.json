@@ -53,6 +53,13 @@
     }
   },
   "files": {
-    "includes": ["src/**/*.ts", "src/**/*.tsx", "!src/webview/lib/*.ts", "./package*.json", "./l10n/*.json"]
+    "includes": [
+      "src/**/*.ts",
+      "src/**/*.tsx",
+      "!src/webview/lib/*.ts",
+      "./package*.json",
+      "./l10n/*.json",
+      "./cli/**/*.ts"
+    ]
   }
 }

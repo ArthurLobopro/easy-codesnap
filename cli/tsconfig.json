@@ -10,7 +10,6 @@
 		"rootDir": ".",
 		"strict": true,
 		"noImplicitReturns": true,
-		"resolveJsonModule": true,
-        "allowJs": true
+		"resolveJsonModule": true
 	}
 }
