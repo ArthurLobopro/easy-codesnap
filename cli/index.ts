@@ -1,22 +1,16 @@
 import { Argument, program as cli } from "commander";
-import ora from "ora";
 import { CompressJson } from "./commands/compress-json";
 import { main as MakeBadges } from "./commands/make-badges";
 import { SortNls } from "./commands/sort.nls";
 import { SortOrder } from "./commands/sort.order";
+import { getAllTranslationStatus } from "./getTranslations";
 
 cli
   .name("easy-builder")
   .description("Welcome to Easy CodeSnap Builder CLI!")
   .command("make-badges")
   .description("Generate all extension Readme.md badges")
-  .action(async () => {
-    const loading = ora("Generating...  ");
-
-    loading.start();
-    await MakeBadges();
-    loading.succeed("Done!");
-  });
+  .action(MakeBadges);
 
 cli
   .command("sort")
@@ -32,5 +26,7 @@ cli
   });
 
 cli.command("compress-json").action(CompressJson);
+
+cli.command("translation-status").action(() => console.log(getAllTranslationStatus()));
 
 cli.parse();

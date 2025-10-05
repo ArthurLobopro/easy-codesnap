@@ -2,15 +2,16 @@ import fs from "node:fs";
 import path from "node:path";
 import { makeBadge } from "badge-maker";
 import sharp from "sharp";
-import { getAllTranslationStatus } from "../../scripts/getTranslations.ts";
+import { root } from "../constants.js";
+import { getAllTranslationStatus } from "../getTranslations";
 
 export async function main() {
   function fromTo(from: string, to: string) {
     sharp(Buffer.from(from, "utf8")).png().toFile(to);
   }
 
-  const svgs_dir = path.join(__dirname, "../.github/readme-assets");
-  const output_dir = path.join(__dirname, "../badges");
+  const svgs_dir = path.join(root, ".github/readme-assets");
+  const output_dir = path.join(root, "badges");
 
   function toBase64(svg: string) {
     const base64 = Buffer.from(svg).toString("base64");
