@@ -1,6 +1,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import mirror from "../package.nls.json";
+import { saveToJson } from "./util";
 
 export function SortNls() {
   const root = path.resolve(__dirname, "..");
@@ -18,6 +19,6 @@ export function SortNls() {
       newContent[key] = content[key];
     }
 
-    fs.writeFileSync(filePath, JSON.stringify(newContent, null, 4));
+    saveToJson(newContent, filePath);
   });
 }
