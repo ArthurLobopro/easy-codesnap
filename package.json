@@ -387,7 +387,7 @@
     "watch": "yarn webpack-dev",
     "lint": "biome check",
     "lint:fix": "biome check --write",
-    "translation-status": "node ./scripts/getTranslations.js",
+    "translation-status": "tsx ./scripts/getTranslations.ts",
     "make-badges": "tsx ./scripts/make-badges.ts",
     "build:css": "tailwindcss -i ./webview/style.css -o ./webview/output.css -m"
   },

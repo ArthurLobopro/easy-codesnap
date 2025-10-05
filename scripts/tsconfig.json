@@ -5,17 +5,12 @@
 		"outDir": "out",
 		"lib": [
 			"ES2024",
-			"DOM"
 		],
 		"sourceMap": true,
-		"rootDir": "./src/",
+		"rootDir": ".",
 		"strict": true,
 		"noImplicitReturns": true,
-		"resolveJsonModule": true
-	},
-	"exclude": [
-		"./src/webview/**",
-		"./dist/**",
-		"./scripts/**"
-	]
+		"resolveJsonModule": true,
+        "allowJs": true
+	}
 }

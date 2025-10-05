@@ -1,7 +1,8 @@
-const fs = require('fs');
-const path = require('path');
+import fs from "fs";
+import path from "path";
+import {getAllTranslationStatus} from "./getTranslations"
 
-const translationStatus = require("./getTranslations.js").getAllTranslationStatus();
+const translationStatus = getAllTranslationStatus();
 
 const languageStrings = {
     "pt-br": "🇧🇷 Portuguese (pt-BR)",
@@ -16,7 +17,9 @@ const writeStream = fs.createWriteStream(path.resolve(__dirname, "../Translation
 writeStream.write(["# Coverage Languages\n\n", "Language | Coverage", "--- | ---\n"].join("\n"));
 translationStatus.forEach(status => {
 
-    const content = [`${status.code in languageStrings ? languageStrings[status.code] : status.code} | ${status.coverage.toFixed(2)}%\n`];
+    type key = keyof typeof languageStrings
+
+    const content = [`${status.code in languageStrings ? languageStrings[status.code as key] : status.code} | ${status.coverage.toFixed(2)}%\n`];
 
     writeStream.write(content.join("\n"));
 });

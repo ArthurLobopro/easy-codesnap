@@ -8,9 +8,6 @@ function fromTo(from: string, to: string) {
     sharp(Buffer.from(from, 'utf8')).png().toFile(to);
 }
 
-//@ts-ignore
-const __dirname = path.dirname(fileURLToPath(import.meta.url))
-
 const svgs_dir = path.join(__dirname, "../.github/readme-assets");
 const output_dir = path.join(__dirname, "../badges");
 

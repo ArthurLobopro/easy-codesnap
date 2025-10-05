@@ -1,13 +1,13 @@
-const fs = require('fs');
-const path = require('path');
+import fs from "fs";
+import path from "path";
 
 const targetDir = './src';
 const fileExtensions = ['.ts', '.tsx'];
 const targetRegex = /\bt\s*\(\s*(?:"((?:[^"\\]|\\.)*)"|`((?:[^`\\]|\\.)*)`)/g;
 const inTernaryTargetRegex = /\bt\s*\(\s*[^?:]*\?\s*(?:"((?:[^"\\]|\\.)*)"|`((?:[^`\\]|\\.)*)`)\s*:\s*(?:"((?:[^"\\]|\\.)*)"|`((?:[^`\\]|\\.)*)`)/g;
 
-function listFiles(dirname) {
-    let files = [];
+function listFiles(dirname: string) {
+    let files:string[] = [];
 
     const arquivos = fs.readdirSync(dirname);
     for (const nome of arquivos) {
@@ -24,7 +24,7 @@ function listFiles(dirname) {
     return files;
 }
 
-function searchTranslationsCalls(files) {
+function searchTranslationsCalls(files: string[]) {
     const results = [];
 
     for (const filePath of files) {
@@ -43,15 +43,15 @@ function searchTranslationsCalls(files) {
     return results;
 }
 
-const translateStrings = searchTranslationsCalls(listFiles(targetDir), targetRegex).filter(str => str);
+const translateStrings = searchTranslationsCalls(listFiles(targetDir)).filter(str => str);
 
-const getPercent = (total, x) => (x * 100 / total);
+const getPercent = (total: number, x:number) => (x * 100 / total);
 
 /**
  *  @param {{[key: string] : string}} obj
  * @param {string} filename
  */
-function getTranslationStatus(obj, filename) {
+function getTranslationStatus(obj: Record<string, string>, filename: string) {
     const detachedKeys = [];
     const missingKeys = [];
     const ObjKeys = Object.keys(obj);
@@ -69,14 +69,14 @@ function getTranslationStatus(obj, filename) {
     }
 
     return {
-        code: filename.split(".").at(-2),
+        code: filename.split(".").at(-2) as string,
         coverage: getPercent(translateStrings.length, translateStrings.length - missingKeys.length),
         missingKeys,
         detachedKeys,
     };
 }
 
-function getAllTranslationStatus() {
+export function getAllTranslationStatus() {
     const TRANSLATIONS_FOLDER = path.resolve(__dirname, "../l10n");
     const JSONTranslationFiles = fs.readdirSync(TRANSLATIONS_FOLDER, { withFileTypes: true }).filter(file => file.isFile()).map(file => `${file.parentPath}/${file.name}`);
 
@@ -89,5 +89,3 @@ if (process.argv[1] === __filename) {
     console.log("Translation Status");
     console.log(getAllTranslationStatus());
 }
-
-module.exports = { getAllTranslationStatus };
