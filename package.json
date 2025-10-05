@@ -388,6 +388,7 @@
     "lint": "biome check",
     "lint:fix": "biome check --write",
     "translation-status": "tsx ./scripts/getTranslations.ts",
+    "compress-json": "tsx ./scripts/compress-json.ts",
     "make-badges": "tsx ./scripts/make-badges.ts",
     "build:css": "tailwindcss -i ./webview/style.css -o ./webview/output.css -m"
   },
