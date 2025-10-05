@@ -1,0 +1,30 @@
+name: Code Check
+
+on:
+  pull_request:
+    branches:
+      - main
+  workflow_dispatch: 
+  workflow_call: 
+
+jobs:
+  test:
+    name: Test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22.x"
+      
+      - name: Install dependencies
+        run: yarn install --frozen-lockfile
+
+      - name: Run Linter
+        run: yarn lint
+
+      - name: Test Build
+        run: yarn package
