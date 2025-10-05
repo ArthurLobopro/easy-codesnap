@@ -5,7 +5,7 @@ import { nls_json_files, root } from "../constants";
 const red = (str: string) => `\x1b[31m${str}\x1b[0m`;
 const green = (str: string) => `\x1b[32m${str}\x1b[0m`;
 
-export function compressJson() {
+export function CompressJson() {
   const l10n_json_files = fs
     .readdirSync(path.resolve(root, "./l10n"), { withFileTypes: true })
     .filter((f) => f.isFile() && /json$/.test(f.name))

@@ -1,7 +1,6 @@
-import { readdirSync, readFileSync } from "node:fs";
-import path from "node:path";
+import { readFileSync } from "node:fs";
 import mirror from "../../package.nls.json";
-import { nls_json_files, root } from "../constants";
+import { nls_json_files } from "../constants";
 import { saveToJson } from "../util";
 
 export function SortNls() {

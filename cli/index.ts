@@ -1,5 +1,6 @@
 import { Argument, program as cli } from "commander";
 import ora from "ora";
+import { CompressJson } from "./commands/compress-json";
 import { main as MakeBadges } from "./commands/make-badges";
 import { SortNls } from "./commands/sort.nls";
 import { SortOrder } from "./commands/sort.order";
@@ -29,5 +30,7 @@ cli
 
     sortFunctions[target]();
   });
+
+cli.command("compress-json").action(CompressJson);
 
 cli.parse();
