@@ -8,13 +8,13 @@ screenshots/**
 **/*.map
 **/*.ts
 node_modules
-scripts/**
+cli/**
 badges/**
 webview/assets
 
 #Config
 **/tsconfig.json
-webpack.config.js
+*.config.js
 .yarnrc
 .gitignore
 biome.json
@@ -28,5 +28,5 @@ TranslationGuide.md
 webview/assets
 
 # CSS
-webview/*.css
+webview/**/*.css
 !webview/output.css
