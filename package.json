@@ -354,7 +354,8 @@
           "properties": {
             "watermarkPositionInputSelectedBackgroud": {
               "type": "string",
-              "default": "var(--vscode-focusBorder)"
+              "default": "var(--vscode-focusBorder)",
+              "description": "%easy-codesnap.uiCustomColors.watermarkPositionInputSelectedBackgroud%"
             }
           },
           "default": {
