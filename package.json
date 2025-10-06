@@ -2,7 +2,7 @@
   "name": "easy-codesnap",
   "displayName": "Easy CodeSnap",
   "description": "Extension to take beautiful custom screenshots of your code 📷",
-  "version": "1.32.0",
+  "version": "1.32.1",
   "l10n": "./l10n",
   "repository": {
     "type": "git",
@@ -14,7 +14,7 @@
   "license": "MIT",
   "icon": "icon.png",
   "engines": {
-    "vscode": "^1.97.0"
+    "vscode": "^1.99.0"
   },
   "publisher": "ArthurLobo",
   "categories": [
@@ -399,7 +399,7 @@
     "@types/node": "18.x",
     "@types/react": "^19.1.8",
     "@types/react-dom": "^19.1.6",
-    "@types/vscode": "^1.96.0",
+    "@types/vscode": "^1.99.0",
     "badge-maker": "^4.1.0",
     "commander": "^14.0.1",
     "esbuild-loader": "^4.3.0",
