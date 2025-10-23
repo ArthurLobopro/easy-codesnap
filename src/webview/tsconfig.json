@@ -1,6 +1,6 @@
 {
 	"compilerOptions": {
-		"module": "Node16",
+		"module": "es2020",
 		"target": "ES2022",
 		"lib": [
 			"ES2022",
@@ -9,6 +9,7 @@
 		"rootDir": "./",
 		"strict": true,
 		"jsx": "react-jsx",
+		"moduleResolution": "bundler",
 		"paths": {
 			"@/*": ["./*"],
 			"@hooks/*": ["./ui/react/hooks/*"],

@@ -403,12 +403,12 @@
     "@types/vscode": "^1.99.0",
     "badge-maker": "^4.1.0",
     "commander": "^14.0.1",
-    "esbuild-loader": "^4.3.0",
-    "sharp": "^0.34.2",
+    "esbuild-loader": "^4.4.0",
+    "sharp": "^0.34.4",
     "tailwindcss": "^3",
-    "tsx": "^4.20.5",
-    "typescript": "^5.8.2",
-    "webpack": "^5.100.0",
+    "tsx": "^4.20.6",
+    "typescript": "^5.9.3",
+    "webpack": "^5.102.1",
     "webpack-cli": "^6.0.1"
   },
   "dependencies": {
@@ -420,8 +420,8 @@
     "dom-to-svg": "^0.12.2",
     "react": "^18.1.0",
     "react-dom": "^18.1.0",
-    "svgo": "^3.2.0",
+    "svgo": "^4.0.0",
     "tailwind-merge": "^3.3.1",
-    "zustand": "^5.0.7"
+    "zustand": "^5.0.8"
   }
 }

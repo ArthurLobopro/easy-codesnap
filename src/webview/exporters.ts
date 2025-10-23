@@ -1,7 +1,6 @@
-//@ts-expect-error
 import { elementToSVG } from "dom-to-svg";
 import type { Config as SVGOConfig } from "svgo";
-import { optimize } from "svgo/dist/svgo.browser";
+import { optimize } from "svgo/browser";
 import type { WebviewConfig } from "../types";
 import * as domtoimage from "./lib/dom-to-image";
 import { useSessionConfig } from "./SessionConfig";
@@ -108,7 +107,6 @@ const svgoConfig: SVGOConfig = {
       name: "preset-default",
       params: {
         overrides: {
-          removeViewBox: false,
           removeUnknownsAndDefaults: {
             defaultAttrs: true,
             uselessOverrides: true,
