@@ -28,6 +28,7 @@ export async function main() {
     ja: toBase64(fs.readFileSync(path.resolve(svgs_dir, "flags", "ja.svg"), "utf-8")),
     de: toBase64(fs.readFileSync(path.resolve(svgs_dir, "flags", "de.svg"), "utf-8")),
     us: toBase64(fs.readFileSync(path.resolve(svgs_dir, "flags", "us.svg"), "utf-8")),
+    es: toBase64(fs.readFileSync(path.resolve(svgs_dir, "flags", "es.svg"), "utf-8")),
   };
 
   function convertDownloadCount(downloadCount: number) {
@@ -127,6 +128,7 @@ export async function main() {
       "pt-br": "Brasilian Portuguese (pt-BR)",
       ja: "Japanese (ja)",
       de: "German (de)",
+      es: "Spanish (es)",
       "zh-cn": "Chinese Mandarim (zh-CN)",
       "zh-tw": "Taiwanese Mandarin (zh-TW)",
     } as const;

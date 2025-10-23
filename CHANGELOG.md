@@ -1,3 +1,7 @@
+# 1.31.2
+
+Feat: Add Spanish Translation
+
 # 1.31.0
 
 Fix: Better regex to detect inline codes ``
