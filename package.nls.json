@@ -63,5 +63,4 @@
   "easy-codesnap.watermarkPosition.bottom-right": "Places the watermark at the bottom-right corner of the snapshot.",
   "easy-codesnap.uiCustomColors": "Change some UI colors that may conflict with user theme.",
   "easy-codesnap.uiCustomColors.watermarkPositionInputSelectedBackgroud": "Changes the background color of the selected Watermark Position input. This can be used to fix issues with themes that may have less color contrast."
-  
 }
