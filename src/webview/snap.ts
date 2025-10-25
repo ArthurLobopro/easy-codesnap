@@ -13,25 +13,25 @@ export async function cameraFlashAnimation() {
   flashFx.style.opacity = "1";
 }
 
-export async function takeSnap(config = SessionConfig.get()) {
+export async function takeSnap({ target, ...config } = SessionConfig.get()) {
   console.time("TakeSnap");
-  const target = config.target === "container" ? snippetContainerNode : windowNode;
+  const targetNode = target === "container" ? snippetContainerNode : windowNode;
 
   const exporter = config.saveFormat === "svg" ? exportSVG : exportPNG;
 
   windowNode.style.resize = "none";
   snippetContainerNode.style.resize = "none";
 
-  if (config.transparentBackground || config.target === "window") {
+  if (config.transparentBackground || target === "window") {
     setVar("container-background-color", "transparent");
   }
 
-  if (config.target === "window") {
+  if (target === "window" || (target === "container" && config.transparentBackground)) {
     setVar("box-shadow", "none");
   }
 
   console.timeLog("TakeSnap", "Starting Exporter");
-  await exporter(target, config.shutterAction);
+  await exporter(targetNode, config.shutterAction);
   console.timeLog("TakeSnap", "Exporter Finished");
 
   windowNode.style.resize = "";
