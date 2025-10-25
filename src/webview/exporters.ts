@@ -1,8 +1,9 @@
+//@ts-expect-error
+import * as domtoimage from "dom-to-image-even-more";
 import { elementToSVG } from "dom-to-svg";
 import type { Config as SVGOConfig } from "svgo";
 import { optimize } from "svgo/browser";
 import type { WebviewConfig } from "../types";
-import * as domtoimage from "./lib/dom-to-image";
 import { useSessionConfig } from "./SessionConfig";
 import { cameraFlashAnimation } from "./snap";
 import { vscode } from "./util";
@@ -55,7 +56,7 @@ export async function exportSVG(target: HTMLElement, action: WebviewConfig["shut
 
 async function toPNG(target: HTMLElement) {
   console.time("toPNG");
-  const png = await await domtoimage.toPng(target, {
+  const png = await domtoimage.toPng(target, {
     bgcolor: "transparent",
     scale: useSessionConfig.getState().saveScale,
   });
