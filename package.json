@@ -95,6 +95,11 @@
           "markdownDescription": "%easy-codesnap.saveFormat%",
           "order": 4
         },
+        "easy-codesnap.optimizeSvg":{
+          "scope": "resource",
+          "type":"boolean",
+          "default": true
+        },
         "easy-codesnap.saveScale": {
           "scope": "resource",
           "type": "number",

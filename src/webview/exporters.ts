@@ -39,14 +39,22 @@ export async function exportPNG(target: HTMLElement, action: WebviewConfig["shut
 }
 
 export async function exportSVG(target: HTMLElement, action: WebviewConfig["shutterAction"]) {
-  const svg = new XMLSerializer()
-    .serializeToString(elementToSVG(target))
-    .replace(/<style>.*?<\/style>/gs, "<style>.line-number,#window-title{user-select:none;}</style>");
+  const { optimizeSvg } = useSessionConfig.getState();
 
-  const minifiedSvg = optimize(svg, svgoConfig).data;
+  const svg = await new Promise<string>((res) => {
+    const svg = new XMLSerializer()
+      .serializeToString(elementToSVG(target))
+      .replace(/<style>.*?<\/style>/gs, "<style>.line-number,#window-title{user-select:none;}</style>");
+
+    if (!optimizeSvg) {
+      return res(svg);
+    }
+
+    return res(optimize(svg, svgoConfig).data);
+  });
 
   if (action === "copy") {
-    vscode.postMessage({ type: "copy-svg", data: minifiedSvg });
+    vscode.postMessage({ type: "copy-svg", data: svg });
     cameraFlashAnimation();
     vscode.postMessage({ type: "copied" });
   } else {
