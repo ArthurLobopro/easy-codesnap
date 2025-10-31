@@ -1,3 +1,7 @@
+# 1.33.0
+
+Feat: Optional SVG optimization
+
 # 1.31.2
 
 Feat: Add Spanish Translation
