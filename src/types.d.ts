@@ -30,6 +30,7 @@ export interface ExtensionConfig {
   transparentBackground: boolean;
   highlightLineNumber: boolean;
   watermark: boolean;
+  optimizeSvg: boolean;
 
   maxCharWidth: number;
 

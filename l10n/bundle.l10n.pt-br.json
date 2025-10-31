@@ -70,5 +70,7 @@
   "Icon Style": "Tipo de ícone",
   "Rounded": "Redondo",
   "Square": "Quadrado",
-  "Only valid when `{windowStyle}` is `Windows`. Changes the `Windows` icon style": "Apenas válido quando `{windowStyle}` é `Windows`. Muda o estilo dos ícones de `Windows`"
+  "Only valid when `{windowStyle}` is `Windows`. Changes the `Windows` icon style": "Apenas válido quando `{windowStyle}` é `Windows`. Muda o estilo dos ícones de `Windows`",
+  "Optimize SVG": "Otimizar SVG",
+  "Controls whether the SVG should be optimized before saving. Only valid if `{saveFormat}` is `svg`.": "Controla se o SVG deve ser otimizado antes de salvar. Válido apenas se `{saveFormat}` for `svg`."
 }

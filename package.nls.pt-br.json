@@ -11,6 +11,7 @@
   "easy-codesnap.saveFormat.png": "Salva a snapshot em PNG. Um formato de imagem que suporta transparência.",
   "easy-codesnap.saveFormat.svg": "Salva a snapshot em SVG. Um formato de imagem vetorial que pode ser escalado sem perda de qualidade.",
   "easy-codesnap.saveScale": "Controla a escala de salvamento para o formato PNG.",
+  "easy-codesnap.optimizeSvg": "Controla se o svg deve ser otimizado antes de salvar. Apenas válido quando [Easy-codesnap: Save Format](command:workbench.action.openSettings?%22@id:easy-codesnap.saveFormat%22) é `svg`.",
   "easy-codesnap.saveScale.0.5": "Escala a snapshot para 50% do tamanho original.",
   "easy-codesnap.saveScale.0.75": "Escala a snapshot para 75% do tamanho original.",
   "easy-codesnap.saveScale.1": "Mantém a snapshot no tamanho original (100%).",

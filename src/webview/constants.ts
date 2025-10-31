@@ -59,6 +59,7 @@ export const DEFAULT_SETTINGS: Omit<ISessionConfig, "set"> = {
   highlightLineNumber: false,
   shouldUpdateTitle: true,
   isReady: false,
+  optimizeSvg: true,
   templates: {
     relativeFolder: "",
     fileName: "",
