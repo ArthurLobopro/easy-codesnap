@@ -38,7 +38,7 @@ export async function main() {
   }
 
   async function makeOpenVsxBadges() {
-    //@ts-ignore
+    //@ts-expect-error
     const { version, downloadCount } = await fetch("https://open-vsx.org/api/ArthurLobo/easy-codesnap").then((res) =>
       res.json(),
     );
@@ -90,11 +90,11 @@ export async function main() {
     )
       .then((res) => res.json())
       .then((data) => {
-        //@ts-ignore
+        //@ts-expect-error
         const ext = data.results[0].extensions[0]!;
 
         return {
-          //@ts-ignore
+          //@ts-expect-error
           installs: ext.statistics.find((s) => s.statisticName === "install")?.value,
           version: ext.versions[0].version,
         };
@@ -136,12 +136,12 @@ export async function main() {
     for (const status of translationStatus) {
       if (status.code in languageStrings) {
         const badge = makeBadge({
-          //@ts-ignore
+          //@ts-expect-error
           label: languageStrings[status.code],
           message: `${toPercent(status.coverage)}%`,
           style: "flat",
           color: status.coverage === 100 ? "green" : "blue",
-          //@ts-ignore
+          //@ts-expect-error
           ...(svgs[status.code] ? { logoBase64: svgs[status.code] } : {}),
         });
 

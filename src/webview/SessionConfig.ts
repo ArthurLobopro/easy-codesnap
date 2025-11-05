@@ -62,7 +62,7 @@ export const useSessionConfig = create<ISessionConfig>((setState) => ({
       SessionConfig.set({ ...config }, true);
 
       for (const key in config) {
-        //@ts-ignore
+        //@ts-expect-error
         stateConfig[key] = config[key];
       }
 

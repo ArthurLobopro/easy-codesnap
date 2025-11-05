@@ -31,6 +31,7 @@ export interface ExtensionConfig {
   highlightLineNumber: boolean;
   watermark: boolean;
   optimizeSvg: boolean;
+  useFallbackPngExporter: boolean;
 
   maxCharWidth: number;
 

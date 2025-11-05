@@ -1,20 +1,23 @@
 //@ts-expect-error
-import * as domtoimage from "dom-to-image-even-more";
+import domtoimage from "dom-to-image-even-more";
 import { elementToSVG } from "dom-to-svg";
 import type { Config as SVGOConfig } from "svgo";
 import { optimize } from "svgo/browser";
 import type { WebviewConfig } from "../types";
-import { useSessionConfig } from "./SessionConfig";
+import { SessionConfig, useSessionConfig } from "./SessionConfig";
 import { cameraFlashAnimation } from "./snap";
 import { vscode } from "./util";
 
-export async function exportPNG(target: HTMLElement, action: WebviewConfig["shutterAction"]) {
+export async function exportPNG(target: HTMLElement, action: WebviewConfig["shutterAction"], useFallback?: boolean) {
+  const [mainExporter, fallbackExporter] = useFallback ? [toPNGFallback, toPNG] : [toPNG, toPNGFallback];
+
   const url = await (async () => {
     try {
-      return await toPNG(target);
+      return await mainExporter(target);
     } catch (_error) {
       console.log("Error while generating PNG, running fallback");
-      return await toPNGFallback(target);
+      console.log(_error);
+      return await fallbackExporter(target);
     }
   })();
 
@@ -43,7 +46,7 @@ export async function exportSVG(target: HTMLElement, action: WebviewConfig["shut
 
   const svg = await new Promise<string>((res) => {
     const svg = new XMLSerializer()
-      .serializeToString(elementToSVG(target))
+      .serializeToString(elementToSVG(target, { keepLinks: false }))
       .replace(/<style>.*?<\/style>/gs, "<style>.line-number,#window-title{user-select:none;}</style>");
 
     if (!optimizeSvg) {
@@ -73,19 +76,22 @@ async function toPNG(target: HTMLElement) {
 }
 
 async function toPNGFallback(target: HTMLElement) {
-  const scale = useSessionConfig.getState().saveScale;
+  const scale = SessionConfig.get("saveScale");
 
   const canvas = document.createElement("canvas");
   const ctx = canvas.getContext("2d");
 
-  const width = target.clientWidth * scale;
-  const height = target.clientHeight * scale;
+  const { height: targetHeight, width: targetWidth } = target.getBoundingClientRect();
+
+  const width = Math.floor(targetWidth * scale) + 2;
+  const height = Math.floor(targetHeight * scale) + 2;
 
   canvas.width = width;
   canvas.height = height;
 
   function svgToDataURI(svgString: string) {
-    const encodedSvg = encodeURIComponent(svgString).replace(/%0A/g, "").replace(/%20/g, " ");
+    const optimizedSvg = optimize(svgString, svgoConfig).data;
+    const encodedSvg = encodeURIComponent(optimizedSvg).replace(/%0A/g, "").replace(/%20/g, " ");
 
     return `data:image/svg+xml;charset=utf-8,${encodedSvg}`;
   }
@@ -97,7 +103,7 @@ async function toPNGFallback(target: HTMLElement) {
       img.width = width;
       img.height = height;
 
-      img.src = svgToDataURI(new XMLSerializer().serializeToString(elementToSVG(target)));
+      img.src = svgToDataURI(new XMLSerializer().serializeToString(elementToSVG(target, { keepLinks: false })));
 
       img.onload = () => resolve(img);
     });

@@ -31,7 +31,7 @@ export async function takeSnap({ target, ...config } = SessionConfig.get()) {
   }
 
   console.timeLog("TakeSnap", "Starting Exporter");
-  await exporter(targetNode, config.shutterAction);
+  await exporter(targetNode, config.shutterAction, config.useFallbackPngExporter);
   console.timeLog("TakeSnap", "Exporter Finished");
 
   windowNode.style.resize = "";

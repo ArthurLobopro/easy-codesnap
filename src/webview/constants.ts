@@ -60,6 +60,7 @@ export const DEFAULT_SETTINGS: Omit<ISessionConfig, "set"> = {
   shouldUpdateTitle: true,
   isReady: false,
   optimizeSvg: true,
+  useFallbackPngExporter: false,
   templates: {
     relativeFolder: "",
     fileName: "",
