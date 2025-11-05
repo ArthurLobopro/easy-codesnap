@@ -81,14 +81,17 @@ async function toPNGFallback(target: HTMLElement) {
   const canvas = document.createElement("canvas");
   const ctx = canvas.getContext("2d");
 
-  const width = target.clientWidth * scale;
-  const height = target.clientHeight * scale;
+  const { height: targetHeight, width: targetWidth } = target.getBoundingClientRect();
+
+  const width = Math.floor(targetWidth * scale) + 2;
+  const height = Math.floor(targetHeight * scale) + 2;
 
   canvas.width = width;
   canvas.height = height;
 
   function svgToDataURI(svgString: string) {
-    const encodedSvg = encodeURIComponent(svgString).replace(/%0A/g, "").replace(/%20/g, " ");
+    const optimizedSvg = optimize(svgString, svgoConfig).data;
+    const encodedSvg = encodeURIComponent(optimizedSvg).replace(/%0A/g, "").replace(/%20/g, " ");
 
     return `data:image/svg+xml;charset=utf-8,${encodedSvg}`;
   }
