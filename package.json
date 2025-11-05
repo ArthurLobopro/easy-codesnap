@@ -100,6 +100,12 @@
           "type": "boolean",
           "default": true
         },
+        "easy-codesnap.useFallbackPngExporter": {
+          "scope": "resource",
+          "type": "boolean",
+          "default": false,
+          "markdownDescription": "%easy-codesnap.useFallbackPngExporter%"
+        },
         "easy-codesnap.saveScale": {
           "scope": "resource",
           "type": "number",

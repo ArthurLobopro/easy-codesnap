@@ -63,5 +63,6 @@
   "easy-codesnap.watermarkPosition.bottom-left": "Coloca a marca d'água no canto inferior esquerdo.",
   "easy-codesnap.watermarkPosition.bottom-right": "Coloca a marca d'água no canto inferior direito.",
   "easy-codesnap.uiCustomColors": "Muda algumas cores da UI que podem conflitar com o tema do usuário.",
-  "easy-codesnap.uiCustomColors.watermarkPositionInputSelectedBackgroud": "Muda a cor de fundo do input de seleção da posição da Marca D'água. Pode ser usado para corrigir problemas com temas que não tenham muito contraste."
+  "easy-codesnap.uiCustomColors.watermarkPositionInputSelectedBackgroud": "Muda a cor de fundo do input de seleção da posição da Marca D'água. Pode ser usado para corrigir problemas com temas que não tenham muito contraste.",
+  "easy-codesnap.useFallbackPngExporter": "Habilita o uso de um exportador PNG alternativo como exportador principal para salvar snapshots no formato PNG. Isso pode ser útil se você encontrar problemas com o exportador padrão."
 }

@@ -1,5 +1,6 @@
 import { useTranslation } from "@hooks//useTranslation";
 import { useConfig } from "@/ui/react/hooks/useConfig";
+import { text } from "@/util";
 import { EscapeCodes } from "../../EscapeCodes";
 import { DetailsContent, ExpandDetails, TextDetailsSummary } from "../../ExpandDetails";
 import { ToggleInput } from "../../ToggleInput";
@@ -30,6 +31,15 @@ export function SaveActionsDetails() {
           }
           disabled={saveFormat !== "svg"}
         />
+        <ToggleInput
+          config="useFallbackPngExporter"
+          label={t("Use Fallback PNG Exporter")}
+          tooltip={text(
+            "Enables the use of a fallback PNG exporter as main exporter for saving snapshots in PNG format.",
+            "This can be useful if you encounter issues with the default exporter.",
+          )}
+        />
+
         <SaveScaleSelect />
       </DetailsContent>
     </ExpandDetails>
