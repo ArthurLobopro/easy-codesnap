@@ -67,6 +67,6 @@ export class VarUpdater extends Updater {
     snippetContainerNode.dataset.enablesymbolbreadcrumb = String(enableSymbolBreadcrumb);
     snippetContainerNode.dataset.target = target;
 
-    Object.entries(uiCustomColors).forEach(([key, value]) => setVar(key, value));
+    Object.entries(uiCustomColors).forEach(([key, value]) => void setVar(key, value));
   }
 }
