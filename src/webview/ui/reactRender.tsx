@@ -2,8 +2,9 @@ import { Tooltip, TooltipText } from "@arthur-lobo/react-custom-tooltip";
 import { createPortal } from "react-dom";
 import { createRoot } from "react-dom/client";
 import { takeSnap } from "@/snap";
-import { navbarNode } from "./elements";
+import { breadcrumbNode, navbarNode } from "./elements";
 import { OneTimeConfig } from "./OneTimeConfig";
+import { Breadcrumb } from "./react/components/Breadcrumb";
 import { ShutterIcon } from "./react/components/icons";
 import { LeftButtons } from "./react/components/LeftButtons";
 import { ZoomBar } from "./react/components/ZoomBar";
@@ -22,6 +23,7 @@ createRoot(document.querySelector("#top-header")!).render(
       </Tooltip>,
       document.querySelector("#save-container")!,
     )}
+    {createPortal(<Breadcrumb />, breadcrumbNode)}
   </TranslationProvider>,
 );
 
