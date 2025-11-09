@@ -1,8 +1,9 @@
 /** biome-ignore-all lint/suspicious/noArrayIndexKey: There is not a unique ID */
 /** biome-ignore-all lint/correctness/useJsxKeyInIterable: Just ignore it */
-import { iconClassConfig } from "@/constants";
+import { iconComponent } from "@/constants";
 import { getSymbolBreadcrumbs } from "@/util";
 import { useConfig } from "../hooks/useConfig";
+import { ChevronRight } from "./codicons";
 
 export function Breadcrumb() {
   const enableSymbolBreadcrumb = useConfig("enableSymbolBreadcrumb");
@@ -13,20 +14,19 @@ export function Breadcrumb() {
     const symbolBreadcrumbs = getSymbolBreadcrumbs();
 
     const breadcrumb = symbolBreadcrumbs.flatMap((symbol, index) => {
-      const symbolType = symbol.kind as keyof typeof iconClassConfig;
+      const symbolType = symbol.kind as keyof typeof iconComponent;
 
-      if (symbolType in iconClassConfig) {
-        const iconClass = iconClassConfig[symbolType] || "";
+      if (symbolType in iconComponent) {
         return [
           <div className="breadcrumb-item">
-            <div className={iconClass} />
+            {iconComponent[symbolType]()}
             <div className="breadcrumb-label">{symbol.name}</div>
           </div>,
-          <div className="codicon codicon-chevron-right" />,
+          <ChevronRight />,
         ];
       }
 
-      return [<div key={index}>{symbol.name}</div>, <div className="codicon codicon-chevron-right" />];
+      return [<div key={index}>{symbol.name}</div>, <ChevronRight />];
     });
 
     breadcrumb.pop();

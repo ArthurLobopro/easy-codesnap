@@ -1,76 +1,76 @@
-.codicon.codicon-symbol-array {
+.icon-symbol-array {
     color: var(--vscode-symbolIcon-arrayForeground)
 }
 
-.codicon.codicon-symbol-boolean {
+.icon-symbol-boolean {
     color: var(--vscode-symbolIcon-booleanForeground)
 }
 
-.codicon.codicon-symbol-class {
+.icon-symbol-class {
     color: var(--vscode-symbolIcon-classForeground)
 }
 
-.codicon.codicon-symbol-method {
+.icon-symbol-method {
     color: var(--vscode-symbolIcon-methodForeground)
 }
 
-.codicon.codicon-symbol-color {
+.icon-symbol-color {
     color: var(--vscode-symbolIcon-colorForeground)
 }
 
-.codicon.codicon-symbol-constant {
+.icon-symbol-constant {
     color: var(--vscode-symbolIcon-constantForeground)
 }
 
-.codicon.codicon-symbol-constructor {
+.icon-symbol-constructor {
     color: var(--vscode-symbolIcon-constructorForeground)
 }
 
-.codicon.codicon-symbol-enum {
+.icon-symbol-enum {
     color: var(--vscode-symbolIcon-enumeratorForeground)
 }
 
-.codicon.codicon-symbol-enum-member {
+.icon-symbol-enum-member {
     color: var(--vscode-symbolIcon-enumeratorMemberForeground)
 }
 
-.codicon.codicon-symbol-event {
+.icon-symbol-event {
     color: var(--vscode-symbolIcon-eventForeground)
 }
 
-.codicon.codicon-symbol-field {
+.icon-symbol-field {
     color: var(--vscode-symbolIcon-fieldForeground)
 }
 
-.codicon.codicon-symbol-file {
+.icon-symbol-file {
     color: var(--vscode-symbolIcon-fileForeground)
 }
 
-.codicon.codicon-symbol-folder {
+.icon-symbol-folder {
     color: var(--vscode-symbolIcon-folderForeground)
 }
 
-.codicon.codicon-symbol-function {
+.icon-symbol-function {
     color: var(--vscode-symbolIcon-functionForeground)
 }
 
-.codicon.codicon-symbol-interface {
+.icon-symbol-interface {
     color: var(--vscode-symbolIcon-interfaceForeground)
 }
 
-.codicon.codicon-symbol-key {
+.icon-symbol-key {
     color: var(--vscode-symbolIcon-keyForeground)
 }
 
-.codicon.codicon-symbol-keyword {
+.icon-symbol-keyword {
     color: var(--vscode-symbolIcon-keywordForeground)
 }
 
-.codicon.codicon-symbol-module {
+.icon-symbol-module {
     color: var(--vscode-symbolIcon-moduleForeground)
 }
 
-.codicon.codicon-symbol-namespace {
+.icon-symbol-namespace {
     color: var(--vscode-symbolIcon-namespaceForeground)
 }
 
@@ -106,7 +106,7 @@
     color: var(--vscode-symbolIcon-snippetForeground)
 }
 
-.codicon.codicon-symbol-string {
+.icon-symbol-string {
     color: var(--vscode-symbolIcon-stringForeground)
 }
 
