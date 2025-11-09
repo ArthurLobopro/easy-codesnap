@@ -20,7 +20,9 @@ import {
   SymbolMisc,
   SymbolModule,
   SymbolNamespace,
+  SymbolProperty,
   SymbolString,
+  SymbolVariable,
 } from "./ui/react/components/codicons";
 
 export const iconComponent = {
@@ -45,6 +47,8 @@ export const iconComponent = {
   Misc: () => <SymbolMisc />,
   Module: () => <SymbolModule className="icon-symbol-module follow-colors" />,
   Namespace: () => <SymbolNamespace className="icon-symbol-namespace follow-colors" />,
+  Variable: () => <SymbolVariable className="icon-symbol-variable follow-colors" />,
+  Property: () => <SymbolProperty className="icon-symbol-property follow-colors" />,
 } as const;
 
 export const ZOOM_LEVELS = [50, 75, 100, 125, 150] as const;

@@ -20,4 +20,6 @@ export {
 } from "@codicons/symbol-method.svg";
 export { ReactComponent as SymbolMisc } from "@codicons/symbol-misc.svg";
 export { ReactComponent as SymbolModule, ReactComponent as SymbolNamespace } from "@codicons/symbol-namespace.svg";
+export { ReactComponent as SymbolProperty } from "@codicons/symbol-property.svg";
 export { ReactComponent as SymbolString } from "@codicons/symbol-string.svg";
+export { ReactComponent as SymbolVariable } from "@codicons/symbol-variable.svg";

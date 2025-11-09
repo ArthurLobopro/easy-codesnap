@@ -26,6 +26,8 @@ export function Breadcrumb() {
         ];
       }
 
+      console.table({ symbolType });
+
       return [<div key={index}>{symbol.name}</div>, <ChevronRight />];
     });
 

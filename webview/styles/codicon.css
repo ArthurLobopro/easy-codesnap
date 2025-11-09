@@ -94,7 +94,7 @@
     color: var(--vscode-symbolIcon-packageForeground)
 }
 
-.codicon.codicon-symbol-property {
+.icon-symbol-property {
     color: var(--vscode-symbolIcon-propertyForeground)
 }
 
@@ -126,6 +126,6 @@
     color: var(--vscode-symbolIcon-unitForeground)
 }
 
-.codicon.codicon-symbol-variable {
+.icon-symbol-variable {
     color: var(--vscode-symbolIcon-variableForeground)
 }
