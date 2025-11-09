@@ -63,6 +63,7 @@ const config = (env, argv) => {
           "@": path.resolve(__dirname, "./src/webview"),
           "@hooks": path.resolve(__dirname, "./src/webview/ui/react/hooks"),
           "@assets": path.resolve(__dirname, "./webview/assets"),
+          "@codicons": path.resolve(__dirname, "./node_modules/@vscode/codicons/src/icons")
 
         },
         fallback: {}

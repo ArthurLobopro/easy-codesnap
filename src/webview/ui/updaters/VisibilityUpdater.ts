@@ -2,7 +2,6 @@ import { SessionConfig, useSessionConfig } from "../../SessionConfig";
 import { px } from "../../util";
 import { breadcrumbNode, navbarNode, snippetContainerNode, targetProportion, windowNode } from "../elements";
 import { Updater } from "../Updater";
-import { setupBreadcrumb } from "./CodeUpdater";
 
 export class VisibilityUpdater extends Updater {
   constructor() {
@@ -41,15 +40,6 @@ export class VisibilityUpdater extends Updater {
 
     if (breadcrumbNode) {
       breadcrumbNode.style.display = enableSymbolBreadcrumb ? "flex" : "none";
-
-      if (enableSymbolBreadcrumb) {
-        const breadcrumbContent = setupBreadcrumb();
-        if (breadcrumbContent) {
-          breadcrumbNode.innerHTML = breadcrumbContent;
-        }
-      } else {
-        breadcrumbNode.innerHTML = "";
-      }
     }
 
     UpdateTargetProportion();

@@ -13,7 +13,8 @@
 		"paths": {
 			"@/*": ["./*"],
 			"@hooks/*": ["./ui/react/hooks/*"],
-			"@assets/*": ["../../webview/assets/*"]
+			"@assets/*": ["../../webview/assets/*"],
+			"@codicons/*": ["../../node_modules/@vscode/codicons/src/icons/*"]
 		}
 	},
 	"include": [
