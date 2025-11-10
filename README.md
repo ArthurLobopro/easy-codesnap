@@ -4,9 +4,13 @@
 [![Installs](https://raw.githubusercontent.com/ArthurLobopro/easy-codesnap/refs/heads/Badges/vscode-downloads.png)](https://marketplace.visualstudio.com/items?itemName=ArthurLobo.easy-codesnap)
 [![Open VSX Version](https://raw.githubusercontent.com/ArthurLobopro/easy-codesnap/refs/heads/Badges/open-vsx-version.png)](https://open-vsx.org/extension/ArthurLobo/easy-codesnap) [![Open VSX Downloads](https://raw.githubusercontent.com/ArthurLobopro/easy-codesnap/refs/heads/Badges/open-vsx-downloads.png)](https://open-vsx.org/extension/ArthurLobo/easy-codesnap)
 
-
-
 ![Banner](https://raw.githubusercontent.com/ArthurLobopro/easy-codesnap/main/screenshots/banner.png)
+
+# Why Easy CodeSnap?
+
+There are many CodeSnap-like extensions out there. Unfortunately, most of them are just CodeSnap with one or two extra features or bug fixes — and that’s it. Easy CodeSnap is a more powerful version of CodeSnap, offering a much better UX and UI, countless new features, and a bug-free experience!
+
+Try it — you won’t regret it.
 
 ## Features
 

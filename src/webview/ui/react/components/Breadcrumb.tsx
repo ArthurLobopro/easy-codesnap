@@ -2,11 +2,11 @@
 /** biome-ignore-all lint/correctness/useJsxKeyInIterable: Just ignore it */
 import { iconComponent } from "@/constants";
 import { getSymbolBreadcrumbs } from "@/util";
-import { useConfig } from "../hooks/useConfig";
+import { useConfigList } from "../hooks/useConfig";
 import { ChevronRight } from "./codicons";
 
 export function Breadcrumb() {
-  const enableSymbolBreadcrumb = useConfig("enableSymbolBreadcrumb");
+  const { enableSymbolBreadcrumb } = useConfigList(["enableSymbolBreadcrumb", "symbolBreadcrumbs"]);
 
   if (!enableSymbolBreadcrumb) return null;
 
