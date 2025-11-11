@@ -67,10 +67,11 @@ export async function exportSVG(target: HTMLElement, action: WebviewConfig["shut
 
 async function toPNG(target: HTMLElement) {
   console.time("toPNG");
+
   const png = await domtoimage.toPng(target, {
-    bgcolor: "transparent",
     scale: useSessionConfig.getState().saveScale,
   });
+
   console.timeEnd("toPNG");
   return png;
 }
