@@ -18,6 +18,7 @@ export function SaveActionsDetails() {
       <DetailsContent>
         <SaveActionSelect />
         <SaveFormatSelect />
+        <SaveScaleSelect />
         <ToggleInput
           config="optimizeSvg"
           label={t("Optimize SVG")}
@@ -38,9 +39,8 @@ export function SaveActionsDetails() {
             "Enables the use of a fallback PNG exporter as main exporter for saving snapshots in PNG format.",
             "This can be useful if you encounter issues with the default exporter.",
           )}
+          disabled={saveFormat !== "png"}
         />
-
-        <SaveScaleSelect />
       </DetailsContent>
     </ExpandDetails>
   );
