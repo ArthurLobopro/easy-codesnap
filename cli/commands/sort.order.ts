@@ -11,6 +11,7 @@ type Properties = {
     minimum?: number;
     maximum?: number;
     properties?: object;
+    minLength?: number;
     enum?: string[];
     markdownEnumDescriptions?: string[];
     markdownDescription: string;
@@ -26,12 +27,14 @@ export function SortOrder() {
   Object.entries(properties).forEach(([key, value], index) => {
     type key = keyof typeof properties;
     properties[key as key] = {
+      //Pick will re-order the properties
       ...pick(value, [
         "scope",
         "type",
         "enum",
         "minimum",
         "maximum",
+        "minLength",
         "properties",
         "default",
         "markdownDescription",
