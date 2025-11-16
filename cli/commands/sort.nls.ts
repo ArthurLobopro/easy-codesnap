@@ -19,8 +19,6 @@ export function SortNls() {
       match = PICK_NLS_KEYS_REGEX.exec(mirror);
     }
 
-    console.log(keys);
-
     for (const key of keys) {
       newContent[key] = content[key];
     }
