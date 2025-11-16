@@ -99,6 +99,7 @@
           "scope": "resource",
           "type": "boolean",
           "default": true,
+          "markdownDescription": "%easy-codesnap.optimizeSvg%",
           "order": 5
         },
         "easy-codesnap.useFallbackPngExporter": {
