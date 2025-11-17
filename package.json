@@ -68,31 +68,31 @@
         "easy-codesnap.shutterAction": {
           "scope": "resource",
           "type": "string",
-          "default": "copy",
           "enum": [
             "copy",
             "save"
           ],
+          "default": "copy",
+          "markdownDescription": "%easy-codesnap.shutterAction%",
           "markdownEnumDescriptions": [
             "%easy-codesnap.shutterAction.copy%",
             "%easy-codesnap.shutterAction.save%"
           ],
-          "markdownDescription": "%easy-codesnap.shutterAction%",
           "order": 3
         },
         "easy-codesnap.saveFormat": {
           "scope": "resource",
           "type": "string",
-          "default": "png",
           "enum": [
             "png",
             "svg"
           ],
+          "default": "png",
+          "markdownDescription": "%easy-codesnap.saveFormat%",
           "markdownEnumDescriptions": [
             "%easy-codesnap.saveFormat.png%",
             "%easy-codesnap.saveFormat.svg%"
           ],
-          "markdownDescription": "%easy-codesnap.saveFormat%",
           "order": 4
         },
         "easy-codesnap.optimizeSvg": {
@@ -112,7 +112,6 @@
         "easy-codesnap.saveScale": {
           "scope": "resource",
           "type": "number",
-          "default": 1,
           "enum": [
             0.5,
             0.75,
@@ -122,6 +121,8 @@
             3,
             4
           ],
+          "default": 1,
+          "markdownDescription": "%easy-codesnap.saveScale%",
           "markdownEnumDescriptions": [
             "%easy-codesnap.saveScale.0.5%",
             "%easy-codesnap.saveScale.0.75%",
@@ -131,7 +132,6 @@
             "%easy-codesnap.saveScale.3%",
             "%easy-codesnap.saveScale.4%"
           ],
-          "markdownDescription": "%easy-codesnap.saveScale%",
           "order": 7
         },
         "easy-codesnap.showLineNumbers": {
@@ -165,31 +165,31 @@
         "easy-codesnap.windowStyle": {
           "scope": "resource",
           "type": "string",
-          "default": "macos",
           "enum": [
             "macos",
             "windows"
           ],
+          "default": "macos",
+          "markdownDescription": "%easy-codesnap.windowStyle%",
           "markdownEnumDescriptions": [
             "%easy-codesnap.windowStyle.macos%",
             "%easy-codesnap.windowStyle.windows%"
           ],
-          "markdownDescription": "%easy-codesnap.windowStyle%",
           "order": 12
         },
         "easy-codesnap.windowIconType": {
           "scope": "resource",
           "type": "string",
-          "default": "round",
           "enum": [
             "round",
             "square"
           ],
+          "default": "round",
+          "markdownDescription": "%easy-codesnap.windowIconType%",
           "markdownEnumDescriptions": [
             "%easy-codesnap.windowIconType.round%",
             "%easy-codesnap.windowIconType.square%"
           ],
-          "markdownDescription": "%easy-codesnap.windowIconType%",
           "order": 13
         },
         "easy-codesnap.showWindowTitle": {
@@ -202,9 +202,9 @@
         "easy-codesnap.windowTitleTemplate": {
           "scope": "resource",
           "type": "string",
+          "minLength": 1,
           "default": "{workspace} - {fileName}",
           "markdownDescription": "%easy-codesnap.windowTitleTemplate%",
-          "minLength": 1,
           "order": 15
         },
         "easy-codesnap.showWindowControls": {
@@ -224,35 +224,35 @@
         "easy-codesnap.roundingLevel": {
           "scope": "resource",
           "type": "number",
-          "default": 1,
           "enum": [
             1,
             2,
             3,
             4
           ],
+          "default": 1,
+          "markdownDescription": "%easy-codesnap.roundingLevel%",
           "markdownEnumDescriptions": [
             "%easy-codesnap.roundingLevel.1%",
             "%easy-codesnap.roundingLevel.2%",
             "%easy-codesnap.roundingLevel.3%",
             "%easy-codesnap.roundingLevel.4%"
           ],
-          "markdownDescription": "%easy-codesnap.roundingLevel%",
           "order": 18
         },
         "easy-codesnap.target": {
           "scope": "resource",
           "type": "string",
-          "default": "container",
           "enum": [
             "container",
             "window"
           ],
+          "default": "container",
+          "markdownDescription": "%easy-codesnap.target%",
           "markdownEnumDescriptions": [
             "%easy-codesnap.target.container%",
             "%easy-codesnap.target.window%"
           ],
-          "markdownDescription": "%easy-codesnap.target%",
           "order": 19
         },
         "easy-codesnap.boxShadow": {
@@ -300,16 +300,15 @@
         "easy-codesnap.maxCharWidth": {
           "scope": "resource",
           "type": "integer",
-          "default": 0,
-          "markdownDescription": "%easy-codesnap.maxCharWidth%",
           "minimum": 0,
           "maximum": 200,
+          "default": 0,
+          "markdownDescription": "%easy-codesnap.maxCharWidth%",
           "order": 26
         },
         "easy-codesnap.aspect-ratio": {
           "scope": "resource",
           "type": "string",
-          "default": "none",
           "enum": [
             "none",
             "1:1",
@@ -318,6 +317,8 @@
             "16:9",
             "1.91:1"
           ],
+          "default": "none",
+          "markdownDescription": "%easy-codesnap.aspect-ratio%",
           "markdownEnumDescriptions": [
             "%easy-codesnap.aspect-ratio.none%",
             "%easy-codesnap.aspect-ratio.1:1%",
@@ -326,7 +327,6 @@
             "%easy-codesnap.aspect-ratio.16:9%",
             "%easy-codesnap.aspect-ratio.1.91:1%"
           ],
-          "markdownDescription": "%easy-codesnap.aspect-ratio%",
           "order": 27
         },
         "easy-codesnap.watermark": {
@@ -346,25 +346,29 @@
         "easy-codesnap.watermarkPosition": {
           "scope": "resource",
           "type": "string",
-          "default": "bottom-right",
           "enum": [
             "top-left",
             "top-right",
             "bottom-left",
             "bottom-right"
           ],
+          "default": "bottom-right",
+          "markdownDescription": "%easy-codesnap.watermarkPosition%",
           "markdownEnumDescriptions": [
             "%easy-codesnap.watermarkPosition.top-left%",
             "%easy-codesnap.watermarkPosition.top-right%",
             "%easy-codesnap.watermarkPosition.bottom-left%",
             "%easy-codesnap.watermarkPosition.bottom-right%"
           ],
-          "markdownDescription": "%easy-codesnap.watermarkPosition%",
           "order": 30
         },
         "easy-codesnap.uiCustomColors": {
           "scope": "resource",
           "type": "object",
+          "default": {
+            "watermarkPositionInputSelectedBackgroud": "var(--vscode-focusBorder)"
+          },
+          "markdownDescription": "%easy-codesnap.uiCustomColors%",
           "properties": {
             "watermarkPositionInputSelectedBackgroud": {
               "type": "string",
@@ -372,10 +376,6 @@
               "description": "%easy-codesnap.uiCustomColors.watermarkPositionInputSelectedBackgroud%"
             }
           },
-          "default": {
-            "watermarkPositionInputSelectedBackgroud": "var(--vscode-focusBorder)"
-          },
-          "markdownDescription": "%easy-codesnap.uiCustomColors%",
           "order": 31
         }
       }
@@ -405,7 +405,7 @@
     "translation-status": "tsx cli translation-status",
     "compress-json": "tsx cli compress-json",
     "make-badges": "tsx cli make-badges",
-    "sort": "tsx cli sort nls && tsx cli sort order",
+    "sort": "tsx cli sort order && tsx cli sort nls",
     "build:css": "tailwindcss -i ./webview/style.css -o ./webview/output.css -m"
   },
   "devDependencies": {
