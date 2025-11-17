@@ -18,6 +18,8 @@
   "easy-codesnap.saveScale.2": "將快照縮放為原始大小的 200%。",
   "easy-codesnap.saveScale.3": "將快照縮放為原始大小的 300%。",
   "easy-codesnap.saveScale.4": "將快照縮放為原始大小的 400%。",
+  "easy-codesnap.optimizeSvg": "控制是否在儲存前對 SVG 進行最佳化。僅在 [Easy-codesnap: Save Format](command:workbench.action.openSettings?%22@id:easy-codesnap.saveFormat%22) 設為 `svg` 時生效。",
+  "easy-codesnap.useFallbackPngExporter": "控制是否使用備用匯出器作為儲存 PNG 格式快照時的主要匯出方式。當預設匯出器出現異常結果時可啟用。",
   "easy-codesnap.showLineNumbers": "在快照畫面中顯示行號。",
   "easy-codesnap.realLineNumbers": "顯示選區中的實際行號，而非從 1 開始。僅在啟用 [Easy-codesnap: Show Line Numbers](command:workbench.action.openSettings?%22@id:easy-codesnap.showLineNumbers%22) 時生效。",
   "easy-codesnap.highlightLineNumber": "高亮顯示選中行時，使用 VSCode 主題顏色 `editorLineNumber-activeForeground` 來標示行號。僅在啟用 [Easy-codesnap: Show Line Numbers](command:workbench.action.openSettings?%22@id:easy-codesnap.showLineNumbers%22) 時生效。",
@@ -45,7 +47,7 @@
   "easy-codesnap.containerPadding": "變更程式碼快照容器的內距。",
   "easy-codesnap.transparentBackground": "產生快照時使用透明背景。僅在 [Easy-codesnap: Target](command:workbench.action.openSettings?%22@id:easy-codesnap.target%22) 設為 `container` 時生效。",
   "easy-codesnap.enableResizing": "允許調整程式碼快照容器大小。停用此選項會移除所有已做的大小調整。",
-  "easy-codesnap.enableSymbolBreadcrumb": "在快照畫面中啟用符號導覽。",
+  "easy-codesnap.enableSymbolBreadcrumb": "控制是否在快照畫面中顯示符號導覽。",
   "easy-codesnap.maxCharWidth": "指定依據字元數變更最大行寬。 設為 `0` 表示不限制。無效的數值將被忽略，並還原為上次變更的有效值。",
   "easy-codesnap.aspect-ratio": "控制快照的寬高比。僅在 [Easy-codesnap: Target](command:workbench.action.openSettings?%22@id:easy-codesnap.target%22) 設為 `container` 時生效。",
   "easy-codesnap.aspect-ratio.none": "不套用固定寬高比。",
@@ -60,5 +62,7 @@
   "easy-codesnap.watermarkPosition.top-left": "將浮水印置於快照左上角。",
   "easy-codesnap.watermarkPosition.top-right": "將浮水印置於快照右上角。",
   "easy-codesnap.watermarkPosition.bottom-left": "將浮水印置於快照左下角。",
-  "easy-codesnap.watermarkPosition.bottom-right": "將浮水印置於快照右下角。"
+  "easy-codesnap.watermarkPosition.bottom-right": "將浮水印置於快照右下角。",
+  "easy-codesnap.uiCustomColors": "控制是否在設定面板中應用自訂 UI 顏色覆蓋。",
+  "easy-codesnap.uiCustomColors.watermarkPositionInputSelectedBackgroud": "變更浮水印位置輸入欄位選取時的背景顏色，以改善低對比主題下的可見性。"
 }

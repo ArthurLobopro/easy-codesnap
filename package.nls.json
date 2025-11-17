@@ -10,7 +10,6 @@
   "easy-codesnap.saveFormat": "Specifies the file format for saving snapshots.",
   "easy-codesnap.saveFormat.png": "Stores the snapshot in PNG format as a bitmap image that supports transparency.",
   "easy-codesnap.saveFormat.svg": "Stores the snapshot in SVG format as a vector image that can be scaled without quality loss.",
-  "easy-codesnap.optimizeSvg": "Controls whether the svg should be optimized before saving. Only valid when [Easy-codesnap: Save Format](command:workbench.action.openSettings?%22@id:easy-codesnap.saveFormat%22) is set to `svg`.",
   "easy-codesnap.saveScale": "Controls the scale to use when saving snapshots in PNG format.",
   "easy-codesnap.saveScale.0.5": "Scales the snapshot to 50% of the original size.",
   "easy-codesnap.saveScale.0.75": "Scales the snapshot to 75% of the original size.",
@@ -19,6 +18,8 @@
   "easy-codesnap.saveScale.2": "Scales the snapshot to 200% of the original size.",
   "easy-codesnap.saveScale.3": "Scales the snapshot to 300% of the original size.",
   "easy-codesnap.saveScale.4": "Scales the snapshot to 400% of the original size.",
+  "easy-codesnap.optimizeSvg": "Controls whether the svg should be optimized before saving. Only valid when [Easy-codesnap: Save Format](command:workbench.action.openSettings?%22@id:easy-codesnap.saveFormat%22) is set to `svg`.",
+  "easy-codesnap.useFallbackPngExporter": "Enables the use of a fallback PNG exporter as main exporter for saving snapshots in PNG format. This can be useful if you encounter issues with the default exporter.",
   "easy-codesnap.showLineNumbers": "Displays line numbers in the snap screen.",
   "easy-codesnap.realLineNumbers": "Displays actual line numbers from the selection instead of starting at 1. Only valid when [Easy-codesnap: Show Line Numbers](command:workbench.action.openSettings?%22@id:easy-codesnap.showLineNumbers%22) is enabled.",
   "easy-codesnap.highlightLineNumber": "Highlights the active line number using the `editorLineNumber-activeForeground` theme color. Only valid when [Easy-codesnap: Show Line Numbers](command:workbench.action.openSettings?%22@id:easy-codesnap.showLineNumbers%22) is enabled.",
@@ -63,6 +64,5 @@
   "easy-codesnap.watermarkPosition.bottom-left": "Places the watermark at the bottom-left corner of the snapshot.",
   "easy-codesnap.watermarkPosition.bottom-right": "Places the watermark at the bottom-right corner of the snapshot.",
   "easy-codesnap.uiCustomColors": "Change some UI colors that may conflict with user theme.",
-  "easy-codesnap.uiCustomColors.watermarkPositionInputSelectedBackgroud": "Changes the background color of the selected Watermark Position input. This can be used to fix issues with themes that may have less color contrast.",
-  "easy-codesnap.useFallbackPngExporter": "Enables the use of a fallback PNG exporter as main exporter for saving snapshots in PNG format. This can be useful if you encounter issues with the default exporter."
+  "easy-codesnap.uiCustomColors.watermarkPositionInputSelectedBackgroud": "Changes the background color of the selected Watermark Position input. This can be used to fix issues with themes that may have less color contrast."
 }
