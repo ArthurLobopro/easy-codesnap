@@ -44,8 +44,6 @@
   "easy-codesnap.target.window": "仅捕获包含代码片段、标题和按钮的窗口作为快照目标。",
   "easy-codesnap.boxShadow": "定义代码快照容器的 CSS 盒阴影属性。",
   "easy-codesnap.backgroundColor": "定义代码快照容器的背景颜色。",
-  "easy-codesnap.uiCustomColors": "控制是否在设置面板中使用自定义的 UI 颜色。",
-  "easy-codesnap.uiCustomColors.watermarkPositionInputSelectedBackgroud": "定义水印位置选中项的背景颜色，用于提升低对比度主题下的可视性。",
   "easy-codesnap.containerPadding": "定义代码快照容器的内边距。",
   "easy-codesnap.transparentBackground": "生成快照时使用透明背景。仅当 [Easy-codesnap: Target](command:workbench.action.openSettings?%22@id:easy-codesnap.target%22) 设置为 `container` 时生效。",
   "easy-codesnap.enableResizing": "允许调整代码快照容器大小。禁用此选项后将移除所有进行过的大小调整。",
@@ -64,5 +62,7 @@
   "easy-codesnap.watermarkPosition.top-left": "将水印放置在快照的左上角。",
   "easy-codesnap.watermarkPosition.top-right": "将水印放置在快照的右上角。",
   "easy-codesnap.watermarkPosition.bottom-left": "将水印放置在快照的左下角。",
-  "easy-codesnap.watermarkPosition.bottom-right": "将水印放置在快照的右下角。"
+  "easy-codesnap.watermarkPosition.bottom-right": "将水印放置在快照的右下角。",
+  "easy-codesnap.uiCustomColors": "控制是否在设置面板中使用自定义的 UI 颜色。",
+  "easy-codesnap.uiCustomColors.watermarkPositionInputSelectedBackgroud": "定义水印位置选中项的背景颜色，用于提升低对比度主题下的可视性。"
 }
