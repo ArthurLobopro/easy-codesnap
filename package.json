@@ -95,20 +95,6 @@
           ],
           "order": 4
         },
-        "easy-codesnap.optimizeSvg": {
-          "scope": "resource",
-          "type": "boolean",
-          "default": true,
-          "markdownDescription": "%easy-codesnap.optimizeSvg%",
-          "order": 5
-        },
-        "easy-codesnap.useFallbackPngExporter": {
-          "scope": "resource",
-          "type": "boolean",
-          "default": false,
-          "markdownDescription": "%easy-codesnap.useFallbackPngExporter%",
-          "order": 6
-        },
         "easy-codesnap.saveScale": {
           "scope": "resource",
           "type": "number",
@@ -132,6 +118,20 @@
             "%easy-codesnap.saveScale.3%",
             "%easy-codesnap.saveScale.4%"
           ],
+          "order": 5
+        },
+        "easy-codesnap.optimizeSvg": {
+          "scope": "resource",
+          "type": "boolean",
+          "default": true,
+          "markdownDescription": "%easy-codesnap.optimizeSvg%",
+          "order": 6
+        },
+        "easy-codesnap.useFallbackPngExporter": {
+          "scope": "resource",
+          "type": "boolean",
+          "default": false,
+          "markdownDescription": "%easy-codesnap.useFallbackPngExporter%",
           "order": 7
         },
         "easy-codesnap.showLineNumbers": {
