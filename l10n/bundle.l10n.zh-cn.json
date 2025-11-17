@@ -70,9 +70,9 @@
   "You can edit the Watermark text by double-clicking it.": "双击水印文本即可编辑。",
   "You can edit the default Watermark text clicking": "若要编辑默认水印文本，请点击",
   "The position of the watermark in the snapshot. Top positions are only available when `{target}` is `{container}`": "快照中水印的位置。仅当 `{target}` 设置为 `{container}` 时，才可使用顶部位置。",
-  "Controls whether the SVG should be optimized before saving. Only valid if `{saveFormat}` is `svg`.": "控制在保存前是否对 SVG 进行优化。仅当 `{saveFormat}` 设置为 `svg` 时生效。",
+  "Controls whether the SVG should be optimized before saving. Only valid if `{saveFormat}` is `svg`.": "控制是否在保存前对 SVG 进行优化。仅当 `{saveFormat}` 设置为 `svg` 时生效。",
   "Enables the use of a fallback PNG exporter as main exporter for saving snapshots in PNG format.": "启用备用 PNG 导出器，并将其作为保存 PNG 格式快照时的主要导出方式。",
-  "This can be useful if you encounter issues with the default exporter.": "当默认导出器出现问题时，该选项可以作为替代方案。",
+  "This can be useful if you encounter issues with the default exporter.": "当默认导出器出现问题时，该选项可作为替代方案。",
   "Open extension settings": "打开扩展设置",
   "Reset settings to default": "将设置重置为默认",
   "Save current settings as default": "将当前设置保存为默认"
