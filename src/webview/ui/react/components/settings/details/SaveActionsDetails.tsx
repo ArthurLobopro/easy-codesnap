@@ -36,8 +36,8 @@ export function SaveActionsDetails() {
           config="useFallbackPngExporter"
           label={t("Use Fallback PNG Exporter")}
           tooltip={text(
-            "Enables the use of a fallback PNG exporter as main exporter for saving snapshots in PNG format.",
-            "This can be useful if you encounter issues with the default exporter.",
+            t("Enables the use of a fallback PNG exporter as main exporter for saving snapshots in PNG format."),
+            t("This can be useful if you encounter issues with the default exporter."),
           )}
           disabled={saveFormat !== "png"}
         />
