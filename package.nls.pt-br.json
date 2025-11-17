@@ -10,7 +10,6 @@
   "easy-codesnap.saveFormat": "Formato de salvamento",
   "easy-codesnap.saveFormat.png": "Salva a snapshot em PNG. Um formato de imagem que suporta transparência.",
   "easy-codesnap.saveFormat.svg": "Salva a snapshot em SVG. Um formato de imagem vetorial que pode ser escalado sem perda de qualidade.",
-  "easy-codesnap.optimizeSvg": "Controla se o svg deve ser otimizado antes de salvar. Apenas válido quando [Easy-codesnap: Save Format](command:workbench.action.openSettings?%22@id:easy-codesnap.saveFormat%22) é `svg`.",
   "easy-codesnap.saveScale": "Controla a escala de salvamento para o formato PNG.",
   "easy-codesnap.saveScale.0.5": "Escala a snapshot para 50% do tamanho original.",
   "easy-codesnap.saveScale.0.75": "Escala a snapshot para 75% do tamanho original.",
@@ -19,6 +18,8 @@
   "easy-codesnap.saveScale.2": "Escala a snapshot para 200% do tamanho original.",
   "easy-codesnap.saveScale.3": "Escala a snapshot para 300% do tamanho original.",
   "easy-codesnap.saveScale.4": "Escala a snapshot para 400% do tamanho original.",
+  "easy-codesnap.optimizeSvg": "Controla se o svg deve ser otimizado antes de salvar. Apenas válido quando [Easy-codesnap: Save Format](command:workbench.action.openSettings?%22@id:easy-codesnap.saveFormat%22) é `svg`.",
+  "easy-codesnap.useFallbackPngExporter": "Habilita o uso de um exportador PNG alternativo como exportador principal para salvar snapshots no formato PNG. Isso pode ser útil se você encontrar problemas com o exportador padrão.",
   "easy-codesnap.showLineNumbers": "Mostrar números de linha",
   "easy-codesnap.realLineNumbers": "Mostra os números de linha reais da seleção ao invés de começar do 1. Apenas válido quando [Easy-codesnap: Show Line Numbers](command:workbench.action.openSettings?%22@id:easy-codesnap.showLineNumbers%22) está ativado.",
   "easy-codesnap.highlightLineNumber": "Quando uma linha está destacada, usa a cor `editorLineNumber-activeForeground` do tema de cores do vscode para destacar o número da linha. Apenas válido quando [Easy-codesnap: Show Line Numbers](command:workbench.action.openSettings?%22@id:easy-codesnap.showLineNumbers%22) está ativado.",
@@ -63,6 +64,5 @@
   "easy-codesnap.watermarkPosition.bottom-left": "Coloca a marca d'água no canto inferior esquerdo.",
   "easy-codesnap.watermarkPosition.bottom-right": "Coloca a marca d'água no canto inferior direito.",
   "easy-codesnap.uiCustomColors": "Muda algumas cores da UI que podem conflitar com o tema do usuário.",
-  "easy-codesnap.uiCustomColors.watermarkPositionInputSelectedBackgroud": "Muda a cor de fundo do input de seleção da posição da Marca D'água. Pode ser usado para corrigir problemas com temas que não tenham muito contraste.",
-  "easy-codesnap.useFallbackPngExporter": "Habilita o uso de um exportador PNG alternativo como exportador principal para salvar snapshots no formato PNG. Isso pode ser útil se você encontrar problemas com o exportador padrão."
+  "easy-codesnap.uiCustomColors.watermarkPositionInputSelectedBackgroud": "Muda a cor de fundo do input de seleção da posição da Marca D'água. Pode ser usado para corrigir problemas com temas que não tenham muito contraste."
 }
