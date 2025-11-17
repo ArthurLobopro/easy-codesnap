@@ -95,19 +95,6 @@
           "markdownDescription": "%easy-codesnap.saveFormat%",
           "order": 4
         },
-        "easy-codesnap.optimizeSvg": {
-          "scope": "resource",
-          "type": "boolean",
-          "default": true,
-          "order": 5
-        },
-        "easy-codesnap.useFallbackPngExporter": {
-          "scope": "resource",
-          "type": "boolean",
-          "default": false,
-          "markdownDescription": "%easy-codesnap.useFallbackPngExporter%",
-          "order": 6
-        },
         "easy-codesnap.saveScale": {
           "scope": "resource",
           "type": "number",
@@ -131,6 +118,20 @@
             "%easy-codesnap.saveScale.4%"
           ],
           "markdownDescription": "%easy-codesnap.saveScale%",
+          "order": 5
+        },
+        "easy-codesnap.optimizeSvg": {
+          "scope": "resource",
+          "type": "boolean",
+          "default": true,
+          "markdownDescription": "%easy-codesnap.optimizeSvg%",
+          "order": 6
+        },
+        "easy-codesnap.useFallbackPngExporter": {
+          "scope": "resource",
+          "type": "boolean",
+          "default": false,
+          "markdownDescription": "%easy-codesnap.useFallbackPngExporter%",
           "order": 7
         },
         "easy-codesnap.showLineNumbers": {
@@ -268,33 +269,49 @@
           "markdownDescription": "%easy-codesnap.backgroundColor%",
           "order": 21
         },
+        "easy-codesnap.uiCustomColors": {
+          "scope": "resource",
+          "type": "object",
+          "default": {
+            "watermarkPositionInputSelectedBackgroud": "var(--vscode-focusBorder)"
+          },
+          "markdownDescription": "%easy-codesnap.uiCustomColors%",
+          "properties": {
+            "watermarkPositionInputSelectedBackgroud": {
+              "type": "string",
+              "default": "var(--vscode-focusBorder)",
+              "markdownDescription": "%easy-codesnap.uiCustomColors.watermarkPositionInputSelectedBackgroud%"
+            }
+          },
+          "order": 22
+        },
         "easy-codesnap.containerPadding": {
           "scope": "resource",
           "type": "string",
           "default": "3em",
           "markdownDescription": "%easy-codesnap.containerPadding%",
-          "order": 22
+          "order": 23
         },
         "easy-codesnap.transparentBackground": {
           "scope": "resource",
           "type": "boolean",
           "default": false,
           "markdownDescription": "%easy-codesnap.transparentBackground%",
-          "order": 23
+          "order": 24
         },
         "easy-codesnap.enableResizing": {
           "scope": "resource",
           "type": "boolean",
           "default": true,
           "markdownDescription": "%easy-codesnap.enableResizing%",
-          "order": 24
+          "order": 25
         },
         "easy-codesnap.enableSymbolBreadcrumb": {
           "scope": "resource",
           "type": "boolean",
           "default": false,
           "markdownDescription": "%easy-codesnap.enableSymbolBreadcrumb%",
-          "order": 25
+          "order": 26
         },
         "easy-codesnap.maxCharWidth": {
           "scope": "resource",
@@ -303,7 +320,7 @@
           "markdownDescription": "%easy-codesnap.maxCharWidth%",
           "minimum": 0,
           "maximum": 200,
-          "order": 26
+          "order": 27
         },
         "easy-codesnap.aspect-ratio": {
           "scope": "resource",
@@ -326,21 +343,21 @@
             "%easy-codesnap.aspect-ratio.1.91:1%"
           ],
           "markdownDescription": "%easy-codesnap.aspect-ratio%",
-          "order": 27
+          "order": 28
         },
         "easy-codesnap.watermark": {
           "scope": "resource",
           "type": "boolean",
           "default": false,
           "markdownDescription": "%easy-codesnap.watermark%",
-          "order": 28
+          "order": 29
         },
         "easy-codesnap.defaultWatermarkText": {
           "scope": "resource",
           "type": "string",
           "default": "Made with Easy CodeSnap",
           "markdownDescription": "%easy-codesnap.defaultWatermarkText%",
-          "order": 29
+          "order": 30
         },
         "easy-codesnap.watermarkPosition": {
           "scope": "resource",
@@ -359,22 +376,6 @@
             "%easy-codesnap.watermarkPosition.bottom-right%"
           ],
           "markdownDescription": "%easy-codesnap.watermarkPosition%",
-          "order": 30
-        },
-        "easy-codesnap.uiCustomColors": {
-          "scope": "resource",
-          "type": "object",
-          "properties": {
-            "watermarkPositionInputSelectedBackgroud": {
-              "type": "string",
-              "default": "var(--vscode-focusBorder)",
-              "description": "%easy-codesnap.uiCustomColors.watermarkPositionInputSelectedBackgroud%"
-            }
-          },
-          "default": {
-            "watermarkPositionInputSelectedBackgroud": "var(--vscode-focusBorder)"
-          },
-          "markdownDescription": "%easy-codesnap.uiCustomColors%",
           "order": 31
         }
       }
