@@ -1,5 +1,5 @@
 import { exportPNG, exportSVG } from "./exporters";
-import { useSessionConfig } from "./SessionConfig";
+import { type ISessionConfig, useSessionConfig } from "./SessionConfig";
 import { flashFx, snippetContainerNode, windowNode } from "./ui/elements";
 import { once, redraw, setVar } from "./util";
 
@@ -13,7 +13,7 @@ export async function cameraFlashAnimation() {
   flashFx.style.opacity = "1";
 }
 
-export async function takeSnap({ target, ...config } = useSessionConfig.getState()) {
+export async function takeSnap({ target, ...config }: Omit<ISessionConfig, "set"> = useSessionConfig.getState()) {
   console.time("TakeSnap");
   const targetNode = target === "container" ? snippetContainerNode : windowNode;
 
