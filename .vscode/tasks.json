@@ -1,37 +1,27 @@
 {
-  "version": "2.0.0",
-  "tasks": [
-    {
-      "label": "install",
-      "type": "shell",
-      "command": "yarn install",
-      "problemMatcher": [],
-      "presentation": {
-        "reveal": "silent"
-      }
-    },
-    {
-      "label": "watch",
-      "type": "shell",
-      "command": "yarn watch",
-      "problemMatcher": "$tsc-watch",
-      "isBackground": true,
-      "dependsOn": "install",
-      "presentation": {
-        "reveal": "silent"
-      },
-      "runOptions": {
-        "runOn": "folderOpen"
-      }
-    },
-    {
-      "label": "compile",
-      "type": "shell",
-      "command": "yarn compile",
-      "group": {
-        "kind": "build",
-        "isDefault": true
-      }
-    }
-  ]
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"label": "watch",
+			"type": "shell",
+			"command": "yarn watch",
+			"problemMatcher": "$tsc-watch",
+			"isBackground": true,
+			"presentation": {
+				"reveal": "never"
+			},
+			"runOptions": {
+				"runOn": "folderOpen"
+			},
+		},
+		{
+			"label": "compile",
+			"type": "shell",
+			"command": "yarn compile",
+			"group": {
+				"kind": "build",
+				"isDefault": true
+			}
+		}
+	]
 }

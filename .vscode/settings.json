@@ -1,32 +1,32 @@
 {
-    "search.exclude": {
-        "dist": true
-    },
-    "typescript.tsc.autoDetect": "off",
-    "typescript.format.semicolons": "ignore",
-    "[typescript]": {
-        "editor.defaultFormatter": "biomejs.biome",
-        "editor.codeActionsOnSave": {
-            "source.fixAll.biome": "explicit",
-            "source.organizeImports": "never",
-            "source.removeUnusedImports": "always"
-        }
-    },
-    "[typescriptreact]": {
-        "editor.defaultFormatter": "biomejs.biome",
-        "editor.codeActionsOnSave": {
-            "source.fixAll.biome": "explicit",
-            "source.removeUnusedImports": "explicit",
-            "source.organizeImports": "never"
-        }
-    },
-    "[json]": {
-        "editor.defaultFormatter": "vscode.json-language-features",
-        "editor.tabSize": 2,
-        "editor.indentSize": "tabSize"
-    },
-    "explorer.fileNesting.enabled": true,
-    "explorer.fileNesting.patterns": {
-        "package.json": "package*.json"
+  "search.exclude": {
+    "dist": true
+  },
+  "typescript.tsc.autoDetect": "off",
+  "typescript.format.semicolons": "ignore",
+  "[typescript]": {
+    "editor.defaultFormatter": "biomejs.biome",
+    "editor.codeActionsOnSave": {
+      "source.fixAll.biome": "explicit",
+      "source.organizeImports": "never",
+      "source.removeUnusedImports": "always"
     }
+  },
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "biomejs.biome",
+    "editor.codeActionsOnSave": {
+      "source.fixAll.biome": "explicit",
+      "source.removeUnusedImports": "explicit",
+      "source.organizeImports": "never"
+    }
+  },
+  "[json]": {
+    "editor.defaultFormatter": "vscode.json-language-features",
+    "editor.tabSize": 2,
+    "editor.indentSize": "tabSize"
+  },
+  "explorer.fileNesting.enabled": true,
+  "explorer.fileNesting.patterns": {
+    "package.json": "package*.json"
+  }
 }
