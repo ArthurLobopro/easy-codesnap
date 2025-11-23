@@ -32,6 +32,7 @@ export interface ExtensionConfig {
   watermark: boolean;
   optimizeSvg: boolean;
   useFallbackPngExporter: boolean;
+  keepOriginalIndentation: boolean;
 
   maxCharWidth: number;
 

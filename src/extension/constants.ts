@@ -35,4 +35,5 @@ export const extensionSettingsNames: ConfigKey[] = [
   "windowIconType",
   "windowStyle",
   "windowTitleTemplate",
+  "keepOriginalIndentation",
 ] as const;

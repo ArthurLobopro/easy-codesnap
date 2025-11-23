@@ -362,6 +362,12 @@
           ],
           "order": 30
         },
+        "easy-codesnap.keepOriginalIndentation": {
+          "scope": "resource",
+          "type": "boolean",
+          "default": false,
+          "markdownDescription": "%easy-codesnap.keepOriginalIndentation%"
+        },
         "easy-codesnap.uiCustomColors": {
           "scope": "resource",
           "type": "object",
