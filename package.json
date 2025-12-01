@@ -2,7 +2,7 @@
   "name": "easy-codesnap",
   "displayName": "Easy CodeSnap",
   "description": "Extension to take beautiful custom screenshots of your code 📷",
-  "version": "1.35.0",
+  "version": "1.36.0",
   "l10n": "./l10n",
   "repository": {
     "type": "git",
