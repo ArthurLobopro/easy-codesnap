@@ -15,7 +15,7 @@ interface ToggleInputProps {
   disabled?: boolean;
 }
 
-const Label = ({ children, className }: PropsWithChildren & PropsWithClassName) => (
+export const Label = ({ children, className }: PropsWithChildren & PropsWithClassName) => (
   <label
     className={tw("flex justify-between items-center w-full cursor-pointer gap-1 box-border", "only:w-full", className)}
   >

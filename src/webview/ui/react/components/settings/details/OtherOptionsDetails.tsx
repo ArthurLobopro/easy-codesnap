@@ -9,6 +9,7 @@ import { DetailsContent, ExpandDetails, TextDetailsSummary } from "../../ExpandD
 import { LeftTooltip } from "../../LeftTooltip";
 import { SettingLineWithSelect } from "../../SettingLine";
 import { ToggleInput } from "../../ToggleInput";
+import { BackgroundColorInput } from "../BackgroundColorInput";
 import { AspectRatioSelect } from "../selects/AspectRatioSelect";
 import { TargetSelect } from "../selects/TargetSelect";
 
@@ -22,6 +23,7 @@ export function OtherOptionsDetails() {
     <ExpandDetails>
       <TextDetailsSummary text={t("Other Options")} />
       <DetailsContent>
+        <BackgroundColorInput />
         <TargetSelect />
         <ToggleInput
           disabled={target !== "container"}
