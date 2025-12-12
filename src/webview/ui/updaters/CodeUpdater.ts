@@ -48,12 +48,24 @@ function setupLines(node: Element) {
     newRow.appendChild(lineCodeDiv);
   });
 
-  const finalSpans = $$(".line-code > span > span:last-child", node) as HTMLSpanElement[];
+  const voidFinalSpans = $$(".line-code > span > span:last-child", node) as HTMLSpanElement[];
 
-  finalSpans.forEach((span) => {
+  voidFinalSpans.forEach((span) => {
     if (span.textContent === " ") {
       span.remove();
     }
+  });
+
+  const finalSpans = $$(".line-code > span > span:last-child", node);
+
+  finalSpans.forEach((span) => {
+    span.style.width = `${Math.ceil(span.getBoundingClientRect().width)}px`;
+  });
+
+  const wrapperSpans = $$(".line-code > span");
+
+  wrapperSpans.forEach((span) => {
+    span.style.width = `${Math.ceil(span.getBoundingClientRect().width)}px`;
   });
 
   UpdateRatio(config.aspectRatio);
