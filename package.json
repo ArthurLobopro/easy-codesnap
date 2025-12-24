@@ -85,7 +85,8 @@
           "type": "string",
           "enum": [
             "png",
-            "svg"
+            "svg",
+            "webp"
           ],
           "default": "png",
           "markdownDescription": "%easy-codesnap.saveFormat%",

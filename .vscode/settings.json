@@ -24,10 +24,11 @@
       "source.organizeImports": "never"
     }
   },
-  "[json]": {
+  "[json][jsonc]": {
     "editor.defaultFormatter": "vscode.json-language-features",
     "editor.tabSize": 2,
-    "editor.indentSize": "tabSize"
+    "editor.indentSize": "tabSize",
+    "editor.formatOnSave": true
   },
   "explorer.fileNesting.enabled": true,
   "explorer.fileNesting.patterns": {

@@ -41,6 +41,28 @@ export async function exportPNG(target: HTMLElement, action: WebviewConfig["shut
   }
 }
 
+export async function exportWEBP(target: HTMLElement, action: WebviewConfig["shutterAction"]) {
+  const canvas = (await domtoimage.toCanvas(target, {
+    scale: useSessionConfig.getState().saveScale,
+  })) as HTMLCanvasElement;
+
+  if (action === "copy") {
+    canvas.toBlob(
+      async (blob) => {
+        if (!blob) return;
+
+        const item = new ClipboardItem({
+          "image/webp": blob,
+        });
+
+        await navigator.clipboard.write([item]);
+      },
+      "image/webp",
+      1,
+    );
+  }
+}
+
 export async function exportSVG(target: HTMLElement, action: WebviewConfig["shutterAction"]) {
   const { optimizeSvg } = useSessionConfig.getState();
 
