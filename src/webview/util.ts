@@ -70,8 +70,6 @@ export function getWidth(element: HTMLElement) {
   return element.getBoundingClientRect().width;
 }
 
-export { t } from "@vscode/l10n";
-
 export const text = (...args: string[]) => args.join(" ");
 
 export function openConfig(name: keyof ExtensionConfig) {
@@ -81,4 +79,9 @@ export function openConfig(name: keyof ExtensionConfig) {
   });
 }
 
+export async function delay(ms: number) {
+  return new Promise((resolve) => setTimeout(resolve, ms));
+}
+
+export { t } from "@vscode/l10n";
 export { twMerge as tw } from "tailwind-merge";
