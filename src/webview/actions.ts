@@ -2,10 +2,10 @@ import { omit, pick, pickAllExcept } from "@arthur-lobo/object-pick";
 import * as l10n from "@vscode/l10n";
 import type { ConfigSentToWebview } from "../types";
 import { SessionConfig, useSessionConfig } from "./SessionConfig";
-import { cameraFlashAnimation } from "./snap";
+import { cameraFlashAnimation, takeSnap } from "./snap";
 import { UpdateCode } from "./ui/updaters";
 import { TranslationUpdater } from "./ui/updaters/TranslationUpdater";
-import { vscode } from "./util";
+import { delay, vscode } from "./util";
 
 export type actionsKey = keyof typeof actions;
 
@@ -23,7 +23,7 @@ export const actions = {
 
     TranslationUpdater();
 
-    SessionConfig.set(omit(config, ["linkOnOpen", "lockOnOpen", "bundle"]));
+    SessionConfig.set(omit(config, ["linkOnOpen", "lockOnOpen", "bundle", "performShutterActionOnOpen"]));
 
     document.execCommand("paste");
 
@@ -32,6 +32,10 @@ export const actions = {
       isLocked: config.lockOnOpen,
       isReady: true,
     });
+
+    if (config.performShutterActionOnOpen) {
+      delay(100).then(() => takeSnap());
+    }
   },
 
   "get-webview-config"() {
