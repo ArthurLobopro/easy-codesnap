@@ -65,5 +65,6 @@
   "easy-codesnap.watermarkPosition.bottom-right": "Coloca a marca d'água no canto inferior direito.",
   "easy-codesnap.uiCustomColors": "Muda algumas cores da UI que podem conflitar com o tema do usuário.",
   "easy-codesnap.uiCustomColors.watermarkPositionInputSelectedBackgroud": "Muda a cor de fundo do input de seleção da posição da Marca D'água. Pode ser usado para corrigir problemas com temas que não tenham muito contraste.",
-  "easy-codesnap.keepOriginalIndentation": "Mantém a indentação original do código selecionado ao capturar a tela. Se desativado, espaços ou tabulações iniciais podem ser removidos com base no código selecionado."
+  "easy-codesnap.keepOriginalIndentation": "Mantém a indentação original do código selecionado ao capturar a tela. Se desativado, espaços ou tabulações iniciais podem ser removidos com base no código selecionado.",
+  "easy-codesnap.performShutterActionOnOpen": "Executa automaticamente a ação de captura configurada ao abrir a tela de snap."
 }

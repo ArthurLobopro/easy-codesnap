@@ -65,5 +65,6 @@
   "easy-codesnap.watermarkPosition.bottom-right": "Places the watermark at the bottom-right corner of the snapshot.",
   "easy-codesnap.uiCustomColors": "Change some UI colors that may conflict with user theme.",
   "easy-codesnap.uiCustomColors.watermarkPositionInputSelectedBackgroud": "Changes the background color of the selected Watermark Position input. This can be used to fix issues with themes that may have less color contrast.",
-  "easy-codesnap.keepOriginalIndentation": "Keeps the original indentation of the selected code when taking a snapshot. If disabled, leading spaces or tabs may be trimmed based on the selected code."
+  "easy-codesnap.keepOriginalIndentation": "Keeps the original indentation of the selected code when taking a snapshot. If disabled, leading spaces or tabs may be trimmed based on the selected code.",
+  "easy-codesnap.performShutterActionOnOpen": "Automatically performs the configured shutter action when the snap screen is opened."
 }

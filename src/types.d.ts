@@ -33,6 +33,7 @@ export interface ExtensionConfig {
   optimizeSvg: boolean;
   useFallbackPngExporter: boolean;
   keepOriginalIndentation: boolean;
+  performShutterActionOnOpen: boolean;
 
   maxCharWidth: number;
 
