@@ -34,6 +34,7 @@ export const actions = {
     });
 
     if (config.performShutterActionOnOpen) {
+      window.focus();
       delay(100).then(() => takeSnap());
     }
   },
