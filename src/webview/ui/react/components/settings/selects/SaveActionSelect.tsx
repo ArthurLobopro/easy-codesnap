@@ -1,4 +1,4 @@
-import { useConfig, useSetConfig } from "@hooks//useConfig";
+import { useConfigList, useSetConfig } from "@hooks//useConfig";
 import { useTranslation } from "@hooks//useTranslation";
 import type { SaveAction } from "@/../types";
 import { SAVE_ACTIONS } from "@/constants";
@@ -9,7 +9,7 @@ export function SaveActionSelect() {
   const { t } = useTranslation();
 
   const set = useSetConfig();
-  const saveAction = useConfig("shutterAction");
+  const { shutterAction: saveAction, saveFormat } = useConfigList(["shutterAction", "saveFormat"]);
 
   return (
     <SettingLineWithSelect>
@@ -24,7 +24,7 @@ export function SaveActionSelect() {
         }}
       >
         {SAVE_ACTIONS.map((action) => (
-          <option value={action} key={action}>
+          <option value={action} key={action} disabled={action === "copy" && saveFormat === "webp"}>
             {action}
           </option>
         ))}

@@ -1,5 +1,6 @@
-import { useConfig, useSetConfig } from "@hooks//useConfig";
+import { useConfigList, useSetConfig } from "@hooks//useConfig";
 import { useTranslation } from "@hooks//useTranslation";
+import { useEffect } from "react";
 import type { SaveFormat } from "@/../types";
 import { SAVE_FORMATS } from "@/constants";
 import { ConfigSelect } from "../../ConfigSelect";
@@ -9,7 +10,13 @@ export function SaveFormatSelect() {
   const { t } = useTranslation();
 
   const set = useSetConfig();
-  const saveFormat = useConfig("saveFormat");
+  const { shutterAction: saveAction, saveFormat } = useConfigList(["shutterAction", "saveFormat"]);
+
+  useEffect(() => {
+    if (saveAction === "copy" && saveFormat === "webp") {
+      set({ shutterAction: "save" });
+    }
+  }, [saveAction, saveFormat]);
 
   return (
     <SettingLineWithSelect>

@@ -46,21 +46,10 @@ export async function exportWEBP(target: HTMLElement, action: WebviewConfig["shu
     scale: useSessionConfig.getState().saveScale,
   })) as HTMLCanvasElement;
 
-  if (action === "copy") {
-    canvas.toBlob(
-      async (blob) => {
-        if (!blob) return;
+  const dataUrl = canvas.toDataURL("image/webp", 1.0);
+  const data = dataUrl.slice(dataUrl.indexOf(",") + 1);
 
-        const item = new ClipboardItem({
-          "image/webp": blob,
-        });
-
-        await navigator.clipboard.write([item]);
-      },
-      "image/webp",
-      1,
-    );
-  }
+  vscode.postMessage({ type: "save", data, format: "webp" });
 }
 
 export async function exportSVG(target: HTMLElement, action: WebviewConfig["shutterAction"]) {

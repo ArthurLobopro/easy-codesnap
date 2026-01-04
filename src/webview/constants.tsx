@@ -56,7 +56,7 @@ export type ZoomLevel = (typeof ZOOM_LEVELS)[number];
 
 export const SAVE_FORMATS = ["png", "svg", "webp"] as const;
 export const SAVE_SCALES = [0.5, 0.75, 1, 1.5, 2, 3, 4] as const;
-export const SAVE_ACTIONS = ["save", "copy"];
+export const SAVE_ACTIONS = ["save", "copy"] as const;
 export const ASPECT_RATIOS = ["none", "1:1", "1.91:1", "4:5", "9:16", "16:9"];
 export const ROUNDING_LEVELS = [1, 2, 3, 4];
 

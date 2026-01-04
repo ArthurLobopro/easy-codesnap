@@ -1,7 +1,7 @@
 import type { DocumentSymbol } from "vscode";
 import type { IPanelWebviewConfig } from "./extension/commands/snap/PanelWebviewConfig";
 
-export type SaveFormat = "png" | "svg";
+export type SaveFormat = "png" | "svg" | "webp";
 export type SaveScale = 0.5 | 0.75 | 1 | 1.5 | 2 | 3 | 4;
 export type SaveAction = "save" | "copy";
 export type Target = "container" | "window";
@@ -107,7 +107,7 @@ export type selectNames =
 
 export type message =
   | { type: "copied" | "update-config" | "ready" }
-  | { type: "save"; data: string; format: "svg" | "png" }
+  | { type: "save"; data: string; format: "svg" | "png" | "webp" }
   | {
       type: "save-config";
       config: Omit<ExtensionConfig, "lockOnOpen" | "linkOnOpen">;
