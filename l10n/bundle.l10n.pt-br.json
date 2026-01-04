@@ -19,7 +19,7 @@
   "Enable Resizing": "Ativar Redimensionamento",
   "Save Action": "Ação de Salvamento",
   "Save Scale": "Salvar na Escala",
-  "Save Format": "Salvar no Formato",
+  "Save Format": "Formato de Salvamento",
   "Open Settings": "Abrir Configurações",
   "Reset Settings": "Resetar Configurações",
   "Save Settings": "Salvar Configurações",
@@ -77,5 +77,6 @@
   "Use Fallback PNG Exporter": "Usar Exportador PNG Alternativo",
   "Enables the use of a fallback PNG exporter as main exporter for saving snapshots in PNG format.": "Habilita o uso de um exportador PNG alternativo como exportador principal para salvar snapshots no formato PNG.",
   "This can be useful if you encounter issues with the default exporter.": "Isso pode ser útil se você encontrar problemas com o exportador padrão.",
-  "Changes the `{container}` background color. To set advanced backgrounds such as gradients, use the VS Code Settings UI or the settings.json file.": "Altera a cor de fundo do `{container}`. Para definir fundos avançados, como gradientes, use a interface de configurações do VS Code ou o arquivo settings.json."
+  "Changes the `{container}` background color. To set advanced backgrounds such as gradients, use the VS Code Settings UI or the settings.json file.": "Altera a cor de fundo do `{container}`. Para definir fundos avançados, como gradientes, use a interface de configurações do VS Code ou o arquivo settings.json.",
+  "The option `copy` is not suported when `{saveFormat}` is set to `webp`": "A opção `copy` não é suportada quando `{saveFormat}` está definido como `webp`"
 }

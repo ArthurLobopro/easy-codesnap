@@ -3,11 +3,11 @@ import { extensionSettingsNames } from "../../constants";
 import type { ExtensionConfig } from "../../types";
 import { delay, hasOneSelection, t } from "../../util";
 import type { IPanelWebviewConfig, PanelWebviewConfig } from "./PanelWebviewConfig";
-import { savePNG, saveSVG } from "./savers";
+import { savePNG, saveSVG, saveWEBP } from "./savers";
 
 export type updateTypes = "config" | "text" | "both";
 
-type SaveProps = { data: string; format: "svg" | "png" };
+type SaveProps = { data: string; format: "svg" | "png" | "webp" };
 
 interface SnapActionsProps {
   panel: vscode.WebviewPanel;
@@ -38,6 +38,8 @@ export class SnapActions {
         return await saveSVG(data);
       case "png":
         return await savePNG(data);
+      case "webp":
+        return await saveWEBP(data);
     }
   }
 

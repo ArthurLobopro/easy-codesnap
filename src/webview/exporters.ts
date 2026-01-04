@@ -41,6 +41,17 @@ export async function exportPNG(target: HTMLElement, action: WebviewConfig["shut
   }
 }
 
+export async function exportWEBP(target: HTMLElement) {
+  const canvas = (await domtoimage.toCanvas(target, {
+    scale: useSessionConfig.getState().saveScale,
+  })) as HTMLCanvasElement;
+
+  const dataUrl = canvas.toDataURL("image/webp", 1.0);
+  const data = dataUrl.slice(dataUrl.indexOf(",") + 1);
+
+  vscode.postMessage({ type: "save", data, format: "webp" });
+}
+
 export async function exportSVG(target: HTMLElement, action: WebviewConfig["shutterAction"]) {
   const { optimizeSvg } = useSessionConfig.getState();
 

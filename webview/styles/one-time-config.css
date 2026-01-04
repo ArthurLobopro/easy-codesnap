@@ -11,7 +11,7 @@
 }
 
 
-li:has(:disabled),
+li:has(:not(option):disabled),
 select:disabled {
   color: var(--vscode-disabledForeground);
 }

@@ -1,4 +1,4 @@
-import { exportPNG, exportSVG } from "./exporters";
+import { exportPNG, exportSVG, exportWEBP } from "./exporters";
 import { type ISessionConfig, useSessionConfig } from "./SessionConfig";
 import { flashFx, snippetContainerNode, windowNode } from "./ui/elements";
 import { once, redraw, setVar } from "./util";
@@ -17,7 +17,7 @@ export async function takeSnap({ target, ...config }: Omit<ISessionConfig, "set"
   console.time("TakeSnap");
   const targetNode = target === "container" ? snippetContainerNode : windowNode;
 
-  const exporter = config.saveFormat === "svg" ? exportSVG : exportPNG;
+  const exporter = { svg: exportSVG, png: exportPNG, webp: exportWEBP }[config.saveFormat];
 
   windowNode.style.resize = "none";
   snippetContainerNode.style.resize = "none";

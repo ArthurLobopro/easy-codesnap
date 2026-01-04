@@ -13,7 +13,7 @@ function assignLastUsedImageUri(uri: vscode.Uri | undefined) {
   lastUsedImageUri = uri ?? makeUri(uriPath(lastUsedImageUri).replace(path.dirname(uriPath(lastUsedImageUri)), ""));
 }
 
-async function getSaveUri(format: "png" | "svg") {
+async function getSaveUri(format: "png" | "svg" | "webp") {
   return await vscode.window.showSaveDialog({
     filters: { Images: [format] },
     defaultUri: makeUri(path.resolve(uriPath(lastUsedImageUri), `code.${format}`)),
@@ -39,5 +39,17 @@ export async function saveSVG(data: string) {
 
   if (uri) {
     writeFile(uri.fsPath, data, "utf-8");
+  }
+}
+
+export async function saveWEBP(data: string) {
+  const uri = await getSaveUri("webp");
+
+  assignLastUsedImageUri(uri);
+
+  if (uri) {
+    writeFile(uri.fsPath, Buffer.from(data, "base64")).then(() => {
+      vscode.window.showInformationMessage(t("Image saved on: {0}", uri.fsPath));
+    });
   }
 }
