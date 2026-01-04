@@ -41,7 +41,7 @@ export async function exportPNG(target: HTMLElement, action: WebviewConfig["shut
   }
 }
 
-export async function exportWEBP(target: HTMLElement, action: WebviewConfig["shutterAction"]) {
+export async function exportWEBP(target: HTMLElement) {
   const canvas = (await domtoimage.toCanvas(target, {
     scale: useSessionConfig.getState().saveScale,
   })) as HTMLCanvasElement;
