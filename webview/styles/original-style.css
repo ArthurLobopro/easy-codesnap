@@ -24,6 +24,7 @@ body {
     user-select: none;
 
     padding-bottom: 1rem;
+    min-height: 100dvh;
 }
 
 code {

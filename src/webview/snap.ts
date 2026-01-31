@@ -3,7 +3,7 @@ import { type ISessionConfig, useSessionConfig } from "./SessionConfig";
 import { flashFx, snippetContainerNode, windowNode } from "./ui/elements";
 import { once, redraw, setVar } from "./util";
 
-export async function cameraFlashAnimation() {
+async function blinkAnimation() {
   flashFx.style.display = "block";
   redraw(flashFx);
   flashFx.style.opacity = "0";
@@ -11,6 +11,10 @@ export async function cameraFlashAnimation() {
   await once(flashFx, "transitionend");
   flashFx.style.display = "none";
   flashFx.style.opacity = "1";
+}
+
+export async function cameraFlashAnimation() {
+  blinkAnimation();
 }
 
 export async function takeSnap({ target, ...config }: Omit<ISessionConfig, "set"> = useSessionConfig.getState()) {
