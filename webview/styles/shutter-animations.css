@@ -16,12 +16,25 @@
     will-change: transform;
     background: linear-gradient(35deg, #555, black);
     border: solid 1px #999;
+    z-index: 30;
 
     --p: calc(var(--i) / var(--flaps));
 }
 
-[data-animation-state="none"] {
-    display: none;
+
+
+#shutter-animation {
+    &[data-animation-state="none"] {
+        display: none;
+    }
+
+    #camera-shadow {
+        border-radius: 50%;
+        position: absolute;
+        inset: 0;
+        box-shadow: 0 0 0 9999px black;
+        z-index: 40;
+    }
 }
 
 [data-colored="true"] {
@@ -74,7 +87,7 @@
 }
 
 :is([data-animation-state]):not([data-animation-state="none"]) .flap {
-    animation: shutter 1s cubic-bezier(0.5, 0, 0.5, 1) 0s;
+    animation: shutter 1.5s cubic-bezier(0.5, 0, 0.5, 1) 0s;
     transform-origin: bottom right;
     transform: rotate(-0.5turn) rotate(calc(1turn * var(--p))) skewX(30deg) translateX(-100%) translateY(90%);
 }
