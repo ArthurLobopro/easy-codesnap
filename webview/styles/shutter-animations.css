@@ -1,0 +1,93 @@
+@keyframes shutter {
+
+    48%,
+    52% {
+        transform: rotate(-0.25turn) rotate(calc(1turn * var(--p))) skewX(30deg) translateX(0%) translateY(0%);
+    }
+}
+
+.flap {
+    width: 150vmax;
+    height: 150vmax;
+    position: absolute;
+    bottom: 50%;
+    right: 50%;
+    pointer-events: none;
+    will-change: transform;
+    background: linear-gradient(35deg, #555, black);
+    border: solid 1px #999;
+    z-index: 30;
+
+    --p: calc(var(--i) / var(--flaps));
+}
+
+
+
+#shutter-animation {
+    &[data-animation-state="none"] {
+        display: none;
+    }
+
+    #camera-shadow {
+        border-radius: 50%;
+        position: absolute;
+        inset: 0;
+        box-shadow: 0 0 0 9999px black;
+        z-index: 40;
+    }
+}
+
+[data-colored="true"] {
+    .flap:nth-child(1) {
+        background: #D08770;
+        border: solid 1px black;
+
+    }
+
+    .flap:nth-child(2) {
+        background: #BF616A;
+        border: solid 1px black;
+
+    }
+
+    .flap:nth-child(3) {
+        background: #B48EAD;
+        border: solid 1px black;
+
+    }
+
+    .flap:nth-child(4) {
+        background: #81A1C1;
+        border: solid 1px black;
+
+    }
+
+    .flap:nth-child(5) {
+        background: #88C0D0;
+        border: solid 1px black;
+
+    }
+
+    .flap:nth-child(6) {
+        background: #8FBCBB;
+        border: solid 1px black;
+
+    }
+
+    .flap:nth-child(7) {
+        background: #A3BE8C;
+        border: solid 1px black;
+
+    }
+
+    .flap:nth-child(8) {
+        background: #EBCB8B;
+        border: solid 1px black;
+    }
+}
+
+:is([data-animation-state]):not([data-animation-state="none"]) .flap {
+    animation: shutter 1.5s cubic-bezier(0.5, 0, 0.5, 1) 0s;
+    transform-origin: bottom right;
+    transform: rotate(-0.5turn) rotate(calc(1turn * var(--p))) skewX(30deg) translateX(-100%) translateY(90%);
+}

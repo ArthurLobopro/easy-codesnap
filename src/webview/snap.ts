@@ -1,9 +1,9 @@
 import { exportPNG, exportSVG, exportWEBP } from "./exporters";
 import { type ISessionConfig, useSessionConfig } from "./SessionConfig";
-import { flashFx, snippetContainerNode, windowNode } from "./ui/elements";
+import { flashFx, shutterAnimationContainer, snippetContainerNode, windowNode } from "./ui/elements";
 import { once, redraw, setVar } from "./util";
 
-export async function cameraFlashAnimation() {
+async function blinkAnimation() {
   flashFx.style.display = "block";
   redraw(flashFx);
   flashFx.style.opacity = "0";
@@ -11,6 +11,21 @@ export async function cameraFlashAnimation() {
   await once(flashFx, "transitionend");
   flashFx.style.display = "none";
   flashFx.style.opacity = "1";
+}
+
+async function shutterAnimation() {
+  shutterAnimationContainer.setAttribute("data-animation-state", "animating");
+  await once(shutterAnimationContainer, "animationend");
+  shutterAnimationContainer.setAttribute("data-animation-state", "none");
+}
+
+export async function cameraFlashAnimation(action = useSessionConfig.getState().shutterActionAnimation) {
+  if (action === "flash") {
+    blinkAnimation();
+    return;
+  }
+
+  shutterAnimation();
 }
 
 export async function takeSnap({ target, ...config }: Omit<ISessionConfig, "set"> = useSessionConfig.getState()) {

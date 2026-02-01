@@ -2,7 +2,7 @@
   "name": "easy-codesnap",
   "displayName": "Easy CodeSnap",
   "description": "Extension to take beautiful custom screenshots of your code 📷",
-  "version": "1.37.0",
+  "version": "1.37.1",
   "l10n": "./l10n",
   "repository": {
     "type": "git",
@@ -367,7 +367,8 @@
           "scope": "resource",
           "type": "boolean",
           "default": false,
-          "markdownDescription": "%easy-codesnap.keepOriginalIndentation%"
+          "markdownDescription": "%easy-codesnap.keepOriginalIndentation%",
+          "order": 31
         },
         "easy-codesnap.uiCustomColors": {
           "scope": "resource",
@@ -383,14 +384,31 @@
               "description": "%easy-codesnap.uiCustomColors.watermarkPositionInputSelectedBackgroud%"
             }
           },
-          "order": 31
+          "order": 32
         },
         "easy-codesnap.performShutterActionOnOpen": {
           "scope": "resource",
           "type": "boolean",
           "default": false,
           "markdownDescription": "%easy-codesnap.performShutterActionOnOpen%",
-          "order": 32
+          "order": 33
+        },
+        "easy-codesnap.shutterActionAnimation": {
+          "scope": "resource",
+          "type": "string",
+          "enum": [
+            "flash",
+            "shutter",
+            "colored-shutter"
+          ],
+          "default": "flash",
+          "markdownDescription": "%easy-codesnap.shutterActionAnimation%",
+          "markdownEnumDescriptions": [
+            "%easy-codesnap.shutterActionAnimation.flash%",
+            "%easy-codesnap.shutterActionAnimation.shutter%",
+            "%easy-codesnap.shutterActionAnimation.colored-shutter%"
+          ],
+          "order": 34
         }
       }
     }

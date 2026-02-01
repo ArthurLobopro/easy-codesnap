@@ -1,6 +1,6 @@
 import { SessionConfig } from "../../SessionConfig";
 import { px, setVar } from "../../util";
-import { snippetContainerNode } from "../elements";
+import { shutterAnimationContainer, snippetContainerNode } from "../elements";
 import { Updater } from "../Updater";
 
 export class VarUpdater extends Updater {
@@ -21,6 +21,7 @@ export class VarUpdater extends Updater {
       "maxCharWidth",
       "zoom",
       "uiCustomColors",
+      "shutterActionAnimation",
     ]);
   }
 
@@ -41,6 +42,7 @@ export class VarUpdater extends Updater {
       maxCharWidth,
       zoom,
       uiCustomColors,
+      shutterActionAnimation,
     } = SessionConfig.get();
 
     setVar("ligatures", fontLigatures ? "normal" : "none");
@@ -68,5 +70,7 @@ export class VarUpdater extends Updater {
     snippetContainerNode.dataset.target = target;
 
     Object.entries(uiCustomColors).forEach(([key, value]) => void setVar(key, value));
+
+    shutterAnimationContainer.setAttribute("data-colored", String(shutterActionAnimation === "colored-shutter"));
   }
 }
