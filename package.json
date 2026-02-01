@@ -391,6 +391,18 @@
           "default": false,
           "markdownDescription": "%easy-codesnap.performShutterActionOnOpen%",
           "order": 32
+        },
+        "easy-codesnap.shutterActionAnimation": {
+          "scope": "resource",
+          "type": "string",
+          "enum": [
+            "flash",
+            "shutter",
+            "colored-shutter"
+          ],
+          "default": "flash",
+          "markdownDescription": "%easy-codesnap.shutterActionAnimation%",
+          "order": 33
         }
       }
     }

@@ -1,6 +1,6 @@
 import { exportPNG, exportSVG, exportWEBP } from "./exporters";
 import { type ISessionConfig, useSessionConfig } from "./SessionConfig";
-import { flashFx, snippetContainerNode, windowNode } from "./ui/elements";
+import { flashFx, shutterAnimationContainer, snippetContainerNode, windowNode } from "./ui/elements";
 import { once, redraw, setVar } from "./util";
 
 async function blinkAnimation() {
@@ -13,8 +13,19 @@ async function blinkAnimation() {
   flashFx.style.opacity = "1";
 }
 
-export async function cameraFlashAnimation() {
-  blinkAnimation();
+async function shutterAnimation() {
+  shutterAnimationContainer.setAttribute("data-animation-state", "animating");
+  await once(shutterAnimationContainer, "animationend");
+  shutterAnimationContainer.setAttribute("data-animation-state", "none");
+}
+
+export async function cameraFlashAnimation(action = useSessionConfig.getState().shutterActionAnimation) {
+  if (action === "flash") {
+    blinkAnimation();
+    return;
+  }
+
+  shutterAnimation();
 }
 
 export async function takeSnap({ target, ...config }: Omit<ISessionConfig, "set"> = useSessionConfig.getState()) {

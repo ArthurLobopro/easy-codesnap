@@ -70,12 +70,11 @@
     .flap:nth-child(8) {
         background: #EBCB8B;
         border: solid 1px black;
-
     }
 }
 
 :is([data-animation-state]):not([data-animation-state="none"]) .flap {
-    animation: shutter 1s cubic-bezier(0.5, 0, 0.5, 1) 0.1s;
+    animation: shutter 1s cubic-bezier(0.5, 0, 0.5, 1) 0s;
     transform-origin: bottom right;
     transform: rotate(-0.5turn) rotate(calc(1turn * var(--p))) skewX(30deg) translateX(-100%) translateY(90%);
 }

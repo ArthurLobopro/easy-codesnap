@@ -11,6 +11,7 @@ export function $$<T extends HTMLElement>(q: string, c: Element = document as an
   return Array.from(c.querySelectorAll(q)) as T[];
 }
 
+export function once(elem: Element, evt: keyof HTMLElementEventMap): Promise<void>;
 export function once(elem: Element, evt: string) {
   return new Promise((done) => elem.addEventListener(evt, done, { once: true }));
 }

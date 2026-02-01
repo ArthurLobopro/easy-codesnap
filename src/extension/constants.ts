@@ -37,4 +37,5 @@ export const extensionSettingsNames: ConfigKey[] = [
   "windowTitleTemplate",
   "keepOriginalIndentation",
   "performShutterActionOnOpen",
+  "shutterActionAnimation",
 ] as const;

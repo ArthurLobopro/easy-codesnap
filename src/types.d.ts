@@ -46,6 +46,7 @@ export interface ExtensionConfig {
   windowIconType: WindowIconType;
   aspectRatio: AspectRatio;
   watermarkPosition: "bottom-right" | "bottom-left" | "top-right" | "top-left";
+  shutterActionAnimation: "flash" | "shutter" | "colored-shutter";
 
   uiCustomColors: {
     watermarkPositionInputSelectedBackgroud: string;
