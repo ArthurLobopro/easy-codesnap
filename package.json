@@ -2,7 +2,7 @@
   "name": "easy-codesnap",
   "displayName": "Easy CodeSnap",
   "description": "Extension to take beautiful custom screenshots of your code 📷",
-  "version": "1.37.0",
+  "version": "1.37.1",
   "l10n": "./l10n",
   "repository": {
     "type": "git",
@@ -402,6 +402,11 @@
           ],
           "default": "flash",
           "markdownDescription": "%easy-codesnap.shutterActionAnimation%",
+          "markdownEnumDescriptions": [
+            "%easy-codesnap.shutterActionAnimation.flash%",
+            "%easy-codesnap.shutterActionAnimation.shutter%",
+            "%easy-codesnap.shutterActionAnimation.colored-shutter%"
+          ],
           "order": 33
         }
       }
