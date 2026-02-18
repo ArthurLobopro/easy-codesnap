@@ -65,6 +65,13 @@
           "markdownDescription": "%easy-codesnap.linkOnOpen%",
           "order": 2
         },
+        "easy-codesnap.performShutterActionOnOpen": {
+          "scope": "resource",
+          "type": "boolean",
+          "default": false,
+          "markdownDescription": "%easy-codesnap.performShutterActionOnOpen%",
+          "order": 3
+        },
         "easy-codesnap.shutterAction": {
           "scope": "resource",
           "type": "string",
@@ -78,7 +85,24 @@
             "%easy-codesnap.shutterAction.copy%",
             "%easy-codesnap.shutterAction.save%"
           ],
-          "order": 3
+          "order": 4
+        },
+        "easy-codesnap.shutterActionAnimation": {
+          "scope": "resource",
+          "type": "string",
+          "enum": [
+            "flash",
+            "shutter",
+            "colored-shutter"
+          ],
+          "default": "flash",
+          "markdownDescription": "%easy-codesnap.shutterActionAnimation%",
+          "markdownEnumDescriptions": [
+            "%easy-codesnap.shutterActionAnimation.flash%",
+            "%easy-codesnap.shutterActionAnimation.shutter%",
+            "%easy-codesnap.shutterActionAnimation.colored-shutter%"
+          ],
+          "order": 5
         },
         "easy-codesnap.saveFormat": {
           "scope": "resource",
@@ -92,9 +116,10 @@
           "markdownDescription": "%easy-codesnap.saveFormat%",
           "markdownEnumDescriptions": [
             "%easy-codesnap.saveFormat.png%",
-            "%easy-codesnap.saveFormat.svg%"
+            "%easy-codesnap.saveFormat.svg%",
+            "%easy-codesnap.saveFormat.webp%"
           ],
-          "order": 4
+          "order": 6
         },
         "easy-codesnap.saveScale": {
           "scope": "resource",
@@ -119,49 +144,49 @@
             "%easy-codesnap.saveScale.3%",
             "%easy-codesnap.saveScale.4%"
           ],
-          "order": 5
+          "order": 7
         },
         "easy-codesnap.optimizeSvg": {
           "scope": "resource",
           "type": "boolean",
           "default": true,
           "markdownDescription": "%easy-codesnap.optimizeSvg%",
-          "order": 6
+          "order": 8
         },
         "easy-codesnap.useFallbackPngExporter": {
           "scope": "resource",
           "type": "boolean",
           "default": false,
           "markdownDescription": "%easy-codesnap.useFallbackPngExporter%",
-          "order": 7
+          "order": 9
         },
         "easy-codesnap.showLineNumbers": {
           "scope": "resource",
           "type": "boolean",
           "default": true,
           "markdownDescription": "%easy-codesnap.showLineNumbers%",
-          "order": 8
+          "order": 10
         },
         "easy-codesnap.realLineNumbers": {
           "scope": "resource",
           "type": "boolean",
           "default": false,
           "markdownDescription": "%easy-codesnap.realLineNumbers%",
-          "order": 9
+          "order": 11
         },
         "easy-codesnap.highlightLineNumber": {
           "scope": "resource",
           "type": "boolean",
           "default": false,
           "markdownDescription": "%easy-codesnap.highlightLineNumber%",
-          "order": 10
+          "order": 12
         },
         "easy-codesnap.fullLinesSelection": {
           "scope": "resource",
           "type": "boolean",
           "default": false,
           "markdownDescription": "%easy-codesnap.fullLinesSelection%",
-          "order": 11
+          "order": 13
         },
         "easy-codesnap.windowStyle": {
           "scope": "resource",
@@ -176,7 +201,7 @@
             "%easy-codesnap.windowStyle.macos%",
             "%easy-codesnap.windowStyle.windows%"
           ],
-          "order": 12
+          "order": 14
         },
         "easy-codesnap.windowIconType": {
           "scope": "resource",
@@ -191,14 +216,14 @@
             "%easy-codesnap.windowIconType.round%",
             "%easy-codesnap.windowIconType.square%"
           ],
-          "order": 13
+          "order": 15
         },
         "easy-codesnap.showWindowTitle": {
           "scope": "resource",
           "type": "boolean",
           "default": false,
           "markdownDescription": "%easy-codesnap.showWindowTitle%",
-          "order": 14
+          "order": 16
         },
         "easy-codesnap.windowTitleTemplate": {
           "scope": "resource",
@@ -206,21 +231,21 @@
           "minLength": 1,
           "default": "{workspace} - {fileName}",
           "markdownDescription": "%easy-codesnap.windowTitleTemplate%",
-          "order": 15
+          "order": 17
         },
         "easy-codesnap.showWindowControls": {
           "scope": "resource",
           "type": "boolean",
           "default": true,
           "markdownDescription": "%easy-codesnap.showWindowControls%",
-          "order": 16
+          "order": 18
         },
         "easy-codesnap.roundedCorners": {
           "scope": "resource",
           "type": "boolean",
           "default": true,
           "markdownDescription": "%easy-codesnap.roundedCorners%",
-          "order": 17
+          "order": 19
         },
         "easy-codesnap.roundingLevel": {
           "scope": "resource",
@@ -239,7 +264,7 @@
             "%easy-codesnap.roundingLevel.3%",
             "%easy-codesnap.roundingLevel.4%"
           ],
-          "order": 18
+          "order": 20
         },
         "easy-codesnap.target": {
           "scope": "resource",
@@ -254,49 +279,49 @@
             "%easy-codesnap.target.container%",
             "%easy-codesnap.target.window%"
           ],
-          "order": 19
+          "order": 21
         },
         "easy-codesnap.boxShadow": {
           "scope": "resource",
           "type": "string",
           "default": "rgba(0, 0, 0, 0.55) 0px 20px 68px",
           "markdownDescription": "%easy-codesnap.boxShadow%",
-          "order": 20
+          "order": 22
         },
         "easy-codesnap.backgroundColor": {
           "scope": "resource",
           "type": "string",
           "default": "#abb8c3",
           "markdownDescription": "%easy-codesnap.backgroundColor%",
-          "order": 21
+          "order": 23
         },
         "easy-codesnap.containerPadding": {
           "scope": "resource",
           "type": "string",
           "default": "3em",
           "markdownDescription": "%easy-codesnap.containerPadding%",
-          "order": 22
+          "order": 24
         },
         "easy-codesnap.transparentBackground": {
           "scope": "resource",
           "type": "boolean",
           "default": false,
           "markdownDescription": "%easy-codesnap.transparentBackground%",
-          "order": 23
+          "order": 25
         },
         "easy-codesnap.enableResizing": {
           "scope": "resource",
           "type": "boolean",
           "default": true,
           "markdownDescription": "%easy-codesnap.enableResizing%",
-          "order": 24
+          "order": 26
         },
         "easy-codesnap.enableSymbolBreadcrumb": {
           "scope": "resource",
           "type": "boolean",
           "default": false,
           "markdownDescription": "%easy-codesnap.enableSymbolBreadcrumb%",
-          "order": 25
+          "order": 27
         },
         "easy-codesnap.maxCharWidth": {
           "scope": "resource",
@@ -305,7 +330,7 @@
           "maximum": 200,
           "default": 0,
           "markdownDescription": "%easy-codesnap.maxCharWidth%",
-          "order": 26
+          "order": 28
         },
         "easy-codesnap.aspect-ratio": {
           "scope": "resource",
@@ -328,21 +353,21 @@
             "%easy-codesnap.aspect-ratio.16:9%",
             "%easy-codesnap.aspect-ratio.1.91:1%"
           ],
-          "order": 27
+          "order": 29
         },
         "easy-codesnap.watermark": {
           "scope": "resource",
           "type": "boolean",
           "default": false,
           "markdownDescription": "%easy-codesnap.watermark%",
-          "order": 28
+          "order": 30
         },
         "easy-codesnap.defaultWatermarkText": {
           "scope": "resource",
           "type": "string",
           "default": "Made with Easy CodeSnap",
           "markdownDescription": "%easy-codesnap.defaultWatermarkText%",
-          "order": 29
+          "order": 31
         },
         "easy-codesnap.watermarkPosition": {
           "scope": "resource",
@@ -361,14 +386,14 @@
             "%easy-codesnap.watermarkPosition.bottom-left%",
             "%easy-codesnap.watermarkPosition.bottom-right%"
           ],
-          "order": 30
+          "order": 32
         },
         "easy-codesnap.keepOriginalIndentation": {
           "scope": "resource",
           "type": "boolean",
           "default": false,
           "markdownDescription": "%easy-codesnap.keepOriginalIndentation%",
-          "order": 31
+          "order": 33
         },
         "easy-codesnap.uiCustomColors": {
           "scope": "resource",
@@ -384,30 +409,6 @@
               "description": "%easy-codesnap.uiCustomColors.watermarkPositionInputSelectedBackgroud%"
             }
           },
-          "order": 32
-        },
-        "easy-codesnap.performShutterActionOnOpen": {
-          "scope": "resource",
-          "type": "boolean",
-          "default": false,
-          "markdownDescription": "%easy-codesnap.performShutterActionOnOpen%",
-          "order": 33
-        },
-        "easy-codesnap.shutterActionAnimation": {
-          "scope": "resource",
-          "type": "string",
-          "enum": [
-            "flash",
-            "shutter",
-            "colored-shutter"
-          ],
-          "default": "flash",
-          "markdownDescription": "%easy-codesnap.shutterActionAnimation%",
-          "markdownEnumDescriptions": [
-            "%easy-codesnap.shutterActionAnimation.flash%",
-            "%easy-codesnap.shutterActionAnimation.shutter%",
-            "%easy-codesnap.shutterActionAnimation.colored-shutter%"
-          ],
           "order": 34
         }
       }
