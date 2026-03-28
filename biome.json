@@ -58,6 +58,7 @@
       "src/**/*.tsx",
       "!src/webview/lib/*.ts",
       "./package*.json",
+      "!package.json",
       "./l10n/*.json",
       "./cli/**/*.ts"
     ]

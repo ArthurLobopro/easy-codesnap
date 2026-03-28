@@ -7,3 +7,8 @@ node_modules
 /badges
 output.css
 .yarnrc.yml
+
+package-lock.json
+pnpm-lock.yaml
+bun.lockb
+bun.lock
