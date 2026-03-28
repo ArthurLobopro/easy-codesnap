@@ -50,6 +50,7 @@ Badge | Language | Maintainers
 --- | --- | ---
 ![](https://raw.githubusercontent.com/ArthurLobopro/easy-codesnap/refs/heads/Badges/en-us.png) | American English - Default Language | Extension Owner
 ![](https://raw.githubusercontent.com/ArthurLobopro/easy-codesnap/refs/heads/Badges/pt-br.png) | Português Brasileiro |  Extension Owner
+![](https://raw.githubusercontent.com/ArthurLobopro/easy-codesnap/refs/heads/Badges/fr.png) | French | [Lost4295](https://github.com/Lost4295)
 ![](https://raw.githubusercontent.com/ArthurLobopro/easy-codesnap/refs/heads/Badges/es.png) | Spanish | [Escarabajoz](https://github.com/Escarabajoz)
 ![](https://raw.githubusercontent.com/ArthurLobopro/easy-codesnap/refs/heads/Badges/zh-cn.png) | Chinese Mandarin | [SorYoshino](https://github.com/SorYoshino) [CoffeeChaton](https://github.com/CoffeeChaton) 
 ![](https://raw.githubusercontent.com/ArthurLobopro/easy-codesnap/refs/heads/Badges/ja.png) | Japanese | [mnt-h](https://github.com/mnt-h)
