@@ -38,7 +38,7 @@
   "easy-codesnap.windowIconType.square": "Affiche des icônes carrées dans la fenêtre.",
   "easy-codesnap.showWindowTitle": "Affiche le titre de la fenêtre d'écran de capture.",
   "easy-codesnap.windowTitleTemplate": "Définit un modèle pour le titre de la fenêtre d'écran de capture. Prend en charge les variables {workspace}, {fileName} et {relativeFolder}.",
-  "easy-codesnap.showWindowContrôle": "Affiche les contrôles de fenêtre stylisés selon le système d'exploitation sélectionné.",
+  "easy-codesnap.showWindowControls": "Affiche les contrôles de fenêtre stylisés selon le système d'exploitation sélectionné.",
   "easy-codesnap.roundedCorners": "Contrôle si la fenêtre d'écran de capture a des coins arrondis.",
   "easy-codesnap.roundingLevel": "Contrôle le niveau du rayon de bordure du conteneur de capture. Valide uniquement lorsque [Easy-codesnap: Rounded Corners](command:workbench.action.openSettings?%22@id:easy-codesnap.roundedCorners%22) est activé.",
   "easy-codesnap.roundingLevel.1": "Applique des coins arrondis petits au conteneur de capture.",
