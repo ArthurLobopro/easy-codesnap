@@ -4,25 +4,29 @@
 
 Translations are located in the `./l10n` folder and follow the naming pattern: `bundle.l10n.[code].json`.
 
-To create a new translation, copy the file `bundle.l10n.pt-br.json` and rename it using the appropriate language code for your translation.
+To create a new translation:
 
-Next, replace the values in the file with the corresponding translations.
+1. Copy the file `bundle.l10n.pt-br.json` (it's mantained by the owner, so must be complete).
+2. Rename it using the appropriate language code (e.g., `bundle.l10n.es.json` for Spanish).
+3. Replace the values in the file with the corresponding translations.
 
-> If you can't translate all the keys but still want to contribute, that's totally fine! Just make sure to **remove any key-value pairs that still contain Brazilian Portuguese** — otherwise, those untranslated values will be published as-is.
+Additionally, you must create a file named `package.nls.[code].json` for your language.  
+Use the existing `package.nls.json` file as a reference and translate all applicable keys.
 
-Once your translation is ready, open a Pull Request and wait for it to be reviewed and accepted.
+> If you can't translate all the keys but still want to contribute, that's totally fine. However, make sure to **remove any key-value pairs that still contain Brazilian Portuguese** — otherwise, those untranslated values will be published as-is.
 
+Once your translation is complete, open a Pull Request and wait for it to be reviewed.
+
+---
 
 ## Adding Missing Translations
 
-After cloning the repository and installing the dependencies, follow these steps:
+After cloning the repository and installing dependencies:
 
-- Run `yarn translation-status`
+1. Run: `yarn translation-status`
 
-Your terminal will display the status of all translations, like this:
+2. The terminal will display the current status of all translations.
 
-![](./screenshots/translation-status.png)
+This output helps you identify missing strings so you can provide the appropriate translations.
 
-This will help you identify the missing strings so you can add their corresponding translations.
-
-Once you've added your translations, open a Pull Request and wait for it to be reviewed and accepted.
+After adding the missing entries (both in `bundle.l10n.[code].json` and `package.nls.[code].json`, when applicable), open a Pull Request and wait for review.
