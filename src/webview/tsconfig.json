@@ -4,17 +4,25 @@
 		"target": "ES2022",
 		"lib": [
 			"ES2022",
-            "DOM"
+			"DOM"
 		],
 		"rootDir": "./",
 		"strict": true,
 		"jsx": "react-jsx",
 		"moduleResolution": "bundler",
 		"paths": {
-			"@/*": ["./*"],
-			"@hooks/*": ["./ui/react/hooks/*"],
-			"@assets/*": ["../../webview/assets/*"],
-			"@codicons/*": ["../../node_modules/@vscode/codicons/src/icons/*"]
+			"@/*": [
+				"./*"
+			],
+			"@hooks/*": [
+				"./ui/react/hooks/*"
+			],
+			"@assets/*": [
+				"../../webview/assets/*"
+			],
+			"@codicons/*": [
+				"../../node_modules/@vscode/codicons/src/icons/*"
+			]
 		}
 	},
 	"include": [

@@ -19,7 +19,8 @@ async function shutterAnimation() {
   shutterAnimationContainer.setAttribute("data-animation-state", "none");
 }
 
-export async function cameraFlashAnimation(action = useSessionConfig.getState().shutterActionAnimation) {
+export async function cameraFlashAnimation() {
+  const action = useSessionConfig.getState().shutterActionAnimation;
   if (action === "flash") {
     blinkAnimation();
     return;
