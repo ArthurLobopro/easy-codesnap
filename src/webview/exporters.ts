@@ -6,7 +6,7 @@ import { optimize } from "svgo/browser";
 import type { WebviewConfig } from "../types";
 import { SessionConfig, useSessionConfig } from "./SessionConfig";
 import { cameraFlashAnimation } from "./snap";
-import { vscode } from "./util";
+import { $$, vscode } from "./util";
 
 export async function exportPNG(target: HTMLElement, action: WebviewConfig["shutterAction"], useFallback?: boolean) {
   const [mainExporter, fallbackExporter] = useFallback ? [toPNGFallback, toPNG] : [toPNG, toPNGFallback];
@@ -81,6 +81,13 @@ async function toPNG(target: HTMLElement) {
 
   const png = await domtoimage.toPng(target, {
     scale: useSessionConfig.getState().saveScale,
+    // When using scaled monitor resolutions, the scaling factor can generate fractional pixels and break the lines.
+    // Setting the elements width to unset should solve it
+    postProcess: (node: HTMLElement) => {
+      $$("#snippet-container, #snippet, .line, .line-code span", node).forEach((span) => {
+        span.style.width = "unset";
+      });
+    },
   });
 
   console.timeEnd("toPNG");
