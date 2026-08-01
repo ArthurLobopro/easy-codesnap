@@ -105,8 +105,10 @@ function WindowTitle() {
       }}
       ref={ref}
       id="window-title"
-      onDoubleClick={(ev) => {
+      onClick={(ev) => {
         const windowTitleNode = ev.currentTarget;
+
+        if (windowTitleNode.contentEditable === "true") return;
 
         windowTitleNode.contentEditable = "true";
 
@@ -140,7 +142,7 @@ function WindowTitle() {
           });
         }
       }}
-      onKeyPress={(ev) => {
+      onKeyDown={(ev) => {
         const windowTitleNode = ev.currentTarget;
 
         if (ev.key === "Enter") {

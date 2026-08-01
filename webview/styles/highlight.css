@@ -1,4 +1,4 @@
-.line-number:hover {
+#snippet-container[data-state="edit"] .line-number:hover {
     cursor: pointer;
     color: var(--vscode-list-hoverForeground);
 }

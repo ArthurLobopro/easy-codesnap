@@ -14,17 +14,20 @@ Try it — you won’t regret it.
 
 ## Features
 
-- Import your settings from CodeSnap
-- Quickly save screenshots of your code
-- Copy screenshots to your clipboard
-- Appearance configurable
-- Highlight lines
-- Save to PNG or SVG
-- One time settings
-- Lock changes
-- Link on editor
-- Custom Watermark
-- And much more!
+- 📸 Capture code snippets directly from the editor
+- 🖼️ Export as PNG, SVG or WebP
+- 📋 Copy screenshots directly to your clipboard
+- 🎨 Fully customizable appearance
+- ✨ Highlight specific lines of code
+- 📝 Customize the window title and watermark directly from the capture interface
+- 🧭 Display VSCode symbol breadcrumbs in the generated image
+- ⚡ Temporary (session-only) settings without changing your defaults
+- 🔒 Lock the selected code to prevent automatic updates
+- 🔗 Keep the capture window linked to the active editor, ignoring updates from other editors
+- 🔄 Import your existing CodeSnap configuration
+- 🚀 Modern UI with many quality-of-life improvements
+- 🐞 Built with stability and performance in mind
+- ...and much more!
 
 ## How to Use
 
@@ -32,8 +35,6 @@ Try it — you won’t regret it.
 - Click on the camera icon on vscode statusbar
 
 ![icon screenshot](https://raw.githubusercontent.com/ArthurLobopro/easy-codesnap/master/screenshots/screenshot-icon.png)
-
-- You can also use the **`Easy CodeSnap`** command in your command palette.
 
 - Make the final adjustments and take your code snapshot.
 

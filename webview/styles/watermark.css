@@ -1,31 +1,41 @@
-#watermark{
+#watermark {
     position: absolute;
-    bottom: 2px;
-    left: 4px;
-    right: 4px;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 2px 4px;
 
-    &:focus{
-        outline: 1px solid var(--vscode-settings-focusedRowBorder);
-    }
+    cursor: pointer;
 
-    &[data-watermark-position$="-right"]{
+    &[data-watermark-position$="-right"] {
         text-align: right;
     }
 
-    &[data-watermark-position$="-left"]{
+    &[data-watermark-position$="-left"] {
         text-align: left;
     }
 }
 
-#window:has(#watermark[data-target="window"]){
+#snippet-container[data-state="edit"] #watermark {
+    &:focus {
+        outline: 1px solid var(--vscode-settings-focusedRowBorder);
+        outline-offset: -1px;
+    }
+
+    &:hover:not(:focus) {
+        background-color: var(--vscode-button-hoverBackground);
+    }
+}
+
+#window:has(#watermark[data-target="window"]) {
     position: relative;
 }
 
-#snippet-container:has(#watermark[data-target="container"]){
+#snippet-container:has(#watermark[data-target="container"]) {
     position: relative;
 
-    &:has([data-watermark-position^="top"]) #watermark{
-        top: 2px;
+    &:has([data-watermark-position^="top"]) #watermark {
+        top: 0;
         bottom: unset;
     }
 }

@@ -6,7 +6,9 @@ export function addContentEditableListeners() {
 }
 
 function addWatermarkListeners() {
-  watermarkElement.addEventListener("dblclick", () => {
+  watermarkElement.addEventListener("click", () => {
+    if (watermarkElement.contentEditable === "true") return;
+
     watermarkElement.contentEditable = "true";
 
     const range = document.createRange();
@@ -37,7 +39,7 @@ function addWatermarkListeners() {
     });
   });
 
-  watermarkElement.addEventListener("keypress", (event) => {
+  watermarkElement.addEventListener("keydown", (event) => {
     if (event.key === "Enter") {
       watermarkElement.blur();
       return false;
