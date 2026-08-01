@@ -2,12 +2,12 @@ import { useEffect, useRef } from "react";
 import { getDefaultWindowTitle, px, setVar } from "@/util";
 import { windowNode } from "./elements";
 import {
-  RoundClose,
-  RoundMaximize,
-  RoundMinimize,
-  SquareClose,
-  SquareMaximize,
-  SquareMinimize,
+    RoundClose,
+    RoundMaximize,
+    RoundMinimize,
+    SquareClose,
+    SquareMaximize,
+    SquareMinimize,
 } from "./react/components/icons";
 import { useConfig, useConfigList, useSetConfig } from "./react/hooks/useConfig";
 
@@ -105,8 +105,10 @@ function WindowTitle() {
       }}
       ref={ref}
       id="window-title"
-      onDoubleClick={(ev) => {
+      onClick={(ev) => {
         const windowTitleNode = ev.currentTarget;
+
+        if(windowTitleNode.contentEditable === "true") return
 
         windowTitleNode.contentEditable = "true";
 

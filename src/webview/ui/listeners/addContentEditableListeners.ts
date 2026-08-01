@@ -7,6 +7,8 @@ export function addContentEditableListeners() {
 
 function addWatermarkListeners() {
   watermarkElement.addEventListener("click", () => {
+    if (watermarkElement.contentEditable === "true") return;
+
     watermarkElement.contentEditable = "true";
 
     const range = document.createRange();
