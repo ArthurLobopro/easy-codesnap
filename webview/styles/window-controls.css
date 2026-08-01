@@ -36,14 +36,17 @@
 
 #window-title {
     width: 100%;
+    cursor: pointer;
+}
 
-    &:hover {
-        cursor: pointer;
-    }
-
+#snippet-container[data-state="edit"] #window-title {
     &:focus {
         outline: 1px solid var(--vscode-settings-focusedRowBorder);
-        cursor: text;
+        outline-offset: -1px;
+    }
+
+    &:hover:not(:focus) {
+        background-color: var(--vscode-button-hoverBackground);
     }
 }
 
