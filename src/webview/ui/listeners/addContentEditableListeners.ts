@@ -39,7 +39,7 @@ function addWatermarkListeners() {
     });
   });
 
-  watermarkElement.addEventListener("keypress", (event) => {
+  watermarkElement.addEventListener("keydown", (event) => {
     if (event.key === "Enter") {
       watermarkElement.blur();
       return false;

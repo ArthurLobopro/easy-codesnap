@@ -142,7 +142,7 @@ function WindowTitle() {
           });
         }
       }}
-      onKeyPress={(ev) => {
+      onKeyDown={(ev) => {
         const windowTitleNode = ev.currentTarget;
 
         if (ev.key === "Enter") {
