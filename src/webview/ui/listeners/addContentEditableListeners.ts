@@ -6,7 +6,7 @@ export function addContentEditableListeners() {
 }
 
 function addWatermarkListeners() {
-  watermarkElement.addEventListener("dblclick", () => {
+  watermarkElement.addEventListener("click", () => {
     watermarkElement.contentEditable = "true";
 
     const range = document.createRange();

@@ -29,14 +29,25 @@ export async function cameraFlashAnimation() {
   shutterAnimation();
 }
 
+function setupBeforeSnap() {
+  windowNode.style.resize = "none";
+  snippetContainerNode.style.resize = "none";
+  snippetContainerNode.setAttribute("data-state", "snap")
+}
+
+function setupAfterSnap() {
+  windowNode.style.resize = "";
+  snippetContainerNode.style.resize = "";
+  snippetContainerNode.setAttribute("data-state", "edit")
+}
+
 export async function takeSnap({ target, ...config }: Omit<ISessionConfig, "set"> = useSessionConfig.getState()) {
   console.time("TakeSnap");
   const targetNode = target === "container" ? snippetContainerNode : windowNode;
 
   const exporter = { svg: exportSVG, png: exportPNG, webp: exportWEBP }[config.saveFormat];
 
-  windowNode.style.resize = "none";
-  snippetContainerNode.style.resize = "none";
+  setupBeforeSnap()
 
   if (config.transparentBackground || target === "window") {
     setVar("container-background-color", "transparent");
@@ -50,8 +61,7 @@ export async function takeSnap({ target, ...config }: Omit<ISessionConfig, "set"
   await exporter(targetNode, config.shutterAction, config.useFallbackPngExporter);
   console.timeLog("TakeSnap", "Exporter Finished");
 
-  windowNode.style.resize = "";
-  snippetContainerNode.style.resize = "";
+  setupAfterSnap()
 
   setVar("container-background-color", config.backgroundColor);
   setVar("box-shadow", config.boxShadow);
