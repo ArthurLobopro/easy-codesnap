@@ -21,6 +21,7 @@ async function shutterAnimation() {
 
 export async function cameraFlashAnimation() {
   const action = useSessionConfig.getState().shutterActionAnimation;
+  
   if (action === "flash") {
     blinkAnimation();
     return;

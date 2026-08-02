@@ -109,6 +109,10 @@ div:has(#snippet-scroll) {
     }
 }
 
+#snippet-container[data-state="edit"] #breadcrumb .breadcrumb-label:hover{
+    background-color: var(--vscode-list-hoverBackground);
+}
+
 #snippet {
     max-width: 100%;
     white-space: pre-wrap;

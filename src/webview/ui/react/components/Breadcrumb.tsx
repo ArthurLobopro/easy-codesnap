@@ -4,6 +4,7 @@ import { iconComponent } from "@/constants";
 import { getSymbolBreadcrumbs } from "@/util";
 import { useConfigList } from "../hooks/useConfig";
 import { ChevronRight } from "./codicons";
+import { useState } from "react";
 
 export function Breadcrumb() {
   const { enableSymbolBreadcrumb } = useConfigList(["enableSymbolBreadcrumb", "symbolBreadcrumbs"]);
@@ -18,10 +19,7 @@ export function Breadcrumb() {
 
       if (symbolType in iconComponent) {
         return [
-          <div className="breadcrumb-item">
-            {iconComponent[symbolType]()}
-            <div className="breadcrumb-label">{symbol.name}</div>
-          </div>,
+          <BreadcrumbItem icon={iconComponent[symbolType]()} label={symbol.name} />,
           <ChevronRight />,
         ];
       }
@@ -38,4 +36,24 @@ export function Breadcrumb() {
     console.error(error);
     return null;
   }
+}
+
+type BreadcrumbItemProps = {
+  icon: React.ReactNode;
+  label: string;
+};
+
+function BreadcrumbItem({ icon, label }: BreadcrumbItemProps) {
+  const [currentLabel, setCurrentLabel] = useState(label);
+
+  function toggleLabel(){
+    setCurrentLabel((prevLabel) => (prevLabel === label ? "..." : label));
+  }
+
+  return (
+    <div className="breadcrumb-item">
+      {icon}
+      <div className="breadcrumb-label" onClick={toggleLabel}>{currentLabel}</div>
+    </div>
+  );
 }
