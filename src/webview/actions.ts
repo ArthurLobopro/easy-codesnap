@@ -1,8 +1,8 @@
-import { omit, pick, pickAllExcept } from "@arthur-lobo/object-pick";
+import { omit, pick } from "@arthur-lobo/object-pick";
 import * as l10n from "@vscode/l10n";
 import type { ConfigSentToWebview } from "../types";
 import { SessionConfig, useSessionConfig } from "./SessionConfig";
-import { cameraFlashAnimation, takeSnap } from "./snap";
+import { takeSnap } from "./snap";
 import { UpdateCode } from "./ui/updaters";
 import { TranslationUpdater } from "./ui/updaters/TranslationUpdater";
 import { delay, vscode } from "./util";
@@ -10,8 +10,6 @@ import { delay, vscode } from "./util";
 export type actionsKey = keyof typeof actions;
 
 export const actions = {
-  flash: cameraFlashAnimation,
-
   update(config: ConfigSentToWebview & { bundle: string }) {
     if (SessionConfig.hasConfig && SessionConfig.get("isLocked")) {
       return;
@@ -67,8 +65,7 @@ export const actions = {
   },
 
   "update-config"(config: ConfigSentToWebview) {
-    SessionConfig.set(pickAllExcept(config, ["startLine", "templates", "editorID", "linkOnOpen", "lockOnOpen"]));
-
+    SessionConfig.set(omit(config, ["startLine", "templates", "editorID", "linkOnOpen", "lockOnOpen"]));
     UpdateCode();
   },
 };

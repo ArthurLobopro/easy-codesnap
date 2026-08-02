@@ -5,10 +5,10 @@ import type { Config as SVGOConfig } from "svgo";
 import { optimize } from "svgo/browser";
 import type { WebviewConfig } from "../types";
 import { SessionConfig, useSessionConfig } from "./SessionConfig";
-import { cameraFlashAnimation } from "./snap";
 import { $$, vscode } from "./util";
 
 export async function exportPNG(target: HTMLElement, action: WebviewConfig["shutterAction"], useFallback?: boolean) {
+
   const [mainExporter, fallbackExporter] = useFallback ? [toPNGFallback, toPNG] : [toPNG, toPNGFallback];
 
   const url = await (async () => {
@@ -33,7 +33,6 @@ export async function exportPNG(target: HTMLElement, action: WebviewConfig["shut
 
     const blob = new Blob([array], { type: "image/png" });
     navigator.clipboard.write([new ClipboardItem({ "image/png": blob })]);
-    cameraFlashAnimation();
 
     vscode.postMessage({ type: "copied" });
   } else {
@@ -69,7 +68,6 @@ export async function exportSVG(target: HTMLElement, action: WebviewConfig["shut
 
   if (action === "copy") {
     vscode.postMessage({ type: "copy-svg", data: svg });
-    cameraFlashAnimation();
     vscode.postMessage({ type: "copied" });
   } else {
     vscode.postMessage({ type: action, data: svg, format: "svg" });
@@ -79,8 +77,11 @@ export async function exportSVG(target: HTMLElement, action: WebviewConfig["shut
 async function toPNG(target: HTMLElement) {
   console.time("toPNG");
 
+  const scale = useSessionConfig.getState().saveScale;
+  console.timeLog("toPNG", "get scale config");
+
   const png = await domtoimage.toPng(target, {
-    scale: useSessionConfig.getState().saveScale,
+    scale,
     // When using scaled monitor resolutions, the scaling factor can generate fractional pixels and break the lines.
     // Setting the elements width to unset should solve it
     postProcess: (node: HTMLElement) => {

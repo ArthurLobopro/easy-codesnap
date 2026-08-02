@@ -26,13 +26,7 @@ export class SnapActions {
     this.update = (...args) => props.update(...args);
   }
 
-  private flash() {
-    this.panel.webview.postMessage({ type: "flash" });
-  }
-
   async save({ data, format }: SaveProps) {
-    this.flash();
-
     switch (format) {
       case "svg":
         return await saveSVG(data);

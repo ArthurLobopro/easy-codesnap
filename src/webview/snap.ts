@@ -1,34 +1,8 @@
 import { exportPNG, exportSVG, exportWEBP } from "./exporters";
 import { type ISessionConfig, useSessionConfig } from "./SessionConfig";
-import { flashFx, shutterAnimationContainer, snippetContainerNode, windowNode } from "./ui/elements";
-import { once, redraw, setVar } from "./util";
-
-async function blinkAnimation() {
-  flashFx.style.display = "block";
-  redraw(flashFx);
-  flashFx.style.opacity = "0";
-
-  await once(flashFx, "transitionend");
-  flashFx.style.display = "none";
-  flashFx.style.opacity = "1";
-}
-
-async function shutterAnimation() {
-  shutterAnimationContainer.setAttribute("data-animation-state", "animating");
-  await once(shutterAnimationContainer, "animationend");
-  shutterAnimationContainer.setAttribute("data-animation-state", "none");
-}
-
-export async function cameraFlashAnimation() {
-  const action = useSessionConfig.getState().shutterActionAnimation;
-  
-  if (action === "flash") {
-    blinkAnimation();
-    return;
-  }
-
-  shutterAnimation();
-}
+import { cameraFlashAnimation } from "./ui/animations";
+import { snippetContainerNode, windowNode } from "./ui/elements";
+import { setVar } from "./util";
 
 export async function takeSnap(
   { target, transparentBackground, ...config }: Omit<ISessionConfig, "set"> = useSessionConfig.getState(),
@@ -41,6 +15,7 @@ export async function takeSnap(
   setupBeforeSnap({ transparentBackground, target });
 
   console.timeLog("TakeSnap", "Starting Exporter");
+  cameraFlashAnimation()
   await exporter(targetNode, config.shutterAction, config.useFallbackPngExporter);
   console.timeLog("TakeSnap", "Exporter Finished");
 
