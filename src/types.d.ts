@@ -49,7 +49,7 @@ export interface ExtensionConfig {
   shutterActionAnimation: "flash" | "shutter" | "colored-shutter";
 
   uiCustomColors: {
-    watermarkPositionInputSelectedBackgroud: string;
+    watermarkPositionInputSelectedBackground: string;
   };
 }
 

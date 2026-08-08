@@ -62,5 +62,5 @@
   "easy-codesnap.watermarkPosition.bottom-left": "Coloca la marca de agua en la esquina inferior izquierda de la captura.",
   "easy-codesnap.watermarkPosition.bottom-right": "Coloca la marca de agua en la esquina inferior derecha de la captura.",
   "easy-codesnap.uiCustomColors": "Permite cambiar algunos colores de la interfaz que pueden entrar en conflicto con el tema del usuario.",
-  "easy-codesnap.uiCustomColors.watermarkPositionInputSelectedBackgroud": "Cambia el color de fondo del campo de posición de marca de agua seleccionado. Puede usarse para corregir problemas con temas que tengan bajo contraste de color."
+  "easy-codesnap.uiCustomColors.watermarkPositionInputSelectedBackground": "Cambia el color de fondo del campo de posición de marca de agua seleccionado. Puede usarse para corregir problemas con temas que tengan bajo contraste de color."
 }

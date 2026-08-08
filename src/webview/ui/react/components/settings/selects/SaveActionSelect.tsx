@@ -36,7 +36,7 @@ export function SaveActionSelect() {
       </SettingLineWithSelect>
       <TooltipText>
         <EscapeCodes
-          text={t("The option `copy` is not suported when `{saveFormat}` is set to `webp`", {
+          text={t("The option `copy` is not supported when `{saveFormat}` is set to `webp`", {
             saveFormat: t("Save Format"),
           })}
         />

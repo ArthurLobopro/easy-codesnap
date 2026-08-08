@@ -28,9 +28,9 @@ export class VisibilityUpdater extends Updater {
 
     navbarNode.style.display = !showWindowControls && !showWindowTitle ? "none" : "";
 
-    windowNode.classList.remove("line-number-hightlight");
+    windowNode.classList.remove("line-number-highlight");
     if (highlightLineNumber) {
-      windowNode.classList.add("line-number-hightlight");
+      windowNode.classList.add("line-number-highlight");
     }
 
     if (!enableResizing) {

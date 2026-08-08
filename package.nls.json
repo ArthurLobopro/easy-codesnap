@@ -71,5 +71,5 @@
   "easy-codesnap.watermarkPosition.bottom-right": "Places the watermark at the bottom-right corner of the snapshot.",
   "easy-codesnap.keepOriginalIndentation": "Preserves the original indentation of the selected code when taking a snapshot. When disabled, leading spaces or tabs may be trimmed based on the selection.",
   "easy-codesnap.uiCustomColors": "Controls whether custom UI color overrides are applied to the extension's settings panel.",
-  "easy-codesnap.uiCustomColors.watermarkPositionInputSelectedBackgroud": "Defines the background color used for the selected Watermark Position input, improving visibility in themes with low contrast."
+  "easy-codesnap.uiCustomColors.watermarkPositionInputSelectedBackground": "Defines the background color used for the selected Watermark Position input, improving visibility in themes with low contrast."
 }

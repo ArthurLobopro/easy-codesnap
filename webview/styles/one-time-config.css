@@ -51,7 +51,7 @@ label.aspect-square:has(input[name="watermark-position"]) {
 
 label.aspect-square:has(input[name="watermark-position"]:checked) {
   background-color: var(--vscode-focusBorder);
-  background-color: var(--watermarkPositionInputSelectedBackgroud, var(--vscode-focusBorder));
+  background-color: var(--watermarkPositionInputSelectedBackground, var(--vscode-focusBorder));
 }
 
 .expand-content {
