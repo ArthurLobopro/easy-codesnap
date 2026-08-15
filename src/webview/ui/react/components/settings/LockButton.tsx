@@ -20,7 +20,7 @@ export function LockButton() {
         <span>{t(isLocked ? "Unlock changes" : "Lock changes")}.</span> <br />
         <span>
           {text(
-            t("Locked Snap Screens will not listen any selection changes."),
+            t("Locked Snap Screens do not respond to selection changes."),
             t("To change the default behavior, click"),
           )}
         </span>

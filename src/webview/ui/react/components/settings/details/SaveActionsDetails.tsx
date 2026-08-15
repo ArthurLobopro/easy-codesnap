@@ -25,7 +25,7 @@ export function SaveActionsDetails() {
           tooltip={
             <EscapeCodes
               text={t(
-                "Controls whether the SVG should be optimized before saving. Only valid if `{saveFormat}` is `svg`.",
+                "Controls whether SVG files are optimized before saving. Only valid if `{saveFormat}` is `svg`.",
                 { saveFormat: t("Save Format") },
               )}
             />
@@ -36,8 +36,8 @@ export function SaveActionsDetails() {
           config="useFallbackPngExporter"
           label={t("Use Fallback PNG Exporter")}
           tooltip={text(
-            t("Enables the use of a fallback PNG exporter as main exporter for saving snapshots in PNG format."),
-            t("This can be useful if you encounter issues with the default exporter."),
+            t("Uses the fallback PNG exporter as the primary exporter when saving snapshots in PNG format."),
+            t("This option can be useful when the default exporter produces unexpected results."),
           )}
           disabled={saveFormat !== "png"}
         />

@@ -16,10 +16,10 @@ export function LinkButton() {
     <TooltipBottom horizontal="left">
       <TopButton onClick={() => set({ isLinked: !isLinked })}>{isLinked ? <LinkIcon /> : <UnlinkIcon />}</TopButton>
       <TooltipText>
-        <span>{t(isLinked ? "Broken editor connection" : "Connect to editor")}</span>. <br />
+      <span>{t(isLinked ? "Disconnect from editor" : "Connect to editor")}</span>. <br />
         <span>
           {text(
-            t("Linked Snap Screens will listen only to current editor selection changes."),
+            t("Linked Snap Screens respond only to selection changes in the linked editor."),
             t("To change the default behavior, click"),
           )}
         </span>
