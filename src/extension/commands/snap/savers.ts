@@ -27,7 +27,7 @@ export async function savePNG(data: string) {
 
   if (uri) {
     writeFile(uri.fsPath, Buffer.from(data, "base64")).then(() => {
-      vscode.window.showInformationMessage(t("Image saved on: {0}", uri.fsPath));
+      vscode.window.showInformationMessage(t("Image saved to: {0}", uri.fsPath));
     });
   }
 }
@@ -49,7 +49,7 @@ export async function saveWEBP(data: string) {
 
   if (uri) {
     writeFile(uri.fsPath, Buffer.from(data, "base64")).then(() => {
-      vscode.window.showInformationMessage(t("Image saved on: {0}", uri.fsPath));
+      vscode.window.showInformationMessage(t("Image saved to: {0}", uri.fsPath));
     });
   }
 }

@@ -23,7 +23,7 @@ export function WindowOptionsDetails() {
               <span>
                 {text(
                   t("You can edit the Window Title text by clicking on it."),
-                  t("You can edit the default Window Title text clicking"),
+                  t("You can edit the default Window Title text by clicking"),
                   " ",
                 )}
               </span>

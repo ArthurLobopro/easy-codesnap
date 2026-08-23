@@ -65,14 +65,30 @@ function getTranslationStatus(obj: Record<string, string>, filename: string) {
   };
 }
 
-export function getAllTranslationStatus() {
+function getTranslationFiles() {
   const TRANSLATIONS_FOLDER = path.resolve(__dirname, "../l10n");
-  const JSONTranslationFiles = fs
+  return fs
     .readdirSync(TRANSLATIONS_FOLDER, { withFileTypes: true })
     .filter((file) => file.isFile())
     .map((file) => `${file.parentPath}/${file.name}`);
+}
 
-  return JSONTranslationFiles.map((filePath) => {
-    return getTranslationStatus(require(filePath), path.basename(filePath));
-  }).sort((v1, v2) => v2.coverage - v1.coverage);
+export function getAllTranslationStatus() {
+  return getTranslationFiles()
+    .map((filePath) => getTranslationStatus(require(filePath), path.basename(filePath)))
+    .sort((v1, v2) => v2.coverage - v1.coverage);
+}
+
+export function getTranslationStatusByLocale(locale: string) {
+  const files = getTranslationFiles();
+  const match = files.find((filePath) => {
+    const code = path.basename(filePath).split(".").at(-2);
+    return code?.toLowerCase() === locale.toLowerCase();
+  });
+
+  if (!match) {
+    return null;
+  }
+
+  return getTranslationStatus(require(match), path.basename(match));
 }

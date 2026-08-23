@@ -35,7 +35,7 @@ export function RoundingLevelSelect() {
         </ConfigSelect>
       </SettingLineWithSelect>
       <TooltipText>
-        <span>{t("The Window rounding level.")} </span>
+        <span>{t("Specifies the window's rounding level.")} </span>
         <EscapeCodes
           text={t("Only valid when `{roundedCorners}` is marked", { roundedCorners: t("Rounded Corners") })}
         />

@@ -52,7 +52,7 @@ export function WatermarkDetails() {
               <span>
                 {text(
                   t("You can edit the Watermark text by clicking on it."),
-                  t("You can edit the default Watermark text clicking"),
+                  t("You can edit the default Watermark text by clicking"),
                   " ",
                 )}
               </span>

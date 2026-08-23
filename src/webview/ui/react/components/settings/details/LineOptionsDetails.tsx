@@ -30,7 +30,7 @@ export function LineOptionsDetails() {
         />
         <ToggleInput
           config="highlightLineNumber"
-          label={t("Line Number Hightlight")}
+          label={t("Line Number Highlight")}
           tooltip={
             <EscapeCodes
               text={text(
