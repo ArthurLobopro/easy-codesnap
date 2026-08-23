@@ -1,5 +1,4 @@
-//@ts-expect-error
-import domtoimage from "dom-to-image-even-more";
+import * as domtoimage from "./lib/dom-to-image";
 import { elementToSVG } from "dom-to-svg";
 import type { Config as SVGOConfig } from "svgo";
 import { optimize } from "svgo/browser";
@@ -89,6 +88,9 @@ async function toPNG(target: HTMLElement) {
         span.style.width = "unset";
       });
     },
+    profile: true,
+    onProfile: console.log,
+    pruneInheritedStyles: true,
   });
 
   console.timeEnd("toPNG");

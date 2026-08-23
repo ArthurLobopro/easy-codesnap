@@ -9,7 +9,7 @@
   "typescript.tsc.autoDetect": "off",
   "typescript.format.semicolons": "ignore",
   "[typescript]": {
-    "editor.defaultFormatter": "biomejs.biome",
+    "editor.defaultFormatter": "TypeScriptTeam.native-preview",
     "editor.codeActionsOnSave": {
       "source.fixAll.biome": "explicit",
       "source.organizeImports": "never",
@@ -17,7 +17,7 @@
     }
   },
   "[typescriptreact]": {
-    "editor.defaultFormatter": "biomejs.biome",
+    "editor.defaultFormatter": "TypeScriptTeam.native-preview",
     "editor.codeActionsOnSave": {
       "source.fixAll.biome": "explicit",
       "source.removeUnusedImports": "explicit",
