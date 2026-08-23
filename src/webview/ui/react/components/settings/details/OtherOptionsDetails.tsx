@@ -58,7 +58,7 @@ export function OtherOptionsDetails() {
               >
                 {t("Container")}
               </span>
-              . <EscapeCodes text={text(t("Disabling this will also remove any resizing you've done."))} />
+              . <EscapeCodes text={text(t("Disabling this will also clear any manual resizing you have applied."))} />
             </>
           }
         />
@@ -83,7 +83,7 @@ export function OtherOptionsDetails() {
           </SettingLineWithSelect>
           <TooltipText>
             {text(
-              t("Maximum line width based on characters. Use value 0 for no limit."),
+              t("Sets the maximum line width in characters. Use value 0 for no limit."),
               t("Invalid values will be ignored and the last valid value will be restored"),
             )}
           </TooltipText>

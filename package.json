@@ -399,14 +399,14 @@
           "scope": "resource",
           "type": "object",
           "default": {
-            "watermarkPositionInputSelectedBackgroud": "var(--vscode-focusBorder)"
+            "watermarkPositionInputSelectedBackground": "var(--vscode-focusBorder)"
           },
           "markdownDescription": "%easy-codesnap.uiCustomColors%",
           "properties": {
-            "watermarkPositionInputSelectedBackgroud": {
+            "watermarkPositionInputSelectedBackground": {
               "type": "string",
               "default": "var(--vscode-focusBorder)",
-              "description": "%easy-codesnap.uiCustomColors.watermarkPositionInputSelectedBackgroud%"
+              "description": "%easy-codesnap.uiCustomColors.watermarkPositionInputSelectedBackground%"
             }
           },
           "order": 34
