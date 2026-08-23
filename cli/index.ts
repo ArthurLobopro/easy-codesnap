@@ -3,7 +3,7 @@ import { CompressJson } from "./commands/compress-json";
 import { main as MakeBadges } from "./commands/make-badges";
 import { SortNls } from "./commands/sort.nls";
 import { SortOrder } from "./commands/sort.order";
-import { getAllTranslationStatus } from "./getTranslations";
+import { getAllTranslationStatus, getTranslationStatusByLocale } from "./getTranslations";
 
 cli
   .name("easy-builder")
@@ -27,6 +27,21 @@ cli
 
 cli.command("compress-json").action(CompressJson);
 
-cli.command("translation-status").action(() => console.log(getAllTranslationStatus()));
+cli
+  .command("translation-status")
+  .description("Show translation coverage status")
+  .addArgument(new Argument("[locale]", "Locale code to filter (e.g. pt-br, fr, de)"))
+  .action((locale?: string) => {
+    if (locale) {
+      const result = getTranslationStatusByLocale(locale);
+      if (!result) {
+        console.error(`No translation file found for locale "${locale}".`);
+        process.exit(1);
+      }
+      console.log(result);
+    } else {
+      console.log(getAllTranslationStatus());
+    }
+  });
 
 cli.parse();
