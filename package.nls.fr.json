@@ -7,7 +7,7 @@
   "easy-codesnap.shutterAction": "Contrôle le comportement du bouton de déclenchement lors de la prise d'une capture.",
   "easy-codesnap.shutterAction.copy": "Copie la capture dans le presse-papier.",
   "easy-codesnap.shutterAction.save": "Sauvegarde la capture dans un fichier.",
-"easy-codesnap.saveFormat": "Précise le format de fichier pour sauvegarder les captures.",
+  "easy-codesnap.saveFormat": "Précise le format de fichier pour sauvegarder les captures.",
   "easy-codesnap.saveFormat.png": "Sauvegarde la capture dans un format PNG as a lossless bitmap image that supports transparency.",
   "easy-codesnap.saveFormat.svg": "Sauvegarde la capture dans un format SVG en tant qu'image vecteur pouvant être mise à l'échelle sans perte de qualité.",
   "easy-codesnap.saveScale": "Contrôle l'échelle à utiliser lors de la sauvegarde des captures en PNG.",
