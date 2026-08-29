@@ -6,7 +6,6 @@
 			"ES2022",
 			"DOM"
 		],
-		"rootDir": "./",
 		"strict": true,
 		"jsx": "react-jsx",
 		"moduleResolution": "bundler",

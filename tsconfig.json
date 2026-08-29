@@ -1,11 +1,15 @@
 {
 	"compilerOptions": {
-		"module": "Node16",
+		"module": "es2022",
 		"target": "ES2024",
 		"outDir": "out",
+		"moduleResolution": "bundler",
 		"lib": [
 			"ES2024",
 			"DOM"
+		],
+		"types": [
+			"node"
 		],
 		"sourceMap": true,
 		"rootDir": "./src/",
