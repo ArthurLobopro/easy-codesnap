@@ -77,7 +77,7 @@ const config = (env, argv) => {
               {
                 loader: "esbuild-loader",
                 options: {
-                  tsconfig: "./src/webview/tsconfig.json"
+                  tsconfig: "./tsconfig.webview.json"
                 }
               }
             ]
