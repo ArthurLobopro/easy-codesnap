@@ -56,7 +56,6 @@ export interface ISessionConfig extends WebviewConfig {
 export const useSessionConfig = create<ISessionConfig>((setState) => ({
   set(config) {
     setState((state) => {
-      // biome-ignore lint/correctness/noUnusedVariables: Need to separate the rest with spread
       const { set, ...stateConfig } = state;
 
       SessionConfig.set({ ...config }, true);

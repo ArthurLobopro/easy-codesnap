@@ -13,7 +13,7 @@ badges/**
 webview/assets
 
 #Config
-**/tsconfig.json
+**/tsconfig*.json
 *.config.js
 .yarnrc
 .gitignore

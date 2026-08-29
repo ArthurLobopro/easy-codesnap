@@ -1,21 +1,11 @@
 {
-	"compilerOptions": {
-		"module": "Node16",
-		"target": "ES2024",
-		"outDir": "out",
-		"lib": [
-			"ES2024",
-			"DOM"
-		],
-		"sourceMap": true,
-		"rootDir": "./src/",
-		"strict": true,
-		"noImplicitReturns": true,
-		"resolveJsonModule": true
-	},
-	"exclude": [
-		"./src/webview/**",
-		"./dist/**",
-		"./cli"
-	]
+  "files": [],
+  "references": [
+    {
+      "path": "./tsconfig.app.json"
+    },
+    {
+      "path": "./tsconfig.webview.json"
+    }
+  ]
 }

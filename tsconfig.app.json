@@ -1,0 +1,19 @@
+{
+  "extends": "./tsconfig.base.json",
+  "compilerOptions": {
+    "module": "es2022",
+    "target": "ES2024",
+    "outDir": "out",
+    "types": [
+      "node"
+    ],
+    "sourceMap": true,
+    "rootDir": "./src/",
+    "noImplicitReturns": true
+  },
+  "exclude": [
+    "./src/webview/**",
+    "./dist/**",
+    "./cli"
+  ]
+}

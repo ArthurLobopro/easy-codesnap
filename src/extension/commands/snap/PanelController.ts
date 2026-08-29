@@ -1,5 +1,5 @@
 import * as vscode from "vscode";
-import type { message } from "../../types";
+import type { message } from "../../../types";
 import { hasOneSelection, t } from "../../util";
 import { ClipboardKeeper } from "./ClipboardKeeper";
 import { getConfig } from "./getConfig";
