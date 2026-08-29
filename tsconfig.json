@@ -1,25 +1,11 @@
 {
-	"compilerOptions": {
-		"module": "es2022",
-		"target": "ES2024",
-		"outDir": "out",
-		"moduleResolution": "bundler",
-		"lib": [
-			"ES2024",
-			"DOM"
-		],
-		"types": [
-			"node"
-		],
-		"sourceMap": true,
-		"rootDir": "./src/",
-		"strict": true,
-		"noImplicitReturns": true,
-		"resolveJsonModule": true
-	},
-	"exclude": [
-		"./src/webview/**",
-		"./dist/**",
-		"./cli"
-	]
+  "files": [],
+  "references": [
+    {
+      "path": "./tsconfig.app.json"
+    },
+    {
+      "path": "./tsconfig.webview.json"
+    }
+  ]
 }
