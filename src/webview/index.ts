@@ -15,11 +15,17 @@ document.addEventListener("paste", (e) => {
   }
 });
 
-window.addEventListener("message", ({ data: { type, ...config } }) => {
-  if (type in actions) {
-    actions[type as actionsKey](config);
-  } else {
-    console.log(`Unknow action on renderer: ${type}`);
+window.addEventListener("message", ({ data: { type, clipboardRequestId, ...config } }) => {
+  try {
+    if (type in actions) {
+      actions[type as actionsKey](config);
+    } else {
+      console.log(`Unknow action on renderer: ${type}`);
+    }
+  } finally {
+    if ((type === "update" || type === "update-text") && typeof clipboardRequestId === "number") {
+      vscode.postMessage({ type: "clipboard-consumed", requestId: clipboardRequestId });
+    }
   }
 });
 

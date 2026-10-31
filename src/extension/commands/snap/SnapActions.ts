@@ -1,7 +1,7 @@
 import * as vscode from "vscode";
 import type { ExtensionConfig } from "../../../types";
 import { extensionSettingsNames } from "../../constants";
-import { delay, hasOneSelection, t } from "../../util";
+import { delay, getSettings, hasOneSelection, t } from "../../util";
 import type { IPanelWebviewConfig, PanelWebviewConfig } from "./PanelWebviewConfig";
 import { savePNG, saveSVG, saveWEBP } from "./savers";
 
@@ -13,16 +13,19 @@ interface SnapActionsProps {
   panel: vscode.WebviewPanel;
   update: (type: updateTypes, editorURI?: string) => Promise<void>;
   webViewConfig: PanelWebviewConfig;
+  scheduleSymbolBreadcrumbUpdate: () => void;
 }
 
 export class SnapActions {
   private panel: vscode.WebviewPanel;
   private update: SnapActionsProps["update"];
   private webViewConfig: PanelWebviewConfig;
+  private scheduleSymbolBreadcrumbUpdate: () => void;
 
   constructor(props: SnapActionsProps) {
     this.panel = props.panel;
     this.webViewConfig = props.webViewConfig;
+    this.scheduleSymbolBreadcrumbUpdate = () => props.scheduleSymbolBreadcrumbUpdate();
     this.update = (...args) => props.update(...args);
   }
 
@@ -75,7 +78,13 @@ export class SnapActions {
   }
 
   "set-webview-config" = ({ config }: { config: IPanelWebviewConfig }) => {
+    const wasEnabled =
+      this.webViewConfig.get("enableSymbolBreadcrumb") ??
+      getSettings("easy-codesnap", ["enableSymbolBreadcrumb"]).enableSymbolBreadcrumb;
     this.webViewConfig.set(config);
+    if (wasEnabled !== config.enableSymbolBreadcrumb) {
+      this.scheduleSymbolBreadcrumbUpdate();
+    }
   };
 
   "update-config"() {

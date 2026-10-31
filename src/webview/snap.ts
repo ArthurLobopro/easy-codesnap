@@ -1,3 +1,4 @@
+import { cancelAutomaticCapture } from "./automaticCapture";
 import { getRasterSize, isRasterSizeSafe } from "./captureLimits";
 import { exportPNG, exportSVG, exportWEBP } from "./exporters";
 import { type ISessionConfig, useSessionConfig } from "./SessionConfig";
@@ -35,6 +36,7 @@ export async function cameraFlashAnimation() {
 export async function takeSnap(
   { target, transparentBackground, ...config }: Omit<ISessionConfig, "set"> = useSessionConfig.getState(),
 ) {
+  cancelAutomaticCapture();
   if (capturing) return;
   capturing = true;
   const targetNode = target === "container" ? snippetContainerNode : windowNode;

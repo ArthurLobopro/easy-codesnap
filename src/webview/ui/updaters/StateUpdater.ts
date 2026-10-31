@@ -4,11 +4,11 @@ import { Updater } from "../Updater";
 
 export class StateUpdater extends Updater {
   constructor() {
-    super(["isLocked", "isLinked", "editorID"]);
+    super(["isLocked", "isLinked", "editorID", "enableSymbolBreadcrumb"]);
   }
 
   update(): void {
-    const { isLocked, isLinked, editorID } = SessionConfig.get();
+    const { isLocked, isLinked, editorID, enableSymbolBreadcrumb } = SessionConfig.get();
 
     vscode.postMessage({
       type: "set-webview-config",
@@ -16,6 +16,7 @@ export class StateUpdater extends Updater {
         isLocked,
         isLinked,
         linkedId: editorID ?? "",
+        enableSymbolBreadcrumb,
       },
     });
   }

@@ -12,6 +12,7 @@ export class VisibilityUpdater extends Updater {
       "highlightLineNumber",
       "enableResizing",
       "enableSymbolBreadcrumb",
+      "symbolBreadcrumbs",
       "target",
     ]);
   }

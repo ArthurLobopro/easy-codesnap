@@ -1,11 +1,12 @@
 import { omit, pick, pickAllExcept } from "@arthur-lobo/object-pick";
 import * as l10n from "@vscode/l10n";
 import type { ConfigSentToWebview } from "../types";
+import { notifyBreadcrumbsReady, scheduleAutomaticCapture } from "./automaticCapture";
 import { SessionConfig, useSessionConfig } from "./SessionConfig";
 import { cameraFlashAnimation, takeSnap } from "./snap";
 import { UpdateCode } from "./ui/updaters";
 import { TranslationUpdater } from "./ui/updaters/TranslationUpdater";
-import { delay, vscode } from "./util";
+import { vscode } from "./util";
 
 export type actionsKey = keyof typeof actions;
 
@@ -35,7 +36,7 @@ export const actions = {
 
     if (config.performShutterActionOnOpen) {
       window.focus();
-      delay(100).then(() => takeSnap());
+      scheduleAutomaticCapture(() => void takeSnap(), config.enableSymbolBreadcrumb);
     }
   },
 
@@ -46,8 +47,16 @@ export const actions = {
         isLocked: SessionConfig.get("isLocked"),
         isLinked: SessionConfig.get("isLinked"),
         linkedId: SessionConfig.get("editorID") ?? "",
+        enableSymbolBreadcrumb: SessionConfig.get("enableSymbolBreadcrumb"),
       },
     });
+  },
+
+  "update-breadcrumbs"({ symbolBreadcrumbs }: Pick<ConfigSentToWebview, "symbolBreadcrumbs">) {
+    if (SessionConfig.get("enableSymbolBreadcrumb")) {
+      SessionConfig.set({ symbolBreadcrumbs });
+      notifyBreadcrumbsReady();
+    }
   },
 
   "update-text"(config: ConfigSentToWebview) {
