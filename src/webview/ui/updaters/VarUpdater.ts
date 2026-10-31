@@ -39,6 +39,7 @@ export class VarUpdater extends Updater {
       showLineNumbers,
       letterSpacing,
       target,
+      transparentBackground,
       maxCharWidth,
       zoom,
       uiCustomColors,
@@ -54,8 +55,15 @@ export class VarUpdater extends Updater {
 
     setVar("letter-spacing", px(letterSpacing));
     setVar("tab-size", tabSize.toString());
-    setVar("container-background-color", backgroundColor);
-    setVar("box-shadow", boxShadow);
+    const isSnapping = snippetContainerNode.getAttribute?.("data-state") === "snap";
+    setVar(
+      "container-background-color",
+      isSnapping && (transparentBackground || target === "window") ? "transparent" : backgroundColor,
+    );
+    setVar(
+      "box-shadow",
+      isSnapping && (target === "window" || (target === "container" && transparentBackground)) ? "none" : boxShadow,
+    );
     setVar("container-padding", containerPadding);
     setVar("zoom", `${zoom}%`);
 

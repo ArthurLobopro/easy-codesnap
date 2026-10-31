@@ -10,7 +10,9 @@ import { $$, vscode } from "./util";
 export async function exportPNG(target: HTMLElement, action: WebviewConfig["shutterAction"], useFallback?: boolean) {
   const [mainExporter, fallbackExporter] = useFallback ? [toPNGFallback, toPNG] : [toPNG, toPNGFallback];
 
-  const url = await (async () => {
+  // Defer rendering so a large capture can start clipboard access during the
+  // user's click and supply the image asynchronously.
+  const blobPromise = Promise.resolve().then(async () => {
     try {
       return await mainExporter(target);
     } catch (_error) {
@@ -18,37 +20,34 @@ export async function exportPNG(target: HTMLElement, action: WebviewConfig["shut
       console.log(_error);
       return await fallbackExporter(target);
     }
-  })();
-
-  const data = url.slice(url.indexOf(",") + 1);
+  });
 
   if (action === "copy") {
-    const binary = atob(data);
-    const array = new Uint8Array(binary.length);
-
-    for (let i = 0; i < binary.length; i++) {
-      array[i] = binary.charCodeAt(i);
+    let write: Promise<void>;
+    try {
+      write = navigator.clipboard.write([new ClipboardItem({ "image/png": blobPromise })]);
+      write.catch(() => {});
+    } catch (error) {
+      await blobPromise.catch(() => {});
+      throw error;
     }
-
-    const blob = new Blob([array], { type: "image/png" });
-    navigator.clipboard.write([new ClipboardItem({ "image/png": blob })]);
-    cameraFlashAnimation();
-
+    await blobPromise;
+    await write;
+    void cameraFlashAnimation();
     vscode.postMessage({ type: "copied" });
   } else {
-    vscode.postMessage({ type: action, data, format: "png" });
+    const blob = await blobPromise;
+    vscode.postMessage({ type: action, data: await blobToBase64(blob), format: "png" });
   }
 }
 
 export async function exportWEBP(target: HTMLElement) {
-  const canvas = (await domtoimage.toCanvas(target, {
+  const canvas = await domtoimage.toCanvas(target, {
     scale: useSessionConfig.getState().saveScale,
-  })) as HTMLCanvasElement;
+  });
 
-  const dataUrl = canvas.toDataURL("image/webp", 1.0);
-  const data = dataUrl.slice(dataUrl.indexOf(",") + 1);
-
-  vscode.postMessage({ type: "save", data, format: "webp" });
+  const blob = await canvasToBlob(canvas, "image/webp");
+  vscode.postMessage({ type: "save", data: await blobToBase64(blob), format: "webp" });
 }
 
 export async function exportSVG(target: HTMLElement, action: WebviewConfig["shutterAction"]) {
@@ -77,9 +76,9 @@ export async function exportSVG(target: HTMLElement, action: WebviewConfig["shut
 
 async function toPNG(target: HTMLElement) {
   console.time("toPNG");
-
-  const png = await domtoimage.toPng(target, {
-    scale: useSessionConfig.getState().saveScale,
+  const scale = useSessionConfig.getState().saveScale;
+  const options = {
+    scale,
     // When using scaled monitor resolutions, the scaling factor can generate fractional pixels and break the lines.
     // Setting the elements width to unset should solve it
     postProcess: (node: HTMLElement) => {
@@ -87,25 +86,20 @@ async function toPNG(target: HTMLElement) {
         span.style.width = "unset";
       });
     },
-  });
+  };
+
+  const canvas = await domtoimage.toCanvas(target, options);
 
   console.timeEnd("toPNG");
-  return png;
+  return canvasToBlob(canvas, "image/png");
 }
 
 async function toPNGFallback(target: HTMLElement) {
   const scale = SessionConfig.get("saveScale");
-
-  const canvas = document.createElement("canvas");
-  const ctx = canvas.getContext("2d");
-
   const { height: targetHeight, width: targetWidth } = target.getBoundingClientRect();
 
   const width = Math.floor(targetWidth * scale) + 2;
   const height = Math.floor(targetHeight * scale) + 2;
-
-  canvas.width = width;
-  canvas.height = height;
 
   function svgToDataURI(svgString: string) {
     // The SVG is an intermediate image, so repeated optimization passes do
@@ -117,21 +111,59 @@ async function toPNGFallback(target: HTMLElement) {
   }
 
   const image = await (async (): Promise<HTMLImageElement> => {
-    return new Promise((resolve) => {
+    return new Promise((resolve, reject) => {
       const img = new Image();
 
       img.width = width;
       img.height = height;
 
-      img.src = svgToDataURI(new XMLSerializer().serializeToString(elementToSVG(target, { keepLinks: false })));
-
       img.onload = () => resolve(img);
+      img.onerror = () => reject(new Error("Failed to load the generated SVG image"));
+      img.src = svgToDataURI(new XMLSerializer().serializeToString(elementToSVG(target, { keepLinks: false })));
     });
   })();
 
-  ctx?.drawImage(image, 0, 0, width, height);
+  const canvas = document.createElement("canvas");
+  try {
+    canvas.width = width;
+    canvas.height = height;
+    const ctx = canvas.getContext("2d");
+    if (!ctx) throw new Error("Could not create a canvas for the screenshot");
+    ctx.drawImage(image, 0, 0, width, height);
+    return await canvasToBlob(canvas, "image/png");
+  } finally {
+    canvas.width = 0;
+    canvas.height = 0;
+  }
+}
 
-  return canvas.toDataURL();
+function canvasToBlob(canvas: HTMLCanvasElement, type: "image/png" | "image/webp"): Promise<Blob> {
+  return new Promise<Blob>((resolve, reject) => {
+    canvas.toBlob(
+      (blob) => {
+        if (blob && blob.type === type) resolve(blob);
+        else reject(new Error(`Could not encode the screenshot as ${type}`));
+      },
+      type,
+      1,
+    );
+  }).finally(() => {
+    // Release the large backing store even when encoding fails.
+    canvas.width = 0;
+    canvas.height = 0;
+  });
+}
+
+function blobToBase64(blob: Blob): Promise<string> {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.onload = () => {
+      const url = reader.result as string;
+      resolve(url.slice(url.indexOf(",") + 1));
+    };
+    reader.onerror = () => reject(reader.error ?? new Error("Could not read the screenshot"));
+    reader.readAsDataURL(blob);
+  });
 }
 
 const svgoConfig: SVGOConfig = {

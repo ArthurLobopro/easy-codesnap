@@ -3,6 +3,8 @@ import { type ISessionConfig, useSessionConfig } from "./SessionConfig";
 import { flashFx, shutterAnimationContainer, snippetContainerNode, windowNode } from "./ui/elements";
 import { once, redraw, setVar } from "./util";
 
+let capturing = false;
+
 async function blinkAnimation() {
   flashFx.style.display = "block";
   redraw(flashFx);
@@ -32,20 +34,23 @@ export async function cameraFlashAnimation() {
 export async function takeSnap(
   { target, transparentBackground, ...config }: Omit<ISessionConfig, "set"> = useSessionConfig.getState(),
 ) {
-  console.time("TakeSnap");
+  if (capturing) return;
+  capturing = true;
   const targetNode = target === "container" ? snippetContainerNode : windowNode;
 
   const exporter = { svg: exportSVG, png: exportPNG, webp: exportWEBP }[config.saveFormat];
 
-  setupBeforeSnap({ transparentBackground, target });
-
-  console.timeLog("TakeSnap", "Starting Exporter");
-  await exporter(targetNode, config.shutterAction, config.useFallbackPngExporter);
-  console.timeLog("TakeSnap", "Exporter Finished");
-
-  restoreAfterSnap(config);
-
-  console.timeEnd("TakeSnap");
+  try {
+    setupBeforeSnap({ transparentBackground, target });
+    await exporter(targetNode, config.shutterAction, config.useFallbackPngExporter);
+  } finally {
+    const latest = useSessionConfig.getState();
+    restoreAfterSnap({
+      backgroundColor: latest?.backgroundColor ?? config.backgroundColor,
+      boxShadow: latest?.boxShadow ?? config.boxShadow,
+    });
+    capturing = false;
+  }
 }
 
 type SetupBeforeSnapProps = Pick<ISessionConfig, "transparentBackground" | "target">;
