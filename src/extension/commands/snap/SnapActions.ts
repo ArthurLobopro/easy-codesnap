@@ -1,7 +1,7 @@
 import * as vscode from "vscode";
+import type { ExtensionConfig } from "../../../types";
 import { extensionSettingsNames } from "../../constants";
-import type { ExtensionConfig } from "../../types";
-import { delay, hasOneSelection, t } from "../../util";
+import { delay, getSettings, hasOneSelection, t } from "../../util";
 import type { IPanelWebviewConfig, PanelWebviewConfig } from "./PanelWebviewConfig";
 import { savePNG, saveSVG, saveWEBP } from "./savers";
 
@@ -13,16 +13,19 @@ interface SnapActionsProps {
   panel: vscode.WebviewPanel;
   update: (type: updateTypes, editorURI?: string) => Promise<void>;
   webViewConfig: PanelWebviewConfig;
+  scheduleSymbolBreadcrumbUpdate: () => void;
 }
 
 export class SnapActions {
   private panel: vscode.WebviewPanel;
   private update: SnapActionsProps["update"];
   private webViewConfig: PanelWebviewConfig;
+  private scheduleSymbolBreadcrumbUpdate: () => void;
 
   constructor(props: SnapActionsProps) {
     this.panel = props.panel;
     this.webViewConfig = props.webViewConfig;
+    this.scheduleSymbolBreadcrumbUpdate = () => props.scheduleSymbolBreadcrumbUpdate();
     this.update = (...args) => props.update(...args);
   }
 
@@ -47,6 +50,20 @@ export class SnapActions {
     vscode.window.showInformationMessage(t("Image copied to clipboard!"));
   }
 
+  "capture-too-large"({ width, height }: { width: number; height: number }) {
+    vscode.window.showErrorMessage(
+      t(
+        "WebP screenshot is too large ({0} × {1} pixels). Use PNG, reduce Save Scale, or select fewer lines.",
+        width,
+        height,
+      ),
+    );
+  }
+
+  "capture-error"({ reason }: { reason: string }) {
+    vscode.window.showErrorMessage(t("Failed to create screenshot: {0}", reason));
+  }
+
   async ready() {
     const editor = vscode.window.activeTextEditor;
     if (editor && hasOneSelection(editor.selections)) {
@@ -61,7 +78,13 @@ export class SnapActions {
   }
 
   "set-webview-config" = ({ config }: { config: IPanelWebviewConfig }) => {
+    const wasEnabled =
+      this.webViewConfig.get("enableSymbolBreadcrumb") ??
+      getSettings("easy-codesnap", ["enableSymbolBreadcrumb"]).enableSymbolBreadcrumb;
     this.webViewConfig.set(config);
+    if (wasEnabled !== config.enableSymbolBreadcrumb) {
+      this.scheduleSymbolBreadcrumbUpdate();
+    }
   };
 
   "update-config"() {
@@ -88,7 +111,7 @@ export class SnapActions {
     vscode.commands.executeCommand("workbench.action.openSettings", `@id:easy-codesnap.${configName}`);
   }
 
-  "copy-svg"({ data }: { data: string }) {
-    vscode.env.clipboard.writeText(data);
+  async "copy-svg"({ data }: { data: string }) {
+    await vscode.env.clipboard.writeText(data);
   }
 }

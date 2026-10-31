@@ -2,6 +2,7 @@ export interface IPanelWebviewConfig {
   isLocked: boolean;
   isLinked: boolean;
   linkedId: string;
+  enableSymbolBreadcrumb?: boolean;
 }
 
 type IPanelWebviewConfigKeys = keyof IPanelWebviewConfig;

@@ -116,6 +116,9 @@ export type message =
     }
   | { type: "open-settings" }
   | { type: "copy-svg"; data: string }
+  | { type: "capture-too-large"; width: number; height: number }
+  | { type: "capture-error"; reason: string }
+  | { type: "clipboard-consumed"; requestId: number }
   | { type: "open-config"; configName: string }
   | {
       type: "set-webview-config";

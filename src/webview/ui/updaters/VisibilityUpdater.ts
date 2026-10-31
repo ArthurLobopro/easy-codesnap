@@ -12,6 +12,7 @@ export class VisibilityUpdater extends Updater {
       "highlightLineNumber",
       "enableResizing",
       "enableSymbolBreadcrumb",
+      "symbolBreadcrumbs",
       "target",
     ]);
   }
@@ -49,7 +50,7 @@ export class VisibilityUpdater extends Updater {
 }
 
 export function UpdateTargetProportion() {
-  const { target } = useSessionConfig.getState();
+  const target = SessionConfig.get("target") ?? useSessionConfig.getState().target;
 
   if (target === "container") {
     const { width, height } = snippetContainerNode.getBoundingClientRect();
