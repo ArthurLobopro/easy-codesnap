@@ -1,7 +1,8 @@
+import { getRasterSize, isRasterSizeSafe } from "./captureLimits";
 import { exportPNG, exportSVG, exportWEBP } from "./exporters";
 import { type ISessionConfig, useSessionConfig } from "./SessionConfig";
 import { flashFx, shutterAnimationContainer, snippetContainerNode, windowNode } from "./ui/elements";
-import { once, redraw, setVar } from "./util";
+import { once, redraw, setVar, vscode } from "./util";
 
 let capturing = false;
 
@@ -42,7 +43,19 @@ export async function takeSnap(
 
   try {
     setupBeforeSnap({ transparentBackground, target });
+
+    if (config.saveFormat === "webp") {
+      const size = getRasterSize(targetNode, config.saveScale, false);
+      if (!isRasterSizeSafe(size)) {
+        vscode.postMessage({ type: "capture-too-large", ...size });
+        return;
+      }
+    }
+
     await exporter(targetNode, config.shutterAction, config.useFallbackPngExporter);
+  } catch (error) {
+    console.error("Failed to take screenshot", error);
+    vscode.postMessage({ type: "capture-error", reason: error instanceof Error ? error.message : String(error) });
   } finally {
     const latest = useSessionConfig.getState();
     restoreAfterSnap({

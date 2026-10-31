@@ -47,6 +47,20 @@ export class SnapActions {
     vscode.window.showInformationMessage(t("Image copied to clipboard!"));
   }
 
+  "capture-too-large"({ width, height }: { width: number; height: number }) {
+    vscode.window.showErrorMessage(
+      t(
+        "WebP screenshot is too large ({0} × {1} pixels). Use PNG, reduce Save Scale, or select fewer lines.",
+        width,
+        height,
+      ),
+    );
+  }
+
+  "capture-error"({ reason }: { reason: string }) {
+    vscode.window.showErrorMessage(t("Failed to create screenshot: {0}", reason));
+  }
+
   async ready() {
     const editor = vscode.window.activeTextEditor;
     if (editor && hasOneSelection(editor.selections)) {

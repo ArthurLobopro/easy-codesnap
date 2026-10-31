@@ -2,23 +2,28 @@ import { elementToSVG } from "dom-to-svg";
 import type { Config as SVGOConfig } from "svgo";
 import { optimize } from "svgo/browser";
 import type { WebviewConfig } from "../types";
+import { getRasterSize, isRasterSizeSafe } from "./captureLimits";
 import domtoimage from "./lib/dom-to-image";
+import { renderTiledPng } from "./lib/tiledPng";
 import { SessionConfig, useSessionConfig } from "./SessionConfig";
 import { cameraFlashAnimation } from "./snap";
 import { $$, vscode } from "./util";
 
 export async function exportPNG(target: HTMLElement, action: WebviewConfig["shutterAction"], useFallback?: boolean) {
   const [mainExporter, fallbackExporter] = useFallback ? [toPNGFallback, toPNG] : [toPNG, toPNGFallback];
+  const scale = useSessionConfig.getState().saveScale;
+  const mainTiled = !isRasterSizeSafe(getRasterSize(target, scale, Boolean(useFallback)));
+  const fallbackTiled = !isRasterSizeSafe(getRasterSize(target, scale, !useFallback));
 
   // Defer rendering so a large capture can start clipboard access during the
-  // user's click and supply the image asynchronously.
+  // user's click and supply the image asynchronously after tiled rendering.
   const blobPromise = Promise.resolve().then(async () => {
     try {
-      return await mainExporter(target);
+      return await mainExporter(target, mainTiled);
     } catch (_error) {
       console.log("Error while generating PNG, running fallback");
       console.log(_error);
-      return await fallbackExporter(target);
+      return await fallbackExporter(target, fallbackTiled);
     }
   });
 
@@ -74,7 +79,7 @@ export async function exportSVG(target: HTMLElement, action: WebviewConfig["shut
   }
 }
 
-async function toPNG(target: HTMLElement) {
+async function toPNG(target: HTMLElement, tiled: boolean) {
   console.time("toPNG");
   const scale = useSessionConfig.getState().saveScale;
   const options = {
@@ -88,13 +93,29 @@ async function toPNG(target: HTMLElement) {
     },
   };
 
+  if (tiled) {
+    const width = Math.floor(domtoimage.impl.util.width(target) * scale);
+    const height = Math.floor(domtoimage.impl.util.height(target) * scale);
+    const svg = await domtoimage.toSvg(target, options);
+    let image = await domtoimage.impl.util.makeImage(svg);
+    if (domtoimage.impl.util.delay) {
+      image = await domtoimage.impl.util.delay(100)(image);
+    }
+    const png = await renderTiledPng(width, height, (context, x, y) => {
+      context.setTransform(scale, 0, 0, scale, -x, -y);
+      context.drawImage(image, 0, 0);
+    });
+    console.timeEnd("toPNG");
+    return png;
+  }
+
   const canvas = await domtoimage.toCanvas(target, options);
 
   console.timeEnd("toPNG");
   return canvasToBlob(canvas, "image/png");
 }
 
-async function toPNGFallback(target: HTMLElement) {
+async function toPNGFallback(target: HTMLElement, tiled: boolean) {
   const scale = SessionConfig.get("saveScale");
   const { height: targetHeight, width: targetWidth } = target.getBoundingClientRect();
 
@@ -122,6 +143,13 @@ async function toPNGFallback(target: HTMLElement) {
       img.src = svgToDataURI(new XMLSerializer().serializeToString(elementToSVG(target, { keepLinks: false })));
     });
   })();
+
+  if (tiled) {
+    return renderTiledPng(width, height, (context, x, y) => {
+      context.setTransform(1, 0, 0, 1, -x, -y);
+      context.drawImage(image, 0, 0, width, height);
+    });
+  }
 
   const canvas = document.createElement("canvas");
   try {
