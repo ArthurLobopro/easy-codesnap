@@ -37,7 +37,32 @@ interface Options {
   scale: number;
   imagePlaceholder: string;
   cacheBust: boolean;
+  postProcess: (clone: HTMLElement) => void;
 }
+
+// Code lines have thousands of repeated elements. Copying every computed CSS
+// property (including every VS Code theme variable) onto each one creates a
+// very large SVG. These are the properties that affect the snippet's layout
+// and text appearance; inline styles from the editor are retained as well.
+const snippetStyleProperties = [
+  "display", "position", "top", "right", "bottom", "left", "z-index", "box-sizing",
+  "width", "min-width", "max-width", "height", "min-height", "max-height",
+  "margin-top", "margin-right", "margin-bottom", "margin-left",
+  "padding-top", "padding-right", "padding-bottom", "padding-left",
+  "flex-direction", "flex-wrap", "flex-grow", "flex-shrink", "flex-basis",
+  "align-items", "align-self", "justify-content", "row-gap", "column-gap",
+  "overflow-x", "overflow-y", "overflow-wrap", "word-break", "white-space",
+  // Chromium's resolved text-fill color is inherited separately from color.
+  // Copy it per token so an ancestor's fill does not hide syntax colors.
+  "color", "-webkit-text-fill-color", "-webkit-text-stroke-color", "-webkit-text-stroke-width",
+  "background-color", "background-image", "background-size", "background-position", "background-repeat",
+  "border-top", "border-right", "border-bottom", "border-left", "border-radius",
+  "font-family", "font-size", "font-style", "font-weight", "font-stretch", "line-height", "letter-spacing",
+  "font-feature-settings", "font-variation-settings", "font-kerning", "font-variant", "font-variant-caps",
+  "font-variant-east-asian", "font-variant-ligatures", "font-variant-numeric",
+  "text-align", "text-decoration", "text-transform", "text-shadow", "tab-size", "direction", "unicode-bidi",
+  "opacity", "visibility",
+];
 
 type Obj = Record<string, any>;
 
@@ -62,6 +87,10 @@ function toSvg(node: HTMLElement, options: Partial<Options>) {
 
   return Promise.resolve(node)
     .then((node) => cloneNode(node))
+    .then((clone) => {
+      options.postProcess?.(clone as HTMLElement);
+      return clone;
+    })
     .then(embedFonts)
     .then(inlineImages)
     .then(applyOptions)
@@ -200,7 +229,17 @@ function cloneNode(node: Element | ChildNode) {
       .then(() => clone);
 
     function cloneStyle() {
-      copyStyle(window.getComputedStyle(original), clone.style);
+      const computedStyle = window.getComputedStyle(original);
+      if (original.closest("#snippet") && original.id !== "snippet") {
+        for (const property of snippetStyleProperties) {
+          const value = computedStyle.getPropertyValue(property);
+          // Some computed shorthands cannot be serialized. An empty value must
+          // not erase the original inline formatting copied by cloneNode().
+          if (value) clone.style.setProperty(property, value);
+        }
+      } else {
+        copyStyle(computedStyle, clone.style);
+      }
 
       function copyFont(source: Obj, target: Obj) {
         target.font = source.font;
@@ -234,6 +273,9 @@ function cloneNode(node: Element | ChildNode) {
     }
 
     function clonePseudoElements() {
+      // The built-in snippet styles do not define pseudo-elements on token
+      // spans. Highlight markers live on .line and still need to be copied.
+      if (original.matches(".line-code span")) return;
       [":before", ":after"].forEach((element) => {
         clonePseudoElement(element);
       });

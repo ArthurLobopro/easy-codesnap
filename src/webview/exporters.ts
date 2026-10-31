@@ -1,9 +1,8 @@
-//@ts-expect-error
-import domtoimage from "dom-to-image-even-more";
 import { elementToSVG } from "dom-to-svg";
 import type { Config as SVGOConfig } from "svgo";
 import { optimize } from "svgo/browser";
 import type { WebviewConfig } from "../types";
+import domtoimage from "./lib/dom-to-image";
 import { SessionConfig, useSessionConfig } from "./SessionConfig";
 import { cameraFlashAnimation } from "./snap";
 import { $$, vscode } from "./util";
@@ -109,7 +108,9 @@ async function toPNGFallback(target: HTMLElement) {
   canvas.height = height;
 
   function svgToDataURI(svgString: string) {
-    const optimizedSvg = optimize(svgString, svgoConfig).data;
+    // The SVG is an intermediate image, so repeated optimization passes do
+    // not justify their cost for a large snippet.
+    const optimizedSvg = optimize(svgString, { ...svgoConfig, multipass: false }).data;
     const encodedSvg = encodeURIComponent(optimizedSvg).replace(/%0A/g, "").replace(/%20/g, " ");
 
     return `data:image/svg+xml;charset=utf-8,${encodedSvg}`;
