@@ -1,6 +1,6 @@
 import * as vscode from "vscode";
+import type { ExtensionConfig } from "../../../types";
 import { extensionSettingsNames } from "../../constants";
-import type { ExtensionConfig } from "../../types";
 import { delay, hasOneSelection, t } from "../../util";
 import type { IPanelWebviewConfig, PanelWebviewConfig } from "./PanelWebviewConfig";
 import { savePNG, saveSVG, saveWEBP } from "./savers";
@@ -88,7 +88,7 @@ export class SnapActions {
     vscode.commands.executeCommand("workbench.action.openSettings", `@id:easy-codesnap.${configName}`);
   }
 
-  "copy-svg"({ data }: { data: string }) {
-    vscode.env.clipboard.writeText(data);
+  async "copy-svg"({ data }: { data: string }) {
+    await vscode.env.clipboard.writeText(data);
   }
 }

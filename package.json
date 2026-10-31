@@ -433,7 +433,7 @@
     "package": "yarn build:css && webpack --mode production",
     "compile": "yarn run webpack",
     "watch": "yarn webpack-dev",
-    "typecheck": "tsc --noEmit",
+    "typecheck": "tsc --noEmit -p tsconfig.app.json && tsc --noEmit -p tsconfig.webview.json",
     "lint": "biome check",
     "lint:fix": "biome check --write",
     "translation-status": "tsx cli translation-status",
