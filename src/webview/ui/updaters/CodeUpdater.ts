@@ -58,14 +58,18 @@ function setupLines(node: Element) {
 
   const finalSpans = $$(".line-code > span > span:last-child", node);
 
-  finalSpans.forEach((span) => {
-    span.style.width = `${Math.ceil(span.getBoundingClientRect().width)}px`;
+  // Read all widths before writing any of them. Interleaving these operations
+  // forces a full layout for every line of a large selection.
+  const finalWidths = finalSpans.map((span) => Math.ceil(span.getBoundingClientRect().width));
+  finalSpans.forEach((span, index) => {
+    span.style.width = `${finalWidths[index]}px`;
   });
 
   const wrapperSpans = $$(".line-code > span");
 
-  wrapperSpans.forEach((span) => {
-    span.style.width = `${Math.ceil(span.getBoundingClientRect().width)}px`;
+  const wrapperWidths = wrapperSpans.map((span) => Math.ceil(span.getBoundingClientRect().width));
+  wrapperSpans.forEach((span, index) => {
+    span.style.width = `${wrapperWidths[index]}px`;
   });
 
   UpdateRatio(config.aspectRatio);

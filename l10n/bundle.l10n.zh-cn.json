@@ -1,6 +1,8 @@
 {
   "Settings saved as default!": "设置已保存为默认值！",
   "Image copied to clipboard!": "图片已复制到剪贴板！",
+  "WebP screenshot is too large ({0} × {1} pixels). Use PNG, reduce Save Scale, or select fewer lines.": "WebP 截图尺寸过大（{0} × {1} 像素）。请使用 PNG、降低保存缩放比例或减少选中行数。",
+  "Failed to create screenshot: {0}": "生成截图失败：{0}",
   "You must have one text selection!": "请先选择一段文本！",
   "Image saved to: {0}": "图片已保存在: {0}",
   "Easy CodeSnap 📸: Unknown internal action \"{type}\"": "Easy CodeSnap 📸: 未知的内部操作 \"{type}\"",

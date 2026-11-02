@@ -1,7 +1,6 @@
 import * as vscode from "vscode";
 
 export class ClipboardKeeper {
-  private restoreClipboardTimeout = -1;
   private clipboardText = "";
   private lastClipboardRestored = true;
 
@@ -13,15 +12,15 @@ export class ClipboardKeeper {
   }
 
   async restore() {
-    if (this.clipboardText) {
-      this.restoreClipboardTimeout = setTimeout(async () => {
+    if (this.lastClipboardRestored) return;
+    try {
+      if (this.clipboardText) {
         await vscode.env.clipboard.writeText(this.clipboardText);
-        this.lastClipboardRestored = true;
-      }, 500) as unknown as number;
+      }
+    } catch (error) {
+      console.error("Failed to restore clipboard", error);
+    } finally {
+      this.lastClipboardRestored = true;
     }
-  }
-
-  cancelRestore() {
-    clearTimeout(this.restoreClipboardTimeout);
   }
 }

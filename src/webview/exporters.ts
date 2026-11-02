@@ -1,55 +1,58 @@
-//@ts-expect-error
-import domtoimage from "dom-to-image-even-more";
 import { elementToSVG } from "dom-to-svg";
 import type { Config as SVGOConfig } from "svgo";
 import { optimize } from "svgo/browser";
 import type { WebviewConfig } from "../types";
+import { getRasterSize, isRasterSizeSafe } from "./captureLimits";
+import domtoimage from "./lib/dom-to-image";
+import { renderTiledPng } from "./lib/tiledPng";
 import { SessionConfig, useSessionConfig } from "./SessionConfig";
 import { cameraFlashAnimation } from "./snap";
 import { $$, vscode } from "./util";
 
 export async function exportPNG(target: HTMLElement, action: WebviewConfig["shutterAction"], useFallback?: boolean) {
   const [mainExporter, fallbackExporter] = useFallback ? [toPNGFallback, toPNG] : [toPNG, toPNGFallback];
+  const scale = useSessionConfig.getState().saveScale;
+  const mainTiled = !isRasterSizeSafe(getRasterSize(target, scale, Boolean(useFallback)));
+  const fallbackTiled = !isRasterSizeSafe(getRasterSize(target, scale, !useFallback));
 
-  const url = await (async () => {
+  // Defer rendering so a large capture can start clipboard access during the
+  // user's click and supply the image asynchronously after tiled rendering.
+  const blobPromise = Promise.resolve().then(async () => {
     try {
-      return await mainExporter(target);
+      return await mainExporter(target, mainTiled);
     } catch (_error) {
       console.log("Error while generating PNG, running fallback");
       console.log(_error);
-      return await fallbackExporter(target);
+      return await fallbackExporter(target, fallbackTiled);
     }
-  })();
-
-  const data = url.slice(url.indexOf(",") + 1);
+  });
 
   if (action === "copy") {
-    const binary = atob(data);
-    const array = new Uint8Array(binary.length);
-
-    for (let i = 0; i < binary.length; i++) {
-      array[i] = binary.charCodeAt(i);
+    let write: Promise<void>;
+    try {
+      write = navigator.clipboard.write([new ClipboardItem({ "image/png": blobPromise })]);
+      write.catch(() => {});
+    } catch (error) {
+      await blobPromise.catch(() => {});
+      throw error;
     }
-
-    const blob = new Blob([array], { type: "image/png" });
-    navigator.clipboard.write([new ClipboardItem({ "image/png": blob })]);
-    cameraFlashAnimation();
-
+    await blobPromise;
+    await write;
+    void cameraFlashAnimation();
     vscode.postMessage({ type: "copied" });
   } else {
-    vscode.postMessage({ type: action, data, format: "png" });
+    const blob = await blobPromise;
+    vscode.postMessage({ type: action, data: await blobToBase64(blob), format: "png" });
   }
 }
 
 export async function exportWEBP(target: HTMLElement) {
-  const canvas = (await domtoimage.toCanvas(target, {
+  const canvas = await domtoimage.toCanvas(target, {
     scale: useSessionConfig.getState().saveScale,
-  })) as HTMLCanvasElement;
+  });
 
-  const dataUrl = canvas.toDataURL("image/webp", 1.0);
-  const data = dataUrl.slice(dataUrl.indexOf(",") + 1);
-
-  vscode.postMessage({ type: "save", data, format: "webp" });
+  const blob = await canvasToBlob(canvas, "image/webp");
+  vscode.postMessage({ type: "save", data: await blobToBase64(blob), format: "webp" });
 }
 
 export async function exportSVG(target: HTMLElement, action: WebviewConfig["shutterAction"]) {
@@ -76,11 +79,11 @@ export async function exportSVG(target: HTMLElement, action: WebviewConfig["shut
   }
 }
 
-async function toPNG(target: HTMLElement) {
+async function toPNG(target: HTMLElement, tiled: boolean) {
   console.time("toPNG");
-
-  const png = await domtoimage.toPng(target, {
-    scale: useSessionConfig.getState().saveScale,
+  const scale = useSessionConfig.getState().saveScale;
+  const options = {
+    scale,
     // When using scaled monitor resolutions, the scaling factor can generate fractional pixels and break the lines.
     // Setting the elements width to unset should solve it
     postProcess: (node: HTMLElement) => {
@@ -88,49 +91,107 @@ async function toPNG(target: HTMLElement) {
         span.style.width = "unset";
       });
     },
-  });
+  };
+
+  if (tiled) {
+    const width = Math.floor(domtoimage.impl.util.width(target) * scale);
+    const height = Math.floor(domtoimage.impl.util.height(target) * scale);
+    const svg = await domtoimage.toSvg(target, options);
+    let image = await domtoimage.impl.util.makeImage(svg);
+    if (domtoimage.impl.util.delay) {
+      image = await domtoimage.impl.util.delay(100)(image);
+    }
+    const png = await renderTiledPng(width, height, (context, x, y) => {
+      context.setTransform(scale, 0, 0, scale, -x, -y);
+      context.drawImage(image, 0, 0);
+    });
+    console.timeEnd("toPNG");
+    return png;
+  }
+
+  const canvas = await domtoimage.toCanvas(target, options);
 
   console.timeEnd("toPNG");
-  return png;
+  return canvasToBlob(canvas, "image/png");
 }
 
-async function toPNGFallback(target: HTMLElement) {
+async function toPNGFallback(target: HTMLElement, tiled: boolean) {
   const scale = SessionConfig.get("saveScale");
-
-  const canvas = document.createElement("canvas");
-  const ctx = canvas.getContext("2d");
-
   const { height: targetHeight, width: targetWidth } = target.getBoundingClientRect();
 
   const width = Math.floor(targetWidth * scale) + 2;
   const height = Math.floor(targetHeight * scale) + 2;
 
-  canvas.width = width;
-  canvas.height = height;
-
   function svgToDataURI(svgString: string) {
-    const optimizedSvg = optimize(svgString, svgoConfig).data;
+    // The SVG is an intermediate image, so repeated optimization passes do
+    // not justify their cost for a large snippet.
+    const optimizedSvg = optimize(svgString, { ...svgoConfig, multipass: false }).data;
     const encodedSvg = encodeURIComponent(optimizedSvg).replace(/%0A/g, "").replace(/%20/g, " ");
 
     return `data:image/svg+xml;charset=utf-8,${encodedSvg}`;
   }
 
   const image = await (async (): Promise<HTMLImageElement> => {
-    return new Promise((resolve) => {
+    return new Promise((resolve, reject) => {
       const img = new Image();
 
       img.width = width;
       img.height = height;
 
-      img.src = svgToDataURI(new XMLSerializer().serializeToString(elementToSVG(target, { keepLinks: false })));
-
       img.onload = () => resolve(img);
+      img.onerror = () => reject(new Error("Failed to load the generated SVG image"));
+      img.src = svgToDataURI(new XMLSerializer().serializeToString(elementToSVG(target, { keepLinks: false })));
     });
   })();
 
-  ctx?.drawImage(image, 0, 0, width, height);
+  if (tiled) {
+    return renderTiledPng(width, height, (context, x, y) => {
+      context.setTransform(1, 0, 0, 1, -x, -y);
+      context.drawImage(image, 0, 0, width, height);
+    });
+  }
 
-  return canvas.toDataURL();
+  const canvas = document.createElement("canvas");
+  try {
+    canvas.width = width;
+    canvas.height = height;
+    const ctx = canvas.getContext("2d");
+    if (!ctx) throw new Error("Could not create a canvas for the screenshot");
+    ctx.drawImage(image, 0, 0, width, height);
+    return await canvasToBlob(canvas, "image/png");
+  } finally {
+    canvas.width = 0;
+    canvas.height = 0;
+  }
+}
+
+function canvasToBlob(canvas: HTMLCanvasElement, type: "image/png" | "image/webp"): Promise<Blob> {
+  return new Promise<Blob>((resolve, reject) => {
+    canvas.toBlob(
+      (blob) => {
+        if (blob && blob.type === type) resolve(blob);
+        else reject(new Error(`Could not encode the screenshot as ${type}`));
+      },
+      type,
+      1,
+    );
+  }).finally(() => {
+    // Release the large backing store even when encoding fails.
+    canvas.width = 0;
+    canvas.height = 0;
+  });
+}
+
+function blobToBase64(blob: Blob): Promise<string> {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.onload = () => {
+      const url = reader.result as string;
+      resolve(url.slice(url.indexOf(",") + 1));
+    };
+    reader.onerror = () => reject(reader.error ?? new Error("Could not read the screenshot"));
+    reader.readAsDataURL(blob);
+  });
 }
 
 const svgoConfig: SVGOConfig = {
