@@ -4,7 +4,7 @@
 		{
 			"label": "watch",
 			"type": "shell",
-			"command": "yarn watch",
+			"command": "bun run watch",
 			"problemMatcher": "$tsc-watch",
 			"isBackground": true,
 			"presentation": {
@@ -17,7 +17,7 @@
 		{
 			"label": "compile",
 			"type": "shell",
-			"command": "yarn compile",
+			"command": "bun run compile",
 			"group": {
 				"kind": "build",
 				"isDefault": true

@@ -20,16 +20,14 @@ jobs:
         - name: Checkout
           uses: actions/checkout@v4
 
-        - name: Setup Node
-          uses: actions/setup-node@v4
-          with:
-            node-version: "24.x"
+        - name: Setup Bun
+          uses: oven-sh/setup-bun@v2
 
         - name: Install Dependencies
-          run: yarn install --frozen-lockfile
+          run: bun install --frozen-lockfile
 
         - name: Generate Badges
-          run: yarn make-badges
+          run: bun run make-badges
           
         - name: Push Badges to badges branch
           uses: crazy-max/ghaction-github-pages@v3.1.0

@@ -10,7 +10,7 @@ To create a new translation:
    ```json
    {}
    ```
-2. Run `yarn translation-status [code]` to see all strings that need to be translated (`missingKeys`).
+2. Run `bun run translation-status [code]` to see all strings that need to be translated (`missingKeys`).
 3. Add each missing string as a key-value pair in your file, with the translated text as the value.
 
 Additionally, you must create a file named `package.nls.[code].json` at the root of the project.  
@@ -29,7 +29,7 @@ After cloning the repository and installing dependencies, you can use the `trans
 ### All languages
 
 ```bash
-yarn translation-status
+bun run translation-status
 ```
 
 Displays the coverage status for **all available translations**, sorted from highest to lowest coverage.
@@ -37,7 +37,7 @@ Displays the coverage status for **all available translations**, sorted from hig
 ### Specific language
 
 ```bash
-yarn translation-status [locale]
+bun run translation-status [locale]
 ```
 
 Filters the output to a **single locale**. The locale code must match the suffix of the translation file (e.g., `pt-br` for `bundle.l10n.pt-br.json`).
@@ -45,9 +45,9 @@ Filters the output to a **single locale**. The locale code must match the suffix
 **Examples:**
 
 ```bash
-yarn translation-status pt-br
-yarn translation-status fr
-yarn translation-status de
+bun run translation-status pt-br
+bun run translation-status fr
+bun run translation-status de
 ```
 
 ### Understanding the output
@@ -72,7 +72,7 @@ yarn translation-status de
 
 ## Adding Missing Translations
 
-1. Run `yarn translation-status [locale]` for the language you want to improve.
+1. Run `bun run translation-status [locale]` for the language you want to improve.
 2. Add the entries listed in `missingKeys` to the corresponding `bundle.l10n.[code].json` file.
 3. If the missing strings also appear in `package.nls.[code].json`, translate them there as well.
 4. Remove any entries listed in `detachedKeys` — they are outdated and no longer used.

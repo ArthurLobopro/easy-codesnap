@@ -146,6 +146,22 @@
           ],
           "order": 7
         },
+        "easy-codesnap.maxWidth": {
+          "scope": "resource",
+          "type": "integer",
+          "minimum": 0,
+          "default": 1920,
+          "markdownDescription": "%easy-codesnap.maxWidth%",
+          "order": 7
+        },
+        "easy-codesnap.maxHeight": {
+          "scope": "resource",
+          "type": "integer",
+          "minimum": 0,
+          "default": 1080,
+          "markdownDescription": "%easy-codesnap.maxHeight%",
+          "order": 7
+        },
         "easy-codesnap.optimizeSvg": {
           "scope": "resource",
           "type": "boolean",
@@ -427,24 +443,25 @@
     "carbon"
   ],
   "scripts": {
-    "vscode:prepublish": "npm run package",
+    "vscode:prepublish": "bun run package",
     "webpack": "webpack --mode development",
     "webpack-dev": "webpack --mode development --watch",
-    "package": "yarn build:css && webpack --mode production",
-    "compile": "yarn run webpack",
-    "watch": "yarn webpack-dev",
+    "package": "bun run build:css && webpack --mode production",
+    "compile": "bun run webpack",
+    "watch": "bun run webpack-dev",
     "typecheck": "tsc --noEmit -p tsconfig.app.json && tsc --noEmit -p tsconfig.webview.json",
     "lint": "biome check",
     "lint:fix": "biome check --write",
-    "translation-status": "tsx cli translation-status",
-    "compress-json": "tsx cli compress-json",
-    "make-badges": "tsx cli make-badges",
-    "sort": "tsx cli sort order && tsx cli sort nls",
+    "translation-status": "bun cli/index.ts translation-status",
+    "compress-json": "bun cli/index.ts compress-json",
+    "make-badges": "bun cli/index.ts make-badges",
+    "sort": "bun cli/index.ts sort order && bun cli/index.ts sort nls",
     "build:css": "tailwindcss -i ./webview/style.css -o ./webview/output.css -m"
   },
   "devDependencies": {
     "@biomejs/biome": "^2.3.6",
     "@svgr/webpack": "^8.1.0",
+    "@types/bun": "latest",
     "@types/node": "^26.4.0",
     "@types/react": "^19.1.8",
     "@types/react-dom": "^19.1.6",
@@ -454,7 +471,6 @@
     "esbuild-loader": "^4.4.0",
     "sharp": "^0.35.4",
     "tailwindcss": "^3",
-    "tsx": "^4.20.6",
     "typescript": "^6.0.3",
     "webpack": "^5.102.1",
     "webpack-cli": "^6.0.1"

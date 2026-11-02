@@ -15,7 +15,7 @@ webview/assets
 #Config
 **/tsconfig*.json
 *.config.js
-.yarnrc
+bun.lock
 .gitignore
 biome.json
 TranslationGuide.md
