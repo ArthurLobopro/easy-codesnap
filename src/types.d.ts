@@ -36,6 +36,8 @@ export interface ExtensionConfig {
   performShutterActionOnOpen: boolean;
 
   maxCharWidth: number;
+  maxWidth: number;
+  maxHeight: number;
 
   saveScale: SaveScale;
   roundingLevel: RoundingLevel;

@@ -24,6 +24,8 @@ export const extensionSettingsNames: ConfigKey[] = [
   "linkOnOpen",
   "lockOnOpen",
   "maxCharWidth",
+  "maxHeight",
+  "maxWidth",
   "optimizeSvg",
   "roundingLevel",
   "saveFormat",

@@ -1,5 +1,5 @@
 import { cancelAutomaticCapture } from "./automaticCapture";
-import { getRasterSize, isRasterSizeSafe } from "./captureLimits";
+import { getEffectiveScale, getRasterSize, isRasterSizeSafe } from "./captureLimits";
 import { exportPNG, exportSVG, exportWEBP } from "./exporters";
 import { type ISessionConfig, useSessionConfig } from "./SessionConfig";
 import { flashFx, shutterAnimationContainer, snippetContainerNode, windowNode } from "./ui/elements";
@@ -47,7 +47,11 @@ export async function takeSnap(
     setupBeforeSnap({ transparentBackground, target });
 
     if (config.saveFormat === "webp") {
-      const size = getRasterSize(targetNode, config.saveScale, false);
+      const size = getRasterSize(
+        targetNode,
+        getEffectiveScale(targetNode, config.saveScale, config.maxWidth, config.maxHeight, false),
+        false,
+      );
       if (!isRasterSizeSafe(size)) {
         vscode.postMessage({ type: "capture-too-large", ...size });
         return;

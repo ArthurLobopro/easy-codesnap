@@ -2,16 +2,16 @@ import { elementToSVG } from "dom-to-svg";
 import type { Config as SVGOConfig } from "svgo";
 import { optimize } from "svgo/browser";
 import type { WebviewConfig } from "../types";
-import { getRasterSize, isRasterSizeSafe } from "./captureLimits";
+import { getEffectiveScale, getRasterSize, isRasterSizeSafe } from "./captureLimits";
 import domtoimage from "./lib/dom-to-image";
 import { renderTiledPng } from "./lib/tiledPng";
-import { SessionConfig, useSessionConfig } from "./SessionConfig";
+import { useSessionConfig } from "./SessionConfig";
 import { cameraFlashAnimation } from "./snap";
 import { $$, vscode } from "./util";
 
 export async function exportPNG(target: HTMLElement, action: WebviewConfig["shutterAction"], useFallback?: boolean) {
   const [mainExporter, fallbackExporter] = useFallback ? [toPNGFallback, toPNG] : [toPNG, toPNGFallback];
-  const scale = useSessionConfig.getState().saveScale;
+  const scale = getTargetScale(target);
   const mainTiled = !isRasterSizeSafe(getRasterSize(target, scale, Boolean(useFallback)));
   const fallbackTiled = !isRasterSizeSafe(getRasterSize(target, scale, !useFallback));
 
@@ -19,11 +19,11 @@ export async function exportPNG(target: HTMLElement, action: WebviewConfig["shut
   // user's click and supply the image asynchronously after tiled rendering.
   const blobPromise = Promise.resolve().then(async () => {
     try {
-      return await mainExporter(target, mainTiled);
+      return await mainExporter(target, mainTiled, scale);
     } catch (_error) {
       console.log("Error while generating PNG, running fallback");
       console.log(_error);
-      return await fallbackExporter(target, fallbackTiled);
+      return await fallbackExporter(target, fallbackTiled, scale);
     }
   });
 
@@ -48,7 +48,7 @@ export async function exportPNG(target: HTMLElement, action: WebviewConfig["shut
 
 export async function exportWEBP(target: HTMLElement) {
   const canvas = await domtoimage.toCanvas(target, {
-    scale: useSessionConfig.getState().saveScale,
+    scale: getTargetScale(target),
   });
 
   const blob = await canvasToBlob(canvas, "image/webp");
@@ -79,9 +79,13 @@ export async function exportSVG(target: HTMLElement, action: WebviewConfig["shut
   }
 }
 
-async function toPNG(target: HTMLElement, tiled: boolean) {
+function getTargetScale(target: HTMLElement) {
+  const { saveScale, maxWidth, maxHeight } = useSessionConfig.getState();
+  return getEffectiveScale(target, saveScale, maxWidth, maxHeight);
+}
+
+async function toPNG(target: HTMLElement, tiled: boolean, scale: number) {
   console.time("toPNG");
-  const scale = useSessionConfig.getState().saveScale;
   const options = {
     scale,
     // When using scaled monitor resolutions, the scaling factor can generate fractional pixels and break the lines.
@@ -115,8 +119,7 @@ async function toPNG(target: HTMLElement, tiled: boolean) {
   return canvasToBlob(canvas, "image/png");
 }
 
-async function toPNGFallback(target: HTMLElement, tiled: boolean) {
-  const scale = SessionConfig.get("saveScale");
+async function toPNGFallback(target: HTMLElement, tiled: boolean, scale: number) {
   const { height: targetHeight, width: targetWidth } = target.getBoundingClientRect();
 
   const width = Math.floor(targetWidth * scale) + 2;

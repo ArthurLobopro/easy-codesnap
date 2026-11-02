@@ -24,6 +24,8 @@
   "easy-codesnap.saveScale.2": "Scales the snapshot to 200% of the original size.",
   "easy-codesnap.saveScale.3": "Scales the snapshot to 300% of the original size.",
   "easy-codesnap.saveScale.4": "Scales the snapshot to 400% of the original size.",
+  "easy-codesnap.maxWidth": "Maximum width in pixels of PNG and WEBP snapshots. If the snapshot (after applying [`Save Scale`](command:workbench.action.openSettings?%22@id:easy-codesnap.saveScale%22)) is wider, it is scaled down proportionally. Checked independently from the maximum height. Set to `0` for no limit. Default is the width of a Full HD monitor.",
+  "easy-codesnap.maxHeight": "Maximum height in pixels of PNG and WEBP snapshots. If the snapshot (after applying [`Save Scale`](command:workbench.action.openSettings?%22@id:easy-codesnap.saveScale%22)) is taller, it is scaled down proportionally. Checked independently from the maximum width. Set to `0` for no limit. Default is the height of a Full HD monitor.",
   "easy-codesnap.optimizeSvg": "Controls whether SVG files are optimized before saving. Only valid when [`Easy-codesnap: Save Format`](command:workbench.action.openSettings?%22@id:easy-codesnap.saveFormat%22) is set to `svg`.",
   "easy-codesnap.useFallbackPngExporter": "Controls whether the fallback PNG exporter is used as the primary exporter when saving snapshots in PNG format. Useful when the default exporter produces unexpected results.",
   "easy-codesnap.showLineNumbers": "Displays line numbers in the snap screen.",

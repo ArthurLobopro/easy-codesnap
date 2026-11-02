@@ -74,6 +74,8 @@ export const DEFAULT_SETTINGS: Omit<ISessionConfig, "set"> = {
   enableResizing: true,
   enableSymbolBreadcrumb: false,
   maxCharWidth: 0,
+  maxWidth: 1920,
+  maxHeight: 1080,
   aspectRatio: "none",
   showWindowTitle: false,
   showWindowControls: true,

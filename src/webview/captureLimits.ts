@@ -24,6 +24,31 @@ export function getRasterSize(target: HTMLElement, scale: number, includeBounds 
   };
 }
 
+/**
+ * Returns the scale to render with: the configured scale, reduced when needed so the
+ * output width and height each stay within their own maximum (0 = no limit).
+ * Aspect ratio is preserved, so the most restrictive dimension wins.
+ */
+export function getEffectiveScale(
+  target: HTMLElement,
+  scale: number,
+  maxWidth: number,
+  maxHeight: number,
+  includeBounds = true,
+): number {
+  // Output size is ceil(size * scale) + 2, so the limit applies to the size minus the 2px padding.
+  const base = getRasterSize(target, 1, includeBounds);
+  const contentWidth = Math.max(base.width - 2, 1);
+  const contentHeight = Math.max(base.height - 2, 1);
+
+  let effective = scale;
+  if (maxWidth > 0) effective = Math.min(effective, (maxWidth - 2) / contentWidth);
+  if (maxHeight > 0) effective = Math.min(effective, (maxHeight - 2) / contentHeight);
+
+  // Floor to avoid floating point overshoot past the limit.
+  return Math.max(Math.floor(effective * 1e6) / 1e6, 0.001);
+}
+
 export function isRasterSizeSafe({ width, height }: RasterSize): boolean {
   return (
     Number.isFinite(width) &&

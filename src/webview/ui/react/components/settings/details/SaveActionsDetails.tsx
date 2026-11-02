@@ -7,6 +7,7 @@ import { ToggleInput } from "../../ToggleInput";
 import { SaveActionSelect } from "../selects/SaveActionSelect";
 import { SaveFormatSelect } from "../selects/SaveFormatSelect";
 import { SaveScaleSelect } from "../selects/SaveScaleSelect";
+import { MaxSizeInputs } from "./MaxSizeInputs";
 
 export function SaveActionsDetails() {
   const { t } = useTranslation();
@@ -19,6 +20,7 @@ export function SaveActionsDetails() {
         <SaveActionSelect />
         <SaveFormatSelect />
         <SaveScaleSelect />
+        <MaxSizeInputs />
         <ToggleInput
           config="optimizeSvg"
           label={t("Optimize SVG")}
